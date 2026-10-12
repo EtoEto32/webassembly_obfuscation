@@ -1,0 +1,12 @@
+{
+ "purpose": "Positive control for future attacks, existing MBA helper normalization only",
+ "attacker_input": "Binary and its public ABI, no generator or variable map; known MBA identity",
+ "primary_metric": "Number of exact pure-local MBA instruction patterns restored to i32.add",
+ "success_scope": "Local expression restoration, not unknown whole-program semantic reconstruction",
+ "controls": "Plain raw/O2/O3 should have no replacements; failed O3 match is coverage-limited, not resistance",
+ "process_timeout_seconds": 30,
+ "verification": "Every recovered binary must pass every saved SHA test; preserve and compare message bytes and rejected-length memory effects",
+ "performance": "One diagnostic wall time only; no statistical attack-time comparison",
+ "memory": "Host default, no enforced memory cap; limited six small binaries",
+ "novelty": "None claimed for this attack or MBA construction"
+}

@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-12",
+  "purpose": "Necessary condition for phase-specific bijective state encodings and one common input-indexed update",
+  "widths": [1, 2],
+  "phases": [8, 9],
+  "window_lengths": [2, 3, 4, 5, 6, 7],
+  "inputs": "zero vector, impulse 1 at first position, impulse 1 at last position",
+  "words": ["A composed B", "A composed B composed inverse(A) composed inverse(B)"],
+  "primary": "exact cycle histograms differ across phases for the same word",
+  "scope": "All 2^(8*w) states of reduced-width SHA-shaped rounds; not standard SHA-256",
+  "budget": "one exhaustive run, two widths only, no parameter tuning; 120 second process budget",
+  "interpretation": "difference rules out bijections in this reduced model; equality proves nothing about existence; neither result establishes obfuscation novelty or resistance"
+}

@@ -1,0 +1,27 @@
+{
+  "sample_id": "packed-gf2-inner-product-n4-k1",
+  "before": "((x & y).bit_count() & 1), x,y are 4-bit unsigned words",
+  "after": {
+    "pack_x": "sum(bit(x,i) << i for i in 0..3)",
+    "pack_y": "sum(bit(y,i) << (3-i) for i in 0..3)",
+    "product": "pack_x * pack_y",
+    "decode": "(product >> 3) & 1"
+  },
+  "status": "generated candidate specification; incorrect on saved witnesses, not a completed transformation",
+  "witness": {
+    "n": 4,
+    "left": [
+      1,
+      9
+    ],
+    "right": [
+      3,
+      12
+    ],
+    "product": 9,
+    "outputs": [
+      1,
+      0
+    ]
+  }
+}

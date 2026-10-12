@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-12",
+  "purpose": "Construct real 32-byte SHA-256 inputs reaching prescribed working states after rounds 0..7; exclude state-only unreachable-state assumptions at this boundary.",
+  "seed": 619732,
+  "targets": "all-zero, all-one, 24 lane boundaries, 256 random eight-word states",
+  "acceptance": "Every constructed message reaches its target in raw and O2 instrumented existing Wasm; complete SHA-256 agrees with Python hashlib, Node crypto and unchanged plain Wasm.",
+  "negative_control": "Reverse bytes within each message word; require at least one target mismatch in each instrumented build.",
+  "capture": "After incrementing round index to 8, store locals a..h at memory 640..671; do not change original round calculations.",
+  "budget": "20 minutes local work; 60 seconds per subprocess; 282 targets, two instrumented builds and unchanged raw baseline",
+  "security_claim": false,
+  "novel_obfuscation_claim": false
+}

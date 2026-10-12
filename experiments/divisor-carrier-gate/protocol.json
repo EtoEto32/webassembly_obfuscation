@@ -1,0 +1,14 @@
+{
+ "date":"2026-10-12",
+ "candidate":"Represent a bit vector by a subset product of pairwise coprime integer atoms; evaluate AND/OR/XOR/NOT using gcd, multiplication and exact division",
+ "repair":"Multiply representations by a nuisance factor coprime to the public universe product P; normalize with gcd(value,P)",
+ "novelty_status":"Divisor Boolean algebra is established; no independent new principle claimed. Only a bounded dismissal test, no backend expansion",
+ "attacker":"Receives width, public P and chosen-input encoder observations for binary labels of bit positions, but no atom list, factorization, generator seed or challenge plaintexts",
+ "primary":"Recover every bit-position atom without prime factorization, then decode held-out operation results",
+ "widths":[4,32],
+ "seed":5221,
+ "inputs":"All 16x16 pairs at width4; 8x8 boundary pairs and 256 deterministic random pairs at width32",
+ "limits":{"cycle_minutes":30,"attacker_seconds":20,"memory":"host default","extra_parameter_search":0},
+ "decision":"Reject if basis recovery succeeds or if an independent technical principle is absent; no SHA/Wasm or performance expansion",
+ "controls":["pairwise non-coprime atoms break the Boolean interpretation","decoder must reject an incomplete atom in an invalid representation"]
+}

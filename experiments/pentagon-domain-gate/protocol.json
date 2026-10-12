@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-12",
+  "rule": "F(x,y)=(y,(1+y)*inverse(x)) modulo 2^w; inverse must exist",
+  "intended_rewrite": "identity pair update -> five successive F updates",
+  "widths": [1,2,3,4,5,6,7,8],
+  "population": "all pairs for each width",
+  "primary": "first undefined step, not attack resistance",
+  "rational_controls": [[1,1],[2,3],[17,29]],
+  "budget": "one exhaustive domain check, no parameter search, no Wasm integration"
+}

@@ -1,0 +1,10 @@
+{
+ "date":"2026-10-12",
+ "scope":"Audit existing 32 solutions only; no search expansion and no new obfuscator claim",
+ "fit":"E(x,y)=swap_optional(sign*x+c[y mod 8] mod 8, y+offset mod 8); sign is +1 or -1",
+ "lifts":["unsigned constants from 0..7","signed representatives from -4..3"],
+ "tests":"width4 all 256 states; width32 eight boundary values crossed plus 256 pseudorandom states",
+ "seed":632119,
+ "limits":{"cycle_minutes":15,"command_seconds":60},
+ "decision":"Counterexamples reject only these literal periodic lifts; passing finite tests is not a width-independent proof or novelty evidence"
+}

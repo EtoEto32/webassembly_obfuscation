@@ -1,0 +1,331 @@
+{
+  "nodes": {
+    "6": {
+      "expression": [
+        "i32.add",
+        [
+          "local.get",
+          "0"
+        ],
+        [
+          "local.get",
+          "1"
+        ]
+      ],
+      "cost": 33
+    },
+    "8": {
+      "expression": [
+        "i32.rotl",
+        [
+          "local.get",
+          "0"
+        ],
+        [
+          "i32.const",
+          "3"
+        ]
+      ],
+      "cost": 1
+    },
+    "10": {
+      "expression": [
+        "i32.mul",
+        [
+          "local.get",
+          "6"
+        ],
+        [
+          "local.get",
+          "8"
+        ]
+      ],
+      "cost": 1
+    },
+    "12": {
+      "expression": [
+        "i32.add",
+        [
+          "local.get",
+          "10"
+        ],
+        [
+          "local.get",
+          "1"
+        ]
+      ],
+      "cost": 33
+    },
+    "14": {
+      "expression": [
+        "i32.lt_u",
+        [
+          "local.get",
+          "10"
+        ],
+        [
+          "local.get",
+          "12"
+        ]
+      ],
+      "cost": 1
+    },
+    "16": {
+      "expression": [
+        "select",
+        [
+          "local.get",
+          "6"
+        ],
+        [
+          "local.get",
+          "12"
+        ],
+        [
+          "local.get",
+          "14"
+        ]
+      ],
+      "cost": 1
+    }
+  },
+  "order": [
+    "6",
+    "8",
+    "10",
+    "12",
+    "14",
+    "16"
+  ],
+  "times": {
+    "6": 33,
+    "8": 1,
+    "10": 34,
+    "12": 67,
+    "14": 68,
+    "16": 69
+  },
+  "sweeps": 69,
+  "output": "16",
+  "carry_count": 2,
+  "handlers": [
+    [
+      "then",
+      [
+        "local.set",
+        "6",
+        [
+          "i32.xor",
+          [
+            "i32.xor",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "local.get",
+            "7"
+          ]
+        ]
+      ],
+      [
+        "local.set",
+        "7",
+        [
+          "i32.shl",
+          [
+            "i32.or",
+            [
+              "i32.and",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.and",
+              [
+                "i32.xor",
+                [
+                  "local.get",
+                  "0"
+                ],
+                [
+                  "local.get",
+                  "1"
+                ]
+              ],
+              [
+                "local.get",
+                "7"
+              ]
+            ]
+          ],
+          [
+            "i32.const",
+            "1"
+          ]
+        ]
+      ]
+    ],
+    [
+      "then",
+      [
+        "local.set",
+        "8",
+        [
+          "i32.rotl",
+          [
+            "local.get",
+            "0"
+          ],
+          [
+            "i32.const",
+            "3"
+          ]
+        ]
+      ]
+    ],
+    [
+      "then",
+      [
+        "local.set",
+        "10",
+        [
+          "i32.mul",
+          [
+            "local.get",
+            "6"
+          ],
+          [
+            "local.get",
+            "8"
+          ]
+        ]
+      ]
+    ],
+    [
+      "then",
+      [
+        "local.set",
+        "12",
+        [
+          "i32.xor",
+          [
+            "i32.xor",
+            [
+              "local.get",
+              "10"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "local.get",
+            "13"
+          ]
+        ]
+      ],
+      [
+        "local.set",
+        "13",
+        [
+          "i32.shl",
+          [
+            "i32.or",
+            [
+              "i32.and",
+              [
+                "local.get",
+                "10"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.and",
+              [
+                "i32.xor",
+                [
+                  "local.get",
+                  "10"
+                ],
+                [
+                  "local.get",
+                  "1"
+                ]
+              ],
+              [
+                "local.get",
+                "13"
+              ]
+            ]
+          ],
+          [
+            "i32.const",
+            "1"
+          ]
+        ]
+      ]
+    ],
+    [
+      "then",
+      [
+        "local.set",
+        "14",
+        [
+          "i32.lt_u",
+          [
+            "local.get",
+            "10"
+          ],
+          [
+            "local.get",
+            "12"
+          ]
+        ]
+      ]
+    ],
+    [
+      "then",
+      [
+        "local.set",
+        "16",
+        [
+          "select",
+          [
+            "local.get",
+            "6"
+          ],
+          [
+            "local.get",
+            "12"
+          ],
+          [
+            "local.get",
+            "14"
+          ]
+        ]
+      ]
+    ]
+  ],
+  "input_sha256": "d1a67eaefe9c7539c0226db1ed32e4baad4c72087775df09fb89fe4a9b59edf9",
+  "output_sha256": "0befe9e0e15f0ed84795256c4c32f0a7f5eaf6bbc541aa7bf829953ffedfb62b",
+  "input_bytes": 326,
+  "output_bytes": 85,
+  "parser_sha256": "8d3463919f29f459f861cca6e25bb22c555bb906c74dc974a48152b1dec18b97",
+  "recover_sha256": "1e66321cf8293d2e9d3010f7d181bb8045e6d5f5a6339dfb0f98572878fdd00d"
+}

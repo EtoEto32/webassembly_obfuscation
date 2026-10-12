@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-12",
+  "hypothesis": "A fixed nontrivial quotient of each 32-bit word can make both modular addition and SHA-256 sigma operations well-defined on partial states, enabling staged constraint evaluation after relabeling.",
+  "scope": "Same quotient for every operand and result, all word values, no side information. Not a theorem about arbitrary implicit implementations.",
+  "small_test": "Enumerate every set partition of word domains of widths 1, 2, 3. Check operation tables are well-defined for addition, xor, and rotation by one.",
+  "word_test": "For each k=1..31 and each of Sigma0, Sigma1, sigma0, sigma1, find x=0,y=2^j with equal low k bits but unequal low k output bits.",
+  "controls": "Addition alone must admit all low-bit quotients; xor alone may admit others. Constant and identity quotients must always pass.",
+  "decision": "Reject this uniform quotient route if the subgroup argument and exact tests exclude all nontrivial common quotients. Do not build Wasm for a rule without a well-defined evaluator.",
+  "budget": {"cycle_minutes": 20, "command_seconds": 60, "parameter_extensions": 0},
+  "attack_status": "Feasibility gate before attack comparison; no security metric claimed."
+}

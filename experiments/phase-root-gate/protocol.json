@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-12",
+  "hypothesis": "Two alternating operations can use an identical autonomous update with phase-specific bijections and the same boundary encoding after two steps",
+  "space": "All 24 permutations on four states, all 576 ordered operation pairs; independent direct square enumeration",
+  "target": "A(x)=x+1 mod 2^w then X(x)=x XOR 1, widths 1..8 checked, general obstruction derived separately",
+  "repair": "Double carrier, common update (x,0)->(x,1), (x,1)->(X(A(x)),0); phase-specific decoding",
+  "metric": "Exact feasibility and all-state transition consistency, not attack resistance",
+  "budget": "20 minutes, 60-second process, finite enumeration only; no Wasm after infeasibility/known-clock repair",
+  "controls": "Identity has a root; a single transposition on four points does not; retain a noncommuting feasible pair",
+  "limits": "Pure finite bijections, fixed two-operation period, no outside data input, no general SHA claim"
+}

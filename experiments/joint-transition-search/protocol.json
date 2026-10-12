@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-12",
+  "question": "Can choosing transition programs first yield exact encodings without a predefined decoder formula?",
+  "width": 3,
+  "source": ["T0(x,y)=(x+y,y)", "T1(x,y)=(x xor rotl_w(y,1),y+1)"],
+  "grammar": ["inc_a", "dec_a", "inc_b", "dec_b", "add_a_b", "sub_a_b", "xor_a_b", "add_b_a", "sub_b_a", "xor_b_a", "rot_a", "rot_b", "swap", "xor_a_rol_b", "xor_b_rol_a", "mul_a_3", "mul_b_3"],
+  "maximum_update_length": 2,
+  "representation": "Any bijection on the entire 64-state set, constrained by both labeled transitions; not a fixed polynomial family",
+  "primary": "Exact solution counts and exhaustive transition correctness; no security claim from a count",
+  "attack": "Public source transition family and public encoding of zero; access to each candidate transition on all states; reconstruct the encoding by propagation",
+  "limits": {"cycle_minutes": 30, "search_seconds": 60, "attack_seconds": 20, "memory": "host default", "extra_search": 0},
+  "decision": "Do not adopt if the rule is ordinary conjugacy or directly recoverable; no i32/SHA extrapolation from tables",
+  "controls": ["identity", "fixed arbitrary relabeling outside the update grammar", "all permutation pairs on four states against brute force", "incorrect certificate mutation"]
+}

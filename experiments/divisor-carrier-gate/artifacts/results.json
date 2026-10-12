@@ -1,0 +1,48 @@
+{
+  "python": "3.12.14",
+  "rows": [
+    {
+      "width": 4,
+      "cases": 256,
+      "output_checks": 1024,
+      "input_recovery_checks": 512,
+      "queries": 2,
+      "splitting_gcds": 3,
+      "atoms_recovered": 4,
+      "universe_bits": 24,
+      "partial_atom_rejected": true,
+      "errors": 0
+    },
+    {
+      "width": 32,
+      "cases": 320,
+      "output_checks": 1280,
+      "input_recovery_checks": 640,
+      "queries": 5,
+      "splitting_gcds": 31,
+      "atoms_recovered": 32,
+      "universe_bits": 417,
+      "partial_atom_rejected": true,
+      "errors": 0
+    }
+  ],
+  "negative": {
+    "atoms": [
+      6,
+      10
+    ],
+    "before": "1 AND 2 = 0",
+    "encoded_operands": [
+      6,
+      10
+    ],
+    "after_gcd": 2,
+    "required_encoded_zero": 1
+  },
+  "scripts": {
+    "protocol.json": "37be6099e751f774ca302261fbc7f275c461050d3a7d31a53acae54ec84ac314",
+    "check.py": "2c042bb9ff135fa4be7a3415f6d157775b2b2dc31c06dbb90961960469e7b38e",
+    "recover.py": "52d3e014bd8e089798345647c2bec23ede4798d4c9b02bb77b8bbb56e1949a6d"
+  },
+  "decision": "reject elementary divisor carrier and coprime nuisance masking"
+}

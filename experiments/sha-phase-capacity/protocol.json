@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-12",
+  "purpose": "Check a necessary capacity condition for phase-independent decoding and autonomous SHA round updates; not an obfuscation benchmark",
+  "hypothesis": "Eight phase encodings with a common full-state decoder and common zero-W update require at least 259 bits",
+  "phases": [8,9,10,11,12,13,14,15],
+  "targets": ["zero", "all-one", "standard-IV", "one seeded random state"],
+  "seed": 619743,
+  "primary_check": "Every target is reached at every phase with current W=0; successors at distinct phases differ",
+  "secondary_check": "Complete Python SHA output agrees with hashlib for all constructed messages",
+  "negative_control": "Change inverse d=E-t1 to d=E+t1, record incorrect inverse count without presuming all inputs detect it",
+  "limits": {"messages":32,"script_timeout_seconds":60,"memory_cap":"not enforced; small fixed arrays", "design_review_minutes":20},
+  "decision": "Reject only the common-decoder 256-bit carrier model if the algebraic bound holds; finite checks do not prove the universal bound",
+  "not_measured": ["Wasm runtime", "SMT", "attack advantage", "performance", "optimizer resistance"]
+}

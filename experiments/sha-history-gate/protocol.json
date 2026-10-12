@@ -1,0 +1,14 @@
+{
+ "date":"2026-10-12",
+ "question":"Does replacing SHA256 a..h by eight A-history coordinates add a protection mechanism beyond a triangular state encoding?",
+ "width":32,
+ "states":"all-zero, all-one, each of eight coordinates set to 1/0x80000000/0xffffffff, then 1024 random states",
+ "seed":619731,
+ "steps_per_state":64,
+ "round_input":"independent 32-bit u=K+W value, not claimed to be an actual message schedule",
+ "checks":["decode(encode(s))=s","decode(history_step(p,u))=sha_step(decode(p),u)","rule-aware decoder recovers each original state from p alone"],
+ "attacker":"Knows coordinate order and decoding rule; receives only history coordinates; no binary layout discovery claim",
+ "control":"decoder omitting the Q subtraction must fail on at least one saved input",
+ "budget":{"command_seconds":60,"parameter_extensions":0,"cycle_minutes":20},
+ "decision":"Do not adopt ordinary state re-encoding as a new principle; stop before Wasm/SHA integration if explicit low-cost decoding remains"
+}

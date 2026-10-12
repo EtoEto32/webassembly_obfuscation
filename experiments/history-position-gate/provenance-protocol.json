@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-12",
+  "scope": "Validate target-specific column binding, not cryptographic strength",
+  "input": "Four existing anonymous trace files, checksum verified",
+  "transformation": "Cyclically rotate all 48 observed columns left by one; preserve all values and boundaries",
+  "inference": "Unmodified recover.py receives only five rotated training rows",
+  "positive": "Returned order must equal old order translated into new coordinates; extracted history must match on every held-out row",
+  "negative": "Unchanged old order must fail at least one held-out row in every variant",
+  "budget": "One pass over four stored traces, 60 seconds",
+  "limitations": "Family-aware trace test; no Wasm extraction, no new obfuscation, no independent decoder or attack-comparison claim"
+}

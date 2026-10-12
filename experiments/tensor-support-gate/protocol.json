@@ -1,0 +1,14 @@
+{
+ "date": "2026-10-12",
+ "status_before_run": "Unadopted construction. Basis-change principle has prior art; test the specific finite-support recovery obstruction before any Wasm/SHA integration.",
+ "construction": "Each Boolean wire b becomes a two-word column M*e_b over Z/(2^32), odd determinant M. Binary gates become bilinear tensors.",
+ "attacker": "Public tensor DAG, public input encoder columns and output decoder rows; no original gate types, internal basis matrices, logical wire labels, seed, source DAG or expected intermediate values.",
+ "primary_metric": "Entire public DAG reduced to gates with at most two support values, with locally checked lookup tables and equivalent public outputs",
+ "controls": "Unencoded one-hot basis; arbitrary four-output tensor must be reported outside two-state model",
+ "seeds": [271,577,811],
+ "widths": [3,32],
+ "verification": "Width 3 exhaustive 64 input pairs; width 32 64 boundary pairs and 256 random pairs per seed. Independent direct word arithmetic reference. All local encoder gate rows checked exhaustively.",
+ "limits": {"attack_process_seconds":30,"maximum_nodes":1000,"representative_constructions":6,"additional_parameter_search":0,"memory":"host default; no enforced cap"},
+ "failure_rule": "If support propagation reconstructs the encoded computation without private maps, reject this particular construction as a new useful protection mechanism. Do not generalize to all tensor contractions or hide DAG boundaries to claim success.",
+ "no_claims": ["novel holographic transform", "whole unknown Wasm extraction", "cryptographic indistinguishability", "SHA-256 protection", "statistical attack-time advantage"]
+}

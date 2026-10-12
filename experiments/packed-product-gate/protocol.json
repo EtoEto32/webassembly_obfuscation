@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-12",
+  "candidate": "Replace a Boolean inner product XOR_i(a_i AND b_i) by a packed integer product, intentionally allowing cross-coefficient carries",
+  "retained_state": "Only the exact unsigned packed product after the operation; operands and supplementary carry information are not retained for decoding in this candidate",
+  "packing": "A=sum a_i*2^(k*i), B=sum b_i*2^(k*(n-1-i)), P=A*B",
+  "proposed_decode": "bit k*(n-1) of P",
+  "primary_feasibility_gate": "First test the proposed decoder, then check whether ANY product-only decoder can be correct by finding equal-product/different-output witnesses",
+  "control": "k=ceil(log2(n+1)), where convolution coefficients are strictly smaller than the radix",
+  "sizes": [2,3,4,5,6,7,8],
+  "spacings": "1 through ceil(log2(n+1)) at each size",
+  "enumeration": "All 2^(2n) Boolean input pairs; independent bitwise/popcount reference",
+  "limits": {"designs": 1, "minutes": 40, "command_seconds": 60, "memory": "host default, no enforced cap", "random_trials": 0},
+  "budget_minutes": {"reuse": 5, "prior_art": 10, "mathematics_and_enumeration": 15, "documentation": 10, "wasm_sha_if_gate_fails": 0},
+  "decision": "Reject a general product-only rule with semantic collisions; classify carry-free fallback as established Kronecker substitution, not a newly invented protection mechanism",
+  "nonclaims": ["whole-Wasm deobfuscation", "SHA application", "all packed arithmetic is impossible", "search absence proves novelty", "retaining additional state is ruled out"]
+}

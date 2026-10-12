@@ -1,0 +1,191 @@
+{
+  "python": "3.12.14",
+  "source_sha256": "c9f4d76f6b95d162ec070d68daea9d2f1b4e4e24c5df48a1f94608f809ac72b1",
+  "protocol_sha256": "09ffde42028188b997cc217610388c489d47b0c6fd58dcc8be2fabf48cd73655",
+  "fixed_counts": {
+    "maps": 256,
+    "ordered_pairs": 65536,
+    "commuting_pairs": 2824,
+    "common_power_pairs": 1296,
+    "power_length_histogram": {
+      "2": 49,
+      "3": 128,
+      "4": 78,
+      "1": 1
+    },
+    "commuting_without_common_generator": {
+      "f": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "g": [
+        0,
+        0,
+        0,
+        3
+      ]
+    },
+    "noncommuting_target_witness": {
+      "x": 0,
+      "add_after_xor": 2,
+      "xor_after_add": 0
+    },
+    "positive": {
+      "U": [
+        1,
+        2,
+        3,
+        0
+      ],
+      "counts": [
+        1,
+        2
+      ]
+    }
+  },
+  "variable_counts": [
+    {
+      "states": 2,
+      "cycles": 1,
+      "xor_mean_steps": 1.0,
+      "minimum_joint_worst_steps": 1,
+      "best_example": {
+        "cycle": [
+          0,
+          1
+        ],
+        "add_counts": [
+          1,
+          1
+        ],
+        "xor_counts": [
+          1,
+          1
+        ],
+        "worst": 1
+      },
+      "worst_histogram": {
+        "1": 1
+      }
+    },
+    {
+      "states": 4,
+      "cycles": 6,
+      "xor_mean_steps": 2.0,
+      "minimum_joint_worst_steps": 3,
+      "best_example": {
+        "cycle": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "add_counts": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "xor_counts": [
+          1,
+          3,
+          1,
+          3
+        ],
+        "worst": 3
+      },
+      "worst_histogram": {
+        "3": 6
+      }
+    },
+    {
+      "states": 8,
+      "cycles": 5040,
+      "xor_mean_steps": 4.0,
+      "minimum_joint_worst_steps": 4,
+      "best_example": {
+        "cycle": [
+          0,
+          3,
+          6,
+          4,
+          1,
+          2,
+          7,
+          5
+        ],
+        "add_counts": [
+          4,
+          1,
+          4,
+          2,
+          4,
+          3,
+          4,
+          2
+        ],
+        "xor_counts": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "worst": 4
+      },
+      "worst_histogram": {
+        "4": 4,
+        "5": 65,
+        "6": 666,
+        "7": 4305
+      }
+    }
+  ],
+  "variable_transition_checks": 80692,
+  "all_four_state_map_transition_checks": 6144,
+  "add_reachable_maps": [
+    [
+      1,
+      2,
+      3,
+      0
+    ],
+    [
+      1,
+      3,
+      0,
+      2
+    ],
+    [
+      2,
+      0,
+      3,
+      1
+    ],
+    [
+      2,
+      3,
+      1,
+      0
+    ],
+    [
+      3,
+      0,
+      1,
+      2
+    ],
+    [
+      3,
+      2,
+      0,
+      1
+    ]
+  ],
+  "i32_average_xor_steps_from_theorem": 2147483648,
+  "decision": "Reject fixed-count candidate for expressiveness; reject same-word autonomous variable-count candidate for exponential microstep cost"
+}

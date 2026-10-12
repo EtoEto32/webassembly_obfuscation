@@ -1,0 +1,13 @@
+{
+  "date_local": "2026-10-12",
+  "purpose": "Reusable SHA-256 comparison substrate; not a new obfuscation candidate",
+  "budget": {"build_seconds_per_process": 30, "verification_seconds": 120, "benchmark_trials": 9, "benchmark_calls_per_trial": 32, "candidate_adoptions": 0},
+  "modes": ["plain", "mba-add"],
+  "optimizations": ["raw", "O2", "O3"],
+  "input_seed": 1397244214,
+  "verification": "Known digest vectors, all lengths 0..256, selected larger boundaries, 256 seeded random lengths, one million a, maximum ABI length; compare Node/OpenSSL and vendored sha.js",
+  "abi": {"input_offset": 1024, "digest_offset": 512, "maximum_bytes": 1048576, "length": "unsigned i32", "invalid_length": "trap before writes", "message_memory": "unchanged"},
+  "performance": {"lengths": [1024, 65536], "warmup_calls": 16, "order": "cyclic balanced across six binaries", "statistics": "raw nanoseconds, median and min/max; no significance claim", "includes": "Wasm call and hashing only; excludes host input copy"},
+  "security": "No resistance measurement in this infrastructure experiment. MBA identity is an explicitly existing comparison baseline, not a proposed algorithm.",
+  "preservation": "New directory only; prior experiments remain unchanged"
+}

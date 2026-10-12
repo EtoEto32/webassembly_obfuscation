@@ -1,0 +1,14 @@
+{
+ "date":"2026-10-12",
+ "candidate":"Use one autonomous data-state update U repeatedly, with a fixed shared bijective state encoding, to implement different word operations",
+ "version_a":"Operation-specific constant repetition counts; no state-dependent count",
+ "version_b":"Allow operation- and state-dependent nonnegative counts; no auxiliary data state, no mode input to U, no instruction-specific re-encoding",
+ "target_operations":["add one modulo 2^w","xor one"],
+ "primary_gate":"Exact representability, then number of applications of U rather than interpreter wall time",
+ "checks":["All 256 maps on four states and their entire finite power sequences","All 65536 ordered pairs of four-state maps","Every directed full cycle on 2,4,8 labeled states, modulo rotation","All 256 source maps on four states through each full cycle with state-dependent counts"],
+ "limits":{"cycle_minutes":40,"command_seconds":60,"random_trials":0,"candidate_variants":2,"memory":"host default; no imposed cap"},
+ "budget_minutes":{"reuse":5,"literature":5,"mathematics_implementation":20,"report":10,"wasm_sha_after_failed_gate":0},
+ "controls":["add one and add two are fixed powers of successor","commuting does not imply sharing an iterative generator","arbitrary finite maps are realizable with data-dependent stopping on a full cycle"],
+ "decision":"Reject constant counts if target operations do not commute; reject a single-word autonomous variable-duration implementation if required average microsteps grow as 2^(w-1)",
+ "attacker":"Full program, public input and arbitrary traces allowed, but no attack resistance is inferred from feasibility checks"
+}

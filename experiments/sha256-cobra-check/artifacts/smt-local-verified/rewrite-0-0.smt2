@@ -1,0 +1,5 @@
+(set-logic QF_BV)
+(declare-fun local_0 () (_ BitVec 32))
+(declare-fun local_1 () (_ BitVec 32))
+(assert (not (= (bvadd (bvxor local_0 local_1) (bvshl (bvand local_0 local_1) (bvand #x00000001 #x0000001f))) (bvadd local_0 local_1))))
+(check-sat)

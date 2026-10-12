@@ -1,0 +1,12 @@
+{
+ "date":"2026-10-12",
+ "purpose":"Turn the existing design-level recovery argument for settling-carry into a bounded binary-only structural test before considering changes to the dependency mechanism",
+ "inputs":["mixed.carry.wasm","cross.carry.wasm","select.carry.wasm"],
+ "attacker_information":"Binary and known family semantics; no original DAG, named WAT, manifest or observations are provided to recover.py",
+ "target":"Extract a pure acyclic computation and emit a loop-free equivalent run function",
+ "success":"Strict scheduler/recurrence recognizer accepts, emitted Wasm validates, all 1267 existing inputs match both source Wasm and independent BigInt source oracle",
+ "controls":["carry shift changed to2 must reject","sweep count reduced to1 must reject","state self-dependency must reject"],
+ "scope":"raw WABT-generated family only; no optimized-code or arbitrary-Wasm recovery claim",
+ "budget":{"binaries":3,"controls":3,"command_timeout_seconds":60,"cycle_minutes":25},
+ "no_claims":["new obfuscation algorithm","general decompiler","SHA-256 transformation","fair security superiority"]
+}

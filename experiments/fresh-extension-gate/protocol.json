@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-12",
+  "purpose": "Characterize when degree-bounded recovery inclusion survives arbitrary independent public input extension; a synthesis rule gate, not protection evaluation",
+  "old_inputs": 4,
+  "profiles": "All 64 subsets of the six pairwise ANDs; observe public inputs, each computed pair, and all accumulator XOR steps; common output zero",
+  "degrees": [1, 2, 3, 4],
+  "extension": "Append d-1 independent public Boolean inputs, without observing their product",
+  "predicted_equivalence": "B_d(P plus fresh) subseteq B_d(Q plus fresh) iff L(P) subseteq L(Q)",
+  "witness": "An observation f outside L(Q), multiplied by all fresh inputs",
+  "checks": "All assignments and all ordered profile pairs; independent coefficient extraction certificate for the separating target",
+  "budget": "20 minutes; 60 seconds script; no random search, Wasm generation or SHA experiment"
+}

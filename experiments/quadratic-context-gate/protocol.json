@@ -1,0 +1,13 @@
+{
+  "date":"2026-10-12",
+  "candidate_rule":"Replace the linear observation-span summary by its quadratic feature span to merge more candidates with the same output and cost.",
+  "question":"Is equality of degree-at-most-two recovery spaces preserved by a common pure program context, even when all public inputs are already observed?",
+  "domain":"All 32 assignments to five Boolean public inputs a,b,c,d,e",
+  "blocks":"P computes all pair products except ac; Q computes all pair products except ab. Both XOR each computed pair twice into a zero accumulator. All input, pair and accumulator values are observed.",
+  "contexts":"All monomials of degrees 1,2,3, computed left-to-right, followed by XOR with the block output; observe every intermediate and final output.",
+  "observer":"Any GF(2) polynomial of degree at most 2 in observed values; unlimited XOR terms. Includes constant 1. This is not a general attacker model.",
+  "target":"a*b*c*d*e, fixed before execution; diagnostic target, not a claimed protected secret",
+  "checks":"Same block output and cost; equal isolated quadratic spans; search all contexts; replay a separating decoder on every input; independently check the degree-five ANF coefficient of every Q feature.",
+  "decision":"If a separating context exists, reject quadratic-span equality as a compositional synthesis key. Preserve existing linear-span implementation.",
+  "budget":{"cycle_minutes":20,"command_seconds":60,"contexts":25}
+}
