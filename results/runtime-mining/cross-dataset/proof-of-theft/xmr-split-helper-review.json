@@ -1,0 +1,317 @@
+{
+  "scope": "Static scratch-address prefix and structured branch targets in saved f112/f118; no Wasm, hashing, or helper payload execution.",
+  "functions": [
+    {
+      "variant": "original",
+      "function": "f112",
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-original-f112-split-review.wat.txt",
+      "excerpt_sha256": "2e5eb8cc0c10d17d7a641adf7c9f00651d768bb811f4ce330a23cd17702eb9d4",
+      "module_sha256": "222e0ad5471c2b718abfc08516e43ef74d2865ea88efd30554160f4274856e07",
+      "scratch_initialization": [
+        {
+          "line": 13,
+          "value": "p0",
+          "address_relative_to_entry_global": -4
+        },
+        {
+          "line": 16,
+          "value": "p1",
+          "address_relative_to_entry_global": -8
+        },
+        {
+          "line": 21,
+          "value": 0,
+          "address_relative_to_entry_global": -12
+        }
+      ],
+      "branches": [
+        {
+          "line": 45,
+          "operation": "br_if",
+          "target": {
+            "kind": "block",
+            "label": "$B0",
+            "line": 22
+          },
+          "enclosing": [
+            {
+              "kind": "block",
+              "label": "$B0",
+              "line": 22
+            },
+            {
+              "kind": "loop",
+              "label": "$L1",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "line": 103,
+          "operation": "br",
+          "target": {
+            "kind": "loop",
+            "label": "$L1",
+            "line": 23
+          },
+          "enclosing": [
+            {
+              "kind": "block",
+              "label": "$B0",
+              "line": 22
+            },
+            {
+              "kind": "loop",
+              "label": "$L1",
+              "line": 23
+            }
+          ]
+        }
+      ],
+      "manually_reviewed_loop": {
+        "bound": 8,
+        "increment": 1,
+        "payload": "p0[i] = p0[i] XOR p1[i], byte store",
+        "condition": "unsigned i < bound",
+        "control": "On false, exit the block and return; on true, update byte/index and branch to the loop."
+      }
+    },
+    {
+      "variant": "split",
+      "function": "f112",
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-split-f112-split-review.wat.txt",
+      "excerpt_sha256": "b278ac3e20f26f78f9a3c16ba850c97386e59da039671812ebb3dddd3d1207ce",
+      "module_sha256": "36be52974835a2c1ea253fc7a169419f75f7d02a72fb173099676e8403a07a09",
+      "scratch_initialization": [
+        {
+          "line": 25,
+          "value": "p0",
+          "address_relative_to_entry_global": -4
+        },
+        {
+          "line": 28,
+          "value": "p1",
+          "address_relative_to_entry_global": -8
+        },
+        {
+          "line": 33,
+          "value": 0,
+          "address_relative_to_entry_global": -32
+        }
+      ],
+      "branches": [
+        {
+          "line": 57,
+          "operation": "br_if",
+          "target": {
+            "kind": "block",
+            "label": "$B1",
+            "line": 54
+          },
+          "enclosing": [
+            {
+              "kind": "loop",
+              "label": "$L0",
+              "line": 34
+            },
+            {
+              "kind": "block",
+              "label": "$B1",
+              "line": 54
+            }
+          ]
+        },
+        {
+          "line": 115,
+          "operation": "br",
+          "target": {
+            "kind": "loop",
+            "label": "$L0",
+            "line": 34
+          },
+          "enclosing": [
+            {
+              "kind": "loop",
+              "label": "$L0",
+              "line": 34
+            },
+            {
+              "kind": "block",
+              "label": "$B1",
+              "line": 54
+            }
+          ]
+        }
+      ],
+      "manually_reviewed_loop": {
+        "bound": 8,
+        "increment": 1,
+        "payload": "p0[i] = p0[i] XOR p1[i], byte store",
+        "condition": "unsigned i < bound",
+        "control": "On false, exit the block and return; on true, update byte/index and branch to the loop."
+      }
+    },
+    {
+      "variant": "original",
+      "function": "f118",
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-original-f118-split-review.wat.txt",
+      "excerpt_sha256": "06fed8ac8835187be20db1e2493acf56202ee44e652d0b5975072f624c54be88",
+      "module_sha256": "222e0ad5471c2b718abfc08516e43ef74d2865ea88efd30554160f4274856e07",
+      "scratch_initialization": [
+        {
+          "line": 13,
+          "value": "p0",
+          "address_relative_to_entry_global": -4
+        },
+        {
+          "line": 16,
+          "value": "p1",
+          "address_relative_to_entry_global": -8
+        },
+        {
+          "line": 21,
+          "value": 0,
+          "address_relative_to_entry_global": -12
+        }
+      ],
+      "branches": [
+        {
+          "line": 45,
+          "operation": "br_if",
+          "target": {
+            "kind": "block",
+            "label": "$B0",
+            "line": 22
+          },
+          "enclosing": [
+            {
+              "kind": "block",
+              "label": "$B0",
+              "line": 22
+            },
+            {
+              "kind": "loop",
+              "label": "$L1",
+              "line": 23
+            }
+          ]
+        },
+        {
+          "line": 103,
+          "operation": "br",
+          "target": {
+            "kind": "loop",
+            "label": "$L1",
+            "line": 23
+          },
+          "enclosing": [
+            {
+              "kind": "block",
+              "label": "$B0",
+              "line": 22
+            },
+            {
+              "kind": "loop",
+              "label": "$L1",
+              "line": 23
+            }
+          ]
+        }
+      ],
+      "manually_reviewed_loop": {
+        "bound": 16,
+        "increment": 1,
+        "payload": "p0[i] = p0[i] XOR p1[i], byte store",
+        "condition": "unsigned i < bound",
+        "control": "On false, exit the block and return; on true, update byte/index and branch to the loop."
+      }
+    },
+    {
+      "variant": "split",
+      "function": "f118",
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-split-f118-split-review.wat.txt",
+      "excerpt_sha256": "5e3e86e0f75fe62757add0b3b01b6c14a9287350b40754bf617bf17963f93d86",
+      "module_sha256": "36be52974835a2c1ea253fc7a169419f75f7d02a72fb173099676e8403a07a09",
+      "scratch_initialization": [
+        {
+          "line": 33,
+          "value": "p0",
+          "address_relative_to_entry_global": -4
+        },
+        {
+          "line": 36,
+          "value": "p1",
+          "address_relative_to_entry_global": -32
+        },
+        {
+          "line": 41,
+          "value": 0,
+          "address_relative_to_entry_global": -48
+        }
+      ],
+      "branches": [
+        {
+          "line": 65,
+          "operation": "br_if",
+          "target": {
+            "kind": "block",
+            "label": "$B1",
+            "line": 62
+          },
+          "enclosing": [
+            {
+              "kind": "loop",
+              "label": "$L0",
+              "line": 42
+            },
+            {
+              "kind": "block",
+              "label": "$B1",
+              "line": 62
+            }
+          ]
+        },
+        {
+          "line": 123,
+          "operation": "br",
+          "target": {
+            "kind": "loop",
+            "label": "$L0",
+            "line": 42
+          },
+          "enclosing": [
+            {
+              "kind": "loop",
+              "label": "$L0",
+              "line": 42
+            },
+            {
+              "kind": "block",
+              "label": "$B1",
+              "line": 62
+            }
+          ]
+        }
+      ],
+      "manually_reviewed_loop": {
+        "bound": 16,
+        "increment": 1,
+        "payload": "p0[i] = p0[i] XOR p1[i], byte store",
+        "condition": "unsigned i < bound",
+        "control": "On false, exit the block and return; on true, update byte/index and branch to the loop."
+      }
+    }
+  ],
+  "findings": [
+    "Both helpers retain two pointer parameters and their byte-XOR loop with bounds 8/16 and increment 1.",
+    "Reference uses an outer block containing a loop; split-setting version uses a loop containing the exit block.",
+    "The false predicate reaches return in both layouts; the true path returns to the loop after payload and increment.",
+    "Scratch locations differ without updating the global stack pointer. No new call or dispatcher is introduced here."
+  ],
+  "interpretation": "Corresponding XOR payload with changed scratch layout and structured branch encoding. These observations do not establish the historical LLVM basic-block splitting transformation.",
+  "limitations": [
+    "Wasm block constructs are not LLVM basic blocks; matching their counts does not verify a split pass.",
+    "Changing scratch addresses can affect aliasing; no universal semantic-equivalence claim.",
+    "Full f111 transformations, compiler provenance, dynamic execution counts, and performance causality remain unresolved."
+  ]
+}

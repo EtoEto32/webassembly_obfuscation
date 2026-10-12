@@ -1,0 +1,325 @@
+
+review-core.wasm:	file format wasm 0x1
+
+Section Details:
+
+Type[15]:
+ - type[0] (i32, i32, i32) -> i32
+ - type[1] (i32, i64, i32) -> i64
+ - type[2] (i32, i32) -> i32
+ - type[3] (i32) -> i32
+ - type[4] (i32, i64, i32, i32) -> i32
+ - type[5] (i32, i32, i32, i32) -> i32
+ - type[6] (i32) -> nil
+ - type[7] () -> nil
+ - type[8] () -> i32
+ - type[9] (f64, i32) -> f64
+ - type[10] (i32, i32, i32, i32, i32) -> i32
+ - type[11] (i32, i32, i32) -> nil
+ - type[12] (i32, i32, i32, i32, i32) -> nil
+ - type[13] (i32, i32, i32, i32) -> i64
+ - type[14] (i32, i64, i32, i32) -> nil
+Import[7]:
+ - func[0] sig=2 <wasi_snapshot_preview1.args_get> <- wasi_snapshot_preview1.args_get
+ - func[1] sig=2 <wasi_snapshot_preview1.args_sizes_get> <- wasi_snapshot_preview1.args_sizes_get
+ - func[2] sig=3 <wasi_snapshot_preview1.fd_close> <- wasi_snapshot_preview1.fd_close
+ - func[3] sig=2 <wasi_snapshot_preview1.fd_fdstat_get> <- wasi_snapshot_preview1.fd_fdstat_get
+ - func[4] sig=4 <wasi_snapshot_preview1.fd_seek> <- wasi_snapshot_preview1.fd_seek
+ - func[5] sig=5 <wasi_snapshot_preview1.fd_write> <- wasi_snapshot_preview1.fd_write
+ - func[6] sig=6 <wasi_snapshot_preview1.proc_exit> <- wasi_snapshot_preview1.proc_exit
+Function[55]:
+ - func[7] sig=7
+ - func[8] sig=7 <_start>
+ - func[9] sig=2
+ - func[10] sig=2
+ - func[11] sig=3
+ - func[12] sig=3
+ - func[13] sig=6
+ - func[14] sig=6
+ - func[15] sig=2
+ - func[16] sig=6
+ - func[17] sig=8
+ - func[18] sig=2
+ - func[19] sig=2
+ - func[20] sig=3
+ - func[21] sig=2
+ - func[22] sig=4
+ - func[23] sig=5
+ - func[24] sig=6
+ - func[25] sig=7
+ - func[26] sig=3
+ - func[27] sig=7
+ - func[28] sig=7
+ - func[29] sig=2
+ - func[30] sig=3
+ - func[31] sig=3
+ - func[32] sig=0
+ - func[33] sig=0
+ - func[34] sig=3
+ - func[35] sig=0
+ - func[36] sig=1
+ - func[37] sig=1
+ - func[38] sig=8
+ - func[39] sig=7
+ - func[40] sig=3
+ - func[41] sig=0
+ - func[42] sig=5
+ - func[43] sig=2
+ - func[44] sig=2
+ - func[45] sig=3
+ - func[46] sig=0
+ - func[47] sig=2
+ - func[48] sig=9
+ - func[49] sig=2
+ - func[50] sig=0
+ - func[51] sig=10
+ - func[52] sig=11
+ - func[53] sig=12
+ - func[54] sig=7
+ - func[55] sig=0
+ - func[56] sig=0
+ - func[57] sig=3
+ - func[58] sig=0
+ - func[59] sig=2
+ - func[60] sig=13
+ - func[61] sig=14
+Table[1]:
+ - table[0] type=funcref initial=5 max=5
+Memory[1]:
+ - memory[0] pages: initial=2
+Global[2]:
+ - global[0] i32 mutable=1 - init i32=70800
+ - global[1] i64 mutable=1 - init i64=0
+Export[2]:
+ - memory[0] -> "memory"
+ - func[8] <_start> -> "_start"
+Elem[1]:
+ - segment[0] flags=0 table=0 count=4 - init i32=1
+  - elem[1] = ref.func:33
+  - elem[2] = ref.func:31
+  - elem[3] = ref.func:35
+  - elem[4] = ref.func:37
+Code[55]:
+ - func[7] size=2
+ - func[8] size=57 <_start>
+ - func[9] size=365
+ - func[10] size=242
+ - func[11] size=6
+ - func[12] size=7862
+ - func[13] size=6
+ - func[14] size=2203
+ - func[15] size=105
+ - func[16] size=7
+ - func[17] size=167
+ - func[18] size=13
+ - func[19] size=13
+ - func[20] size=11
+ - func[21] size=13
+ - func[22] size=17
+ - func[23] size=17
+ - func[24] size=7
+ - func[25] size=4
+ - func[26] size=75
+ - func[27] size=2
+ - func[28] size=6
+ - func[29] size=44
+ - func[30] size=30
+ - func[31] size=15
+ - func[32] size=105
+ - func[33] size=410
+ - func[34] size=99
+ - func[35] size=68
+ - func[36] size=91
+ - func[37] size=19
+ - func[38] size=5
+ - func[39] size=523
+ - func[40] size=141
+ - func[41] size=277
+ - func[42] size=321
+ - func[43] size=4
+ - func[44] size=8
+ - func[45] size=85
+ - func[46] size=359
+ - func[47] size=20
+ - func[48] size=158
+ - func[49] size=28
+ - func[50] size=479
+ - func[51] size=9658
+ - func[52] size=878
+ - func[53] size=146
+ - func[54] size=14
+ - func[55] size=1335
+ - func[56] size=492
+ - func[57] size=214
+ - func[58] size=413
+ - func[59] size=22
+ - func[60] size=205
+ - func[61] size=120
+Data[2]:
+ - segment[0] memory=0 size=2400 - init i32=1024
+  - 0000400: 2d2b 2020 2030 5830 7800 2d30 582b 3058  -+   0X0x.-0X+0X
+  - 0000410: 2030 582d 3078 2b30 7820 3078 006e 616e   0X-0x+0x 0x.nan
+  - 0000420: 0069 6e66 004e 414e 0049 4e46 002e 0028  .inf.NAN.INF...(
+  - 0000430: 6e75 6c6c 2900 5375 7070 6f72 7420 666f  null).Support fo
+  - 0000440: 7220 666f 726d 6174 7469 6e67 206c 6f6e  r formatting lon
+  - 0000450: 6720 646f 7562 6c65 2076 616c 7565 7320  g double values 
+  - 0000460: 6973 2063 7572 7265 6e74 6c79 2064 6973  is currently dis
+  - 0000470: 6162 6c65 642e 0a54 6f20 656e 6162 6c65  abled..To enable
+  - 0000480: 2069 742c 2061 6464 202d 6c63 2d70 7269   it, add -lc-pri
+  - 0000490: 6e74 7363 616e 2d6c 6f6e 672d 646f 7562  ntscan-long-doub
+  - 00004a0: 6c65 2074 6f20 7468 6520 6c69 6e6b 2063  le to the link c
+  - 00004b0: 6f6d 6d61 6e64 2e0a 0059 6f75 2077 696e  ommand...You win
+  - 00004c0: 210a 0053 7563 6365 7373 0049 6c6c 6567  !..Success.Illeg
+  - 00004d0: 616c 2062 7974 6520 7365 7175 656e 6365  al byte sequence
+  - 00004e0: 0044 6f6d 6169 6e20 6572 726f 7200 5265  .Domain error.Re
+  - 00004f0: 7375 6c74 206e 6f74 2072 6570 7265 7365  sult not represe
+  - 0000500: 6e74 6162 6c65 004e 6f74 2061 2074 7479  ntable.Not a tty
+  - 0000510: 0050 6572 6d69 7373 696f 6e20 6465 6e69  .Permission deni
+  - 0000520: 6564 004f 7065 7261 7469 6f6e 206e 6f74  ed.Operation not
+  - 0000530: 2070 6572 6d69 7474 6564 004e 6f20 7375   permitted.No su
+  - 0000540: 6368 2066 696c 6520 6f72 2064 6972 6563  ch file or direc
+  - 0000550: 746f 7279 004e 6f20 7375 6368 2070 726f  tory.No such pro
+  - 0000560: 6365 7373 0046 696c 6520 6578 6973 7473  cess.File exists
+  - 0000570: 0056 616c 7565 2074 6f6f 206c 6172 6765  .Value too large
+  - 0000580: 2066 6f72 2064 6174 6120 7479 7065 004e   for data type.N
+  - 0000590: 6f20 7370 6163 6520 6c65 6674 206f 6e20  o space left on 
+  - 00005a0: 6465 7669 6365 004f 7574 206f 6620 6d65  device.Out of me
+  - 00005b0: 6d6f 7279 0052 6573 6f75 7263 6520 6275  mory.Resource bu
+  - 00005c0: 7379 0049 6e74 6572 7275 7074 6564 2073  sy.Interrupted s
+  - 00005d0: 7973 7465 6d20 6361 6c6c 0052 6573 6f75  ystem call.Resou
+  - 00005e0: 7263 6520 7465 6d70 6f72 6172 696c 7920  rce temporarily 
+  - 00005f0: 756e 6176 6169 6c61 626c 6500 496e 7661  unavailable.Inva
+  - 0000600: 6c69 6420 7365 656b 0043 726f 7373 2d64  lid seek.Cross-d
+  - 0000610: 6576 6963 6520 6c69 6e6b 0052 6561 642d  evice link.Read-
+  - 0000620: 6f6e 6c79 2066 696c 6520 7379 7374 656d  only file system
+  - 0000630: 0044 6972 6563 746f 7279 206e 6f74 2065  .Directory not e
+  - 0000640: 6d70 7479 0043 6f6e 6e65 6374 696f 6e20  mpty.Connection 
+  - 0000650: 7265 7365 7420 6279 2070 6565 7200 4f70  reset by peer.Op
+  - 0000660: 6572 6174 696f 6e20 7469 6d65 6420 6f75  eration timed ou
+  - 0000670: 7400 436f 6e6e 6563 7469 6f6e 2072 6566  t.Connection ref
+  - 0000680: 7573 6564 0048 6f73 7420 6973 2075 6e72  used.Host is unr
+  - 0000690: 6561 6368 6162 6c65 0041 6464 7265 7373  eachable.Address
+  - 00006a0: 2069 6e20 7573 6500 4272 6f6b 656e 2070   in use.Broken p
+  - 00006b0: 6970 6500 492f 4f20 6572 726f 7200 4e6f  ipe.I/O error.No
+  - 00006c0: 2073 7563 6820 6465 7669 6365 206f 7220   such device or 
+  - 00006d0: 6164 6472 6573 7300 4e6f 2073 7563 6820  address.No such 
+  - 00006e0: 6465 7669 6365 004e 6f74 2061 2064 6972  device.Not a dir
+  - 00006f0: 6563 746f 7279 0049 7320 6120 6469 7265  ectory.Is a dire
+  - 0000700: 6374 6f72 7900 5465 7874 2066 696c 6520  ctory.Text file 
+  - 0000710: 6275 7379 0045 7865 6320 666f 726d 6174  busy.Exec format
+  - 0000720: 2065 7272 6f72 0049 6e76 616c 6964 2061   error.Invalid a
+  - 0000730: 7267 756d 656e 7400 4172 6775 6d65 6e74  rgument.Argument
+  - 0000740: 206c 6973 7420 746f 6f20 6c6f 6e67 0053   list too long.S
+  - 0000750: 796d 626f 6c69 6320 6c69 6e6b 206c 6f6f  ymbolic link loo
+  - 0000760: 7000 4669 6c65 6e61 6d65 2074 6f6f 206c  p.Filename too l
+  - 0000770: 6f6e 6700 546f 6f20 6d61 6e79 206f 7065  ong.Too many ope
+  - 0000780: 6e20 6669 6c65 7320 696e 2073 7973 7465  n files in syste
+  - 0000790: 6d00 4e6f 2066 696c 6520 6465 7363 7269  m.No file descri
+  - 00007a0: 7074 6f72 7320 6176 6169 6c61 626c 6500  ptors available.
+  - 00007b0: 4261 6420 6669 6c65 2064 6573 6372 6970  Bad file descrip
+  - 00007c0: 746f 7200 4e6f 2063 6869 6c64 2070 726f  tor.No child pro
+  - 00007d0: 6365 7373 0042 6164 2061 6464 7265 7373  cess.Bad address
+  - 00007e0: 0046 696c 6520 746f 6f20 6c61 7267 6500  .File too large.
+  - 00007f0: 546f 6f20 6d61 6e79 206c 696e 6b73 004e  Too many links.N
+  - 0000800: 6f20 6c6f 636b 7320 6176 6169 6c61 626c  o locks availabl
+  - 0000810: 6500 5265 736f 7572 6365 2064 6561 646c  e.Resource deadl
+  - 0000820: 6f63 6b20 776f 756c 6420 6f63 6375 7200  ock would occur.
+  - 0000830: 5374 6174 6520 6e6f 7420 7265 636f 7665  State not recove
+  - 0000840: 7261 626c 6500 5072 6576 696f 7573 206f  rable.Previous o
+  - 0000850: 776e 6572 2064 6965 6400 4f70 6572 6174  wner died.Operat
+  - 0000860: 696f 6e20 6361 6e63 656c 6564 0046 756e  ion canceled.Fun
+  - 0000870: 6374 696f 6e20 6e6f 7420 696d 706c 656d  ction not implem
+  - 0000880: 656e 7465 6400 4e6f 206d 6573 7361 6765  ented.No message
+  - 0000890: 206f 6620 6465 7369 7265 6420 7479 7065   of desired type
+  - 00008a0: 0049 6465 6e74 6966 6965 7220 7265 6d6f  .Identifier remo
+  - 00008b0: 7665 6400 4c69 6e6b 2068 6173 2062 6565  ved.Link has bee
+  - 00008c0: 6e20 7365 7665 7265 6400 5072 6f74 6f63  n severed.Protoc
+  - 00008d0: 6f6c 2065 7272 6f72 0042 6164 206d 6573  ol error.Bad mes
+  - 00008e0: 7361 6765 004e 6f74 2061 2073 6f63 6b65  sage.Not a socke
+  - 00008f0: 7400 4465 7374 696e 6174 696f 6e20 6164  t.Destination ad
+  - 0000900: 6472 6573 7320 7265 7175 6972 6564 004d  dress required.M
+  - 0000910: 6573 7361 6765 2074 6f6f 206c 6172 6765  essage too large
+  - 0000920: 0050 726f 746f 636f 6c20 7772 6f6e 6720  .Protocol wrong 
+  - 0000930: 7479 7065 2066 6f72 2073 6f63 6b65 7400  type for socket.
+  - 0000940: 5072 6f74 6f63 6f6c 206e 6f74 2061 7661  Protocol not ava
+  - 0000950: 696c 6162 6c65 0050 726f 746f 636f 6c20  ilable.Protocol 
+  - 0000960: 6e6f 7420 7375 7070 6f72 7465 6400 4e6f  not supported.No
+  - 0000970: 7420 7375 7070 6f72 7465 6400 4164 6472  t supported.Addr
+  - 0000980: 6573 7320 6661 6d69 6c79 206e 6f74 2073  ess family not s
+  - 0000990: 7570 706f 7274 6564 2062 7920 7072 6f74  upported by prot
+  - 00009a0: 6f63 6f6c 0041 6464 7265 7373 206e 6f74  ocol.Address not
+  - 00009b0: 2061 7661 696c 6162 6c65 004e 6574 776f   available.Netwo
+  - 00009c0: 726b 2069 7320 646f 776e 004e 6574 776f  rk is down.Netwo
+  - 00009d0: 726b 2075 6e72 6561 6368 6162 6c65 0043  rk unreachable.C
+  - 00009e0: 6f6e 6e65 6374 696f 6e20 7265 7365 7420  onnection reset 
+  - 00009f0: 6279 206e 6574 776f 726b 0043 6f6e 6e65  by network.Conne
+  - 0000a00: 6374 696f 6e20 6162 6f72 7465 6400 4e6f  ction aborted.No
+  - 0000a10: 2062 7566 6665 7220 7370 6163 6520 6176   buffer space av
+  - 0000a20: 6169 6c61 626c 6500 536f 636b 6574 2069  ailable.Socket i
+  - 0000a30: 7320 636f 6e6e 6563 7465 6400 536f 636b  s connected.Sock
+  - 0000a40: 6574 206e 6f74 2063 6f6e 6e65 6374 6564  et not connected
+  - 0000a50: 004f 7065 7261 7469 6f6e 2061 6c72 6561  .Operation alrea
+  - 0000a60: 6479 2069 6e20 7072 6f67 7265 7373 004f  dy in progress.O
+  - 0000a70: 7065 7261 7469 6f6e 2069 6e20 7072 6f67  peration in prog
+  - 0000a80: 7265 7373 0053 7461 6c65 2066 696c 6520  ress.Stale file 
+  - 0000a90: 6861 6e64 6c65 0051 756f 7461 2065 7863  handle.Quota exc
+  - 0000aa0: 6565 6465 6400 4d75 6c74 6968 6f70 2061  eeded.Multihop a
+  - 0000ab0: 7474 656d 7074 6564 0043 6170 6162 696c  ttempted.Capabil
+  - 0000ac0: 6974 6965 7320 696e 7375 6666 6963 6965  ities insufficie
+  - 0000ad0: 6e74 0000 0000 0000 0000 0000 0000 0000  nt..............
+  - 0000ae0: 0000 7502 4e00 d601 e204 b904 1801 8e05  ..u.N...........
+  - 0000af0: ed02 1604 f200 9703 0103 3805 af01 8201  ..........8.....
+  - 0000b00: 4f03 2f04 1e00 d405 a200 1203 1e03 c201  O./.............
+  - 0000b10: de03 0800 ac05 0001 6402 f101 6505 3402  ........d...e.4.
+  - 0000b20: 8c02 cf02 2d03 4c04 e305 9f02 f804 1c05  ....-.L.........
+  - 0000b30: 0805 b102 4b05 1502 7800 5202 3c03 f103  ....K...x.R.<...
+  - 0000b40: e400 c303 7d04 cc00 aa03 7905 2402 6e01  ....}.....y.$.n.
+  - 0000b50: 6d03 2204 ab04 4400 fb01 ae00 8303 6000  m."...D.......`.
+  - 0000b60: e501 0704 9404 5e04 2b00 5801 3901 9200  ......^.+.X.9...
+  - 0000b70: c205 9b01 4302 4601 f605 0000 0000 0000  ....C.F.........
+  - 0000b80: 1900 0a00 1919 1900 0000 0005 0000 0000  ................
+  - 0000b90: 0000 0900 0000 000b 0000 0000 0000 0000  ................
+  - 0000ba0: 1900 110a 1919 1903 0a07 0001 1b09 0b18  ................
+  - 0000bb0: 0000 0906 0b00 000b 0006 1900 0000 1919  ................
+  - 0000bc0: 1900 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000bd0: 000e 0000 0000 0000 0000 1900 0a0d 1919  ................
+  - 0000be0: 1900 0d00 0002 0009 0e00 0000 0900 0e00  ................
+  - 0000bf0: 000e 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000c00: 0000 0000 0000 0000 0000 000c 0000 0000  ................
+  - 0000c10: 0000 0000 0000 0013 0000 0000 1300 0000  ................
+  - 0000c20: 0009 0c00 0000 0000 0c00 000c 0000 0000  ................
+  - 0000c30: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000c40: 0000 0000 0010 0000 0000 0000 0000 0000  ................
+  - 0000c50: 000f 0000 0004 0f00 0000 0009 1000 0000  ................
+  - 0000c60: 0000 1000 0010 0000 0000 0000 0000 0000  ................
+  - 0000c70: 0000 0000 0000 0000 0000 0000 0000 0012  ................
+  - 0000c80: 0000 0000 0000 0000 0000 0011 0000 0000  ................
+  - 0000c90: 1100 0000 0009 1200 0000 0000 1200 0012  ................
+  - 0000ca0: 0000 1a00 0000 1a1a 1a00 0000 0000 0000  ................
+  - 0000cb0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000cc0: 0000 1a00 0000 1a1a 1a00 0000 0000 0009  ................
+  - 0000cd0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000ce0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000cf0: 0000 0014 0000 0000 0000 0000 0000 0017  ................
+  - 0000d00: 0000 0000 1700 0000 0009 1400 0000 0000  ................
+  - 0000d10: 1400 0014 0000 0000 0000 0000 0000 0000  ................
+  - 0000d20: 0000 0000 0000 0000 0000 0000 0016 0000  ................
+  - 0000d30: 0000 0000 0000 0000 0015 0000 0000 1500  ................
+  - 0000d40: 0000 0009 1600 0000 0000 1600 0016 0000  ................
+  - 0000d50: 3031 3233 3435 3637 3839 4142 4344 4546  0123456789ABCDEF
+ - segment[1] memory=0 size=236 - init i32=3424
+  - 0000d60: 0500 0000 0000 0000 0000 0000 0200 0000  ................
+  - 0000d70: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000d80: 0300 0000 0400 0000 5810 0000 0004 0000  ........X.......
+  - 0000d90: 0000 0000 0000 0000 0100 0000 0000 0000  ................
+  - 0000da0: 0a00 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000db0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000dc0: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000dd0: 600d 0000 0000 0000 0500 0000 0000 0000  `...............
+  - 0000de0: 0000 0000 0200 0000 0000 0000 0000 0000  ................
+  - 0000df0: 0000 0000 0000 0000 0100 0000 0400 0000  ................
+  - 0000e00: 8414 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000e10: 0200 0000 0000 0000 ffff ffff 0000 0000  ................
+  - 0000e20: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000e30: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+  - 0000e40: 0000 0000 0000 0000 d80d 0000            ............

@@ -1,0 +1,177 @@
+{
+  "function": "$f118",
+  "caller_chain": [
+    "$hash",
+    "$f35",
+    "$f111",
+    "$f118"
+  ],
+  "reference_function_digest": "50dff0feb45bdf872bcaf2e3688ebcd7b76d1cf2cb63dbcfdbcac42581ee4504",
+  "flattened_function_digest": "b6434ce9bc9272e11b1412befd40caebad606621b7bcdaf4cc189837f145f92f",
+  "mechanism": "State dispatcher around a 16-byte in-place XOR loop.",
+  "transitions": [
+    {
+      "state": -1944965114,
+      "operation": "Compare index < 16",
+      "next_if_true": -1749425722,
+      "next_if_false": -266051066
+    },
+    {
+      "state": -1749425722,
+      "operation": "XOR byte and store",
+      "next": -1178374432
+    },
+    {
+      "state": -1178374432,
+      "operation": "Increment index",
+      "next": -1944965114
+    },
+    {
+      "state": -266051066,
+      "operation": "Return"
+    }
+  ],
+  "reference_index_offset": 4,
+  "flattened_index_offset": 20,
+  "state_offset": 16,
+  "state_pointer_offset": 12,
+  "reference_call_contexts": [
+    {
+      "line": 286,
+      "callee": "$f112",
+      "enclosing_constructs": [
+        {
+          "line": 200,
+          "construct": "block $B2"
+        }
+      ]
+    },
+    {
+      "line": 401,
+      "callee": "$f112",
+      "enclosing_constructs": [
+        {
+          "line": 317,
+          "construct": "block $B4"
+        }
+      ]
+    },
+    {
+      "line": 438,
+      "callee": "$f112",
+      "enclosing_constructs": [
+        {
+          "line": 317,
+          "construct": "block $B4"
+        }
+      ]
+    },
+    {
+      "line": 1725,
+      "callee": "$f118",
+      "enclosing_constructs": [
+        {
+          "line": 1109,
+          "construct": "block $B16"
+        },
+        {
+          "line": 1110,
+          "construct": "loop $L17"
+        }
+      ]
+    },
+    {
+      "line": 22742,
+      "callee": "$f118",
+      "enclosing_constructs": [
+        {
+          "line": 1109,
+          "construct": "block $B16"
+        },
+        {
+          "line": 1110,
+          "construct": "loop $L17"
+        },
+        {
+          "line": 22684,
+          "construct": "block $B589"
+        }
+      ]
+    },
+    {
+      "line": 22774,
+      "callee": "$f118",
+      "enclosing_constructs": [
+        {
+          "line": 1109,
+          "construct": "block $B16"
+        },
+        {
+          "line": 1110,
+          "construct": "loop $L17"
+        },
+        {
+          "line": 22684,
+          "construct": "block $B589"
+        }
+      ]
+    },
+    {
+      "line": 23284,
+      "callee": "$f118",
+      "enclosing_constructs": [
+        {
+          "line": 1109,
+          "construct": "block $B16"
+        },
+        {
+          "line": 1110,
+          "construct": "loop $L17"
+        }
+      ]
+    },
+    {
+      "line": 23332,
+      "callee": "$f112",
+      "enclosing_constructs": [
+        {
+          "line": 1109,
+          "construct": "block $B16"
+        },
+        {
+          "line": 1110,
+          "construct": "loop $L17"
+        },
+        {
+          "line": 23304,
+          "construct": "block $B593"
+        }
+      ]
+    },
+    {
+      "line": 23631,
+      "callee": "$f118",
+      "enclosing_constructs": [
+        {
+          "line": 23521,
+          "construct": "block $B595"
+        },
+        {
+          "line": 23522,
+          "construct": "loop $L596"
+        },
+        {
+          "line": 23550,
+          "construct": "block $B597"
+        },
+        {
+          "line": 23551,
+          "construct": "loop $L598"
+        }
+      ]
+    }
+  ],
+  "interpretation": "Calls at reference lines 1725 and 23284 are directly within main loop L17; other call sites have additional enclosing blocks. This is lexical structured-control context, not a complete CFG reachability or dynamic call-frequency proof.",
+  "f112_first_call_caveat": "Reference f112 call at line 286 is inside the variant==1 initialization block. Its presence cannot alone explain cn/0 timing.",
+  "limitations": "Dynamic execution coverage not measured; no new hash computation or causal attribution of overhead."
+}

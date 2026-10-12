@@ -1,0 +1,207 @@
+{
+  "scope": "Saved f35 straight-line wrapper dataflow only; symbolic parameters and a nonwrapping stack coordinate. No hashing or Wasm execution.",
+  "reviewed_functions": [
+    {
+      "variant": "original",
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-original-f35-complete.wat.txt",
+      "excerpt_sha256": "1d9b9d86f08f87ab972d242423a49aff91f63327026d1f28f703eb1aabf6f883",
+      "module_sha256": "222e0ad5471c2b718abfc08516e43ef74d2865ea88efd30554160f4274856e07",
+      "global_updates": [
+        {
+          "line": 12,
+          "relative_to_entry_global": -32
+        },
+        {
+          "line": 59,
+          "relative_to_entry_global": 0
+        }
+      ],
+      "stores": [
+        {
+          "line": 15,
+          "value": "p0",
+          "bytes": 4,
+          "address_relative_to_entry_global": -4
+        },
+        {
+          "line": 18,
+          "value": "p1",
+          "bytes": 4,
+          "address_relative_to_entry_global": -8
+        },
+        {
+          "line": 21,
+          "value": "p2",
+          "bytes": 4,
+          "address_relative_to_entry_global": -12
+        },
+        {
+          "line": 24,
+          "value": "p3",
+          "bytes": 4,
+          "address_relative_to_entry_global": -16
+        },
+        {
+          "line": 27,
+          "value": "p4",
+          "bytes": 8,
+          "address_relative_to_entry_global": -24
+        }
+      ],
+      "loads": [
+        {
+          "line": 29,
+          "value": "p0",
+          "address_relative_to_entry_global": -4
+        },
+        {
+          "line": 32,
+          "value": "p1",
+          "address_relative_to_entry_global": -8
+        },
+        {
+          "line": 35,
+          "value": "p2",
+          "address_relative_to_entry_global": -12
+        },
+        {
+          "line": 38,
+          "value": "p3",
+          "address_relative_to_entry_global": -16
+        },
+        {
+          "line": 41,
+          "value": "p4",
+          "address_relative_to_entry_global": -24
+        }
+      ],
+      "calls": [
+        {
+          "line": 51,
+          "callee": "$f111",
+          "arguments": [
+            "p0",
+            "p1",
+            "p2",
+            "p3",
+            0,
+            "p4"
+          ],
+          "global_relative_to_entry": -32
+        }
+      ],
+      "entry_global_restored_after_unknown_callee_global": true
+    },
+    {
+      "variant": "split",
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-split-f35-complete.wat.txt",
+      "excerpt_sha256": "3d8c3b801ad26a92822d58400541d179a0f5dfabf0cae350fd822530c70806e2",
+      "module_sha256": "36be52974835a2c1ea253fc7a169419f75f7d02a72fb173099676e8403a07a09",
+      "global_updates": [
+        {
+          "line": 14,
+          "relative_to_entry_global": -16
+        },
+        {
+          "line": 26,
+          "relative_to_entry_global": -32
+        },
+        {
+          "line": 36,
+          "relative_to_entry_global": -48
+        },
+        {
+          "line": 83,
+          "relative_to_entry_global": 0
+        }
+      ],
+      "stores": [
+        {
+          "line": 39,
+          "value": "p0",
+          "bytes": 4,
+          "address_relative_to_entry_global": -4
+        },
+        {
+          "line": 42,
+          "value": "p1",
+          "bytes": 4,
+          "address_relative_to_entry_global": -8
+        },
+        {
+          "line": 45,
+          "value": "p2",
+          "bytes": 4,
+          "address_relative_to_entry_global": -12
+        },
+        {
+          "line": 48,
+          "value": "p3",
+          "bytes": 4,
+          "address_relative_to_entry_global": -32
+        },
+        {
+          "line": 51,
+          "value": "p4",
+          "bytes": 8,
+          "address_relative_to_entry_global": -48
+        }
+      ],
+      "loads": [
+        {
+          "line": 53,
+          "value": "p0",
+          "address_relative_to_entry_global": -4
+        },
+        {
+          "line": 56,
+          "value": "p1",
+          "address_relative_to_entry_global": -8
+        },
+        {
+          "line": 59,
+          "value": "p2",
+          "address_relative_to_entry_global": -12
+        },
+        {
+          "line": 62,
+          "value": "p3",
+          "address_relative_to_entry_global": -32
+        },
+        {
+          "line": 65,
+          "value": "p4",
+          "address_relative_to_entry_global": -48
+        }
+      ],
+      "calls": [
+        {
+          "line": 75,
+          "callee": "$f111",
+          "arguments": [
+            "p0",
+            "p1",
+            "p2",
+            "p3",
+            0,
+            "p4"
+          ],
+          "global_relative_to_entry": -48
+        }
+      ],
+      "entry_global_restored_after_unknown_callee_global": true
+    }
+  ],
+  "findings": [
+    "Reference reserves 32 bytes in one update; split-setting wrapper reserves 48 bytes in three 16-byte updates.",
+    "p0/p1/p2 store addresses match; p3/p4 store addresses differ.",
+    "Both wrappers forward p0,p1,p2,p3,0,p4 to f111 and restore the entry global after return.",
+    "No branch, loop, dispatcher, indirect call, or additional callee appears in these wrappers."
+  ],
+  "interpretation": "Observed stack-frame allocation/layout change; insufficient to confirm basic-block or function splitting as an obfuscation mechanism.",
+  "limitations": [
+    "The callee is not evaluated; its visible stack pointer differs between wrappers.",
+    "Changed memory writes, aliases, callees, and other functions prevent a whole-program equivalence claim.",
+    "No dynamic path coverage, instruction timing, or causal explanation of measured throughput."
+  ]
+}

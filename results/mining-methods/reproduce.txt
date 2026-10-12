@@ -1,0 +1,32 @@
+静的解析と原稿の再生成手順
+実行場所：C:\Users\ettotto\Documents\webassembly_obfuscation
+サンプル実行，採掘処理の起動，Webページ巡回は含まない。
+
+1. python scripts/analyze_mining_methods.py
+  保存済みの親対応表とmodule-features.csvから採掘のみを選択し，pair-metrics，program-method-metrics，method-summary，input-manifestを再生成する。
+  入力元のハッシュ，集計方法，除外状況はanalysis-log.json。
+2. python scripts/review_mining_mechanisms.py
+  選択した7バイナリのハッシュを再確認し，逆アセンブルの位置付き証拠を保存する。
+  静的分岐先を照合するが，人間の機構レビューを代替しない。
+3. python scripts/summarize_mining_dataset_scope.py
+  dataset-feature-context.csvとProof-of-Theftの設定・メンバー一覧を再生成する。
+4. .venv/Scripts/python.exe scripts/plot_mining_methods.py
+  既存のmatplotlib環境，WindowsのMeiryoを利用し，日本語のPDF/SVG/PNGを出力する。
+5. PowerShellで当該プロセスのPATHにC:\texlive\2026\bin\windowsを追加し，./paper/build.ps1を実行する。
+  既存のTeX Liveを利用。生成物はpaper/main.pdf。ログはlatex-build.log。
+6. python scripts/audit_mining_paper.py
+  本文の主要数値を元CSVと照合し，paper-claim-evidence.jsonとpaper-audit.jsonを再生成する。
+7. pdftoppm -scale-to 1450 -png paper/main.pdf tmp/pdfs/mining-review/page
+  全ページを目視確認する。数値監査と見た目の確認は別工程。
+
+保存済み解析入力
+results/corpus/module-features.csv：機械抽出した元特徴。
+results/corpus/occurrence-manifest.csv：データセット所属とファイルの対応。
+results/provenance/cryptic-bytes-parent-evidence.json：元プログラム・基準版・配布条件。
+results/mining-methods/input-manifest.csv：本研究の採掘対応比較。
+results/cases/<SHA-256>/disassembly.txt：代表機構の元命令列。
+results/rq-validation/review-ledger.json：旧予備解析の判断根拠。
+
+結果の読み方
+個別設定とwasm-mutate混合系列を分ける。元プログラム内で中央値を取り，その後10プログラムの分布を求める。name情報やメモリ操作は静的指標であり，性能を表さない。
+Proof-of-Theftの設定件数はディレクトリ単位で，検体数や手法普及率ではない。

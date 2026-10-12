@@ -1,0 +1,81 @@
+{
+  "source_url": "https://github.com/ASSERT-KTH/wasm_evasion",
+  "commit": "6e41bb3fa0f9d06619758709094b0e2a13beb593",
+  "checkout_scope": "explicit RQ3 paths; complete checkout prevented by Windows-incompatible names in RQ2 logs",
+  "sources": [
+    {
+      "path": "README.md",
+      "sha256": "b80b485282319d32e8fd5994bcc0a11d94691a04e96ca137ae2ec9628dd21753"
+    },
+    {
+      "path": "malware_reproduction/rq3/README.md",
+      "sha256": "bd5519cd69c04b826bfd024ad574a02713040dfca8d2f2d12e37a3b0d7f25cac"
+    },
+    {
+      "path": "malware_reproduction/rq3/replace_experiments/README.md",
+      "sha256": "cd985742f08a51c4c2dcb71845a09a6019f99071b6245be568eb356b9b406f14"
+    },
+    {
+      "path": "malware_reproduction/rq3/replace_experiments/coinhive-32bits/collect.sh",
+      "sha256": "76ffb749955e53a975ec4edee9a63864d4d4c47bd167c7d688e171f8533327db"
+    },
+    {
+      "path": "malware_reproduction/rq3/replace_experiments/coinhive-32bits/puppetercollect.py",
+      "sha256": "42b5f82ebd904999d87b6df8ce258ddf3418683bb4c6b8c4e48b0e119d02d6ba"
+    },
+    {
+      "path": "malware_reproduction/rq3/replace_experiments/coinhive-32bits/server.py",
+      "sha256": "469ec25d6fd73f899f503688fc7b1da2a4021ce7bb886ffce30e2abf5a0873e7"
+    },
+    {
+      "path": "malware_reproduction/rq3/replace_experiments/stratum/server.js",
+      "sha256": "5be6b347c72f5220a273f2c7c99e28230042715e8fd4e9d424b679dd0469af71"
+    }
+  ],
+  "findings": [
+    "Paper text names Puppeteer, but distributed puppetercollect.py imports Selenium and uses ChromeDriver.",
+    "Collector samples cumulative hashes every second for1000 intervals, then writes SAMPLES[10:]. This is not exactly a1000-second steady-state measurement.",
+    "Original replacement experiment uses Flask localhost7676, CoinHive workers, stratum8892 and xmrig-proxy.",
+    "Original recipe requires an external pool configuration; it must not be executed unmodified under the user constraint.",
+    "Node/Python and browser versions in original experiment are not fully pinned by these scripts."
+  ],
+  "local_design": {
+    "browser": "Chromium with Selenium",
+    "os": "Linux container on Windows Docker Desktop",
+    "network": "none; only container loopback",
+    "services": "browser, page server, local job generator/verifier in same container",
+    "source_scripts_executed": false,
+    "cpu_limit": 2,
+    "memory_limit": "2GiB",
+    "open_ports_on_host": false
+  },
+  "remaining": [
+    "Implement local Stratum/job validation and adapter for existing Cryptic Bytes Wasm ABI.",
+    "Run correctness checks before performance measurements.",
+    "Original hardware and browser release are not fully specified in the inspected source; local versions are documented rather than claimed identical."
+  ],
+  "isolation_smoke": {
+    "status": "passed",
+    "test": "local browser and network isolation only; no Wasm benchmark",
+    "interfaces": [
+      [
+        1,
+        "lo"
+      ]
+    ],
+    "outbound_blocked": true,
+    "browser_version": "154.0.8037.92",
+    "driver_version": "154.0.8037.92 (334b65d254ccc35df4fca82706d1753227b01039-refs/branch-heads/8037@{#1589})",
+    "selenium_version": "4.8.3",
+    "node_version": "v18.20.4"
+  },
+  "image_id": "sha256:fecddfc02efcfc603598ba6ea672e2f4f8d7d49a488ff23c7c187e69cdc5d4af",
+  "packages": [
+    "chromium 154.0.8037.92-1~deb12u1",
+    "chromium-driver 154.0.8037.92-1~deb12u1",
+    "nodejs 18.20.4+dfsg-1~deb12u3",
+    "python3 3.11.2-1+b1",
+    "python3-flask 2.2.2-3",
+    "python3-selenium 4.8.3+dfsg-1"
+  ]
+}

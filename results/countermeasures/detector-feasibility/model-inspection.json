@@ -1,0 +1,418 @@
+{
+  "repository": "hakonharnes/wasm-obf",
+  "commit": "009e9e7bd812cbecacb506507e36834ae3ecddc4",
+  "path": "detection/minos/src/original23.h5",
+  "url": "https://raw.githubusercontent.com/hakonharnes/wasm-obf/009e9e7bd812cbecacb506507e36834ae3ecddc4/detection/minos/src/original23.h5",
+  "git_blob_sha1": "55767a1986e25d83298f737802e828c4d7907f55",
+  "sha256": "d0b5eff091452f9942e5dbe7f4b0a43d2dc1cf61385b2d2d9da679a4efccf28b",
+  "bytes": 335400,
+  "model_config": {
+    "class_name": "Sequential",
+    "config": {
+      "name": "sequential",
+      "layers": [
+        {
+          "class_name": "InputLayer",
+          "config": {
+            "batch_input_shape": [
+              null,
+              10000
+            ],
+            "dtype": "float32",
+            "sparse": false,
+            "ragged": false,
+            "name": "reshape_input"
+          }
+        },
+        {
+          "class_name": "Reshape",
+          "config": {
+            "name": "reshape",
+            "trainable": true,
+            "batch_input_shape": [
+              null,
+              10000
+            ],
+            "dtype": "float32",
+            "target_shape": [
+              100,
+              100,
+              1
+            ]
+          }
+        },
+        {
+          "class_name": "Conv2D",
+          "config": {
+            "name": "conv2d",
+            "trainable": true,
+            "batch_input_shape": [
+              null,
+              100,
+              100,
+              1
+            ],
+            "dtype": "float32",
+            "filters": 16,
+            "kernel_size": [
+              3,
+              3
+            ],
+            "strides": [
+              1,
+              1
+            ],
+            "padding": "valid",
+            "data_format": "channels_last",
+            "dilation_rate": [
+              1,
+              1
+            ],
+            "groups": 1,
+            "activation": "relu",
+            "use_bias": true,
+            "kernel_initializer": {
+              "class_name": "GlorotUniform",
+              "config": {
+                "seed": null
+              }
+            },
+            "bias_initializer": {
+              "class_name": "Zeros",
+              "config": {}
+            },
+            "kernel_regularizer": null,
+            "bias_regularizer": null,
+            "activity_regularizer": null,
+            "kernel_constraint": null,
+            "bias_constraint": null
+          }
+        },
+        {
+          "class_name": "MaxPooling2D",
+          "config": {
+            "name": "max_pooling2d",
+            "trainable": true,
+            "dtype": "float32",
+            "pool_size": [
+              2,
+              2
+            ],
+            "padding": "valid",
+            "strides": [
+              2,
+              2
+            ],
+            "data_format": "channels_last"
+          }
+        },
+        {
+          "class_name": "Conv2D",
+          "config": {
+            "name": "conv2d_1",
+            "trainable": true,
+            "dtype": "float32",
+            "filters": 32,
+            "kernel_size": [
+              3,
+              3
+            ],
+            "strides": [
+              1,
+              1
+            ],
+            "padding": "valid",
+            "data_format": "channels_last",
+            "dilation_rate": [
+              1,
+              1
+            ],
+            "groups": 1,
+            "activation": "relu",
+            "use_bias": true,
+            "kernel_initializer": {
+              "class_name": "GlorotUniform",
+              "config": {
+                "seed": null
+              }
+            },
+            "bias_initializer": {
+              "class_name": "Zeros",
+              "config": {}
+            },
+            "kernel_regularizer": null,
+            "bias_regularizer": null,
+            "activity_regularizer": null,
+            "kernel_constraint": null,
+            "bias_constraint": null
+          }
+        },
+        {
+          "class_name": "MaxPooling2D",
+          "config": {
+            "name": "max_pooling2d_1",
+            "trainable": true,
+            "dtype": "float32",
+            "pool_size": [
+              2,
+              2
+            ],
+            "padding": "valid",
+            "strides": [
+              2,
+              2
+            ],
+            "data_format": "channels_last"
+          }
+        },
+        {
+          "class_name": "Conv2D",
+          "config": {
+            "name": "conv2d_2",
+            "trainable": true,
+            "dtype": "float32",
+            "filters": 64,
+            "kernel_size": [
+              3,
+              3
+            ],
+            "strides": [
+              1,
+              1
+            ],
+            "padding": "valid",
+            "data_format": "channels_last",
+            "dilation_rate": [
+              1,
+              1
+            ],
+            "groups": 1,
+            "activation": "relu",
+            "use_bias": true,
+            "kernel_initializer": {
+              "class_name": "GlorotUniform",
+              "config": {
+                "seed": null
+              }
+            },
+            "bias_initializer": {
+              "class_name": "Zeros",
+              "config": {}
+            },
+            "kernel_regularizer": null,
+            "bias_regularizer": null,
+            "activity_regularizer": null,
+            "kernel_constraint": null,
+            "bias_constraint": null
+          }
+        },
+        {
+          "class_name": "MaxPooling2D",
+          "config": {
+            "name": "max_pooling2d_2",
+            "trainable": true,
+            "dtype": "float32",
+            "pool_size": [
+              2,
+              2
+            ],
+            "padding": "valid",
+            "strides": [
+              2,
+              2
+            ],
+            "data_format": "channels_last"
+          }
+        },
+        {
+          "class_name": "Flatten",
+          "config": {
+            "name": "flatten",
+            "trainable": true,
+            "dtype": "float32",
+            "data_format": "channels_last"
+          }
+        },
+        {
+          "class_name": "Dense",
+          "config": {
+            "name": "dense",
+            "trainable": true,
+            "dtype": "float32",
+            "units": 2,
+            "activation": "softmax",
+            "use_bias": true,
+            "kernel_initializer": {
+              "class_name": "GlorotUniform",
+              "config": {
+                "seed": null
+              }
+            },
+            "bias_initializer": {
+              "class_name": "Zeros",
+              "config": {}
+            },
+            "kernel_regularizer": null,
+            "bias_regularizer": null,
+            "activity_regularizer": null,
+            "kernel_constraint": null,
+            "bias_constraint": null
+          }
+        }
+      ]
+    }
+  },
+  "attributes": {
+    "backend": "tensorflow",
+    "keras_version": "2.10.0",
+    "training_config": "{\"loss\": \"categorical_crossentropy\", \"metrics\": [[{\"class_name\": \"MeanMetricWrapper\", \"config\": {\"name\": \"accuracy\", \"dtype\": \"float32\", \"fn\": \"categorical_accuracy\"}}]], \"weighted_metrics\": null, \"loss_weights\": null, \"optimizer_config\": {\"class_name\": \"RMSprop\", \"config\": {\"name\": \"RMSprop\", \"learning_rate\": 0.0010000000474974513, \"decay\": 0.0, \"rho\": 0.8999999761581421, \"momentum\": 0.0, \"epsilon\": 1e-07, \"centered\": false}}}"
+  },
+  "tensors": [
+    {
+      "path": "model_weights/conv2d/conv2d/bias:0",
+      "shape": [
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "model_weights/conv2d/conv2d/kernel:0",
+      "shape": [
+        3,
+        3,
+        1,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "model_weights/conv2d_1/conv2d_1/bias:0",
+      "shape": [
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "model_weights/conv2d_1/conv2d_1/kernel:0",
+      "shape": [
+        3,
+        3,
+        16,
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "model_weights/conv2d_2/conv2d_2/bias:0",
+      "shape": [
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "model_weights/conv2d_2/conv2d_2/kernel:0",
+      "shape": [
+        3,
+        3,
+        32,
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "model_weights/dense/dense/bias:0",
+      "shape": [
+        2
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "model_weights/dense/dense/kernel:0",
+      "shape": [
+        6400,
+        2
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/conv2d/bias/rms:0",
+      "shape": [
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/conv2d/kernel/rms:0",
+      "shape": [
+        3,
+        3,
+        1,
+        16
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/conv2d_1/bias/rms:0",
+      "shape": [
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/conv2d_1/kernel/rms:0",
+      "shape": [
+        3,
+        3,
+        16,
+        32
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/conv2d_2/bias/rms:0",
+      "shape": [
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/conv2d_2/kernel/rms:0",
+      "shape": [
+        3,
+        3,
+        32,
+        64
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/dense/bias/rms:0",
+      "shape": [
+        2
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/dense/kernel/rms:0",
+      "shape": [
+        6400,
+        2
+      ],
+      "dtype": "float32"
+    },
+    {
+      "path": "optimizer_weights/RMSprop/iter:0",
+      "shape": [],
+      "dtype": "int64"
+    }
+  ],
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "h5py": "3.14.0",
+    "numpy": "2.2.6",
+    "pillow": "11.3.0"
+  },
+  "model_inference_executed": false,
+  "target_wasm_executed": false,
+  "scope": "HDF5 metadata and dataset shapes only. No model deserialization, TensorFlow inference or target instantiation. Architecture allowlist is a prerequisite, not a compatibility proof."
+}

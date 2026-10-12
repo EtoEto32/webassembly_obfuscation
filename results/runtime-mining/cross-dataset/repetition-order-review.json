@@ -1,0 +1,232 @@
+{
+  "experiments": [
+    {
+      "experiment": "xmr",
+      "raw_report": "proof-of-theft/xmr-repeated-throughput-20261008.json",
+      "raw_sha256": "b026306708e5f46ee38ff40852c176fbc1655db217409b009c94629ca88d479c",
+      "round_orders": [
+        {
+          "repetition": 1,
+          "order": [
+            "xmr-wasm",
+            "xmr-wasm-emccobf-flattening",
+            "xmr-wasm-emccobf-boguscf",
+            "xmr-wasm-emccobf-substitution",
+            "xmr-wasm-emccobf-split"
+          ]
+        },
+        {
+          "repetition": 2,
+          "order": [
+            "xmr-wasm-emccobf-flattening",
+            "xmr-wasm-emccobf-boguscf",
+            "xmr-wasm-emccobf-substitution",
+            "xmr-wasm-emccobf-split",
+            "xmr-wasm"
+          ]
+        },
+        {
+          "repetition": 3,
+          "order": [
+            "xmr-wasm-emccobf-boguscf",
+            "xmr-wasm-emccobf-substitution",
+            "xmr-wasm-emccobf-split",
+            "xmr-wasm",
+            "xmr-wasm-emccobf-flattening"
+          ]
+        }
+      ],
+      "reference_rates": [
+        8.50179975590254,
+        9.344338952453333,
+        9.10781445161239
+      ],
+      "reference_last_to_first_ratio": 1.0712807538532192,
+      "comparisons": [
+        {
+          "method": "xmr-wasm-emccobf-flattening",
+          "within_round_ratios": [
+            0.6888255383786608,
+            0.6612640947612102,
+            0.6830593334069239
+          ],
+          "ratio_min": 0.6612640947612102,
+          "ratio_median": 0.6830593334069239,
+          "ratio_max": 0.6888255383786608,
+          "direction": [
+            "below reference",
+            "below reference",
+            "below reference"
+          ],
+          "completion_gaps_seconds": [
+            33.887,
+            -134.138,
+            33.749
+          ],
+          "median_of_rates_ratio": 0.6784367283022618
+        },
+        {
+          "method": "xmr-wasm-emccobf-boguscf",
+          "within_round_ratios": [
+            2.7146894739618435,
+            2.428108014330528,
+            2.640195257411326
+          ],
+          "ratio_min": 2.428108014330528,
+          "ratio_median": 2.640195257411326,
+          "ratio_max": 2.7146894739618435,
+          "direction": [
+            "above reference",
+            "above reference",
+            "above reference"
+          ],
+          "completion_gaps_seconds": [
+            67.116,
+            -100.89,
+            -100.871
+          ],
+          "median_of_rates_ratio": 2.5340597823656923
+        },
+        {
+          "method": "xmr-wasm-emccobf-substitution",
+          "within_round_ratios": [
+            0.7904538561440406,
+            0.7075966367404561,
+            0.7486005274076346
+          ],
+          "ratio_min": 0.7075966367404561,
+          "ratio_median": 0.7486005274076346,
+          "ratio_max": 0.7904538561440406,
+          "direction": [
+            "below reference",
+            "below reference",
+            "below reference"
+          ],
+          "completion_gaps_seconds": [
+            100.868,
+            -67.118,
+            -67.161
+          ],
+          "median_of_rates_ratio": 0.7378587296569169
+        },
+        {
+          "method": "xmr-wasm-emccobf-split",
+          "within_round_ratios": [
+            1.0107252454736255,
+            0.90589451791328,
+            0.988797554181197
+          ],
+          "ratio_min": 0.90589451791328,
+          "ratio_median": 0.988797554181197,
+          "ratio_max": 1.0107252454736255,
+          "direction": [
+            "above reference",
+            "below reference",
+            "below reference"
+          ],
+          "completion_gaps_seconds": [
+            134.442,
+            -33.584,
+            -33.513
+          ],
+          "median_of_rates_ratio": 0.9434737269741984
+        }
+      ]
+    },
+    {
+      "experiment": "swamped",
+      "raw_report": "swamped/controlled-pair-repeated-throughput.json",
+      "raw_sha256": "5695329bf8aa391bcd0a91a64dc7fa60593639bb6125c3623c4bb6e32473bb92",
+      "round_orders": [
+        {
+          "repetition": 1,
+          "order": [
+            "046dc081-roundtrip",
+            "046dc081-nop10",
+            "046dc081-constsplit10"
+          ]
+        },
+        {
+          "repetition": 2,
+          "order": [
+            "046dc081-nop10",
+            "046dc081-constsplit10",
+            "046dc081-roundtrip"
+          ]
+        },
+        {
+          "repetition": 3,
+          "order": [
+            "046dc081-constsplit10",
+            "046dc081-roundtrip",
+            "046dc081-nop10"
+          ]
+        }
+      ],
+      "reference_rates": [
+        27.091767696800087,
+        32.39427543158712,
+        32.72512602771809
+      ],
+      "reference_last_to_first_ratio": 1.207936166955373,
+      "comparisons": [
+        {
+          "method": "046dc081-nop10",
+          "within_round_ratios": [
+            1.0910755632517595,
+            0.9595099720637111,
+            0.99982239576741
+          ],
+          "ratio_min": 0.9595099720637111,
+          "ratio_median": 0.99982239576741,
+          "ratio_max": 1.0910755632517595,
+          "direction": [
+            "above reference",
+            "below reference",
+            "below reference"
+          ],
+          "completion_gaps_seconds": [
+            33.407,
+            -66.699,
+            33.432
+          ],
+          "median_of_rates_ratio": 0.9595099720637111
+        },
+        {
+          "method": "046dc081-constsplit10",
+          "within_round_ratios": [
+            1.068332426242849,
+            0.9733112370305264,
+            0.9801799338839823
+          ],
+          "ratio_min": 0.9733112370305264,
+          "ratio_median": 0.9801799338839823,
+          "ratio_max": 1.068332426242849,
+          "direction": [
+            "above reference",
+            "below reference",
+            "below reference"
+          ],
+          "completion_gaps_seconds": [
+            66.8,
+            -33.352,
+            -33.353
+          ],
+          "median_of_rates_ratio": 0.9733112370305264
+        }
+      ]
+    }
+  ],
+  "scope": "Descriptive analysis of saved 30-second blocks grouped by recorded repetition; not new measurements.",
+  "definitions": {
+    "within_round_ratio": "Variant rate divided by reference rate in the same repetition group.",
+    "median_of_rates_ratio": "Ratio of separate variant and reference medians; generally differs from median of within-round ratios."
+  },
+  "limitations": [
+    "Blocks are sequential, not simultaneous; grouping within a round does not remove time drift or establish matched independent pairs.",
+    "Only three rounds; no significance, equivalence, confidence-interval, or population-effect claim.",
+    "Completion timestamps include work after the timed loop; they are not exact timed-loop starts or durations.",
+    "Warming, frequency changes, host load, and JIT effects were not separately measured; the cause of drift is unresolved.",
+    "The xmr sequence covers three of five cyclic orders; SWAMPED covers all three cyclic orders, not all permutations."
+  ]
+}

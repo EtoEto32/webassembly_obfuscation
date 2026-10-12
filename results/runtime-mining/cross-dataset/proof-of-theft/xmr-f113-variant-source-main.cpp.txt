@@ -1,0 +1,12 @@
+
+  uint64_t* p_result = (uint64_t*) (result.hash.data + 24);
+  uint32_t* p_nonce = (uint32_t*) (block_data + 39);
+  result.nonce = *p_nonce;
+  const uint8_t cn_variant = block_data[0] >= 7 ? block_data[0] - 6 : 0;
+  while(true)
+  {
+    crypto::cn_slow_hash(block_data, length, result.hash, cn_variant, height);
+    if(*p_result < target)
+    {
+      break;
+    }

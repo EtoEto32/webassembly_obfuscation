@@ -1,0 +1,44 @@
+{
+  "function": "$f112",
+  "caller_chain": [
+    "$hash",
+    "$f35",
+    "$f111",
+    "$f112"
+  ],
+  "reference_function_digest": "3182b1fa224b65f1e309f8cf50220654d35771d29903ad3ef2d441691c3f1f55",
+  "flattened_function_digest": "d21037a08580bf485cab2a3fdfec20433700e7d301852cabcf8159d0d9872599",
+  "mechanism": "State-driven dispatch for an eight-byte in-place XOR helper.",
+  "correspondence": "Same two pointer parameters, byte loads from pointer+index, XOR and store8, index bound 8 and increment 1. Distributed slow-hash.c has a matching xor64 byte loop; no debug symbol mapping proves its identity.",
+  "reference_frame_bytes": 16,
+  "flattened_frame_bytes": 32,
+  "reference_index_offset": 4,
+  "flattened_index_offset": 20,
+  "dispatcher_state_offset": 16,
+  "state_pointer_offset": 12,
+  "transitions": [
+    {
+      "state": -644732001,
+      "operation": "Compare index < 8",
+      "next_if_true": -601762212,
+      "next_if_false": -36145701
+    },
+    {
+      "state": -601762212,
+      "operation": "XOR byte and store",
+      "next": 25466191
+    },
+    {
+      "state": 25466191,
+      "operation": "Increment index by 1",
+      "next": -644732001
+    },
+    {
+      "state": -36145701,
+      "operation": "Return"
+    }
+  ],
+  "scope": "Complete saved helper body reviewed; state writes use the pointer stored at frame+12 and common loop L0.",
+  "dynamic_path_coverage": "Not measured; static call sites do not prove execution in the cn/0 benchmark.",
+  "limitations": "Not a whole-module semantic proof, historical rebuild, or quantitative attribution of throughput loss."
+}

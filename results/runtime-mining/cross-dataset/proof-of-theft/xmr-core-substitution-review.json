@@ -1,0 +1,26 @@
+{
+  "function": "$f111",
+  "caller_chain": [
+    "$hash",
+    "$f35",
+    "$f111"
+  ],
+  "source_scope": "Saved WAT address expression inside nested loops, counters at frame offsets 1052 and 1048, bounds 16384 and 8.",
+  "reference_lines": [
+    781,
+    786
+  ],
+  "variant_lines": [
+    781,
+    828
+  ],
+  "expression": "(x & ~16) * (~x & 16) + (x | 16) * (x & 16)",
+  "reference_expression": "x << 4",
+  "integer_semantics": "modulo 2^32",
+  "derivation": "Let u=x&~16 and v=x&16. v is 0 or 16; u*(16-v)+(u+16)*v=16*x.",
+  "tested_integer_inputs": 2061,
+  "all_expression_checks_match": true,
+  "expression_sha256": "949f65df3ade8144e46d511e80c6b654915340df0a52739784728113a1cd43e2",
+  "dynamic_path_coverage": "not measured; static caller chain and loop structure only",
+  "limitations": "A local expression identity is not a full-module semantic proof or attribution of the measured throughput difference."
+}

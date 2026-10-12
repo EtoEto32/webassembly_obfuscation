@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-07",
+  "goal_achieved": false,
+  "requirements": [
+    {"requirement":"Original paper and pinned implementation methodology", "status":"documented with source differences", "evidence":"experiments/runtime-reference/experiment-design.md; target-pairing-audit.json"},
+    {"requirement":"Normal/variant identity and algorithm contracts", "status":"partially verified", "evidence":"target-pairing-audit.json; algorithm-contracts.json; adapter-abi-audit.json", "remaining":"Original complete groups and runtime compatibility"},
+    {"requirement":"Browser -> Stratum -> xmrig-proxy -> compatible external pool", "status":"incomplete", "evidence":"Local components implemented; proxy-version.log; synthetic transport checks", "remaining":"No end-to-end mining execution; file read failure; pool configuration"},
+    {"requirement":"Operator-confirmed current pool and user-owned identifier", "status":"not achieved", "evidence":"pool-compatibility-audit.json; pool-sources candidate checks; user reports no identifier", "remaining":"Confirmed algorithm and permitted endpoint; user's public payout address/account"},
+    {"requirement":"Approximately 1000-second normal/variant measurements and pool responses", "status":"not achieved", "evidence":"No completed real run directory, hash-samples.csv or shares.jsonl exists in results/runtime-mining"},
+    {"requirement":"Real comparison table and speed distributions", "status":"not achieved", "evidence":"Comparison code and dependencies prepared; only software checks available"},
+    {"requirement":"Measured results incorporated into existing paper", "status":"not achieved", "evidence":"paper/main.tex includes static results and explicitly unexecuted runtime design"},
+    {"requirement":"Built-in LaTeX compilation verified", "status":"not achieved", "evidence":"paper-native-compile.json: platform directory error"}
+  ],
+  "measurement_results_invented": false,
+  "no_live_experiment_handle_recorded": true,
+  "next_requirements":"Resolve the permitted runtime environment and identify an operator-confirmed compatible pool before using a user-owned mining identifier. No old job replay or algorithm substitution."
+}

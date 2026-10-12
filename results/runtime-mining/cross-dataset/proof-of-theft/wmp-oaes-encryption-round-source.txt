@@ -1,0 +1,29 @@
+oaes_encryption_round( const uint8_t * key, uint8_t * c )
+{
+  size_t _i;
+
+  if(NULL == key)
+    return OAES_RET_ARG1;
+
+  if(NULL == c)
+    return OAES_RET_ARG2;
+
+  // SubBytes(state)
+  for( _i = 0; _i < OAES_BLOCK_SIZE; _i++ )
+    oaes_sub_byte( c + _i );
+
+  // ShiftRows(state)
+  oaes_shift_rows( c );
+
+  // MixColumns(state)
+  oaes_mix_cols( c );
+  oaes_mix_cols( c + 4 );
+  oaes_mix_cols( c + 8 );
+  oaes_mix_cols( c + 12 );
+
+  // AddRoundKey(State, key)
+  for( _i = 0; _i < OAES_BLOCK_SIZE; _i++ )
+    c[_i] ^= key[_i];
+
+  return OAES_RET_SUCCESS;
+}

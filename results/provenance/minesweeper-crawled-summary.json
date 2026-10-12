@@ -1,0 +1,49 @@
+{
+  "scope": "Complete downloaded MineSweeper crawled-site TAR; standalone core-Wasm magic only. JavaScript-generated or native-binary embeddings are not counted.",
+  "archive_receipt": {
+    "path": "data/archives/minesweeper-crawled.tar.receipt.json",
+    "bytes": 54914109440,
+    "sha256": "abbcf24643676556fda635c80813953d17175387f95bc80d1348c087efcabc6e",
+    "md5": "5812224d4f5ba8810c0d7de3f33ba6ed"
+  },
+  "inputs": {
+    "acquisition_jsonl": "data/catalog/minesweeper-crawled-archive/acquisition.jsonl",
+    "acquisition_sha256": "167c83185b8b7084d93d3c9ba978cd0dfeeaaf38363166c3c00823a29bed28e7",
+    "inventory": "data/catalog/minesweeper-crawled-archive/inventory.json",
+    "inventory_sha256": "5a647a7b79bec8fb32bc6a9a10ae9f566d04af203f49af862c9ca8348560ef0c",
+    "acquisition_summary": "data/catalog/minesweeper-crawled-archive/acquisition-summary.json",
+    "analysis_run": "results/corpus/runs/minesweeper-full-v21.json"
+  },
+  "paper_evidence": {
+    "path": "data/catalog/minesweeper/paper.txt",
+    "sha256": "1eb42a9a16aed35572323b647ae78666ba1f04648b18eeb4800f86fd7a01f3fc",
+    "crawl_interval": "2018-03-12/2018-03-19",
+    "crawled_websites": 991513,
+    "drive_by_mining_websites": 1735,
+    "paper_reports_all_identified_sites_use_wasm": true,
+    "interpretation": "The paper's crawl interval is corpus-level observation evidence, not an individual-binary first-seen date."
+  },
+  "archive_members": 572485,
+  "archive_site_directories": 1908,
+  "core_wasm_occurrences": 4429,
+  "unique_core_wasm_sha256": 36,
+  "site_directories_with_core_wasm": 349,
+  "site_unique_sha_counts": {
+    "1": 334,
+    "2": 15
+  },
+  "max_occurrences_of_one_sha": 1127,
+  "analysis_status_counts_by_unique_sha": {
+    "sections_failed": 36
+  },
+  "wabt_status_counts_by_unique_sha": {
+    "invalid": 36
+  },
+  "failures_during_archive_ingestion": [],
+  "interpretation": [
+    "4,429 archive paths collapse to 36 SHA-256 values; path count is not binary diversity.",
+    "All 36 begin with core Wasm magic but fail both the v2.1 section parser and WABT 1.0.42 validation, so structural features are not imputed.",
+    "Only 349 archive site directories contain directly stored core-Wasm-magic members under this extraction rule. This does not contradict the paper's dynamic finding that all 1,735 identified sites used Wasm; runtime-generated or differently captured modules are outside this static extraction.",
+    "The March 2018 interval supports a corpus-level historical observation, not a per-hash temporal trend."
+  ]
+}

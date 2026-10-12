@@ -1,0 +1,104 @@
+services:
+  miner-ray:
+    build: ./miner-ray
+    volumes:
+      - ./miner-ray/main.py:/app/main.py
+      - ./miner-ray/src:/app/src
+      - ../binaries:/app/binaries
+      - ../dataset:/app/dataset
+      - ../mongodb/utils.py:/app/mongodb/utils.py
+    environment:
+      - BINARY_PATH=/app/binaries
+      - DATASET_PATH=/app/dataset
+    networks:
+      - db_network
+
+  minos:
+    build: ./minos
+    volumes:
+      - ./minos/main.py:/app/main.py
+      - ../binaries:/app/binaries
+      - ../dataset/:/app/dataset
+      - ../mongodb/utils.py:/app/mongodb/utils.py
+    environment:
+      - BINARY_PATH=/app/binaries
+      - DATASET_PATH=/app/dataset
+    networks:
+      - db_network
+
+  virustotal:
+    build: ./virustotal
+    volumes:
+      - ./virustotal/main.py:/app/main.py
+      - ./virustotal/.env:/app/.env
+      - ../binaries:/app/binaries
+      - ../dataset/:/app/dataset
+      - ../mongodb/utils.py:/app/mongodb/utils.py
+    environment:
+      - BINARY_PATH=/app/binaries
+      - DATASET_PATH=/app/dataset
+    networks:
+      - db_network
+
+  wasim:
+    build: ./wasim
+    volumes:
+      - ./wasim/main.py:/app/main.py
+      - ../binaries:/app/binaries
+      - ../dataset/:/app/dataset
+      - ../mongodb/utils.py:/app/mongodb/utils.py
+    environment:
+      - BINARY_PATH=/app/binaries
+      - DATASET_PATH=/app/dataset
+    networks:
+      - wasim_network
+      - db_network
+    depends_on:
+      - wasim_rabbitmq
+      - wasim_mysql
+      - wasim_web
+      - wasim_model
+
+  wasim_rabbitmq:
+    image: "rabbitmq"
+    hostname: rabbitmq
+    networks:
+      - wasim_network
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+
+  wasim_mysql:
+    image: "mariadb"
+    restart: always
+    hostname: mysql
+    networks:
+      - wasim_network
+    environment:
+      - "MYSQL_ROOT_PASSWORD=password"
+      - "MYSQL_DATABASE=webassembly_classifier"
+    volumes:
+      - ./wasim/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+
+  wasim_web:
+    image: "wasmclassifier/wasmclassifier:server"
+    networks:
+      - wasim_network
+    environment:
+      - "RABBITMQ_HOST=amqp://rabbitmq?connection_attempts=5&retry_delay=5"
+      - "MYSQL_HOST=mysql"
+    volumes:
+      - ./wasim/binaries:/usr/src/app/binaries
+      - ./wasim/server/MQConnector.js:/usr/src/app/WebAssemblyAnalysis_Modules/MQConnector.js
+
+  wasim_model:
+    image: "wasmclassifier/wasmclassifier:model"
+    networks:
+      - wasim_network
+    environment:
+      - "RABBITMQ_HOST=amqp://rabbitmq?connection_attempts=5&retry_delay=5"
+
+networks:
+  db_network:
+    external: true
+  wasim_network: {}

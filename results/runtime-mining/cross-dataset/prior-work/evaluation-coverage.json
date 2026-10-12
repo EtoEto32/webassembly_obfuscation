@@ -1,0 +1,69 @@
+{
+  "reviewed_sources": [
+    {
+      "name": "Cryptic Bytes",
+      "source": "https://arxiv.org/html/2403.15197v1",
+      "hash_rate_evaluated": true,
+      "evidence": "Sections 4.2.7, 4.3.3 and 5.3.2; 100-second hash-rate measurements",
+      "current_role": "Reproduction/control and cross-dataset comparison; not first hash-rate evaluation"
+    },
+    {
+      "name": "WebAssembly Diversification for Malware Evasion",
+      "source": "https://arxiv.org/abs/2212.08427",
+      "hash_rate_evaluated": true,
+      "evidence": "Sections 5.3 and 6.3, Table 4; pool validity and nominal 1000-second rate measurements",
+      "current_role": "Methodological reference; recovered inputs retain reconstruction limitations"
+    },
+    {
+      "name": "Proof-of-Theft",
+      "source": "https://doi.org/10.4230/LIPIcs.ECOOP.2026.25",
+      "hash_rate_evaluated": null,
+      "evidence": "Main paper Section 6 RQs concern graph simplification and miner detection; supplementary.pdf (2 pages) contains theorem proof and graph examples. Artifact includes hashrate.js in cryptonight-hash baseline and obfuscated directories, so runtime measurement capability exists. Reviewed paper/supplement/README and artifact path inventory do not establish a published paired throughput/correctness result.",
+      "current_role": "Priority 1: measure paired original and obfuscated uninstrumented modules, with verified hash outputs and algorithm-specific throughput; do not claim hashing was never run."
+    },
+    {
+      "name": "SWAMPED",
+      "source": "https://yonghwi-kwon.github.io/data/wasm_perturbation_ase25.pdf",
+      "hash_rate_evaluated": null,
+      "execution_time_evaluated": true,
+      "evidence": "Section IV.D / Table III: 74 samples, Node 22.19.0, Liftoff baseline JIT, no-op imported functions because JS artifacts absent, 1000 warm-up calls plus median of 100 calls per exported function. This is execution-time overhead, not a demonstrated complete mining hash throughput/output-validity benchmark. Public experimental_results tree lists detector scores and heat maps.",
+      "current_role": "Priority 2: restore supported hashing host interfaces for cryptomining subset, then evaluate complete valid hashing; published seeds/transforms must be distinguished from our own generated variants."
+    },
+    {
+      "name": "MinerRay",
+      "source": "https://weihang-wang.github.io/papers/ASE2020-MinerRay.pdf",
+      "hash_rate_evaluated": null,
+      "evidence": "Section 6.4 / Table 5 evaluates detector graph construction and scanning time/memory. Public README describes crawled Wasm samples and detection results. No paired obfuscation hashing-throughput benchmark identified in reviewed main paper/README/public file inventory.",
+      "current_role": "Collected-code extension; check overlap with earlier mining papers and source/algorithm evidence before calling a binary newly evaluated."
+    },
+    {
+      "name": "MineSweeper",
+      "source": "https://martina.lindorfer.in/files/papers/minesweeper_ccs18.pdf",
+      "hash_rate_evaluated": true,
+      "evidence": "Section 6 / Table 10 reports Wasm vs asm.js hash rates on two CPUs and estimates throttling/profit impacts. This is not a systematic paired comparison of obfuscation methods over the whole released corpus.",
+      "current_role": "Previously evaluated reference with potential additional sample/method coverage; not an unevaluated dataset."
+    },
+    {
+      "name": "WASMixer",
+      "source": "https://arxiv.org/html/2308.03123v1",
+      "hash_rate_evaluated": false,
+      "execution_time_evaluated": true,
+      "hash_rate_scope": "Mining D3 explicitly excluded in inspected arXiv:2308.03123v1; ESORICS 2024 full-text coverage unverified.",
+      "evidence": "Sections 5.2/5.5 and Table 2: mining dataset D3 is explicitly excluded from runtime overhead evaluation owing to browser/JS dependencies. Section 5.3 checks outputs for D1/D2; Section 5.4.2 evaluates D3 detection. Scope: arXiv v1 only; a 2024 publication exists, with full-text evaluation not yet checked.",
+      "current_role": "Complete valid hashing of a reused input plus SWAMPED-generated controls; not a runtime evaluation of WASMixer obfuscation methods or a worldwide-first claim.",
+      "published_version_hash_rate_evaluated": null
+    }
+  ],
+  "novelty_audit": {
+    "date_jst": "2026-10-08",
+    "status": "Documented evaluation gaps within the reviewed primary sources; worldwide first-evaluation claim not established",
+    "primary_addition": "Paired, correctness-verified complete hashing throughput for published obfuscated miners, extending detection-focused datasets and stub-based runtime evaluations",
+    "requirements": [
+      "Trace exact binary reuse and prior benchmark coverage; reused input can support a new condition/method comparison but not a new-binary claim.",
+      "Separate Wasabi instrumentation overhead from obfuscation overhead.",
+      "Same algorithm/input/runtime/threads within pairs; repeat and report variation.",
+      "Without an original pair, report absolute hashing results but do not call a difference obfuscation overhead.",
+      "Do not infer absence of all earlier hashing runs from absence of a paper section."
+    ]
+  }
+}

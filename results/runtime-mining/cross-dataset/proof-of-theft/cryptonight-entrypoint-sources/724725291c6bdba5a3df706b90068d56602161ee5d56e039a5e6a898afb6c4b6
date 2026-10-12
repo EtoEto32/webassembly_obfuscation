@@ -1,0 +1,9 @@
+all:
+	rm -rf ./out
+	./build.sh
+	wasabi cryptonight.wasm
+	mv cryptonight.wasm cryptonight.og.wasm 
+	cp ./out/* ./
+	js-beautify --type html -r -s 1 -m 0 cryptonight.html
+	sed -i '/<script async src=cryptonight.js><\/script>/a <script src="cryptonight.wasabi.js"></script>' cryptonight.html
+	sed -i '/<script src="cryptonight.wasabi.js"><\/script>/a <script src="http://0.0.0.0:8080/wasabi_analysis_dfg_hash.js"></script>' cryptonight.html

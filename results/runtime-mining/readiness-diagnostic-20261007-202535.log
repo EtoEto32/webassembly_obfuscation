@@ -1,0 +1,11 @@
+{"stage": "module-read", "errno": 12, "message": "[Errno 12] Cannot allocate memory", "hashes_measured": false, "pool_connected": false, "network": "none", "module_stat_size": 310503, "memory.max": "2147483648", "memory.current": "37650432", "memory.events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0"}
+Traceback (most recent call last):
+  File "/opt/experiment/readiness.py", line 103, in <module>
+    main()
+  File "/opt/experiment/readiness.py", line 63, in main
+    ASSETS['module'] = MODULE.read_bytes()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/pathlib.py", line 1052, in read_bytes
+    return f.read()
+           ^^^^^^^^
+OSError: [Errno 12] Cannot allocate memory

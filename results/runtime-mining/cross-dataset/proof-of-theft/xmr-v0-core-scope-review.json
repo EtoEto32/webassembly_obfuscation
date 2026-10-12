@@ -1,0 +1,47 @@
+{
+  "function": "$f111",
+  "variants": {
+    "original": {
+      "function_excerpt_sha256": "3e2c8007675cf3ad2888ce1842cada5e73cb66b42c44c55658344828861bd198",
+      "body_text_lines": 23823,
+      "guard_block_lines": [
+        2418,
+        22636
+      ],
+      "skipped_payload_lines": [
+        2422,
+        22635
+      ],
+      "skipped_payload_text_lines": 20214,
+      "retained_text_lines": 3609,
+      "declared_locals": 6068,
+      "normalized_retained_sha256": "0bf7dfa7664ae89c277148cc22e5852430ad98d9374bcc71d30a5b5507e259f8"
+    },
+    "flattening": {
+      "function_excerpt_sha256": "f6f25fd02e41e3f3e9247a51b5749280d534d43628393b9dacbb9fe8422ab1af",
+      "body_text_lines": 33251,
+      "guard_block_lines": [
+        2418,
+        32064
+      ],
+      "skipped_payload_lines": [
+        2422,
+        32063
+      ],
+      "skipped_payload_text_lines": 29642,
+      "retained_text_lines": 3609,
+      "declared_locals": 9188,
+      "normalized_retained_sha256": "0bf7dfa7664ae89c277148cc22e5852430ad98d9374bcc71d30a5b5507e259f8"
+    }
+  },
+  "body_text_growth": 9428,
+  "retained_opcode_operand_dataflow_and_local_types_match": true,
+  "rule": "Exclude only instructions after variant>=4 br_if until the matching block end. Rename locals and branch labels consistently by first occurrence, preserving numeric operands and other identifiers.",
+  "interpretation": "All net instruction-text growth in this function is in a path excluded by recorded v0 inputs. Retained text and referenced local types correspond. Changed helper bodies and unreviewed module state can still affect runtime.",
+  "limitations": [
+    "WABT instruction-text line counts, not dynamically executed instruction counts or encoded byte sizes.",
+    "Not a proof of whole-module equivalence, full v0 reachability, or absence of runtime effects.",
+    "Local declarations grow and compiled code layout/JIT behavior may differ; these effects are unmeasured.",
+    "No hashing, instrumentation, or new throughput measurement."
+  ]
+}

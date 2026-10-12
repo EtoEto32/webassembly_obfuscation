@@ -1,0 +1,40 @@
+{
+  "status": "analysis_and_paper_update_completed",
+  "completed": [
+    "Frozen seed 20261009 selection: 28 SHA-distinct modules, no exact overlap with prior 35",
+    "Named controls: 8 new program units, 20 files; exploratory corpus: 8 files with unknown ancestry",
+    "Mechanical measurement smoke checks passed on pilot name pairs and 4051 counter updates plus negative controls",
+    "All 28 input hashes verified; all disassembly packets saved",
+    "7 reviewed control findings saved: two instrumentation pairs, one ordinary branch table, one flattening function, three renaming pairs",
+    "21 evidence-backed findings cover all28 inputs; unresolved outcomes retained",
+    "Existing main.tex updated throughout, dataset/mechanism table added",
+    "Measurement, verification and evidence audit rerun successfully",
+    "Human review guide and reproducibility commands saved"
+  ],
+  "important_findings": [
+    "A-Star 2756 increments; removing increments restores all 147 original decoded functions",
+    "CreaturePack 8526 increments; restores all 756 original decoded functions",
+    "Both profiled programs append 10 counter readout functions and a five-global reset",
+    "base64-cli function 515: local3 state 0->1 dispatch preserves original three stores",
+    "Tigress same-index functions do NOT necessarily correspond: do not infer semantic pair from numeric index",
+    "Public cached SEISMIC inline_counter64 script uses globals11-15, new controls use0-4 and17-21; analogous algorithm, not exact same configured script"
+  ],
+  "remaining": [
+    "Independent human review (explicitly outside completed AI analysis)",
+    "PDF compilation/layout remains unverified due to builtin compiler environment failure"
+  ],
+  "next_commands": [
+    "python scripts/measure_rq_validation.py smoke",
+    "python scripts/measure_rq_validation.py measure",
+    "python scripts/verify_rq_validation.py"
+  ],
+  "artifact_paths": [
+    "experiments/rq-validation-selection.json",
+    "results/rq-validation/mechanical-observations.json",
+    "results/rq-validation/paired-comparisons.json",
+    "results/rq-validation/instrumentation-removal-check.json",
+    "results/rq-validation/reviewed-controls-initial.json"
+  ],
+  "human_review": "pending; never represented as completed",
+  "paper_updated_for_new_experiment": true
+}

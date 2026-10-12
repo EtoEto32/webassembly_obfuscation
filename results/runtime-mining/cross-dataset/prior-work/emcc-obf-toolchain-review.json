@@ -1,0 +1,45 @@
+{
+  "review_date": "2026-10-08",
+  "scope": "Primary README and Dockerfile reviewed via web reader; no compiler build or hash execution.",
+  "sources": [
+    {
+      "url": "https://github.com/hakonharnes/emcc-obf",
+      "location": "README Usage and Flags/BasicBlockSplit",
+      "findings": [
+        "Hikari-based LLVM obfuscation is used through Emscripten.",
+        "enable-splitobf enables BasicBlockSplit; split_num controls applications per LLVM basic block.",
+        "Documentation warns that subsequent optimization can remove obfuscation."
+      ]
+    },
+    {
+      "url": "https://github.com/hakonharnes/emcc-obf/blob/main/Dockerfile",
+      "hikari_repository": "https://github.com/61bcdefg/Hikari-LLVM15.git",
+      "hikari_branch": "llvm-16.0.0rel",
+      "hikari_submodule_update": "--remote --recursive",
+      "immutable_hikari_commit_specified": false,
+      "binaryen_commit": "ecbebfbee12f2f25af648119604915fc37427f6f",
+      "emscripten_commit": "fab93a2bff6273c882b0c7fb7b54eccc37276e03",
+      "interpretation": "Recipe pins some components but does not identify historical Hikari/remote submodule revisions."
+    }
+  ],
+  "upstream_availability": {
+    "url": "https://github.com/61bcdefg/Hikari-LLVM15",
+    "observation": "Web reader reported 404 when following the upstream link.",
+    "limitation": "Does not establish when or why the repository became unavailable."
+  },
+  "measured_artifact_connection": {
+    "source_evidence": "../proof-of-theft/xmr-source-correspondence.json",
+    "declared_flags": ["-enable-splitobf", "-split_num=3"],
+    "binary_evidence": ["../proof-of-theft/xmr-split-wrapper-review.json", "../proof-of-theft/xmr-split-helper-review.json"],
+    "interpretation": "Declared method is LLVM basic-block splitting, not function splitting or stack-storage division. Observed Wasm changes alone do not prove historical pass application."
+  },
+  "limitations": [
+    "emcc-obf URLs use main; an immutable revision and byte-identical local snapshot were not recovered in this check.",
+    "Actual SplitBasicBlocks implementation, before/after LLVM IR, and historical compiler build logs were not recovered.",
+    "Other Hikari forks found by search were not substituted as the historical compiler source."
+  ],
+  "next_evidence_needed": [
+    "Historical image/compiler digest and corresponding Hikari/submodule sources, if preserved in an archive or by artifact authors.",
+    "Controlled before/after LLVM IR with identical downstream compilation; a substitute compiler must be reported as a changed condition."
+  ]
+}

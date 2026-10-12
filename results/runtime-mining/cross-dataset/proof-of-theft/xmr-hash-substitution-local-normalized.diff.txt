@@ -1,0 +1,220 @@
+--- reference hash
+
++++ substitution hash
+
+@@ -197,128 +197,146 @@
+
+         i32.load8_u
+         local.set $v49
+         i32.const 255
+         local.set $v50
+         local.get $v49
+         local.get $v50
+         i32.and
+         local.set $v51
+-        i32.const 6
++        i32.const 1368051000
+         local.set $v52
+         local.get $v51
+         local.get $v52
+         i32.sub
+         local.set $v53
++        i32.const 6
++        local.set $v54
+         local.get $v53
+-        local.set $v54
++        local.get $v54
++        i32.sub
++        local.set $v55
++        i32.const 1368051000
++        local.set $v56
++        local.get $v55
++        local.get $v56
++        i32.add
++        local.set $v57
++        local.get $v57
++        local.set $v58
+         br $B1
+       end
+       i32.const 0
+-      local.set $v55
+-      local.get $v55
+-      local.set $v54
++      local.set $v59
++      local.get $v59
++      local.set $v58
+     end
+-    local.get $v54
+-    local.set $v56
+-    local.get $v2
+-    local.get $v56
++    local.get $v58
++    local.set $v60
++    local.get $v2
++    local.get $v60
+     i32.store8 offset=7
+     block $B3
+       loop $L4
+         local.get $v2
+         i32.load offset=44
+-        local.set $v57
++        local.set $v61
+         local.get $v2
+         i32.load offset=40
+-        local.set $v58
++        local.set $v62
+         local.get $v2
+         i32.load8_u offset=7
+-        local.set $v59
++        local.set $v63
+         i32.const 255
+-        local.set $v60
+-        local.get $v59
+-        local.get $v60
++        local.set $v64
++        local.get $v63
++        local.get $v64
+         i32.and
+-        local.set $v61
++        local.set $v65
+         local.get $v2
+         i32.load offset=28
+-        local.set $v62
+-        local.get $v62
+-        local.set $v63
+-        local.get $v63
+-        i64.extend_i32_u
+-        local.set $v64
+-        i32.const 536884360
+-        local.set $v65
+-        local.get $v57
+-        local.get $v58
+-        local.get $v65
+-        local.get $v61
+-        local.get $v64
+-        call $f35
+-        local.get $v2
+-        i32.load offset=12
+         local.set $v66
+         local.get $v66
++        local.set $v67
++        local.get $v67
++        i64.extend_i32_u
++        local.set $v68
++        i32.const 536884360
++        local.set $v69
++        local.get $v61
++        local.get $v62
++        local.get $v69
++        local.get $v65
++        local.get $v68
++        call $f35
++        local.get $v2
++        i32.load offset=12
++        local.set $v70
++        local.get $v70
+         i64.load
+-        local.set $v67
++        local.set $v71
+         local.get $v2
+         i64.load offset=16
+-        local.set $v68
+-        local.get $v67
+-        local.set $v69
+-        local.get $v68
+-        local.set $v70
+-        local.get $v69
+-        local.get $v70
+-        i64.lt_u
+-        local.set $v71
+-        i32.const 1
+         local.set $v72
+         local.get $v71
++        local.set $v73
+         local.get $v72
++        local.set $v74
++        local.get $v73
++        local.get $v74
++        i64.lt_u
++        local.set $v75
++        i32.const 1
++        local.set $v76
++        local.get $v75
++        local.get $v76
+         i32.and
+-        local.set $v73
++        local.set $v77
+         block $B5
+-          local.get $v73
++          local.get $v77
+           i32.eqz
+           br_if $B5
+           br $B3
+         end
+         i32.const 0
+-        local.set $v74
+-        local.get $v74
+-        i32.load offset=536884392
+-        local.set $v75
+-        i32.const 1
+-        local.set $v76
+-        local.get $v75
+-        local.get $v76
+-        i32.add
+-        local.set $v77
+-        i32.const 0
+         local.set $v78
+         local.get $v78
+-        local.get $v77
++        i32.load offset=536884392
++        local.set $v79
++        i32.const 0
++        local.set $v80
++        i32.const 1
++        local.set $v81
++        local.get $v80
++        local.get $v81
++        i32.sub
++        local.set $v82
++        local.get $v79
++        local.get $v82
++        i32.sub
++        local.set $v83
++        i32.const 0
++        local.set $v84
++        local.get $v84
++        local.get $v83
+         i32.store offset=536884392
+         local.get $v2
+         i32.load offset=8
+-        local.set $v79
+-        local.get $v79
+-        local.get $v77
++        local.set $v85
++        local.get $v85
++        local.get $v83
+         i32.store
+         br $L4
+       end
+       unreachable
+     end
+     i32.const 536884360
+-    local.set $v80
++    local.set $v86
+     i32.const 48
+-    local.set $v81
+-    local.get $v2
+-    local.get $v81
+-    i32.add
+-    local.set $v82
+-    local.get $v82
++    local.set $v87
++    local.get $v2
++    local.get $v87
++    i32.add
++    local.set $v88
++    local.get $v88
+     global.set $g0
+-    local.get $v80
++    local.get $v86
+     return)

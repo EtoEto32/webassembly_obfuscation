@@ -1,0 +1,46 @@
+{
+  "source_ledger_sha256": "598e9a715a9111e0f1bc53667801145f1b5fc8e85a1a238a7bb53000da7dabac",
+  "reused_findings": [
+    {
+      "finding_id": "V01",
+      "program": "A-Star",
+      "mechanism": "research_instrumentation",
+      "reasoning": "Removing matched unit-increment quadruples restores every original function; ten readout functions and a five-global reset are appended."
+    },
+    {
+      "finding_id": "V02",
+      "program": "CreaturePack",
+      "mechanism": "research_instrumentation",
+      "reasoning": "Removing matched unit-increment quadruples restores every original function; ten readout functions and a five-global reset are appended."
+    },
+    {
+      "finding_id": "V03",
+      "program": "CreaturePack",
+      "mechanism": "ordinary_numeric_base_selection",
+      "reasoning": "Selector is argument-address load at offset 4 AND 74. Branches return 8,16,0,10; no state write or loop. Symbol names num_get_base/get_base support interpretation."
+    },
+    {
+      "finding_id": "V04",
+      "program": "base64-cli.wasm",
+      "mechanism": "control_flow_flattening",
+      "reasoning": "Original three stores survive as a contiguous sequence. State local3 initialized 0 dispatches to that sequence, is updated to 1, branches back to loop, then exits via second dispatch arm."
+    },
+    {
+      "finding_id": "V12",
+      "program": "seqtk",
+      "mechanism": "control_flow_flattening",
+      "reasoning": "State at stackbase+8 starts0, dispatches to calloc(1,28), stores result at +12, changes state to1 and returns to dispatcher; state1 restores stack and returns result. Payload path matches original f11 and f45 under local renaming."
+    }
+  ],
+  "saved_instruction_checks": {
+    "instrumentation_restored_functions": [
+      147,
+      756
+    ],
+    "ordinary_branch_table_without_loop_or_store": true,
+    "base64_original_payload_contiguous": true,
+    "base64_state_zero_then_one_and_back_branch": true,
+    "seqtk_counterpart_ambiguity_preserved": true
+  },
+  "scope": "Existing saved instruction records only; no new hash/miner execution, no independently labeled full-corpus classification accuracy."
+}

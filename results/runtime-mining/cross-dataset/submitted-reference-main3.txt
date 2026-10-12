@@ -1,0 +1,838 @@
+PAGE 1
+ࠂ
+IPSJ SIG Technical Report
+WebAssembly։σʔληοτͷղੳɾ෼ੳ
+ೖʣ1
+ཁ։ WebAssemblyͤͣʹίʔυ͔ΒಡΈऔΕΔಛ௃͚ͩ
+ग़͠ɼ༨෼
+ྉΛ
+ೝͰ͖Δ͔Λ෼ੳ
+ͷ 35༻ͷ 20 ϑΝΠϧͱɼख๏Λ୳ͨ͢Ίͷ 8
+ূͰ͸ɼA-Star ͱ
+CreaturePackͷશ 147਺ͱશ 756਺ͷ໋ྩྻ
+͕ͦΕͧΕҰகͨ͠ɽ base64-cli ͱ seqtkΊΔॲཧ͕ɼ௨ৗ൛ͷͲͷॲཧʹର
+ೝͨ͠ɽҰํɼख๏Λ୳ͨ͢ΊʹબΜͩ 8ೝͰ͖ͳ
+͔Βɼ 2,049࢖
+ผͰ͖ͨɽ·ͨɼ WasmMal Ͱѱੑͱ
+෼ྨ͞Εͨ 121ͱྑੑͱ෼ྨ͞Εͨ 3ͰɼSEISMICલ
+Ͱ͸ɼW ASMixerͬͨϝϞ
+ϦͷಡΈॻ͖ΛɼCryptic BytesՌΛม͑
+Ͱ͸ɼಛ௃͕͋Δ͜
+͢ɽ
+Analysis of Public WebAssembly Datasets
+Author Name 1
+Abstract: Static indicators such as branch tables, indirect calls, and redundant instructions do not by
+themselves establish obfuscation in WebAssembly. We analyze public cryptojacking-related datasets and
+general-purpose comparison corpora to distinguish obfuscating transformations from ordinary computation
+and research instrumentation. Following a 35-binary pilot, we examine 20 paired-control ﬁles from eight
+diﬀerent programs and eight exploratory corpus ﬁles. Removing instrumentation increments restores all 147
+original functions in A-Star and all 756 in CreaturePack at the decoded-instruction level. State-dispatch
+payloads are matched to original computations in base64-cli and seqtk. Flattening remains unconﬁrmed at
+the inspected sites in the eight exploratory ﬁles, where input- or type-dependent processing remains an al-
+ternative explanation. A 2,049-entry branch table implements ordinary numeric processing, whereas veriﬁed
+ﬂattening examples update a state variable and return to a dispatcher. Functions matching SEISMIC in-
+strumentation occur in 121 malware-labeled and three benign-labeled WasmMal modules. Paired examples
+from W ASMixer conﬁrm ﬂattening, call indirection, renaming, and memory-access indirection; a Cryptic
+Bytes example also conﬁrms ﬂattening. Related public binaries contain locally redundant arithmetic, with-
+out establishing its intent or transformation history. Our ﬁndings separate observed indicators from veriﬁed
+mechanisms and provide concrete evidence for interpreting obfuscation in public datasets.
+1ೖʣ
+Aﬃliation (to be completed)
+c⃝ 1959 Information Processing Society of Japan 1
+PAGE 2
+ࠂ
+IPSJ SIG Technical Report
+1. ͸͡Ίʹ
+WebAssemblyʢWasm͠ ɼ
+JavaScriptͰ͋
+Δ [1]͕͋Γɼར༻ऀͷಉ
+ݚ
+͞Ε͍ͯΔ [2], [3]͑ํΛม͑Δͨ
+͢Δɽ
+ग़͕͋ͬͯ͠΋ɼ
+ͦΕ͚ͩͰ͸೉ಡԽͱ͸൑அͰ͖ͳ͍ɽ௨ৗͷ਺஋ॲཧ΍
+ͷͨΊ
+଄Λม͑Δɽ
+ผͤͣʹ਺͑ΔͱɼԿΛ೉ಡԽͱͯ͠਺͑ͨͷ
+࣮
+ʹͲͷॲཧ͕มΘΓɼͲͷΑ͏ʹಇ͔͘·Ͱ͸આ໌Ͱ͖
+ͳ͍ɽ
+ͱ͢Δ
+ೝ͢Δඞཁ͕͋Δ͔Λ੔ཧ͢Δɽͦͷ͏͑
+ख๏Λ෼ੳ͢
+ྉͱ͠ɼҰ
+ྉ΋༻͍
+͕ѱੑͱ෼ྨ͍ͯ͠Δ͜
+՝୊͸
+ͷೋ఺Ͱ͋Δɽ
+RQ1 WebAssemblyΒΕΔಛ௃͕ɼ೉ಡԽ
+ଌίʔυʹΑ
+ผͰ͖Δ͔ɽ
+RQ2։ WebAssembly σʔληοτΛௐ΂Δ
+ೝͰ͖Δ͔ɽ
+RQ1ΕΔྫΛ
+ՌΛಡΈ
+ࠜ
+͢ɽRQ2ͷରԠΛ
+଄Λ෼
+͏
+͑Δ͔
+ڌࠜ
+ݕ
+͸ධ
+Ձ͠ͳ͍ɽ
+2.ڀݚ
+WasmBench ͸ɼଟ༷ͳ Wasm ϓϩάϥϜΛऩूͨ͠ධ
+଄ͱ
+ʹ༻͍Δ [4]ɽMineSweeper۷࠾
+ग़Λѻ͍ [2]ɼWasmGuard ͸όΠφϦϑΝΠϧ
+ग़ํ๏Λѻ͏ [3]Ͱ͸͜ΕΒ
+͢
+ΔɽWasmBench ͷϑΝΠϧ͕͢΂ͯྑੑͰ͋Δͱ͸Ծఆ
+͠ͳ͍ɽ
+W ASMixer͸ Wasmํ๏ΛఏҊ͠ [5]ɼ
+Cryptic Bytes ͸ιʔείʔυɼLL VMɼWasm
+͍ͯ͠Δ [6]։
+ՕॴΛௐ΂Δɽ
+SW AMPEDग़ੑೳΛอͯΔ͔Λ
+෼ੳ͍ͯ͠Δ [7]ɽProof-of-Theftதͷσʔλͷྲྀ
+ग़͢Δํ๏Λѻ͏ [8]ɽ͜͏ͨ͠
+Ͱ͸ɼίʔυͷಛ௃Λ
+׵
+૊ΈΛ෼ੳ͢Δɽ
+Wobfuscator ͸ɼJavaScript ͷॲཧΛ Wasm ΁Ҡ͢ํ
+๏Λѻ͏ [9]߹
+͸ɼWasmͱ͸ௐ΂Δൣғ͕ҟ
+Έͷ Wasm͢
+ΔɽJavaScriptʹੜ੒͞Ε
+ΉɼΞϓϦέʔγϣϯશମͷ೉ಡԽ͸ର৅ͱ
+͠ͳ͍ɽ
+3. ෼ੳํ๏
+3.1 ෼ੳର৅
+࿈ͷϑΝΠϧɼҰൠ༻్ͷ
+ΛରԠ෇͚ΒΕΔϑΝΠϧΛબ
+ΜͩɽWasmMal֤7,512݅
+֤7,510͔Β໋ྩͷಛ௃ΛऔಘͰ͖ͨɽWasm-
+Bench ͷ ﬁltered ൛Ͱ͸ɼ 8,460 छྨͷ͏ͪ 8,449Ͱऔ
+ಘͰ͖ͨɽMineSweeper Ͱ͸ miner samplesɼSW AMPED
+Ͱ͸഑෍͞ΕͨೋͭͷϑΝΠϧάϧʔϓɼ Proof-of-Theft
+Ͱ͸ obfuscated miners Λର৅ͱͨ͠ɽѱੑɾྑੑͳͲͷ
+ʹѱੑ͔Ͳ͏
+͔Λ൑ఆ͠௚ͨ͠΋ͷͱ͸ѻΘͳ͍ɽ
+Cryptic Bytes४ͱͳΔ 22 ຊͷϓϩά
+ద
+ܭ45,016
+۷࠾10
+ຊɼήʔϜ 6 ຊɼϢʔςΟϦςΟ 6 ຊͰ͋ΔɽW ASMixer
+ຊΞϧΰϦζϜͱ realworld program·ΕΔ
+ܭ420͠
+͕෇͚ͨ෼ྨͷ಺༁͸ɼﬂattenܥ107 ૊ɼalias
+disruption 101 ૊ɼmemoryOB 103 ૊ɼnameOB 103 ૊ɼ
+callindirectܥ6͕ҟ
+Ήɽ
+͸ɼάϧʔϓ಺
+Ͱ SHA-256ޭ
+Δͨ
+Λ଍ͯ͠΋ॏෳΛআ͍ͨ૯਺ʹ͸ͳΒͳ͍ɽ
+ࣔ
+c⃝ 1959 Information Processing Society of Japan 2
+PAGE 3
+ࠂ
+IPSJ SIG Technical Report
+͢
+਺Λ༻͍Δɽ
+3.2ೝ
+଄ͱɼ໋
+ՌΛௐ΂ͨɽநग़ͨ͠ಛ
+௃͸ɼ ໋ྩ਺ɼnameग़
+͠ɼ Կ΋͠ͳ໋͍ྩnopදͱ͸ɼ
+ίʔυ্Ͱ loop ͷ಺ଆʹ͋Δ br table͢ɽW ABT
+ഊͨ͠ϑΝΠϧ͸ɼಛ௃͕ͳ͍ϑΝΠϧͱ
+ผͷղੳͰಠ
+ͷ෇Ճ৘ใ ʢcustom metadata ʣ Λআ͍ͨ෦෼ ʢcoreʣ Λ
+ͱ
+ผͨ͠ɽ
+ցతʹ
+֬
+ग़͕͋͠
+ग़͠ͱ
+ग़͠΁
+ߦ
+Ͱ͸35
+ূͰ͸ผͷ
+28਺ͷҙຯΛৄ͘͠
+੒ʹ͸Codex ʹΑΔ੩తղ
+ೝ͢ΔϨϏϡʔ
+͍ͯ͠ͳ͍ɽ
+3.3 ิ଍෼ੳͰ໋ྩ਺΍αΠζΛൺ΂Δํ๏
+४൛ͷ໋ྩ਺Λ I0Λ It ͱ͠ɼ໋ྩ
+਺͕Կഒʹͳ͔ͬͨΛ It/I0ΊͨɽϑΝΠϧαΠζʹ
+Λ༻͍ͨɽ Cryptic Bytesͷϓϩ
+Ίͯதԝ஋Λ
+ͷϓϩάϥϜ͝ͱ
+Ίͨɽnop ͱϧʔϓ಺෼
+ͷϓϩάϥϜ͝ͱʹɼՃ
+ͷϓϩ
+ͨ͠ɽ
+ؚ
+͠
+ՌͰ͸ͳ͍ɽ໋ྩ਺ͱϑΝΠϧαΠζ͔Βௐ΂Δͷ͸
+ग़ΛճආͰ͖Δ
+Λ୅ΘΓʹଌΔ΋ͷͰ͸ͳ͍ɽ
+3.4ೝ͢Δ͜ͱ
+RQ1ذ
+Λ௥͏ɽฏୱԽͷՄೳੑ͕͋ΔՕॴͰ
+௨ͷબ
+ೝ͢Δɽ͜ΕΛɼ௨ৗͷೖྗ஋ʹΑͬ
+ଌίʔυͷՄೳੑ͕͋ΔՕ
+਺ɼϦηοτ͢
+਺Λௐ΂ɼ SEISMICྉͱൺ΂Δɽ༨෼ͳԋ
+΍ XORͷ஋ͱɼͦͷ஋ͷ
+ೝ͢Δɽ͜Ε͸બΜͩՕॴΛ൑அ͢ΔͨΊͷख
+ଇͰ͸
+ͳ͍ɽ
+RQ2ྉΛ༏ઌ͠ɼͲ
+ͷ൛
+࿈ϑΝΠϧͱͷҧ͍ͱɼௐ΂ͨ
+ͭϑΝΠ
+Ռͱͯ͠
+ׂ
+ͱΈͳ͢͜ͱ͸͠ͳ͍ɽ
+3.5ূͰબΜͩϑΝΠϧͱධՁ͢Δൣғ
+ظ
+஋ ʢཚ਺γʔυʣ Λ20261009ఆ
+ͨ͠ɽW ASMixerͰ͸ɼ͢Ͱʹௐ΂ͨ2 ຊΛআ໊͘લ෇͖
+ຊΞϧΰϦζϜ͔Β3Δrealworld ϓϩάϥϜ͔Β
+base64-cli ΛબΜͩɽCryptic Bytes Ͱ͸ϢʔςΟϦςΟ 6
+ຊ͔Β 2 ຊɼSEISMICҎ֎ͷ
+ϓϩάϥϜ 4 ຊ͔Β 2 ຊΛબΜͩɽର৅͸ randomɼsum-
+recɼdecimaltohexɼbase64-cliɼneedleman wunschɼseqtkɼ
+A-StarɼCreaturePackΘͤͯ 20
+ʹ
+௨ϥΠϒϥ
+਺·Ͱಠཱ͍ͯ͠
+ΔΘ͚Ͱ͸ͳ͍ɽ
+͜Εͱ͸ผʹɼWasmMal ͷ malware ͱ SW AMPEDͷ
+ද͕͋Δ΋ͷͱͳ͍΋
+֤2ܭ8ͷ35 छྨͱ
+SHA-256ͷϓϩ
+ূͱ͸
+ࡧ
+Ϳɽೖྗͨ͠શ 28 ϑΝΠϧͷϋογϡΛ
+ՌΛอଘͨ͠ɽ
+ՕॴͰ͋Δɽ௥Ճର
+਺Λ༏ઌ໋ͯ͠ྩྻΛ௥ͬͨɽ୳
+ೝͨ͠ɽ
+֬
+ՌͰ͸ͳ͍ɽ
+͕ͬͨɼ
+ผͨ͠ɽ
+ʹ஋
+ೝͯ͠൑அͨ͠ɽ
+ͨ͠ɽ൑அͰ͖
+ͳ͍΋ͷΛɼແཧʹ೉ಡԽ͔ඇ೉ಡԽ͔ʹ෼͚Δ͜ͱ͸͠
+c⃝ 1959 Information Processing Society of Japan 3
+PAGE 4
+ࠂ
+IPSJ SIG Technical Report
+ߋ2 ૊
+ͱ 4,051͔Ίͨɽ
+৽ઌ͕ҟͳΔ໋ྩྻͱɼՃ͑Δ஋͕ 1 Ͱͳ໋͍ྩ
+ೝ͔ͯ͠Β༻͍ͨɽ
+͜Ε͸ɼಠཱʹ༻ҙͨ͠ਖ਼ղͷ෼ྨͱൺ΂ͯɼ෼ྨਫ਼౓Λ
+ଌͬͨ΋ͷͰ͸ͳ͍ɽ
+4. RQ1ଌίʔυͱ
+ผ
+4.1৽Λௐ΂Δ
+ؔ
+਺Ͱ͸ɼೖྗͷϏοτྻΛ 52 ϏοτӈʹͣΒ͠ɼ2047 Λ
+ઌΛ
+਺෦ʹର
+Ί 2,049 ཁૉ͕͋ͬͨɼ
+ઌͷਂ͞͸ 3 छྨ͚ͩͰɼ2,047 ཁૉ͕ಉ͡ਂ͞ 2 Λ
+ʹԠͨ͡௨ৗͷॲཧͱ
+͏ঢ়ଶͷ਺ͱ
+͸ͳ͍ɽ
+ड़͢Δ W ASMixerͷ md5લ
+௨ͷ
+ذ
+ͷೖྗ͔ΒಘΔ஋
+ఆ͢ΔͨΊʹॻ͖໭͢ঢ়ଶ
+ͷॲཧΛରԠ෇
+ผͨ͠Θ͚Ͱ͸ͳ͍ɽͨͩ
+଄͚ͩ
+Ͱ͋ΒΏΔϓϩάϥϜͷ೉ಡԽΛ൑ఆ͢Δ͜ͱ͸͠ͳ͍ɽ
+4.2ೝ͢Δ
+SEISMICྉ [10] ͱ ର Ԡ ͢ Δ Ұ ྫ Ͱ ͸ ɼ
+global.getɼi64.const 1 ɼi64.addɼglobal.set ͷ 4
+৽͢ΔՕॴ͕ 4,051৽
+͢Δ globalɼANDɼ γϑτɼXORଌʹ
+਺ͱ 0
+ͬ
+͍ͯͨɽ͜ͷ 4ܭ߹16,204 ໋ྩͰɼίʔυ͔
+Β਺໋͑ͨྩ૯਺ 47,033 ͷ໿ 34.45%߹ׂ
+ͷϑΝΠϧ͔Βͷ૿Ճ཰Λද͢΋ͷ
+Ͱ͸ͳ͍ɽ
+શҰக͸ɼ WasmMal ͷ malware Ͱ
+121ɼbenign Ͱ 3౰͢Δmalware ϑΝ
+ΠϧͰ͸ɼίʔυ͔Β਺໋͑ͨྩ૯਺ͷ 34.35–34.47%Λɼ
+৽͢Δ໋ྩྻ͕઎Ίͨɽ͜ΕΒΛ୯ʹ೉ಡԽ
+Λ೉ಡԽͷ
+৽ʹՃ͑ͯɼಡग़͠΍Ϧ
+ଌ
+ଌίʔυ͕͋ͬͯ΋ɼ
+Βͳ͍ɽ
+4.3མɼXOR ΛͲ͏൑அ͢Δ͔
+ྑੑͱ෼ྨ͞ΕͨϑΝΠϧʹ΋ɼnopɼ0࣮
+͕౸ୡ͠ͳ໋͍ྩྻ͕͋ͬͨɽผͷྑੑͱ෼ྨ͞Εͨྫ
+Ͱ͸ɼXORͷઈର஋Λ
+ͷ෼ྨ͚ͩͰ͸೉
+ೝ͢
+Δඞཁ͕͋Δɽ
+ಉ༷ʹɼ௨ৗͷϏϧυͰ΋ name ηΫγϣϯ͕ͳ͘ͳΔ
+ೝ͢Δʹ͸ɼର
+͏
+XORड़͢Δ W ASMixerͷ 2 ྫͰ͸ɼ伴ʹ૬౰͢Δ
+global ͕ 0 ͷ··ͩͬͨɽͦͷͨΊɼθϩҎ֎ͷ伴ʹΑΔ
+Խͱ͸൑அͰ͖ͳ͔ͬͨɽ·ͨɼόΠτྻͷҧ͍͸ɼ
+ํ͕ҟͳΔ͚ͩͰ΋ੜ͡Δɽͦ͜Ͱɼ໋
+ͬͨɽ
+4.4ೝ͢Δ
+A-Starଌ൛ʹ͸ 2,756 ՕॴɼCreaturePackଌ
+൛ʹ͸ 8,526 Օॴͷɼ஋ΛҰͭ૿΍໋͢ྩྻ͕͋ͬͨɽಉ
+͡ global ΛಡΈɼ1 ΛՃ͑ͯॻ͖໭͢ 4༻ͷ
+໋ྩྻ͔ΒऔΓআ͍ͨɽ͢Δͱɼ௨ৗ൛ͷશ 147਺ɼશ
+756ఆ͢Δ਺஋ɼϩʔΧϧม਺ͷ
+ଌ൛ʹ͸ɼ্ҐɾԼ
+ܭ10਺ͱɼ5 ม਺ΛϦηοτ͢Δ 1਺͕
+Γฦ໋͢ྩ͕͋Δ͜
+ʹͳΔɽͨͩ
+࡞
+ΛධՁͨ͠Θ͚Ͱ͸ͳ͍ɽ
+৽ର৅͸ɼA-Star Ͱ͸ global 0–4ɼCreaturePack Ͱ͸
+17–21ͷ 11–15஌ͷ൪
+૷Ͱಉ͡Α
+ূͰ͸ɼಉ͡ม਺ΛಡΈ
+ͱɼ௨ৗ൛ͱͷରԠΛ
+ೝͨ͠ɽ
+ೝͨ͠௥Ճྫʹɼ CreaturePack਺
+400ఆ͞ΕͨҐஔ͔Β஋Λ
+ಡΈग़͠ɼ74 ͱͷ ANDઌΛબͿɽ
+ฦ͢஋͸ 8ɼ16ɼ0ɼ10਺໊΋ɼ ೖྗ
+͍ͯ͠Δɽ͜
+ද͕͋Δͩ
+͚ͰฏୱԽͱղऍ͢΂͖Ͱ͸ͳ͍ɽ
+Ұํɼbase64-cli਺ 515 Ͱ͸ɼ௨ৗ൛ͷ 3ࠐ
+ΈΛอͪͳ͕Βɼlocal 3 Λ 0 ͔Β 1දʹ໭
+۠
+ͷॲཧͱͷରԠͰ͋Δɽ
+ʹͨ͠Θ͚Ͱ͸ͳ͍ɽ
+c⃝ 1959 Information Processing Society of Japan 4
+PAGE 5
+ࠂ
+IPSJ SIG Technical Report
+4.5མͱ͢ྫɼ൑அͰ͖ͳ͍ྫ
+௥Ճͨ͠ 3 ຊͷ memoryOB ൛ʹ͸ XOR ͕͕͋ͬͨɼ 伴
+ʹ૬౰͢Δ global ͸ 0 ͔ΒมΘΒͳ͔ͬͨɽͦͷͨΊɼθ
+͑ΒΕͳ͔ͬͨɽ·ͨɼ
+৽ྻ͸ɼऔΓআ͘ͱ௨ৗ൛ͱҰகͨͨ͠Ίɼ୯
+ͳΔ೉ಡԽͷͨΊͷ༨෼ͳ໋ྩͱ͍͏આ໌͸౰ͯ͸·Βͳ
+ํΛͦͷ··൑அ
+஌཰Λଌͬ
+ͨ΋ͷͰ͸ͳ͍ɽ
+seqtk਺
+͕ҟͳ
+Δ 2͚ͭɼঢ়ଶ 0ɼ1͢Δ
+ॲཧྻΛऔΓग़ͨ͠ɽϩʔΧϧม਺ΛରԠ෇͚ΔͱɼͲͪ
+ΊΒΕͳ
+͍ɽneedleman wunschೝ͠
+ఆͰ͖ͳ͔ͬͨɽ͜
+ೝͰ͖ͨྫͱಉ͡ʹ͸ѻΘͳ͍ɽ
+4.6 RQ1 ΁ͷճ౴
+ྫͰ͸ɼίʔυͷಛ௃ͷ༗ແʹՃ͑ͯɼ஋Λ
+ޙ
+ೝ͢Δ͜ͱͰɼ
+ผͰ͖
+ิʹͱͲΊ
+ͨ͠΋ͷͰ͋Γɼ
+ผਫ਼౓Λอূ͢Δ΋ͷͰ
+͸ͳ͍ɽ
+5. RQ2ೝͰ͖ͨ೉ಡ
+Խख๏
+RQ1࣮
+ೝ͢ΔɽҎԼͰ͸ɼW ASMixerͱ
+Cryptic BytesΒΕ
+ಛ௃
+Λॱʹड़΂Δɽಉ͡ϑΝΠϧ͕ෳ਺
+ྉͰ
+Βͳ͍ɽ
+5.1ϑϩʔฏୱԽ
+W ASMixerͷ md5ͨ͠ɽ௨ৗ൛ͷ
+to bytes ͸ɼ੔਺Λ 0ɼ8ɼ16ɼ24 ϏοτͣͭͣΒ͠ɼ 4
+όΠτʹॱʹॻ͖ग़͢ɽﬂatten ൛Ͱ͸ɼlocal 20 ʹอଘ͠
+͢Δॲཧ
+௨ͷબ୒
+ͷॱʹมԽͨ͠ɽ
+0 → 2 → 4 → 1 → 5 → 3 → 6
+׵
+͸ঢ়ଶͷ஋Λ௥ͬͯௐ΂Δඞཁ͕͋ΔɽղੳͰ͸ɼঢ়ଶ
+௨ͷબ୒ॲཧ
+ೝ͢Δɽ
+Cryptic Bytes ͷ f1-race Λ Tigressͨ͠൛Ͱ΋ɼ
+ೝͨ͠ɽ main Ͱ͸ɼlocal 5 ʹ 88 ΛՃ
+͑ͨϝϞϦΞυϨεʹঢ়ଶͷ஋Λอଘ͢Δɽͦͷ஋ΛಡΈ
+ग़͠ɼ27දͰॲཧΛબͿɽঢ়ଶΛ 23ɼ10ɼ18
+௨ͷબ୒ॲཧʹ໭ΔՕॴ͕͋ͬͨɽ௨
+ৗ൛ͷ mainද͕ͳ͍ɽҰํɼϞδϡʔϧશମͰ
+͸௨ৗ൛ʹ΋ 701൛ʹ͸ 738ද͕͋
+ͱ೉
+૊ΈΛൺ
+Ϛϧ΢ΣΞͰͷར༻ྫͱ͸ѻΘͳ͍ɽ
+5.2ग़͠
+md5 ͷ callindirect ൛Ͱ͸ɼ಺෦ͷ start ʹ͋Δ call
+21 ͱ call 31 ͕ɼͦΕͧΕςʔϒϧͷ 54 ൪ͱ 20࢖
+ग़͠ʹมΘΔɽ element ηΫγϣϯΛௐ΂Δͱɼ
+54਺ 21ɼ20਺ 31ग़͠ઌ
+ग़͠ʹมΘͬͨ͜ͱΛ
+ೝͰ͖Δɽ
+Λௐ΂Δʹ͸ɼ ςʔ
+ೝ͢Δඞཁ͕͋Δɽͨͩ͠ɼ
+͢஋͕ఆ਺Ͱ͋Γɼͦ
+ݩ
+͕೉͍͠ͱ
+தʹςʔϒϧΛॻ͖
+ࡶ
+͢Δɽ
+5.3ߋ
+W ASMixerͷ nameOB ൛Ͱ͸ɼdekhash ͷ DEKHash ͕
+mduahvzb ʹɼvowels ͷ main ͕ ypzncwhe ʹมΘΔɽ໊લ
+ఆ͢Δ਺஋ɼ
+͸ɼͦΕͧΕશ 53਺ɼશ 55਺Ͱ
+Δ͕ɼ໋
+Δɽ
+ͨͩ͠ɼcode ηΫγϣϯͷόΠτྻ͸Ұக͠ͳ͔ͬͨɽ
+globalͳͲΛ LEBʹॻ
+͑ΒΕͨՕॴ͕͋ΔͨΊͰ͋Δɽ͜ͷྫͰ͸ɼόΠτ
+଄Λൺ΂Δ͜
+ʹͳͬͨɽ
+5.4ͬͨϝϞϦͷಡΈॻ͖
+dekhash ͱ vowels ͷ memoryOB ൛Ͱ͸ɼϝϞϦΛ௚઀
+Θ͍ͬͯ
+਺͸ɼΞυϨεͷൣғͱಡΈॻ͖͢Δ෯ʹԠ͡
+ͯॲཧΛ෼͚ɼglobal 1 ͱͷ i64.xorΈ
+c⃝ 1959 Information Processing Society of Japan 5
+PAGE 6
+ࠂ
+IPSJ SIG Technical Report
+਺·ͰͨͲΓɼΞ
+υϨεͱ஋Λ௥͏ඞཁ͕͋Δɽ
+ͨͩ͠ɼ྆ྫͷ global 1஋͸ 0 ͩͬͨɽ஋Λม͑
+Δ໋ྩ΋ɼglobal ͷ import/exportೝͰ͖
+Ͱ͋Γɼ 0
+ԽͰ͸ͳ͍ɽ XOR ͕͋Δ͔
+ೝ͢Δ
+ೝͨ͠ 2 ྫʹ
+Δɽ
+5.5ࢉ
+WasmMalͨ͠ɼίʔυ͕
+։ϑΝΠϧͷҰ૊Ͱ͸ɼ59਺த 57਺ͱσʔ
+਺ʹ͸ɼ0 ͱͷ XORɼ0
+ͯΔ dropͷ
+AND ͕͋ͬͨɽผͷ૊Ͱ͸ 54਺த 53਺ͱσʔλྖ
+Ҭ͕Ұக͠ɼ0ͱ 0ೝ͠
+ՌΛม͑ͣʹɼ໋ྩྻ΍
+Ͱ͋Δɽ
+ऀ
+࣮
+ʹ
+Λ͢
+Δ͜ͱ͸ূ໌͍ͯ͠ͳ͍ɽ
+5.6ͷछྨ
+ද 2ͮ͘Cryptic Bytesߏ
+੒͸ಉ͡Ͱ͋Δɽ
+อଘ৔ॴ͝ͱʹ਺͑ͨϑΝΠϧͷ 98.34%Λ wasm-mutate
+࣮
+ྉͰ͋Δ͜ͱ͕෼͔ΔɽLL VMͱ Tigress ʹ͸ͦΕ
+·ΕΔͨΊɼ͜ͷ෼ྨ͚ͩͰ͸ɼͲͷ
+·Βͳ͍ɽ
+W ASMixer઀
+Ͱ͖Δɽͨͩ͠ɼ
+औಘͨ͠ basic-algorithms Ͱ͸ɼﬂatten ͱ alias disruption
+֤101ͷ origin ͱόΠτ
+ೝͨ͠ྫʹ͸਺
+ʹҧ͍
+͕͋Δ realworld programͷ
+ผ͢Δɽ
+5.7 σʔληοτ͝ͱͷಛ௃ͷҧ͍
+ද 3ͭ
+͢ɽ͜Ε͸ಛ௃ͷ༗ແΛ਺͑ͨ஋Ͱ͋
+Ͱ͸ͳ͍ɽ
+WasmMal Ͱѱੑͱ෼ྨ͞Εͨ malware άϧʔϓͰ͸ɼ
+nopΉϑΝΠϧ͸59.57%Ͱɼ ྑੑͱ෼ྨ͞Εͨbenign
+άϧʔϓͷ 20.27%ද
+͸ɼmalware ͕ 46.07%Ͱ͋Δͷʹର͠ɼbenign
+͸ 52.77%ɼWasmBench ͸ 56.66%Θ
+࿈ͷϑΝΠϧʹҰ཯ʹଟ͍Θ͚Ͱ͸ͳ
+·
+ΕΔɽ
+Proof-of-Theft ͷ obfuscated minersذ
+͕ 90.63%ɼnop͕ 8.59%ͩͬͨɽ
+nop ͷଟ͍ WasmMal ͷ malware͔
+·ΕΔίʔυͷಛ௃͕ҟ
+ͷ৚
+࿦͠
+ͳ͍ɽ·ͨɼ WasmMal ͷ malware Ͱ͸ 89.64%ͷϑΝΠ
+ϧʹ name͸໊લ͔Βॲ
+ʹ
+ࣄ
+ͱͨ͠ɽ
+5.8ྫ
+base64-cli਺ 6 Ͱ͸ɼ௨ৗ൛ͷ call 708 ͕ɼఆ਺
+709ग़͠ʹมΘͬͨɽ element ͷ 709ؔ
+਺ 708༝
+ͷ 3 ૊Ͱ͸ɼ
+random ͱ sumrec ͷશ 53਺ɼdecimaltohex ͷશ 52ؔ
+ͰҰக͠ɼ໊લ
+͸มΘ͍ͬͯͨɽ
+ϝϞϦͷಡΈॻ͖Ͱ͸ɼಉ͡ 3 ϓϩάϥϜͰબΜͩՕॴ
+ೝͨ͠ɽΦϑηοτ 56Ήॲཧ͕ɼิॿ
+ग़͠ͱ 32Θ͍ͬͯͨɽ
+਺͸ɼΞυϨεͷൣғͱಡΈॻ͖͢Δ෯ͰॲཧΛ෼
+͚͍ͯͨɽglobal 1஋͸ 0Ή໋ྩ΋
+import/export ΋ͳ͔ͬͨɽͦͷͨΊɼ͜ͷ XOR Λθϩ
+௨
+ϥϯλΠϜͷॲཧͰ͋Γɼ3͠
+ͨ͜ͱΛҙຯ͠ͳ͍ɽ
+Cryptic Bytes ͷ seqtk਺ 43 ͕ελο
+Ϋ্ͷঢ়ଶΛ 0ɼ1৽͢Δɽঢ়ଶ 0 Ͱ͸ɼҾ਺ 1 ͱ 28
+਺ 263ՌΛอଘ͢Δɽঢ়ଶ 1 Ͱ͸ɼ
+ཧ͢ΔॲཧΛআ͖ɼϩʔΧϧม
+਺ 11 ͓Αͼ 45 ͱॲཧྻ͕
+Ұகͨ͠ɽ௨ৗ൛ͷ͜ͷ 2਺͸໋ྩྻ͕ಉ͡Ͱ͋ΓɼͲ
+ఆͰ͖ͳ͍ɽ
+༻ͷ WasmMalɾSW AMPEDܭ8 ϑΝΠϧͰ͸ɼ
+ɼೖྗόΠτɼϝϞϦ
+ுͨ͠
+όΠτͷ஋͕ 0 ͔ 37 ͔ͰॲཧΛ෼͚Δྫ΍ɼೖྗόΠτ
+͔Β 46ྻ΍਺஋Λղੳ͢Δ௨ৗͷॲཧ
+ೝՕॴͰ͸ɼฏୱԽͱஅఆ͠
+c⃝ 1959 Information Processing Society of Japan 6
+PAGE 7
+ࠂ
+IPSJ SIG Technical Report
+ද 1ڹ
+T able 1 Observed mechanisms and implications for analysis.
+ೝͰ͖ͨൣғ
+௨ͷબ୒ॲཧʹ
+໭Δ
+ॲཧͷॱংΛௐ΂Δʹ͸ঢ়ଶͷ஋Λ௥͏ඞཁ͕͋
+දͷ਺͚ͩͰ͸൑ผͰ͖ͳ͍ɽ
+֬
+Ͱ͖ͨɽ
+໊લ͔ΒॲཧΛཧղ͠ʹ͘͘ͳΔɽ໋ྩͱɼ໋ྩ
+Δɽ
+ೝྫ
+Ͱ͸ 0ೝͰ͖ͳ͍ɽ
+ͳͲͰҰ෦ͷ໋ྩ
+ߋ
+ʹ͸୯७Խ
+Ͱ͖Δ΋ͷ͕͋Δɽ
+ද 2 Cryptic Bytesͷ෼ྨʣ
+T able 2 Declared transformation families in each release.
+ͷϓϩάϥϜ਺ ϑΝΠϧ਺
+४൛ 22 22
+LL VMܥ22 176
+Tigress 22 176
+wasm-mutate 22 22,134
+ܭ߹22 22,508
+ͳ͔ͬͨɽϑΝΠϧશମʹ೉ಡԽ͕ͳ͍ͱ෼͔ͬͨΘ͚Ͱ
+͸ͳ͍ɽ
+ද 4ΘΕ
+ೝͨ͠SEISMIC ͷϑΝ
+Πϧʹ͸ɼಉ͡όΠτྻͷ·· WasmBench ΍ WasmMal
+༻ϑΝΠϧ΋ɼෳ਺
+͕͋ΔɽͦͷͨΊɼಉ͡ϑΝΠ
+Λɼಠཱͨ͠ෳ਺ͷར༻ྫͱͯ͠਺͑ͳ͍ɽ
+5.9 RQ2 ΁ͷճ౴
+ͷରԠ͔Βɼ W ASMixerϑϩʔฏୱ
+਺
+ೝͨ͠ɽ Cryptic Bytes ͷ
+Tigressೝͨ͠ɽWasmMal
+ՌΛ
+͕͋ͬͨɽͨͩ͠ɼͲͪΒͷϑΝΠϧ͔ΒͲ
+ఆͰ͖ͳ
+༻ϑΝΠϧͰ΋͜ΕΒͷ
+ೝͨ͠ɽҰํɼWasmMalɾSW AMPEDࡧ
+ೝՕॴΛฏୱԽͱஅఆͰ͖ͳ͔ͬͨɽ
+MineSweeperɼProof-of-TheftɼWasmBench࣋
+ྉͷख๏
+ͤ
+ผʹ
+͞Βʹௐ΂Δඞཁ͕͋Δίʔυͷಛ௃Ͱ͋Δɽ
+6.ʹΑΔ໋ྩ਺΍αΠ
+ζͷมԽ
+RQ1 Ͱಛ௃ΛͲ͏൑அ͢Δ͔ͱɼ RQ2ͷछྨΛ
+Ͱଌఆͨ͠஋Λ༻͍Δɽ
+ද 5 ʹɼCryptic BytesϓϩάϥϜ 10 ຊͰଌఆͨ͠
+దԽ൛Ͱ͸ɼ Tigress४൛
+ͷ 1.474 ഒɼϑΝΠϧαΠζ͕ 1.647ͭͷ෼ྨͷ
+Έ൛Ͱ΋ɼ ໋ྩ਺͸Tigress
+͕ 1.401 ഒɼwasm-mutate ͕ 1.350 ഒɼLL VM͕ 1.060
+ͬͨɽ
+Βͳ͍ɽ nop ͕
+ʹͳΒͳ͍ɽwasm-
+mutate Ͱ૿͑ͨ nopۉ49.00࠷
+Έ൛Ͱ͸໿ 0.0002ࡁ
+४൛ͷ 1.350ࠩ
+͸ nop ͚ͩͰ͸આ໌Ͱ͖ͳ͍ɽ
+Tigressۉ
+20.31Έ൛Ͱ 21.05 ՕॴͩͬͨɽLL VMܥ
+Ͱ͸ɼͦΕͧΕ 8.91 Օॴɼ−1.45ޙ
+Δಛ௃͸ɼπʔϧͷ෼ྨʹΑͬͯҟͳΔɽෛͷ஋͸ɼ
+͢ɽͨͩ͠ɼ͢
+ͨ͜͠ͱΛҙຯ͢ΔΘ͚
+·ΕΔͨΊɼ
+TigressΛฏୱԽ͚ͩʹΑΔ΋ͷͱ͸ղऍ͠ͳ͍ɽ
+7.࡯ߟ
+7.1͔ΒԿΛ൑அͰ͖Δ͔
+RQ1 ͱ RQ2ผͷ
+ද΍ nopΉϑΝΠϧ
+ྉ͝ͱͷҧ͍͕෼͔
+ΘΕ͔ͨΛઆ໌͢Δʹ͸ɼঢ়ଶͷ
+ೝ͢Δඞཁ͕͋Δɽྫ͑͹ɼϧʔ
+͸ɼ WasmBench ͷํ͕
+c⃝ 1959 Information Processing Society of Japan 7
+PAGE 8
+ࠂ
+IPSJ SIG Technical Report
+ද 3ϑΝΠϧ಺ɼ%ʣ
+T able 3 Structural feature prevalence among successfully analyzed modules.
+ग़͠ nop
+WasmMal ʗ malware 7,510 46.07 98.88 59.57
+WasmMal ʗ benign 7,510 52.77 81.85 20.27
+WasmBench ʗ ﬁltered 8,449 56.66 82.73 25.79
+MineSweeper ʗ miner samples 33 33.33 100.00 54.55
+SW AMPEDʗ Cryptojackers 43 42 42.86 100.00 57.14
+SW AMPEDʗ Malware 31 30 53.33 96.67 40.00
+Proof-of-Theft ʗ obfuscated miners 128 90.63 78.13 8.59
+ද 4ڌࠜ
+T able 4 Mechanisms, structures, and evidence in the additional analysis.
+ͱൣғ
+W ASMixerʗ
+base64-cli
+਺ 515 ͷঢ়ଶ 0ɼ1ΈྻʹରԠɽ
+਺ 6਺ 708ɽ
+W ASMixerຊ 3
+ຊ
+͏
+ϝϞϦͷಡΈॻ͖
+਺͕Ұக͠ɼ໊લ͸ҟͳΔɽબΜ
+ɽθϩҎ֎ͷ伴ʹΑΔ҉
+ೝɽ
+Cryptic Bytes ʗ
+seqtk
+ฏୱԽ ঢ়ଶΛ௥ͬͨॲཧྻ͕௨ৗ൛ͷ 2਺ͱҰகɽରԠઌΛ
+ΊΒΕͳ͍ɽ
+Cryptic Bytes ʗ
+needleman wunsch
+௨ͷબ୒ॲཧ΁ͷ໭ΓΛ
+ఆɽ
+SEISMICҎ֎
+ͷ 2 ຊ
+਺ͱҰகɽಡग़͠ 10ؔ
+਺ͱϦηοτ 1ೝྫʹ͸਺͑ͳ
+͍ɽ
+WasmMalɾ
+SW AMPEDࡧ
+༻ 8݅
+ೝՕॴͰ͸ฏୱԽͱஅఆ
+Ͱ͖ͣɽ௨ৗͷॲཧͱ΋આ໌Ͱ͖Δɽ
+ද 5ϓϩάϥϜ 10Ͱଌఆʣ
+T able 5 Measured eﬀects on ten mining programs.
+഑෍൛ ෼ྨ ໋ྩ਺ൺ αΠζൺ nop ૿Ճ਺
+దԽ LL VM 1.089 1.108 0.00
+Tigress 1.474 1.647 0.00
+wasm-mutate 1.395 1.396 49.00
+Έ LL VM 1.060 1.085 0.00
+Tigress 1.401 1.508 0.00
+wasm-mutate 1.350 1.330 0.0002
+WasmMal ͷ malwareՌ͚ͩͰ
+ฏୱԽ͕ଟ͍ͱ͸൑அͰ͖ͳ͍ɽ
+ʹ
+Βͳ͍ɽW ASMixerݩ
+໊ɼ
+͢͜ͱͰɼ
+ɼख๏
+͛ɼ
+Γ͕͋Δ͔ͷධ
+ՁΛՃ͑Δඞཁ͕͋Δɽ
+7.2Ͱ஫ҙ͢Δ͜ͱ
+ଌίʔυ͕ίʔυதͷ໋ྩͷ໿ 3 ෼ͷ 1 Λ઎ΊΔྫ͔
+͠ಘΔ͜ͱ
+ग़͢
+ଌίʔυΛऔΓ
+ग़ੑೳ͕
+࠾
+ผ͢Δ͜ͱ
+ՌΛཧղ͢ΔͨΊͷલఏͱͳΔɽ
+ຊΞϧΰϦζϜ΍ήʔϜ΋
+ʹ
+ͷΫϦϓτδϟοΩϯά
+ࢿ
+Λଌͬͨ΋ͷͰ͸ͳ͍ɽ
+7.3ূͰ෼͔ͬͨ͜ͱ
+Ҏ֎ͷ 2ଌॲཧΛରԠ෇͚ΒΕ
+c⃝ 1959 Information Processing Society of Japan 8
+PAGE 9
+ࠂ
+IPSJ SIG Technical Report
+܎ؔ
+ߋ
+ྫΛ௥Ճͨ͠ɽͨͩ
+ʹ
+ࡧ
+༻ 8ද͕͋Δ
+֬
+ಀ͕͋͠Δ͔͸ධՁ͍ͯ͠ͳ͍ͨΊɼ೉ಡԽ
+࿦͠ͳ͍ɽ
+7.4͔ΒओுͰ͖Δൣғ
+Ռ͸ɼRQ1 ͰҟͳΔઆ໌Λൺ΂ΔྫɼRQ2
+ׂ
+΋ɼnop
+͢ิ଍
+Δ
+ग़ΛͲΕ
+՝୊
+ͯ͠౴͑Δɽଌ
+Ίͳ͍ɽ
+8.ੑ
+ྉΛ෼ੳͨ͠ɽ৽ͨʹ Web
+αΠτΛ८ճͯ͠ϑΝΠϧΛूΊͨΘ͚Ͱ͸ͳ͘ɼ2025 ೥
+10͔Β 2026 ೥ 10Ͱ΋ͳ͍ɽ
+ྉʹΑΔภΓ͕͋Γɼ͢΂ͯͷ
+޻
+͍ͯ͠ΔͨΊɼಛ
+߹ׂ
+ͱΈͳ͢͜ͱ͸Ͱ͖ͳ͍ɽ
+ث
+ݶ
+֤
+ͨ͠දͱɼ௥ՃղੳͰख๏
+ผ͢Δɽ
+ث
+͍ͬͯͳ͍ɽRQ1 ʹ͍ͭ
+ͯ͸ɼಠཱʹ༻ҙͨ͠ਖ਼ղͷ෼ྨͱൺ΂ͯɼ൑ఆ͕ͲΕͩ
+͚ͭ
+཰ΛධՁ͍ͯ͠ͳ͍ɽ RQ2 ʹ͍ͭͯ΋ະ
+ݶ
+ΒΕΔɽ
+ഊ ͠ ͨ ϑ Ν Π ϧ ΋ ͋ Δ ɽMineSweeper ͷ
+crawled-sitesผͰ͖ͨ 36 छྨͷϑΝΠϧ͸
+ഊͨͨ͠Ίɼදʹ͸ผ్ղੳͰ͖ͨ miner sam-
+plesՌ Λ ༻ ͍ ͨ ɽղ ੳ ͔ Β আ ֎ ͠ ͨ ͜ ͱ ͸ ɼಛ ௃
+Ͱ͖ΔΑ͏
+ʹɼೖྗϑΝΠϧͷҰཡɼ SHA-256ɼநग़ͨ͠ಛ௃ɼม
+ผʹղੳͨ͠ՕॴΛอଘͨ͠ɽ
+͸cohort-summary.csvɼ
+มԽྔ͸ cryptic-bytes-feature-summary.csvɼW AS-
+Mixerͷ૊͸ wasmixer-pairs.csvೝͨ͠Օॴ
+͸ review-index.csvʹ͸औಘख
+ऀͷόΠφϦϑΝΠ
+ʹै͏ɽ
+͸
+rq-validation-selection.jsonূ
+Ռ͸ input-verification.jsonցత
+Ռ͸ paired-comparisons.json ͱ
+instrumentation-removal-check.jsonͱ
+໋ྩྻ͸ review-ledger.json࿥͍ͯ͠Δɽଌఆͱ
+ɼਓ
+ʹͲͷঢ়ଶ΁ҠΔ͔ɼseqtk Ͱ
+ྫΛ௨ৗͷॲཧͱ͠
+ೝ͢Δඞཁ͕͋Δɽ
+9. ·ͱΊ
+։ WebAssembly͍ɼ
+༻
+ྉͰ
+ೝͰ͖Δ͔Λ෼ੳͨ͠ɽRQ1 Ͱ͸ɼ ෼
+৽ɼ Χ΢ϯλͷಡग़͠ͱϦηοτɼ
+ೝͨ͠ɽ͜ΕʹΑΓɼಉ͡ಛ௃͕͋ͬ
+ͨ͠ɽ
+RQ2ྉͰɼฏୱԽɼςʔ
+ͬͨ
+࿈ϑΝΠϧͰ΋ɼҰ෦ʹ
+݁
+͠ɼ
+ূͰ
+͸ɼ༻్͕ҟͳΔ 2৽ྻΛআ͘
+͏ঢ়ଶ
+ೝͨ͠ɽҰํɼ
+༻ϑΝΠϧͰख๏
+ʹΑΔಠཱͨ͠
+ೝՕॴͷղੳΛਐΊɼ൑அ͕ͲΕ͚ͩ৴པ
+ূ͢Δɽ
+ݙ
+[1] WebAssembly: WebAssembly, https://webassembly.
+org/. Accessed 2026-10-06.
+[2] Konoth, R. K., Vineti, E., Moonsamy, V., Lindorfer,
+M., Kruegel, C., Bos, H. and Vigna, G.: MineSweeper:
+An In-depth Look into Drive-by Cryptocurrency Min-
+ing and Its Defense, Proceedings of the 2018 ACM
+SIGSAC Conference on Computer and Communica-
+tions Security , ACM, pp. 1714–1730 (online), DOI: 10.
+1145/3243734.3243858 (2018). https://doi.org/10.
+c⃝ 1959 Information Processing Society of Japan 9
+PAGE 10
+ࠂ
+IPSJ SIG Technical Report
+1145/3243734.3243858.
+[3] Sun, Y., Chen, H., Fu, Z., Lv, W., Liu, Z. and Liu,
+H.: WasmGuard: Enhancing Web Security through Ro-
+bust Raw-Binary Detection of WebAssembly Malware,
+Proceedings of the ACM Web Conference 2025 , ACM,
+(online), DOI: 10.1145/3696410.3714696 (2025). https:
+//doi.org/10.1145/3696410.3714696.
+[4] Hilbig, A., Lehmann, D. and Pradel, M.: An Empirical
+Study of Real-World WebAssembly Binaries: Security,
+Languages, Use Cases, Proceedings of the Web Con-
+ference 2021 , ACM, (online), DOI: 10.1145/3442381.
+3450138 (2021). https://doi.org/10.1145/3442381.
+3450138.
+[5] Cao, S., He, N., Guo, Y. and Wang, H.: W ASMixer: Bi-
+nary Obfuscation for WebAssembly, arXiv:2308.03123v1
+(2023). https://arxiv.org/abs/2308.03123v1.
+[6] Harnes, H. and Morrison, D.: Cryptic Bytes: We-
+bAssembly Obfuscation for Evading Cryptojacking De-
+tection, arXiv:2403.15197v1 (2024). https://arxiv.
+org/abs/2403.15197v1.
+[7] Kim, T., Oh, S., Lee, K., Wang, W., Kwon, Y., Hong,
+S. and Kim, H.: When Does Wasm Malware Detection
+Fail? A Systematic Analysis of Their Robustness to Eva-
+sion, Proceedings of the 40th IEEE/ACM International
+Conference on Automated Software Engineering , IEEE,
+pp. 2957–2969 (online), DOI: 10.1109/ASE63991.2025.
+00243 (2025). https://doi.org/10.1109/ASE63991.
+2025.00243.
+[8] Sermchaiwong, T. and Shen, J.: Proof-of-Theft:
+Dynamic Graph-Based Fingerprinting of In-Browser
+Cryptomining, 40th European Conference on Object-
+Oriented Programming (ECOOP 2026) , Leibniz Inter-
+national Proceedings in Informatics (LIPIcs), Vol. 372,
+Schloss Dagstuhl – Leibniz-Zentrum f¨ ur Informatik, pp.
+25:1–25:31 (online), DOI: 10.4230/LIPIcs.ECOOP.2026.
+25 (2026). https://doi.org/10.4230/LIPIcs.ECOOP.
+2026.25.
+[9] Romano, A., Lehmann, D., Pradel, M. and Wang,
+W.: Wobfuscator: Obfuscating JavaScript Malware via
+Opportunistic Translation to WebAssembly, Proceed-
+ings of the 2022 IEEE Symposium on Security and
+Privacy, IEEE, (online), DOI: 10.1109/SP46214.2022.
+00064 (2022). https://doi.org/10.1109/SP46214.
+2022.00064.
+[10] Wang, W., Ferrell, B., Xu, X., Hamlen, K. W. and
+Hao, S.: SEISMIC: Secure In-lined Script Monitors
+for Interrupting Cryptojacks, Computer Security – ES-
+ORICS 2018 , Lecture Notes in Computer Science,
+Vol. 11098, Springer, pp. 122–142 (online), DOI: 10.
+1007/978-3-319-98989-1 7 (2018). https://doi.org/
+10.1007/978-3-319-98989-1_7 .
+c⃝ 1959 Information Processing Society of Japan 10

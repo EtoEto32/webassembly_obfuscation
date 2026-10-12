@@ -1,0 +1,1968 @@
+{
+  "scope": "purpose-selected cn-0 mining-program cases; static interpretation, not whole-program equivalence or prevalence",
+  "selected_inputs": [
+    {
+      "sha256": "9914f3dd471f0073ce8989273751aafc834bf1834cf1ee57594877d0b3c6cc79",
+      "stratum": "tigress/encodearithmetic",
+      "selected_path": "binaries/cn-0/tigress/encodearithmetic/cn-0.wasm",
+      "selection_reason": "cn-0 is the original CryptoNight algorithm; purpose-selected mechanism case, not prevalence sample"
+    },
+    {
+      "sha256": "1c94a8783ef0fdc56cc8389ad01b3a818a42e9199a0aba9842e9be175f8b0be3",
+      "stratum": "tigress/virtualize",
+      "selected_path": "binaries/cn-0/tigress/virtualize/cn-0.wasm",
+      "selection_reason": "cn-0 is the original CryptoNight algorithm; purpose-selected mechanism case, not prevalence sample"
+    },
+    {
+      "sha256": "98ed2abbf10a425c67d5b71a782bf0e76714a7303acf8c8948a8cc3f1c36dff0",
+      "stratum": "tigress/flatten",
+      "selected_path": "binaries/cn-0/tigress/flatten/cn-0.wasm",
+      "selection_reason": "cn-0 is the original CryptoNight algorithm; purpose-selected mechanism case, not prevalence sample"
+    },
+    {
+      "sha256": "a89e8b19996a57e020fb8b077e4efa9a60dbae62955f7ebce4892310d75fb888",
+      "stratum": "tigress/antialiasanalysis",
+      "selected_path": "binaries/cn-0/tigress/antialiasanalysis/cn-0.wasm",
+      "selection_reason": "cn-0 is the original CryptoNight algorithm; purpose-selected mechanism case, not prevalence sample"
+    },
+    {
+      "sha256": "dd5658de37f2ac916b8552e33bc0d749fbc9e6558825299a6ee9d3c9c72f571b",
+      "stratum": "llvm/constenc",
+      "selected_path": "binaries/cn-0/llvm/constenc/cn-0.wasm",
+      "selection_reason": "cn-0 is the original CryptoNight algorithm; purpose-selected mechanism case, not prevalence sample"
+    },
+    {
+      "sha256": "bde746161fa7273e9f370f507abfa41f054c8248044315eb9712ee22f490770e",
+      "stratum": "llvm/subobf",
+      "selected_path": "binaries/cn-0/llvm/subobf/cn-0.wasm",
+      "selection_reason": "cn-0 is the original CryptoNight algorithm; purpose-selected mechanism case, not prevalence sample"
+    },
+    {
+      "sha256": "83bf23cabddce772c1e2cf38a020c067077475d6231d34a36260b5b2fb3882f2",
+      "stratum": "unobfuscated",
+      "selected_path": "binaries/cn-0/unobfuscated/cn-0.wasm",
+      "selection_reason": "cn-0 is the original CryptoNight algorithm; purpose-selected mechanism case, not prevalence sample"
+    }
+  ],
+  "export_correspondences": [
+    {
+      "method": "unobfuscated",
+      "function_index": 53,
+      "header": "00af6b func[53] <hash_cn>:",
+      "exports": [
+        {
+          "name": "memory",
+          "kind": 2,
+          "index": 0
+        },
+        {
+          "name": "__wasm_call_ctors",
+          "kind": 0,
+          "index": 8
+        },
+        {
+          "name": "malloc",
+          "kind": 0,
+          "index": 147
+        },
+        {
+          "name": "hash_cn",
+          "kind": 0,
+          "index": 53
+        },
+        {
+          "name": "main",
+          "kind": 0,
+          "index": 74
+        },
+        {
+          "name": "__indirect_function_table",
+          "kind": 1,
+          "index": 0
+        },
+        {
+          "name": "__errno_location",
+          "kind": 0,
+          "index": 77
+        },
+        {
+          "name": "fflush",
+          "kind": 0,
+          "index": 182
+        },
+        {
+          "name": "emscripten_stack_init",
+          "kind": 0,
+          "index": 178
+        },
+        {
+          "name": "emscripten_stack_get_free",
+          "kind": 0,
+          "index": 179
+        },
+        {
+          "name": "emscripten_stack_get_base",
+          "kind": 0,
+          "index": 180
+        },
+        {
+          "name": "emscripten_stack_get_end",
+          "kind": 0,
+          "index": 181
+        },
+        {
+          "name": "stackSave",
+          "kind": 0,
+          "index": 174
+        },
+        {
+          "name": "stackRestore",
+          "kind": 0,
+          "index": 175
+        },
+        {
+          "name": "stackAlloc",
+          "kind": 0,
+          "index": 176
+        },
+        {
+          "name": "emscripten_stack_get_current",
+          "kind": 0,
+          "index": 177
+        }
+      ],
+      "opcode_counts": {
+        "global.get": 1,
+        "local.set": 79,
+        "i32.const": 22,
+        "local.get": 137,
+        "i32.sub": 2,
+        "global.set": 3,
+        "i32.store": 22,
+        "i32.load": 24,
+        "call": 4,
+        "i32.shr_u": 1,
+        "i32.add": 11,
+        "i32.and": 4,
+        "block": 2,
+        "loop": 2,
+        "i32.lt_u": 2,
+        "i32.eqz": 2,
+        "br_if": 2,
+        "drop": 1,
+        "br": 2,
+        "end": 5,
+        "unreachable": 2,
+        "i32.load8_u": 1,
+        "return": 1
+      }
+    },
+    {
+      "method": "tigress/flatten",
+      "function_index": 33,
+      "header": "009adc func[33] <hash_cn>:",
+      "exports": [
+        {
+          "name": "memory",
+          "kind": 2,
+          "index": 0
+        },
+        {
+          "name": "__wasm_call_ctors",
+          "kind": 0,
+          "index": 8
+        },
+        {
+          "name": "hash_cn",
+          "kind": 0,
+          "index": 33
+        },
+        {
+          "name": "malloc",
+          "kind": 0,
+          "index": 146
+        },
+        {
+          "name": "main",
+          "kind": 0,
+          "index": 57
+        },
+        {
+          "name": "__indirect_function_table",
+          "kind": 1,
+          "index": 0
+        },
+        {
+          "name": "__errno_location",
+          "kind": 0,
+          "index": 76
+        },
+        {
+          "name": "fflush",
+          "kind": 0,
+          "index": 181
+        },
+        {
+          "name": "emscripten_stack_init",
+          "kind": 0,
+          "index": 171
+        },
+        {
+          "name": "emscripten_stack_get_free",
+          "kind": 0,
+          "index": 172
+        },
+        {
+          "name": "emscripten_stack_get_base",
+          "kind": 0,
+          "index": 173
+        },
+        {
+          "name": "emscripten_stack_get_end",
+          "kind": 0,
+          "index": 174
+        },
+        {
+          "name": "stackSave",
+          "kind": 0,
+          "index": 175
+        },
+        {
+          "name": "stackRestore",
+          "kind": 0,
+          "index": 176
+        },
+        {
+          "name": "stackAlloc",
+          "kind": 0,
+          "index": 177
+        },
+        {
+          "name": "emscripten_stack_get_current",
+          "kind": 0,
+          "index": 178
+        }
+      ],
+      "opcode_counts": {
+        "global.get": 1,
+        "local.set": 90,
+        "i32.const": 32,
+        "local.get": 159,
+        "i32.sub": 2,
+        "global.set": 3,
+        "i32.store": 31,
+        "loop": 1,
+        "i32.load": 25,
+        "i32.gt_u": 1,
+        "drop": 2,
+        "block": 12,
+        "br_table": 1,
+        "end": 14,
+        "i32.add": 11,
+        "call": 4,
+        "br": 8,
+        "i32.load8_u": 1,
+        "i32.and": 4,
+        "i32.lt_u": 2,
+        "i32.eqz": 2,
+        "br_if": 2,
+        "i32.shr_u": 1,
+        "return": 1
+      }
+    },
+    {
+      "method": "tigress/virtualize",
+      "function_index": 56,
+      "header": "04053f func[56] <hash_cn>:",
+      "exports": [
+        {
+          "name": "memory",
+          "kind": 2,
+          "index": 0
+        },
+        {
+          "name": "__wasm_call_ctors",
+          "kind": 0,
+          "index": 8
+        },
+        {
+          "name": "main",
+          "kind": 0,
+          "index": 32
+        },
+        {
+          "name": "hash_cn",
+          "kind": 0,
+          "index": 56
+        },
+        {
+          "name": "malloc",
+          "kind": 0,
+          "index": 146
+        },
+        {
+          "name": "__indirect_function_table",
+          "kind": 1,
+          "index": 0
+        },
+        {
+          "name": "__errno_location",
+          "kind": 0,
+          "index": 76
+        },
+        {
+          "name": "fflush",
+          "kind": 0,
+          "index": 181
+        },
+        {
+          "name": "emscripten_stack_init",
+          "kind": 0,
+          "index": 171
+        },
+        {
+          "name": "emscripten_stack_get_free",
+          "kind": 0,
+          "index": 172
+        },
+        {
+          "name": "emscripten_stack_get_base",
+          "kind": 0,
+          "index": 173
+        },
+        {
+          "name": "emscripten_stack_get_end",
+          "kind": 0,
+          "index": 174
+        },
+        {
+          "name": "stackSave",
+          "kind": 0,
+          "index": 175
+        },
+        {
+          "name": "stackRestore",
+          "kind": 0,
+          "index": 176
+        },
+        {
+          "name": "stackAlloc",
+          "kind": 0,
+          "index": 177
+        },
+        {
+          "name": "emscripten_stack_get_current",
+          "kind": 0,
+          "index": 178
+        }
+      ],
+      "opcode_counts": {
+        "global.get": 1,
+        "local.set": 416,
+        "i32.const": 99,
+        "local.get": 657,
+        "i32.sub": 2,
+        "global.set": 3,
+        "i32.store": 104,
+        "i32.add": 96,
+        "loop": 1,
+        "i32.load": 195,
+        "i32.load8_u": 3,
+        "i32.gt_u": 3,
+        "drop": 4,
+        "block": 47,
+        "br_table": 3,
+        "end": 49,
+        "i32.mul": 2,
+        "br": 39,
+        "i32.eqz": 1,
+        "br_if": 2,
+        "i32.store8": 1,
+        "call": 4,
+        "i32.and": 3,
+        "return": 1,
+        "i32.lt_u": 1,
+        "i32.div_u": 1
+      }
+    },
+    {
+      "method": "tigress/antialiasanalysis",
+      "function_index": 88,
+      "header": "052d63 func[88] <hash_cn>:",
+      "exports": [
+        {
+          "name": "memory",
+          "kind": 2,
+          "index": 0
+        },
+        {
+          "name": "__wasm_call_ctors",
+          "kind": 0,
+          "index": 8
+        },
+        {
+          "name": "hash_cn",
+          "kind": 0,
+          "index": 88
+        },
+        {
+          "name": "main",
+          "kind": 0,
+          "index": 90
+        },
+        {
+          "name": "malloc",
+          "kind": 0,
+          "index": 169
+        },
+        {
+          "name": "__indirect_function_table",
+          "kind": 1,
+          "index": 0
+        },
+        {
+          "name": "__errno_location",
+          "kind": 0,
+          "index": 96
+        },
+        {
+          "name": "fflush",
+          "kind": 0,
+          "index": 204
+        },
+        {
+          "name": "emscripten_stack_init",
+          "kind": 0,
+          "index": 194
+        },
+        {
+          "name": "emscripten_stack_get_free",
+          "kind": 0,
+          "index": 195
+        },
+        {
+          "name": "emscripten_stack_get_base",
+          "kind": 0,
+          "index": 196
+        },
+        {
+          "name": "emscripten_stack_get_end",
+          "kind": 0,
+          "index": 197
+        },
+        {
+          "name": "stackSave",
+          "kind": 0,
+          "index": 198
+        },
+        {
+          "name": "stackRestore",
+          "kind": 0,
+          "index": 199
+        },
+        {
+          "name": "stackAlloc",
+          "kind": 0,
+          "index": 200
+        },
+        {
+          "name": "emscripten_stack_get_current",
+          "kind": 0,
+          "index": 201
+        },
+        {
+          "name": "dynCall_iiij",
+          "kind": 0,
+          "index": 210
+        },
+        {
+          "name": "dynCall_ijj",
+          "kind": 0,
+          "index": 211
+        },
+        {
+          "name": "dynCall_viij",
+          "kind": 0,
+          "index": 212
+        },
+        {
+          "name": "dynCall_viji",
+          "kind": 0,
+          "index": 213
+        },
+        {
+          "name": "dynCall_iiiji",
+          "kind": 0,
+          "index": 214
+        }
+      ],
+      "opcode_counts": {
+        "global.get": 1,
+        "local.set": 178,
+        "i32.const": 61,
+        "local.get": 238,
+        "i32.sub": 3,
+        "global.set": 3,
+        "i32.store": 24,
+        "i32.load": 43,
+        "i32.eq": 3,
+        "select": 4,
+        "i32.add": 17,
+        "call_indirect": 4,
+        "i32.shr_u": 1,
+        "i32.and": 9,
+        "block": 4,
+        "loop": 2,
+        "i32.lt_u": 2,
+        "i32.eqz": 3,
+        "br_if": 3,
+        "i32.ne": 3,
+        "br": 3,
+        "end": 7,
+        "i32.shl": 5,
+        "drop": 1,
+        "unreachable": 2,
+        "i32.load8_u": 1,
+        "i32.xor": 1,
+        "return": 1
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "M1",
+      "method": "tigress/flatten",
+      "status": "state dispatcher confirmed locally",
+      "explanation": "State 5 is stored at frame+32, reloaded for dispatch, and rewritten by handlers; branches return to the dispatch loop.",
+      "evidence": [
+        {
+          "method": "tigress/flatten",
+          "sha256": "98ed2abbf10a425c67d5b71a782bf0e76714a7303acf8c8948a8cc3f1c36dff0",
+          "function_index": 33,
+          "file": "results/cases/98ed2abbf10a425c67d5b71a782bf0e76714a7303acf8c8948a8cc3f1c36dff0/disassembly.txt",
+          "ops": [
+            {
+              "offset": "009b13",
+              "op": "i32.const",
+              "args": "5",
+              "line": 16679
+            },
+            {
+              "offset": "009b15",
+              "op": "local.set",
+              "args": "8",
+              "line": 16680
+            },
+            {
+              "offset": "009b17",
+              "op": "local.get",
+              "args": "7",
+              "line": 16681
+            },
+            {
+              "offset": "009b19",
+              "op": "local.get",
+              "args": "8",
+              "line": 16682
+            },
+            {
+              "offset": "009b1b",
+              "op": "i32.store",
+              "args": "2 32",
+              "line": 16683
+            },
+            {
+              "offset": "009b1e",
+              "op": "loop",
+              "args": "i32",
+              "line": 16684
+            },
+            {
+              "offset": "009b20",
+              "op": "local.get",
+              "args": "7",
+              "line": 16685
+            },
+            {
+              "offset": "009b22",
+              "op": "i32.load",
+              "args": "2 32",
+              "line": 16686
+            },
+            {
+              "offset": "009b25",
+              "op": "local.set",
+              "args": "9",
+              "line": 16687
+            },
+            {
+              "offset": "009b27",
+              "op": "i32.const",
+              "args": "10",
+              "line": 16688
+            },
+            {
+              "offset": "009b29",
+              "op": "local.set",
+              "args": "10",
+              "line": 16689
+            },
+            {
+              "offset": "009b2b",
+              "op": "local.get",
+              "args": "9",
+              "line": 16690
+            },
+            {
+              "offset": "009b2d",
+              "op": "local.get",
+              "args": "10",
+              "line": 16691
+            },
+            {
+              "offset": "009b2f",
+              "op": "i32.gt_u",
+              "args": "",
+              "line": 16692
+            },
+            {
+              "offset": "009b30",
+              "op": "drop",
+              "args": "",
+              "line": 16693
+            },
+            {
+              "offset": "009b31",
+              "op": "block",
+              "args": "",
+              "line": 16694
+            },
+            {
+              "offset": "009b33",
+              "op": "block",
+              "args": "",
+              "line": 16695
+            },
+            {
+              "offset": "009b35",
+              "op": "block",
+              "args": "",
+              "line": 16696
+            },
+            {
+              "offset": "009b37",
+              "op": "block",
+              "args": "",
+              "line": 16697
+            },
+            {
+              "offset": "009b39",
+              "op": "block",
+              "args": "",
+              "line": 16698
+            },
+            {
+              "offset": "009b3b",
+              "op": "block",
+              "args": "",
+              "line": 16699
+            },
+            {
+              "offset": "009b3d",
+              "op": "block",
+              "args": "",
+              "line": 16700
+            },
+            {
+              "offset": "009b3f",
+              "op": "block",
+              "args": "",
+              "line": 16701
+            },
+            {
+              "offset": "009b41",
+              "op": "local.get",
+              "args": "9",
+              "line": 16702
+            },
+            {
+              "offset": "009b43",
+              "op": "br_table",
+              "args": "5 0 6 7 7 3 2 7 7 1 4 7",
+              "line": 16703
+            }
+          ]
+        }
+      ],
+      "state_writes": [
+        {
+          "offset": "009b1b",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 16683
+        },
+        {
+          "offset": "009bbe",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 16757
+        },
+        {
+          "offset": "009c61",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 16835
+        },
+        {
+          "offset": "009ca0",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 16867
+        },
+        {
+          "offset": "009cae",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 16874
+        },
+        {
+          "offset": "009d68",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 16962
+        },
+        {
+          "offset": "009de8",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 17022
+        },
+        {
+          "offset": "009e24",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 17053
+        },
+        {
+          "offset": "009e32",
+          "op": "i32.store",
+          "args": "2 32",
+          "line": 17060
+        }
+      ],
+      "back_edges": [
+        {
+          "source": {
+            "offset": "009e37",
+            "op": "br",
+            "args": "0",
+            "line": 17063
+          },
+          "target": {
+            "offset": "009b1e",
+            "op": "loop",
+            "args": "i32",
+            "line": 16684
+          }
+        }
+      ]
+    },
+    {
+      "id": "M2",
+      "method": "tigress/virtualize",
+      "status": "bytecode interpreter structure confirmed locally",
+      "explanation": "A pointer initialized to 168944 is held at frame+24. A byte read through it selects a dispatcher after subtracting 16. A handler increments this pointer; branches return to the fetch loop. Full handler semantics and bytecode equivalence are not established.",
+      "evidence": [
+        {
+          "method": "tigress/virtualize",
+          "sha256": "1c94a8783ef0fdc56cc8389ad01b3a818a42e9199a0aba9842e9be175f8b0be3",
+          "function_index": 56,
+          "file": "results/cases/1c94a8783ef0fdc56cc8389ad01b3a818a42e9199a0aba9842e9be175f8b0be3/disassembly.txt",
+          "ops": [
+            {
+              "offset": "040591",
+              "op": "i32.const",
+              "args": "168944",
+              "line": 94336
+            },
+            {
+              "offset": "040595",
+              "op": "local.set",
+              "args": "11",
+              "line": 94337
+            },
+            {
+              "offset": "040597",
+              "op": "local.get",
+              "args": "7",
+              "line": 94338
+            },
+            {
+              "offset": "040599",
+              "op": "local.get",
+              "args": "11",
+              "line": 94339
+            },
+            {
+              "offset": "04059b",
+              "op": "i32.store",
+              "args": "2 24",
+              "line": 94340
+            },
+            {
+              "offset": "04059e",
+              "op": "loop",
+              "args": "i32",
+              "line": 94341
+            },
+            {
+              "offset": "0405a0",
+              "op": "local.get",
+              "args": "7",
+              "line": 94342
+            },
+            {
+              "offset": "0405a2",
+              "op": "i32.load",
+              "args": "2 24",
+              "line": 94343
+            },
+            {
+              "offset": "0405a5",
+              "op": "local.set",
+              "args": "12",
+              "line": 94344
+            },
+            {
+              "offset": "0405a7",
+              "op": "local.get",
+              "args": "12",
+              "line": 94345
+            },
+            {
+              "offset": "0405a9",
+              "op": "i32.load8_u",
+              "args": "0 0",
+              "line": 94346
+            },
+            {
+              "offset": "0405ac",
+              "op": "local.set",
+              "args": "13",
+              "line": 94347
+            },
+            {
+              "offset": "0405ae",
+              "op": "i32.const",
+              "args": "4294967280",
+              "line": 94348
+            },
+            {
+              "offset": "0405b0",
+              "op": "local.set",
+              "args": "14",
+              "line": 94349
+            },
+            {
+              "offset": "0405b2",
+              "op": "local.get",
+              "args": "13",
+              "line": 94350
+            },
+            {
+              "offset": "0405b4",
+              "op": "local.get",
+              "args": "14",
+              "line": 94351
+            },
+            {
+              "offset": "0405b6",
+              "op": "i32.add",
+              "args": "",
+              "line": 94352
+            },
+            {
+              "offset": "0405b7",
+              "op": "local.set",
+              "args": "15",
+              "line": 94353
+            },
+            {
+              "offset": "0405b9",
+              "op": "i32.const",
+              "args": "231",
+              "line": 94354
+            },
+            {
+              "offset": "0405bc",
+              "op": "local.set",
+              "args": "16",
+              "line": 94355
+            },
+            {
+              "offset": "0405be",
+              "op": "local.get",
+              "args": "15",
+              "line": 94356
+            },
+            {
+              "offset": "0405c0",
+              "op": "local.get",
+              "args": "16",
+              "line": 94357
+            },
+            {
+              "offset": "0405c2",
+              "op": "i32.gt_u",
+              "args": "",
+              "line": 94358
+            },
+            {
+              "offset": "0405c3",
+              "op": "drop",
+              "args": "",
+              "line": 94359
+            },
+            {
+              "offset": "0405c4",
+              "op": "block",
+              "args": "",
+              "line": 94360
+            },
+            {
+              "offset": "0405c6",
+              "op": "block",
+              "args": "",
+              "line": 94361
+            },
+            {
+              "offset": "0405c8",
+              "op": "block",
+              "args": "",
+              "line": 94362
+            },
+            {
+              "offset": "0405ca",
+              "op": "block",
+              "args": "",
+              "line": 94363
+            },
+            {
+              "offset": "0405cc",
+              "op": "block",
+              "args": "",
+              "line": 94364
+            },
+            {
+              "offset": "0405ce",
+              "op": "block",
+              "args": "",
+              "line": 94365
+            },
+            {
+              "offset": "0405d0",
+              "op": "block",
+              "args": "",
+              "line": 94366
+            },
+            {
+              "offset": "0405d2",
+              "op": "block",
+              "args": "",
+              "line": 94367
+            },
+            {
+              "offset": "0405d4",
+              "op": "block",
+              "args": "",
+              "line": 94368
+            },
+            {
+              "offset": "0405d6",
+              "op": "block",
+              "args": "",
+              "line": 94369
+            },
+            {
+              "offset": "0405d8",
+              "op": "block",
+              "args": "",
+              "line": 94370
+            },
+            {
+              "offset": "0405da",
+              "op": "block",
+              "args": "",
+              "line": 94371
+            },
+            {
+              "offset": "0405dc",
+              "op": "block",
+              "args": "",
+              "line": 94372
+            },
+            {
+              "offset": "0405de",
+              "op": "block",
+              "args": "",
+              "line": 94373
+            },
+            {
+              "offset": "0405e0",
+              "op": "block",
+              "args": "",
+              "line": 94374
+            },
+            {
+              "offset": "0405e2",
+              "op": "block",
+              "args": "",
+              "line": 94375
+            },
+            {
+              "offset": "0405e4",
+              "op": "block",
+              "args": "",
+              "line": 94376
+            },
+            {
+              "offset": "0405e6",
+              "op": "block",
+              "args": "",
+              "line": 94377
+            },
+            {
+              "offset": "0405e8",
+              "op": "block",
+              "args": "",
+              "line": 94378
+            },
+            {
+              "offset": "0405ea",
+              "op": "block",
+              "args": "",
+              "line": 94379
+            },
+            {
+              "offset": "0405ec",
+              "op": "block",
+              "args": "",
+              "line": 94380
+            },
+            {
+              "offset": "0405ee",
+              "op": "block",
+              "args": "",
+              "line": 94381
+            },
+            {
+              "offset": "0405f0",
+              "op": "block",
+              "args": "",
+              "line": 94382
+            },
+            {
+              "offset": "0405f2",
+              "op": "block",
+              "args": "",
+              "line": 94383
+            },
+            {
+              "offset": "0405f4",
+              "op": "block",
+              "args": "",
+              "line": 94384
+            },
+            {
+              "offset": "0405f6",
+              "op": "block",
+              "args": "",
+              "line": 94385
+            },
+            {
+              "offset": "0405f8",
+              "op": "block",
+              "args": "",
+              "line": 94386
+            },
+            {
+              "offset": "0405fa",
+              "op": "block",
+              "args": "",
+              "line": 94387
+            },
+            {
+              "offset": "0405fc",
+              "op": "block",
+              "args": "",
+              "line": 94388
+            },
+            {
+              "offset": "0405fe",
+              "op": "block",
+              "args": "",
+              "line": 94389
+            },
+            {
+              "offset": "040600",
+              "op": "block",
+              "args": "",
+              "line": 94390
+            },
+            {
+              "offset": "040602",
+              "op": "block",
+              "args": "",
+              "line": 94391
+            },
+            {
+              "offset": "040604",
+              "op": "block",
+              "args": "",
+              "line": 94392
+            },
+            {
+              "offset": "040606",
+              "op": "local.get",
+              "args": "15",
+              "line": 94393
+            },
+            {
+              "offset": "040608",
+              "op": "br_table",
+              "args": "27 32 32 32 3 32 32 32 32 32 32 32 32 2 32 9 32 32 32 32 32 32 32 30 22 32 32 6 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 5 32 32 32 32 32 32 32 32 32 32 23 32 32 32 32 13 32 32 32 32 32 32 32 21 32 19 32 32 32 32 32 32 29 32 32 32 32 32 1 18 32 32 11 32 32 32 32 4 32 32 32 32 32 12 32 14 26 32 32 32 32 32 32 8 32 32 32 32 20 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 15 32 32 32 32 32 32 32 32 32 32 32 32 32 10 25 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 32 32 32 32 32 28 17 32 32 32 32 32 32 32 16 32 32 32 32 32 32 32 32 32 32 7 32 32 32 32 31 32 32 32 32 32 32 32 32 32 32 32 32 32 24 32",
+              "line": 94394
+            },
+            {
+              "offset": "0406f4",
+              "op": "end",
+              "args": "",
+              "line": 94421
+            },
+            {
+              "offset": "0406f5",
+              "op": "local.get",
+              "args": "7",
+              "line": 94422
+            },
+            {
+              "offset": "0406f7",
+              "op": "i32.load",
+              "args": "2 24",
+              "line": 94423
+            },
+            {
+              "offset": "0406fa",
+              "op": "local.set",
+              "args": "17",
+              "line": 94424
+            },
+            {
+              "offset": "0406fc",
+              "op": "i32.const",
+              "args": "1",
+              "line": 94425
+            },
+            {
+              "offset": "0406fe",
+              "op": "local.set",
+              "args": "18",
+              "line": 94426
+            },
+            {
+              "offset": "040700",
+              "op": "local.get",
+              "args": "17",
+              "line": 94427
+            },
+            {
+              "offset": "040702",
+              "op": "local.get",
+              "args": "18",
+              "line": 94428
+            },
+            {
+              "offset": "040704",
+              "op": "i32.add",
+              "args": "",
+              "line": 94429
+            },
+            {
+              "offset": "040705",
+              "op": "local.set",
+              "args": "19",
+              "line": 94430
+            },
+            {
+              "offset": "040707",
+              "op": "local.get",
+              "args": "7",
+              "line": 94431
+            },
+            {
+              "offset": "040709",
+              "op": "local.get",
+              "args": "19",
+              "line": 94432
+            },
+            {
+              "offset": "04070b",
+              "op": "i32.store",
+              "args": "2 24",
+              "line": 94433
+            }
+          ]
+        }
+      ],
+      "dispatch_targets_including_default": 233,
+      "back_edges": [
+        {
+          "source": {
+            "offset": "0416bf",
+            "op": "br",
+            "args": "0",
+            "line": 96062
+          },
+          "target": {
+            "offset": "04059e",
+            "op": "loop",
+            "args": "i32",
+            "line": 94341
+          }
+        }
+      ]
+    },
+    {
+      "id": "M3",
+      "method": "llvm/subobf",
+      "status": "local arithmetic substitution confirmed",
+      "explanation": "The value loaded from frame+8 is x. Original x<<3 and the replacement are passed in the corresponding argument position to call 24; other surrounding argument loads correspond.",
+      "expression": "(x & ~8)*(~x & 8) + (x | 8)*(x & 8)",
+      "proof": "All operations are 32-bit modular. Set u=x&~8, v=x&8, so x=u+v, v is 0 or 8, ~x&8=8-v, x|8=u+8. Then u*(8-v)+(u+8)*v=8*(u+v)=8*x=x<<3 modulo 2^32.",
+      "evidence": [
+        {
+          "method": "unobfuscated",
+          "sha256": "83bf23cabddce772c1e2cf38a020c067077475d6231d34a36260b5b2fb3882f2",
+          "function_index": 23,
+          "file": "results/cases/83bf23cabddce772c1e2cf38a020c067077475d6231d34a36260b5b2fb3882f2/disassembly.txt",
+          "ops": [
+            {
+              "offset": "004be1",
+              "op": "local.get",
+              "args": "5",
+              "line": 7570
+            },
+            {
+              "offset": "004be3",
+              "op": "i32.load",
+              "args": "2 8",
+              "line": 7571
+            },
+            {
+              "offset": "004be6",
+              "op": "local.set",
+              "args": "7",
+              "line": 7572
+            },
+            {
+              "offset": "004be8",
+              "op": "i32.const",
+              "args": "3",
+              "line": 7573
+            },
+            {
+              "offset": "004bea",
+              "op": "local.set",
+              "args": "8",
+              "line": 7574
+            },
+            {
+              "offset": "004bec",
+              "op": "local.get",
+              "args": "7",
+              "line": 7575
+            },
+            {
+              "offset": "004bee",
+              "op": "local.get",
+              "args": "8",
+              "line": 7576
+            },
+            {
+              "offset": "004bf0",
+              "op": "i32.shl",
+              "args": "",
+              "line": 7577
+            },
+            {
+              "offset": "004bf1",
+              "op": "local.set",
+              "args": "9",
+              "line": 7578
+            },
+            {
+              "offset": "004bf3",
+              "op": "local.get",
+              "args": "5",
+              "line": 7579
+            },
+            {
+              "offset": "004bf5",
+              "op": "i32.load",
+              "args": "2 4",
+              "line": 7580
+            },
+            {
+              "offset": "004bf8",
+              "op": "local.set",
+              "args": "10",
+              "line": 7581
+            },
+            {
+              "offset": "004bfa",
+              "op": "i32.const",
+              "args": "256",
+              "line": 7582
+            },
+            {
+              "offset": "004bfd",
+              "op": "local.set",
+              "args": "11",
+              "line": 7583
+            },
+            {
+              "offset": "004bff",
+              "op": "local.get",
+              "args": "11",
+              "line": 7584
+            },
+            {
+              "offset": "004c01",
+              "op": "local.get",
+              "args": "6",
+              "line": 7585
+            },
+            {
+              "offset": "004c03",
+              "op": "local.get",
+              "args": "9",
+              "line": 7586
+            },
+            {
+              "offset": "004c05",
+              "op": "local.get",
+              "args": "10",
+              "line": 7587
+            },
+            {
+              "offset": "004c07",
+              "op": "call",
+              "args": "24",
+              "line": 7588
+            }
+          ]
+        },
+        {
+          "method": "llvm/subobf",
+          "sha256": "bde746161fa7273e9f370f507abfa41f054c8248044315eb9712ee22f490770e",
+          "function_index": 23,
+          "file": "results/cases/bde746161fa7273e9f370f507abfa41f054c8248044315eb9712ee22f490770e/disassembly.txt",
+          "ops": [
+            {
+              "offset": "006ba8",
+              "op": "local.get",
+              "args": "5",
+              "line": 10744
+            },
+            {
+              "offset": "006baa",
+              "op": "i32.load",
+              "args": "2 8",
+              "line": 10745
+            },
+            {
+              "offset": "006bad",
+              "op": "local.set",
+              "args": "7",
+              "line": 10746
+            },
+            {
+              "offset": "006baf",
+              "op": "i32.const",
+              "args": "4294967295",
+              "line": 10747
+            },
+            {
+              "offset": "006bb1",
+              "op": "local.set",
+              "args": "8",
+              "line": 10748
+            },
+            {
+              "offset": "006bb3",
+              "op": "local.get",
+              "args": "7",
+              "line": 10749
+            },
+            {
+              "offset": "006bb5",
+              "op": "local.get",
+              "args": "8",
+              "line": 10750
+            },
+            {
+              "offset": "006bb7",
+              "op": "i32.xor",
+              "args": "",
+              "line": 10751
+            },
+            {
+              "offset": "006bb8",
+              "op": "local.set",
+              "args": "9",
+              "line": 10752
+            },
+            {
+              "offset": "006bba",
+              "op": "i32.const",
+              "args": "8",
+              "line": 10753
+            },
+            {
+              "offset": "006bbc",
+              "op": "local.set",
+              "args": "10",
+              "line": 10754
+            },
+            {
+              "offset": "006bbe",
+              "op": "local.get",
+              "args": "9",
+              "line": 10755
+            },
+            {
+              "offset": "006bc0",
+              "op": "local.get",
+              "args": "10",
+              "line": 10756
+            },
+            {
+              "offset": "006bc2",
+              "op": "i32.and",
+              "args": "",
+              "line": 10757
+            },
+            {
+              "offset": "006bc3",
+              "op": "local.set",
+              "args": "11",
+              "line": 10758
+            },
+            {
+              "offset": "006bc5",
+              "op": "i32.const",
+              "args": "8",
+              "line": 10759
+            },
+            {
+              "offset": "006bc7",
+              "op": "local.set",
+              "args": "12",
+              "line": 10760
+            },
+            {
+              "offset": "006bc9",
+              "op": "local.get",
+              "args": "9",
+              "line": 10761
+            },
+            {
+              "offset": "006bcb",
+              "op": "local.get",
+              "args": "12",
+              "line": 10762
+            },
+            {
+              "offset": "006bcd",
+              "op": "i32.or",
+              "args": "",
+              "line": 10763
+            },
+            {
+              "offset": "006bce",
+              "op": "local.set",
+              "args": "13",
+              "line": 10764
+            },
+            {
+              "offset": "006bd0",
+              "op": "i32.const",
+              "args": "4294967295",
+              "line": 10765
+            },
+            {
+              "offset": "006bd2",
+              "op": "local.set",
+              "args": "14",
+              "line": 10766
+            },
+            {
+              "offset": "006bd4",
+              "op": "local.get",
+              "args": "13",
+              "line": 10767
+            },
+            {
+              "offset": "006bd6",
+              "op": "local.get",
+              "args": "14",
+              "line": 10768
+            },
+            {
+              "offset": "006bd8",
+              "op": "i32.xor",
+              "args": "",
+              "line": 10769
+            },
+            {
+              "offset": "006bd9",
+              "op": "local.set",
+              "args": "15",
+              "line": 10770
+            },
+            {
+              "offset": "006bdb",
+              "op": "local.get",
+              "args": "15",
+              "line": 10771
+            },
+            {
+              "offset": "006bdd",
+              "op": "local.get",
+              "args": "11",
+              "line": 10772
+            },
+            {
+              "offset": "006bdf",
+              "op": "i32.mul",
+              "args": "",
+              "line": 10773
+            },
+            {
+              "offset": "006be0",
+              "op": "local.set",
+              "args": "16",
+              "line": 10774
+            },
+            {
+              "offset": "006be2",
+              "op": "i32.const",
+              "args": "8",
+              "line": 10775
+            },
+            {
+              "offset": "006be4",
+              "op": "local.set",
+              "args": "17",
+              "line": 10776
+            },
+            {
+              "offset": "006be6",
+              "op": "local.get",
+              "args": "7",
+              "line": 10777
+            },
+            {
+              "offset": "006be8",
+              "op": "local.get",
+              "args": "17",
+              "line": 10778
+            },
+            {
+              "offset": "006bea",
+              "op": "i32.and",
+              "args": "",
+              "line": 10779
+            },
+            {
+              "offset": "006beb",
+              "op": "local.set",
+              "args": "18",
+              "line": 10780
+            },
+            {
+              "offset": "006bed",
+              "op": "i32.const",
+              "args": "8",
+              "line": 10781
+            },
+            {
+              "offset": "006bef",
+              "op": "local.set",
+              "args": "19",
+              "line": 10782
+            },
+            {
+              "offset": "006bf1",
+              "op": "local.get",
+              "args": "7",
+              "line": 10783
+            },
+            {
+              "offset": "006bf3",
+              "op": "local.get",
+              "args": "19",
+              "line": 10784
+            },
+            {
+              "offset": "006bf5",
+              "op": "i32.or",
+              "args": "",
+              "line": 10785
+            },
+            {
+              "offset": "006bf6",
+              "op": "local.set",
+              "args": "20",
+              "line": 10786
+            },
+            {
+              "offset": "006bf8",
+              "op": "local.get",
+              "args": "20",
+              "line": 10787
+            },
+            {
+              "offset": "006bfa",
+              "op": "local.get",
+              "args": "18",
+              "line": 10788
+            },
+            {
+              "offset": "006bfc",
+              "op": "i32.mul",
+              "args": "",
+              "line": 10789
+            },
+            {
+              "offset": "006bfd",
+              "op": "local.set",
+              "args": "21",
+              "line": 10790
+            },
+            {
+              "offset": "006bff",
+              "op": "local.get",
+              "args": "21",
+              "line": 10791
+            },
+            {
+              "offset": "006c01",
+              "op": "local.get",
+              "args": "16",
+              "line": 10792
+            },
+            {
+              "offset": "006c03",
+              "op": "i32.add",
+              "args": "",
+              "line": 10793
+            },
+            {
+              "offset": "006c04",
+              "op": "local.set",
+              "args": "22",
+              "line": 10794
+            },
+            {
+              "offset": "006c06",
+              "op": "local.get",
+              "args": "5",
+              "line": 10795
+            },
+            {
+              "offset": "006c08",
+              "op": "i32.load",
+              "args": "2 4",
+              "line": 10796
+            },
+            {
+              "offset": "006c0b",
+              "op": "local.set",
+              "args": "23",
+              "line": 10797
+            },
+            {
+              "offset": "006c0d",
+              "op": "i32.const",
+              "args": "256",
+              "line": 10798
+            },
+            {
+              "offset": "006c10",
+              "op": "local.set",
+              "args": "24",
+              "line": 10799
+            },
+            {
+              "offset": "006c12",
+              "op": "local.get",
+              "args": "24",
+              "line": 10800
+            },
+            {
+              "offset": "006c14",
+              "op": "local.get",
+              "args": "6",
+              "line": 10801
+            },
+            {
+              "offset": "006c16",
+              "op": "local.get",
+              "args": "22",
+              "line": 10802
+            },
+            {
+              "offset": "006c18",
+              "op": "local.get",
+              "args": "23",
+              "line": 10803
+            },
+            {
+              "offset": "006c1a",
+              "op": "call",
+              "args": "24",
+              "line": 10804
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "M4",
+      "method": "tigress/antialiasanalysis",
+      "status": "memory-derived indirect call confirmed; callee equivalence not recovered",
+      "explanation": "A comparison of loaded values selects 1436 or 8, added to 66688; the loaded table index is consumed by call_indirect. This is not a proof that every transformed call resolves to its original target.",
+      "evidence": [
+        {
+          "method": "tigress/antialiasanalysis",
+          "sha256": "a89e8b19996a57e020fb8b077e4efa9a60dbae62955f7ebce4892310d75fb888",
+          "function_index": 88,
+          "file": "results/cases/a89e8b19996a57e020fb8b077e4efa9a60dbae62955f7ebce4892310d75fb888/disassembly.txt",
+          "ops": [
+            {
+              "offset": "052dad",
+              "op": "local.get",
+              "args": "8",
+              "line": 133228
+            },
+            {
+              "offset": "052daf",
+              "op": "i32.load",
+              "args": "2 69144",
+              "line": 133229
+            },
+            {
+              "offset": "052db4",
+              "op": "local.set",
+              "args": "9",
+              "line": 133230
+            },
+            {
+              "offset": "052db6",
+              "op": "local.get",
+              "args": "8",
+              "line": 133231
+            },
+            {
+              "offset": "052db8",
+              "op": "i32.load",
+              "args": "2 69140",
+              "line": 133232
+            },
+            {
+              "offset": "052dbd",
+              "op": "local.set",
+              "args": "10",
+              "line": 133233
+            },
+            {
+              "offset": "052dbf",
+              "op": "local.get",
+              "args": "9",
+              "line": 133234
+            },
+            {
+              "offset": "052dc1",
+              "op": "local.get",
+              "args": "10",
+              "line": 133235
+            },
+            {
+              "offset": "052dc3",
+              "op": "i32.eq",
+              "args": "",
+              "line": 133236
+            },
+            {
+              "offset": "052dc4",
+              "op": "local.set",
+              "args": "11",
+              "line": 133237
+            },
+            {
+              "offset": "052dc6",
+              "op": "i32.const",
+              "args": "8",
+              "line": 133238
+            },
+            {
+              "offset": "052dc8",
+              "op": "local.set",
+              "args": "12",
+              "line": 133239
+            },
+            {
+              "offset": "052dca",
+              "op": "i32.const",
+              "args": "1436",
+              "line": 133240
+            },
+            {
+              "offset": "052dcd",
+              "op": "local.set",
+              "args": "13",
+              "line": 133241
+            },
+            {
+              "offset": "052dcf",
+              "op": "local.get",
+              "args": "13",
+              "line": 133242
+            },
+            {
+              "offset": "052dd1",
+              "op": "local.get",
+              "args": "12",
+              "line": 133243
+            },
+            {
+              "offset": "052dd3",
+              "op": "local.get",
+              "args": "11",
+              "line": 133244
+            },
+            {
+              "offset": "052dd5",
+              "op": "select",
+              "args": "",
+              "line": 133245
+            },
+            {
+              "offset": "052dd6",
+              "op": "local.set",
+              "args": "14",
+              "line": 133246
+            },
+            {
+              "offset": "052dd8",
+              "op": "i32.const",
+              "args": "66688",
+              "line": 133247
+            },
+            {
+              "offset": "052ddc",
+              "op": "local.set",
+              "args": "15",
+              "line": 133248
+            },
+            {
+              "offset": "052dde",
+              "op": "local.get",
+              "args": "15",
+              "line": 133249
+            },
+            {
+              "offset": "052de0",
+              "op": "local.get",
+              "args": "14",
+              "line": 133250
+            },
+            {
+              "offset": "052de2",
+              "op": "i32.add",
+              "args": "",
+              "line": 133251
+            },
+            {
+              "offset": "052de3",
+              "op": "local.set",
+              "args": "16",
+              "line": 133252
+            },
+            {
+              "offset": "052de5",
+              "op": "local.get",
+              "args": "16",
+              "line": 133253
+            },
+            {
+              "offset": "052de7",
+              "op": "i32.load",
+              "args": "2 0",
+              "line": 133254
+            },
+            {
+              "offset": "052dea",
+              "op": "local.set",
+              "args": "17",
+              "line": 133255
+            },
+            {
+              "offset": "052dec",
+              "op": "local.get",
+              "args": "7",
+              "line": 133256
+            },
+            {
+              "offset": "052dee",
+              "op": "i32.load",
+              "args": "2 108",
+              "line": 133257
+            },
+            {
+              "offset": "052df1",
+              "op": "local.set",
+              "args": "18",
+              "line": 133258
+            },
+            {
+              "offset": "052df3",
+              "op": "local.get",
+              "args": "18",
+              "line": 133259
+            },
+            {
+              "offset": "052df5",
+              "op": "local.get",
+              "args": "17",
+              "line": 133260
+            },
+            {
+              "offset": "052df7",
+              "op": "call_indirect",
+              "args": "0 (type 3)",
+              "line": 133261
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "unreviewed_mechanisms": [
+    "tigress/encodearithmetic",
+    "llvm/constenc"
+  ],
+  "review": "Agent-assisted static inspection; independent human review remains required.",
+  "reproduction": "python scripts/review_mining_mechanisms.py"
+}

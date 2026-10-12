@@ -1,0 +1,18 @@
+{
+  "source_cohort_table_sha256": "99a830d68298fa67edb205cbc1fef56dd0b9533de53ac6d967abde3ce2930103",
+  "selected_cohorts": 10,
+  "proof_setting_directories": 34,
+  "proof_static_members": 174,
+  "findings": [
+    "The 128 unique hashes in the existing obfuscated_miners cohort are directory contents, not 128 verified obfuscated final programs.",
+    "Members include .orig.wasm files, out/ variants, and .o intermediate objects. Setting-directory counts must not be interpreted as binary prevalence.",
+    "SWAMPED downloaded seeds and examples do not equal the transformed evaluation corpus in the paper.",
+    "Feature percentages are conditional on successful static analysis; they are not method prevalence.",
+    "WasmMal malware labels alone do not establish that every sample is cryptojacking-related."
+  ],
+  "remaining": [
+    "Resolve final program, uninstrumented and instrumented roles in Proof-of-Theft before paired comparisons.",
+    "Representative mechanism findings do not justify per-method prevalence for unreviewed files."
+  ],
+  "reproduction": "python scripts/summarize_mining_dataset_scope.py"
+}

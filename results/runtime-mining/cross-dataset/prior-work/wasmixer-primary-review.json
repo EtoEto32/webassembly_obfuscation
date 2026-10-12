@@ -1,0 +1,46 @@
+{
+  "source": "https://arxiv.org/html/2308.03123v1",
+  "version": "arXiv:2308.03123v1",
+  "review_date": "2026-10-08",
+  "evidence": "Sections 5.2/5.5 and Table 2: mining dataset D3 is explicitly excluded from runtime overhead evaluation owing to browser/JS dependencies. Section 5.3 checks outputs for D1/D2; Section 5.4.2 evaluates D3 detection.",
+  "scope": "Reviewed primary manuscript; not all subsequent papers, supplements, or unpublished executions.",
+  "overlap": {
+    "sha256": "046dc081076d9cea6831967619b862cc80fa8c2381346406ec639c899cda640f",
+    "occurrence": {
+      "dataset": "wasmixer",
+      "path": "benchmark/mining_programs/2.wasm",
+      "acquisition_status": "stored_verified"
+    },
+    "evidence": "../measured-corpus-overlap.json",
+    "table4_id_candidate": "9cda640f",
+    "table4_id_limitation": "The matching eight-character ID is consistent with Table 4 but is not used alone as a full binary identity proof."
+  },
+  "current_role": "Complete valid hashing of a reused input plus SWAMPED-generated controls; not a runtime evaluation of WASMixer obfuscation methods or a worldwide-first claim.",
+  "limitations": [
+    "An input reappearing in a different corpus is not a new independent binary.",
+    "The current generated pair uses SWAMPED nop/constant splitting, not WASMixer transformations.",
+    "Reported exclusion in this version does not establish absence of every earlier or later hash-rate evaluation."
+  ],
+  "publication_review": {
+    "publication": "ESORICS 2024",
+    "doi": "10.1007/978-3-031-70896-1_5",
+    "pages": "88-109",
+    "first_online": "2024-09-06",
+    "publisher_source": "https://link.springer.com/chapter/10.1007/978-3-031-70896-1_5",
+    "author_source": "https://howiepku.github.io/publication.html",
+    "status": "Bibliographic metadata and abstract checked; final published full-text evaluation sections not accessed. Publisher shows subscription preview. Author publication listings found but no accessible linked final PDF established.",
+    "arxiv_history_source": "https://arxiv.org/abs/2308.03123",
+    "arxiv_history": "Only v1 (2023-08-06) displayed; not proof that publication equals preprint.",
+    "implication": "Explicit mining runtime exclusion is established only for the inspected arXiv v1; published-version mining hash-rate coverage remains unverified.",
+    "additional_retrieval_review": {
+      "date": "2026-10-08",
+      "sources": [
+        "https://howiepku.github.io/publication.html",
+        "https://yaoguopku.github.io/publications.htm",
+        "https://github.com/security-pride/WASMixer",
+        "https://github.com/WASMixer/WASMixer"
+      ],
+      "outcome": "Author listings and public repository search did not establish an accessible final published PDF. Published-version evaluation coverage remains unverified; no stronger novelty claim."
+    }
+  }
+}

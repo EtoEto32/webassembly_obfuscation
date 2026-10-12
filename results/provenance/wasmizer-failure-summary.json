@@ -1,0 +1,95 @@
+{
+  "checked_utc": "2026-10-06T02:09:56.583458+00:00",
+  "modules": 8915,
+  "status_counts": {
+    "ok": 6221,
+    "validation_failed": 2656,
+    "sections_failed": 36,
+    "disassembly_failed": 2
+  },
+  "metadata_sha256": "ad82fc1cbb59b66458ac5e826ce86053581d400b6e01ccd93febce1193cd94e5",
+  "strata": [
+    {
+      "path_indicator": "test_path_evidence",
+      "indicator_value": false,
+      "modules": 2322,
+      "attempted": 2322,
+      "failed": 7,
+      "failure_fraction_among_attempted": 0.0030146425495262705,
+      "status_counts": {
+        "ok": 2315,
+        "validation_failed": 7
+      }
+    },
+    {
+      "path_indicator": "test_path_evidence",
+      "indicator_value": true,
+      "modules": 6593,
+      "attempted": 6593,
+      "failed": 2687,
+      "failure_fraction_among_attempted": 0.4075534657970575,
+      "status_counts": {
+        "ok": 3906,
+        "validation_failed": 2649,
+        "sections_failed": 36,
+        "disassembly_failed": 2
+      }
+    },
+    {
+      "path_indicator": "dependency_path_evidence",
+      "indicator_value": false,
+      "modules": 3955,
+      "attempted": 3955,
+      "failed": 55,
+      "failure_fraction_among_attempted": 0.01390644753476612,
+      "status_counts": {
+        "ok": 3900,
+        "validation_failed": 34,
+        "sections_failed": 20,
+        "disassembly_failed": 1
+      }
+    },
+    {
+      "path_indicator": "dependency_path_evidence",
+      "indicator_value": true,
+      "modules": 4960,
+      "attempted": 4960,
+      "failed": 2639,
+      "failure_fraction_among_attempted": 0.5320564516129033,
+      "status_counts": {
+        "ok": 2321,
+        "validation_failed": 2622,
+        "sections_failed": 16,
+        "disassembly_failed": 1
+      }
+    },
+    {
+      "path_indicator": "invalid_named_path_evidence",
+      "indicator_value": false,
+      "modules": 8793,
+      "attempted": 8793,
+      "failed": 2574,
+      "failure_fraction_among_attempted": 0.29273285568065505,
+      "status_counts": {
+        "ok": 6219,
+        "validation_failed": 2536,
+        "sections_failed": 36,
+        "disassembly_failed": 2
+      }
+    },
+    {
+      "path_indicator": "invalid_named_path_evidence",
+      "indicator_value": true,
+      "modules": 122,
+      "attempted": 122,
+      "failed": 120,
+      "failure_fraction_among_attempted": 0.9836065573770492,
+      "status_counts": {
+        "validation_failed": 120,
+        "ok": 2
+      }
+    }
+  ],
+  "method": "One row per binary SHA; source-path flags can overlap and use any associated source path. Failure refers to this WABT/analyzer configuration.",
+  "interpretation": "Paths containing test, fixture, spec, dependencies, or invalid are provenance indicators. They do not prove that a module was intentionally invalid, malicious, or obfuscated."
+}

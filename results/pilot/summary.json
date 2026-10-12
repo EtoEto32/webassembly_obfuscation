@@ -1,0 +1,78 @@
+{
+  "metadata": {
+    "wasmmal": {
+      "path_count": 30048,
+      "unique_git_blob_ids": 15024,
+      "groups": {
+        "train": 12018,
+        "test": 3006,
+        "benign": 7512,
+        "malware": 7512
+      },
+      "train_test_exact_overlap": 0,
+      "benign_malware_exact_overlap": 0,
+      "root_and_split_same_content_set": true
+    },
+    "swamped_seed_groups": {
+      "cryptojackers": 43,
+      "malware": 31,
+      "shared_exact": 10,
+      "union_unique": 64,
+      "shared_with_wasmmal_malware": 57,
+      "shared_with_wasmmal_benign": 0
+    }
+  },
+  "static": {
+    "unique_inputs": 85,
+    "status_counts": {
+      "ok": 84,
+      "unavailable_or_analysis_failed": 1
+    },
+    "group_summaries": [
+      {
+        "dataset": "swamped",
+        "group": "Cryptojackers_43",
+        "paths": 43,
+        "analyzed_unique": 42,
+        "unavailable_paths": 1,
+        "name_section_present": 1,
+        "br_table_present": 42,
+        "indirect_call_present": 42,
+        "median_defined_functions": 59.0
+      },
+      {
+        "dataset": "swamped",
+        "group": "Malware_31",
+        "paths": 31,
+        "analyzed_unique": 27,
+        "unavailable_paths": 4,
+        "name_section_present": 5,
+        "br_table_present": 27,
+        "indirect_call_present": 27,
+        "median_defined_functions": 59
+      },
+      {
+        "dataset": "wasm-obf-controls",
+        "group": "flatten",
+        "paths": 12,
+        "analyzed_unique": 12,
+        "unavailable_paths": 0,
+        "name_section_present": 0,
+        "br_table_present": 12,
+        "indirect_call_present": 12,
+        "median_defined_functions": 701.0
+      },
+      {
+        "dataset": "wasm-obf-controls",
+        "group": "original",
+        "paths": 12,
+        "analyzed_unique": 12,
+        "unavailable_paths": 0,
+        "name_section_present": 0,
+        "br_table_present": 12,
+        "indirect_call_present": 12,
+        "median_defined_functions": 701.5
+      }
+    ]
+  }
+}
