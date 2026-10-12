@@ -1,0 +1,7 @@
+# Public-API recurrence recovery gate
+
+2026-10-12. Candidate-specific adversary, not blind arbitrary-program decompilation. Analyst is given the run ABI, lane arity, elementary-symmetric output interpretation, n&31 iteration bound, and hypothesis of uniform per-lane quadratic update with coefficient selected by parity of lane sum. Exact coefficients are NOT supplied. This is strong family knowledge; report it explicitly.
+
+Hypothesis: t'=A*t²+B_parity*t+G*u+D modulo2^32, each coefficient integer[-8,8]. Use32 chosen one-iteration inputs balanced16per parity, deterministic seed0x64e13579, lane/input values0..63. Enumerate branch coefficient hypotheses using only first output (sum), then join shared A,G,D. Keep every fitting model. No source files, generator expressions, original-state labels or training from the prior validation set.
+
+Verify each unique recovered model on prior boundary/random inputs including multiple iterations and all outputs, held out from fitting. Apply same procedure to ordinary and transformed raw/O2 binaries. Learning parity or arbitrary grammars is outside this gate. A success shows that this family’s equivalent computation is recoverable with stated knowledge; it is not general impossibility or original-source recovery. Decide before results: if both forms recover with same queries, reject a protective advantage against this attack. Save code, queries, models and held-out mismatches.

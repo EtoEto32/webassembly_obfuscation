@@ -1,0 +1,10 @@
+(module
+  (tag $a (param i32))
+  (tag $b (param i32))
+  (func (export "run") (result i32)
+    (block $caught_a (result i32)
+      (block $caught_b (result i32)
+        (try_table (result i32) (catch $b $caught_b) (catch $a $caught_a)
+          (throw $a (i32.const 17))))
+      (i32.const 100)
+      (i32.add))))

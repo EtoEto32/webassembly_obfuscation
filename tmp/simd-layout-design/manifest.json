@@ -1,0 +1,86 @@
+{
+  "purpose": "primitive validation; novelty and resistance not established",
+  "commands": [
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\normal.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\normal.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\normal.wasm",
+      "-O2",
+      "--enable-simd",
+      "--enable-multivalue",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\normal.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\roundtrip.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\roundtrip.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\roundtrip.wasm",
+      "-O2",
+      "--enable-simd",
+      "--enable-multivalue",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\roundtrip.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\transport.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\transport.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\transport.wasm",
+      "-O2",
+      "--enable-simd",
+      "--enable-multivalue",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\simd-layout-design\\transport.O2.wasm"
+    ]
+  ],
+  "binaries": [
+    {
+      "file": "normal.wasm",
+      "bytes": 179,
+      "sha256": "14eec33326438f5a1eb43a1753dc11a8a27ac90b92c3f7229c73b45dd51407ce"
+    },
+    {
+      "file": "normal.O2.wasm",
+      "bytes": 134,
+      "sha256": "496465d994ffec6f0ec1ae86f08b9baee79e9a3282918db120e49f048e0cf57f"
+    },
+    {
+      "file": "roundtrip.wasm",
+      "bytes": 371,
+      "sha256": "a4f6d709d51ae8b5a426f8c3d50d86182370d757d822165fa9bef023bad1cd17"
+    },
+    {
+      "file": "roundtrip.O2.wasm",
+      "bytes": 325,
+      "sha256": "9a427ea2d1c41d633dc3fb809726ae0da2e8bf194696ef925c99238c37f17141"
+    },
+    {
+      "file": "transport.wasm",
+      "bytes": 317,
+      "sha256": "636ac456b4731d9dfb71a2968a6d5a087087ce37f02c59b82d5ad7c5eb47638b"
+    },
+    {
+      "file": "transport.O2.wasm",
+      "bytes": 279,
+      "sha256": "26f6402d7e9e11706290c93b4f8c6dca5bab75d315379df59543ba611ea25eb9"
+    }
+  ],
+  "tools": {
+    "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe": "1.0.42",
+    "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe": "wasm-opt version 133 (version_133)"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "binaryen": "wasm-as version 133 (version_133)",
+  "script_sha256": "0aafc12adf7b5bb216599554c9d20da289395527a741d3fcc845d449c28bb4d8",
+  "results": [
+    {
+      "name": "gc-same-shape",
+      "expected": 1,
+      "source_sha256": "8e0c6ce3a8052686c3a9e4d26dc67629956897f5c340efcef8884920708944eb",
+      "assemble_exit": 0,
+      "assemble_stderr": "",
+      "command": [
+        "wasm-as",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\probes\\gc-same-shape.wat",
+        "--all-features",
+        "-o",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\results\\gc-same-shape.wasm"
+      ],
+      "wasm_sha256": "f0606289cf8614ae36186d5805626cf1ca7a0c5866e5256bd8e0b32bd11afbaa",
+      "bytes": 47,
+      "engine_valid": false,
+      "status": "engine-rejected"
+    },
+    {
+      "name": "gc-different-shape",
+      "expected": 0,
+      "source_sha256": "091d4261be11a63b31bbde971fd289c7c986066d78d7fa48c19fbfc7b94f4e8f",
+      "assemble_exit": 0,
+      "assemble_stderr": "",
+      "command": [
+        "wasm-as",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\probes\\gc-different-shape.wat",
+        "--all-features",
+        "-o",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\results\\gc-different-shape.wasm"
+      ],
+      "wasm_sha256": "6bc3e491090e3d6ad4eafebe84bae10359d2bff57d2a7155ad7c80071f9730f4",
+      "bytes": 46,
+      "engine_valid": true,
+      "actual": 0,
+      "status": "expected-observation"
+    },
+    {
+      "name": "exception-tag-identity",
+      "expected": 17,
+      "source_sha256": "12059942c9686e0b39b47a0121f7dfb28c089e41ad28ddbab31b6f2e7d36f0a3",
+      "assemble_exit": 0,
+      "assemble_stderr": "",
+      "command": [
+        "wasm-as",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\probes\\exception-tag-identity.wat",
+        "--all-features",
+        "-o",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\results\\exception-tag-identity.wasm"
+      ],
+      "wasm_sha256": "353339112ab2b21292e262e2c30fadec8915ff282deaf0dbae7420c005e566d7",
+      "bytes": 69,
+      "engine_valid": true,
+      "actual": 17,
+      "status": "expected-observation"
+    },
+    {
+      "name": "select-eager-trap",
+      "expected": "trap",
+      "source_sha256": "8071259223e468ad6dd8c55d6b609945d72fa96002098fb659a2515794b24a40",
+      "assemble_exit": 0,
+      "assemble_stderr": "",
+      "command": [
+        "wasm-as",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\probes\\select-eager-trap.wat",
+        "--all-features",
+        "-o",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\results\\select-eager-trap.wasm"
+      ],
+      "wasm_sha256": "119dee0012816f321ccfe7ae80bf58a542de4a2268d0e704a304738eb3ad66d4",
+      "bytes": 44,
+      "engine_valid": true,
+      "actual": "trap",
+      "error_type": "RuntimeError",
+      "error_message": "divide by zero",
+      "status": "expected-observation"
+    },
+    {
+      "name": "if-lazy-safe",
+      "expected": 7,
+      "source_sha256": "9f6c9b388c8d34bedc7bab46c7773dc24f75b68d71c30f9f28bd1235e07b6e46",
+      "assemble_exit": 0,
+      "assemble_stderr": "",
+      "command": [
+        "wasm-as",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\probes\\if-lazy-safe.wat",
+        "--all-features",
+        "-o",
+        "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\candidate-screening\\results\\if-lazy-safe.wasm"
+      ],
+      "wasm_sha256": "71bc24b674476ff24ece8bc1630739bee180eea96b37980dc4ee99cff6dd2740",
+      "bytes": 47,
+      "engine_valid": true,
+      "actual": 7,
+      "status": "expected-observation"
+    }
+  ],
+  "limitation": "Five semantic probes only; no novelty, obfuscation strength or overhead claim."
+}

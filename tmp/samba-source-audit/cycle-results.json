@@ -1,0 +1,155 @@
+{
+  "author_revision": "74ccd067f9d0b0b255f1140d0f581f499ed71cb9",
+  "sources_sha256": {
+    "eqsat.rs": "351d06665240e6c8bf661021606c67b0551e56b185d720171478c3182eb9c324",
+    "batch_processing.rs": "31337af4d469881cc1580e19bac233b064055b6b5b0ffd4a2444118bb46d96ce"
+  },
+  "checked_rules": {
+    "eqsat.rs": {
+      "add-to-and-or": [
+        "(+ ?x ?y)",
+        "(+ (& ?x ?y) (| ?x ?y))"
+      ],
+      "or-to-add": [
+        "(| ?x ?y)",
+        "(+ (+ ?x ?y) (+ 1 (| (~ ?x) (~ ?y))))"
+      ]
+    },
+    "batch_processing.rs": {
+      "add-to-and-or": [
+        "(+ ?x ?y)",
+        "(+ (& ?x ?y) (| ?x ?y))"
+      ],
+      "or-to-add": [
+        "(| ?x ?y)",
+        "(+ (+ ?x ?y) (+ 1 (| (~ ?x) (~ ?y))))"
+      ]
+    }
+  },
+  "graph": {
+    "X": [
+      [
+        "x"
+      ]
+    ],
+    "Y": [
+      [
+        "y"
+      ]
+    ],
+    "One": [
+      [
+        "1"
+      ]
+    ],
+    "NX": [
+      [
+        "~",
+        "X"
+      ]
+    ],
+    "NY": [
+      [
+        "~",
+        "Y"
+      ]
+    ],
+    "Z": [
+      [
+        "|",
+        "NX",
+        "NY"
+      ]
+    ],
+    "D": [
+      [
+        "+",
+        "One",
+        "Z"
+      ]
+    ],
+    "B": [
+      [
+        "&",
+        "X",
+        "Y"
+      ]
+    ],
+    "A": [
+      [
+        "+",
+        "X",
+        "Y"
+      ],
+      [
+        "+",
+        "B",
+        "C"
+      ]
+    ],
+    "C": [
+      [
+        "|",
+        "X",
+        "Y"
+      ],
+      [
+        "+",
+        "A",
+        "D"
+      ]
+    ]
+  },
+  "class_count": 10,
+  "enode_count": 12,
+  "unfolding_ast_sizes": [
+    3,
+    15,
+    27,
+    39,
+    51,
+    63,
+    75,
+    87,
+    99,
+    111,
+    123,
+    135,
+    147,
+    159,
+    171,
+    183,
+    195
+  ],
+  "negative_costs": [
+    -3,
+    -15,
+    -27,
+    -39,
+    -51,
+    -63,
+    -75,
+    -87,
+    -99,
+    -111,
+    -123,
+    -135,
+    -147,
+    -159,
+    -171,
+    -183,
+    -195
+  ],
+  "finite_checks": {
+    "8": 1179648,
+    "32": 73728
+  },
+  "mismatches": 0,
+  "seed": 1396788546,
+  "conclusion": "No largest finite AST in this finite cyclic grammar.",
+  "limitations": [
+    "Not an execution of egg or SaMBA.",
+    "Does not establish how often published experiments encounter the cycle.",
+    "A bounded extractor would be a baseline repair, not a new obfuscation algorithm."
+  ]
+}

@@ -1,0 +1,9 @@
+# Coefficient-to-multiset recovery gate
+
+2026-10-12. Given the known coefficient-state format, attempt monic polynomial factorization over Z/(2^32) without source roots. Analyst knows four cubic coefficient groups, group residue mod4, and final-buffer selection; this layout knowledge is supplied, not discovered. Input bytes are the real raw/O2 candidate modules. Add a memory export by editing only their export section; assert code section identical. Compare outputs before/after instrumentation for each selected input before reading final memory.
+
+Select the first16 and last16 existing inputs from residue-occupancy/wasm-inputs.json before results. This includes boundary and random cases; do not select based on recovery difficulty. Read final buffer, offset48 if (n&31) odd,0 otherwise. Recovery gets only group residue and(s,p,q); it does not receive input lanes or source-state labels.
+
+Polynomial is z³-s*z²+p*z-q. Lift roots one bit at a time starting at the known mod4 residue. On a full-width root, perform synthetic division, recursively factor the remaining monic polynomial, and verify the last linear root has the same residue. Maximum20,000 polynomial evaluations per group; reaching it is budget_exhausted, not infeasibility/security proof. Return one compatible multiset, not necessarily the historically executed source tuple. No exhaustive uniqueness claim.
+
+Verifier multiplies returned linear factors and independently checks all three elementary coefficients. Recovering a compatible multiset matters because the implemented future coefficient transition depends on that representation, not source labels. This experiment does not discover the original source algorithm or derive the state format automatically. It tests a necessary additional obstacle after format identification. No detection-evasion operation or external execution.

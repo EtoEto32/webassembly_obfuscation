@@ -1,0 +1,1231 @@
+                                                                 Computers & Security 131 (2023) 103296
+
+
+
+                                                             Contents lists available at ScienceDirect
+
+
+                                                              Computers & Security
+                                                        journal homepage: www.elsevier.com/locate/cose
+
+
+
+
+WebAssembly diversiﬁcation for malware evasion
+Javier Cabrera-Arteaga∗, Martin Monperrus, Tim Toady, Benoit Baudry
+KTH Royal Institute of Technology, Stockholm, Sweden
+
+
+
+
+a r t i c l e         i n f o                          a b s t r a c t
+
+Article history:                                       WebAssembly has become a crucial part of the modern web, offering a faster alternative to JavaScript in
+Received 21 December 2022                              browsers. While boosting rich applications in browser, this technology is also very eﬃcient to develop
+Revised 27 April 2023
+                                                       cryptojacking malware. This has triggered the development of several methods to detect cryptojacking
+Accepted 13 May 2023
+                                                       malware. However, these defenses have not considered the possibility of attackers using evasion tech-
+Available online 18 May 2023
+                                                       niques. This paper explores how automatic binary diversiﬁcation can support the evasion of WebAssem-
+Keywords:                                              bly cryptojacking detectors. We experiment with a dataset of 33 WebAssembly cryptojacking binaries
+WebAssembly                                            and evaluate our evasion technique against two malware detectors: VirusTotal, a general-purpose detec-
+Cryptojacking                                          tor, and MINOS, a WebAssembly-speciﬁc detector. Our results demonstrate that our technique can auto-
+Software diversiﬁcation                                matically generate variants of WebAssembly cryptojacking that evade the detectors in 90% of cases for
+Malware evasion                                        VirusTotal and 100% for MINOS. Our results emphasize the importance of meta-antiviruses and diverse
+                                                       detection techniques and provide new insights into which WebAssembly code transformations are best
+                                                       suited for malware evasion. We also show that the variants introduce limited performance overhead,
+                                                       making binary diversiﬁcation an effective technique for evasion.
+                                                                                                               © 2023 The Author(s). Published by Elsevier Ltd.
+                                                            This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)
+
+
+
+
+1. Introduction                                                                         that Monero (2022) is the most used cryptocurrency for crypto-
+                                                                                        mining in the browser. Attackers might hide WebAssembly cryp-
+    WebAssembly is a binary format that has become an essential                         tominers (Tekiner et al., 2021) in multiple locations inside web ap-
+component of the web. It ﬁrst appeared in 2017 as a fast and safe                       plications.
+complement for JavaScript (Haas et al., 2017). The language pro-                            Antivirus and browsers provide support for detecting crypto-
+vides low-level constructs enabling eﬃcient execution, much closer                      jacking. For example, the Firefox browser supports the detection
+to native code than JavaScript. Since its inception, the adoption                       of cryptomining by using deny lists (Mozilla, 2019). The academic
+of WebAssembly has grown exponentially, even outside the web                            community also provides related work on detecting or preventing
+(Cabrera Arteaga et al., 2022). Its early adoption by malicious ac-                     WebAssembly cryptojacking (Bian et al., 2020; Kelton et al., 2020;
+tors is further evidence of WebAssembly’s success.                                      Kharraz et al., 2019; Naseem et al., 2021; Romano et al., 2020;
+    The primary black-hat usage of WebAssembly is cryptojacking                         Wang et al., 2018). Yet, it is known that black-hats can use eva-
+(Rokicki et al., 2022). Such WebAssembly code mines cryptocur-                          sion techniques to bypass detection. Only the previous work of
+rencies on users’ browsers for the beneﬁt of malicious actors and                       Bhansali et al. (2022) investigates the possibility of WebAssembly
+without the consent of the users (Musch et al., 2019b). The main                        cryptojacking to evade detection techniques. This is a crucial mo-
+reason for this phenomenon is that the core foundation of cryp-                         tivation for our work, one of the ﬁrst to study WebAssembly mal-
+tojacking is: the faster, the better. In this context, WebAssembly,                     ware evasion.
+a binary instruction format designed to be portable and fast, is a                          Our work is different from Bhansali et al. (2022)’s in the fol-
+feasible technology for implementing and distributing cryptojack-                       lowing aspects. First, we extend the evaluation of MINOS by us-
+ing over the web. A Kaspersky report about the state of cryptojack-                     ing VirusTotal and, we empirically demonstrate that this latter is
+ing in the ﬁrst three quarters of 2022 conﬁrms the steady growth                        a valid cryptojacking malware meta-detector for WebAssembly to
+in the usage of cryptominers (Kaspersky, 2022). The report shows                        be used as baseline (see Section 5). Second, we conduct an evalua-
+                                                                                        tion of the correctness and eﬃciency of the Wasm variants, which
+                                                                                        provides insights into the trade-offs and limitations of bytecode-
+  ∗
+   Corresponding author.
+                                                                                        level transformations for malware evasion in WebAssembly. Our
+   E-mail addresses: javierca@kth.se (J. Cabrera-Arteaga), monperrus@kth.se             approach, performs bytecode transformations at the WebAssem-
+(M. Monperrus), toady@eecs.kth.se (T. Toady), baudry@kth.se (B. Baudry).                bly level, instead of source code based transformations like the
+
+
+https://doi.org/10.1016/j.cose.2023.103296
+0167-4048/© 2023 The Author(s). Published by Elsevier Ltd. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                      Computers & Security 131 (2023) 103296
+
+
+Bhansali’s technique. We focus on software diversiﬁcation tech-             2.1. WebAssembly
+niques in the spirit of Cohen (1993), as this technique has the abil-
+ity to generate many variants, while the impact on the binary size              WebAssembly (Wasm) is a binary instruction set meant initially
+and performance can be controlled through the selection of spe-             for the web. It was adopted as a standard language for the web by
+ciﬁc diversiﬁcation transformations (Lundquist et al., 2016).               the W3C in 2017, building upon the work of Haas et al. (2017).
+    In this paper, we design, implement and evaluate a full-ﬂedged          One of Wasm’s primary advantages is that it deﬁnes its own In-
+evasion pipeline for WebAssembly. Concretely, we use wasm-                  struction Set Architecture (ISA), which is both straightforward and
+mutate as a diversiﬁer (Bytecodealliance, 2021), which implements           platform-independent. As a result, a Wasm binary can execute on
+135 possible bytecode transformations, grouped into three cate-             virtually any platform, including web browsers and server-side en-
+gories: peephole operator, module structure, and control ﬂow. We            vironments. Since its introduction, all major web browsers have
+demonstrate the effectiveness of our evasion technique against              implemented support for WebAssembly, reporting to be only 10%
+two cryptojacking detectors: VirusTotal, a general detection tool           slower than machine code during runtime.
+that comprises 60 antiviruses and, MINOS (Naseem et al., 2021),                 WebAssembly programs are compiled ahead-of-time from
+a WebAssembly-speciﬁc detector.                                             source languages such as C/C++, Rust, and Go, utilizing compilation
+    We evaluate our proposed evasion technique on 33 cryptojack-            pipelines like LLVM. This allows Wasm to beneﬁt from ahead-of-
+ing malware that we curated from the 8643 binaries of the wasm-             time compiling optimizations, improving its performance. A Wasm
+bench dataset (Hilbig et al., 2021), to our knowledge, the most ex-         binary is comprised of sections, which are consecutive sequences
+haustive collection of real-world WebAssembly binaries. We exper-           of bytes in the binary ﬁle. In contrast to the absolute order of sec-
+iment with the 33 binaries marked as potentially dangerous by at            tions in Windows Portable Programs, sections in Wasm binaries
+least one antivirus vendor of VirusTotal. We empirically demon-             have a relative order between them. Thus, Wasm can be consid-
+strate that evasion is possible for all of these 33 real-world We-          ered a more ﬂexible binary format.
+bAssembly cryptojacking malware while using a WebAssembly-                      WebAssembly programs operate on a virtual stack that allows
+speciﬁc detector. Remarkably, we ﬁnd 30 cryptominers for which              for only four data types: i32, i64, f32, and f64. These same data
+our technique successfully generates variants that evade VirusTo-           types are used to annotate the numeric operations in the We-
+tal. Our set of malware includes 6 cryptojacking programs that              bAssembly code. Additionally, a WebAssembly program might in-
+are fully reproducible in a controlled environment. With them, we           clude several custom sections. For example, binary producers such
+assess that our evasion method does not affect malware correct-             as compilers use it to store metadata. A WebAssembly code also
+ness and generates fully functional malware variants with minimal           declares memories and globals, which are used to store, manipu-
+overhead.                                                                   late and share data during program execution, e.g. to share data
+    Our work provides evidence that the malware detection com-              with the host engine of the WebAssembly binary.
+munity has opportunities to strengthen the automatic detection of               WebAssembly is designed with isolation as a primary consider-
+cryptojacking WebAssembly malware. The results of this work are             ation. For instance, a WebAssembly binary cannot access the mem-
+actionable, as we provide quantitative evidence on speciﬁc mal-             ory of other binaries or interact directly with a browser’s built-in
+ware transformations on which detection methods can focus. To               API, such as the DOM or the network. Instead, communication with
+sum up, the contributions of this work are:                                 these features is constrained to functions imported from the host
+                                                                            engine, ensuring a secure and safe Wasm environment. Moreover,
+ • A full-ﬂedged cryptojacking malware evasion pipeline for We-             control ﬂow in WebAssembly is managed through explicit labels
+   bAssembly, based on a state-of-the-art binary diversiﬁcation.            and well-deﬁned blocks, which means that jumps in the program
+   We provide the repository of the tool at https://github.com/             can only occur inside blocks, unlike regular assembly code.
+   ASSERT-KTH/wasm_evasion.                                                     In Listing 1, we provide an example of a C program that con-
+ • A systematic evaluation of our cryptojacking evasion pipeline,           tains a function declaration, a loop, a loop conditional, and a mem-
+   including effectiveness, performance, and correctness.                   ory access. When the C code is compiled to WebAssembly, it pro-
+ • Actionable evidence on which transformations are better for              duces the code shown in Listing 2. The stack operations are folded
+   evading WebAssembly cryptojacking detectors, calling for future          with parentheses. The module in the example contains the compo-
+   work from the academic and the industrial community alike.               nents described previously.
+ • A reproducible comparison of VirusTotal with MINOS, a
+   WebAssembly-speciﬁc detector, showing the relevance of Virus-            2.2. Malware in WebAssembly
+   Total as a valid and practical cryptojacking meta-detector.
+                                                                               The use cases of WebAssembly in browsers focuses on
+   This paper is structured as follows. In Section 2, we introduce
+                                                                            computation-intensive activities such as gaming or image process-
+WebAssembly for cryptomining and the state-of-the-art on mal-
+                                                                            ing. Also, malign actors have taken advantage of WebAssembly to
+ware detection and evasion techniques and its limitations for We-
+                                                                            carry out their activities, and cryptojacking is the most common
+bAssembly cryptojacking. In Section 3, we instantiate and explain
+                                                                            usage observed so far (Musch et al., 2019a; 2019b). The reason for
+malware evasion for WebAssembly cryptojacking in a real scenario.
+                                                                            this is that cryptojacking involves executing vast amounts of hash
+We follow with the technical description of our malware evasion
+algorithms in Section 4. We formulate our research questions in
+Section 5, answering them in Section 6. We discuss our research
+in Section 7, in order to help future research projects on similar
+topics. We ﬁnalize with our conclusions Section 8.
+
+
+2. Background & related work
+
+    In this section, we introduce WebAssembly. Besides, we illus-
+trate its usage for cryptojacking. Then, we discuss how WebAssem-
+bly cryptojacking can be detected, and the most common tech-                Listing 1. C program containing function declaration, loops, conditionals and mem-
+niques used to evade such detection.                                        ory access.
+
+
+                                                                        2
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                Computers & Security 131 (2023) 103296
+
+
+                                                                             egy depends on the knowledge of the internals of CryptoNight,
+                                                                             one popular library for cryptomining. In the same context, MINOS
+                                                                             is a state-of-art static detection tool that converts WebAssembly
+                                                                             binaries to vectors for malware detection (Naseem et al., 2021).
+                                                                                 MINOS is a practical approach for detecting malicious We-
+                                                                             bAssembly binaries. It works by converting the Wasm binary’s
+                                                                             bytestream into a 100 × 100 grayscale image, which is then fed
+                                                                             into a Convolutional Neural Network (CNN). The CNN has learned
+                                                                             patterns in the image to classify it as either benign or malicious.
+                                                                             This approach is similar to image-based methods used in other
+                                                                             areas (Liu and Wang, 2016), e.g., for detecting Windows malware
+                                                                             (Kalash et al., 2018; Lachtar et al., 2023). We believe MINOS is the
+                                                                             optimal static approach to detect WebAssembly malware due to its
+                                                                             simplicity and practicality, such as being easily implemented as a
+                                                                             browser extension.
+                                                                                 Dynamic analysis for malware detection is based on the execu-
+                                                                             tion of the malware code to identify potentially dangerous behav-
+                                                                             iors (Egele et al., 2008). Usually, this is done by monitoring some
+                                                                             functions, such as API calls. For example, BLADE (Lu et al., 2010) is
+                                                                             a Windows kernel extension that aims to eliminate drive-by mal-
+                                                                             ware installations. It wraps the ﬁlesystem for browser downloads
+                                                                             for which user consent has been involved. It thwarts the ability of
+                                                                             browser-based exploits to download and execute malicious content
+                                                                             surreptitiously. SEISMIC and MineThrotle also perform dynamic
+                                                                             analyses (Bian et al., 2020; Wang et al., 2018) on WebAssembly
+                                                                             binaries to proﬁle instructions that are speciﬁc to cryptominers.
+                                                                             For example, cryptominers overly execute XOR instructions. SEIS-
+                                                                             MIC and MineThrotle use machine learning approaches to classify
+                                                                             the binary as benign or malign based on collecting runtime pro-
+                                                                             ﬁles. On the same topic, MinerRay (Romano et al., 2020) detects
+                                                                             cryptojacking in WebAssembly binaries by analyzing their control
+                                                                             ﬂow graph at runtime, searching for structures that are character-
+                                                                             istic of encryption algorithms commonly used for cryptojacking.
+                                                                             CoinSpy is another malware detector based on dynamic analysis
+                                                                             (Kelton et al., 2020). It uses a convolutional neural network to anal-
+               Listing 2. WebAssembly code for C code in Listing 1.          yse the computation, network, and memory information caused by
+                                                                             cryptojackers running in client browsers.
+                                                                                 Hybrid approaches use a mix of static and dynamic detection
+functions, which requires signiﬁcant computing resources. In com-            techniques. The main reason to use hybrid approaches is the im-
+parison to JavaScript, WebAssembly is signiﬁcantly faster at han-            practicability of executing the whole program. Thus, only pieces
+dling these intense hashing operations in the browser (Haas et al.,          of code that can be quickly executed are dynamically analyzed.
+2017).                                                                       For example, AppAudit embodies a novel dynamic analysis for An-
+    Web cryptojacking is often carried out by including a malicious          droid applications that can simulate the execution of some parts
+JavaScript+WebAssembly payload, which then execute on the vic-               of the program (Xia et al., 2015). For WebAssembly, Outguard
+tim’s browser without their knowledge (Tekiner et al., 2021). For            (Kharraz et al., 2019) trains a Support Vector Machine model with
+example, websites that offer illegal download or adult sites, of-            a combination of cryptomining function names obtained statically
+ten include cryptojacking in their webpages to generate passive in-          and dynamic information such as the number of web workers used
+come. Since cryptojacking is diﬃcult to detect and remove, it can            in the web application that is analyzed.
+remain on a victim’s computer for an extended period, continuing                 It is possible to combine several independent detectors into
+to consume resources and to generate income for the attacker. This           a meta-antivirus. Each detector embeds some heuristics that are
+lucrative form of malware does need vulnerabilities or stealing cre-         good at detecting speciﬁc types of malware (Moser et al., 2007).
+dentials.                                                                    Hence, their combination can effectively detect a broader range
+                                                                             of malware, e.g., using relationship analysis. VirusTotal (GoogleLLC,
+2.3. Malware detection                                                       2022; VirusTotal, 2020) is a consolidated meta-antivirus. VirusTo-
+                                                                             tal operates with 60 antivirus vendors to provide malware scan-
+   Malware detection determines if a binary is malicious or not.             ning. Through its API, a program can be labeled by 60 antiviruses.
+This process can be based on static, dynamic, or hybrid analysis             This aggregation is used to determine if an asset under analysis
+(Aslan and Samet, 2020). In this section, we highlight works in              is malicious, e.g., by voting. Previous works used VirusTotal to as-
+the area of malware detection. Static-based approaches analyze               sess detection eﬃciency, Peng et al. (2019) because it is a proxy to
+the source code or the binary to ﬁnd malign patterns without                 evaluate state-of-art techniques in combination with commercial
+executing them. The literature reports a range of techniques,                antiviruses. In this work, we follow the same methodology, using
+from simple checksum checking to advanced machine learning                   VirusTotal to assess our technique’s ability to evade cryptojacking
+methods, that have subsequently been adopted by commercial                   detectors.
+antiviruses (Botacin et al., 2022; Li et al., 2021). In the context of           While concerns have been raised about the use of VirusTotal for
+WebAssembly, MineSweeper is a detection method based on static               some malware and ﬁle type families (Botacin et al., 2020), it can be
+analysis (Konoth et al., 2018) of WebAssembly. Its detection strat-          considered for WebAssembly cryptojacking detection. We empiri-
+
+                                                                         3
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                               Computers & Security 131 (2023) 103296
+
+
+cally highlight later in this paper that VirusTotal is slightly better                      resources. The JavaScript wrapper facilitates the communication
+than the WebAssembly-speciﬁc detector MINOS regarding the de-                               between the WebAssembly binary and the cryptominer pool.
+tection of cryptojacking malware.                                                           Overall, a successful cryptojacking attack on a victim’s browser
+                                                                                            consists in the following sequence of steps. First, the victim
+2.4. Malware evasion                                                                        visits a web page infected with the cryptojacking code. The web
+                                                                                            page establishes a channel to the cryptominer pool, which then
+    Malware evasion techniques aim at avoiding malware detec-                               assigns a hashing job to the infected browser. The WebAssembly
+tion (Aﬁanian et al., 2019) Potential attackers use a wide range                            cryptominer calculates thousands of hashes inside the browser, in
+of techniques to achieve evasion, such as genetic programming                               parallel using multiple browser workers (Mozilla, 2022). Once the
+(Castro et al., 2019). With time, the techniques to avoid detec-                            malware server receives acceptable hashes, it is rewarded with
+tion have grown in complexity and sophistication (Aghakhani et al.,                         cryptocurrencies for the mining. Then, the server assigns a new
+2020). For example, Chua and Balachandran (2018) proposed a                                 job, and the mining process starts over.
+framework to automatically obfuscate Android applications’ source                                Some detection techniques discussed in Section 2.3 can be de-
+code using method overloading, opaque predicates, try-catch, and                            ployed in the browser directly to prevent cryptojacking. The pri-
+switch statement obfuscation, creating several versions of the same                         mary objective of our work is to demonstrate the possibility of
+malware. Also, machine learning approaches have been used to                                using code diversiﬁcation to bypass cryptojacking defenses. Con-
+create evading malware (Dasgupta and Osman, 2021), based on                                 cretely, the following workﬂow can happen to successfully evade
+a corpus of pre-existing malware (Bostani and Moonsamy, 2021).                              placed defenses: i) The user visits a webpage that contains a
+While most approaches try to break static malware detectors, more                           cryptojacking malware, which utilizes network resources to exe-
+sophisticated techniques avoid dynamic detection, usually involv-                           cute, (1) and (2) in Fig. 1. Cryptojacking malware can be injected
+ing throttling techniques or dynamic anti-analysis checks (Lu and                           through malicious browser extensions, malvertising, compromised
+Debray, 2013; Payer, 2014). Wang proposes the concept of Accrued                            websites, or deceptive links (Tekiner et al., 2021). ii) A malware
+Malicious Magnitude (AMM) to identify which malware features                                detector blocks WebAssembly binaries that are identiﬁed as ma-
+should be manipulated to maximize the likelihood of evading de-                             licious (3). The malware detector system can be implemented lo-
+tection (Wang et al., 2021).                                                                cally or remotely. For instance, a proxy can intercept and send net-
+    In the context of WebAssembly, malware evasion is nearly un-                            work resources to an external detector through the detector’s API.
+explored. Only Romano et al. (2022) recently proposed wobfusca-                             iii) The attacker, based on a malware oracle, crafts a WebAssembly
+tor, a code obfuscation technique that transforms JavaScript code                           cryptojacking malware variant that evade the detection (4). iv) The
+into a new JavaScript ﬁle and a set of WebAssembly binaries.                                attacker delivers the modiﬁed binary instead of the original one
+Their technique mostly focuses on JavaScript evasion and not We-                            (5), which initiates the cryptojacking process and compromises the
+bAssembly evasion.                                                                          browser (6).
+    Bhansali et al. (2022) propose a technique where WebAssembly                                 The idea is that attackers rapidly diversify their WebAssembly
+binaries are transformed while maintaining the functionality with                           code to stay ahead of the defense system and maintain success-
+seven different source code obfuscation techniques. They evaluate                           ful cryptojacking operations. Crucially, attackers must ensure that
+the effectiveness of the techniques against MINOS (Naseem et al.,                           the diversiﬁed binaries they use for cryptojacking meet speciﬁc
+2021). They show these transformations can generate malware                                 performance requirements, which is an aspect we will study in
+variants that evade the MINOS classiﬁer.                                                    Section 4.
+
+3. WebAssembly cryptojacking malware evasion in practice                                    4. Diversiﬁcation for malware evasion in WebAssembly
+
+   Figure 1 illustrates our attack scenario: a practical We-                                    In this section, we explain a technique for potential attackers to
+bAssembly cryptojacking attack consists of three components: a                              craft a WebAssembly binary that evades detection (steps 4, 5 and
+WebAssembly binary, a JavaScript wrapper, and a backend cryp-                               6 in Fig. 1).
+tominer pool. The WebAssembly binary is responsible for executing                               In Fig. 2 we illustrate our generic architecture for the malware
+the hash calculations, which consume signiﬁcant computational                               evasion component. The workﬂow starts by passing a WebAssem-
+                                                                                            bly malware binary to a software diversiﬁer (1). The diversiﬁer
+                                                                                            generates binary variants, which are passed to a malware oracle
+                                                                                            (2). The oracle returns labeling feedback for the binary variant:
+                                                                                            malware or benignware. The oracle result is the input for a ﬁtness
+                                                                                            function that steers the construction of a new binary on top of the
+                                                                                            previously diversiﬁed one. This process is repeated until the mal-
+                                                                                            ware oracle marks the mutated binary as benign or a timeout is
+                                                                                            reached (4). For the sake of open science and for fostering research
+                                                                                            on this important topic, our implementation is made publicly avail-
+                                                                                            able on GitHub: https://github.com/ASSERT-KTH/wasm_evasion.
+
+                                                                                            4.1. Diversiﬁer
+
+                                                                                               Conceptually, our approach is parametrized by a semantic pre-
+                                                                                            serving diversiﬁer (Cohen, 1993). For our prototype implementa-
+                                                                                            tion, we select one diversiﬁer that supports wasm-to-wasm diver-
+Fig. 1. WebAssembly evasion in practice. The user visits a webpage containing               siﬁcation and performs almost non-costly transformations: wasm-
+cryptojacking malware that uses network resources to operate. A malware detector
+                                                                                            mutate (Bytecodealliance, 2021). This tool takes a WebAssembly
+blocks identiﬁed malicious WebAssembly binaries. The attacker, using a malware
+oracle, creates a WebAssembly cryptojacking malware variant that evades detec-              module as input and returns a set of variants of that module.
+tion. Finally, the attacker delivers the modiﬁed binary, initiating the cryptojacking       wasm-mutate follows the notion of program equivalence modulo
+process and compromising the browser.                                                       input (Le et al., 2014), i.e., the variants should provide the same
+
+                                                                                        4
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                             Computers & Security 131 (2023) 103296
+
+
+
+
+Fig. 2. Our original workﬂow of binary diversiﬁcation for malware evasion in WebAssembly. The workﬂow begins with a WebAssembly malware binary sent to a software
+diversiﬁer. The diversiﬁer creates binary variants, which are analyzed by a malware oracle that labels them as malware or benignware. The oracle’s results guide the
+development of a new binary based on the previous one. This process continues until the malware oracle labels the mutated binary as benign or a timeout occurs.
+
+
+output for the same program inputs. It represents the search space
+for new variants as an e-graph (Willsey et al., 2020), and it ex-
+ploits the property that any traversal through the e-graph rep-
+resents a semantically equivalent variant of the input program.
+wasm-mutate can generate thousands of semantically equivalent
+variants from a single binary in a few minutes.
+    Wasm-mutate deﬁnes 135 possible transformations on an in-
+put WebAssembly binary, grouped into three categories. The peep-
+hole operator is the ﬁrst category. It is responsible for rewriting
+instruction sequences in function bodies. It selects a random in-
+struction within the binary functions and applies one or more
+of the 125 rewrite rules. Finally, it re-encodes the WebAssembly
+module with the new, rewritten expression to produce a binary
+variant. The second category of transformations in wasm-mutate
+implements module structure transformations. It operates at the
+level of the WebAssembly binary structure. It includes the follow-
+ing eight transformations: add a new type deﬁnition, add/modify
+custom sections, add a new function, add a new export, add a new
+import, add a new global, remove a type and remove a function.
+The third transformation category is on the control ﬂow graph of
+a function code level. wasm-mutate performs two possible trans-
+formations: unroll a loop or swap the branches of a conditional
+block.
+    The decision of using wasm-mutate as a diversiﬁer is based
+on three key factors. First, while diversiﬁcation approaches for
+WebAssembly from LLVM sources exist (Cabrera Arteaga et al.,
+2022; Cabrera-Arteaga et al., 2021), compiler-based diversiﬁcation
+may include compiler ﬁngerprints in the built binaries, which is
+bad for stealthy evasion. Second, while optimization-based ap-
+proaches could be used to diversify WebAssembly binaries from
+source code (Ren et al., 2021), optimizations are usually all ap-
+plied at once, providing a smaller diversiﬁcation space, hence
+fewer opportunities for evasion. Finally, wasm-mutate is a tool
+that implements many useful semantically equivalent transforma-
+tions, making it well-suited as a diversiﬁer with minimal engi-
+neering effort. Therefore, using wasm-mutate as a diversiﬁer pro-
+vides a practical approach for evasion in WebAssembly. We be-
+lieve that attackers would take the same path and reach the same
+conclusion.                                                                                   Listing 3. Wasm-mutate transformation applied over Listing 2.
+    For the sake of illustration, in Listing 3, we present a variant
+of the WebAssembly code shown in Listing 2. We generate this
+variant using the wasm-mutate diversiﬁer, with two transforma-
+tions. The changes made to the original code are highlighted in                      4.2. Malware oracle
+orange and green. The ﬁrst transformation, highlighted in orange,
+involves removing the custom section that indicates the producer                         To determine whether a given sample is malicious or not, we
+of the original binary. The second transformation, highlighted in                    rely on a malware oracle. The simplest form of malware oracle is a
+green, replaces the shift-left operation in the original binary with                 binary classiﬁer that outputs a label of {malware, benignware}. In
+two consecutive multiplications of the same value.                                   addition to binary classiﬁers, we also consider numerical oracles
+
+                                                                                 5
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                Computers & Security 131 (2023) 103296
+
+
+that provide a value representing the likelihood that a sample is
+                                                                              Algorithm 2: MCMC evasion algorithm.
+malicious.
+    In our experiments, we use VirusTotal (2020) as our malware                 input : binary W , diversiﬁer D, ﬁtness function F F
+oracle. VirusTotal operates with 60 antivirus vendors to provide                output: Benign binary M
+malware scanning. Users submit binaries, and they receive labels                M ← W previous_ﬁtness = F F (W )while Not max iterations do
+from different vendors. The resulting 60 labels can then be used to                M ← D(M )current_ﬁtness = F F (M )if current_ﬁtness == 0
+determine if a queried asset is malicious, e.g., by voting. VirusTotal             then
+                                                                                      // Zero means that none vendor marks// the binary as
+can be used as both a binary and a numerical oracle (Zhu et al.,
+                                                                                      malwarereturn M ;
+2020). We use VirusTotal as a binary oracle by returning malware
+                                                                                   else
+if at least one vendor classiﬁes the binary as malware. We also use
+VirusTotal as a numerical oracle, using the number (between 0 and                              ()if
+                                                                                      p ← random                             
+                                                                                                          previous_ f itness
+60) of oracles labeling a binary as malware.                                          p < min 1, exp σ                          then
+                                                                                                          current _ f itness
+    Research (Botacin et al., 2020), classiﬁcation labels assigned to                           
+                                                                                          M ← M ;previous_ﬁtness = current_ﬁtness;
+samples by vendors in VirusTotal can change over time due to new
+antivirus releases. In our work, we operate under the assumptions
+                                                                                return  Not evaded ;
+outlined in Section 3 and consider a scenario where an attacker
+develops and executes an evasion technique in under an hour. This
+timeframe is signiﬁcantly shorter than the time it takes for classiﬁ-
+cation labels to change in VirusTotal, which typically takes several         can require many iterations and oracle queries to turn the origi-
+days.                                                                        nal malware into a misclassiﬁed binary. Second, some transforma-
+                                                                             tions might suppress the effect of previous ones. Third, the base-
+4.3. Transformation selection & ﬁtness function                              line algorithm considers each vendor equally good at detecting a
+                                                                             malware, which is naive as the vendors display considerable diver-
+    The third step of our workﬂow consists of two actions towards            sity regarding detection strength. An algorithm that would target
+synthesizing a malware variant: select a wasm-mutate transforma-             evasion on the strongest vendor ﬁrst would increase the overall
+tion to apply; and determine if the transformation is applied. This          performance of the evasion process. Finally, we might generate a
+latter decision depends on: 1) the result of the malware oracle at           binary that entirely evades the oracle but is unpractical in terms
+the previous iteration and 2) an estimation of the ability of the            of size or its execution performance.
+new transformation to generate an evading binary. For this estima-
+tion, we implement two variations of our evasion algorithm.
+    First, we use a binary malware oracle. In this context, we al-           4.3.2. MCMC evasion
+ways apply the transformation. This is the baseline evasion algo-                To overcome the limitations of the baseline algorithm, we de-
+rithm, which is discussed in more detail later.                              vise the MCMC evasion algorithm, which we now discuss. It is a
+    The second variation of the evasion algorithm includes a ﬁtness          Markov Chain Monte Carlo (MCMC) sampling (Hastings, 1970) of
+function that uses a numerical oracle to estimate if the transfor-           the transformations to apply (Schkufza et al., 2012). MCMC is used
+mation should be applied. The ﬁtness function uses the informa-              to sample from the space of transformation sequences to maximize
+tion from VirusTotal and is the total number of vendors (between             the likelihood of oracle evasion in two ways.
+0 and 60) that label a binary as malware:                                        The algorithm for the MCMC evasion is given in Algorithm 2.
+                    
+                        1 if vi (m ) returns malware                         The halting condition is met when a mutated binary is marked as
+F F (m ) = ii=0
+              =60
+                                                                             benign, or a maximum number of iterations is reached. The algo-
+                        0 i.o.c
+                                                                             rithm implements the MCMC in lines 6 to 15. The Markov deci-
+This ﬁtness function is used in our second proposed algorithm and            sion function in line 12 is used to determine whether it is worth
+is discussed in details below.                                               applying the transformation at this step or whether it should be
+                                                                             skipped. This decision function is based on the current transfor-
+4.3.1. Baseline evasion                                                      mation’s ﬁtness and the ﬁtness value saved at the previous step
+    The baseline evasion algorithm is described in Algorithm 1. It           (line 14). The core idea is to favor a binary variant that evades the
+uses VirusTotal as a binary oracle (true if at least one VirusTotal          largest number of vendors (lines 4 and 13). Therefore, the number
+detects malware, false otherwise). In this algorithm, step 1 is in           of oracle calls should decrease as the algorithm searches for trans-
+line 3, steps 2 and 4 are in lines 4 to 6, and step 3 is in line 7.          formations that converge toward total evasion. On the other hand,
+Each iteration of this algorithm, “stacks” a transformation on top           if a new transformation step decreases the ﬁtness value, it is likely
+of the previous ones (line 7) until the binary is marked as benign           to be ignored. The classical MCMC acceptance criteria in line 12 is
+(line 5) or the maximum number of iterations is reached (line 2).            meant to prevent the algorithm from being stuck in local minima.
+    With this algorithm, a transformation is randomly selected at                In line 12, the fraction calculated in the exponentiation is con-
+each iteration, and always applied. Hence, the baseline algorithm            trolled by the σ parameter. By setting a low σ parameter, we can
+                                                                             turn the MCMC evasion algorithm into a greedy algorithm. In this
+                                                                             case, the algorithm selects a new transformation only if the ﬁt-
+  Algorithm 1: Baseline evasion algorithm.                                   ness value is higher than in the previous iteration. On the contrary,
+    input : binary W , diversiﬁer D, Malware Oracle MO                       if the σ parameter is signiﬁcant, the algorithm searches for local
+    output: Benign binary M                                                 maxima. In our experiments (Section 5), we explain how we select
+    M ← W while Not max iterations do                                        the values of σ .
+       M ← D(M )if MO(M ) ==  benign then                                  The MCMC evasion algorithm addresses the three limitations
+          return M ;                                                        of the baseline mentioned in the previous section. First, the ﬁt-
+       else                                                                  ness function selects transformations, thus reducing the total num-
+          M ← M ;                                                           ber of transformations that are actually performed. Second, MCMC
+    return  Not evaded ;                                                 aims at increasing ﬁtness, which reduces the risk of suppressing a
+                                                                             valuable transformation performed in the previous step. Third, by
+
+                                                                         6
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                                      Computers & Security 131 (2023) 103296
+
+
+favoring solutions that maximize the number of evaded vendors,                              • RQ4. What are the most effective transformations for We-
+MCMC biases the search towards evading the strongest vendors.                                 bAssembly cryptojacking malware evasion? This research
+                                                                                              question provides empirical evidence on which types of trans-
+5. Experimental methodology                                                                   formations are better for WebAssembly cryptojacking evasion.
+                                                                                            • RQ5. To what extent can Wasm diversiﬁcation evade crypto-
+   In this section, we enunciate the research questions around                                jacking detection with MINOS? In this research question, we
+which we assess the ability of our technique to evade malware de-                             evaluate the feasibility of our technique for evading a state-of-
+tectors. We also describe our dataset of malware, as well as the                              the-art detector, MINOS, which is tailored to the analysis of We-
+metrics we deﬁne to answer our research questions.                                            bAssembly.
+
+5.1. Research questions                                                                    5.2. Dataset selection
+
+ • RQ1. To what extent can cryptojacking malware detection be                                  To answer our research questions, we curate a dataset of We-
+   bypassed by WebAssembly diversiﬁcation? With this research                              bAssembly malware. For this, we ﬁlter the wasmbench dataset
+   question, we evaluate the feasibility of binary transformations                         of Hilbig et al. (2021) to collect suspicious malware according to
+   on malware and how they affect the detection of cryptojacking.                          VirusTotal. The wasmbench dataset contains 8643 binaries col-
+ • RQ2. To what extent can the attacker minimize the number                                lected from GitHub repositories and web pages in 2021. To our
+   of calls to the cryptojacking detection oracle? In real-world                           knowledge, this dataset is the newest and most exhaustive col-
+   scenarios, the number of calls to the oracle is limited. With this                      lection of real-world WebAssembly binaries. On August 2022, we
+   question, we analyze the ability of our technique at limiting the                       passed the 8643 binaries of wasmbench to VirusTotal (2020), and
+   number of oracles calls made during the evasion process.                                we 33 binaries were marked as potentially dangerous by at least
+ • RQ3. To what extent do the evasion techniques impact                                    one antivirus vendor of VirusTotal. All malware were marked as
+   cryptojacking malware functionality? The evasion algorithms                             cryptojacking programs and we use these WebAssembly binaries
+   might generate variants that evade the detectors but modify                             to answer our research questions for cryptojakcing malware eva-
+   their core malicious functionality. This research question eval-                        sion.
+   uates the correctness of the created variants, as well as their                             In Table 1 we describe the 33 binaries detected as malware by
+   eﬃciency.                                                                               VirusTotal. The table contains the following properties as columns:
+
+
+                            Table 1
+                            The 33 real-world WebAssembly cryptojacking used in our experiments. The table contains: the 256 hash of the We-
+                            bAssembly cryptojacking, its size in bytes, the number of instructions, the number of functions deﬁned inside the binary
+                            and the number of VirusTotal vendors that detect the binary at the time of writing. The last column contains the origin
+                            of the binary.
+
+                              Hash                   S                    #I.                #F.              #D              Origin
+
+                              9d30e7f0               68,796               30,768             61               30              http archive
+                              8ebf4e44               68,803               30,768             61               26              Web crawling
+                              47d29959               68,796               30,768             61               31              Yaraa
+                              aafff587               97,551               47,033             72               6               SEISMICb
+                              dc11d82d               67,496               30,246             49               20              MinerRayc
+                              0d996462               70,972               30,531             30               19              SEISMIC, MinerRay
+                              fbdd1efa               94,270               45,905             40               18              SEISMIC
+                              a32a6f4b               94,461               45,940             40               18              SEISMIC
+                              d2141ff2               70,111               31,783             30               9               MinerRay, SEISMIC
+                              046dc081               74,099               31,783             29               6               MinerRay, SEISMIC
+                              24aae13a               62,458               28,339             37               4               SEISMIC
+                              000415b2               62,466               28,339             37               3               SEISMIC
+                              643116ff               73,010               31,866                              6               MinerRay
+                              006b2fb6               87,502               39,544             90               4               DeepMinerd
+                              15b86a25               100,755              45,881             79               4               MinerRay
+                              4cbdbbb1               104,666              47,916             62               3               SEISMIC
+                              119c53eb               137,320              67,069             79               2               SEISMIC
+                              f0b24409               77,572               34,918             59               2               MinerRay
+                              c1be4071               77,572               34,918             59               2               MinerRay
+                              a74a7cb8               77,572               34,918             59               2               MinerRay
+                              a27b45ef               77,572               34,918             59               2               MinerRay
+                              6b8c7899               77,572               34,918             59               2               MinerRay
+                              68ca7c0e               77,572               34,918             59               2               MinerRay
+                              65debcbe               77,572               34,918             59               2               MinerRay
+                              5bc53343               77,572               34,918             59               2               MinerRay
+                              59955b4c               77,572               34,918             59               2               MinerRay
+                              942be4f7               103,520              46,208             79               4               MinerRay
+                              fb15929f               77,054               33,562             112              4               MinerRay
+                              7c36f462               121,931              55,839             79               4               MinerRay
+                              89a3645c               75,003               34,134             58               2               MinerRay
+                              dceaf65b               77,575               34,901             58               2               MinerRay
+                              089dd312               79,883               34,989             58               2               MinerRay
+                              e09c32c5               71,955               32,416             46               1               MinerRay
+                              a
+                               Yara project https://github.com/davbo/yara- rs/tree/master/sample- miners.
+                              b
+                               All Wasm binaries of the MinerRay project could be found at https://github.com/miner-ray/miner-ray.github.io/tree/
+                            master/Data/SampleWasmFiles.
+                             c
+                               All Wasm binaries of the SEISMIC project could be found at https://github.com/wenhao1006/SEISMIC.
+                             d
+                               Deepminer project https://github.com/deepwn/deepMiner.
+
+
+                                                                                       7
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                               Computers & Security 131 (2023) 103296
+
+
+the identiﬁer of the WebAssembly binary which is the sha256 hash            picious binary to wasm-mutate. The diversiﬁed version is passed
+of its bytestream, its size in bytes, the number of instructions, the       to VirusTotal as a binary oracle. If at least one vendor still detects
+number of functions deﬁned inside the binary and the number of              the diversiﬁed binary, we pass it to wasm-mutate again to stack a
+VirusTotal vendors that detect the binary. The last column contains         new random transformation. We repeat this process until VirusTo-
+the origin of the binary according to the wasmbench dataset.1               tal does not label the binary as malware or reach a limit of 10 0 0
+    The programs include between 30 and 70 functions, for a total           transformations. The process is performed 10 times with 10 differ-
+number of instructions ranging from 30,531 to 55,839. The size of           ent random seeds for each binary.
+the programs ranges from 62 to 103 kilobytes. These binaries are                RQ2: Oracle minimization Malicious actors have a limited bud-
+detected as malicious by at least 1 antivirus, and at most 31. We           get to perform evasion before they get caught. The number of or-
+have observed that 6 out of 33 binaries can be executed end-to-             acle calls is a proxy for such a budget, i.e., the lesser the num-
+end.                                                                        ber of oracle calls, the lesser effort spent. To answer RQ2, we aim
+    To validate that the detected binaries are cryptojacking, we            at minimizing the number of oracle calls while keeping the same
+manually analyze each of the 33 binaries identiﬁed as malign. First,        evasion effectiveness. In particular, we assess the capability of the
+we observe that the binaries in the dataset originate from two              MCMC evasion algorithm to minimize the number of calls to the
+primary sources: project SEISMIC and project MinerRay. SEISMIC              malware oracle (Metric 1). For this, we execute the MCMC eva-
+(Wang et al., 2018) is a research project about instrumentation and         sion algorithm (Algorithm 2) one time for each malware binary
+monitoring at runtime to detect cryptojacking binaries. MinerRay            of our dataset. We use VirusTotal as an oracle and stop when we
+is also a research project to detect crypto mining processes in web         reach a limit of 10 0 0 transformations. Since MCMC has a conﬁg-
+browsers (Romano et al., 2020). Both projects have collected the            uration parameter σ , we repeat the process with three σ values:
+binaries as real cryptojacking from the web and the dataset is a            0.01, 0.3, and 1.1. The σ -value weights exploration and exploitation
+union of them.                                                              of transformations during the evasion process. For example, the
+    Second, we observee that all binaries share code from cryp-             ﬁrst value is low, favoring exploration at the most, meaning that
+tonight (XMRIG, 2016), which is a library for cryptomining                  the MCMC algorithm will take any new transformation, whether
+hashing. This observation is consistent with the ﬁndings of                 it increases the ﬁtness function value or not. On the contrary, the
+Romano et al. (2020). We ﬁnd 5 binaries that are multivariant               largest value 1.1 favors the exploitation and, meaning that during
+packages (Cabrera Arteaga et al., 2022) of cryptopnight. A multi-           evasion, MCMC will only accept transformations with higher val-
+variant package is a binary containing more than one hashing func-          ues from the oracle, i.e., more evaded detectors. We manually se-
+tion. Concretely, the binaries 0d996462, d2141ff2, 046dc081,                lect the third value 0.3 as the balance between exploration and
+a32a6f4b and fbdd1efa contain between 2 and 3 versions of                   exploitation.
+hashing functions cryptonight_hash.                                             RQ3: Malware functionality A diversiﬁed binary that fully evades
+    Third, our manual analysis of the binaries reveals 6 main               the detection, might not be practical due to behavioral or perfor-
+sources for these differences. (1) Versions: the binaries do not            mance issues. RQ3 complements our ﬁrst two research questions
+depend on the same version of cryptonight, (2) Function re-                 with a correctness and an eﬃciency evaluation. For every crypto-
+ordering: The order in which the functions are declared in-                 jacking that can be executed, we reproduce all cryptominer com-
+side the binary changes (3) Innocuous expressions: Expressions              ponents (described in Section 2.2) and replace the WebAssembly
+have been injected into the program code, but their execution               binaries with variants that fully evade VirusTotal. For each exe-
+does not affect the semantic of the original program (4) Func-              cutable cryptojacking program, we generate 10 variants with the
+tion renaming: The name of the functions exported to JavaScript             baseline evasion algorithm as well as 10 variants with the MCMC
+have been changed (5) Data layout changes: The data needed                  algorithm, with σ value 0.3 to balance the MCMC exploration-
+by the cryptominers has different location in the WebAssem-                 exploitation. Then, we replace the original cryptojacking by each
+bly linear memory. (6) Partial cryptonight: Some binaries ex-               of the 20 variants in order to determine that the behavior of
+clude cryptonight functions, i.e., the cryptonight_create,                  the original cryptojacking program is preserved in the variants
+cryptonight_destroy, cryptonight_hash functions. It is                      (Demetrio et al., 2021).
+interesting to note that changes in function order, function names,             Our end-to-end pipelines provide data on the number of gener-
+or data layout leads to different programs that have the same num-          ated hashes in the webpage component as an HTML element. Be-
+ber of instructions and functions, as is the case for 9 of our malign       sides, the number of successful or incorrect jobs are logged by the
+binaries.                                                                   miner pool. This information can be used to measure both the cor-
+                                                                            rectness and eﬃciency of the generated WebAssembly variants. To
+5.3. Methodology                                                            collect data on the number of hashes per second, the webpage is
+                                                                            accessed with Puppetter, while the miner pool logs are saved to
+    Based on our dataset of WebAssembly binaries, we follow the             measure the number of successful and failed jobs with their re-
+following procedures to answer our research questions.                      spective log time. By analyzing these two types of data, the overall
+    RQ1: Evasion effectiveness To answer RQ1, we execute the base-          correctness and effectiveness of a diversiﬁed WebAssembly binary
+line evasion algorithm discussed in Section 4.3. We ﬁrst pass a sus-        can be determined.
+                                                                                To check correctness, we verify that the hashes generated by
+                                                                            the variants are valid. We determine whether the hashes reach
+                                                                            the third component of a cryptojacking (see Section 2.2), i.e., how
+                                                                            many successful and failed jobs are reported by the miner pool. If
+                                                                            a miner pool correctly accepts the hashes, then the cryptojacking
+                                                                            variant generated by our evasion algorithms is considered correct.
+                                                                                To check for eﬃciency, we measure the frequency of hashes
+                                                                            produced by the variants binaries. For each WebAssembly cryp-
+                                                                            tojacking and its generated variants, we execute and measure the
+                                                                            hashes produced per second, during 10 0 0 s. For each malware vari-
+                                                                            ant, we check if the hash production frequency is still in the same
+                                                                            order of magnitude as the original.
+
+                                                                        8
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                 Computers & Security 131 (2023) 103296
+
+
+    RQ4: Individual transformation effectiveness As discussed in              be applied to Metric 2, in lines 7 and 13 of Algorithms 1 and 2,
+Section 4.1, our diversiﬁer comprises 135 possible transformation             respectively.
+operators. In this research question, we want to study which trans-              The main purpose of a WebAssmbly cryptominer is to calculate
+formations perform better in evading the VirusTotal malware de-               hashes. By measuring the number of calculated hashes per time
+tection oracle. This investigation will help future researchers and           unit, we can measure how performant the cryptojacking is. There-
+detectors engineers to improve their detection methods and tackle             fore, the impact of the evasion process over the performance of the
+subversive transformations.                                                   created binary can be measured, calculating the number of hashes
+    We use a value of σ = 1.1 to tune the MCMC evasion algo-                  per time unit:
+rithm. With this parameter, the MCMC evasion algorithm only
+                                                                              Metric 3. Crypto hashes per second (h/s): Given a WebAssembly
+keeps transformations that signiﬁcantly contribute to improving
+                                                                              cryptojacking, the crypto hashes per second metric is the number
+the ﬁtness of the variant. In other words, a transformation is ap-
+                                                                              of successfully generated hashes in one second.
+plied if at least one more detector of VirusTotal is evaded. Then,
+we count the number of applied transformations, aggregated by its             Metric 4. Correct crypto hashes: Given a WebAssembly cryptojack-
+type. By measuring this, we obtain the most used one (resp. the               ing, the number of correct crypto hashes is the number of hashes
+least used), and, therefore, understand where malware researchers             that the WebAssembly cryptojacking generates and that the miner
+should focus for counter-evasion.                                             pool accepts as valid.
+    RQ5: Effectiveness against MINOS This research question as-
+sesses the effectiveness of our evasion technique with respect                6. Experimental results
+to the state-of-the-art WebAssembly malware detector, MINOS
+(Naseem et al., 2021). This detector takes a Wasm binary as input                In section, we answer our four research questions regarding the
+and creates a 100 × 100 grayscale image from its pure byte stream.            feasibility of WebAssembly diversiﬁcation for malware evasion.
+Using a Convolutional Neural Network, the generated image is clas-
+siﬁed as benign or malware.                                                   6.1. RQ1. Evasion effectiveness
+    We replicate MINOS. However, the model of MINOS is not pub-
+licly available, so we train our own model for this experiment. We                We run our baseline evasion algorithm with a limit of 10 0 0 iter-
+use our own dataset to train the model with 33 malign programs                ations per binary. At each iteration, we query VirusTotal to check if
+and 33 benign programs. The 33 malign programs for training MI-               the new binary evades the detection. This process is repeated with
+NOS are the same listed in Table 1, the 33 benign programs are                10 random seeds per binary, resulting in a maximum of 10,0 0 0
+collected from the original MINOS reproduction steps. Our repro-              queries per original binary. In total, we generate 98,714 variants
+duction of MINOS achieves the same results as the original paper,             for the original 33 suspicious binaries.
+based on one-off validation. Our reproduction of MINOS is publicly                Table 2 shows the data to answer RQ1. The table contains as
+available at https://github.com/ASSERT-KTH/ralph.                             columns: the hash of the program, calculated as the sha256 hash,
+    We use MINOS as an oracle and follow the same method pro-                 as its identiﬁer, the number of initial VirusTotal detectors ﬂag-
+posed in RQ1, passing each one of the binaries in Table 1 to our              ging the malware, the number of evaded antivirus vendors (cf.
+diversiﬁer and then to MINOS. For each binary, we do the process              Deﬁnition 2) and the mean number of iterations needed to gener-
+10 times with 10 different seeds, generating a total of 330 variants          ate a variant that fully evades the detection (cf. Deﬁnition 1). The
+with no more than 10 0 0 stacked mutations.                                   rows of the table are ordered with respect to the number of detec-
+                                                                              tors for the original binary.
+                                                                                  We observe that the baseline evasion algorithm successfully
+5.4. Metrics
+                                                                              generates variants that totally evade detection for 30 out of 33 bi-
+                                                                              naries. The mean value of iterations needed to generate a variant
+   In this section, we deﬁne the notions of total and partial
+                                                                              that evades all detectors ranges from 120 to 635 stacked transfor-
+evasion used in this work to measure the impact of the eva-
+                                                                              mations. For the 30 binaries that completely evade detection, we
+sion algorithms proposed in Section 4.3. Besides, we also deﬁne
+                                                                              observe that the mean number of iterations to evade is correlated
+the number of oracle calls and number of stacked
+                                                                              to the number of initial detectors. For example, the a32a6f4b bi-
+transformations metrics. In addition, we deﬁne the metrics
+                                                                              nary, initially ﬂagged by 18 detectors, requires around 635 itera-
+for correct hashes generated by the malware variants and the
+                                                                              tions, while the 309c32c5, with only one initial ﬂag, needs 120
+hashes generation speed.
+                                                                              iterations. The mean number of iterations needed is always less
+Deﬁnition 1. Total evasion: Given a malware WebAssembly binary,               than 10 0 0 stacked transformations.
+an evasion algorithm generates a variant that totally evades detec-               Figure 3 shows the evasion process with four different seeds
+tion if all detectors that originally identify the binary as malware          for the binary 046dc081. Each point in the x-axis represents 50
+identify the variant as benign.                                               iterations, and the y-axis represents the number of VirusTotal de-
+                                                                              tectors ﬂagging the binary. Three out of 4 seeds manage to totally
+Deﬁnition 2. Partial evasion: Given a malware WebAssembly bi-                 evade VirusTotal in less than 250 iterations. We have observed that
+nary, an evasion algorithm generates a variant that partially evades          there are better evasion techniques than pure random transforma-
+detection if at least one detector that originally identiﬁes the binary       tions. For example, the seed represented by the green line partially
+as malware identiﬁes the variant as benign.                                   evades the oracle but shows no tendency to evade detection before
+                                                                              300 iterations. Besides, some transformations help some classiﬁers
+Metric 1. Number of oracle calls: The number of calls made to the
+                                                                              to detect the mutated binary. These phenomena are empirically ex-
+malware oracle during the evasion process.
+                                                                              empliﬁed in Fig. 3 in which the curves is not always monotonously
+Metric 2. Number of stacked transformations: The total number of              decreasing, like the blue-colored curve. In this case, it goes from 3
+transformations applied on the initial malware binary during the              VirusTotal detectors to 5 during the 50–100 iterations.
+evasion process.                                                                  There are 3 binaries for which the baseline algorithm does not
+                                                                              completely evade the detection. In these three cases, the algorithm
+   Notice that Metric 1 is the number of times that lines 4 and 5             misses 5 out 31, 6 out of 30 and 5 out 26 detectors. The explana-
+in Algorithms 1 and 2 are executed, respectively. The same could              tion is the maximum number of iterations (10 0 0) we use for our
+
+                                                                          9
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                                Computers & Security 131 (2023) 103296
+
+
+  Table 2                                                                                    placed locally, we believe that the number of queries is not neces-
+  Baseline evasion algorithm for VirusTotal. The table contains as columns: the
+                                                                                             sarily limited.
+  hash of the program, the number of initial VirusTotal detectors, the maximum
+  number of evaded antivirus vendors and the mean number of iterations needed                    Wasm-mutate performs mutations based on the input binary.
+  to generate a variant that fully evades detection. The rows of the table are               In the experiments for RQ1, the input binaries for the baseline al-
+  sorted by the number of initial detectors, from left to right and top to bottom.           gorithm comes from the application of a previous mutation. Yet,
+    Hash                   #D             Max. #evaded             Mean #trans.              we have observed that some transformations can be applied in any
+                                                                                             order. This means that different sequences of transformations can
+    47d29959               31             26 (83.8%)               N/A
+                                                                                             produce the same binary variant. This often happens when two
+    9d30e7f0               30             24 (80.0%)               N/A
+    8ebf4e44               26             21 (80.7%)               N/A                       mutation targets inside the binary are different, such as two dis-
+    dc11d82d               20             20 (100.0%)              355                       joint pieces of code. Therefore, a potential parallelization for the
+    0d996462               19             19 (100.0%)              401                       baseline algorithm is possible as soon as transformation sequences
+    a32a6f4b               18             18 (100.0%)              635
+                                                                                             do not interfere with others.
+    fbdd1efa               18             18 (100.0%)              310
+    d2141ff2               9              9 (100.0%)               461                           Overall, our experiments prove that wasm-mutate is a powerful
+    aafff587               6              6 (100.0%)               484                       tool to perform malware evasion. By carefully selecting the order
+    046dc081               6              6 (100.0%)               404                       and type of transformations applied, it is possible to generate pro-
+    643116ff               6              6 (100.0%)               144                       gram variants that are both performant and effective at evading
+    15b86a25               4              4 (100.0%)               253
+                                                                                             detection. This same idea is explored in the next section.
+    006b2fb6               4              4 (100.0%)               282
+    942be4f7               4              4 (100.0%)               200                           Answer to RQ1: The baseline evasion algorithm with wasm-
+    7c36f462               4              4 (100.0%)               236                       mutate clearly decrease the detection rate by VirusTotal antivirus
+    fb15929f               4              4 (100.0%)               297                       vendors for cryptojacking malware. We achieve total evasion of
+    24aae13a               4              4 (100.0%)               252
+                                                                                             WebAssembly cryptojacking malware in 30/33 (90%) of our mal-
+    000415b2               3              3 (100.0%)               302
+    4cbdbbb1               3              3 (100.0%)               295
+                                                                                             ware dataset.
+    65debcbe               2              2 (100.0%)               131
+    59955b4c               2              2 (100.0%)               130                       6.2. RQ2. Oracle minimization
+    89a3645c               2              2 (100.0%)               431
+    a74a7cb8               2              2 (100.0%)               124
+    119c53eb               2              2 (100.0%)               104
+                                                                                                 With RQ2, we analyze the effect of the MCMC evasion algo-
+    089dd312               2              2 (100.0%)               153                       rithm in minimizing the number of calls to the malware oracle
+    c1be4071               2              2 (100.0%)               130                       (Metric 1). To answer RQ2, we execute the MCMC evasion algo-
+    dceaf65b               2              2 (100.0%)               140                       rithm discussed in Algorithm 2.
+    6b8c7899               2              2 (100.0%)               143
+                                                                                                 In Table 3 we can observe the impact of the MCMC eva-
+    a27b45ef               2              2 (100.0%)               145
+    68ca7c0e               2              2 (100.0%)               137                       sion algorithm on our reference dataset. The ﬁrst two columns
+    f0b24409               2              2 (100.0%)               127                       of the table are the original program’s hash and the number
+    5bc53343               2              2 (100.0%)               118                       of initial VirusTotal detectors ﬂagging the malware. The remain-
+    e09c32c5               1              1 (100.0%)               120                       ing columns are divided into two categories, maximum detec-
+                                                                                             tors evaded (Deﬁnition 2) and the number of oracle calls if total
+                                                                                             (Deﬁnition 1). Each one of the two categories contains the result
+                                                                                             for both evasion algorithms, ﬁrst the baseline algorithm (BL) fol-
+                                                                                             lowed by the three σ -values analyzed in the MCMC evasion algo-
+                                                                                             rithm. Notice that, for the baseline algorithm, the number of oracle
+                                                                                             calls is the same value as the number of transformations needed
+                                                                                             to evade by construction. We highlight in bold text the values for
+                                                                                             which the baseline or the MCMC evasion algorithms are better
+                                                                                             than each other, the lower, the better.
+                                                                                                 We observe that the MCMC evasion algorithm successfully gen-
+                                                                                             erates variants that totally evade the detection for 30 out of 33 bi-
+                                                                                             naries, it thus as good as the baseline algorithm. The improvement
+                                                                                             happens in the number of oracle calls. The oracle calls needed for
+                                                                                             the MCMC evasion algorithm are 92% of the needed on average for
+                                                                                             the baseline evasion algorithm.
+                                                                                                 For 21 of 30 binaries that evade detection entirely, we observe
+Fig. 3. The ﬁgure shows the evasion process with four seeds for binary 046dc081.             that the mean number of oracle calls needed is lower than those
+Each point in the x-axis represents 50 iterations, and the y-axis represents the num-        in the baseline evasion algorithm. For example, f0b24409 needs
+ber of VirusTotal detectors.                                                                 11 oracle calls with the MCMC evasion algorithm to fully evade
+                                                                                             VirusTotal, while for the baseline evasion algorithm, it needs 127
+                                                                                             oracles calls. For those 21 binaries, it needs only 40% of the calls
+experiments. However, having more iterations seems not a realis-                             the baseline evasion algorithm needs.
+tic scenario. For example, if some transformations increment the                                 The impact of the MCMC evasion algorithm is illustrated in
+binary size during the transformation, a considerably large binary                           Fig. 4. Each point in the x-axis represents 50 iterations, and the y-
+might be impractical for bandwidth reasons.                                                  axis represents the number of VirusTotal detectors ﬂagging binary
+    On the other hand, there is a balance between generating vari-                           046dc081. 2 out of 3 σ -values manage to totally evade VirusTotal
+ants and avoiding detection by defense mechanisms. For example,                              in less than 400 iterations. On the contrary, lower acceptance cri-
+VirusTotal detects when it is being stressed with too many requests                          teria σ = 1.1 (green line) partially evades the oracle, but does not
+and too many queries can be detected and blocked, effectively ru-                            fully evade within the maximum 10 0 0 iterations limit of the ex-
+ining evasion. In our attack scenario, where VirusTotal is used as                           periment.
+an external detector (see Section 3), we must be mindful of this                                 The σ value in the Algorithm 2 provides the acceptance cri-
+limit. In contrast, when defense mechanisms such as MINOS are                                teria for new transformations in the MCMC evasion algorithm.
+
+                                                                                        10
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                                  Computers & Security 131 (2023) 103296
+
+
+       Table 3
+       MCMC evasion algorithm for VirusTotal. The ﬁrst two columns of the table are: the identiﬁer of the original program and the number of initial detectors. The
+       remaining columns are divided into two categories, maximum detectors evaded if partial evasion and number of oracle calls if total evasion. Each one of the
+       two categories contains the result of the evasion algorithms, ﬁrst the baseline algorithm (BL) followed by the three σ -values analysed in the MCMC evasion
+       algorithm. We highlight in bold text the values for which the baseline or the MCMC evasion algorithms are better from each other. Overall, the MCMC evasion
+       algorithm needs less oracle calls than the baseline algorithm.
+
+         Hash                 #D            Max. evaded                                                 #Oracle calls
+
+                                            BL        MCMC                                              BL              MCMC
+
+                                                      σ = 0.1         σ = 0.3             σ = 1.1                       σ = 0.01        σ = 0.3          σ = 1.1
+         47d29959             31            26        19              12                  10
+         9d30e7f0             30            24        17              9                   10
+         8ebf4e44             26            21        13              5                   4
+         dc11d82d             20            20        20              14                  15            355             446
+         0d996462             19            19        19              14                  4             401             697
+         a32a6f4b             18            18        18              6                   1             635             625
+         fbdd1efa             18            18        18              3                   3             310             726
+         d2141ff2             9             9         9               9                   5             461             781             783
+         aafff587             6             6         2               6                   6             484                             331              413
+         046dc081             6             6         6               6                   5             404             397             159
+         643116ff             6             6         6               6                   1             144             436             631
+         15b86a25             4             4         4               4                   4             253             208             214              131
+         006b2fb6             4             4         4               4                   0             282             380             709
+         942be4f7             4             4         4               4                   4             200             200             200              219
+         7c36f462             4             4         4               2                   0             236             221
+         fb15929f             4             4         2               4                   2             297                             475
+         24aae13a             4             4         4               4                   0             252             401             446
+         000415b2             3             3         3               3                   2             302             376             34
+         4cbdbbb1             3             3         3               3                   3             295             204             72               685
+         65debcbe             2             2         2               2                   2             131             33              33               33
+         59955b4c             2             2         2               2                   2             130             33              33               33
+         89a3645c             2             2         2               2                   2             431             319             197              107
+         a74a7cb8             2             2         2               2                   2             124             33              33               33
+         119c53eb             2             2         2               2                   2             104             45              480              18
+         089dd312             2             2         2               2                   2             153             166             167              123
+         c1be4071             2             2         2               2                   2             130             33              33               33
+         dceaf65b             2             2         2               2                   2             140             166             166              132
+         6b8c7899             2             2         2               2                   2             143             33              33               33
+         a27b45ef             2             2         2               2                   2             145             33              33               33
+         68ca7c0e             2             2         2               2                   2             137             33              167              595
+         f0b24409             2             2         2               2                   2             127             11              33               11
+         5bc53343             2             2         2               2                   2             118             33              33               33
+         e09c32c5             1             1         1               1                   0             120             488             921
+
+
+
+                                                                                          accepts more new transformations even if more detectors ﬂag the
+                                                                                          binary.
+                                                                                              According to our experiments, σ = 0.3 offer a good acceptance
+                                                                                          trade-off. However, the best value of σ actually depends on the bi-
+                                                                                          nary to mutate. Therefore, we cannot conclude the best value of
+                                                                                          σ for the whole dataset. This is a consequence of the particulari-
+                                                                                          ties of each one of the original binaries and its detectors. For ex-
+                                                                                          ample, we have observed that for the bottom part of Table 3 the
+                                                                                          highest value of σ works better overall. The main reason is the
+                                                                                          low number of original detectors. In those cases, the exploration
+                                                                                          space for transformations is smaller. Thus, for the MCMC evasion
+                                                                                          algorithm, the chances of a local minimum for the ﬁtness func-
+                                                                                          tion to be global are larger. Therefore, the MCMC evasion algorithm
+                                                                                          with low acceptance criteria can ﬁnd the binary that fully evades
+Fig. 4. The ﬁgure shows the MCMC evasion process for the binary 046dc081. Each            in fewer iterations. On the contrary, if the number of initial detec-
+point in the x-axis represents 50 iterations, and the y-axis represents the number        tors is more signiﬁcant, the exploration space is too big to explore
+of VirusTotal detectors. The ﬁgure shows less chaotic progress for oracle evasion.
+                                                                                          in 10 0 0 max iterations. The reason is that the MCMC evasion algo-
+                                                                                          rithm applies one transformation per time. While we provide ﬁne-
+                                                                                          grained analysis in our work, more than one transformation per
+We run the MCMC evasion algorithm with three values to bet-                               iteration could be applied in the MCMC evasion algorithm to solve
+ter understand the extent to which the transformation space is                            this.
+explored to ﬁnd a binary that evades successfully. We have ob-                                In all 3 cases for which neither the baseline nor the MCMC eva-
+served that for a large value of σ , meaning low acceptance, 16 bi-                       sion algorithms could ﬁnd a binary that fully evades, the maxi-
+naries cannot be mutated to evade VirusTotal entirely. The main                           mum evaded detectors are less for the MCMC evasion algorithm.
+reason is that, in this case, the MCMC evasion algorithm discards                         The main reason is that the MCMC evasion algorithm might pre-
+transformations that increase the number of oracle calls. There-                          vent transformations for which the number of detectors increases.
+fore, the algorithm gets stuck in local minima and never ﬁnds a                           As previously discussed, it is stuck in local minima, which means
+binary that entirely evades. On the contrary, a small value of σ                          that it does not explore transformation paths for which a higher
+
+                                                                                     11
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                                       Computers & Security 131 (2023) 103296
+
+
+ Table 4
+ Malware correctness and eﬃciency. We execute each cryptojacking that can be reproduced, with the original malware, and with 10 baseline variants and 10 MCMC
+ variants. The ﬁrst left section indicates the identiﬁer of the original binary and its original frequency of hash generation. The second section of the table shows correctness
+ percentage and hashes per second for ten variants generated with our baseline algorithm. The third section of the table shows correctness percentage and hashes per
+ second for ten variants generated with the MCMC algorithm. After each frequency of hashing measurement, we indicate the relative difference with the original frequency,
+ in parentheses. A difference larger or equal to 1.0 indicates a variant that is faster or as eﬃcient as the original; a difference lower than 1.0 is a variant slower than the
+ original.
+
+   Hash           Original h/s    Baseline algorithm                                                    MCMC algorithm
+
+   0d996462       116.0           100%      25 (0.22)    100%      24 (0.21)      100%      26 (0.22)   100%      116 (1.00)     100%     70 (0.60)      100%     67 (0.58)
+                                  100%      116 (1.00)   100%      110 (0.95)     100%      30 (0.26)   100%      110 (0.95)     100%     76 (0.66)      100%     60 (0.52)
+                                  100%      55 (0.47)    100%      27 (0.23)      100%      23 (0.20)   100%      86 (0.74)      100%     60 (0.52)      100%     72 (0.62)
+                                  100%      27 (0.23)                                                   100%      76 (0.66)
+   a32a6f4b       48.0            100%      25 (0.52)    100%      24 (0.50)      100%      24 (0.50)   100%      26 (0.54)      100%     45 (0.94)      100%     41 (0.85)
+                                  100%      26 (0.54)    100%      25 (0.52)      100%      26 (0.54)   100%      46 (0.96)      100%     41 (0.85)      100%     45 (0.94)
+                                  100%      26 (0.54)    100%      24 (0.50)      100%      25 (0.52)   100%      44 (0.92)      100%     42 (0.88)      100%     45 (0.94)
+                                  100%      23 (0.48)                                                   100%      45 (0.94)
+   fbdd1efa       37.0            100%      25 (0.68)    100%      25 (0.68)      100%      25 (0.68)   100%      28 (0.76)      100%     47 (1.27)      100%     48 (1.30)
+                                  100%      25 (0.68)    100%      26 (0.70)      100%      26 (0.70)   100%      47 (1.27)      100%     47 (1.27)      100%     53 (1.43)
+                                  100%      25 (0.68)    100%      25 (0.68)      100%      25 (0.68)   100%      48 (1.30)      100%     48 (1.30)      100%     49 (1.32)
+                                  100%      25 (0.68)                                                   100%      47 (1.27)
+   d2141ff2       113.0           100%      54 (0.48)    100%      55 (0.49)      100%      55 (0.49)   100%      107 (0.95)     100%     107 (0.95)     100%     107 (0.95)
+                                  100%      57 (0.50)    100%      56 (0.50)      100%      56 (0.50)   100%      109 (0.96)     100%     106 (0.94)     100%     100 (0.88)
+                                  100%      57 (0.50)    100%      53 (0.47)      100%      53 (0.47)   100%      101 (0.89)     100%     100 (0.88)     100%     107 (0.95)
+                                  100%      55 (0.49)                                                   100%      107 (0.95)
+   046dc081       118.0           100%      58 (0.49)    100%      60 (0.51)      100%      59 (0.50)   100%      118 (1.00)     100%     120 (1.02)     100%     119 (1.01)
+                                  100%      60 (0.51)    100%      55 (0.47)      100%      62 (0.53)   100%      120 (1.02)     100%     116 (0.98)     100%     120 (1.02)
+                                  100%      55 (0.47)    100%      50 (0.42)      100%      57 (0.48)   100%      119 (1.01)     100%     120 (1.02)     100%     119 (1.01)
+                                  100%      55 (0.47)                                                   100%      120 (1.02)
+   006b2fb6       8.0             100%      7 (0.88)     100%      6 (0.75)       100%      4 (0.50)    100%      6 (0.75)       100%     6 (0.75)       100%     6 (0.75)
+                                  100%      9 (1.12)     100%      6 (0.75)       100%      4 (0.50)    100%      6 (0.75)       100%     6 (0.75)       100%     6 (0.75)
+                                  100%      4 (0.50)     100%      6 (0.75)       100%      4 (0.50)    100%      8 (1.00)       100%     9 (1.12)       100%     6 (0.75)
+                                  100%      6 (0.75)                                                    100%      6 (0.75)
+
+
+
+
+number of detectors could lead to better long-term results and,                             hashing measurement, we indicate the relative difference with the
+eventually, full evasion.                                                                   original frequency in parentheses. A difference larger or equal to
+   Answer to RQ2: The MCMC evasion algorithm needs fewer or-                                1.0 means that the variant is faster or as eﬃcient as the original.
+acle calls than the baseline algorithm. In 21 cases out of 33, it                           On the contrary, the variant is slower if the difference is lower than
+needs only 40% of oracle calls compared to the baseline, providing                          1.0. The table contains the information for 120 variants.
+more stealthiness to the malicious organization directing the eva-                              We use the backend miner pools (see Section 2.2) of the six
+sion. The acceptance criterion σ of the MCMC evasion algorithm                              cryptojacking to determine the validity of the hashes computed by
+needs to be carefully crafted depending on the original binary.                             all the programs. All correctness assessments for the 120 variants
+                                                                                            indicate that the miner pools do not detect any invalid hash when
+6.3. RQ3. Malware functionality                                                             executing the WebAssembly cryptominer variants. This means that
+                                                                                            the variants synthesized by the baseline and the MCMC algorithms
+    To answer RQ3, we select the six binaries we can build and ex-                          to evade the malware oracle can still systematically generate valid
+ecute end-to-end, because we have access to the three components                            hashes.
+previously mentioned in Section 2.2. For those six binaries, we are                             We have observed that 23 of 120 variants are more eﬃcient
+able to replace the original WebAssembly binary with variants gen-                          than the original cryptojacking. For example, for the fbdd1efa
+erated by our evasion algorithms.                                                           binary, all its variants are from 1.27 to 1.43 faster than the orig-
+    We execute the original binary and the variants generated by                            inal hash generation frequency. This phenomenon occurs because
+the baseline and MCMC evasion algorithms. The essence of a cryp-                            wasm-mutate can perform transformations in the executable code,
+tojacking is to generate hashes at high-speed. Consequently, we                             which work as optimizations. Our experiments have revealed two
+assess the correctness of the variants concerning two properties:                           sources of faster WebAssembly variants: loop unrolling transfor-
+validity of the hashes and frequency of hash generation. With                               mations and code replacements that lead to smaller binaries. We
+Metric 4, we determine the validity of the generated hashes by                              have also found that debloating transformations, which remove
+checking if the backend miner pool accepts them. The frequency                              unneeded structures and dead code, results in more hashes being
+is measured as the amount of hashes produced by the variant                                 produced by the cryptominer in the ﬁrst few seconds of mining,
+binaries in one second (Metric 3).                                                          likely because of faster compilation.
+    Table 4 summarizes the key data for RQ3. Each row of the ta-                                In summary, all this is evidence that focused optimization is a
+ble corresponds to one binary that can be executed end-to-end, by                           good primitive for evasion. On the contrary, 97 out of 120 variants
+reproducing the three components mentioned in Section 2.2. The                              underperform compared to the original binary. The worst case is
+ﬁrst two values of each row are the original binary’s identiﬁer and                         the binary 0d996462. Its slowest variant has 0.20 of the original
+its original frequency of hash generation. Then, for our baseline al-                       generation frequency. The main reason is that wasm-mutate also
+gorithm, each row has the data for 10 variants generated during a                           introduces non-optimal transformations regarding performance.
+successful oracle evasion. For each one of the variants, we include                             The variants generated by the baseline evasion algorithm tend
+the correctness percentage and the hashes calculated per second.                            to be slower than the MCMC evasion algorithm. The MCMC eva-
+The last group of columns of the table contains the correctness                             sion algorithm triggers fewer oracle calls and can generate vari-
+percentage and the hashes calculated per second for the 10 vari-                            ants faster than the ones generated by the evasion algorithm. This
+ants generated with the MCMC algorithm. After each frequency of                             phenomenon is a direct consequence of the MCMC evasion algo-
+
+                                                                                       12
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                                     Computers & Security 131 (2023) 103296
+
+
+
+
+                                                                                           Fig. 6. Distribution of applied transformation for the MCMC evasion algorithm with
+                                                                                           σ = 1.1 (low acceptance). The x-axis displays the names of the transformations. The
+                                                                                           y-axis indicates the number of transformations found in the generated variants. We
+                                                                                           can observe which transformations perform better in order to provide total evasion.
+
+
+
+
+                                                                                           6.4. RQ4. Individual transformation effectiveness
+
+                                                                                               With RQ4, we investigate what individual transformations are
+                                                                                           the most appropriate to generate evading malware variants. Both
+                                                                                           attackers and defenders can leverage this information as follows.
+                                                                                           On the one hand, attackers know which transformation operators
+                                                                                           they can discard to speed-up the search for evading malware and
+                                                                                           minimize calls to the oracle. On the other hand, defenders can fo-
+                                                                                           cus on the most effective transformations to evade antiviruses. For
+Fig. 5. Distribution of the number of hashes per second for the variants generated         example, one way to defend against evasion is to use transforma-
+for the original fbdd1efa cryptojacking. In the ﬁgure we include the original bi-          tion as a preprocessing stage prior to detection. This can help to
+nary (in blue), ten variants generated by the baseline algorithm (in orange), and          ensure that detection is more robust to potential evasion vectors.
+ten variants generated by the MCMC evasion algorithm (in green). (For interpreta-              In Fig. 6 we plot the distribution of transformations applied by
+tion of the references to color in this ﬁgure legend, the reader is referred to the
+                                                                                           the MCMC evasion algorithm with σ = 1.1 when it generates vari-
+web version of this article.)
+                                                                                           ants that fully evade the VirusTotal oracle. On the x-axis, we pro-
+                                                                                           vide the name of the transformation, as wasm-mutate implements
+                                                                                           them. The y-axis is the absolute number of transformations found
+rithm implementation, which has a selective strategy when apply-                           among the generated variants. The transformations are sorted in
+ing transformations on a binary (see Algorithm 2). In summary,                             decreasing order of usage in the variants. We use two colors for
+the MCMC evasion algorithm produces variants that fully evade the                          transformations: transformations that affect the execution of the
+VirusTotal oracle with lower performance overhead during execu-                            binary (in blue color) and transformations that do not (in orange
+tion. The worst performant variant is only 1.93 times slower for                           color). For example, adding a new type deﬁnition does not affect
+the MCMC evasion algorithm.                                                                the execution of the binary, while a peephole transformation does.
+    In Fig. 5, we plot the distribution of the hashes per second for                           First, we concentrate on non-behavioral transformations in or-
+variants generated for the fbdd1efa cryptojacking. In the ﬁgure,                           ange. The most effective transformation is to add a random func-
+we include the original binary (in blue), the ten variants generated                       tion, which is present 117 times in the evading binaries. The next
+by the baseline algorithm (in orange), and the ten variants gener-                         most present structural transformation is the modify custom
+ated by the MCMC evasion algorithm (in green). Each violin plot                            section transformation. This highlights the sensitivity of mal-
+corresponds to the hashes per second. We observe a normal dis-                             ware detectors to the custom section. We note that custom sec-
+tribution around the exact number of hashes per second. In this                            tion modiﬁcation at the bytecode level provides advantages against
+case, we have observed that the MCMC evasion algorithm provides                            source code obfuscation because we are sure that the compiler
+a hash-per-second ratio better than the original. This phenomenon                          does not add metadata information that would help malware de-
+can be observed in the lines inside the violin plots, the green line                       tectors. In other words, metadata information injected by compil-
+is shifted to the right compared to the lines of the blue violin plot.                     ers into WebAssembly binaries (Hilbig et al., 2021), could be re-
+    Answer to RQ3: Our algorithms synthesize WebAssembly cryp-                             moved from being part of possible detection.
+tojacking variants that fully evade our malware oracle and that                                Transformations remove function and remove type also
+provide the same functionality as the original. The execution of                           affect malware detection. This novel observation indicates that
+evading malware systematically produces valid hashes, and the                              VirusTotal is looking for code common in malware yet dead code.
+variations in performance are imperceptible. For 19% of the gen-                           For example, malware detectors probably check for code that does
+erated variants, we observe better performance, and in the worst                           not affect the original functionality of the binary. Thus, if this in-
+case, the generated variant underperforms by ﬁve times the origi-                          formation is removed, the detector misses the malware. In other
+nal binary.                                                                                terms, by removing code, the detection surface is reduced.
+
+                                                                                      13
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                              Computers & Security 131 (2023) 103296
+
+
+                                                                                       Table 5
+                                                                                       The table provides the identiﬁer of the program as its sha256 hash value and
+                                                                                       the mean number of iterations required to totally evade MINOS. Each binary
+                                                                                       was mutated with the baseline algorithm 10 times.
+
+                                                                                         Hash              Mean #trans.          Hash               Mean #trans.
+
+                                                                                         24aae13a          980.0                 000415b2           960.0
+                                                                                         59955b4c          38.0                  119c53eb           1.0
+                                                                                         fb15929f          1.0                   5bc53343           33.0
+                                                                                         47d29959          100.0                 dc11d82d           115.0
+                                                                                         a27b45ef          33.0                  006b2fb6           1.0
+                                                                                         942be4f7          29.0                  7c36f462           85.0
+                                                                                         0d996462          24.0                  15b86a25           1.0
+    Listing 4. Original piece of code for the 089a3645c WebAssembly binary.
+                                                                                         8ebf4e44          92.0                  a74a7cb8           38.0
+                                                                                         fbdd1efa          1.0                   089dd312           68.0
+                                                                                         65debcbe          38.0                  aafff587           1.0
+                                                                                         046dc081          33.0                  6b8c7899           38.0
+                                                                                         a32a6f4b          1.0                   d2141ff2           81.0
+                                                                                         68ca7c0e          38.0                  dceaf65b           66.0
+                                                                                         9d30e7f0          419.0                 4cbdbbb1           1.0
+                                                                                         643116ff          47.0                  c1be4071           38.0
+                                                                                         e09c32c5          15.0                  f0b24409           33.0
+                                                                                         89a3645c          108.0
+
+
+
+
+                                                                                      dom mutations to the original malware binary until MINOS is fully
+Listing 5. Peephole mutations of Listing 4. Only with this mutation VirusTotal        evaded or the maximum number of iterations is reached. We re-
+passed from 2 initial detectors to 0 in our experiments.                              peat this process 10 times for each binary. The results of our ex-
+                                                                                      periment are presented in Table 5. The table provides the identi-
+                                                                                      ﬁer of the program and the mean number of iterations required to
+    The most signiﬁcant transformation to generate evading mal-                       synthesize a variant that fully evades MINOS.
+ware consists of peephole transformations (the largest bar of the                         Our technique completely evades MINOS in all cases. In 2 cases
+ﬁgure at the left-hand side of the ﬁgure). The peephole transfor-                     out of 33, wasm-mutate needs more than 900 iterations to evade
+mations operate at the bytecode instruction level. For example, in                    MINOS. The main reason is the application of symmetric muta-
+Listings 4 and 5 we show a piece of the binary 089a3645c, and                         tions. For example, in some cases, wasm-mutate performs muta-
+one peephole transformation applied, respectively. The transforma-                    tions that copy parts of the binary to another program location.
+tion in the listings corresponds to a variant generated with the                      Thus, when the binary is turned into a grayscale image, the em-
+MCMC evasion algorithm. Only this transformation is required to                       bedding of the image is preserved, i.e., the code has changed, but
+fully evade for the 089a3645c binary.                                                 the shape of the image has not. The contrary happens when non-
+    Our results show that malware detectors should prioritize the                     symetric mutations are applied. For example, removing functions
+detection of peephole transformations in WebAssembly, to increase                     also removes embeddings of the grayscale image used by MINOS.
+the likelihood of detecting cryptojacking. For example, the transfor-                     Remarkably, this experiment shows that WebAssembly diversi-
+mation of Listing 5 can be reversed with static analysis.                             ﬁcation requires fewer iterations to evade MINOS than VirusTotal,
+    When we answer our four research questions, we generate We-                       meaning that it is easier to evade MINOS. The minimum number
+bAssembly cryptominer variants by adding one transformation at                        of iterations needed overall for evading VirusTotal are 118 for the
+a time (See Section 4.3). This method allows us to answer our re-                     baseline algorithm Table 2 and 11 for the MCMC algorithm Table 3,
+search questions at a ﬁne-grained level. For instance, the answer                     while for MINOS, wasm-mutate totally evades detection for 8 out
+to RQ4 could only be possible if the transformations are analyzed                     of 33 binaries in one single iteration. This shows that the MINOS
+one by one in the evasion process. Now, our method can be eas-                        model is fragile wrt binary diversiﬁcation. According to those re-
+ily tuned to one-shot evasion: the algorithms could apply multi-                      sults, VirusTotal can be considered better than MINOS wrt to cryp-
+ple transformations simultaneously to produce evading malware in                      tojacking detection.
+one iteration. Consequently, the evasion process proposed in this                         To further enhance the detection capabilities of MINOS, we be-
+work could be faster and more practical for a potential attacker. On                  lieve in binary canonicalization (Bruschi et al., 2007). By creating
+the other hand, our algorithms stop as soon as one binary is diver-                   a canonical representation of the malware variant before training
+siﬁed enough to provide total evasion. Since the overhead intro-                      and inference, one would help the classiﬁer to better generalize.
+duced by wasm-mutate is imperceptible, the transformation pro-                        This is feasible as it is a preprocessing step in the pipeline. We
+cess can generate remarkably more binaries. Our approaches could                      believe this is an interesting direction for future work.
+escalate to inﬁnite cryptojacking variants.                                               Answer to RQ5: Our approach fully evades detection by the
+    Answer to RQ4: Our experiments reveal that peephole trans-                        WebAssembly antivirus MINOS. In our study, we achieve evasion
+formations are the most effective for WebAssembly cryptojacking                       for all cryptojacking binaries in our dataset. wasm-mutate needs
+malware evasion. We also show that transformations on non-                            fewer iterations to totally evade MINOS compared to VirusTotal,
+executable parts of WebAssembly binaries can contribute to                            validating VirusTotal as a baseline.
+evasion. These novel observations are crucial for cryptojacking
+malware detector vendors to prioritize their work on improving                        7. Discussion
+malware detection.
+                                                                                         In this section, we discuss the key challenges we faced, in order
+6.5. RQ5. Effectiveness against MINOS                                                 to help future research projects on similar topics.
+                                                                                         Dataset size The dataset is smaller than other similar works for
+  To evaluate the effectiveness of MINOS at detecting diversiﬁed                      malware evasion. However, the related work does not consider We-
+malware, we reuse the protocol of RQ1. We repeatedly stack ran-                       bAssembly – e.g. Ling et al. (2023) focus on Windows. For example,
+
+                                                                                 14
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                            Computers & Security 131 (2023) 103296
+
+
+while Tekiner and colleagues consider cryptojacking (Tekiner et al.,         sights and guidance for researchers in the ﬁeld to better mitigate
+2021), we entirely focus only on WebAssembly cryptojacking mal-              evasion.
+ware. In this context, to the best of our knowledge, wasmbench is               As future work, we will improve the evasion ﬁtness functions
+the most complete dataset of WebAssembly binaries. We analyze                by including malware program properties, w.r.t. both evasion and
+this dataset through the lens of VirusTotal and systematically ex-           malware execution performance. Some argue that the future of
+tract all the cryptojacking malware it includes. Despite novelty, we         malware detection lies in machine learning. In future work, we
+acknowledge that the limited size of our malware dataset poses a             believe in using our diversiﬁcation technique to provide data aug-
+challenge in terms of the generalizability of our results. Some types        mentation for better malware detection.
+of malware might be absent from our dataset. To address this is-
+sue, one solution for future work would consist in expanding the             Declaration of Competing Interest
+dataset by using the inherent diversity found within the popular
+Cryptonight library. One could utilize the release history of their              The authors declare that they have no known competing ﬁnan-
+GitHub repository to compile and mine distinct, yet semantically             cial interests or personal relationships that could have appeared to
+equivalent malware instances. This approach would entail the ex-             inﬂuence the work reported in this paper.
+ploration of a broader range of variations of cryptojacking malware
+Yet, this is considered as a new research paper per se as the pro-           Data availability
+cess of mining and compiling code from a repository’s release his-
+tory is both time-consuming and computationally demanding. This                  Data will be made available on request.
+is due to the need to analyze, ﬁlter, and compare a vast number              References
+of code commits and releases, as well as to validate their seman-
+tic equivalence. This process is even more complex in the case of            Aﬁanian, A., Niksefat, S., Sadeghiyan, B., Baptiste, D., 2019. Malware dynamic
+malware reproduction due to the complex architecture in which                    analysis evasion techniques: asurvey. ACM Comput. Surv. 52 (6). doi:10.1145/
+                                                                                 3365001.
+this type of software operates (cf. Fig. 1.)
+                                                                             Aghakhani, H., Gritti, F., Mecca, F., Lindorfer, M., Ortolani, S., Balzarotti, D., Vigna, G.,
+    VirusTotal observations The ﬁnal labelling of binaries for Virus-            Kruegel, C., 2020. When malware is packin’ heat; limits of machine learning
+Total vendors is not deﬁnitive (Zhu et al., 2020). For example, a                classiﬁers based on static analysis features. In: Proc. of NDSS.
+                                                                             Aslan, O.A., Samet, R., 2020. A comprehensive review on malware detection ap-
+VirusTotal vendor could label a binary as benign and change it
+                                                                                 proaches. IEEE Access 8, 6249–6271. doi:10.1109/ACCESS.2019.2963724.
+later to malign after several weeks. This phenomenon creates a               Bhansali, S., Aris, A., Acar, A., Oz, H., Uluagac, A.S., 2022. A ﬁrst look at code obfus-
+time window in which slightly changed binaries (fewer iterations                 cation for WebAssembly. In: Proc. of Conf. on Security and Privacy in Wireless
+in our case) sometives evade the detection of numerous vendors.                  and Mobile Networks doi:10.1145/3507657.3528560.
+                                                                             Bian, W., Meng, W., Zhang, M., 2020. Minethrottle: defending against wasm in-
+Also, we have observed that when our evasion algorithms man-                     browser cryptojacking. In: Proceedings of The Web Conference 2020. Associa-
+age to evade, some VirusTotal vendors result in timeout in several               tion for Computing Machinery doi:10.1145/3366423.3380085.
+cases. This suggests that the evasion effectiveness is also due to           Bostani, H., Moonsamy, V., 2021. Evadedroid: a practical evasion attack on machine
+                                                                                 learning for black-box android malware detection. CoRR abs/2110.03301https:
+performance constraints on the VirusTotal side.                                  //arxiv.org/abs/2110.03301.
+    Lack of abstraction A WebAssembly cryptojacking can only exist           Botacin, M., Ceschin, F., de Geus, P., Grégio, A., 2020. We need to talk about an-
+with its web complements. As we previously discussed, a browser                  tiviruses: challenges & pitfalls of AV evaluations. Comput. Secur. 95. doi:10.1016/
+                                                                                 j.cose.2020.101859.
+cryptojacking needs to send the calculated hashes to a cryptocur-            Botacin, M., Domingues, F.D., Ceschin, F., Machnicki, R., Zanata Alves, M.A., de
+rency service. This network communication is outside the We-                     Geus, P.L., Grégio, A., 2022. Antiviruses under the microscope: a hands-on per-
+bAssembly accesses and needs to be delegated to a JavaScript code.               spective. Comput. Secur. 112. doi:10.1016/j.cose.2021.102500.
+                                                                             Bruschi, D., Martignoni, L., Monga, M., 2007. Code normalization for self-mutating
+We have observed that, the imports and the memory data of the
+                                                                                 malware. IEEE Secur. Privacy 5 (2), 46–54. doi:10.1109/MSP.2007.31.
+WebAssembly binaries have a high variability in our dataset. The             Bytecodealliance,       2021.     wasm-mutate.      https://github.com/bytecodealliance/
+imported functions from JavaScript change from binary to binary.                 wasm-tools/tree/main/crates/wasm-mutate.
+                                                                             Cabrera Arteaga, J., Laperdrix, P., Monperrus, M., Baudry, B., 2022. Multi-variant exe-
+Their data segments also differ in content and length. This sug-
+                                                                                 cution at the edge. In: Proceedings of the 9th ACM Workshop on Moving Target
+gests that the whole JavaScript-WebAssembly polyglot package is                  Defense. Association for Computing Machinery doi:10.1145/3560828.3564007.
+the right direction for cryptojacking detection.                             Cabrera-Arteaga, J., Malivitsis, O.F., Pérez, O.L.V., Baudry, B., Monperrus, M., 2021.
+    Mitigation As we noted in our response to RQ4 and RQ5, we be-                Crow: code diversiﬁcation for WebAssembly. In: Proceedings of MadWEB doi:10.
+                                                                                 14722/madweb.2021.23xxx.
+lieve that code canonicalization and is a promising mitigation tech-         Castro, R.L., Schmitt, C., Dreo, G., 2019. Aimed: evolving malware with genetic
+nique if they are applied directly to WebAssembly. One way to do                 programming to evade detection. In: 2019 18th IEEE International Confer-
+this would be to modify a diversiﬁer such as wasm-mutate into a                  ence On Trust, Security And Privacy In Computing And Communications/13th
+                                                                                 IEEE International Conference On Big Data Science And Engineering (Trust-
+binary optimizer completely based on e-graph. This would provide                 Com/BigDataSE). IEEE, pp. 240–247.
+canonicalization through a compact representation of WebAssem-               Chua, M., Balachandran, V., 2018. Effectiveness of android obfuscation on evading
+bly code. In turn, malware variants with the same ancestor would                 anti-malware. In: Proceedings of the Eighth ACM Conference on Data and Appli-
+                                                                                 cation Security and Privacy. Association for Computing Machinery doi:10.1145/
+be more seen as the “same” program, from its canonical represen-                 3176258.3176942.
+tation.                                                                      Cohen, F.B., 1993. Operating system protection through program evolution. Comput.
+                                                                                 Secur. 12 (6), 565–584.
+                                                                             Dasgupta, P., Osman, Z., 2021. A Comparison of State-of-the-Art Techniques for Gen-
+8. Conclusion                                                                    erating Adversarial Malware Binaries. arXiv e-printsarXiv:2111.11487.
+                                                                             Demetrio, L., Biggio, B., Lagorio, G., Roli, F., Armando, A., 2021. Functionality-pre-
+    We have demonstrated the potential for WebAssembly crypto-                   serving black-box optimization of adversarial windows malware. IEEE Trans. Inf.
+                                                                                 Forensics Secur. 16, 3469–3478.
+jacking malware to be diversiﬁed and evade detection by leading
+                                                                             Egele, M., Scholte, T., Kirda, E., Kruegel, C., 2008. A survey on automated dynamic
+malware detectors, such as VirusTotal and MINOS. Our generated                   malware-analysis techniques and tools. ACM Comput. Surv. 44 (2). doi:10.1145/
+variants are functional, performant, and do not trigger malware de-              2089125.2089126.
+                                                                             GoogleLLC, 2022. Virustotal enterprise. https://assets.virustotal.com/vt-360-
+tection. Our evaluation of the technique against 60 state-of-the-art
+                                                                                 outcomes.pdf.
+antiviruses through the meta-tool VirusTotal highlights the superi-          Haas, A., Rossberg, A., Schuff, D.L., Titzer, B.L., Holman, M., Gohman, D., Wagner, L.,
+ority of meta-antiviruses over single tailored defenses, even when               Zakai, A., Bastien, J., 2017. Bringing the web up to speed with WebAssembly. In:
+the latter are speciﬁcally designed for WebAssembly cryptojacking                Proceedings of the 38th ACM SIGPLAN Conference on Programming Language
+                                                                                 Design and Implementation.
+binaries such as MINOS. By studying effective code transformations           Hastings, W.K., 1970. Monte carlo sampling methods using Markov chains and their
+for evading cryptojacking detection, our work provides valuable in-              applications. Biometrika 57 (1), 97–109. http://www.jstor.org/stable/2334940
+
+
+                                                                        15
+J. Cabrera-Arteaga, M. Monperrus, T. Toady et al.                                                                                                 Computers & Security 131 (2023) 103296
+
+
+Hilbig, A., Lehmann, D., Pradel, M., 2021. An empirical study of real-world We-                    Payer, M., 2014. Embracing the new threat: towards automatically self-diversifying
+     bAssembly binaries: security, languages, use cases. In: Proceedings of the Web                    malware. In: The Symposium on Security for Asia Network, pp. 1–5.
+     Conference 2021.                                                                              Peng, P., Yang, L., Song, L., Wang, G., 2019. Opening the blackbox of virustotal: ana-
+Kalash, M., Rochan, M., Mohammed, N., Bruce, N.D.B., Wang, Y., Iqbal, F., 2018. Mal-                   lyzing online phishing scan engines. In: Proceedings of the Internet Measure-
+     ware classiﬁcation with deep convolutional neural networks. In: 2018 9th IFIP                     ment Conference. Association for Computing Machinery doi:10.1145/3355369.
+     International Conference on New Technologies, Mobility and Security (NTMS),                       3355585.
+     pp. 1–5. doi:10.1109/NTMS.2018.8328749.                                                       Ren, X., Ho, M., Ming, J., Lei, Y., Li, L., 2021. Unleashing the hidden power of
+Kaspersky, 2022. The state of cryptojacking in the ﬁrst three quarters of 2022. https:                 compiler optimization on binary code difference: an empirical study. In: Pro-
+     //securelist.com/cryptojacking-report-2022/107898/.                                               ceedings of the 42nd ACM SIGPLAN International Conference on Programming
+Kelton, C., Balasubramanian, A., Raghavendra, R., Srivatsa, M., 2020. Browser-based                    Language Design and Implementation. Association for Computing Machinery
+     deep behavioral detection of web cryptomining with coinspy. In: Workshop on                       doi:10.1145/3453483.3454035.
+     Measurements, Attacks, and Defenses for the Web (MADWeb) 2020, pp. 1–12.                      Rokicki, T., Maurice, C., Botvinnik, M., Oren, Y., 2022. Port contention goes portable:
+Kharraz, A., Ma, Z., Murley, P., Lever, C., Mason, J., Miller, A., Borisov, N., Anton-                 port contention side channels in web browsers. In: Proceedings of the 2022
+     akakis, M., Bailey, M., 2019. Outguard: detecting in-browser covert cryptocur-                    ACM on Asia Conference on Computer and Communications Security. Associ-
+     rency mining in the wild. In: The World Wide Web Conference. Association for                      ation for Computing Machinery doi:10.1145/3488932.3517411.
+     Computing Machinery doi:10.1145/3308558.3313665.                                              Romano, A., Lehmann, D., Pradel, M., Wang, W., 2022. Wobfuscator: obfuscat-
+Konoth, R.K., Vineti, E., Moonsamy, V., Lindorfer, M., Kruegel, C., Bos, H., Vigna, G.,                ing javascript malware via opportunistic translation to webassembly. In: Pro-
+     2018. Minesweeper: an in-depth look into drive-by cryptocurrency mining and                       ceedings of the 2022 IEEE Symposium on Security and Privacy (S&P 2022),
+     its defense doi:10.1145/3243734.3243858.                                                          pp. 1101–1116.
+Lachtar, N., Ibdah, D., Khan, H., Bacha, A., 2023. Ransomshield: a visualization ap-               Romano, A., Zheng, Y., Wang, W., 2020. Minerray: semantics-aware analysis for ev-
+     proach to defending mobile systems against ransomware. ACM Trans. Priv. Se-                       er-evolving cryptojacking detection. In: 2020 35th IEEE/ACM International Con-
+     cur. 26 (3). doi:10.1145/3579822.                                                                 ference on Automated Software Engineering (ASE), pp. 1129–1140.
+Le, V., Afshari, M., Su, Z., 2014. Compiler validation via equivalence modulo in-                  Schkufza, E., Sharma, R., Aiken, A., 2012. Stochastic superoptimization. ACM SIGPLAN
+     puts. In: Proceedings of the 35th ACM SIGPLAN Conference on Programming                           Notices 48. doi:10.1145/2451116.2451150.
+     Language Design and Implementation. Association for Computing Machinery                       Tekiner, E., Acar, A., Uluagac, A.S., Kirda, E., Selcuk, A.A., 2021. In-browser crypto-
+     doi:10.1145/2594291.2594334.                                                                      mining for good: an untold story. In: 2021 IEEE International Conference on
+Li, D., Li, Q., Ye, Y.F., Xu, S., 2021. Arms race in adversarial malware detection: asur-              Decentralized Applications and Infrastructures (DAPPS), pp. 20–29. doi:10.1109/
+     vey. ACM Comput. Surv. 55 (1). doi:10.1145/3484491.                                               DAPPS52256.2021.0 0 0 08.
+Ling, X., Wu, L., Zhang, J., Qu, Z., Deng, W., Chen, X., Qian, Y., Wu, C., Ji, S., Luo, T.,        VirusTotal, 2020. VirusTotal - Home. https://www.virustotal.com/gui/home/search.
+     et al., 2023. Adversarial attacks against windows pe malware detection: a sur-                Wang, W., Ferrell, B., Xu, X., Hamlen, K.W., Hao, S., 2018. Seismic: secure in-lined
+     vey of the state-of-the-art. Comput. Secur. 103134.                                               script monitors for interrupting cryptojacks. In: Lopez, J., Zhou, J., Soriano, M.
+Liu, L., Wang, B., 2016. Malware classiﬁcation using gray-scale images and ensem-                      (Eds.), Computer Security. Springer International Publishing, Cham, pp. 122–142.
+     ble learning. In: 2016 3rd International Conference on Systems and Informatics                Wang, W., Sun, R., Dong, T., Li, S., Xue, M., Tyson, G., Zhu, H., 2021. Exposing
+     (ICSAI), pp. 1018–1022. doi:10.1109/ICSAI.2016.7811100.                                           weaknesses of malware detectors with explainability-guided evasion attacks.
+Lu, G., Debray, S.K., 2013. Weaknesses in defenses against web-borne malware -                         arXiv preprint arXiv:2111.10085.
+     (short paper). In: Rieck, K., Stewin, P., Seifert, J. (Eds.), Detection of Intrusions         Willsey, M., Nandi, C., Remy Wang, Y., Flatt, O., Tatlock, Z., Panchekha, P., 2020. EGG:
+     and Malware, and Vulnerability Assessment - 10th International Conference,                        fast and extensible equality saturation. arXiv e-printsarXiv:2004.03082.
+     DIMVA. Proceedings doi:10.1007/978- 3- 642- 39235- 1_8.                                       Xia, M., Gong, L., Lyu, Y., Qi, Z., Liu, X., 2015. Effective real-time android application
+Lu, L., Yegneswaran, V., Porras, P., Lee, W., 2010. Blade: an attack-agnostic approach                 auditing. In: Proceedings of the 2015 IEEE Symposium on Security and Privacy.
+     for preventing drive-by malware infections. In: Proceedings of the 17th ACM                       IEEE Computer Society.
+     conference on Computer and communications security, pp. 440–450.                              XMRIG, 2016. Xmrig. https://github.com/xmrig/xmrig.
+Lundquist, G.R., Mohan, V., Hamlen, K.W., 2016. Searching for software diversity:                  Zhu, S., Shi, J., Yang, L., Qin, B., Zhang, Z., Song, L., Wang, G., 2020. Measuring
+     attaining artiﬁcial diversity through program synthesis. In: Proceedings of the                   and modeling the label dynamics of online anti-malware engines. 29th USENIX
+     2016 New Security Paradigms Workshop, pp. 80–91.                                                  Security Symposium (USENIX Security 20). USENIX Association. https://www.
+Monero, 2022. Monero. https://www.getmonero.org/.                                                      usenix.org/conference/usenixsecurity20/presentation/zhu
+Moser, A., Kruegel, C., Kirda, E., 2007. Limits of static analysis for malware detec-
+     tion. In: Twenty-Third Annual Computer Security Applications Conference (AC-                  Javier Cabrera-Arteaga is a Ph.D. student at KTH Royal Institute of Technology. His
+     SAC 2007), pp. 421–430. doi:10.1109/ACSAC.2007.21.                                            research interests are in the ﬁelds of Automated Software Engineering, Automated
+Mozilla, 2019. Protections Against Fingerprinting and Cryptocurrency Mining                        Testing and Software Diversiﬁcation.
+     Available in Firefox Nightly and Beta. https://blog.mozilla.org/futurereleases/
+     2019/04/09/protections- against- ﬁngerprinting- and- cryptocurrency- mining-
+     available- in- ﬁrefox- nightly- and- beta/.                                                   Martin Monperrus is Professor of Software Technology at KTH Royal Institute of
+Mozilla, 2022. Using web workers. https://developer.mozilla.org/en-US/docs/Web/                    Technology. His research lies in the ﬁeld of software engineering with a current fo-
+     API/Web_Workers_API/Using_web_workers.                                                        cus on automatic program repair, AI on code and program hardening. He received
+Musch, M., Wressnegger, C., Johns, M., Rieck, K., 2019a. New Kid on the Web:                       a Ph.D. from the University of Rennes, and a Master’s degree from Compiègne Uni-
+     A Study on the Prevalence of WebAssembly in the Wild. 10.1007/978-3-030-                      versity of Technology.
+     22038-9_2
+Musch, M., Wressnegger, C., Johns, M., Rieck, K., 2019. Thieves in the browser: web-               Tim Toady is a programmer analyst living in Merise, Estonia. His research interests
+     based cryptojacking in the wild. In: Proceedings of the 14th International Con-               include taint splatter analysis, Easter eggs and the usage of fakes in computing.
+     ference on Availability, Reliability and Security. Association for Computing Ma-
+     chinery doi:10.1145/3339252.3339261.                                                          Benoit Baudry is a Professor in Software Technology at the KTH Royal Institute of
+Naseem, F., Aris, A., Babun, L., Uluagac, S., Tekiner, E., 2021. MINOS: A Lightweight              Technology. His research focuses on automated software engineering, software di-
+     Real-Time Cryptojacking Detection System. Ndss doi:10.14722/NDSS.2021.24444.                  versity and software testing. He favors exploring code execution over code on disk.
+
+
+
+
+                                                                                              16
+

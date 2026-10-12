@@ -1,0 +1,361 @@
+{
+  "grammar": "two 2-bit inputs; constants 0,1; add/sub/xor/mul; pure expression trees <=3 operations",
+  "observer": "all bits of inputs/constants/intermediates; polynomial decoder degree bounded, unlimited XOR terms",
+  "stats": {
+    "baseline": {
+      "attempts": 9892,
+      "levels": [
+        4,
+        19,
+        243,
+        3388
+      ],
+      "profiles": 3654,
+      "seconds": 0.11468940001213923
+    },
+    "set_frontier": {
+      "attempts": 7172,
+      "levels": [
+        4,
+        19,
+        158,
+        1871
+      ],
+      "profiles": 2052,
+      "seconds": 0.07792129996232688
+    },
+    "output_only": {
+      "attempts": 4644,
+      "levels": [
+        4,
+        19,
+        79,
+        286
+      ],
+      "profiles": 388,
+      "seconds": 0.04263719997834414
+    },
+    "span_frontier": {
+      "attempts": 4644,
+      "levels": [
+        4,
+        19,
+        79,
+        290
+      ],
+      "profiles": 392,
+      "seconds": 0.08952969999518245
+    }
+  },
+  "coverage_checks": 3654,
+  "coverage_failures": 0,
+  "contextual_degree2_checks": 43848,
+  "strict_span_examples": [
+    {
+      "kept": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ],
+      "replaced": [
+        "mul",
+        "a",
+        [
+          "add",
+          "a",
+          "one"
+        ]
+      ],
+      "kept_cost": 2,
+      "replaced_cost": 2,
+      "kept_rank": 5,
+      "replaced_rank": 5
+    },
+    {
+      "kept": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ],
+      "replaced": [
+        "sub",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "kept_cost": 2,
+      "replaced_cost": 3,
+      "kept_rank": 5,
+      "replaced_rank": 5
+    },
+    {
+      "kept": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ],
+      "replaced": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "a",
+          [
+            "sub",
+            "zero",
+            "one"
+          ]
+        ]
+      ],
+      "kept_cost": 2,
+      "replaced_cost": 3,
+      "kept_rank": 5,
+      "replaced_rank": 5
+    },
+    {
+      "kept": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ],
+      "replaced": [
+        "mul",
+        "a",
+        [
+          "xor",
+          "a",
+          [
+            "sub",
+            "zero",
+            "one"
+          ]
+        ]
+      ],
+      "kept_cost": 2,
+      "replaced_cost": 3,
+      "kept_rank": 5,
+      "replaced_rank": 5
+    },
+    {
+      "kept": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ],
+      "replaced": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "zero",
+          [
+            "add",
+            "a",
+            "one"
+          ]
+        ]
+      ],
+      "kept_cost": 2,
+      "replaced_cost": 3,
+      "kept_rank": 5,
+      "replaced_rank": 5
+    },
+    {
+      "kept": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ],
+      "replaced": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "one",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "kept_cost": 2,
+      "replaced_cost": 3,
+      "kept_rank": 5,
+      "replaced_rank": 5
+    }
+  ],
+  "output_only_missing_examples": [
+    {
+      "lost": [
+        "add",
+        "b",
+        [
+          "add",
+          "a",
+          "a"
+        ]
+      ],
+      "kept": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "xor",
+        "a",
+        [
+          "xor",
+          "b",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "kept": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "add",
+        "b",
+        [
+          "sub",
+          "a",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "kept": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "add",
+        "b",
+        [
+          "mul",
+          "a",
+          [
+            "add",
+            "one",
+            "one"
+          ]
+        ]
+      ],
+      "kept": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "sub",
+        "zero",
+        [
+          "sub",
+          [
+            "add",
+            "a",
+            "a"
+          ],
+          "b"
+        ]
+      ],
+      "kept": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "sub",
+        [
+          "add",
+          "a",
+          "a"
+        ],
+        [
+          "sub",
+          "zero",
+          "b"
+        ]
+      ],
+      "kept": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ]
+    }
+  ]
+}

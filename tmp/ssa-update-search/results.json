@@ -1,0 +1,335 @@
+{
+  "python": "3.12.14",
+  "width": 2,
+  "max_expression_cost": 3,
+  "states": 64,
+  "operations": [
+    "add",
+    "sub",
+    "xor",
+    "and",
+    "or",
+    "mul"
+  ],
+  "levels": [
+    5,
+    44,
+    604,
+    10145
+  ],
+  "attempted_expressions": 29666,
+  "bank_entries": 10798,
+  "pair_matches": 408,
+  "chosen": {
+    "correctness_only": {
+      "trees": [
+        "zero",
+        [
+          "add",
+          "u",
+          [
+            "xor",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "cost": 2,
+      "exposes_x": true,
+      "checks": {
+        "2": {
+          "checked": 64,
+          "counterexamples": []
+        },
+        "3": {
+          "checked": 512,
+          "counterexamples": []
+        },
+        "4": {
+          "checked": 4096,
+          "counterexamples": []
+        },
+        "32_samples": {
+          "checked": 2752,
+          "counterexamples": []
+        }
+      },
+      "checkpoint_decoder": {
+        "expression": [
+          "xor",
+          "a",
+          "b"
+        ],
+        "valid_by_encoding_definition": true
+      }
+    },
+    "no_direct_x_intermediate": {
+      "trees": [
+        "a",
+        [
+          "add",
+          "b",
+          [
+            "xor",
+            "a",
+            [
+              "add",
+              "a",
+              "u"
+            ]
+          ]
+        ]
+      ],
+      "cost": 3,
+      "exposes_x": false,
+      "checks": {
+        "2": {
+          "checked": 64,
+          "counterexamples": []
+        },
+        "3": {
+          "checked": 512,
+          "counterexamples": [
+            {
+              "input": [
+                1,
+                1,
+                1
+              ],
+              "expected": 1,
+              "actual": 5
+            },
+            {
+              "input": [
+                1,
+                1,
+                3
+              ],
+              "expected": 3,
+              "actual": 7
+            },
+            {
+              "input": [
+                1,
+                1,
+                5
+              ],
+              "expected": 5,
+              "actual": 1
+            },
+            {
+              "input": [
+                1,
+                1,
+                7
+              ],
+              "expected": 7,
+              "actual": 3
+            },
+            {
+              "input": [
+                1,
+                3,
+                1
+              ],
+              "expected": 3,
+              "actual": 7
+            },
+            {
+              "input": [
+                1,
+                3,
+                3
+              ],
+              "expected": 5,
+              "actual": 1
+            },
+            {
+              "input": [
+                1,
+                3,
+                5
+              ],
+              "expected": 7,
+              "actual": 3
+            },
+            {
+              "input": [
+                1,
+                3,
+                7
+              ],
+              "expected": 1,
+              "actual": 5
+            }
+          ]
+        },
+        "4": {
+          "checked": 4096,
+          "counterexamples": [
+            {
+              "input": [
+                1,
+                1,
+                1
+              ],
+              "expected": 1,
+              "actual": 5
+            },
+            {
+              "input": [
+                1,
+                1,
+                3
+              ],
+              "expected": 3,
+              "actual": 7
+            },
+            {
+              "input": [
+                1,
+                1,
+                5
+              ],
+              "expected": 5,
+              "actual": 9
+            },
+            {
+              "input": [
+                1,
+                1,
+                7
+              ],
+              "expected": 7,
+              "actual": 11
+            },
+            {
+              "input": [
+                1,
+                1,
+                9
+              ],
+              "expected": 9,
+              "actual": 13
+            },
+            {
+              "input": [
+                1,
+                1,
+                11
+              ],
+              "expected": 11,
+              "actual": 15
+            },
+            {
+              "input": [
+                1,
+                1,
+                13
+              ],
+              "expected": 13,
+              "actual": 1
+            },
+            {
+              "input": [
+                1,
+                1,
+                15
+              ],
+              "expected": 15,
+              "actual": 3
+            }
+          ]
+        },
+        "32_samples": {
+          "checked": 2752,
+          "counterexamples": [
+            {
+              "input": [
+                1,
+                1,
+                1
+              ],
+              "expected": 1,
+              "actual": 5
+            },
+            {
+              "input": [
+                1,
+                1,
+                3
+              ],
+              "expected": 3,
+              "actual": 7
+            },
+            {
+              "input": [
+                1,
+                1,
+                7
+              ],
+              "expected": 7,
+              "actual": 11
+            },
+            {
+              "input": [
+                1,
+                1,
+                15
+              ],
+              "expected": 15,
+              "actual": 19
+            },
+            {
+              "input": [
+                1,
+                1,
+                2147483647
+              ],
+              "expected": 2147483647,
+              "actual": 2147483651
+            },
+            {
+              "input": [
+                1,
+                1,
+                4294967295
+              ],
+              "expected": 4294967295,
+              "actual": 3
+            },
+            {
+              "input": [
+                1,
+                3,
+                1
+              ],
+              "expected": 3,
+              "actual": 7
+            },
+            {
+              "input": [
+                1,
+                3,
+                3
+              ],
+              "expected": 5,
+              "actual": 9
+            }
+          ]
+        }
+      },
+      "checkpoint_decoder": {
+        "expression": [
+          "xor",
+          "a",
+          "b"
+        ],
+        "valid_by_encoding_definition": true
+      }
+    }
+  },
+  "seconds": 0.2631095999968238,
+  "seed_i32": 5460801,
+  "claim": "Finite update synthesis controls only; no new obfuscation algorithm, no Wasm execution."
+}

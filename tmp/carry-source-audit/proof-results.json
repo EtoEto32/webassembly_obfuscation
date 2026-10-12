@@ -1,0 +1,555 @@
+{
+  "z3": "4.13.3",
+  "timeoutMs": 3000,
+  "probeResultsSha256": "699136f7db46f8fa24e58eb95437c98354cfb52015b47a52dc59e73fc810e4a1",
+  "checks": [
+    {
+      "case": "qsynth_line_14",
+      "role": "source",
+      "width": 4,
+      "kind": "input-target",
+      "left": "((~ d + 1) - ~ ((((~ ((b & ~ b) + b) | d) - ~ ((b & ~ b) + b)) & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b)))) - 1",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unsat",
+      "seconds": 0.005508400034159422
+    },
+    {
+      "case": "qsynth_line_14",
+      "role": "source",
+      "width": 4,
+      "kind": "output-target",
+      "left": "-d + (b * b | b & d)\n",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unsat",
+      "seconds": 0.0005014999769628048
+    },
+    {
+      "case": "qsynth_line_14",
+      "role": "target",
+      "width": 4,
+      "kind": "input-target",
+      "left": "(((-d)+(((b|b)&d)|(b*b))))",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unsat",
+      "seconds": 0.0002720999764278531
+    },
+    {
+      "case": "qsynth_line_14",
+      "role": "source",
+      "width": 32,
+      "kind": "input-target",
+      "left": "((~ d + 1) - ~ ((((~ ((b & ~ b) + b) | d) - ~ ((b & ~ b) + b)) & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b)))) - 1",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unsat",
+      "seconds": 0.21302549995016307
+    },
+    {
+      "case": "qsynth_line_14",
+      "role": "source",
+      "width": 32,
+      "kind": "output-target",
+      "left": "-d + (b * b | b & d)\n",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unsat",
+      "seconds": 0.00745829998049885
+    },
+    {
+      "case": "qsynth_line_14",
+      "role": "target",
+      "width": 32,
+      "kind": "input-target",
+      "left": "(((-d)+(((b|b)&d)|(b*b))))",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unsat",
+      "seconds": 0.00016639998648315668
+    },
+    {
+      "case": "qsynth_line_14",
+      "role": "source",
+      "width": 64,
+      "kind": "input-target",
+      "left": "((~ d + 1) - ~ ((((~ ((b & ~ b) + b) | d) - ~ ((b & ~ b) + b)) & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b)))) - 1",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unknown",
+      "seconds": 3.107671500009019,
+      "reason": "timeout"
+    },
+    {
+      "case": "qsynth_line_14",
+      "role": "source",
+      "width": 64,
+      "kind": "output-target",
+      "left": "-d + (b * b | b & d)\n",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unsat",
+      "seconds": 0.027042799978516996
+    },
+    {
+      "case": "qsynth_line_14",
+      "role": "target",
+      "width": 64,
+      "kind": "input-target",
+      "left": "(((-d)+(((b|b)&d)|(b*b))))",
+      "right": "(((-d)+(((b|b)&d)|(b*b))))",
+      "result": "unsat",
+      "seconds": 0.00016929995035752654
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "source",
+      "width": 4,
+      "kind": "input-target",
+      "left": "(((c ^ ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((c | ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + (c | ((b & b) * (b | b) + (b & ~ b) * (~ b & b))))) + 1) - 1",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.018423200002871454
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "source",
+      "width": 4,
+      "kind": "output-target",
+      "left": "c + b * b + -1\n",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.004223099967930466
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "target",
+      "width": 4,
+      "kind": "input-target",
+      "left": "((~(-(c+(b*b)))))",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.00016639998648315668
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "target",
+      "width": 4,
+      "kind": "output-target",
+      "left": "b * b + c + -1\n",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.004886000009719282
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "source",
+      "width": 32,
+      "kind": "input-target",
+      "left": "(((c ^ ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((c | ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + (c | ((b & b) * (b | b) + (b & ~ b) * (~ b & b))))) + 1) - 1",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.15956709999591112
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "source",
+      "width": 32,
+      "kind": "output-target",
+      "left": "c + b * b + -1\n",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.2186744000064209
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "target",
+      "width": 32,
+      "kind": "input-target",
+      "left": "((~(-(c+(b*b)))))",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.00016449997201561928
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "target",
+      "width": 32,
+      "kind": "output-target",
+      "left": "b * b + c + -1\n",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.16907939995871857
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "source",
+      "width": 64,
+      "kind": "input-target",
+      "left": "(((c ^ ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((c | ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + (c | ((b & b) * (b | b) + (b & ~ b) * (~ b & b))))) + 1) - 1",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unknown",
+      "seconds": 3.0171708000125363,
+      "reason": "timeout"
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "source",
+      "width": 64,
+      "kind": "output-target",
+      "left": "c + b * b + -1\n",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unknown",
+      "seconds": 3.0968365999870002,
+      "reason": "timeout"
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "target",
+      "width": 64,
+      "kind": "input-target",
+      "left": "((~(-(c+(b*b)))))",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 0.00015650002751499414
+    },
+    {
+      "case": "qsynth_line_85",
+      "role": "target",
+      "width": 64,
+      "kind": "output-target",
+      "left": "b * b + c + -1\n",
+      "right": "((~(-(c+(b*b)))))",
+      "result": "unsat",
+      "seconds": 1.5208715999615379
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "source",
+      "width": 4,
+      "kind": "input-target",
+      "left": "((- ((b & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) - 1) | (((((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) & ((e + ~ (~ b + 1)) + 1)) - (((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) | ((e + ~ (~ b + 1)) + 1))) - 1)) - ((- ((b & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) - 1) & (((((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) & ((e + ~ (~ b + 1)) + 1)) - (((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) | ((e + ~ (~ b + 1)) + 1))) - 1))",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unsat",
+      "seconds": 0.01856320002116263
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "source",
+      "width": 4,
+      "kind": "output-target",
+      "left": "(b | b * b) ^ b + e ^ -(b * e)\n",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unsat",
+      "seconds": 0.005585199978668243
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "target",
+      "width": 4,
+      "kind": "input-target",
+      "left": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unsat",
+      "seconds": 0.00017600000137463212
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "source",
+      "width": 32,
+      "kind": "input-target",
+      "left": "((- ((b & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) - 1) | (((((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) & ((e + ~ (~ b + 1)) + 1)) - (((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) | ((e + ~ (~ b + 1)) + 1))) - 1)) - ((- ((b & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) - 1) & (((((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) & ((e + ~ (~ b + 1)) + 1)) - (((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) | ((e + ~ (~ b + 1)) + 1))) - 1))",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unknown",
+      "seconds": 3.1071562000433914,
+      "reason": "timeout"
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "source",
+      "width": 32,
+      "kind": "output-target",
+      "left": "(b | b * b) ^ b + e ^ -(b * e)\n",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unsat",
+      "seconds": 0.1428287000162527
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "target",
+      "width": 32,
+      "kind": "input-target",
+      "left": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unsat",
+      "seconds": 0.0001680999994277954
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "source",
+      "width": 64,
+      "kind": "input-target",
+      "left": "((- ((b & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) - 1) | (((((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) & ((e + ~ (~ b + 1)) + 1)) - (((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) | ((e + ~ (~ b + 1)) + 1))) - 1)) - ((- ((b & ~ ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) + ((b & b) * (b | b) + (b & ~ b) * (~ b & b))) - 1) & (((((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) & ((e + ~ (~ b + 1)) + 1)) - (((b & (~ e + 1)) * (b | (~ e + 1)) + (b & ~ (~ e + 1)) * (~ b & (~ e + 1))) | ((e + ~ (~ b + 1)) + 1))) - 1))",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unknown",
+      "seconds": 3.039874200010672,
+      "reason": "timeout"
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "source",
+      "width": 64,
+      "kind": "output-target",
+      "left": "(b | b * b) ^ b + e ^ -(b * e)\n",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unknown",
+      "seconds": 3.198693899961654,
+      "reason": "timeout"
+    },
+    {
+      "case": "qsynth_line_152",
+      "role": "target",
+      "width": 64,
+      "kind": "input-target",
+      "left": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "right": "(((~(b|(b*b)))^(~((b*(-e))^(e-(-b))))))",
+      "result": "unsat",
+      "seconds": 0.0003158000181429088
+    },
+    {
+      "case": "add_control",
+      "role": "source",
+      "width": 4,
+      "kind": "input-target",
+      "left": "(x&y)+(x|y)",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.03530470002442598
+    },
+    {
+      "case": "add_control",
+      "role": "source",
+      "width": 4,
+      "kind": "output-target",
+      "left": "x + y\n",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.00013999996008351445
+    },
+    {
+      "case": "add_control",
+      "role": "target",
+      "width": 4,
+      "kind": "input-target",
+      "left": "x+y",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.00013259996194392443
+    },
+    {
+      "case": "add_control",
+      "role": "source",
+      "width": 32,
+      "kind": "input-target",
+      "left": "(x&y)+(x|y)",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.0135403000167571
+    },
+    {
+      "case": "add_control",
+      "role": "source",
+      "width": 32,
+      "kind": "output-target",
+      "left": "x + y\n",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.0001571999746374786
+    },
+    {
+      "case": "add_control",
+      "role": "target",
+      "width": 32,
+      "kind": "input-target",
+      "left": "x+y",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.00014540000120177865
+    },
+    {
+      "case": "add_control",
+      "role": "source",
+      "width": 64,
+      "kind": "input-target",
+      "left": "(x&y)+(x|y)",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.02641990000847727
+    },
+    {
+      "case": "add_control",
+      "role": "source",
+      "width": 64,
+      "kind": "output-target",
+      "left": "x + y\n",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.00015209999401122332
+    },
+    {
+      "case": "add_control",
+      "role": "target",
+      "width": 64,
+      "kind": "input-target",
+      "left": "x+y",
+      "right": "x+y",
+      "result": "unsat",
+      "seconds": 0.00013419997412711382
+    },
+    {
+      "case": "product_control",
+      "role": "source",
+      "width": 4,
+      "kind": "input-target",
+      "left": "(x&y)*(x|y)+(x&~y)*(~x&y)",
+      "right": "x*y",
+      "result": "unsat",
+      "seconds": 0.007547000015620142
+    },
+    {
+      "case": "product_control",
+      "role": "source",
+      "width": 4,
+      "kind": "output-target",
+      "left": "x * y\n",
+      "right": "x*y",
+      "result": "unsat",
+      "seconds": 0.0001596000511199236
+    },
+    {
+      "case": "product_control",
+      "role": "target",
+      "width": 4,
+      "kind": "input-target",
+      "left": "x*y",
+      "right": "x*y",
+      "result": "unsat",
+      "seconds": 0.0001846000086516142
+    },
+    {
+      "case": "product_control",
+      "role": "source",
+      "width": 32,
+      "kind": "input-target",
+      "left": "(x&y)*(x|y)+(x&~y)*(~x&y)",
+      "right": "x*y",
+      "result": "unknown",
+      "seconds": 3.060311199980788,
+      "reason": "timeout"
+    },
+    {
+      "case": "product_control",
+      "role": "source",
+      "width": 32,
+      "kind": "output-target",
+      "left": "x * y\n",
+      "right": "x*y",
+      "result": "unsat",
+      "seconds": 0.00018200004706159234
+    },
+    {
+      "case": "product_control",
+      "role": "target",
+      "width": 32,
+      "kind": "input-target",
+      "left": "x*y",
+      "right": "x*y",
+      "result": "unsat",
+      "seconds": 0.00017780001508072019
+    },
+    {
+      "case": "product_control",
+      "role": "source",
+      "width": 64,
+      "kind": "input-target",
+      "left": "(x&y)*(x|y)+(x&~y)*(~x&y)",
+      "right": "x*y",
+      "result": "unknown",
+      "seconds": 3.0325420000008307,
+      "reason": "timeout"
+    },
+    {
+      "case": "product_control",
+      "role": "source",
+      "width": 64,
+      "kind": "output-target",
+      "left": "x * y\n",
+      "right": "x*y",
+      "result": "unsat",
+      "seconds": 0.0001430999836884439
+    },
+    {
+      "case": "product_control",
+      "role": "target",
+      "width": 64,
+      "kind": "input-target",
+      "left": "x*y",
+      "right": "x*y",
+      "result": "unsat",
+      "seconds": 0.00014079996617510915
+    },
+    {
+      "case": "boolean_shadow_control",
+      "role": "source",
+      "width": 4,
+      "kind": "input-target",
+      "left": "x*y-(x&y)",
+      "right": "x*y-(x&y)",
+      "result": "unsat",
+      "seconds": 0.00029440002981573343
+    },
+    {
+      "case": "boolean_shadow_control",
+      "role": "source",
+      "width": 4,
+      "kind": "output-target",
+      "left": "x * y + -(x & y)\n",
+      "right": "x*y-(x&y)",
+      "result": "unsat",
+      "seconds": 0.00041879998752847314
+    },
+    {
+      "case": "boolean_shadow_control",
+      "role": "source",
+      "width": 32,
+      "kind": "input-target",
+      "left": "x*y-(x&y)",
+      "right": "x*y-(x&y)",
+      "result": "unsat",
+      "seconds": 0.00018319999799132347
+    },
+    {
+      "case": "boolean_shadow_control",
+      "role": "source",
+      "width": 32,
+      "kind": "output-target",
+      "left": "x * y + -(x & y)\n",
+      "right": "x*y-(x&y)",
+      "result": "unsat",
+      "seconds": 0.0002914000069722533
+    },
+    {
+      "case": "boolean_shadow_control",
+      "role": "source",
+      "width": 64,
+      "kind": "input-target",
+      "left": "x*y-(x&y)",
+      "right": "x*y-(x&y)",
+      "result": "unsat",
+      "seconds": 0.00016469997353851795
+    },
+    {
+      "case": "boolean_shadow_control",
+      "role": "source",
+      "width": 64,
+      "kind": "output-target",
+      "left": "x * y + -(x & y)\n",
+      "right": "x*y-(x&y)",
+      "result": "unsat",
+      "seconds": 0.0002473000204190612
+    }
+  ]
+}

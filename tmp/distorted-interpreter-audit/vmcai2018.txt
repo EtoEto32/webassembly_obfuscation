@@ -1,0 +1,987 @@
+PAGE 1
+Code Obfuscation Against Abstract Model
+Checking Attacks
+Roberto Bruni 1, Roberto Giacobazzi 2,3, and Roberta Gori 1
+1 Dipartimento di Informatica, Universit` a di Pisa, Italy
+2 Dipartimento di Informatica, Universit` a di Verona, Italy
+3 IMDEA SW Institute, Spain
+Abstract. Code protection technologies require anti reverse engineer-
+ing transformations to obfuscate programs in such a way that tools and
+methods for program analysis become ineﬀective. We introduce the con-
+cept of model deformation inducing an eﬀective code obfuscation against
+attacks performed by abstract model checking. This means complicating
+the model in such a way a high number of spurious traces are generated
+in any formal veriﬁcation of the property to disclose about the system
+under attack. We transform the program model in order to make the
+removal of spurious counterexamples by abstraction reﬁnement maxi-
+mally ineﬃcient. A measure of the quality of the obfuscation obtained by
+model deformation is given together with a corresponding best obfusca-
+tion strategy for abstract model checking based on partition reﬁnement.
+1 Introduction
+Software systems are a strategic asset, which in addition to correctness deserves
+security and protection. This is particularly critical with the growth of mobile
+computing, where the traditional black-box security model, with the attacker
+not able to see into the implementation system, is not anymore adequate. Code
+protection technologies are increasing their relevance due to the ubiquitous na-
+ture of modern untrusted environments where code runs. From home networks to
+consumer devices (e.g., mobile devices, cloud, and IoT devices), the running envi-
+ronment cannot guarantee integrity and privacy. Existing techniques for software
+protection originated with the need to protect license-checking code, particularly
+in games or in IP protection. Sophisticated techniques, such as white-box (WB)
+cryptography and software watermarking, were developed to prevent adversaries
+from circumventing anti-piracy protection in digital rights management systems.
+A WB attack model to a software systemS assumes that the attacker has full
+access to all of the components of S, i.e.,S can be inspected, analysed, veriﬁed,
+reverse-engineered, or modiﬁed. The goal of the attack is to disclose properties
+of the run-time behaviour of S. These can be a hidden watermark [22,18,9], a
+cryptographic key or an invariance property for disclosing program semantics
+and make correct reverse engineering [7]. Note that standard encryption is only
+partially applicable for protecting S in this scenario: The transformed code has
+to be executable while being protected. Protection is therefore implemented
+PAGE 2
+2 R. Bruni, R. Giacobazzi, R. Gori
+as obfuscation [6]. Essentially, an obfuscator is a compiler that transforms a
+program p into a semantically equivalent one O(p) but harder to analyse and
+reverse engineer. In many cases it is enough to guarantee that the attacker cannot
+disclose the information within a bounded amount of time and with limited
+resources available. This is the case if new releases of the program are issued
+frequently or if the information to be disclosed is some secret key whose validity
+is limited in time, e.g., when used in pay-per-view mobile entertainment and in
+streaming of live events. Here the goal of the code obfuscation is to prevent the
+attacker from disclosing some keys before the end of the event.
+The current state of the art in code protection by obfuscation is characterised
+by a scattered set of methods and commercial/open-source techniques employing
+often ad hoc transformations; see [7] for a comprehensive survey. Examples of
+obfuscating transformations include code ﬂattening to remove control-ﬂow graph
+structures, randomised block execution to inhibit control-ﬂow graph reconstruc-
+tion by dynamic analysis, and data splitting to obfuscate data structures. While
+all these techniques can be combined together to protect the code from several
+models of attack, it is worth noting that each obfuscation strategy is designed to
+protect the code from one particular kind of attack. However, as most of these
+techniques are empirical, the major challenges in code protecting transformations
+are: (1) the design of provably correct transformations that do not inject ﬂaws
+when protecting code, and (2) the ability to prove that a certain obfuscation
+strategy is more eﬀective than another w.r.t. some given attack model.
+In this paper we consider a quite general model of attack, propose a measure
+to compare diﬀerent obfuscations and deﬁne a best obfuscation strategy.
+The aim of any attack is to disclose some program property. It is known
+that many data-ﬂow analyses can be cast to model checking of safety formulas.
+For example, computing the results of a set of data-ﬂow equations is equivalent
+to computing a set of states that satisﬁes a given modal/temporal logic speci-
+ﬁcation [20,21]. Even if several interesting properties are not directly expressed
+as safety properties, because they are existentially quantiﬁed over paths, their
+complements are relevant as well and are indeed safety properties, i.e. they are
+requested to hold for all reachable states. For these reasons ∀CTL* is a suitable
+formal logic to express those program properties the attacker wants to disclose.
+In this context, program analysis is therefore the model checking of a∀CTL*
+formula on a(n approximate) model associated with the program. The complex-
+ity of software analysis requires automated methods and tools for WB attack to
+code. Since the attacker aims to disclose the property within a bounded time
+and using bounded resources, approximate methods such as abstract interpre-
+tation [8] or abstract model checking [3] are useful to cope with the complex-
+ity of the problem. The abstraction here is helpful to reduce the size of the
+model keeping only the relevant information which is necessary for the analysis.
+Safety properties expressed in ∀CTL* can be model-checked using abstraction
+reﬁnement techniques (CEGAR [2]) as in Fig. 1. An initial (overapproximated)
+abstraction of the program is model-checked against the property φ. If the ver-
+iﬁcation proves that φ holds true, then it is disclosed. Similarly, if an abstract
+PAGE 3
+Code Obfuscation Against Abstract Model Checking Attacks 3
+Fig. 1. Counterexample guided abstraction reﬁnement (CEGAR) framework
+counterexample is found that corresponds to a concrete counterexample, it is
+disclosed that φ is not valid. An abstract counterexample that is present in the
+existential overapproximation but not in the concrete model is called spurious. If
+a spurious counterexample is found the abstraction is reﬁned to eliminate it and
+the veriﬁcation is repeated on the reﬁned abstraction. Of course, the coarser the
+abstraction that can be used to verify the property the more eﬀective the attack
+is. Indeed, the worst case for the attacker is when the veriﬁcation cycle must be
+repeated until the reﬁned abstraction coincides with the concrete model.
+Given a program p and a∀CTL* property φ to be obfuscated we aim to:
+1. deﬁne a measure to compare the eﬀectiveness of diﬀerent obfuscations of p;
+2. derive an optimal (w.r.t. the above measure) obfuscation of p.
+The measure of obfuscation that we propose is based on the size of the
+abstract model that allows the attacker to disclose the validity of φ. Intuitively,
+the larger the size of the model, the more resources and computation power the
+attacker needs to spend to reach the goal.
+We propose a systematic model deformation that induces a systematic trans-
+formation on the program (obfuscation). The idea is to transform the source
+program in such a way that:
+1. its semantics is preserved: the model of the original program is isomorphic
+to the (reachable) part of the model of the obfuscated program (Theorem 1);
+2. the performance is preserved;
+3. the property φ is preserved by the transformation (Theorem 2);
+4. such transformation forces the CEGAR framework to ultimately reﬁne the
+abstract model of the transformed program into the concrete model of the
+original program (Theorem 3). Therefore any abstraction-based model check-
+ing becomes totally ineﬀective on the obfuscated program.
+CEGAR can be viewed as a learning procedure, devoted to learn the partition
+(abstraction) which provides a (bisimulation) state equivalence. Our transforma-
+tion makes this procedure extremely ineﬃcient. Note that several instances of
+the CEGAR framework are possible depending on the chosen abstraction and
+reﬁnement techniques (e.g. predicate reﬁnement, partition reﬁnement) and that
+CEGAR can be used in synergy with other techniques for compact represen-
+tation of the state space (e.g., BDD) and for approximating the best reﬁned
+PAGE 4
+4 R. Bruni, R. Giacobazzi, R. Gori
+abstraction (e.g., SAT solvers). Notably, CEGAR is employed in state-of-the-art
+tools as Microsoft’s SLAM engine for the SDV framework [17]. Here we focus
+on the original formulation of CEGAR based on partition reﬁnement, but we
+believe that our technique can be extended to all the other settings.
+As many obfuscating transformations, our method relies on the concept of
+opaque expressions and opaque predicate that are expressions whose value is
+diﬃcult for the attacker to ﬁgure out. Opaque predicates and expressions are
+formulas whose value is uniquely determined (i.e. a constant), independently
+from the parameters they receive, but this is not immediately evident from the
+way in which the formula is written. For example it can be proved that the for-
+mulax2−34y2̸= 1 is always true for any integer values ofx andy. Analogously,
+the formula (x2 +x) mod 2̸= 0 is always false. These expression/predicate are,
+in general, constructed using number properties that are hard for an adversary
+to evaluate. Of course such predicates can be parameterised so that each instance
+will look slightly diﬀerent. Opaque predicates/expressions are often used to in-
+ject dead code in the obfuscated program in such a way that program analysis
+cannot just discard it. For example, if the guard x2− 34y2̸= 1 is used in a con-
+ditional statement, then the program analysis should consider both the ”then”
+and the ”else” branches, while only the ﬁrst is actually executable. In this paper:
+i) opaque expressions will be used to hide from the attacker the initial values
+of the new variables introduced by our obfuscation procedure; and ii) opaque
+predicates will be used to add some form of nondeterminism originated from
+model deformations. The eﬀects of the opaque expressions and predicates will
+be similar: since the attacker will not be able to ﬁgure out their actual values,
+all the possible values have to be taken into account.
+Plan of the paper. In Section 2 we recall CEGAR and ﬁx the notation. In Sec-
+tion 3 we introduce the concept of model deformation and deﬁne the measure of
+obfuscation. In Section 4 we deﬁne a best obfuscation strategy. Our main results
+are in Section 5. Some concluding remarks are in Section 6
+Related works. With respect to previous approaches to code obfuscation, all
+aimed to defeat attacks based on speciﬁc abstractions, we deﬁne the ﬁrst trans-
+formation that defeats the reﬁnement strategy, making our approach indepen-
+dent on the speciﬁc attack carried out by abstract model checking.
+Most existing works dealing with practical code obfuscation are motivated by
+either empirical evaluation or by showing how speciﬁc models of attack are de-
+feated, e.g., decompilation, program analysis, tracing, debugging (see [7]). Along
+these lines, [23] ﬁrstly considered the problem of defeating speciﬁc and well iden-
+tiﬁed attacks, in this case control-ﬂow structures. More recently [1] shows how
+suitable transformations may defeat symbolic execution attacks. We follow a
+similar approach in defeating abstract model-checking attacks by making ab-
+straction reﬁnements maximally ineﬃcient. The advantage in our case is in the
+fact that we consider abstraction reﬁnements as targets of our code protecting
+transformations. This allows us both to extract suitable metrics and to apply
+our transformations to all model checking-based attacks.
+PAGE 5
+Code Obfuscation Against Abstract Model Checking Attacks 5
+A ﬁrst attempt to formalise in a unique framework a variety of models of
+attack has been done in [13,10,14] in terms of abstract interpretation. The idea
+is that, given an attack implemented as an abstract interpreter, a transforma-
+tion is derived that makes the corresponding abstract interpreter incomplete,
+namely returning the highest possible number of false alarms. The use of ab-
+stract interpretation has the advantage of making it possible to include in the
+attack model the whole variety of program analysis tools. While this approach
+provides methods for understanding and comparing qualitatively existing obfus-
+cations with respect to speciﬁc attacks deﬁned as abstract interpreters, none of
+these approaches considers transformations that defeat the abstraction reﬁne-
+ment, namely the procedure that allows to improve the attack towards a full
+disclosure of the obfuscated program properties.
+Even if the relation between false alarms and spurious counterexamples is
+known [15] to the best of our knowledge, no obfuscation methods have been
+developed in the context of formal veriﬁcation by abstract model checking, or
+more in general by exploiting structural properties of computational models and
+their logic.
+2 Setting The Context
+2.1 Abstract Model Checking
+Given a set Prop of propositions, we consider the fragment∀CTL* of the tempo-
+ral logic CTL* over Prop [4,12]. Models are Kripke structuresK =⟨Σ,R,I, ∥·∥⟩
+with a transition system⟨Σ,R⟩ having states in Σ and transitions R⊆Σ×Σ,
+initial states I⊆ Σ, and an interpretation function ∥·∥ : Prop−→℘(Σ) that
+maps each proposition p to the set∥ p∥⊆Σ of all and only states where p holds.
+For∀CTL∗ the notion of satisfaction of a formulaϕ inK is as usual [11], written
+K|=ϕ A path in⟨Σ,R,I, ∥·∥⟩ is an inﬁnite sequenceπ ={si}i∈N of states such
+that s0∈ I and for every i∈ N, R(si,si+1). Terminating executions are paths
+where the ﬁnal state repeats forever. We will sometimes use π to denote also a
+ﬁnite path preﬁx {si}i∈[0,n] for some n∈ N. Given a path π ={si}i∈N and a
+state x∈Σ, we write x∈π if∃i∈ N such that x =si.
+Any state partition P⊆℘(Σ) deﬁnes an abstraction merging states into ab-
+stract states, i.e., an abstract state is a set of concrete states and the abstraction
+function αP : Σ→ ℘(Σ) maps each state s into the partition class αP (s)∈ P
+that contains s. The abstraction function can be lifted to a pair of adjoint func-
+tions αP :℘(Σ)→℘(Σ) and γP :℘(Σ)→℘(Σ), such that for any X∈℘(Σ),
+αP (X) = ⋃
+x∈XP (x) [19]. When the partition P is clear from the context we
+omit the subscript. A partitionP with abstraction functionα induces an abstract
+Kripke structure KP =⟨Σ♯,R♯,I♯,∥·∥ ♯⟩ that has abstract states in Σ♯ = P ,
+ranged by s♯, and is deﬁned as the existential abstraction induced by P :
+– R♯(s♯
+1,s♯
+2) iﬀ∃s,t∈Σ. R(s,t )∧α(s) =s♯
+1∧α(t) =s♯
+2,
+– s♯∈I♯ iﬀ∃t∈I.α (t) =s♯,
+–∥ p∥♯ def
+=
+{
+s♯∈Σ♯⏐⏐s♯⊆∥ p∥
+}
+,
+PAGE 6
+6 R. Bruni, R. Giacobazzi, R. Gori
+An abstract path in the abstract Kripke structure KP is denoted by π♯ =
+{s♯
+i}i∈N. The abstract path associated with the concrete path π ={si}i∈N is the
+sequence α(π) ={α(si)}i∈N. Vice versa, we denote by γ(π♯) the set of concrete
+paths whose abstract path is π♯, i.e., γ(π♯) =
+{
+π
+⏐⏐α(π) =π♯}
+.
+A counterexample forϕ is either a ﬁnite abstract path or a ﬁnite abstract path
+followed by a loop. Abstract model checking is sound by construction: If there is
+a concrete counterexample forϕ then there is also an abstract counterexample for
+it. Spurious counterexamples may happen: If there is an abstract counterexample
+for ϕ then there may or may not be a concrete counterexample for ϕ.
+2.2 Counter-Example Guided Abstraction Reﬁnement
+With an abstract Kripke structure K♯ and a formula ϕ, the CEGAR algorithm
+works as follows [2]. K♯ is model checked against the formula. If no counterex-
+ample to K♯ |= ϕ is found, the formula ϕ is satisﬁed and we conclude. If a
+counterexampleπ♯ is found which is not spurious, i.e., γ(π♯)̸=∅, then we have
+an underlying concrete counterexample and we conclude that ϕ is not satisﬁed.
+If the counterexample is spurious, i.e., γ(π♯) = ∅, then K♯ is further reﬁned
+and the procedure is repeated. The procedure illustrated in Fig. 1 induces an
+abstract model-checker attacker that can be speciﬁed as follows in pseudocode.
+Input: program p, property φ
+P =init(p,φ );
+K =kripke(P,p );
+c =check(K,φ );
+while (c != null && spurious(p,c )) {
+P =refine(K,p,c );
+K =kripke(P,p );
+c =check(K,φ ); }
+return ((c == null), P );
+Here we denote by init a function that takes a programp and the propertyϕ
+and returns an initial abstractionP (a partition of variable domains); a function
+kripke that generates the abstract Kripke structure associated with a program
+p and the partition P ; a function check that takes an abstract Kripke structure
+K and a property ϕ and returns either null, if K|= ϕ, or a (deterministically
+chosen) counterexamplec; a predicate spurious that takes the programp and an
+abstract counterexamplec and returns true ifc is a spurious counterexample and
+false otherwise; and a function reﬁne(K,p,c ) that returns a partition reﬁnement
+so to eliminate the spurious counterexamplec. As the model is ﬁnite, the number
+of partitions that reﬁne the initial partition is also ﬁnite and the algorithm
+terminates by returning a pair: a boolean that states the validity of the formula,
+and the ﬁnal partition that allows to prove it.
+If several spurious counterexamples exist, then the selection of one instead
+of another may inﬂuence the reﬁnements that are performed. For example, the
+same reﬁnement that eliminates a spurious counterexample may cause the disap-
+pearance of several other ones. However, all the spurious counterexamples must
+PAGE 7
+Code Obfuscation Against Abstract Model Checking Attacks 7
+be eliminated. When we assume that check is deterministic, we just ﬁx a total
+order on the way counterexamples are found. For example, we may assume that
+a total order on states is given (e.g., lexicographic) and extend it to paths.
+Fig. 2. Dead, bad and irrelevant states
+Central in CEGAR is partition re-
+ﬁnement. The algorithm identiﬁes the
+shortest preﬁx{s#
+i}i∈[0,k+1] of the ab-
+stract counterexample π♯ that does
+not correspond to a concrete path in
+the model. The second to last abstract
+state s#
+k in the preﬁx, called a failure
+state, is further partitioned by reﬁn-
+ing the equivalence classes in such a
+way that the spurious counterexam-
+ple is removed. To reﬁne s#
+k , the al-
+gorithm classiﬁes the concrete states
+s∈s#
+k in three classes:
+– Dead states: they are reachable states s ∈ s#
+k along the spurious coun-
+terexample preﬁx but they have no outgoing transitions to the next states
+in the spurious counterexample, i.e., there is some concrete path preﬁx
+π∈γ({s#
+i}i∈[0,k]) such that s∈π and for any s′∈s#
+k+1 it holds¬R(s,s′).
+– Bad states: they are non-reachable states s∈ s#
+k along the spurious coun-
+terexample preﬁx but have outgoing transitions that cause the spurious coun-
+terexample, i.e., for any concrete path preﬁx π ∈ γ({s#
+i}i∈[0,k]) we have
+s̸∈π, but R(s,s′) for some concrete state s′∈s#
+k+1.
+– Irrelevant states: they are neither dead nor bad, i.e., they are not reachable
+and have no outgoing transitions to the next states in the counterexample.
+Example 1 (Dead, bad and irrelevant states). Consider the abstract path preﬁx
+{s#
+0,s #
+1,s #
+2,s #
+3} in Fig. 2. Each abstract state is represented as a set of con-
+crete states (the smaller squares). The arrows are the transitions of the concrete
+Kripke structure and they induce abstract arcs in the obvious way. We use a
+thicker borderline to mark s#
+0 as an initial abstract state and a dashed border-
+line to mark s#
+2 as a failure state. The only dead state in s#
+2 is r, because it
+can be reached via a concrete path from an initial state but there is no outgoing
+transition to a state in s#
+3 . The states s and t are bad, because they are not
+reachable from initial states, but have outgoing transitions to states in s#
+3 . The
+states u and w are irrelevant.
+CEGAR looks for the coarsest partition that separates bad states from dead
+states. The partition is obtained by reﬁning the partition associated with each
+variable. The chosen reﬁnement is not local to the failure state, but it applies
+globally to all states: It deﬁnes a new abstract Kripke structure for which the
+spurious counterexample is no longer valid. Finding the coarsest partition cor-
+responds to keeping the size of the new abstract Kripke structure as small as
+possible. This is known to be a NP-hard problem [2], due to the combinatorial
+PAGE 8
+8 R. Bruni, R. Giacobazzi, R. Gori
+explosion in the number of ways in which irrelevant states can be combined with
+dead or bad states. In practice, CEGAR applies a heuristic: irrelevant states are
+not combined with dead states. The opposite option of separating bad states
+from both dead and irrelevant states is also viable.
+In the following we assume that states in Σ are deﬁned as assignments of
+values to a ﬁnite set of variables x1,...,x n that can take values in ﬁnite do-
+mainsD1,...,D n. Partitions over states are induced by partitions on domains. A
+partition P of variables x1,...,x n is a function that sends each xi to a partition
+Pi =P (xi)⊆℘(Di). Given the abstractions associated with partitionsP1,...,P n
+of the domainsD1,...,D n, the states of the abstract Kripke structure are deﬁned
+by the possible ranges of values that are assigned to each variable according to
+the corresponding partition.
+2.3 Programs
+We letP be the set of programs written in the syntax of guarded commands [5]
+(e.g., in the style of CSP, Occam, XC), according to the grammar below:
+d ::=x∈D | d,d g ::=x∈V | true | g∧g | g∨g | ¬g
+a ::=x =e | a,a c ::=g⇒a | c|c p ::= (d;g;c)
+where x is a variable, V ⊆⋃
+iDi is a ﬁnite set of values, and e is a well-deﬁned
+expression over variables. A declaration is a non-empty list of basic declarations
+x∈D assigning a domain D to the variable x. We assume that all the variables
+appearing in a declarationd are distinct. A basic guard is a membership predicate
+x∈ V or true. A guard g is a formula of propositional logic over basic guards.
+We write x̸∈ V for¬(x∈ V ). An action is a non-empty list of assignments.
+A single assignment x = e evaluates the expression e in the current state and
+updates x accordingly. If multiple assignments x1 =e1,...,x k =ek are present,
+the expressions e1,...,e k are evaluated in the current state and their values are
+assigned to the respective variables. All the variables appearing in the left-hand
+side of multiple assignments must be distinct, so the order of assignments is not
+relevant. A basic command consists of a guarded commandg⇒a: it checks if the
+guardg is satisﬁed by the current state, in which case it executes the action a to
+update the state. Commands can be composed in parallel: any guarded command
+whose guard is satisﬁed by the current state can be applied. A program (d;g;c)
+consists of a declaration d, an initialisation proposition g and a command c,
+where all the variables in g and c are declared in d.
+Example 2 (A sample program). We consider the following running example pro-
+gram (in pseudocode) that computes in y the square of the initial value of x.
+1: y = 0;
+2: while (x>0) {
+3: y = y + 2 *x - 1;
+4: x = x - 1;
+5: } output(y);
+PAGE 9
+Code Obfuscation Against Abstract Model Checking Attacks 9
+Fig. 3. An abstract Kripke structure
+For simplicity we assume the possible values assigned to variables are in
+quite limited ranges, but starting with larger sets of values would not change
+the outcome of the application of the CEGAR algorithm. The translation of
+the previous program in the syntax of guarded commands is the program p =
+(d ; g ; c1|c2a|c2b|c3|c4), written below in CSP-like syntax. Intuitively, it is
+obtained by adding an explicit variable pc for the program-counter and then
+encoding each line of the source code as a basic command.
+def x in {0,1,2} , y in {0,1,2,3,4,5} , pc in {1,2,3,4,5}; % d
+init pc = 1; % g
+do pc in {1} => pc=2, y=0 % c1 \
+[] pc in {2} /\ x notin {0} => pc=3 % c2a |
+[] pc in {2} /\ x in {0} => pc=5 % c2b > c
+[] pc in {3} => pc=4, y=y+(2 *x)-1 % c3 |
+[] pc in {4} => pc=2, x=x-1 % c4 /
+od
+In this context, an attacker may want to check if y is ever assigned the value
+2, which can be expressed as the property: φ
+def
+=∀G (pc∈{ 1}∨y̸∈{ 2}) (i.e. for
+all paths, for all states in the path it is never the case that pc̸= 1 and y = 2).
+Let d = (x1∈ D1,...,x n∈ Dn). A state s = (x1 = v1,...,x n = vn) of the
+program (d;g;c) is an assignment of values to all variables in d, such that for
+all i∈ [1,n ] we have vi∈ Di and we write s(x) for the value assigned to x in
+s. Given c = (g1⇒a1|···| gk⇒ak), we write s|=gj if the guard gj holds in s
+and s[aj] for the state obtained by updating s with the assignment aj.
+The concrete Kripke structure K(p) = ⟨Σ,R,I, ∥·∥⟩ associated with p =
+(d;g;c) is deﬁned as follows: the set of states Σ is the set of all states of the
+program; the set of transitions R is the set of all and only arcs ( s,s′) such that
+there is a guarded command gj⇒aj in c with s|=gj and s′ =s[aj]; the set of
+initial states I is the set of all and only states that satisfy the guard g; the set
+of propositions is the set of all sentences of the form xi∈V wherei∈ [1,n ] and
+V ⊆Di; the interpretation function is such that ∥xi∈V ∥={s|s(xi)∈V}.
+Example 3 (A step of CEGAR). The Kripke structure associated with the pro-
+gramp from Example 2 has 90 states, one for each possible combination of values
+for its variables x,y,pc . There are 18 initial states: those where pc = 1.
+Assume that the attacker, in order to proveφ, starts with the following initial
+partition (see [5]):
+x :{{0},{1, 2}} y :{{2},{0, 1, 3, 4, 5}} pc :{{1},{2, 3, 4, 5}} (1)
+PAGE 10
+10 R. Bruni, R. Giacobazzi, R. Gori
+Fig. 4. Failure state
+The corresponding abstract Kripke structure has just 8 states (see Fig. 3) with 4
+initial states marked with bold borderline in Fig. 3, where, to improve readability,
+we write, e.g., y = 01345 instead of the more verbose y∈{ 0, 1, 3, 4, 5}.
+There are several paths that lead to counterexamples for φ. One such path
+is the one marked with bold arrows in Fig. 3. It is detailed in Fig. 4 by showing
+the underlying concrete states. It is a spurious counterexample, because there
+is no underlying concrete path. The abstract failure state is ( x∈{ 1, 2},y ∈
+{0, 1, 3, 4, 5},pc∈{ 2, 3, 4, 5}), depicted with dashed borderline in Fig. 3. It con-
+tains one bad concrete state (x = 1,y = 1,pc = 3), two dead states ((x = 1,y =
+0,pc = 2) and (x = 2,y = 0,pc = 2)) and 37 irrelevant states.
+By partition reﬁnement we get the following reﬁned partition:
+x :{{0},{1, 2}} y :{{2},{0},{1, 3, 4, 5}} pc :{{1},{2},{3, 4, 5}} (2)
+Thus the corresponding abstract Kripke structure has now 18 states, six of which
+are initial states. While the previously considered spurious counterexample has
+been removed, another one can be found and, therefore, CEGAR must be re-
+peated, (see Fig. 6 discussed in Example 5 for further steps).
+3 Model Deformations
+We introduce a systematic model deformation making abstract model checking
+harder. The idea is to transform the Kripke structure, by adding states and
+transitions in a conservative way. We want to somehow preserve the semantics
+of the model, while making the abstract model checking less eﬃcient, in the sense
+that only trivial (identical) partitions can be used to prove the property. In other
+words, any non-trivial abstraction induces at least one spurious counterexample.
+Let M be the domain of all models speciﬁed as Kripke structures. Formally,
+a model deformation is a mapping between Kripke structures D : M→ M such
+that for a given formula φ andK∈ M:K| = φ ⇒ D(K)|= φ and there exists
+a partition P such thatKP |= φ ⇒ D(KP )̸|= φ. In this case we say that D
+PAGE 11
+Code Obfuscation Against Abstract Model Checking Attacks 11
+Fig. 5. A detail of a deformation
+is a deformation for the partition P . Thus, a model deformation makes abstract
+model checking imprecise yet keeping the validity of the given formula.
+In Section 4, we shall show that the deformation of the Kripke structures we
+consider are induced by transformations of the source program, that act as an
+obfuscation strategy against an attack speciﬁed by an abstract model-checker.
+Accordingly, we say that an obfuscation is a transformation O :P →P such
+that for a given formula φ and program p∈P :K(p)|=φ ⇒ K(O(p))|=φ and
+there exists a partition P such thatK(p)P|=φ ⇒ K(O(p))P̸|=φ.
+Example 4 (Model deformation). Consider the program p from Example 2. The
+ﬁrst step of reﬁnement with the CEGAR algorithm with the initial partition (1)
+(described in Example 3) results in the partition (2). Intuitively, a deformation
+of the Kripke structure that forced the CEGAR algorithm to split the sets of
+variable values in classes smaller than the ones in partition (2) would weaken
+the power of CEGAR. To this aim, consider a deformation D(K) of the concrete
+Kripke structureK of Example 3 obtained by duplicating K in such a way that
+one copy is kept isomorphic to the original one, while the second copy is modiﬁed
+by adding and removing some transitions to make the CEGAR algorithm less
+eﬃcient. The copies can be obtained by introducing a new variablez∈{ 1, 2}: for
+z = 1 we preserve all transitions, while for z = 2 we change them to force a ﬁner
+partition when a step of the CEGAR algorithm is applied. For example, in the
+replica forz = 2, let us transform the copy of the dead state (x = 2,y = 0,pc = 2)
+into a bad state. This is obtained by adding and removing some transitions. After
+this transformation, assuming an initial partition analogous to partition (1),
+x :{{0},{1, 2}} y :{{2},{0, 1, 3, 4, 5}} pc :{{1},{2, 3, 4, 5}} z :{{1, 2}}
+where all the values of the new variablez are kept together, we obtain an abstract
+Kripke structure isomorphic to the one of Fig. 3, with the same counterexamples.
+However, when we focus on the spurious counterexample, the situation is slightly
+changed. This is shown in Fig. 5, where the relevant point is the overall shape
+of the model and not the actual identity of each node. Roughly it combines two
+copies of the states in Fig. 4: those with z = 1 are on the left and those with
+z = 2 are on the right. The abstract state
+(x∈{ 1, 2},y∈{ 0, 1, 3, 4, 5},pc∈{ 2, 3, 4, 5},z∈{ 1, 2})
+PAGE 12
+12 R. Bruni, R. Giacobazzi, R. Gori
+is still a failure state, but it has three bad states and three dead states:
+bad states dead states
+(x = 1,y = 1,pc = 3,z = 1 ) (x = 1,y = 0,pc = 2,z = 1 )
+(x = 1,y = 1,pc = 3,z = 2 ) (x = 1,y = 0,pc = 2,z = 2 )
+(x = 2,y = 0,pc = 2,z = 2 ) (x = 2,y = 0,pc = 2,z = 1 )
+The bad state (x = 2,y = 0,pc = 2,z = 2) and the dead states ( x = 1,y =
+0,pc = 2,z = 2) and (x = 1,y = 4,pc = 3,z = 1) are incompatible. Therefore,
+the reﬁnement leads to the partition below, where all values of x are separated:
+x :{{0},{1},{2}}z :{{1},{2}}y :{{2},{0},{1, 3, 4, 5}}pc :{{1},{2},{3, 4, 5}}
+3.1 Measuring Obfuscations
+Intuitively, the largest is the size of the abstract Kripke structure to be model
+checked without spurious counterexamples, the harder is for the attacker to reach
+its goal. The interesting case is of course when the property φ holds true, but
+the abstraction used by the attacker leads to spurious counterexamples.
+We propose to measure and compare obfuscations on the basis of the size of
+the ﬁnal abstract Kripke structure where the property can be directly proved. As
+the abstract states are generated by a partition of the domains of each variable,
+the size is obtained just as the product of the number of partition classes for
+each variable. As obfuscations can introduce any number of additional variables
+over arbitrary domains, we consider only the size induced by the variables in the
+original program (otherwise increasing the number of variables could increase
+the measure of obfuscation without necessarily making CEGAR ineﬀective).
+In the following we assume thatp is a program with variablesX and variables
+of interest Y ⊆X and φ is the formula that the attacker wants to prove.
+Deﬁnition 1 (Size of a partition). Given a partition P of X, we deﬁne the
+size of P w.r.t. Y as the natural number ∏
+y∈Y|P (y)|.
+Deﬁnition 2 (Measure of obfuscation). LetO(p) be an obfuscated program.
+The measure ofO(p) w.r.t. φ and Y , written #Y
+φO(p), is the size of the ﬁnal
+partitionP w.r.t. Y as computed by the above model of the attacker.
+Our deﬁnition is parametric w.r.t. to the heuristics implemented in check
+(choice of the counterexample) and reﬁne (how to partition irrelevant states).
+There are two main reasons for which the above measure is more signiﬁcant than
+other choices, like counting the number of reﬁnements: i) it is independent from
+the order in which spurious counterexamples are eliminated; ii) since the attacker
+has limited resources, a good obfuscation is the one that forces the attacker to
+model check a Kripke structure as large as possible.
+Deﬁnition 3 (Comparing obfuscations). The obfuscated programO1(p) is
+as good asO2(p), writtenO1(p)≥Y
+φO2(p), if #Y
+φO1(p)≥ #Y
+φO2(p).
+PAGE 13
+Code Obfuscation Against Abstract Model Checking Attacks 13
+Fig. 6. A reﬁned abstract Kripke structure
+It follows that the best measure associated with an obfuscation is∏
+y∈Y|Dy|,
+whereDy denotes the domain of y. This is the case where the abstraction sepa-
+rates all the concrete values that the variables in Y may assume.
+Example 5 (Ctd.). Let us consider again the running example and compare it
+with the semantically equivalent program p′ below:
+def x in {0,1,2}, y in {0,1,2,3,4,5}, pc in {1,2};
+init pc = 1;
+do pc in {1} => pc=2, y=x *x
+od
+Letx,y be the variables of interest. We have #{x,y}
+φ p′ = 2, because the initial
+partition (1) is suﬃcient to prove that the property φ holds.
+For the obfuscated program p, the size of the initial partition is just 4 (see
+partition (1) and the corresponding abstract Kripke structure in Fig. 3), and after
+one step of the CEGAR reﬁnement the size of the computed partition is 6 (see
+partition (2) and the corresponding Kripke structure in Fig. 6). Since spurious
+counterexamples are still present, one more step of reﬁnement is needed. When
+the attacker executes the procedure on the failure state marked with dashed
+border in Fig. 6, the result is the partition
+x :{{0},{1},{2}} y :{{0},{1},{2},{3},{4, 5}} pc :{{1},{2},{4},{3, 5}}
+whose size is 15 as it has been necessary to split all values for x and most values
+for y. Now no more (spurious) counterexample can be found because all the
+states that invalidate the property are not reachable from initial states. Thus
+#{x,y}
+φ p = 15, while the best obfuscation would have measure 18, which is the
+product of the sizes of the domains of x and y. As the reader may expect,
+we conclude that p≥{x,y}
+φ p′. In our running example, for simplicity, we have
+exploited a very small domain for each variable, but if we take larger domains of
+values, then #{x,y}
+φ p′ and #{x,y}
+φ p remain unchanged, while the measure of the
+best possible obfuscation would grow considerably.
+PAGE 14
+14 R. Bruni, R. Giacobazzi, R. Gori
+4 Best Code Obfuscation Strategy
+In the following, given an abstract Kripke structure K and a property φ, we let
+Sφ denote the set of abstract states that contain only concrete states that satisfy
+φ, and Sφ be the set with at least one concrete state that does not satisfy φ. We
+denote byOφ the obfuscation strategy realized by the following algorithm.
+Input: program p, property φ
+1: P =init(p,φ );
+2: K =kripke(P,p );
+3: (p,K,w,v w) =fresh(p,K );
+4: (p,K,z,v z) =fresh(p,K );
+5: S =cover(P );
+6: foreach s#∈S {
+// failure path preparation (lines 7-12, Cases 1-2)
+7: π# =failurepath (s#,K,p,φ );
+8: while (π# == null) {
+9: if (not reach(s#,K,p,φ )
+10: (p,K,v w) =makereachable(s#,K,p,φ,w,v w);
+11: else (p,K,v w) =makefailstate (s#,K,p,φ,w,v w);
+12: π# =failurepath (s#,K,p,φ ); }
+// main cycle (lines 13-19, Case 3)
+13: foreach (xi,v 1,v 2)∈compatible(s#,π #,p ) {
+14: (s,t ) =pick(xi,v 1,v 2,s #);
+15: if dead(t,s #,π #,p )
+16: (p,K,v z) =dead2bad(t,s #,π #,K,p,z,v z);
+17: else if bad(t,s #,π #,p )
+18: (p,K,v z) =bad2dead(t,s #,π #,K,p,z,v z);
+19: else (p,K,v z) =irr2dead(t,s #,π #,K,p,z,v z); }
+20: } return p;
+The algorithm starts by computing an initial partition P and the corre-
+sponding abstract Kripke structure K. We want to modify the concrete Kripke
+structure so that CEGAR will split the abstract states in trivial partition classes
+for the variables of interest. The idea is to create several replicas of the concrete
+Kripke structure, such that one copy is preserved while the others will be changed
+by introducing and deleting arcs. This is obtained by introducing a new variable
+z over a suitable domainDz ={1,...,n} such that the concrete Kripke structure
+is replicated for each value z can take. As a matter of notation, we denote by
+(s,z =v) the copy of the concrete state s wherez =v. Without loss of general-
+ity, we assume that for z = 1 we keep the original concrete Kripke structure. In
+practice such value of z is hidden by an opaque expression. Actually we use two
+fresh variables, named w and z (lines 3 and 4): the former is used to introduce
+spurious counterexamples and failure states in the replica and the latter to force
+the splitting of failure states into trivial partition classes. The function fresh up-
+dates the programp and the Kripke structureK by taking into account the new
+variables and initializes the variables vw and vz that keep track of the last used
+values forw andz. When a new replica is created, such values are incremented.
+PAGE 15
+Code Obfuscation Against Abstract Model Checking Attacks 15
+The function cover (at line 5) takes the initial partition P and returns a set
+of abstract statess#
+1,...,s #
+k , called a covering, such that, together, they cover all
+non-trivial4 partition classes of the domains of the variable of interest, i.e. for
+each variablexi, withi∈ [1,n ], for each class C∈P (xi) such that|C|> 1 there
+is an abstract state s#
+j with j∈ [1,k ] and a concrete state s∈ s#
+j such that
+s(xi)∈C. Note that the set of all abstract states is a (redundant) covering.
+For eachs#∈{s#
+1,...,s #
+k} in the covering, there are three possibilities:
+1. s# does not contain any concrete state that is reachable via a concrete path
+that traverses only abstract states in Sφ;
+2. s# is not a failure state but it contains at least one concrete state that is
+reachable via a concrete path that traverses only abstract states in Sφ;
+3. s# is already the failure state of a spurious counterexample.
+In case (3), failurepath(s#,K,p,φ ) (line 7) returns an abstract path that is a
+counterexample for φ, in the other cases the function failurepath(s#,K,p,φ )
+returns null and the algorithm enters a cycle (to be executed at most twice, see
+lines 8–12) that transforms the Kripke structure and the program to move from
+cases (1–2) back to case (3), in a way that we will explain later.
+Case (3) (lines 13–19). The core of the algorithm applies to a failure state s#
+of a spurious counterexample π#. In this case the obfuscation method will force
+CEGAR to split the failure state s# by separating all values in the domains of
+the variables of interest. Remember that CEGAR classiﬁes the concrete states
+ins# in three classes (bad, dead and irrelevant) and that dead states cannot be
+merged with bad or irrelevant states. We say that two states that can be merged
+are compatible. The role of the new copies of the Kripke structure is to prevent
+any merge between concrete states in the set s#. This is done by making sure
+that whenever two concrete states (s,z = 1), (t,z = 1)∈s# can be merged into
+the same partition, then the states ( s,z =vz + 1) and (t,z =vz + 1) cannot be
+merged together, because one is dead and the other is bad or irrelevant.
+The function compatible(s#,π #,p ) returns the set of triples (xi,{v1,v 2}) such
+that xi is a variable of interest and any pair of states ( s,xi =v1), (s,xi =v2)∈
+s# that diﬀer just for the value of xi are compatible. Thus, the cycle at line 13
+considers all such triples to make them incompatible. At line 14, we pick any
+two compatible states (s,z = 1) and (t,z = 1) such that s(xi) = v1, t(xi) = v2
+and s(x) = t(x) for any variable x̸= xi. Given the spurious counterexample
+π# with failure state s# and a concrete state t∈ s# for the program p, the
+predicate dead(·) returns true if the state ( t,z = 1) is dead (line 15). Similarly,
+the predicate bad(·) returns true if the state ( t,z = 1) is bad (line 17).
+If (t,z = 1) is dead (w.r.t. s# and π#), then it means that ( s,z = 1) is also
+dead (because they are compatible), so we apply a dead-to-bad transformation
+to t in the replica for z = vz + 1. This is achieved by invoking the function
+dead2bad(·) (line 16) to be described below. The transformations bad2dead(·)
+(line 18) and irr2dead(·) (line 19) apply to the other classiﬁcations for (t,z = 1).
+4 A partition class is trivial if it contains only one value.
+PAGE 16
+16 R. Bruni, R. Giacobazzi, R. Gori
+In the following, given a concrete state s = (x1 = w1,...,x n = wn), we
+denote by G(s) the guard x1 ∈ {w1}∧ ...∧ xn ∈ {wn} and by A(s) the
+assignment x1 = w1,...,x n = wn. Without loss of generality, we assume for
+brevity that the abstract counterexample is formed by the abstract path preﬁx
+π# ={s#
+0,s #
+1,s #,s #
+2}, with s# the failure state and t is the concrete state in
+s# that we want to transform (see Figs. 7–9).
+Fig. 7. From dead to bad
+Fig. 8. From bad to dead
+Fig. 9. From irrelevant to dead
+dead2bad(·). To make t bad, the function
+must remove all concrete paths to t along the
+abstract counterexample π# and add one arc
+from t to some concrete state t′ in s#
+2 . To re-
+move all concrete paths it is enough to remove
+the arcs from states in s#
+1 tot (see Fig. 7). At
+the code level, dead2bad(·) modiﬁes each com-
+mand g⇒ a such that there is some s′∈ s#
+1
+with s′|=g and t =s′[a]. Given t and s#
+1 , let
+S(g⇒a) ={s′∈s#
+1 |s′|=g∧t =s[a]}. Each
+command c = (g⇒ a) such that S(c)̸=∅ is
+changed to the command
+g∧
+(
+z̸∈{vz + 1}∨ ⋀
+s′∈S(c)¬G(s′)
+)
+⇒a.
+When z ̸= vz + 1 the updated command is
+applicable whenever c was applicable. When
+z = vz + 1 the command is not applicable to
+the states in S(c). To add the arc from t to a
+statet′ ins#
+2 it is enough to add the command
+z∈{vz + 1}∧ G(t)⇒A(t′).
+bad2dead(·). The function selects a dead state t′ in the failure state s# and a
+concrete path π =⟨s0,s′,t′⟩ to t′ along the abstract counterexample π#. To
+make t dead in the replica with z = vz + 1, the function adds a concrete arc
+from s′ to t and removes all arcs leaving from t to concrete states in s#
+2 (see
+Fig. 8). To insert the arc from s′ tot, the command G(s′)∧z∈{vz + 1}⇒ A(t)
+is added. To remove all arcs leaving fromt to concrete states in s#
+2 , the function
+changes the guard g of each command g⇒a such that t|= g and t[a]∈ s#
+2 to
+g∧ (z̸∈{vz + 1}∨¬ G(t)), which is applicable to all the states diﬀerent from t
+where g⇒a was applicable as well as to the replicas of t for z̸=vz + 1.
+irr2dead(·). Here the state t is irrelevant and we want to make it dead. The
+function builds a concrete path to t along the abstract counterexample π#.
+As before, it selects a dead state t′ in the failure state and a concrete path
+π =⟨s0,s′,t′⟩ to s along the abstract counterexample ⟨s#
+0,s #
+1,s #⟩. To make t
+dead the function adds an arc from s′ (i.e., the state that immediately precedes
+t′ inπ) to t (see Fig. 9). For the program it is suﬃcient to add a new command
+with guard G(s′)∧z∈{vz + 1} and whose assignment is A(t).
+PAGE 17
+Code Obfuscation Against Abstract Model Checking Attacks 17
+Fig. 10. Case 1: makereachable(·)
+Fig. 11. Case 2: makefailstate(·)
+From cases (1–2) to case (3) (lines 7–12).
+The predicate reach(s#,K,p,φ ) is true if
+we are in case (2) and false if we are in
+case (1). In both cases we apply some pre-
+liminary transformations to K and p after
+which s# is brought to case (3). The func-
+tion makereachable(s#,K,p,φ,w,v w) trans-
+forms the Kripke structure so that in the
+end s# contains at least one concrete state
+that is reachable via a concrete path that tra-
+verses only abstract states inSφ, moving from
+case (1) to cases (2) or (3), while the func-
+tion makefailstate(s#,K,p,φ,w,v w) takess#
+satisfying case (2) and it returns a modi-
+ﬁed Kripke structure where s# now falls in
+case (3). The deformations are illustrated in Figs. 10–11. At the code level,
+addition and removal of arcs is realized as detailed before.
+5 Main Results
+Our obfuscation preserves the semantics of the program. This is because all
+the transformations we have discussed maintain the original Kripke structure
+associated with a distinguished value of the new variables w and z that are
+introduced. Indeed,when the obfuscated program is executed with initial values
+w = 1 and z = 1 it behaves exactly as the original program. By exploiting
+opaque expressions to initialise the variables w andz, we hide their values from
+the attacker who has to take into account all possible values for w and z and
+thus run CEGAR on the deformated Kripke structure.
+Theorem 1 (Embedding). Let p = (d;g;c) andOφ(p) = ((d,w ∈ Dw,z ∈
+Dz);g;c′), thenK(p) is isomorphic to K((d,w∈{ 1},z∈{ 1});g;c′).
+The isomorphism at the level of Kripke structures guarantees that the ob-
+fuscation does not aﬀect the number of steps required by any computation, i.e.,
+to some extent the eﬃciency of the original program is also preserved.
+Second, the obfuscation preserves the property φ of interest when the pro-
+gram is executed with any input data for w and z, i.e. φ is valid in all replicas.
+Theorem 2 (Soundness). K(p)|=φ iﬀK(Oφ(p))|=φ.
+Note that Theorem 1 guarantees that the semantics is preserved entirely, i.e.
+not only φ is preserved in all replicas (Theorem 2) but any other property is
+preserved when the obfuscated program is run with w∈{ 1} and z∈{ 1}.
+The next result guarantees the optimality of obfuscated programs.
+Theorem 3 (Hardness). #Y
+φOφ(p) =∏
+y∈Y|Dy|.
+PAGE 18
+18 R. Bruni, R. Giacobazzi, R. Gori
+Fig. 12. A fragment of the model for z = 2
+As a consequence, for any program p and formula φ the function mapping
+K(p) intoK(Oφ(p)) is a model deformation for all (non-trivial) partitions of the
+variables of interest.
+Theorem 4 (Complexity). The complexity of our best code obfuscation strat-
+egy is polynomial in the size of the domains of the variables of interest Y .
+Example 6 (Best code obfuscation). Consider the abstract Kripke structure in
+Fig. 3. The failure state s# = (x∈{ 1, 2},y ∈{ 0, 1, 3, 4, 5},pc ∈{ 2, 3, 4, 5})
+covers all the non-trivial partition classes for the variables of interest x and y.
+Since it is a failure state for an abstract counterexample, we are in case (3). For
+simplicity, since the transformations for cases (1–2) are not needed, we omit the
+insertion of the variable w.
+The dead state (x = 1,y = 0,pc = 2) is incompatible with the irrelevant state
+(x = 1,y = 1,pc = 2), thus the triple ( y,{1, 2}) is incompatible. For the same
+reason the value 0 fory is also separated from the values 3, 4, 5. Our obfuscation
+must separate the values 1 , 2 for x and the values 1 , 3, 4, 5 for y. Therefore at
+most 6 replicas are needed. In the end, 5 values for z suﬃces. Let us take the
+triple (x,{1, 2}) and let us pick the two dead states t = (x = 2,y = 0,pc = 2)
+and s = (x = 1,y = 0,pc = 2) in Fig. 4. The algorithm invokes bad2dead(·) on
+state (t,z = 2) to make it incompatible with the dead state ( x = 1,y = 0,pc =
+2,z = 2). At the code level, we note that all incoming arcs of t are due to the
+command c1 (see Fig. 4). To remove them, c1 becomes c1,1.
+pc in {1} /\ (z notin {2} \/ x notin {2} \/ y notin {2}) => pc=2, y=0 %c11
+Moreover, to make ( t,z = 2) a bad state, is added an arc from the state
+(t,z = 2), to (x = 2,y = 2,pc = 2,z = 2) with the new command c1,2
+pc in {1} /\ z in {3} /\ x in {1} /\ y in {1} => pc=3 %c12
+In Fig. 12 we show the relevant changes on the Kripke structure for the
+replica with z = 2 (compare it with Fig. 4). To complete the obfuscation more
+transformations are required: one bad-to-dead and two irrelevant-to-dead trans-
+formations. Finally, we obtain the program po =Oφ(p) below:
+PAGE 19
+Code Obfuscation Against Abstract Model Checking Attacks 19
+def x in {0,1,2} , y in {0,1,2,3,4,5} , pc in {1,2,3,4,5} , z in {1,2,3,4,5};
+init pc = 1;
+do pc in {1} /\(z notin {2} \/ x notin {2} \/ y notin {2})=> pc=2, y=0 %c11
+[] pc in {1} /\ z in {3} /\ x in {1} /\ y in {1} => pc=3 %c12
+[] pc in {1} /\ z in {4} /\ x in {1} /\ y in {4} => pc=3 %c13
+[] pc in {1} /\ z in {5} /\ x in {2} /\ y in {5} => pc=4 %c14
+[] pc in {2} /\ x notin {0} => pc=3 %c2a
+[] pc in {2} /\ x in {0} => pc=5 %c2b
+[] pc in {2} /\ x in {2}} /\ y in {0} /\ z in {2} => y=2 %c21
+[] pc in {3} /\(z notin {3} \/ x notin {1} \/ y notin {1})=> pc=4, y=y+(2 *x)-1 %c31
+[] pc in {4} => pc=2, x=x-1 %c4
+od
+Let us assume that the attacker starts with the abstraction of the obfus-
+cated program induced by the partition x :{{0},{1, 2}},y :{{2},{0, 1, 3, 4, 5}},
+pc :{{1},{2, 3, 4, 5}}, and z :{{1, 2, 3, 4, 5}}. The abstract Kripke structure is
+isomorphic to the one in Fig. 3 having several spurious counterexamples for φ.
+One such path is similar to the one in Fig. 3: {s#
+0,s #
+1,s #
+2} with:
+s#
+0 =x∈{ 1, 2},y∈{ 0, 1, 3, 4, 5},pc∈{ 1},z∈{ 1, 2, 3, 4, 5}
+s#
+1 =x∈{ 1, 2},y∈{ 0, 1, 3, 4, 5},pc∈{ 2, 3, 4, 5},z∈{ 1, 2, 3, 4, 5}
+s#
+2 =x∈{ 1, 2},y∈{ 2},pc∈{ 2, 3, 4, 5},z∈{ 1, 2, 3, 4, 5}.
+The failure state is s#
+1 . It has 5 bad concrete states and 12 dead states. By
+CEGAR we get the partition that has only trivial (singletons) classes. Therefore
+the abstract Kripke structure coincides with the concrete Kripke structure: it
+has 450 states of which 90 are initial states.
+Given that the variables of interest are x and y, the measure of the obfus-
+cation is 18, i.e., it has the maximum value and thus po≥{x,y}
+φ p≥{x,y}
+φ p′. We
+remark that when z = 1, po has the same semantics as p and p′.
+The guarded command po can be understood as a low-level, ﬂattened de-
+scription for programs written in any language. However, it is not diﬃcult to
+derive, e.g., an ordinary imperative program from a given guarded command.
+We do so for the reader’s convenience.
+1: z = opaque1(x,y,z);
+2: pc1: if ( ( z!=2 || x!=2 || y!=2 ) && opaque2(x,y,z) ) { y=0; goto pc2; }
+3: else if ( z=3 && x =1 && y=1 ) goto pc3;
+4: else if ( z=4 && x =1 && y=4 ) goto pc3;
+5: else if ( z=5 && x =2 && y=5 ) goto pc4;
+6: pc2: if ( x=2 && y=0 && z=2 && opaque3(x,y,z) ) y=2;
+7: while ( x>0 ) {
+8: pc3: if ( z!=3 || x!=1 || y!=1 ) y = y + 2 *x - 1;
+9: pc4: x = x - 1;
+10: pc5: } output(y);
+To hide the real value ofz we initialise the variable using an opaque expression
+opaque1(x,y,z ) whose value is 1. Moreover, one has to pay attention to the
+possible sources of nondeterminism, which can arise when there are two or more
+guarded commands g1⇒ a1 and g2⇒ a2 and a state s such that s|= g1 and
+s|=g2. The idea is to introduce opaque predicates so that the exact conditions
+under which a branch is taken are hard to determine by the attacker, who has to
+take into account both possibility ( true and false) as a nondeterministic choice.
+PAGE 20
+20 R. Bruni, R. Giacobazzi, R. Gori
+In our example, the sources of nondeterminism are due to the pairs of commands
+(c1,1,c 1,2), (c1,1,c 1,3), (c1,1,c 1,4) and ( c2,1,c 2a). Consequently, we assume two
+opaque predicatesopaque2(x,y,z ) andopaque3(x,y,z ) are available. In order to
+preserve the semantics, for z = 1 we require that opaque1(x,y,z ) returns true,
+whileopaque2(x,y,z ) is unconstrained. Finally, since the program counter is an
+explicit variable in guarded commands, we represent its possible values by labels
+and use goto instructions accordingly. Thus we write the label pcn to denote
+states where pc =n and write goto pcn for assignments of the form pc =n.
+6 Discussion
+We have shown that it is possible to systematically transform Kripke structures
+in order to make automated abstraction reﬁnement by CEGAR hard. Address-
+ing reﬁnement procedures instead of speciﬁc abstractions makes our approach
+independent from the chosen abstraction in the attack.
+To enforce the protection of the real values of variablew (and analogously for
+z) initialized by opaque functions against more powerful attacks able to inspect
+the memory of diﬀerent program runs, one idea is to use a class of values instead
+of a single value. This allows the obfuscated code to introduce instructions that
+assign to w diﬀerent values in the same class, thus convincing the attacker that
+the value of w is not invariant.
+The complexity of our best code obfuscation strategy is polynomial in the
+size of the domains of the variables of interest. Moreover, we note that the same
+algorithm can produce a valuable obfuscation even if one selects a partial cover
+instead of a complete one: in this case, it is still guaranteed that the reﬁnement
+strategy will be forced to split all the values appearing in the partial cover. This
+allows to choose the right trade-oﬀ between the complexity of the obfuscation
+strategy and the measure of the obfuscated program.
+As already mentioned, our obfuscation assumes that CEGAR makes dead
+states incompatible with both irrelevant and bad states. Our algorithm can be
+generalised to the more general setting where dead states are only incompatible
+with bad states. Therefore even if the attacker had the power to compute the
+coarsest partition that separates bad states from dead states (which is a NP-hard
+problem) our strategy would force the partition to consist of trivial classes only.
+We can see abstraction reﬁnement as a learning procedure which learns the
+coarsest state equivalence by model checking a temporal formula. Our results
+provide a very ﬁrst attempt to defeat this procedure.
+As an ongoing work, we have extended our approach to address attacks aimed
+to disclose data-ﬂow properties and watermarks. It remains to be investigated
+how big the text of the best obfuscated program can grow: limiting its size is
+especially important in the case of embedded systems.
+We plan to extend our approach to other abstraction reﬁnements, like pred-
+icate reﬁnement and the completeness reﬁnement in [16] for generic abstract
+interpreters and more in general for a machine learning algorithm. This would
+make automated reverse engineering hard in more general attack models.
+PAGE 21
+Code Obfuscation Against Abstract Model Checking Attacks 21
+Acknowledgement. We are very grateful to Alberto Lluch-Lafuente for the fruit-
+ful discussions we had on the subject of this paper.
+References
+1. S. Banescu, C. S. Collberg, V. Ganesh, Z. Newsham, and A. Pretschner. Code
+obfuscation against symbolic execution attacks. In S. Schwab, W. K. Robertson,
+and D. Balzarotti, editors, Proc. 32nd Annual Conference on Computer Security
+Applications, ACSAC 2016, pages 189–200. ACM, 2016.
+2. E. Clarke, O. Grumberg, S. Jha, Y. Lu, and H. Veith. Counterexample-guided
+abstraction reﬁnement for symbolic model checking. J. ACM, 50(5):752–794, 2003.
+3. E. Clarke, O. Grumberg, and D. Long. Model checking and abstraction. In Proc.
+of the 19th ACM Symp. on Principles of Programming Languages (POPL ’92) ,
+pages 343–354. ACM Press, 1992.
+4. E. Clarke, O. Grumberg, and D. Long. Model checking and abstraction. ACM
+Trans. Program. Lang. Syst., 16(5):1512–1542, 1994.
+5. E. Clarke, O. Grumberg, and D. Peled. Model Checking. The MIT Press, 1999.
+6. C. Collberg, J. Davidson, R. Giacobazzi, Y. Gu, A. Herzberg, and F. Wang. Toward
+digital asset protection. IEEE Intelligent Systems , 26(6):8–13, 2011.
+7. C. Collberg and J. Nagra. Surreptitious Software: Obfuscation, Watermarking, and
+Tamperprooﬁng for Software Protection. Addison-Wesley Professional, 2009.
+8. P. Cousot and R. Cousot. Abstract interpretation: A uniﬁed lattice model for
+static analysis of programs by construction or approximation of ﬁxpoints. In Proc.
+of the 4th ACM Symp. on Principles of Programming Languages (POPL ’77), pages
+238–252. ACM Press, 1977.
+9. P. Cousot and R. Cousot. An abstract interpretation-based framework for software
+watermarking. In Proc. of the 31st ACM Symp. on Principles of Programming
+Languages (POPL ’04) , pages 173–185. ACM Press, New York, NY, 2004.
+10. M. Dalla Preda and R. Giacobazzi. Semantics-based code obfuscation by abstract
+interpretation. Journal of Computer Security , 17(6):855–908, 2009.
+11. D. Dams, R. Gerth, and O. Grumberg. Abstract interpretation of reactive systems.
+ACM Trans. Program. Lang. Syst., 19(2):253–291, 1997.
+12. E. A. Emerson. Temporal and modal logic. In J. van Leeuwen, editor, Handbook of
+Theoretical Computer Science, volume B: Formal Models and Semantics. Elsevier,
+Amsterdam and The MIT Press, Cambridge, Mass., 1990.
+13. R. Giacobazzi. Hiding information in completeness holes - new perspectives in
+code obfuscation and watermarking. In Proc. of the 6th IEEE Int. Conferences on
+Software Engineering and Formal Methods (SEFM ’08) , pages 7–20. IEEE Press,
+2008.
+14. R. Giacobazzi, N. D. Jones, and I. Mastroeni. Obfuscation by partial evaluation of
+distorted interpreters. In Proc. of the ACM SIGPLAN Symp. on Partial Evalua-
+tion and Semantics-Based Program Manipulation (PEPM’12) , pages 63–72. ACM
+Press, 2012.
+15. R. Giacobazzi and E. Quintarelli. Incompleteness, counterexamples and reﬁne-
+ments in abstract model-checking. In Proc. of the 8th Int. Static Analysis Symp.
+(SAS’01), volume 2126 of Lecture Notes in Computer Science , pages 356–373.
+Springer, 2001.
+16. R. Giacobazzi, F. Ranzato, and F. Scozzari. Making abstract interpretation com-
+plete. Journal of the ACM , 47(2):361–416, March 2000.
+PAGE 22
+22 R. Bruni, R. Giacobazzi, R. Gori
+17. Microsoft. Static driver veriﬁer website (last consulted november 2017), 2017.
+https://docs.microsoft.com/en-us/windows-hardware/drivers/
+devtest/static-driver-verifier.
+18. J. Nagra, C. D. Thomborson, and C. Collberg. A functional taxonomy for software
+watermarking. Aust. Comput. Sci. Commun. , 24(1):177–186, 2002.
+19. F. Ranzato and F. Tapparo. Generalized strong preservation by abstract interpre-
+tation. Journal of Logic and Computation , 17(1):157–197, 2007.
+20. D. A. Schmidt. Data ﬂow analysis is model checking of abstract interpretations.
+In D. B. MacQueen and L. Cardelli, editors, POPL ’98, Proceedings of the 25th
+ACM SIGPLAN-SIGACT Symposium on Principles of Programming Languages,
+San Diego, CA, USA, January 19-21, 1998 , pages 38–48. ACM, 1998.
+21. D. A. Schmidt and B. Steﬀen. Program analysis as model checking of abstract
+interpretations. In G. Levi, editor, Static Analysis, 5th International Symposium,
+SAS ’98, Pisa, Italy, September 14-16, 1998, Proceedings , volume 1503 of Lecture
+Notes in Computer Science , pages 351–380. Springer, 1998.
+22. R. Venkatesan, V. Vazirani, and S. Sinha. A graph theoretic approach to software
+watermarking. In Proc. 4th Int. Workshop on Information Hiding (IHW ’01) ,
+volume 2137 of Lecture Notes in Computer Science, pages 157–168. Springer, 2001.
+23. C. Wang, J. Hill, J. C. Knight, and J. W. Davidson. Protection of software-
+based survivability mechanisms. In 2001 International Conference on Dependable
+Systems and Networks (DSN 2001) (formerly: FTCS), 1-4 July 2001, G¨ oteborg,
+Sweden, Proceedings, pages 193–202. IEEE Computer Society, 2001.
