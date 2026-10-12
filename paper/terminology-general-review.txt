@@ -1,0 +1,26 @@
+﻿用語と文章の改訂記録
+
+対象 main.tex、図1・図2の用語。引用、数式、数値、測定条件、結果の限定を維持した。
+
+変えたところ
+・配布ファイル、配布版 → 公開バイナリ、データセットに収録されたWasmバイナリ。ファイルの入手方法と実験対象を区別した。
+・基準版 → ベースライン。本文で比較基準と定義し、すべての関数で難読化がないと確認したものではないことも明記した。
+・SWAMPEDの入力 → SWAMPEDのWasmバイナリ。解析対象と実行時のテスト入力を区別した。
+・出力の検証に使う入力と期待出力をテストベクトルと説明。WABT、WAT、LLVM IR、JITコンパイル、基本ブロックは初出の説明を補った。
+・WATからWasmバイナリへの変換をアセンブルと記述。図と表の名称も本文にそろえた。
+
+用語の確認資料
+MDN WebAssembly https://developer.mozilla.org/ja/docs/WebAssembly
+MDN テキスト形式からWasmへの変換 https://developer.mozilla.org/ja/docs/WebAssembly/Guides/Text_format_to_Wasm
+WebAssembly Binary Toolkit公式README https://github.com/WebAssembly/wabt
+MWSCup 2020課題1 https://www.iwsec.org/mws/files/MWSCup2020_c1.pdf
+情報処理学会掲載論文のベースラインの使用例 https://www.ipsj.or.jp/dp/contents/publication/60/TR0504-08.html
+これらは用語の確認に用いた。研究結果の新しい根拠として引用を追加していない。
+
+確認結果
+yomiyasuのlintと差分を確認。解析不能と特徴なしを区別する否定は維持した。
+引用・相互参照・ラベル、数式、数値列を改訂前と機械比較し一致を確認。
+既存の集計データから図を再生成。採掘プログラムは実行していない。
+pLaTeX、pBibTeX、dvipdfmxでPDF生成に成功。8ページ。最終ログに未定義の引用・相互参照やOverfull警告なし。全8ページを描画して確認。
+
+改訂前の保存先 C:\Users\ettotto\Documents\webassembly_obfuscation\paper\revisions\general-terms-20261008-093259
