@@ -1,0 +1,13 @@
+const assert = require('node:assert/strict');
+const {extract} = require('./extract_js_wasm.cjs');
+const expected = Buffer.from([0,97,115,109,1,0,0,0]);
+const literal = '[0,97,115,109,1,0,0,0]';
+assert.deepEqual(extract('const a=[['+literal.slice(1,-1)+']];').found[0].bytes,expected);
+assert.deepEqual(extract('const a=new Uint8Array([0x00,0x61,0x73,0x6d,1,0,0,0,]);').found[0].bytes,expected);
+assert.equal(extract('// '+literal+'\nconst text="'+literal+'"; /* '+literal+' */').found.length,0);
+assert.equal(extract('const a=[0,97,115,109,1,0,0,f()];').found.length,0);
+assert.deepEqual(extract('const a="AGFzbQEAAAA=";').found[0].bytes,expected);
+assert.equal(extract('const a=[0,97,115,109,1,0,0,256];').found.length,0);
+assert.equal(extract('const a=[0,97,115,109,1,0,0,];').found.length,0);
+assert.throws(()=>extract('const = ;'));
+console.log('8 JS extraction checks passed; corpus code was never executed');
