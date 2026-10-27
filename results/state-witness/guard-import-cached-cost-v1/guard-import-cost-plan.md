@@ -1,0 +1,11 @@
+# 条件合成同士の費用比較
+
+2026-10-24。一般SMT WP/QEも256契約と追加chain8条件の全てで同じ条件を生成した。この能力差の否定を固定してから費用を測る。新しい一般原理や一般実アプリでの高速性を主張する試験ではない。
+
+人工chain長1/8/32/96、host readあり/なしの8条件を使う。private tableの差が公開tableを通ってhostへ達するのに長さ+1 API必要な対照と、hostが読まなければ書込みで消える対照である。両engineで実行結果は既に照合した。
+
+各方式3独立process、2 warmup、5測定反復。processは逐次実行する。各process内のcase順は固定seedでshuffleする。共通parserが作ったmodelから、遷移準備・条件合成・返却用summary作成までを測る。WABT読取り/parseの時間は別記する。SMT側は式出力まで含み、K側はproofと反復層を返す。出力形式の違いは残る。
+
+memoryはWindows processのPeakWorkingSetと現在WorkingSetをcase前後で記録する。どちらのworkerも共通harnessがZ3をloadするため、Kの独立配布時のmemoryではない。caseごとの正確な最大増分ではなく、process全体の累積peakである。Pythonのallocation追跡だけでnative Z3メモリを測ったとはしない。
+
+中間値・raw測定・process中央値・process中央値の範囲を保存する。最初のpilot時間を正式値と混ぜない。timeout/実行エラーが出た場合は正常測定から分けて記録し、上限値を測定時間として代入しない。

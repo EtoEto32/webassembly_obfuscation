@@ -1,0 +1,60 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+  "flags": [
+    "--no-liftoff",
+    "--no-wasm-lazy-compilation"
+  ],
+  "warmup": 16384,
+  "seed": 123,
+  "batches": [
+    {
+      "n": 8388608,
+      "ns": 14920300,
+      "ns_per_word": 1.7786383628845215
+    },
+    {
+      "n": 8388608,
+      "ns": 15038400,
+      "ns_per_word": 1.7927169799804688
+    },
+    {
+      "n": 8388608,
+      "ns": 17421900,
+      "ns_per_word": 2.076852321624756
+    },
+    {
+      "n": 8388608,
+      "ns": 20499000,
+      "ns_per_word": 2.443671226501465
+    },
+    {
+      "n": 8388608,
+      "ns": 22673800,
+      "ns_per_word": 2.702927589416504
+    },
+    {
+      "n": 8388608,
+      "ns": 20392200,
+      "ns_per_word": 2.4309396743774414
+    },
+    {
+      "n": 8388608,
+      "ns": 15756200,
+      "ns_per_word": 1.8782854080200195
+    }
+  ],
+  "sink": -142161664,
+  "verification": {
+    "want": 3756690819,
+    "got": 3756690819
+  },
+  "linear_memory_bytes": 0,
+  "max_rss_kib": 36564,
+  "file": "septic.guarded.O3.recovered.wasm",
+  "name": "septic",
+  "mode": "recovered",
+  "repeat": 2,
+  "bytes": 91
+}

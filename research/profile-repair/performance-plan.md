@@ -1,0 +1,11 @@
+# 性能計画
+
+2026-10-24、主25例・200式の独立symbolic照合後、性能測定前に固定。
+
+5方式×5fresh process、順序seed2026102422。O3後の全strict、構文slice、独立site合成、共通profile合成、手で簡約したcanonical関数を比較する。手簡約は全25例について独立symbolic evaluatorで全入力等価を確認してから測定する。命令変更の個数を速度と呼ばない。
+
+各関数20000warmup、11標本×20000呼出し、準備した境界・乱数836入力を循環。各process中央値、その5値の中央値とIQRを報告。Wasm compile/instantiate・input配列作成は測定外、process RSS/heap/maxRSSを記録。これらは全25例を含むprocess値であり関数ごとのmemory割当量ではない。別CPU仕事と同時測定しない。
+
+多くの自作例のcanonical関数が定数である点を明示する。今回の目的は、選択箇所を減らすことが実時間へつながるかを反証すること。手簡約より速くない場合に技術的優位を誇張しない。全strict+通常O3と比べて利得がなければ、アルゴリズムの成立条件を成果として残し特許主案を保留する。
+
+v1後の修正計画: byteが同じpair_or等でも方式間に約10%の差があり、JS境界とtieringの影響を除けていない。v1を参考値に降格し、Wasm内共通loop、Node --no-liftoff、同process内で方式順を反復ごとにshuffleする対照を追加する。all/aware/manual/allの同binary別instanceの4方式、7fresh process、各2warmup、15反復×200000内部呼出し。同binaryのtime ratioを較正に使う。計画変更を事後に隠さない。

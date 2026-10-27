@@ -1,0 +1,469 @@
+{
+  "model": {
+    "small_width": 2,
+    "small_words": 3,
+    "exhaustive_state_pairs": 4096,
+    "random_inverse_checks": 100,
+    "nonlinear_witness": {
+      "a": [
+        2185303561,
+        3878393873,
+        3521833531,
+        650948262,
+        903802869,
+        3779952769,
+        7631677,
+        1881230641
+      ],
+      "b": [
+        339527986,
+        3717756252,
+        1275746536,
+        1738960522,
+        1458230500,
+        3943215107,
+        505545757,
+        328094697
+      ],
+      "g_xor": [
+        3940478826,
+        3941851332,
+        2186839147,
+        4098747838,
+        3687356358,
+        3282860769,
+        2239568603,
+        4101057853
+      ],
+      "xor_g": [
+        836420587,
+        2354461272,
+        3925881363,
+        4071898786,
+        1823447922,
+        3273319881,
+        919363135,
+        2948680162
+      ]
+    }
+  },
+  "negative_controls": [
+    {
+      "kind": "nonzero_at_zero",
+      "opt": "raw",
+      "actual": [
+        1277518948,
+        3407099245,
+        182794870,
+        2689477821,
+        3766889874,
+        2370447913,
+        44580047,
+        2170354215
+      ],
+      "expected": [
+        2090374081,
+        1651875586,
+        3666894202,
+        3295746075,
+        1532812556,
+        1563232473,
+        1387860653,
+        3401378933
+      ],
+      "mismatch": true
+    },
+    {
+      "kind": "nonzero_at_zero",
+      "opt": "O3",
+      "actual": [
+        1277518948,
+        3407099245,
+        182794870,
+        2689477821,
+        3766889874,
+        2370447913,
+        44580047,
+        2170354215
+      ],
+      "expected": [
+        2090374081,
+        1651875586,
+        3666894202,
+        3295746075,
+        1532812556,
+        1563232473,
+        1387860653,
+        3401378933
+      ],
+      "mismatch": true
+    },
+    {
+      "kind": "inverse_order",
+      "opt": "raw",
+      "actual": [
+        370799555,
+        3605980523,
+        160643742,
+        1340428776,
+        1585164756,
+        3493055743,
+        3185911895,
+        3862841509
+      ],
+      "expected": [
+        2090374081,
+        1651875586,
+        3666894202,
+        3295746075,
+        1532812556,
+        1563232473,
+        1387860653,
+        3401378933
+      ],
+      "mismatch": true
+    },
+    {
+      "kind": "inverse_order",
+      "opt": "O3",
+      "actual": [
+        370799555,
+        3605980523,
+        160643742,
+        1340428776,
+        1585164756,
+        3493055743,
+        3185911895,
+        3862841509
+      ],
+      "expected": [
+        2090374081,
+        1651875586,
+        3666894202,
+        3295746075,
+        1532812556,
+        1563232473,
+        1387860653,
+        3401378933
+      ],
+      "mismatch": true
+    }
+  ],
+  "rejections": [
+    {
+      "kind": "memory_export",
+      "validation": "valid Wasm",
+      "rejected": "private one-page memory, single compress export required"
+    },
+    {
+      "kind": "short_copy",
+      "validation": "valid Wasm",
+      "rejected": "initial H stores and exact disjoint copy required"
+    },
+    {
+      "kind": "mutable_anchor",
+      "validation": "valid Wasm",
+      "rejected": "immutable H and bounded aligned W required"
+    }
+  ],
+  "byte_reproduction": [
+    {
+      "label": "plain-raw",
+      "match": true
+    },
+    {
+      "label": "plain-O3",
+      "match": true
+    },
+    {
+      "label": "linear-raw",
+      "match": true
+    },
+    {
+      "label": "linear-O3",
+      "match": true
+    },
+    {
+      "label": "fiber1-raw",
+      "match": true
+    },
+    {
+      "label": "fiber1-O3",
+      "match": true
+    },
+    {
+      "label": "fiber2-raw",
+      "match": true
+    },
+    {
+      "label": "fiber2-O3",
+      "match": true
+    },
+    {
+      "label": "repair1-raw",
+      "match": true
+    },
+    {
+      "label": "repair1-O3",
+      "match": true
+    }
+  ],
+  "distinct_recovered_byte_hashes": 4,
+  "all_fingerprints_identical": true,
+  "engines": [
+    {
+      "file": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\copy-fiber-main-v1\\plain-O3.wasm",
+      "result": 2658689711,
+      "expected": 2658689711,
+      "log": "probe() => i32:2658689711\n"
+    },
+    {
+      "file": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\copy-fiber-main-v1\\linear-O3.wasm",
+      "result": 2658689711,
+      "expected": 2658689711,
+      "log": "probe() => i32:2658689711\n"
+    },
+    {
+      "file": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\copy-fiber-main-v1\\fiber1-O3.wasm",
+      "result": 2658689711,
+      "expected": 2658689711,
+      "log": "probe() => i32:2658689711\n"
+    },
+    {
+      "file": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\copy-fiber-main-v1\\fiber2-O3.wasm",
+      "result": 2658689711,
+      "expected": 2658689711,
+      "log": "probe() => i32:2658689711\n"
+    },
+    {
+      "file": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\copy-fiber-main-v1\\repair1-O3.wasm",
+      "result": 2658689711,
+      "expected": 2658689711,
+      "log": "probe() => i32:2658689711\n"
+    },
+    {
+      "file": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-O3-recovered-O3.wasm",
+      "result": 2658689711,
+      "expected": 2658689711,
+      "log": "probe() => i32:2658689711\n"
+    }
+  ],
+  "pins": [
+    {
+      "file": "research\\copy-fiber\\attack.py",
+      "sha256": "f625cee888dda3b131321476fc0ef2267a7e0b5eb6adf15c4b57a4f3d9c0b343"
+    },
+    {
+      "file": "research\\copy-fiber\\audit.py",
+      "sha256": "3a6c18495c10c0693617c38968124657f3161c6d6c0cb357badc403174623ce5"
+    },
+    {
+      "file": "research\\copy-fiber\\performance.py",
+      "sha256": "fdeda807e457504407c55601e273fe0998d8977194b862ad14e1167d8d39f4a0"
+    },
+    {
+      "file": "research\\copy-fiber\\prototype.py",
+      "sha256": "b4900b28b82f92b1e42c53946c268881b2bf4e2f18d6d59a4bc9e6c4e9d63fb9"
+    },
+    {
+      "file": "research\\copy-fiber\\recover.py",
+      "sha256": "27311e70c65a4a04c35c597a625d9b467834638871c07ebca455fc3e23752981"
+    },
+    {
+      "file": "research\\copy-fiber\\run.py",
+      "sha256": "c5397033c1af2b9f7cdf1623d2280534837a9b75fdbd4304d3a42e043541804c"
+    },
+    {
+      "file": "research\\copy-fiber\\bench.cjs",
+      "sha256": "26faa9b54be649b274123e7ee691662e002556a066cb425f61674c892c5b8e0f"
+    },
+    {
+      "file": "research\\copy-fiber\\check.cjs",
+      "sha256": "ae474ba68360070ad2f13f299ac8fb41e7aef74fbc60cad444b7d6a496f74a33"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\checks.json",
+      "sha256": "1b02afc98af8a5c7aba5cd8248c7d0e9a6ffdd082199b875e0ef4c99b4a5b4da"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\environment.json",
+      "sha256": "edb64622bbd1195da090ed8f474895334eb15f889bb02c74d4b898aa90e51675"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber1-O3-probe.wasm",
+      "sha256": "4a498d0d02f5d8a01ed3bb39791fa8bf21f0f742c4f62de0cdbe22972248bf44"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber1-O3.wasm",
+      "sha256": "bad05cae7eb338acdcde8c72153af3126419bacd1c90a256e96e5df3343aa121"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber1-raw-probe.wasm",
+      "sha256": "769b3df284c29dc76d84b52afb3ca7524235e72b208e29677c894df53f08f296"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber1-raw.wasm",
+      "sha256": "9ee6b4d269fe8eadd1d53a5c120ce221b2cc61d764b3264af10f1951b9063792"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber2-O3-probe.wasm",
+      "sha256": "13e0ca66c53affedc5895cf11769afbdced75cf3193586791032acb75833ca24"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber2-O3.wasm",
+      "sha256": "fcdc1599c399cd5a44ed34077223e8ed8d314e0f97a090fb6cd4bc0713718dff"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber2-raw-probe.wasm",
+      "sha256": "9f4277ed7e56c159fbba5cc977ffe21a945309348cc5fd6772dca2078839f7c1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber2-raw.wasm",
+      "sha256": "661899975a4d02d0b34b21aa40818d0270b689c391de6dce28c2f8b42e6af687"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\linear-O3-probe.wasm",
+      "sha256": "c5ced612477d16d67beb477ce7b3a7d81a8068554f1749224c777d182d8b8e52"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\linear-O3.wasm",
+      "sha256": "fd96fcc870442b11589c82d7efaaa8d61514f4639c946542d1bb68a3a079b54c"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\linear-raw-probe.wasm",
+      "sha256": "626b9c959dfcf6aab4cd1ccad3ae60a2a0f3ffe45cf47ec08ea176be26ae1ff1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\linear-raw.wasm",
+      "sha256": "b34435eb2dc773c63d2caaba5d7b14f48f082e1d75a97bf87d66ca001eba0d13"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\plain-O3-probe.wasm",
+      "sha256": "b727236ff890ffd5e426c685c03abeb1216dadf101b75659efebe374f0bafecf"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\plain-O3.wasm",
+      "sha256": "17d7fed98693cd9d1e101ae2a48d1b18dec620863289c1897efc340e7627bced"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\plain-raw-probe.wasm",
+      "sha256": "131aa19358c52ed699d7eff7ba24b2edbd9cc01a805f5bdae34e08d5dc2dbb48"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\repair1-O3-probe.wasm",
+      "sha256": "2781c6849eed6b5ed1d0f38156cac76509c07e39fba74c219fedadf84e58c094"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\repair1-O3.wasm",
+      "sha256": "32466535fcce33d98f2b0c4b2320b7ccacd2c1c1cd741904b5783bd107ea76fa"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\repair1-raw-probe.wasm",
+      "sha256": "dd640fa775c9bf5c823c91a1735ae1f489550caa8d8afbebcab18c6f2bbb1735"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\repair1-raw.wasm",
+      "sha256": "fdf4f9364878ff751cc52352c11f11ad9ba53833f0c9daca55afe1db0db3b878"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\source.wasm",
+      "sha256": "d788ca08505376cf3764f33ac562d000a29d195177862f1f114fe39faf42e027"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\targets.json",
+      "sha256": "dba0f120aec758aea3a1c3ad4730d512671965bfcf6af38814abe694e3ee4b0d"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\checks.json",
+      "sha256": "5c944abd19854f933b678c3a4db87341ecacfd3dcf74ad2c62cdfa6c6bd9eb7a"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-O3-recovered-O3.wasm",
+      "sha256": "bbbe8e5d8519f23bcf816234f05defe3787e16bb0313538f603c361c71529928"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-O3-recovered.wasm",
+      "sha256": "388700a74343273a4602228664a144ba811b3b9bac017ea60fca5cd7ef0e6dd1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-raw-recovered-O3.wasm",
+      "sha256": "cf554b5e21ebf2088445401ee1d20154e3ab201f4ec64f51ca66d3a43bf55dd4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-raw-recovered.wasm",
+      "sha256": "12d97940ae64b5d4ce6fcb4b50b796b6661f4969d439bc184d07650faa45b871"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber2-O3-recovered-O3.wasm",
+      "sha256": "bbbe8e5d8519f23bcf816234f05defe3787e16bb0313538f603c361c71529928"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber2-O3-recovered.wasm",
+      "sha256": "388700a74343273a4602228664a144ba811b3b9bac017ea60fca5cd7ef0e6dd1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber2-raw-recovered-O3.wasm",
+      "sha256": "cf554b5e21ebf2088445401ee1d20154e3ab201f4ec64f51ca66d3a43bf55dd4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber2-raw-recovered.wasm",
+      "sha256": "12d97940ae64b5d4ce6fcb4b50b796b6661f4969d439bc184d07650faa45b871"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\linear-O3-recovered-O3.wasm",
+      "sha256": "bbbe8e5d8519f23bcf816234f05defe3787e16bb0313538f603c361c71529928"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\linear-O3-recovered.wasm",
+      "sha256": "388700a74343273a4602228664a144ba811b3b9bac017ea60fca5cd7ef0e6dd1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\linear-raw-recovered-O3.wasm",
+      "sha256": "cf554b5e21ebf2088445401ee1d20154e3ab201f4ec64f51ca66d3a43bf55dd4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\linear-raw-recovered.wasm",
+      "sha256": "12d97940ae64b5d4ce6fcb4b50b796b6661f4969d439bc184d07650faa45b871"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\plain-O3-recovered-O3.wasm",
+      "sha256": "ea8770b2f93fb0b3763022073034e65cc2fb5f18b81257ec25154ab717b47cb2"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\plain-O3-recovered.wasm",
+      "sha256": "4d77ad612383d789505e80486b9339fee46c5fd211f8d69c0655f038ab7683d0"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\plain-raw-recovered-O3.wasm",
+      "sha256": "4f03ec0a206df390071aeb8e95689badf468a0899940bb007ce4a2f4c06f0d14"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\plain-raw-recovered.wasm",
+      "sha256": "305e3b1bb89682be5380d94d4e414be22843fb0ec032b30cf1e254e49ab05474"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\recovery.json",
+      "sha256": "96fed01019a02e1a5b070b162c121d10d125dc1d8835c8a1ff52dcf9c1a4f941"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\repair1-O3-recovered-O3.wasm",
+      "sha256": "bbbe8e5d8519f23bcf816234f05defe3787e16bb0313538f603c361c71529928"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\repair1-O3-recovered.wasm",
+      "sha256": "388700a74343273a4602228664a144ba811b3b9bac017ea60fca5cd7ef0e6dd1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\repair1-raw-recovered-O3.wasm",
+      "sha256": "cf554b5e21ebf2088445401ee1d20154e3ab201f4ec64f51ca66d3a43bf55dd4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\repair1-raw-recovered.wasm",
+      "sha256": "12d97940ae64b5d4ce6fcb4b50b796b6661f4969d439bc184d07650faa45b871"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\targets.json",
+      "sha256": "b301f8564f23ee42f5b325658d8a02d7c3d0f4d49734ad4c11a1a6a1bafd9ce3"
+    }
+  ]
+}

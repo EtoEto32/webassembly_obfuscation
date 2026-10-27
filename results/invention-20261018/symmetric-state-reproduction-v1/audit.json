@@ -1,0 +1,152 @@
+{
+  "post_attack_source_comparisons": [
+    {
+      "kernel": "quadratic",
+      "level": "raw",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "quadratic",
+      "level": "O2",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "quadratic",
+      "level": "O3",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "cubic",
+      "level": "raw",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "cubic",
+      "level": "O2",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "cubic",
+      "level": "O3",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "coupled",
+      "level": "raw",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "coupled",
+      "level": "O2",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "coupled",
+      "level": "O3",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "quadratic-wide",
+      "level": "raw",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "quadratic-wide",
+      "level": "O2",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    },
+    {
+      "kernel": "quadratic-wide",
+      "level": "O3",
+      "updates_equal_mod_2_32_up_to_exchange": true
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "non-equivariant-step",
+      "status": "rejected",
+      "reason": "step not swap-equivariant"
+    },
+    {
+      "case": "changed-source-observer",
+      "status": "rejected",
+      "reason": "driver outside exact supported profile"
+    },
+    {
+      "case": "exported-step",
+      "status": "rejected",
+      "reason": "private step, only run export required"
+    },
+    {
+      "case": "changed-quotient-observer",
+      "status": "rejected",
+      "reason": "unexpected output observer"
+    }
+  ],
+  "small_width_fibers": [
+    {
+      "bits": 2,
+      "ordered_states": 16,
+      "image_size": 8,
+      "largest_fiber": 2,
+      "zero_fiber": 2,
+      "fibers_larger_than_two": 0
+    },
+    {
+      "bits": 3,
+      "ordered_states": 64,
+      "image_size": 28,
+      "largest_fiber": 4,
+      "zero_fiber": 2,
+      "fibers_larger_than_two": 4
+    },
+    {
+      "bits": 4,
+      "ordered_states": 256,
+      "image_size": 96,
+      "largest_fiber": 4,
+      "zero_fiber": 4,
+      "fibers_larger_than_two": 32
+    },
+    {
+      "bits": 5,
+      "ordered_states": 1024,
+      "image_size": 368,
+      "largest_fiber": 8,
+      "zero_fiber": 4,
+      "fibers_larger_than_two": 112
+    },
+    {
+      "bits": 6,
+      "ordered_states": 4096,
+      "image_size": 1408,
+      "largest_fiber": 8,
+      "zero_fiber": 8,
+      "fibers_larger_than_two": 384
+    },
+    {
+      "bits": 7,
+      "ordered_states": 16384,
+      "image_size": 5568,
+      "largest_fiber": 16,
+      "zero_fiber": 8,
+      "fibers_larger_than_two": 1472
+    },
+    {
+      "bits": 8,
+      "ordered_states": 65536,
+      "image_size": 22016,
+      "largest_fiber": 16,
+      "zero_fiber": 16,
+      "fibers_larger_than_two": 5632
+    }
+  ],
+  "native_zero_fiber_constructed_distinct_ordered_states": 65536,
+  "cases": 47232,
+  "note": "Snapshot collisions do not prevent public-code update recovery; no cryptographic secrecy claim.",
+  "dependencies": {
+    "research\\symmetric-state\\probe.py": "b959602faa04d56b2858686c6b423e764b99656d876f0d8ee1ca69ea24c21446",
+    "research\\symmetric-state\\audit.py": "d2cb95fa77e7d8d229f78f540ee4da96028650e5800cb3ef4447cf85fee8f35a",
+    "research\\observation-synthesis\\transform.py": "98905cb88d7e60fe345b1a5d989854bf80684119142d3073d6bbffda575a0a89"
+  }
+}

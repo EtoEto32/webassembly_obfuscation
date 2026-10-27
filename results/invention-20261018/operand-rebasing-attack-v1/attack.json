@@ -1,0 +1,754 @@
+{
+  "grammar": "Each of four inputs occurs once; all binary trees; add/sub/xor/and/or; exactly three operators.",
+  "candidates": 15000,
+  "seconds": 0.03461220000000001,
+  "inputs": [
+    [
+      3679815342,
+      3363196286,
+      862824920,
+      1415043618
+    ],
+    [
+      3354143890,
+      273889338,
+      3708799136,
+      1964228005
+    ],
+    [
+      2157473251,
+      4090167334,
+      2340829462,
+      3398124418
+    ],
+    [
+      496410126,
+      3577506011,
+      948352887,
+      3762475820
+    ],
+    [
+      240577784,
+      2651940294,
+      1170994462,
+      1099967863
+    ],
+    [
+      2472883101,
+      4217363854,
+      3654253884,
+      3971041420
+    ],
+    [
+      797549229,
+      3142456620,
+      2317894798,
+      2181988699
+    ],
+    [
+      3962732188,
+      210880579,
+      1028984632,
+      3713401034
+    ],
+    [
+      3425877899,
+      542465661,
+      3855216902,
+      2749914306
+    ],
+    [
+      476403686,
+      326342775,
+      2528189167,
+      3387541661
+    ],
+    [
+      3985141406,
+      954332560,
+      2606622184,
+      3232951239
+    ],
+    [
+      3516085522,
+      910901141,
+      3761124215,
+      2351508017
+    ],
+    [
+      2153317307,
+      270124080,
+      3781602885,
+      3156512041
+    ],
+    [
+      414182064,
+      2927578506,
+      3889344928,
+      2950330699
+    ],
+    [
+      2083839650,
+      1488620,
+      3527365275,
+      331920861
+    ],
+    [
+      2389572977,
+      439518917,
+      2959118287,
+      734306299
+    ]
+  ],
+  "targets": [
+    {
+      "file": "add-xor-fused.wasm",
+      "sha256": "1a297ac2d5b7cf2244cbc4679dba324ee35362904e140e6482d7f0e58584f5df",
+      "status": "recovered",
+      "matches": [
+        {
+          "expression": [
+            "i32.xor",
+            [
+              "i32.add",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.add",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "3"
+              ]
+            ]
+          ],
+          "productStates": 8,
+          "edges": 128,
+          "candidate": 253,
+          "elapsedSeconds": 0.001407400000000003
+        },
+        {
+          "expression": [
+            "i32.xor",
+            [
+              "i32.add",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.add",
+              [
+                "local.get",
+                "3"
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ]
+          ],
+          "productStates": 8,
+          "edges": 128,
+          "candidate": 878,
+          "elapsedSeconds": 0.003821899999999989
+        },
+        {
+          "expression": [
+            "i32.xor",
+            [
+              "i32.add",
+              [
+                "local.get",
+                "1"
+              ],
+              [
+                "local.get",
+                "0"
+              ]
+            ],
+            [
+              "i32.add",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "3"
+              ]
+            ]
+          ],
+          "productStates": 8,
+          "edges": 128,
+          "candidate": 4003,
+          "elapsedSeconds": 0.010060900000000012
+        },
+        {
+          "expression": [
+            "i32.xor",
+            [
+              "i32.add",
+              [
+                "local.get",
+                "1"
+              ],
+              [
+                "local.get",
+                "0"
+              ]
+            ],
+            [
+              "i32.add",
+              [
+                "local.get",
+                "3"
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ]
+          ],
+          "productStates": 8,
+          "edges": 128,
+          "candidate": 4628,
+          "elapsedSeconds": 0.012230700000000011
+        },
+        {
+          "expression": [
+            "i32.xor",
+            [
+              "i32.add",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "3"
+              ]
+            ],
+            [
+              "i32.add",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ]
+          ],
+          "productStates": 8,
+          "edges": 128,
+          "candidate": 10253,
+          "elapsedSeconds": 0.02398420000000001
+        },
+        {
+          "expression": [
+            "i32.xor",
+            [
+              "i32.add",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "3"
+              ]
+            ],
+            [
+              "i32.add",
+              [
+                "local.get",
+                "1"
+              ],
+              [
+                "local.get",
+                "0"
+              ]
+            ]
+          ],
+          "productStates": 8,
+          "edges": 128,
+          "candidate": 10878,
+          "elapsedSeconds": 0.025718500000000005
+        },
+        {
+          "expression": [
+            "i32.xor",
+            [
+              "i32.add",
+              [
+                "local.get",
+                "3"
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ],
+            [
+              "i32.add",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ]
+          ],
+          "productStates": 8,
+          "edges": 128,
+          "candidate": 14003,
+          "elapsedSeconds": 0.031884899999999994
+        },
+        {
+          "expression": [
+            "i32.xor",
+            [
+              "i32.add",
+              [
+                "local.get",
+                "3"
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ],
+            [
+              "i32.add",
+              [
+                "local.get",
+                "1"
+              ],
+              [
+                "local.get",
+                "0"
+              ]
+            ]
+          ],
+          "productStates": 8,
+          "edges": 128,
+          "candidate": 14628,
+          "elapsedSeconds": 0.033713099999999996
+        }
+      ]
+    },
+    {
+      "file": "nested-fused.wasm",
+      "sha256": "9e4909cecb40dd59adc08decd3926a82bbcdc23eabec2567239ec3d1d2f09268",
+      "status": "recovered",
+      "matches": [
+        {
+          "expression": [
+            "i32.sub",
+            [
+              "i32.xor",
+              [
+                "i32.add",
+                [
+                  "local.get",
+                  "0"
+                ],
+                [
+                  "local.get",
+                  "1"
+                ]
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ],
+            [
+              "local.get",
+              "3"
+            ]
+          ],
+          "productStates": 6,
+          "edges": 96,
+          "candidate": 512,
+          "elapsedSeconds": 0.002635699999999991
+        },
+        {
+          "expression": [
+            "i32.sub",
+            [
+              "i32.xor",
+              [
+                "i32.add",
+                [
+                  "local.get",
+                  "1"
+                ],
+                [
+                  "local.get",
+                  "0"
+                ]
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ],
+            [
+              "local.get",
+              "3"
+            ]
+          ],
+          "productStates": 6,
+          "edges": 96,
+          "candidate": 4262,
+          "elapsedSeconds": 0.011185300000000009
+        },
+        {
+          "expression": [
+            "i32.sub",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "i32.add",
+                [
+                  "local.get",
+                  "0"
+                ],
+                [
+                  "local.get",
+                  "1"
+                ]
+              ]
+            ],
+            [
+              "local.get",
+              "3"
+            ]
+          ],
+          "productStates": 6,
+          "edges": 96,
+          "candidate": 7887,
+          "elapsedSeconds": 0.018592799999999993
+        },
+        {
+          "expression": [
+            "i32.sub",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "i32.add",
+                [
+                  "local.get",
+                  "1"
+                ],
+                [
+                  "local.get",
+                  "0"
+                ]
+              ]
+            ],
+            [
+              "local.get",
+              "3"
+            ]
+          ],
+          "productStates": 6,
+          "edges": 96,
+          "candidate": 9137,
+          "elapsedSeconds": 0.0215852
+        }
+      ]
+    },
+    {
+      "file": "reused-anchor-fused.wasm",
+      "sha256": "a0e71ebe3d10e9653dac49e0f234a8aac7cc5874a69668d253ba3d139120e988",
+      "status": "grammar_exhausted",
+      "matches": []
+    },
+    {
+      "file": "xor-add-fused.wasm",
+      "sha256": "7de99e4f0c929a762552f48e929d603302f1f137493f73aa2d0644bb38dd506f",
+      "status": "recovered",
+      "matches": [
+        {
+          "expression": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "3"
+              ]
+            ]
+          ],
+          "productStates": 3,
+          "edges": 48,
+          "candidate": 311,
+          "elapsedSeconds": 0.001774899999999996
+        },
+        {
+          "expression": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "3"
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ]
+          ],
+          "productStates": 3,
+          "edges": 48,
+          "candidate": 936,
+          "elapsedSeconds": 0.00414790000000001
+        },
+        {
+          "expression": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "1"
+              ],
+              [
+                "local.get",
+                "0"
+              ]
+            ],
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "3"
+              ]
+            ]
+          ],
+          "productStates": 3,
+          "edges": 48,
+          "candidate": 4061,
+          "elapsedSeconds": 0.01040930000000001
+        },
+        {
+          "expression": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "1"
+              ],
+              [
+                "local.get",
+                "0"
+              ]
+            ],
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "3"
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ]
+          ],
+          "productStates": 3,
+          "edges": 48,
+          "candidate": 4686,
+          "elapsedSeconds": 0.012538799999999989
+        },
+        {
+          "expression": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "3"
+              ]
+            ],
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ]
+          ],
+          "productStates": 3,
+          "edges": 48,
+          "candidate": 10311,
+          "elapsedSeconds": 0.024296399999999996
+        },
+        {
+          "expression": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "3"
+              ]
+            ],
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "1"
+              ],
+              [
+                "local.get",
+                "0"
+              ]
+            ]
+          ],
+          "productStates": 3,
+          "edges": 48,
+          "candidate": 10936,
+          "elapsedSeconds": 0.0261006
+        },
+        {
+          "expression": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "3"
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ],
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ]
+          ],
+          "productStates": 3,
+          "edges": 48,
+          "candidate": 14061,
+          "elapsedSeconds": 0.032313800000000004
+        },
+        {
+          "expression": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "3"
+              ],
+              [
+                "local.get",
+                "2"
+              ]
+            ],
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "1"
+              ],
+              [
+                "local.get",
+                "0"
+              ]
+            ]
+          ],
+          "productStates": 3,
+          "edges": 48,
+          "candidate": 14686,
+          "elapsedSeconds": 0.034056699999999995
+        }
+      ]
+    }
+  ],
+  "confirmation": "Exhaustive reachable product-automaton equivalence for all bit strings, not only sampled words.",
+  "limitation": "Raw emitter profile only. Grammar exhaustion is not timeout, unsupported binary, or security."
+}

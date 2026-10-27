@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-18",
+  "seed": 1949871249,
+  "gate": "Demand-fused wide loads: validate exact footprint, and attempt static recovery before adopting this as obfuscation.",
+  "success": "Widening or fewer scalar intermediates alone is insufficient. Reject the primitive if a binary-only projection recognizer reconstructs source load pairs.",
+  "variants": [
+    "plain",
+    "wide-split",
+    "wide-fused"
+  ],
+  "levels": [
+    "raw",
+    "O2",
+    "O3"
+  ],
+  "scope": "Two adjacent i32.load operands of i32 xor/add/sub with identical local.get addresses; no imports, shared memory, volatile accesses, or concurrent mutation."
+}

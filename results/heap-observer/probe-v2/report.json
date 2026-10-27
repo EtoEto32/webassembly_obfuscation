@@ -1,0 +1,952 @@
+{
+  "families": 9,
+  "binaries": 54,
+  "processes": 108,
+  "observer_modules": 9,
+  "optimization_comparisons": [
+    {
+      "name": "scalar",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "scalar",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "scalar",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "scalar",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "scalar",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "scalar",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "scalar",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "scalar",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "packed",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "packed",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "packed",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "packed",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "packed",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "packed",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "packed",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "packed",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "array",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "array",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "array",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "array",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "array",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "array",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "array",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "array",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "deep",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "deep",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "deep",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "deep",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "deep",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "deep",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "deep",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "deep",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "alias",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "alias",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "alias",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "alias",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "alias",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "alias",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "alias",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "alias",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "cycle",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "cycle",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "cycle",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "cycle",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "cycle",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "cycle",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "cycle",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "cycle",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "recgroup",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "recgroup",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "recgroup",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "recgroup",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "recgroup",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "recgroup",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "recgroup",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "recgroup",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "subtype",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "subtype",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "subtype",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "subtype",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "subtype",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "subtype",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "subtype",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "subtype",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "nan-positive",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "nan-positive",
+      "variant": "base",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "nan-positive",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "nan-positive",
+      "variant": "changed",
+      "engine": "node",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "nan-positive",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "nan-positive",
+      "variant": "base",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    },
+    {
+      "name": "nan-positive",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-open",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "contract": "comparable"
+    },
+    {
+      "name": "nan-positive",
+      "variant": "changed",
+      "engine": "spidermonkey",
+      "level": "O3-closed",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "contract": "outside-closed-world-contract"
+    }
+  ],
+  "fault_controls": [
+    {
+      "name": "scalar",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "scalar",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "scalar",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "scalar",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "packed",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "packed",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "packed",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "packed",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "array",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "array",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "array",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "array",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "deep",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "deep",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "deep",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "deep",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "alias",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "alias",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "alias",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "alias",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "cycle",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "cycle",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "cycle",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "cycle",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "recgroup",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "recgroup",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "recgroup",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "recgroup",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "subtype",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "subtype",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "subtype",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "subtype",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": false,
+      "boundary_equal": true,
+      "expected_equal": false
+    },
+    {
+      "name": "nan-positive",
+      "level": "O0",
+      "engine": "node",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "expected_equal": true
+    },
+    {
+      "name": "nan-positive",
+      "level": "O0",
+      "engine": "spidermonkey",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "expected_equal": true
+    },
+    {
+      "name": "nan-positive",
+      "level": "O3-open",
+      "engine": "node",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "expected_equal": true
+    },
+    {
+      "name": "nan-positive",
+      "level": "O3-open",
+      "engine": "spidermonkey",
+      "snapshot_equal": true,
+      "boundary_equal": true,
+      "expected_equal": true
+    }
+  ],
+  "helper_bytes": {
+    "min": 108,
+    "median": 141,
+    "max": 179
+  },
+  "errors": []
+}

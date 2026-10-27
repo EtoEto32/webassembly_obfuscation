@@ -1,0 +1,64 @@
+{
+  "archive": "artifacts\\state-witness-minimal-v1.zip",
+  "archiveSha256": "2bc7e222b4e9d870e748323d88f506908179eadda17756fef83568246479e9cd",
+  "code": 0,
+  "stdout": "{\"status\": \"passed\", \"byteIdenticalBinaries\": 9, \"unsatObligations\": 44}\n",
+  "stderr": "",
+  "scope": "Fresh extraction; research sources resolved inside artifact, public tools reused from pinned local environment; no download or publication.",
+  "reproduction": {
+    "status": "passed",
+    "byteIdenticalBinaries": 9,
+    "compared": [
+      "controls/foreign.wasm",
+      "controls/memory-private.wasm",
+      "controls/memory-public.wasm",
+      "controls/memory-repair.wasm",
+      "controls/table-private.wasm",
+      "controls/table-public.wasm",
+      "controls/table-repair.wasm",
+      "interleave/interleave.wasm",
+      "interleave/repair.wasm"
+    ],
+    "controls": {
+      "apiCalls": 274,
+      "preparationApiCalls": 272,
+      "cellWrites": 48,
+      "pureReferenceTagCalls": 52
+    },
+    "interleave": {
+      "apiCalls": 12,
+      "preparationApiCalls": 8,
+      "cellWrites": 4
+    },
+    "unsatObligations": 44,
+    "sourceTree": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\minimal-bundle-replay-v1\\root",
+    "wabtRoot": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin",
+    "logs": [
+      {
+        "script": "guard-environment-controls.py",
+        "code": 0,
+        "stdout": "{\"contracts\":36,\"executed\":32,\"apiCalls\":274,\"preparationApiCalls\":272,\"cellWrites\":48,\"pureReferenceTagCalls\":52}\n\n",
+        "stderr": ""
+      },
+      {
+        "script": "guard-environment-interleave.py",
+        "code": 0,
+        "stdout": "{\"contracts\":4,\"apiCalls\":12,\"preparationApiCalls\":8,\"cellWrites\":4}\n\n",
+        "stderr": ""
+      },
+      {
+        "script": "guard-environment-check.py",
+        "code": 0,
+        "stdout": "{\"contracts\": 4, \"unsat\": 44, \"unknown\": 0, \"z3\": \"4.13.3\", \"scope\": \"Independent array semantics and universally quantified common public assignments, shared parser; table identity domain unbounded >=256. Not full Wasm semantics proof.\"}\n",
+        "stderr": ""
+      },
+      {
+        "script": "diagnose.py",
+        "code": 0,
+        "stdout": "{\"status\": \"impossible\", \"method\": \"environment-fixed-point\", \"concreteStoreEvaluation\": \"different\"}\n",
+        "stderr": ""
+      }
+    ],
+    "scope": "Small original-export controls and CLI only; not the large corpus, performance or external migration reproductions."
+  }
+}

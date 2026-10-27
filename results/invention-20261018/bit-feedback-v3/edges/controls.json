@@ -1,0 +1,27 @@
+{
+  "unsupported": [
+    {
+      "case": "memory",
+      "status": "explicitly_rejected",
+      "reason": "Pure module required"
+    },
+    {
+      "case": "variable-shift",
+      "status": "explicitly_rejected",
+      "reason": "Variable shift unsupported"
+    },
+    {
+      "case": "division",
+      "status": "explicitly_rejected",
+      "reason": "Unsupported op: i32.div_u"
+    },
+    {
+      "case": "branch",
+      "status": "explicitly_rejected",
+      "reason": "Outside straight-line scalar profile: result"
+    }
+  ],
+  "wrong_round_calls": 8976,
+  "wrong_round_mismatches": 2244,
+  "recovery_bound_control": "insufficient_round_bound"
+}

@@ -1,0 +1,130 @@
+{
+  "pins_checked": 40,
+  "replays": [
+    "and-replay.wasm",
+    "mul-replay.wasm",
+    "div-replay.wasm"
+  ],
+  "interpreter": [
+    {
+      "file": "and-plain.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "and-plain-O3.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "and-borrowed.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "and-borrowed-recovered.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "and-borrowed-O3.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "and-borrowed-O3-recovered.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "mul-plain.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "mul-plain-O3.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "mul-borrowed.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "mul-borrowed-recovered.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "mul-borrowed-O3.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "mul-borrowed-O3-recovered.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 0
+    },
+    {
+      "file": "div-plain.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 1
+    },
+    {
+      "file": "div-plain-O3.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 1
+    },
+    {
+      "file": "div-borrowed.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 1
+    },
+    {
+      "file": "div-borrowed-recovered.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 1
+    },
+    {
+      "file": "div-borrowed-O3.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 1
+    },
+    {
+      "file": "div-borrowed-O3-recovered.wasm",
+      "calls": 4,
+      "state_checks": 4,
+      "expected_traps": 1
+    }
+  ],
+  "rejections": [
+    {
+      "file": "div-broken.wasm",
+      "status": "trap_memory_changed",
+      "reader_ms": 19.957800000000027
+    },
+    {
+      "file": "div-broken-O3.wasm",
+      "status": "trap_memory_changed",
+      "reader_ms": 19.378499999999967
+    }
+  ]
+}

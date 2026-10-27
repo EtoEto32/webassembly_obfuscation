@@ -1,0 +1,60 @@
+[
+  {
+    "case": "whole_sequence_fusion_loses_committed_prefix",
+    "args": [
+      65530,
+      16909060,
+      33818120,
+      50727180,
+      67636240
+    ],
+    "original_trap": true,
+    "wrong_trap": true,
+    "memory_differences": [
+      {
+        "address": 65530,
+        "original": 4,
+        "wrong": 90
+      },
+      {
+        "address": 65531,
+        "original": 3,
+        "wrong": 90
+      },
+      {
+        "address": 65532,
+        "original": 2,
+        "wrong": 90
+      },
+      {
+        "address": 65533,
+        "original": 1,
+        "wrong": 90
+      }
+    ]
+  },
+  {
+    "case": "byte_splitting_creates_partial_store",
+    "args": [
+      65522,
+      16909060,
+      33818120,
+      50727180,
+      67636240
+    ],
+    "original_trap": true,
+    "wrong_trap": true,
+    "memory_differences": [
+      {
+        "address": 65534,
+        "original": 90,
+        "wrong": 16
+      },
+      {
+        "address": 65535,
+        "original": 90,
+        "wrong": 12
+      }
+    ]
+  }
+]

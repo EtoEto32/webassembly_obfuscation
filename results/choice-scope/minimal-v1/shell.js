@@ -1,0 +1,1 @@
+var q=JSON.parse(read(scriptArgs[0])),rows=[];for(var f of q.files){var e=new WebAssembly.Instance(new WebAssembly.Module(read(q.directory+'/'+f,'binary'))).exports;for(var a of q.inputs){rows.push({file:f,inputs:a,outputs:[e.run(...a)>>>0]});}}print(JSON.stringify(rows));

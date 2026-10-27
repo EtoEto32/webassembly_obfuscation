@@ -1,0 +1,105 @@
+{
+  "sourceSha256": "ec1a0d66e7a28cc669a0aa93a575757523135f43fea7dc452eaf94c7b348a9c5",
+  "targetSha256": "78a0aa01fc7f174668ed711f83e6e66cf533bb524e3ad259a1f907a22fefb472",
+  "sourceBytes": 335,
+  "targetBytes": 345,
+  "seconds": 0.04345379999999999,
+  "pathCount": 2,
+  "paths": [
+    {
+      "events": [
+        {
+          "label": [
+            100,
+            1
+          ],
+          "cost": 9
+        },
+        {
+          "label": [
+            102,
+            7
+          ],
+          "cost": 76
+        }
+      ],
+      "total": 85
+    },
+    {
+      "events": [
+        {
+          "label": [
+            100,
+            0
+          ],
+          "cost": 17
+        }
+      ],
+      "total": 34
+    }
+  ],
+  "nodes": [
+    {
+      "history": [],
+      "bound": 17,
+      "pastBound": 0,
+      "terminalBound": null,
+      "next": {
+        "100,0": 1,
+        "100,1": 2
+      }
+    },
+    {
+      "history": [
+        [
+          100,
+          0
+        ]
+      ],
+      "bound": 34,
+      "pastBound": 17,
+      "terminalBound": 34,
+      "next": {}
+    },
+    {
+      "history": [
+        [
+          100,
+          1
+        ]
+      ],
+      "bound": 76,
+      "pastBound": 9,
+      "terminalBound": null,
+      "next": {
+        "102,7": 3
+      }
+    },
+    {
+      "history": [
+        [
+          100,
+          1
+        ],
+        [
+          102,
+          7
+        ]
+      ],
+      "bound": 85,
+      "pastBound": 76,
+      "terminalBound": 85,
+      "next": {}
+    }
+  ],
+  "depthBounds": [
+    17,
+    76,
+    85
+  ],
+  "terminalBounds": {
+    "1": 34,
+    "2": 85
+  },
+  "whole": 85
+}

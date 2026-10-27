@@ -1,0 +1,8 @@
+{
+  "issue": "The documentation-ledger update script initially failed Python command-line source decoding, despite strict UTF-8 read/compile succeeding.",
+  "scope": "update-ledger.py only; no experimental source or binary change",
+  "fix": "Express Japanese string literals using ASCII Unicode escapes; execution then succeeded and updated eight research ledgers.",
+  "verification": "replay-v2 reproduced all 30 targets and 30 recoveries byte-for-byte; audit-v2 passed current source hashes.",
+  "classification": "local maintenance tooling issue, not obfuscation resistance",
+  "root_cause_proven": false
+}

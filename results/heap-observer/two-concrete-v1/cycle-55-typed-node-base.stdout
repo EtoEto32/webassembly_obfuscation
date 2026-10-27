@@ -1,0 +1,13 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func
+[LoggingExternalInterface logging function]
+[fuzz-exec] note result: func => object(null)
+[fuzz-exec] export func_9_invoker
+exception thrown: RuntimeError: float unrepresentable in integer range
+[fuzz-exec] export func_12_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_14
+[fuzz-exec] export func_15_invoker
+exception thrown: RuntimeError: unreachable
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_9_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: float unrepresentable in integer range"},{"name":"func_12_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_14","known":true,"status":"returned","unsupported":[]},{"name":"func_15_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null}]}

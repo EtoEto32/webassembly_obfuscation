@@ -1,0 +1,197 @@
+"""Recover the alias helper's relation and emit a scalar circuit from actual Wasm.
+
+No source expression, generation DAG, mapping, or target oracle is an input.
+This bounded, structural attack refuses unsupported optimized bodies.
+"""
+import argparse
+import json
+from pathlib import Path
+import time
+from compile import parse, emit, tool
+
+UNSET=object()
+
+
+class Heap:
+    def __init__(self):self.cells=[];self.reads=0;self.writes=0
+    def new(self,fields):
+        self.cells.append(list(fields));return len(self.cells)-1
+    def get(self,p,k):
+        x=self.cells[p][k];self.reads+=1
+        if x is UNSET:raise ValueError('Read of preexisting scratch field: quotient unsupported')
+        return x
+    def set(self,p,k,v):self.cells[p][k]=v;self.writes+=1
+
+
+def declarations(f,kind):return [x for x in f[2:] if isinstance(x,list) and x[0]==kind]
+def body(f):return [x for x in f[2:] if isinstance(x,list) and x[0] not in ['type','param','result','local']]
+
+
+def evaluate(f,args,h):
+    env={p[1]:v for p,v in zip(declarations(f,'param'),args)}
+    env.update({p[1]:None for p in declarations(f,'local')})
+    def ev(x):
+        op=x[0]
+        if op=='local.get':return env[x[1]]
+        if op in ('local.set','local.tee'):
+            v=ev(x[2]);env[x[1]]=v;return v if op=='local.tee' else None
+        if op=='ref.as_non_null':
+            v=ev(x[1])
+            if v is None:raise ValueError('Unexpected null')
+            return v
+        if op=='struct.new_default':return h.new([UNSET])
+        if op=='struct.new':return h.new([ev(y) for y in x[2:]])
+        if op=='struct.get':return h.get(ev(x[3]),int(x[2]))
+        if op=='struct.set':h.set(ev(x[3]),int(x[2]),ev(x[4]));return None
+        if op=='ref.eq':return int(ev(x[1])==ev(x[2]))
+        if op=='if':
+            xs=x[1:]
+            if xs[0][0]=='result':xs=xs[1:]
+            return ev(xs[1][1] if ev(xs[0]) else xs[2][1])
+        raise ValueError('Unsupported helper opcode '+op)
+    r=None
+    for x in body(f):r=ev(x)
+    return r
+
+
+def partitions(n):
+    if n==0:yield ();return
+    for p in partitions(n-1):
+        for v in range(max(p,default=-1)+2):yield p+(v,)
+
+
+def recover(src,out):
+    if out.exists():raise ValueError('Refuse overwrite')
+    t=time.perf_counter();m=parse(tool('wasm-dis',[src]));fs=[x for x in m[1:] if x[0]=='func']
+    exports=[x for x in m[1:] if x[0]=='export']
+    if exports!=[['export','"run"',['func',exports[0][2][1]]]]:raise ValueError('Expected sole run export')
+    name=exports[0][2][1];main=next(x for x in fs if x[1]==name)
+    roles={};evidence=[]
+    for f in fs:
+        if f is main:continue
+        ps=declarations(f,'param');rs=declarations(f,'result')
+        types=[x[2] for x in ps]
+        if len(ps)==2 and all(isinstance(x,list) and x[0]=='ref' for x in types):
+            # No equality/if in the transfer: only equivariant identity and field operations.
+            allowed={'local.get','local.set','local.tee','ref.as_non_null','struct.new_default','struct.new','struct.get','struct.set'}
+            def check(x):
+                if x[0] not in allowed:raise ValueError('Gate outside quotient profile: '+x[0])
+                for y in x[1:]:
+                    if isinstance(y,list):check(y)
+            for x in body(f):check(x)
+            rows=[]
+            for p in partitions(4):
+                h=Heap();cs=[h.new([UNSET]) for _ in range(max(p)+1)]
+                a=h.new([cs[p[0]],cs[p[1]]]);b=h.new([cs[p[2]],cs[p[3]]])
+                r=evaluate(f,[a,b],h);v=int(h.get(r,0)==h.get(r,1))
+                x,y=int(p[0]==p[1]),int(p[2]==p[3])
+                rows.append({'partition':p,'inputs':[x,y],'output':v,'heap_objects':len(h.cells)})
+            if any(r['output']!=1-(r['inputs'][0]&r['inputs'][1]) for r in rows):
+                raise ValueError('Recovered helper is not NAND')
+            roles[f[1]]='nand';evidence.append({'function':f[1],'classification':'nand','partitions':rows})
+        elif types==['i32'] and rs[0][1][0]=='ref':
+            for b in (0,1):
+                h=Heap();r=evaluate(f,[b],h)
+                if int(h.get(r,0)==h.get(r,1))!=b:raise ValueError('Encoder mismatch')
+            roles[f[1]]='enc'
+        elif len(ps)==1 and isinstance(types[0],list) and rs==[['result','i32']]:
+            for b in (0,1):
+                h=Heap();a=h.new([UNSET]);c=a if b else h.new([UNSET]);p=h.new([a,c])
+                if evaluate(f,[p],h)!=b:raise ValueError('Decoder mismatch')
+            roles[f[1]]='dec'
+        else:raise ValueError('Unknown helper signature')
+    if 'nand' not in roles.values():raise ValueError('No verified gate helper')
+    calls={'nand':0,'enc':0,'dec':0}
+    types={x[1]:x[2] for x in m[1:] if x[0]=='type' and x[2][0]=='struct'}
+    cell_types={k for k,v in types.items() if len(v)==2 and v[1][0]=='field' and v[1][1][0]=='mut'}
+    pair_types={k for k,v in types.items() if len(v)==3 and all(z[0]=='field' and z[1][0]=='ref' for z in v[1:])}
+    if len(cell_types)!=1 or len(pair_types)!=1:raise ValueError('Unsupported heap type profile')
+    statements=[];newlocals=[];env={x[1]:('i32',['local.get',x[1]]) for x in declarations(main,'param')}
+    fresh=0
+    def bit(e):
+        return (e in (['i32.const','0'],['i32.const','1']) or
+          (e[0]=='i32.and' and ['i32.const','1'] in e[1:]) or
+          (e[0]=='i32.shr_u' and e[2]==['i32.const','31']))
+    def equal(a,b):
+        if a==b:return ['i32.const','1']
+        if a[0]==b[0]=='fresh':return ['i32.const','0']
+        if a[0]=='choice':return ['if',['result','i32'],a[1],['then',equal(a[2],b)],['else',equal(a[3],b)]]
+        if b[0]=='choice':return ['if',['result','i32'],b[1],['then',equal(a,b[2])],['else',equal(a,b[3])]]
+        if a[0]==b[0]=='slot' and a[1]==b[1]:return a[1]
+        raise ValueError('Cross-pair reference equality unsupported')
+    def cv(x):
+        nonlocal fresh
+        op=x[0]
+        if op=='local.get':return env[x[1]]
+        if op in ('local.set','local.tee'):
+            kind,v=cv(x[2])
+            if kind in ('i32','pair'):
+                name='$s'+str(len(newlocals));newlocals.append(['local',name,'i32'])
+                statements.append(['local.set',name,v]);value=(kind,['local.get',name])
+            else:value=(kind,v)
+            env[x[1]]=value;return value if op=='local.tee' else ('void',None)
+        if op=='ref.as_non_null':return cv(x[1])
+        if op=='struct.new_default' and x[1] in cell_types:
+            fresh+=1;return 'cell',('fresh',fresh)
+        if op=='struct.new' and x[1] in pair_types:
+            a,b=cv(x[2]),cv(x[3])
+            if a[0]!='cell' or b[0]!='cell':raise ValueError('Pair field type')
+            return 'pair',equal(a[1],b[1])
+        if op=='struct.get' and x[1] in pair_types:
+            kind,v=cv(x[3])
+            if kind!='pair':raise ValueError('Pair load type')
+            return 'cell',('slot',v,int(x[2]))
+        if op=='ref.eq':
+            a,b=cv(x[1]),cv(x[2])
+            if a[0]!='cell' or b[0]!='cell':raise ValueError('Reference type')
+            return 'i32',equal(a[1],b[1])
+        if op=='block':
+            r=('void',None)
+            for y in x[1:]:
+                if isinstance(y,list) and y[0]!='result':r=cv(y)
+            return r
+        if op=='if':
+            xs=x[1:]
+            if xs[0][0]=='result':xs=xs[1:]
+            kind,c=cv(xs[0]);before=dict(env);count=len(statements)
+            a=cv(xs[1][1]);b=cv(xs[2][1])
+            if env!=before or len(statements)!=count or kind!='i32' or a[0]!=b[0]:
+                raise ValueError('Side-effectful branch unsupported')
+            if a[0]=='cell':return 'cell',('choice',c,a[1],b[1])
+            return a[0],['if',['result','i32'],c,['then',a[1]],['else',b[1]]]
+        if op=='call':
+            role=roles[x[1]];calls[role]+=1;values=[cv(y) for y in x[2:]];args=[v[1] for v in values]
+            if role=='nand':
+                if any(v[0]!='pair' for v in values):raise ValueError('Gate argument')
+                return 'pair',['i32.xor',['i32.and',*args],['i32.const','1']]
+            if role=='dec':
+                if values[0][0]!='pair':raise ValueError('Decoder argument')
+                return 'i32',args[0]
+            if values[0][0]!='i32' or not bit(args[0]):raise ValueError('Encoder input not certified as a bit')
+            return 'pair',args[0]
+        if op not in ('i32.const','i32.and','i32.or','i32.xor','i32.shl','i32.shr_u'):
+            raise ValueError('Unsupported main opcode '+op)
+        args=[]
+        for y in x[1:]:
+            if isinstance(y,list):
+                k,v=cv(y)
+                if k!='i32':raise ValueError('Integer operand type')
+                args.append(v)
+            else:args.append(y)
+        return 'i32',[op,*args]
+    final=('void',None)
+    for x in body(main):final=cv(x)
+    if final[0]!='i32':raise ValueError('Result type')
+    result=['module',['func','$run',['export','"run"'],*declarations(main,'param'),['result','i32'],
+             *newlocals,*statements,final[1]]]
+    wp=Path(str(out)+'.wat');wp.write_text(emit(result),encoding='utf-8');tool('wat2wasm',[wp,'-o',out],True)
+    tool('wasm-validate',[out],True)
+    report={'status':'recovered','helper_evidence':evidence,'calls':calls,'seconds':time.perf_counter()-t,
+            'bytes':out.stat().st_size,'input':str(src),'output':str(out),
+            'limits':'Structural single-function profile; helper identity partition quotient. Not general heap inference.'}
+    Path(str(out)+'.json').write_text(json.dumps(report,indent=2),encoding='utf-8');return report
+
+
+if __name__=='__main__':
+    ap=argparse.ArgumentParser();ap.add_argument('input',type=Path);ap.add_argument('output',type=Path)
+    a=ap.parse_args();print(json.dumps(recover(a.input,a.output)))

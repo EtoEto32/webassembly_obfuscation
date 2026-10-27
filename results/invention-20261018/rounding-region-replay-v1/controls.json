@@ -1,0 +1,26 @@
+{
+  "wrong_residue_rejected": true,
+  "reason": "Wrong exact residue",
+  "unsupported": [
+    {
+      "case": "memory",
+      "status": "rejected",
+      "reason": "Only a pure function and export are supported"
+    },
+    {
+      "case": "float",
+      "status": "rejected",
+      "reason": "Expected 1..128 i32 parameters"
+    },
+    {
+      "case": "division",
+      "status": "rejected",
+      "reason": "Unsupported expression: (i32.div_u (local.get 0) (local.get 1))"
+    },
+    {
+      "case": "loop",
+      "status": "rejected",
+      "reason": "Unsupported expression: (loop (result i32) (local.get 0))"
+    }
+  ]
+}

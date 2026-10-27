@@ -1,0 +1,361 @@
+{
+  "verified": [
+    {
+      "directory": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\loss-flag-v1",
+      "files": 284
+    },
+    {
+      "directory": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\loss-flag-performance-v2",
+      "files": 77
+    },
+    {
+      "directory": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\loss-flag-audit-v1",
+      "files": 396
+    }
+  ],
+  "positive_conditions": 54,
+  "unique_positive_binaries": 42,
+  "calls": 83196,
+  "traps": 42588,
+  "negative_conditions": 12,
+  "recovered_conditions": 12,
+  "replayed": 66,
+  "interpreter_calls": 360,
+  "interpreter_traps": 198,
+  "memory_probes": 1404,
+  "profile_rejections": [
+    {
+      "name": "exported-memory",
+      "rejected": "source differs from the closed profile"
+    },
+    {
+      "name": "memory-grow",
+      "rejected": "guarded native copy sequence"
+    },
+    {
+      "name": "parameter-data",
+      "rejected": "guarded native copy sequence"
+    },
+    {
+      "name": "lost-information-mixed-into-survivor",
+      "rejected": "encoding destroys information required at prefix 1"
+    }
+  ],
+  "attacks": [
+    {
+      "name": "swap16",
+      "opt": "raw",
+      "basis": {
+        "total_median_ms": 41.860799999999365,
+        "analysis_median_ms": 2.503500000000436,
+        "total_range_ms": [
+          41.34599999999988,
+          44.23810000000028
+        ]
+      },
+      "current": {
+        "total_median_ms": 42.72159999999836,
+        "analysis_median_ms": 2.3814999999993702,
+        "total_range_ms": [
+          40.825499999999515,
+          45.66849999999967
+        ]
+      },
+      "total_ratio": 1.0205633910484035,
+      "analysis_ratio": 0.9512682244853028
+    },
+    {
+      "name": "swap16",
+      "opt": "O3",
+      "basis": {
+        "total_median_ms": 42.70990000000019,
+        "analysis_median_ms": 2.1644999999992365,
+        "total_range_ms": [
+          40.108299999999986,
+          46.32570000000058
+        ]
+      },
+      "current": {
+        "total_median_ms": 42.17809999999922,
+        "analysis_median_ms": 2.122100000001126,
+        "total_range_ms": [
+          41.42019999999924,
+          45.0607999999999
+        ]
+      },
+      "total_ratio": 0.9875485543164239,
+      "analysis_ratio": 0.9804111804120464
+    },
+    {
+      "name": "cascade32",
+      "opt": "raw",
+      "basis": {
+        "total_median_ms": 53.483700000000134,
+        "analysis_median_ms": 9.93700000000075,
+        "total_range_ms": [
+          51.69749999999951,
+          58.56830000000013
+        ]
+      },
+      "current": {
+        "total_median_ms": 51.119200000000475,
+        "analysis_median_ms": 6.88650000000024,
+        "total_range_ms": [
+          49.157700000000304,
+          53.180799999999806
+        ]
+      },
+      "total_ratio": 0.9557902688108778,
+      "analysis_ratio": 0.6930160008050437
+    },
+    {
+      "name": "cascade32",
+      "opt": "O3",
+      "basis": {
+        "total_median_ms": 53.025599999999784,
+        "analysis_median_ms": 7.545000000000357,
+        "total_range_ms": [
+          48.87390000000025,
+          55.500800000000794
+        ]
+      },
+      "current": {
+        "total_median_ms": 48.54519999999951,
+        "analysis_median_ms": 6.196100000000371,
+        "total_range_ms": [
+          47.990300000000374,
+          54.7266000000004
+        ]
+      },
+      "total_ratio": 0.9155049636401985,
+      "analysis_ratio": 0.8212193505632972
+    },
+    {
+      "name": "overlap24",
+      "opt": "raw",
+      "basis": {
+        "total_median_ms": 57.338100000000836,
+        "analysis_median_ms": 10.738500000000428,
+        "total_range_ms": [
+          52.362999999999715,
+          61.29680000000093
+        ]
+      },
+      "current": {
+        "total_median_ms": 53.354699999999866,
+        "analysis_median_ms": 9.089299999999412,
+        "total_range_ms": [
+          52.39620000000045,
+          61.625099999999655
+        ]
+      },
+      "total_ratio": 0.9305278689039066,
+      "analysis_ratio": 0.8464217535036597
+    },
+    {
+      "name": "overlap24",
+      "opt": "O3",
+      "basis": {
+        "total_median_ms": 51.921899999999965,
+        "analysis_median_ms": 8.365300000001241,
+        "total_range_ms": [
+          50.84880000000069,
+          54.88539999999986
+        ]
+      },
+      "current": {
+        "total_median_ms": 53.408300000000075,
+        "analysis_median_ms": 7.731200000000271,
+        "total_range_ms": [
+          51.410199999999406,
+          56.2225999999999
+        ]
+      },
+      "total_ratio": 1.0286276118555004,
+      "analysis_ratio": 0.9241987735047308
+    }
+  ],
+  "rows": [
+    {
+      "name": "swap16",
+      "old_entry_values": 3,
+      "current_entry_values": 0,
+      "current_repair_temporaries": 3,
+      "transform_ms": 79.40219999999998,
+      "runtime": {
+        "plain": {
+          "median_ns": 2.351093292236328,
+          "process_medians_ns": [
+            2.351093292236328,
+            2.2026658058166504,
+            2.3568153381347656
+          ],
+          "batch_min_ns": 2.165985107421875,
+          "batch_max_ns": 2.774345874786377,
+          "bytes": 341
+        },
+        "eager": {
+          "median_ns": 8.304023742675781,
+          "process_medians_ns": [
+            10.038137435913086,
+            8.304023742675781,
+            8.158206939697266
+          ],
+          "batch_min_ns": 8.110189437866211,
+          "batch_max_ns": 10.76045036315918,
+          "bytes": 873
+        },
+        "basis": {
+          "median_ns": 4.812288284301758,
+          "process_medians_ns": [
+            4.794645309448242,
+            4.812288284301758,
+            4.921388626098633
+          ],
+          "batch_min_ns": 4.697823524475098,
+          "batch_max_ns": 5.042386054992676,
+          "bytes": 815
+        },
+        "current": {
+          "median_ns": 4.947853088378906,
+          "process_medians_ns": [
+            4.98499870300293,
+            4.907655715942383,
+            4.947853088378906
+          ],
+          "batch_min_ns": 4.787802696228027,
+          "batch_max_ns": 5.160665512084961,
+          "bytes": 948
+        },
+        "name": "swap16",
+        "current_over_basis": 1.0281705492414859,
+        "current_over_plain": 2.1044903257210077
+      }
+    },
+    {
+      "name": "cascade32",
+      "old_entry_values": 21,
+      "current_entry_values": 0,
+      "current_repair_temporaries": 15,
+      "transform_ms": 88.58950000000033,
+      "runtime": {
+        "plain": {
+          "median_ns": 4.021716117858887,
+          "process_medians_ns": [
+            4.001760482788086,
+            4.021716117858887,
+            4.028844833374023
+          ],
+          "batch_min_ns": 3.9617300033569336,
+          "batch_max_ns": 4.162788391113281,
+          "bytes": 569
+        },
+        "eager": {
+          "median_ns": 55.542945861816406,
+          "process_medians_ns": [
+            47.91984558105469,
+            57.81135559082031,
+            55.542945861816406
+          ],
+          "batch_min_ns": 46.315765380859375,
+          "batch_max_ns": 73.74420166015625,
+          "bytes": 3785
+        },
+        "basis": {
+          "median_ns": 15.326690673828125,
+          "process_medians_ns": [
+            15.185260772705078,
+            15.382957458496094,
+            15.326690673828125
+          ],
+          "batch_min_ns": 15.081977844238281,
+          "batch_max_ns": 16.53461456298828,
+          "bytes": 2639
+        },
+        "current": {
+          "median_ns": 11.297369003295898,
+          "process_medians_ns": [
+            11.297369003295898,
+            11.217260360717773,
+            11.338329315185547
+          ],
+          "batch_min_ns": 10.482120513916016,
+          "batch_max_ns": 14.068365097045898,
+          "bytes": 2788
+        },
+        "name": "cascade32",
+        "current_over_basis": 0.7371042610383792,
+        "current_over_plain": 2.8090916097057796
+      }
+    },
+    {
+      "name": "overlap24",
+      "old_entry_values": 20,
+      "current_entry_values": 0,
+      "current_repair_temporaries": 20,
+      "transform_ms": 85.76410000000045,
+      "runtime": {
+        "plain": {
+          "median_ns": 11.845016479492188,
+          "process_medians_ns": [
+            12.311124801635742,
+            11.845016479492188,
+            11.449670791625977
+          ],
+          "batch_min_ns": 11.370134353637695,
+          "batch_max_ns": 13.792848587036133,
+          "bytes": 465
+        },
+        "eager": {
+          "median_ns": 59.073448181152344,
+          "process_medians_ns": [
+            59.073448181152344,
+            58.16993713378906,
+            61.29417419433594
+          ],
+          "batch_min_ns": 56.810760498046875,
+          "batch_max_ns": 65.6036376953125,
+          "bytes": 3863
+        },
+        "basis": {
+          "median_ns": 27.021217346191406,
+          "process_medians_ns": [
+            25.54454803466797,
+            30.10854721069336,
+            27.021217346191406
+          ],
+          "batch_min_ns": 25.398635864257812,
+          "batch_max_ns": 30.88245391845703,
+          "bytes": 3271
+        },
+        "current": {
+          "median_ns": 19.51742172241211,
+          "process_medians_ns": [
+            20.304107666015625,
+            18.98651123046875,
+            19.51742172241211
+          ],
+          "batch_min_ns": 18.609619140625,
+          "batch_max_ns": 20.75214385986328,
+          "bytes": 3498
+        },
+        "name": "overlap24",
+        "current_over_basis": 0.722299868002174,
+        "current_over_plain": 1.6477327622298799
+      }
+    }
+  ],
+  "environment": {
+    "python": "3.9.0 (tags/v3.9.0:9cf6752, Oct  5 2020, 15:34:40) [MSC v.1927 64 bit (AMD64)]",
+    "os": "Windows-10-10.0.26100-SP0",
+    "node": "v24.15.0",
+    "v8": "13.6.233.17-node.48",
+    "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+    "flags": [
+      "--no-liftoff",
+      "--no-wasm-lazy-compilation"
+    ],
+    "wabt": "1.0.42",
+    "binaryen": "wasm-opt version 133 (version_133)"
+  }
+}

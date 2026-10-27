@@ -1,0 +1,19 @@
+# Aの実Component境界追試
+
+2026-10-24、実装・実行前に固定。Wacky/Shimmerの本文取得後、resourceの境界を通る処理を具体化する。
+
+## 仮説と範囲
+
+限定WITから生成する依存抽出器を、JcoのCanonical ABIで実際にliftされたhost resourceへ接続できる。借用索引・借用wrapperは呼出し後に保存せず、信頼するhost registryで実体ID・slot世代・操作世代へ解決してticketへコピーする。効果受付と失効の直列化は単一JSイベントループ上の同期区間で行う。実OSのI/O取消し、WASI全体のhostへの導入は扱わない。
+
+実Component binaryはimport resourceを保有するCore Wasmからprepareを呼ぶ。read/write/copy/batch/optional/idleを使用し、待機中の失効、無関係な権限変更、resource解放、alias、二重受付を検査する。Component所有のresourceと、host側でticketの寿命だけ保持する実体参照を区別する。dropを許すと認可のslotは失効するが、ticketを検査・解放するためのhost記録は残す。
+
+手書きoracleは入力の選択肢とイベントから期待する依存を別に計算する。生成した依存を期待値の元にしない。正しい手書き方式と同じ判定精度が目標で、基本方式の新原理や性能優位を主張しない。rawとJco optを通した2 binaryで同一入力列を使う。
+
+## 測定
+
+不正な受付、不要な拒否、型・寿命の実行時エラー、二重受付の拒否、資源解放、生成コード量、Component量、生成/変換時間を記録する。実Componentからのprepareを呼んだことを個別に数える。JS台帳だけの前段の試験と合算しない。途中で失敗した実行も別結果directoryに残す。
+
+## 反証条件
+
+Jcoのborrow wrapperから実体を同定できない、drop後の借用値へアクセスする、受付と失効の間で再入を許す、aliasの権限変更を見落とすなら接続は未達。実Componentの成功は、他runtimeとの一致や全WIT型・並行threadへの安全性を証明しない。未知hostの内部の業務権限をWITだけから推定しない。

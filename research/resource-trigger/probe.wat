@@ -1,0 +1,27 @@
+(component
+  (core module $E
+    (global $s (mut i32) (i32.const 0))
+    (func (export "r") (param i32) (global.set $s (local.get 0)))
+    (func (export "v") (result i32) (global.get $s))
+    (func (export "d") (param i32) (global.set $s (i32.add (global.get $s) (local.get 0)))))
+  (core instance $e (instantiate $E))
+  (type $R (resource (rep i32) (dtor (core func $e "d"))))
+  (core func $new (canon resource.new $R))
+  (core func $drop (canon resource.drop $R))
+  (core module $D
+    (import "i" "r" (func $r (param i32)))
+    (import "i" "v" (func $v (result i32)))
+    (import "i" "n" (func $n (param i32) (result i32)))
+    (import "i" "d" (func $d (param i32)))
+    (func (export "run") (param i32 i32) (result i32)
+      (call $r (local.get 0))
+      (call $d (call $n (local.get 1)))
+      (call $v)))
+  (core instance $bindings
+    (export "r" (func $e "r"))
+    (export "v" (func $e "v"))
+    (export "n" (func $new))
+    (export "d" (func $drop)))
+  (core instance $driver (instantiate $D (with "i" (instance $bindings))))
+  (func (export "run") (param "x" u32) (param "y" u32) (result u32)
+    (canon lift (core func $driver "run"))))

@@ -1,0 +1,11 @@
+# 条件合成のfuncref tableへの拡張（実装前）
+
+2026-10-24。memory版を公式集合へ適用した際の未対応50対中44対はtable/global除外によるものだった。等式条件の同じ原理がtable.init/copy/fillとelem.dropにも適用できるかを検査する。別発明の件数には加えない。
+
+元function indexを参照定数とし、nullと相異なる自前function referenceを区別する。tableの各slotは初期slot変数又は参照定数になる。memoryのbyte変数とは異なる位置/値の符号を用い、異なるsort間のcopyを許さない。関数を実行して同一性を推測する手順は使わない。閉じたmoduleで外部参照を注入しない前提を維持する。
+
+最大1memory・4funcref table、固定した最小宣言容量、globals/imports/startなし。元APIは定数bulk memory/tableとdropの列、任意i32単一byte読取り、または副作用なしの単一numeric定数返却のみ。間接call、動的address、loopは未対応。1操作128slot/byte以下、有限footprint上限256、state対1024/固定点1024の上限を維持する。
+
+memory版の解析器は変更せず、同じ等式正規化を共有する別generatorにする。自作のnull/参照交換/overlap table.copy、multi-table、0長/範囲外、trap前書込みの対照を先に実Wasmで確認する。その後、同じ公式67状態対へ適用する。Nodeの関数identityによる元table検査を用いる。Wasmtimeで同じ参照identityのoracleを実装できない場合は、追試範囲を過大に主張しない。
+
+生成した条件の十分性を別のarray式で検査し、条件を弱める対照も含める。memory版と共通する入力では条件が一致することを確認する。分類器の適用率が上がっても新原理の成立とはせず、proof/profileの差を文書化する。

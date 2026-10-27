@@ -1,0 +1,895 @@
+{
+  "rows": [
+    {
+      "name": "interleave-reenter",
+      "source": "interleave.wasm",
+      "left": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "right": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "legacyGuard": [],
+      "proof": {
+        "status": "impossible",
+        "guard": null,
+        "contract": "public",
+        "observedResources": [
+          1
+        ],
+        "iterations": 4,
+        "states": [
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              true,
+              false,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ],
+              [
+                [
+                  "l",
+                  8589934592
+                ],
+                [
+                  "r",
+                  8589934592
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "guard": null
+          }
+        ],
+        "cells": [
+          4294967296,
+          8589934592,
+          8589934593
+        ],
+        "resources": {
+          "1": {
+            "kind": "table",
+            "index": 0,
+            "length": 1
+          },
+          "2": {
+            "kind": "table",
+            "index": 1,
+            "length": 2
+          }
+        },
+        "functions": 6,
+        "protocol": "reenter",
+        "hostWrites": "public-footprint",
+        "writableCells": [
+          4294967296
+        ],
+        "foreignReference": 263,
+        "lengthMetric": "guest call or bulk host assignment, each costs one"
+      },
+      "witness": {
+        "steps": [
+          {
+            "kind": "call",
+            "name": "arm",
+            "args": []
+          },
+          {
+            "kind": "write",
+            "cells": [
+              [
+                4294967296,
+                256
+              ]
+            ]
+          },
+          {
+            "kind": "call",
+            "name": "publish",
+            "args": []
+          }
+        ],
+        "shortestLength": 3,
+        "guestCalls": 2,
+        "hostWrites": 1
+      },
+      "word": [
+        {
+          "kind": "call",
+          "name": "arm",
+          "args": []
+        },
+        {
+          "kind": "write",
+          "cells": [
+            [
+              4294967296,
+              256
+            ]
+          ]
+        },
+        {
+          "kind": "call",
+          "name": "publish",
+          "args": []
+        }
+      ],
+      "difference": 3,
+      "trace": [
+        {
+          "kind": "call",
+          "outcomes": [
+            [
+              "trap"
+            ],
+            [
+              "trap"
+            ]
+          ],
+          "public": [
+            101,
+            101
+          ]
+        },
+        {
+          "kind": "write",
+          "outcomes": [
+            [
+              "write"
+            ],
+            [
+              "write"
+            ]
+          ],
+          "public": [
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "call",
+          "outcomes": [
+            [
+              "trap"
+            ],
+            [
+              "trap"
+            ]
+          ],
+          "public": [
+            101,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "name": "interleave-terminal",
+      "source": "interleave.wasm",
+      "left": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "right": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "legacyGuard": [],
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "public",
+        "observedResources": [
+          1
+        ],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              true,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ],
+              [
+                [
+                  "l",
+                  8589934592
+                ],
+                [
+                  "r",
+                  8589934592
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ],
+              [
+                [
+                  "l",
+                  8589934592
+                ],
+                [
+                  "r",
+                  8589934592
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "guard": null
+          }
+        ],
+        "cells": [
+          4294967296,
+          8589934592,
+          8589934593
+        ],
+        "resources": {
+          "1": {
+            "kind": "table",
+            "index": 0,
+            "length": 1
+          },
+          "2": {
+            "kind": "table",
+            "index": 1,
+            "length": 2
+          }
+        },
+        "functions": 6,
+        "protocol": "terminal",
+        "hostWrites": "public-footprint",
+        "writableCells": [
+          4294967296
+        ],
+        "foreignReference": 263,
+        "lengthMetric": "guest call or bulk host assignment, each costs one"
+      },
+      "witness": null,
+      "word": [
+        {
+          "kind": "call",
+          "name": "arm",
+          "args": []
+        },
+        {
+          "kind": "write",
+          "cells": [
+            [
+              4294967296,
+              256
+            ]
+          ]
+        },
+        {
+          "kind": "call",
+          "name": "publish",
+          "args": []
+        }
+      ],
+      "difference": null,
+      "trace": [
+        {
+          "kind": "call",
+          "outcomes": [
+            [
+              "trap"
+            ],
+            [
+              "trap"
+            ]
+          ],
+          "public": [
+            101,
+            101
+          ]
+        }
+      ]
+    },
+    {
+      "name": "repair-reenter",
+      "source": "repair.wasm",
+      "left": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "right": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "legacyGuard": [],
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "public",
+        "observedResources": [
+          1
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              true,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          4294967296,
+          8589934592,
+          8589934593
+        ],
+        "resources": {
+          "1": {
+            "kind": "table",
+            "index": 0,
+            "length": 1
+          },
+          "2": {
+            "kind": "table",
+            "index": 1,
+            "length": 2
+          }
+        },
+        "functions": 6,
+        "protocol": "reenter",
+        "hostWrites": "public-footprint",
+        "writableCells": [
+          4294967296
+        ],
+        "foreignReference": 263,
+        "lengthMetric": "guest call or bulk host assignment, each costs one"
+      },
+      "witness": null,
+      "word": [
+        {
+          "kind": "call",
+          "name": "arm",
+          "args": []
+        },
+        {
+          "kind": "write",
+          "cells": [
+            [
+              4294967296,
+              256
+            ]
+          ]
+        },
+        {
+          "kind": "call",
+          "name": "publish",
+          "args": []
+        }
+      ],
+      "difference": null,
+      "trace": [
+        {
+          "kind": "call",
+          "outcomes": [
+            [
+              "trap"
+            ],
+            [
+              "trap"
+            ]
+          ],
+          "public": [
+            101,
+            101
+          ]
+        },
+        {
+          "kind": "write",
+          "outcomes": [
+            [
+              "write"
+            ],
+            [
+              "write"
+            ]
+          ],
+          "public": [
+            null,
+            null
+          ]
+        },
+        {
+          "kind": "call",
+          "outcomes": [
+            [
+              "trap"
+            ],
+            [
+              "trap"
+            ]
+          ],
+          "public": [
+            null,
+            null
+          ]
+        }
+      ]
+    },
+    {
+      "name": "repair-terminal",
+      "source": "repair.wasm",
+      "left": [
+        false,
+        true,
+        false,
+        false,
+        false
+      ],
+      "right": [
+        true,
+        true,
+        false,
+        false,
+        false
+      ],
+      "legacyGuard": [],
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "public",
+        "observedResources": [
+          1
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              true,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              true,
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  4294967296
+                ],
+                [
+                  "r",
+                  4294967296
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          4294967296,
+          8589934592,
+          8589934593
+        ],
+        "resources": {
+          "1": {
+            "kind": "table",
+            "index": 0,
+            "length": 1
+          },
+          "2": {
+            "kind": "table",
+            "index": 1,
+            "length": 2
+          }
+        },
+        "functions": 6,
+        "protocol": "terminal",
+        "hostWrites": "public-footprint",
+        "writableCells": [
+          4294967296
+        ],
+        "foreignReference": 263,
+        "lengthMetric": "guest call or bulk host assignment, each costs one"
+      },
+      "witness": null,
+      "word": [
+        {
+          "kind": "call",
+          "name": "arm",
+          "args": []
+        },
+        {
+          "kind": "write",
+          "cells": [
+            [
+              4294967296,
+              256
+            ]
+          ]
+        },
+        {
+          "kind": "call",
+          "name": "publish",
+          "args": []
+        }
+      ],
+      "difference": null,
+      "trace": [
+        {
+          "kind": "call",
+          "outcomes": [
+            [
+              "trap"
+            ],
+            [
+              "trap"
+            ]
+          ],
+          "public": [
+            101,
+            101
+          ]
+        }
+      ]
+    }
+  ],
+  "apiCalls": 12,
+  "preparationApiCalls": 8,
+  "cellWrites": 4
+}

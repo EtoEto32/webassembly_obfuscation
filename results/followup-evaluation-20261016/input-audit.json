@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "plan_sha256": "c2604dbd0f782cfabdedae3d894c39db69aa69ce4150da34a6d54e31b27695a2",
+  "measurement_sha256": "663717cfdac3ed81db8bb683e6596505bca373a9a703f6c8003ad3b890c1bf04",
+  "audited_run": "results/followup-evaluation-20261016/runs/input-diagnostic-17d5dd4803304d40b16c07fb221a2747",
+  "target_public_checks": 15,
+  "length_argument_checks": 27,
+  "history_checks": 81,
+  "tail_checks": 6,
+  "boundary_checks": 6,
+  "reference_public_checks": 8,
+  "reference_effective_input_checks": 16,
+  "unique_effective_inputs_with_webminerpool_reference": 14,
+  "observed_contract": "The existing SWAMPED entry processes the first 76 buffer bytes regardless of its fourth argument. Short-input history is reproduced by effective-buffer contents.",
+  "impact": "Published 76-byte vector checks remain valid for the three tested binaries. Earlier extra short/long inputs were differential probes of this fixed-width entry, not independent arbitrary-length CryptoNight validation.",
+  "limitations": [
+    "Reference implementations share algorithm/source lineage; agreement is not a formal proof.",
+    "No claim about every SWAMPED binary or variant 1/2.",
+    "No whole-module equivalence proof or new throughput measurement in this diagnostic."
+  ]
+}

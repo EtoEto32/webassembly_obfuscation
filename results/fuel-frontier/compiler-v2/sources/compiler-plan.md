@@ -1,0 +1,13 @@
+# コンパイラ出力への適用率
+
+2026-10-24、audit-v1後に固定。自作WAT以外へ適用できるかを調べる。
+
+no_std Rustの3自作関数をopt-level 0/2/sでobjectへコンパイルし、runだけをexportするWasmへlinkする。rawと、Binaryenの通常O3/不要要素除去後を別に評価する。限定解析器の未対応を解析失敗・tool crashと混同しない。
+
+コードは整数のmix、branchをまたぐstage、classifyを模した小例であり、第三者の実アプリではない。markerは同期の定数通知。独立なRustではなくPythonの数式oracleとNode実行を比較する。変換受理時だけ全予算のtrace試験を行う。受理率が低い場合は都合の良いsourceへ書換えず、制限と失敗構文を記録する。
+
+rawに未使用memory/globalがあるだけで拒否される場合、標準optimizerによる削除後の適用率を併記する。元exportの削除や手作業での制御フロー改造は行わない。
+
+## v1後の限定的な適用条件変更
+
+v1は18/18がmodule sectionの制限で未対応。linkerが未使用memoryをexportし、通常O3も公開exportを残すためだった。v2ではmemory/globalの宣言とexportを保持したまま変換できるようにする。関数内でそれらにアクセスする命令は引き続き拒否する。初期化費用と呼出し外のmemory操作をこのfuel契約が制限するとは主張しない。sourceは変更しない。

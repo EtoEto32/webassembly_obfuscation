@@ -1,0 +1,703 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "rows": [
+    {
+      "name": "retained",
+      "kind": "plain",
+      "status": "executed",
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "continuous": {
+        "value": null
+      },
+      "continuousValue": 23,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1,
+        "stopRequested": false
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 11,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 12,
+          "probe": null,
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 22,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 23,
+          "probe": null,
+          "matches": true
+        },
+        {
+          "stopAt": 2,
+          "status": "requested-checkpoint-not-reached",
+          "firstOutcome": {
+            "value": null
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "retained",
+      "kind": "observed",
+      "status": "executed",
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "continuous": {
+        "value": null
+      },
+      "continuousValue": 23,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1,
+        "stopRequested": false
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 11,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 12,
+          "probe": {
+            "source": {
+              "value": null
+            },
+            "resumed": {
+              "value": null
+            }
+          },
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 22,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 23,
+          "probe": {
+            "source": {
+              "value": null
+            },
+            "resumed": {
+              "value": null
+            }
+          },
+          "matches": true
+        },
+        {
+          "stopAt": 2,
+          "status": "requested-checkpoint-not-reached",
+          "firstOutcome": {
+            "value": null
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "dropped",
+      "kind": "plain",
+      "status": "executed",
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "continuous": {
+        "trap": true
+      },
+      "continuousValue": 22,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1,
+        "stopRequested": false
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 11,
+          "secondOutcome": {
+            "trap": true
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 11,
+          "probe": null,
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 22,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 23,
+          "probe": null,
+          "matches": false
+        },
+        {
+          "stopAt": 2,
+          "status": "requested-checkpoint-not-reached",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "dropped",
+      "kind": "observed",
+      "status": "executed",
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "continuous": {
+        "trap": true
+      },
+      "continuousValue": 22,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1,
+        "stopRequested": false
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 11,
+          "secondOutcome": {
+            "trap": true
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 11,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "trap": true
+            }
+          },
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 22,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 23,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "value": null
+            }
+          },
+          "matches": false
+        },
+        {
+          "stopAt": 2,
+          "status": "requested-checkpoint-not-reached",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "empty-dropped",
+      "kind": "plain",
+      "status": "executed",
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "continuous": {
+        "value": null
+      },
+      "continuousValue": 23,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1,
+        "stopRequested": false
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 11,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 12,
+          "probe": null,
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 22,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 23,
+          "probe": null,
+          "matches": true
+        },
+        {
+          "stopAt": 2,
+          "status": "requested-checkpoint-not-reached",
+          "firstOutcome": {
+            "value": null
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "empty-dropped",
+      "kind": "observed",
+      "status": "executed",
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "continuous": {
+        "value": null
+      },
+      "continuousValue": 23,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1,
+        "stopRequested": false
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 11,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 12,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "trap": true
+            }
+          },
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 22,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 23,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "trap": true
+            }
+          },
+          "matches": true
+        },
+        {
+          "stopAt": 2,
+          "status": "requested-checkpoint-not-reached",
+          "firstOutcome": {
+            "value": null
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "active",
+      "kind": "plain",
+      "status": "executed",
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "continuous": {
+        "trap": true
+      },
+      "continuousValue": 22,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1,
+        "stopRequested": false
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 11,
+          "secondOutcome": {
+            "trap": true
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 11,
+          "probe": null,
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 22,
+          "secondOutcome": {
+            "trap": true
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 22,
+          "probe": null,
+          "matches": true
+        },
+        {
+          "stopAt": 2,
+          "status": "requested-checkpoint-not-reached",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": false
+          }
+        }
+      ]
+    },
+    {
+      "name": "active",
+      "kind": "observed",
+      "status": "executed",
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "continuous": {
+        "trap": true
+      },
+      "continuousValue": 22,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1,
+        "stopRequested": false
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 11,
+          "secondOutcome": {
+            "trap": true
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 11,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "trap": true
+            }
+          },
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "status": "checkpoint-restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": true
+          },
+          "sourceValue": 22,
+          "secondOutcome": {
+            "trap": true
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1,
+            "stopRequested": false
+          },
+          "resumedValue": 22,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "trap": true
+            }
+          },
+          "matches": true
+        },
+        {
+          "stopAt": 2,
+          "status": "requested-checkpoint-not-reached",
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1,
+            "stopRequested": false
+          }
+        }
+      ]
+    }
+  ],
+  "note": "Local host adapter; not a reproduction of the complete published evaluation. Inspect continuous control before interpreting migration differences."
+}

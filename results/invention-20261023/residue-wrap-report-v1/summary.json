@@ -1,0 +1,385 @@
+{
+  "node_calls": 101208,
+  "node_mismatches": 0,
+  "node_traps": 0,
+  "negative_conditions": [
+    {
+      "file": "add-odd-raw.wasm",
+      "calls": 4217,
+      "traps": 0,
+      "mismatches": 2062,
+      "witness": {
+        "args": [
+          2147483647,
+          4294967294
+        ],
+        "expected": 2147483645,
+        "actual": 2147221498,
+        "trap": false
+      }
+    },
+    {
+      "file": "add-odd-O3.wasm",
+      "calls": 4217,
+      "traps": 0,
+      "mismatches": 2062,
+      "witness": {
+        "args": [
+          2147483647,
+          4294967294
+        ],
+        "expected": 2147483645,
+        "actual": 2147221498,
+        "trap": false
+      }
+    },
+    {
+      "file": "multiply-odd-raw.wasm",
+      "calls": 4217,
+      "traps": 0,
+      "mismatches": 4151,
+      "witness": {
+        "args": [
+          2,
+          4294967294
+        ],
+        "expected": 4294967292,
+        "actual": 4294705145,
+        "trap": false
+      }
+    },
+    {
+      "file": "multiply-odd-O3.wasm",
+      "calls": 4217,
+      "traps": 0,
+      "mismatches": 4151,
+      "witness": {
+        "args": [
+          2,
+          4294967294
+        ],
+        "expected": 4294967292,
+        "actual": 4294705145,
+        "trap": false
+      }
+    },
+    {
+      "file": "polynomial-odd-raw.wasm",
+      "calls": 4217,
+      "traps": 0,
+      "mismatches": 4206,
+      "witness": {
+        "args": [
+          0,
+          2
+        ],
+        "expected": 1013904276,
+        "actual": 1013642129,
+        "trap": false
+      }
+    },
+    {
+      "file": "polynomial-odd-O3.wasm",
+      "calls": 4217,
+      "traps": 0,
+      "mismatches": 4206,
+      "witness": {
+        "args": [
+          0,
+          2
+        ],
+        "expected": 1013904276,
+        "actual": 1013642129,
+        "trap": false
+      }
+    }
+  ],
+  "positive_conditions": 24,
+  "interpreter_positive_calls": 192,
+  "interpreter_negative_calls": 48,
+  "interpreter_regression_calls": 16,
+  "rejected": 8,
+  "byte_replays": 30,
+  "recovered_byte_identity": 6,
+  "small_model_cases": 524256,
+  "lemmas": [
+    {
+      "name": "add",
+      "status": "unsat",
+      "ms": 0.6532999999999678
+    },
+    {
+      "name": "sub",
+      "status": "unsat",
+      "ms": 0.06290000000008789
+    },
+    {
+      "name": "mul",
+      "status": "unsat",
+      "ms": 0.05860000000001975
+    },
+    {
+      "name": "rem_word",
+      "status": "unsat",
+      "ms": 0.05869999999996711
+    },
+    {
+      "name": "and_mask",
+      "status": "unsat",
+      "ms": 0.055299999999980365
+    },
+    {
+      "name": "shift32",
+      "status": "unsat",
+      "ms": 0.058900000000083885
+    }
+  ],
+  "witness": {
+    "a": 4294967295,
+    "b": 4294967295,
+    "expected": 4294967294,
+    "actual": 4294705147,
+    "M": 4295229443
+  },
+  "runtime": [
+    {
+      "name": "add",
+      "mode": "plain",
+      "file": "add-plain-bench.wasm",
+      "core_bytes": 41,
+      "linear_memory_bytes": 0,
+      "median_ns": 1.0833024978637695,
+      "min_ns": 1.0548800230026245,
+      "max_ns": 1.1087566614151,
+      "process_medians": [
+        1.0858356952667236,
+        1.0639846324920654,
+        1.096227765083313
+      ],
+      "max_rss_kib": 35868,
+      "time_ratio": 1.0,
+      "size_ratio": 1.0
+    },
+    {
+      "name": "add",
+      "mode": "repair",
+      "file": "add-repair-bench.wasm",
+      "core_bytes": 188,
+      "linear_memory_bytes": 0,
+      "median_ns": 7.51194953918457,
+      "min_ns": 7.409334182739258,
+      "max_ns": 7.701730728149415,
+      "process_medians": [
+        7.473492622375488,
+        7.51194953918457,
+        7.519125938415527
+      ],
+      "max_rss_kib": 36140,
+      "time_ratio": 6.9343046415916545,
+      "size_ratio": 4.585365853658536
+    },
+    {
+      "name": "add",
+      "mode": "aligned",
+      "file": "add-aligned-bench.wasm",
+      "core_bytes": 115,
+      "linear_memory_bytes": 0,
+      "median_ns": 2.987039089202881,
+      "min_ns": 2.8811097145080566,
+      "max_ns": 3.1086087226867676,
+      "process_medians": [
+        3.0170559883117676,
+        2.987039089202881,
+        2.96323299407959
+      ],
+      "max_rss_kib": 36024,
+      "time_ratio": 2.7573453352994255,
+      "size_ratio": 2.8048780487804876
+    },
+    {
+      "name": "add",
+      "mode": "recovered",
+      "file": "add-recovered-bench.wasm",
+      "core_bytes": 41,
+      "linear_memory_bytes": 0,
+      "median_ns": 1.0885030031204224,
+      "min_ns": 1.0507732629776,
+      "max_ns": 1.1172860860824585,
+      "process_medians": [
+        1.0962694883346558,
+        1.0688215494155884,
+        1.0945111513137817
+      ],
+      "max_rss_kib": 35856,
+      "time_ratio": 1.0048006030327707,
+      "size_ratio": 1.0
+    },
+    {
+      "name": "multiply",
+      "mode": "plain",
+      "file": "multiply-plain-bench.wasm",
+      "core_bytes": 41,
+      "linear_memory_bytes": 0,
+      "median_ns": 0.9659171104431152,
+      "min_ns": 0.9543806314468383,
+      "max_ns": 1.0105758905410767,
+      "process_medians": [
+        0.9649574756622314,
+        0.968506932258606,
+        0.9678393602371215
+      ],
+      "max_rss_kib": 35776,
+      "time_ratio": 1.0,
+      "size_ratio": 1.0
+    },
+    {
+      "name": "multiply",
+      "mode": "repair",
+      "file": "multiply-repair-bench.wasm",
+      "core_bytes": 188,
+      "linear_memory_bytes": 0,
+      "median_ns": 7.7149152755737305,
+      "min_ns": 7.557201385498047,
+      "max_ns": 8.564543724060059,
+      "process_medians": [
+        7.760572433471679,
+        7.693219184875487,
+        7.706904411315918
+      ],
+      "max_rss_kib": 36244,
+      "time_ratio": 7.9871400891061,
+      "size_ratio": 4.585365853658536
+    },
+    {
+      "name": "multiply",
+      "mode": "aligned",
+      "file": "multiply-aligned-bench.wasm",
+      "core_bytes": 115,
+      "linear_memory_bytes": 0,
+      "median_ns": 3.0921459197998047,
+      "min_ns": 3.009819984436035,
+      "max_ns": 4.409325122833252,
+      "process_medians": [
+        3.192579746246338,
+        3.083682060241699,
+        3.084385395050049
+      ],
+      "max_rss_kib": 35892,
+      "time_ratio": 3.201253903019981,
+      "size_ratio": 2.8048780487804876
+    },
+    {
+      "name": "multiply",
+      "mode": "recovered",
+      "file": "multiply-recovered-bench.wasm",
+      "core_bytes": 41,
+      "linear_memory_bytes": 0,
+      "median_ns": 0.9913355112075806,
+      "min_ns": 0.9562224149703981,
+      "max_ns": 1.0152697563171387,
+      "process_medians": [
+        0.990411639213562,
+        1.0037004947662354,
+        0.9967386722564697
+      ],
+      "max_rss_kib": 35872,
+      "time_ratio": 1.0263153023066385,
+      "size_ratio": 1.0
+    },
+    {
+      "name": "polynomial",
+      "mode": "plain",
+      "file": "polynomial-plain-bench.wasm",
+      "core_bytes": 57,
+      "linear_memory_bytes": 0,
+      "median_ns": 1.281493902206421,
+      "min_ns": 1.2427568435668945,
+      "max_ns": 1.3260066509246826,
+      "process_medians": [
+        1.2680351734161377,
+        1.3048529624938965,
+        1.281493902206421
+      ],
+      "max_rss_kib": 35980,
+      "time_ratio": 1.0,
+      "size_ratio": 1.0
+    },
+    {
+      "name": "polynomial",
+      "mode": "repair",
+      "file": "polynomial-repair-bench.wasm",
+      "core_bytes": 466,
+      "linear_memory_bytes": 0,
+      "median_ns": 19.536972045898438,
+      "min_ns": 19.44570541381836,
+      "max_ns": 20.90444564819336,
+      "process_medians": [
+        19.547653198242188,
+        19.71759796142578,
+        19.5281982421875
+      ],
+      "max_rss_kib": 36108,
+      "time_ratio": 15.245466257982596,
+      "size_ratio": 8.175438596491228
+    },
+    {
+      "name": "polynomial",
+      "mode": "aligned",
+      "file": "polynomial-aligned-bench.wasm",
+      "core_bytes": 215,
+      "linear_memory_bytes": 0,
+      "median_ns": 5.913972854614258,
+      "min_ns": 5.631303787231445,
+      "max_ns": 6.656217575073242,
+      "process_medians": [
+        5.685138702392578,
+        5.994820594787598,
+        5.945134162902832
+      ],
+      "max_rss_kib": 36068,
+      "time_ratio": 4.614905185605514,
+      "size_ratio": 3.7719298245614037
+    },
+    {
+      "name": "polynomial",
+      "mode": "recovered",
+      "file": "polynomial-recovered-bench.wasm",
+      "core_bytes": 57,
+      "linear_memory_bytes": 0,
+      "median_ns": 1.2769699096679688,
+      "min_ns": 1.2353360652923584,
+      "max_ns": 1.3342738151550293,
+      "process_medians": [
+        1.2772202491760254,
+        1.248258352279663,
+        1.2769699096679688
+      ],
+      "max_rss_kib": 35856,
+      "time_ratio": 0.9964697510220978,
+      "size_ratio": 1.0
+    }
+  ],
+  "processes": 36,
+  "batches": 252,
+  "wrapper_checks": {
+    "calls": 144,
+    "mismatches": 0
+  },
+  "under_10ms": 0,
+  "transform_ms": {
+    "min": 35.799400000000034,
+    "median": 36.57370000000002,
+    "max": 38.63650000000002
+  },
+  "recovery_ms": {
+    "min": 36.56300000000001,
+    "median": 38.25164999999997,
+    "max": 39.4544
+  },
+  "attack_status": {
+    "success": 6,
+    "unsupported": 0,
+    "crash": 0,
+    "timeout": 0
+  }
+}

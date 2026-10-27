@@ -1,0 +1,11 @@
+# 復元変換と関数参照observerの合成（実行前）
+
+2026-10-24。full observerは元関数へのexportとtable.getのJS identityを比較する。Weaveはexportをwrapperへ置換するので、この対応が破れる可能性がある。これを復元不具合と誤診しないため、小さいmoduleで先に検査する。
+
+比較する構成は(1)元Kのdirect exports、(2)各元関数について`ref.func`を返す追加getterから対応表を作る方式。後者は既知の参照directoryの別表現であり、新規アルゴリズムとは主張しない。元API、table内容、segment挙動は変えず、getter呼出し中に元関数を実行しない。Wasm validationが要求する関数宣言は既存のK exportsで満たす。
+
+まず恒等参照、異なる関数、同じ関数の複数slot、null、間接呼出しを含む小例を変換する。init後のtable観測と元API結果を確認し、getter方式が受理される場合は中断/復元でも観測用cloneと実行用cloneを分けて比較する。追加observerのwrapperがmetadataを変更する問題は引き続き存在する。物理memory全体の非破壊性を主張しない。
+
+成功しても新規性の根拠は増えない。復元実装の不具合と検査器の合成失敗を区別するための実験である。実アプリへの適用は小例の結果を記録してから別段階で行う。
+
+初回結果：fullの`__sw_ref`とgetterはfuncref result signatureを追加するため、Weaveの対応範囲外として拒否された。wrapper identityの仮説を実行できたわけではない。次はnumeric observerへtable/memory exportsを追加し、hostのTable.getを使う。対応表はdirect exports対照と、元関数を並べた追加のprivate tableで比較する。後者は追加table/active elementのコストと、復元変換が追加tableまで正しく扱うという依存を持つ。独立した新原理には数えない。

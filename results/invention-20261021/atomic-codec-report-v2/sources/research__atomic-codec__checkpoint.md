@@ -1,0 +1,15 @@
+# 再開地点 2026-10-21
+
+前turnはユーザーへの過去成果説明で、新案の状態を変えなかった。本turnはatomic codecの設計、実binary変換器、制限の証明と列挙、逐次・worker実験、回復、性能、別engine、再現、先行技術比較を作成したprogress。実行中のprocess/sessionはない。
+
+主結果はatomic-codec-main-v1。negativeの2 bad-andと2 bad-splitは正条件へ数えない。bad-splitは逐次試験で通るが並列ticketで取りこぼした。concurrency.cjsはその後、raceが観測されないscheduleを異常終了にしないよう変更した。変換器・正条件・判定規則は変えていない。新しい結果を捏造せずv1記録のまま保持する。
+
+prototypeへ追加したauto経路はselection-v1で既存native版とのbyte一致を確認。旧manifestにrequested_modeがないことは履歴であり、byte同一性・実行結果は影響を受けない。report-v2に最終source snapshotとpinsを保存する。
+
+report-v1はselect.pyがPython標準selectを隠し、環境情報取得で誤って選択スクリプトをimportして中断した。既存出力拒否により実験ディレクトリは変更されなかった。失敗sourceと理由をv1へ保存し、choose_codec.pyへ改名した。これは集計の不備で、保護効果や解析器失敗ではない。
+
+判断：単一native RMWへ閉じる生成規則は実装できたが、既知codec・既知選択方針に近く、二点回復を妨げない。主案に不採用。制限の導出は量化範囲を限定した設計知見で、初出や一般的な不可能性と主張しない。有限環残差方式の限定採用は維持する。
+
+次の作業で、係数・幅・worker数だけを変えた同案の反復を新発明として数えない。この方向を再開するには固定一命令/単一cell/全入力のいずれを変えるかと、それによる実際の新規性・保護効果の仮説が必要。今回の成果だけで研究全体のgoalをcompleteにしない。
+
+利用枠は本turn開始時使用36%、残64%。課金・push・公開・出願なし。CPU名のCIM読取は権限制約で失敗し、計測環境にはplatform/environment identifierを保存する。これを実験の失敗や解析耐性としない。

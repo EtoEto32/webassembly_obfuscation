@@ -1,0 +1,7 @@
+# A生成器: 型が増えた場合のbinding適合性
+
+2026-10-24。固定6 variantでの成功を一般のWITに外挿しない。recordのkebab-case名、入れ子のoption、listとvariantを組み合わせた別schemaを公式Jcoの型出力・実際のlift結果と照合する。JcoはJS表現へ変換するため、WITの文字列名やoption構文をそのまま使えるとは仮定しない。
+
+最初に旧生成器のbyteを保存して再現可能な不一致を記録し、その後に必要な修正を行う。Jcoの実Component importへ到達する値と、生成器とは別に書いた依存oracleで比較する。none/some-none/some-some、list長0/1/2/8、alias有無、片側の権限取消しを含める。故障を修正した場合は元のschemaの受付とファイル試験も再実行する。
+
+この試験はbinding generatorの正当性と失敗条件の評価であり、それ自体を発明・新規安全原理と数えない。

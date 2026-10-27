@@ -1,0 +1,1506 @@
+--- WebAssembly code ---
+name: wasm-function[0]
+index: 0
+kind: wasm function
+compiler: TurboFan
+Body (size = 128 = 80 + 48 padding)
+Instructions (size = 64)
+00000034F2B119C0     0  55                   push rbp
+00000034F2B119C1     1  4889e5               REX.W movq rbp,rsp
+00000034F2B119C4     4  6a08                 push 0x8
+00000034F2B119C6     6  56                   push rsi
+00000034F2B119C7     7  4883ec18             REX.W subq rsp,0x18
+00000034F2B119CB     b  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B119CF     f  0f860a000000         jna 00000034F2B119DF  <+0x1f>
+00000034F2B119D5    15  e876f6ffff           call 00000034F2B11050  (jump table)
+00000034F2B119DA    1a  488be5               REX.W movq rsp,rbp
+00000034F2B119DD    1d  5d                   pop rbp
+00000034F2B119DE    1e  c3                   retl
+00000034F2B119DF    1f  488945e8             REX.W movq [rbp-0x18],rax
+00000034F2B119E3    23  488955e0             REX.W movq [rbp-0x20],rdx
+00000034F2B119E7    27  48894dd8             REX.W movq [rbp-0x28],rcx
+00000034F2B119EB    2b  e860f9ffff           call 00000034F2B11350  (jump table)
+00000034F2B119F0    30  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B119F4    34  8b45e8               movl rax,[rbp-0x18]
+00000034F2B119F7    37  8b55e0               movl rdx,[rbp-0x20]
+00000034F2B119FA    3a  8b4dd8               movl rcx,[rbp-0x28]
+00000034F2B119FD    3d  ebd6                 jmp 00000034F2B119D5  <+0x15>
+00000034F2B119FF    3f  90                   nop
+
+Source positions:
+ pc offset  position
+        15         7
+        1f         0
+
+Safepoints (stack slots = 7, entries = 1, byte size = 14)
+00000034F2B119DA     1a  slots (sp->fp): 0000000
+
+RelocInfo (size = 3)
+00000034F2B119D6  internal wasm call
+00000034F2B119EC  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[8]
+index: 8
+kind: wasm function
+compiler: TurboFan
+Body (size = 320 = 312 + 8 padding)
+Instructions (size = 300)
+00000034F2B11A40     0  55                   push rbp
+00000034F2B11A41     1  4889e5               REX.W movq rbp,rsp
+00000034F2B11A44     4  6a08                 push 0x8
+00000034F2B11A46     6  56                   push rsi
+00000034F2B11A47     7  488b5e1f             REX.W movq rbx,[rsi+0x1f]
+00000034F2B11A4B     b  49ba0b0a0e0006070d02 REX.W movq r10,020D0706000E0A0B
+00000034F2B11A55    15  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B11A5A    1a  49ba09030f050804010c REX.W movq r10,0C010408050F0309
+00000034F2B11A64    24  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B11A6A    2a  8bd0                 movl rdx,rax
+00000034F2B11A6C    2c  0fb61c13             movzxbl rbx,[rbx+rdx*1]
+00000034F2B11A70    30  49baded6237b2ed91e3f REX.W movq r10,3F1ED92E7B23D6DE
+00000034F2B11A7A    3a  c4c1f96eca           vmovq xmm1,r10
+00000034F2B11A7F    3f  49ba721fcb1971174494 REX.W movq r10,9444177119CB1F72
+00000034F2B11A89    49  c4c3f122ca01         vpinsrq xmm1,xmm1,r10,0x1
+00000034F2B11A8F    4f  c5796ef8             vmovd xmm15,rax
+00000034F2B11A93    53  c4c27978d7           vpbroadcastb xmm2,xmm15
+00000034F2B11A98    58  49ba0f0f0f0f0f0f0f0f REX.W movq r10,0F0F0F0F0F0F0F0F
+00000034F2B11AA2    62  c4c1f96eda           vmovq xmm3,r10
+00000034F2B11AA7    67  c5e16cdb             vpunpcklqdq xmm3,xmm3,xmm3
+00000034F2B11AAB    6b  c5e9dbd3             vpand xmm2,xmm2,xmm3
+00000034F2B11AAF    6f  49baf0333953f77f0000 REX.W movq r10,00007FF7533933F0
+00000034F2B11AB9    79  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B11ABE    7e  c4c27100cf           vpshufb xmm1,xmm1,xmm15
+00000034F2B11AC3    83  c4e37914ca00         vpextrb dl,xmm1,0x0
+00000034F2B11AC9    89  33d3                 xorl rdx,rbx
+00000034F2B11ACB    8b  c5796efa             vmovd xmm15,rdx
+00000034F2B11ACF    8f  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B11AD4    94  4c8b15bfffffff       REX.W movq r10,[rip+0xffffffbf]
+00000034F2B11ADB    9b  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11AE0    a0  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B11AE4    a4  c5f1dbd2             vpand xmm2,xmm1,xmm2
+00000034F2B11AE8    a8  4c8b15c2ffffff       REX.W movq r10,[rip+0xffffffc2]
+00000034F2B11AEF    af  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B11AF4    b4  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B11AF9    b9  4c8b154dffffff       REX.W movq r10,[rip+0xffffff4d]
+00000034F2B11B00    c0  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11B05    c5  4c8b1550ffffff       REX.W movq r10,[rip+0xffffff50]
+00000034F2B11B0C    cc  c4c3e922d201         vpinsrq xmm2,xmm2,r10,0x1
+00000034F2B11B12    d2  c5f171d104           vpsrlw xmm1,xmm1,4
+00000034F2B11B17    d7  41ba0f0f0f0f         movl r10,000000000F0F0F0F
+00000034F2B11B1D    dd  c441796efa           vmovd xmm15,r10
+00000034F2B11B22    e2  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B11B28    e8  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B11B2D    ed  4c8b157dffffff       REX.W movq r10,[rip+0xffffff7d]
+00000034F2B11B34    f4  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B11B39    f9  c4c26900cf           vpshufb xmm1,xmm2,xmm15
+00000034F2B11B3E    fe  c5f171f104           vpsllw xmm1,xmm1,4
+00000034F2B11B43   103  41baf0f0f0f0         movl r10,00000000F0F0F0F0
+00000034F2B11B49   109  c441796efa           vmovd xmm15,r10
+00000034F2B11B4E   10e  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B11B54   114  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B11B59   119  c5f9ebc1             vpor xmm0,xmm0,xmm1
+00000034F2B11B5D   11d  c4e37914c000         vpextrb al,xmm0,0x0
+00000034F2B11B63   123  488be5               REX.W movq rsp,rbp
+00000034F2B11B66   126  5d                   pop rbp
+00000034F2B11B67   127  c3                   retl
+00000034F2B11B68   128  90                   nop
+00000034F2B11B69   129  0f1f00               nop
+
+Protected instructions:
+ pc offset
+        2c         
+
+Source positions:
+ pc offset  position
+        2c        23
+
+Safepoints (stack slots = 4, entries = 0, byte size = 12)
+
+RelocInfo (size = 4)
+00000034F2B11AB1  external reference (00007FF7533933F0)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[5]
+index: 5
+kind: wasm function
+compiler: TurboFan
+Body (size = 128 = 104 + 24 padding)
+Instructions (size = 88)
+00000034F2B11B80     0  55                   push rbp
+00000034F2B11B81     1  4889e5               REX.W movq rbp,rsp
+00000034F2B11B84     4  6a08                 push 0x8
+00000034F2B11B86     6  56                   push rsi
+00000034F2B11B87     7  4883ec20             REX.W subq rsp,0x20
+00000034F2B11B8B     b  488945e8             REX.W movq [rbp-0x18],rax
+00000034F2B11B8F     f  488955e0             REX.W movq [rbp-0x20],rdx
+00000034F2B11B93    13  48894dd8             REX.W movq [rbp-0x28],rcx
+00000034F2B11B97    17  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B11B9B    1b  0f8623000000         jna 00000034F2B11BC4  <+0x44>
+00000034F2B11BA1    21  8bd3                 movl rdx,rbx
+00000034F2B11BA3    23  33c0                 xorl rax,rax
+00000034F2B11BA5    25  488bf8               REX.W movq rdi,rax
+00000034F2B11BA8    28  e89bf4ffff           call 00000034F2B11048  (jump table)
+00000034F2B11BAD    2d  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B11BB1    31  8b45e8               movl rax,[rbp-0x18]
+00000034F2B11BB4    34  8b55e0               movl rdx,[rbp-0x20]
+00000034F2B11BB7    37  8b4dd8               movl rcx,[rbp-0x28]
+00000034F2B11BBA    3a  e891f4ffff           call 00000034F2B11050  (jump table)
+00000034F2B11BBF    3f  488be5               REX.W movq rsp,rbp
+00000034F2B11BC2    42  5d                   pop rbp
+00000034F2B11BC3    43  c3                   retl
+00000034F2B11BC4    44  48895dd0             REX.W movq [rbp-0x30],rbx
+00000034F2B11BC8    48  e883f7ffff           call 00000034F2B11350  (jump table)
+00000034F2B11BCD    4d  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B11BD1    51  8b5dd0               movl rbx,[rbp-0x30]
+00000034F2B11BD4    54  ebcb                 jmp 00000034F2B11BA1  <+0x21>
+00000034F2B11BD6    56  90                   nop
+00000034F2B11BD7    57  90                   nop
+
+Source positions:
+ pc offset  position
+        21         5
+        2d        13
+        44         0
+
+Safepoints (stack slots = 8, entries = 1, byte size = 14)
+00000034F2B11BAD     2d  slots (sp->fp): 00000000
+
+RelocInfo (size = 5)
+00000034F2B11BA9  internal wasm call
+00000034F2B11BBB  internal wasm call
+00000034F2B11BC9  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[10]
+index: 10
+kind: wasm function
+compiler: TurboFan
+Body (size = 1472 = 1460 + 12 padding)
+Instructions (size = 1444)
+00000034F2B11C00     0  55                   push rbp
+00000034F2B11C01     1  4889e5               REX.W movq rbp,rsp
+00000034F2B11C04     4  6a08                 push 0x8
+00000034F2B11C06     6  56                   push rsi
+00000034F2B11C07     7  4883ec40             REX.W subq rsp,0x40
+00000034F2B11C0B     b  488b5e1f             REX.W movq rbx,[rsi+0x1f]
+00000034F2B11C0F     f  488945d0             REX.W movq [rbp-0x30],rax
+00000034F2B11C13    13  488955d8             REX.W movq [rbp-0x28],rdx
+00000034F2B11C17    17  48894dc8             REX.W movq [rbp-0x38],rcx
+00000034F2B11C1B    1b  48895de0             REX.W movq [rbp-0x20],rbx
+00000034F2B11C1F    1f  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B11C23    23  0f861e050000         jna 00000034F2B12147  <+0x547>
+00000034F2B11C29    29  448bc8               movl r9,rax
+00000034F2B11C2C    2c  8bfa                 movl rdi,rdx
+00000034F2B11C2E    2e  448bd9               movl r11,rcx
+00000034F2B11C31    31  4989e2               REX.W movq r10,rsp
+00000034F2B11C34    34  4883ec38             REX.W subq rsp,0x38
+00000034F2B11C38    38  4883e4f0             REX.W andq rsp,0xf0
+00000034F2B11C3C    3c  4c89542430           REX.W movq [rsp+0x30],r10
+00000034F2B11C41    41  48897c2420           REX.W movq [rsp+0x20],rdi
+00000034F2B11C46    46  4c895c2428           REX.W movq [rsp+0x28],r11
+00000034F2B11C4B    4b  33d2                 xorl rdx,rdx
+00000034F2B11C4D    4d  488bce               REX.W movq rcx,rsi
+00000034F2B11C50    50  488bfa               REX.W movq rdi,rdx
+00000034F2B11C53    53  4c8bc2               REX.W movq r8,rdx
+00000034F2B11C56    56  48b8e0bfcb50f77f0000 REX.W movq rax,00007FF750CBBFE0
+00000034F2B11C60    60  4c8d1510000000       REX.W leaq r10,[rip+0x10]
+00000034F2B11C67    67  4d8995a0000000       REX.W movq [r13+0xa0],r10
+00000034F2B11C6E    6e  4989ada8000000       REX.W movq [r13+0xa8],rbp
+00000034F2B11C75    75  ffd0                 call rax
+00000034F2B11C77    77  49c785a800000000000000 REX.W movq [r13+0xa8],0x0
+00000034F2B11C82    82  488b642430           REX.W movq rsp,[rsp+0x30]
+00000034F2B11C87    87  85c0                 testl rax,rax
+00000034F2B11C89    89  0f840d050000         jz 00000034F2B1219C  <+0x59c>
+00000034F2B11C8F    8f  49baded6237b2ed91e3f REX.W movq r10,3F1ED92E7B23D6DE
+00000034F2B11C99    99  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B11C9E    9e  49ba721fcb1971174494 REX.W movq r10,9444177119CB1F72
+00000034F2B11CA8    a8  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B11CAE    ae  c4e279784dd8         vpbroadcastb xmm1,[rbp-0x28]
+00000034F2B11CB4    b4  49ba0001020304050607 REX.W movq r10,0706050403020100
+00000034F2B11CBE    be  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11CC3    c3  49ba08090a0b0c0d0e0f REX.W movq r10,0F0E0D0C0B0A0908
+00000034F2B11CCD    cd  c4c3e922d201         vpinsrq xmm2,xmm2,r10,0x1
+00000034F2B11CD3    d3  c5f1fcca             vpaddb xmm1,xmm1,xmm2
+00000034F2B11CD7    d7  49ba0f0f0f0f0f0f0f0f REX.W movq r10,0F0F0F0F0F0F0F0F
+00000034F2B11CE1    e1  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11CE6    e6  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B11CEA    ea  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B11CEE    ee  49baf0333953f77f0000 REX.W movq r10,00007FF7533933F0
+00000034F2B11CF8    f8  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B11CFD    fd  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B11D02   102  4c8b1588ffffff       REX.W movq r10,[rip+0xffffff88]
+00000034F2B11D09   109  c4c1f96eca           vmovq xmm1,r10
+00000034F2B11D0E   10e  4c8b158bffffff       REX.W movq r10,[rip+0xffffff8b]
+00000034F2B11D15   115  c4c3f122ca01         vpinsrq xmm1,xmm1,r10,0x1
+00000034F2B11D1B   11b  c4e2797855d0         vpbroadcastb xmm2,[rbp-0x30]
+00000034F2B11D21   121  4c8b158effffff       REX.W movq r10,[rip+0xffffff8e]
+00000034F2B11D28   128  c4c1f96eda           vmovq xmm3,r10
+00000034F2B11D2D   12d  4c8b1591ffffff       REX.W movq r10,[rip+0xffffff91]
+00000034F2B11D34   134  c4c3e122da01         vpinsrq xmm3,xmm3,r10,0x1
+00000034F2B11D3A   13a  c5e9fcd3             vpaddb xmm2,xmm2,xmm3
+00000034F2B11D3E   13e  4c8b1594ffffff       REX.W movq r10,[rip+0xffffff94]
+00000034F2B11D45   145  c4c1f96eda           vmovq xmm3,r10
+00000034F2B11D4A   14a  c5e16cdb             vpunpcklqdq xmm3,xmm3,xmm3
+00000034F2B11D4E   14e  c5e9dbd3             vpand xmm2,xmm2,xmm3
+00000034F2B11D52   152  4c8b1597ffffff       REX.W movq r10,[rip+0xffffff97]
+00000034F2B11D59   159  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B11D5E   15e  c4c27100cf           vpshufb xmm1,xmm1,xmm15
+00000034F2B11D63   163  c5f9efc1             vpxor xmm0,xmm0,xmm1
+00000034F2B11D67   167  33ff                 xorl rdi,rdi
+00000034F2B11D69   169  488b5de0             REX.W movq rbx,[rbp-0x20]
+00000034F2B11D6D   16d  8b45d0               movl rax,[rbp-0x30]
+00000034F2B11D70   170  e91f000000           jmp 00000034F2B11D94  <+0x194>
+00000034F2B11D75   175  660f1f840000000000   nop
+00000034F2B11D7E   17e  6690                 nop
+00000034F2B11D80   180  8d3407               leal rsi,[rdi+rax*1]
+00000034F2B11D83   183  c5fa6f0c33           vmovdqu xmm1,[rbx+rsi*1]
+00000034F2B11D88   188  c5f1efc8             vpxor xmm1,xmm1,xmm0
+00000034F2B11D8C   18c  c5fa7f0c33           vmovdqu [rbx+rsi*1],xmm1
+00000034F2B11D91   191  83c710               addl rdi,0x10
+00000034F2B11D94   194  8b75c8               movl rsi,[rbp-0x38]
+00000034F2B11D97   197  2bf7                 subl rsi,rdi
+00000034F2B11D99   199  83fe10               cmpl rsi,0x10
+00000034F2B11D9C   19c  0f8270000000         jc 00000034F2B11E12  <+0x212>
+00000034F2B11DA2   1a2  8d3407               leal rsi,[rdi+rax*1]
+00000034F2B11DA5   1a5  c5fa6f0c33           vmovdqu xmm1,[rbx+rsi*1]
+00000034F2B11DAA   1aa  c5f1efc8             vpxor xmm1,xmm1,xmm0
+00000034F2B11DAE   1ae  c5fa7f0c33           vmovdqu [rbx+rsi*1],xmm1
+00000034F2B11DB3   1b3  83c710               addl rdi,0x10
+00000034F2B11DB6   1b6  8b75c8               movl rsi,[rbp-0x38]
+00000034F2B11DB9   1b9  2bf7                 subl rsi,rdi
+00000034F2B11DBB   1bb  83fe10               cmpl rsi,0x10
+00000034F2B11DBE   1be  0f824e000000         jc 00000034F2B11E12  <+0x212>
+00000034F2B11DC4   1c4  8d3407               leal rsi,[rdi+rax*1]
+00000034F2B11DC7   1c7  c5fa6f0c33           vmovdqu xmm1,[rbx+rsi*1]
+00000034F2B11DCC   1cc  c5f1efc8             vpxor xmm1,xmm1,xmm0
+00000034F2B11DD0   1d0  c5fa7f0c33           vmovdqu [rbx+rsi*1],xmm1
+00000034F2B11DD5   1d5  83c710               addl rdi,0x10
+00000034F2B11DD8   1d8  8b75c8               movl rsi,[rbp-0x38]
+00000034F2B11DDB   1db  2bf7                 subl rsi,rdi
+00000034F2B11DDD   1dd  83fe10               cmpl rsi,0x10
+00000034F2B11DE0   1e0  0f822c000000         jc 00000034F2B11E12  <+0x212>
+00000034F2B11DE6   1e6  8d3407               leal rsi,[rdi+rax*1]
+00000034F2B11DE9   1e9  c5fa6f0c33           vmovdqu xmm1,[rbx+rsi*1]
+00000034F2B11DEE   1ee  c5f1efc8             vpxor xmm1,xmm1,xmm0
+00000034F2B11DF2   1f2  c5fa7f0c33           vmovdqu [rbx+rsi*1],xmm1
+00000034F2B11DF7   1f7  83c710               addl rdi,0x10
+00000034F2B11DFA   1fa  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B11DFE   1fe  0f865a030000         jna 00000034F2B1215E  <+0x55e>
+00000034F2B11E04   204  8b75c8               movl rsi,[rbp-0x38]
+00000034F2B11E07   207  2bf7                 subl rsi,rdi
+00000034F2B11E09   209  83fe10               cmpl rsi,0x10
+00000034F2B11E0C   20c  0f836effffff         jnc 00000034F2B11D80  <+0x180>
+00000034F2B11E12   212  8b75c8               movl rsi,[rbp-0x38]
+00000034F2B11E15   215  448b5dd8             movl r11,[rbp-0x28]
+00000034F2B11E19   219  e9d8000000           jmp 00000034F2B11EF6  <+0x2f6>
+00000034F2B11E1E   21e  660f1f840000000000   nop
+00000034F2B11E27   227  660f1f840000000000   nop
+00000034F2B11E30   230  660f1f840000000000   nop
+00000034F2B11E39   239  0f1f8000000000       nop
+00000034F2B11E40   240  448d2407             leal r12,[rdi+rax*1]
+00000034F2B11E44   244  460fb63c23           movzxbl r15,[rbx+r12*1]
+00000034F2B11E49   249  4c8b1541feffff       REX.W movq r10,[rip+0xfffffe41]
+00000034F2B11E50   250  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B11E55   255  4c8b1544feffff       REX.W movq r10,[rip+0xfffffe44]
+00000034F2B11E5C   25c  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B11E62   262  468d341f             leal r14,[rdi+r11*1]
+00000034F2B11E66   266  c441796efe           vmovd xmm15,r14
+00000034F2B11E6B   26b  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B11E70   270  4c8b1562feffff       REX.W movq r10,[rip+0xfffffe62]
+00000034F2B11E77   277  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11E7C   27c  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B11E80   280  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B11E84   284  4c8b1565feffff       REX.W movq r10,[rip+0xfffffe65]
+00000034F2B11E8B   28b  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B11E90   290  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B11E95   295  c4c37914c600         vpextrb r14l,xmm0,0x0
+00000034F2B11E9B   29b  4c8b15effdffff       REX.W movq r10,[rip+0xfffffdef]
+00000034F2B11EA2   2a2  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B11EA7   2a7  4c8b15f2fdffff       REX.W movq r10,[rip+0xfffffdf2]
+00000034F2B11EAE   2ae  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B11EB4   2b4  c441796efc           vmovd xmm15,r12
+00000034F2B11EB9   2b9  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B11EBE   2be  4c8b1514feffff       REX.W movq r10,[rip+0xfffffe14]
+00000034F2B11EC5   2c5  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11ECA   2ca  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B11ECE   2ce  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B11ED2   2d2  4c8b1517feffff       REX.W movq r10,[rip+0xfffffe17]
+00000034F2B11ED9   2d9  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B11EDE   2de  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B11EE3   2e3  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B11EE9   2e9  4133d6               xorl rdx,r14
+00000034F2B11EEC   2ec  4133d7               xorl rdx,r15
+00000034F2B11EEF   2ef  42881423             movb [rbx+r12*1],dl
+00000034F2B11EF3   2f3  83c701               addl rdi,0x1
+00000034F2B11EF6   2f6  3bf7                 cmpl rsi,rdi
+00000034F2B11EF8   2f8  0f8444020000         jz 00000034F2B12142  <+0x542>
+00000034F2B11EFE   2fe  448d2407             leal r12,[rdi+rax*1]
+00000034F2B11F02   302  460fb63c23           movzxbl r15,[rbx+r12*1]
+00000034F2B11F07   307  4c8b1583fdffff       REX.W movq r10,[rip+0xfffffd83]
+00000034F2B11F0E   30e  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B11F13   313  4c8b1586fdffff       REX.W movq r10,[rip+0xfffffd86]
+00000034F2B11F1A   31a  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B11F20   320  468d341f             leal r14,[rdi+r11*1]
+00000034F2B11F24   324  c441796efe           vmovd xmm15,r14
+00000034F2B11F29   329  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B11F2E   32e  4c8b15a4fdffff       REX.W movq r10,[rip+0xfffffda4]
+00000034F2B11F35   335  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11F3A   33a  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B11F3E   33e  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B11F42   342  4c8b15a7fdffff       REX.W movq r10,[rip+0xfffffda7]
+00000034F2B11F49   349  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B11F4E   34e  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B11F53   353  c4c37914c600         vpextrb r14l,xmm0,0x0
+00000034F2B11F59   359  4c8b1531fdffff       REX.W movq r10,[rip+0xfffffd31]
+00000034F2B11F60   360  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B11F65   365  4c8b1534fdffff       REX.W movq r10,[rip+0xfffffd34]
+00000034F2B11F6C   36c  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B11F72   372  c441796efc           vmovd xmm15,r12
+00000034F2B11F77   377  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B11F7C   37c  4c8b1556fdffff       REX.W movq r10,[rip+0xfffffd56]
+00000034F2B11F83   383  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11F88   388  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B11F8C   38c  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B11F90   390  4c8b1559fdffff       REX.W movq r10,[rip+0xfffffd59]
+00000034F2B11F97   397  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B11F9C   39c  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B11FA1   3a1  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B11FA7   3a7  4133d6               xorl rdx,r14
+00000034F2B11FAA   3aa  4133d7               xorl rdx,r15
+00000034F2B11FAD   3ad  42881423             movb [rbx+r12*1],dl
+00000034F2B11FB1   3b1  83c701               addl rdi,0x1
+00000034F2B11FB4   3b4  3bf7                 cmpl rsi,rdi
+00000034F2B11FB6   3b6  0f8486010000         jz 00000034F2B12142  <+0x542>
+00000034F2B11FBC   3bc  448d2407             leal r12,[rdi+rax*1]
+00000034F2B11FC0   3c0  460fb63c23           movzxbl r15,[rbx+r12*1]
+00000034F2B11FC5   3c5  4c8b15c5fcffff       REX.W movq r10,[rip+0xfffffcc5]
+00000034F2B11FCC   3cc  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B11FD1   3d1  4c8b15c8fcffff       REX.W movq r10,[rip+0xfffffcc8]
+00000034F2B11FD8   3d8  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B11FDE   3de  468d341f             leal r14,[rdi+r11*1]
+00000034F2B11FE2   3e2  c441796efe           vmovd xmm15,r14
+00000034F2B11FE7   3e7  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B11FEC   3ec  4c8b15e6fcffff       REX.W movq r10,[rip+0xfffffce6]
+00000034F2B11FF3   3f3  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B11FF8   3f8  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B11FFC   3fc  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12000   400  4c8b15e9fcffff       REX.W movq r10,[rip+0xfffffce9]
+00000034F2B12007   407  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B1200C   40c  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12011   411  c4c37914c600         vpextrb r14l,xmm0,0x0
+00000034F2B12017   417  4c8b1573fcffff       REX.W movq r10,[rip+0xfffffc73]
+00000034F2B1201E   41e  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12023   423  4c8b1576fcffff       REX.W movq r10,[rip+0xfffffc76]
+00000034F2B1202A   42a  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12030   430  c441796efc           vmovd xmm15,r12
+00000034F2B12035   435  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B1203A   43a  4c8b1598fcffff       REX.W movq r10,[rip+0xfffffc98]
+00000034F2B12041   441  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12046   446  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B1204A   44a  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B1204E   44e  4c8b159bfcffff       REX.W movq r10,[rip+0xfffffc9b]
+00000034F2B12055   455  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B1205A   45a  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B1205F   45f  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12065   465  4133d6               xorl rdx,r14
+00000034F2B12068   468  4133d7               xorl rdx,r15
+00000034F2B1206B   46b  42881423             movb [rbx+r12*1],dl
+00000034F2B1206F   46f  83c701               addl rdi,0x1
+00000034F2B12072   472  3bf7                 cmpl rsi,rdi
+00000034F2B12074   474  0f84c8000000         jz 00000034F2B12142  <+0x542>
+00000034F2B1207A   47a  448d2407             leal r12,[rdi+rax*1]
+00000034F2B1207E   47e  460fb63c23           movzxbl r15,[rbx+r12*1]
+00000034F2B12083   483  4c8b1507fcffff       REX.W movq r10,[rip+0xfffffc07]
+00000034F2B1208A   48a  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B1208F   48f  4c8b150afcffff       REX.W movq r10,[rip+0xfffffc0a]
+00000034F2B12096   496  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B1209C   49c  468d341f             leal r14,[rdi+r11*1]
+00000034F2B120A0   4a0  c441796efe           vmovd xmm15,r14
+00000034F2B120A5   4a5  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B120AA   4aa  4c8b1528fcffff       REX.W movq r10,[rip+0xfffffc28]
+00000034F2B120B1   4b1  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B120B6   4b6  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B120BA   4ba  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B120BE   4be  4c8b152bfcffff       REX.W movq r10,[rip+0xfffffc2b]
+00000034F2B120C5   4c5  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B120CA   4ca  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B120CF   4cf  c4c37914c600         vpextrb r14l,xmm0,0x0
+00000034F2B120D5   4d5  4c8b15b5fbffff       REX.W movq r10,[rip+0xfffffbb5]
+00000034F2B120DC   4dc  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B120E1   4e1  4c8b15b8fbffff       REX.W movq r10,[rip+0xfffffbb8]
+00000034F2B120E8   4e8  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B120EE   4ee  c441796efc           vmovd xmm15,r12
+00000034F2B120F3   4f3  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B120F8   4f8  4c8b15dafbffff       REX.W movq r10,[rip+0xfffffbda]
+00000034F2B120FF   4ff  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12104   504  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12108   508  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B1210C   50c  4c8b15ddfbffff       REX.W movq r10,[rip+0xfffffbdd]
+00000034F2B12113   513  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12118   518  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B1211D   51d  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12123   523  4133d6               xorl rdx,r14
+00000034F2B12126   526  4133d7               xorl rdx,r15
+00000034F2B12129   529  42881423             movb [rbx+r12*1],dl
+00000034F2B1212D   52d  83c701               addl rdi,0x1
+00000034F2B12130   530  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B12134   534  0f8646000000         jna 00000034F2B12180  <+0x580>
+00000034F2B1213A   53a  3bf7                 cmpl rsi,rdi
+00000034F2B1213C   53c  0f85fefcffff         jnz 00000034F2B11E40  <+0x240>
+00000034F2B12142   542  488be5               REX.W movq rsp,rbp
+00000034F2B12145   545  5d                   pop rbp
+00000034F2B12146   546  c3                   retl
+00000034F2B12147   547  e804f2ffff           call 00000034F2B11350  (jump table)
+00000034F2B1214C   54c  8b55d8               movl rdx,[rbp-0x28]
+00000034F2B1214F   54f  8b45d0               movl rax,[rbp-0x30]
+00000034F2B12152   552  8b4dc8               movl rcx,[rbp-0x38]
+00000034F2B12155   555  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12159   559  e9cbfaffff           jmp 00000034F2B11C29  <+0x29>
+00000034F2B1215E   55e  48897de8             REX.W movq [rbp-0x18],rdi
+00000034F2B12162   562  c5f81145b0           vmovups [rbp-0x50],xmm0
+00000034F2B12167   567  e8e4f1ffff           call 00000034F2B11350  (jump table)
+00000034F2B1216C   56c  488b5de0             REX.W movq rbx,[rbp-0x20]
+00000034F2B12170   570  8b45d0               movl rax,[rbp-0x30]
+00000034F2B12173   573  8b7de8               movl rdi,[rbp-0x18]
+00000034F2B12176   576  c5f81045b0           vmovups xmm0,[rbp-0x50]
+00000034F2B1217B   57b  e984fcffff           jmp 00000034F2B11E04  <+0x204>
+00000034F2B12180   580  48897de8             REX.W movq [rbp-0x18],rdi
+00000034F2B12184   584  e8c7f1ffff           call 00000034F2B11350  (jump table)
+00000034F2B12189   589  8b7de8               movl rdi,[rbp-0x18]
+00000034F2B1218C   58c  488b5de0             REX.W movq rbx,[rbp-0x20]
+00000034F2B12190   590  448b5dd8             movl r11,[rbp-0x28]
+00000034F2B12194   594  8b45d0               movl rax,[rbp-0x30]
+00000034F2B12197   597  8b75c8               movl rsi,[rbp-0x38]
+00000034F2B1219A   59a  eb9e                 jmp 00000034F2B1213A  <+0x53a>
+00000034F2B1219C   59c  e8efeeffff           call 00000034F2B11090  (jump table)
+00000034F2B121A1   5a1  90                   nop
+00000034F2B121A2   5a2  6690                 nop
+
+Protected instructions:
+ pc offset
+       183         
+       18c         
+       1a5         
+       1ae         
+       1c7         
+       1d0         
+       1e9         
+       1f2         
+       244         
+       2ef         
+       302         
+       3ad         
+       3c0         
+       46b         
+       47e         
+       529         
+
+Source positions:
+ pc offset  position
+        31        11
+       183       169
+       18c       177
+       1a5       169
+       1ae       177
+       1c7       169
+       1d0       177
+       1e9       169
+       1f2       177
+       244       211
+       2ef       313
+       302       211
+       3ad       313
+       3c0       211
+       46b       313
+       47e       211
+       529       313
+       547         0
+       55e       147
+       580       192
+       59c        11
+
+Safepoints (stack slots = 12, entries = 1, byte size = 15)
+00000034F2B11C77     77  slots (sp->fp): 000000000000
+
+RelocInfo (size = 14)
+00000034F2B11C58  external reference (00007FF750CBBFE0)
+00000034F2B11CF0  external reference (00007FF7533933F0)
+00000034F2B12148  wasm stub call  (00000034F2B11350)
+00000034F2B12168  wasm stub call  (00000034F2B11350)
+00000034F2B12185  wasm stub call  (00000034F2B11350)
+00000034F2B1219D  wasm stub call  (00000034F2B11090)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[6]
+index: 6
+kind: wasm function
+compiler: TurboFan
+Body (size = 128 = 72 + 56 padding)
+Instructions (size = 56)
+00000034F2B121C0     0  55                   push rbp
+00000034F2B121C1     1  4889e5               REX.W movq rbp,rsp
+00000034F2B121C4     4  6a08                 push 0x8
+00000034F2B121C6     6  56                   push rsi
+00000034F2B121C7     7  4883ec08             REX.W subq rsp,0x8
+00000034F2B121CB     b  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B121CF     f  0f860d000000         jna 00000034F2B121E2  <+0x22>
+00000034F2B121D5    15  e866eeffff           call 00000034F2B11040  (jump table)
+00000034F2B121DA    1a  0fbec0               movsxbl rax,rax
+00000034F2B121DD    1d  488be5               REX.W movq rsp,rbp
+00000034F2B121E0    20  5d                   pop rbp
+00000034F2B121E1    21  c3                   retl
+00000034F2B121E2    22  488945e8             REX.W movq [rbp-0x18],rax
+00000034F2B121E6    26  e865f1ffff           call 00000034F2B11350  (jump table)
+00000034F2B121EB    2b  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B121EF    2f  8b45e8               movl rax,[rbp-0x18]
+00000034F2B121F2    32  ebe1                 jmp 00000034F2B121D5  <+0x15>
+00000034F2B121F4    34  90                   nop
+00000034F2B121F5    35  0f1f00               nop
+
+Source positions:
+ pc offset  position
+        15         3
+        22         0
+
+Safepoints (stack slots = 5, entries = 1, byte size = 14)
+00000034F2B121DA     1a  slots (sp->fp): 00000
+
+RelocInfo (size = 3)
+00000034F2B121D6  internal wasm call
+00000034F2B121E7  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[9]
+index: 9
+kind: wasm function
+compiler: TurboFan
+Body (size = 320 = 308 + 12 padding)
+Instructions (size = 296)
+00000034F2B12240     0  55                   push rbp
+00000034F2B12241     1  4889e5               REX.W movq rbp,rsp
+00000034F2B12244     4  6a08                 push 0x8
+00000034F2B12246     6  56                   push rsi
+00000034F2B12247     7  488b5e1f             REX.W movq rbx,[rsi+0x1f]
+00000034F2B1224B     b  49ba030e07090d0b0405 REX.W movq r10,05040B0D09070E03
+00000034F2B12255    15  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B1225A    1a  49ba0c0801000f06020a REX.W movq r10,0A02060F0001080C
+00000034F2B12264    24  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B1226A    2a  c5796efa             vmovd xmm15,rdx
+00000034F2B1226E    2e  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12273    33  49ba0f0f0f0f0f0f0f0f REX.W movq r10,0F0F0F0F0F0F0F0F
+00000034F2B1227D    3d  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12282    42  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12286    46  c5f1dbd2             vpand xmm2,xmm1,xmm2
+00000034F2B1228A    4a  49baf0333953f77f0000 REX.W movq r10,00007FF7533933F0
+00000034F2B12294    54  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B12299    59  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B1229E    5e  4c8b15a8ffffff       REX.W movq r10,[rip+0xffffffa8]
+00000034F2B122A5    65  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B122AA    6a  4c8b15abffffff       REX.W movq r10,[rip+0xffffffab]
+00000034F2B122B1    71  c4c3e922d201         vpinsrq xmm2,xmm2,r10,0x1
+00000034F2B122B7    77  c5f171d104           vpsrlw xmm1,xmm1,4
+00000034F2B122BC    7c  41ba0f0f0f0f         movl r10,000000000F0F0F0F
+00000034F2B122C2    82  c441796efa           vmovd xmm15,r10
+00000034F2B122C7    87  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B122CD    8d  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B122D2    92  4c8b15b3ffffff       REX.W movq r10,[rip+0xffffffb3]
+00000034F2B122D9    99  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B122DE    9e  c4c26900cf           vpshufb xmm1,xmm2,xmm15
+00000034F2B122E3    a3  c5f171f104           vpsllw xmm1,xmm1,4
+00000034F2B122E8    a8  41baf0f0f0f0         movl r10,00000000F0F0F0F0
+00000034F2B122EE    ae  c441796efa           vmovd xmm15,r10
+00000034F2B122F3    b3  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B122F9    b9  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B122FE    be  c5f9ebc1             vpor xmm0,xmm0,xmm1
+00000034F2B12302    c2  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12308    c8  49baded6237b2ed91e3f REX.W movq r10,3F1ED92E7B23D6DE
+00000034F2B12312    d2  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12317    d7  49ba721fcb1971174494 REX.W movq r10,9444177119CB1F72
+00000034F2B12321    e1  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12327    e7  c5796ef8             vmovd xmm15,rax
+00000034F2B1232B    eb  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12330    f0  4c8b153effffff       REX.W movq r10,[rip+0xffffff3e]
+00000034F2B12337    f7  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B1233C    fc  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12340   100  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12344   104  4c8b1541ffffff       REX.W movq r10,[rip+0xffffff41]
+00000034F2B1234B   10b  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12350   110  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12355   115  c4e37914c100         vpextrb cl,xmm0,0x0
+00000034F2B1235B   11b  33ca                 xorl rcx,rdx
+00000034F2B1235D   11d  8bc0                 movl rax,rax
+00000034F2B1235F   11f  880c03               movb [rbx+rax*1],cl
+00000034F2B12362   122  488be5               REX.W movq rsp,rbp
+00000034F2B12365   125  5d                   pop rbp
+00000034F2B12366   126  c3                   retl
+00000034F2B12367   127  90                   nop
+
+Protected instructions:
+ pc offset
+       11f         
+
+Source positions:
+ pc offset  position
+       11f       134
+
+Safepoints (stack slots = 4, entries = 0, byte size = 12)
+
+RelocInfo (size = 4)
+00000034F2B1228C  external reference (00007FF7533933F0)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[4]
+index: 4
+kind: wasm function
+compiler: TurboFan
+Body (size = 448 = 412 + 36 padding)
+Instructions (size = 396)
+00000034F2B12380     0  55                   push rbp
+00000034F2B12381     1  4889e5               REX.W movq rbp,rsp
+00000034F2B12384     4  6a08                 push 0x8
+00000034F2B12386     6  56                   push rsi
+00000034F2B12387     7  4883ec20             REX.W subq rsp,0x20
+00000034F2B1238B     b  488b5e1f             REX.W movq rbx,[rsi+0x1f]
+00000034F2B1238F     f  488945d0             REX.W movq [rbp-0x30],rax
+00000034F2B12393    13  48894de0             REX.W movq [rbp-0x20],rcx
+00000034F2B12397    17  48895de8             REX.W movq [rbp-0x18],rbx
+00000034F2B1239B    1b  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B1239F    1f  0f8647010000         jna 00000034F2B124EC  <+0x16c>
+00000034F2B123A5    25  85d2                 testl rdx,rdx
+00000034F2B123A7    27  0f8505000000         jnz 00000034F2B123B2  <+0x32>
+00000034F2B123AD    2d  488be5               REX.W movq rsp,rbp
+00000034F2B123B0    30  5d                   pop rbp
+00000034F2B123B1    31  c3                   retl
+00000034F2B123B2    32  8d7801               leal rdi,[rax+0x1]
+00000034F2B123B5    35  448d42ff             leal r8,[rdx-0x1]
+00000034F2B123B9    39  4c8945d8             REX.W movq [rbp-0x28],r8
+00000034F2B123BD    3d  8bd7                 movl rdx,rdi
+00000034F2B123BF    3f  418bc8               movl rcx,r8
+00000034F2B123C2    42  e889ecffff           call 00000034F2B11050  (jump table)
+00000034F2B123C7    47  8b5dd8               movl rbx,[rbp-0x28]
+00000034F2B123CA    4a  8b7dd0               movl rdi,[rbp-0x30]
+00000034F2B123CD    4d  03df                 addl rbx,rdi
+00000034F2B123CF    4f  49ba030e07090d0b0405 REX.W movq r10,05040B0D09070E03
+00000034F2B123D9    59  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B123DE    5e  49ba0c0801000f06020a REX.W movq r10,0A02060F0001080C
+00000034F2B123E8    68  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B123EE    6e  c4e279784de0         vpbroadcastb xmm1,[rbp-0x20]
+00000034F2B123F4    74  49ba0f0f0f0f0f0f0f0f REX.W movq r10,0F0F0F0F0F0F0F0F
+00000034F2B123FE    7e  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12403    83  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12407    87  c5f1dbd2             vpand xmm2,xmm1,xmm2
+00000034F2B1240B    8b  49baf0333953f77f0000 REX.W movq r10,00007FF7533933F0
+00000034F2B12415    95  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B1241A    9a  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B1241F    9f  4c8b15abffffff       REX.W movq r10,[rip+0xffffffab]
+00000034F2B12426    a6  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B1242B    ab  4c8b15aeffffff       REX.W movq r10,[rip+0xffffffae]
+00000034F2B12432    b2  c4c3e922d201         vpinsrq xmm2,xmm2,r10,0x1
+00000034F2B12438    b8  c5f171d104           vpsrlw xmm1,xmm1,4
+00000034F2B1243D    bd  41ba0f0f0f0f         movl r10,000000000F0F0F0F
+00000034F2B12443    c3  c441796efa           vmovd xmm15,r10
+00000034F2B12448    c8  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B1244E    ce  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B12453    d3  4c8b15b3ffffff       REX.W movq r10,[rip+0xffffffb3]
+00000034F2B1245A    da  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B1245F    df  c4c26900cf           vpshufb xmm1,xmm2,xmm15
+00000034F2B12464    e4  c5f171f104           vpsllw xmm1,xmm1,4
+00000034F2B12469    e9  41baf0f0f0f0         movl r10,00000000F0F0F0F0
+00000034F2B1246F    ef  c441796efa           vmovd xmm15,r10
+00000034F2B12474    f4  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B1247A    fa  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B1247F    ff  c5f9ebc1             vpor xmm0,xmm0,xmm1
+00000034F2B12483   103  c4e37914c700         vpextrb dil,xmm0,0x0
+00000034F2B12489   109  49baded6237b2ed91e3f REX.W movq r10,3F1ED92E7B23D6DE
+00000034F2B12493   113  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12498   118  49ba721fcb1971174494 REX.W movq r10,9444177119CB1F72
+00000034F2B124A2   122  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B124A8   128  c5796efb             vmovd xmm15,rbx
+00000034F2B124AC   12c  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B124B1   131  4c8b153effffff       REX.W movq r10,[rip+0xffffff3e]
+00000034F2B124B8   138  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B124BD   13d  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B124C1   141  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B124C5   145  4c8b1541ffffff       REX.W movq r10,[rip+0xffffff41]
+00000034F2B124CC   14c  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B124D1   151  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B124D6   156  c4c37914c000         vpextrb r8l,xmm0,0x0
+00000034F2B124DC   15c  4433c7               xorl r8,rdi
+00000034F2B124DF   15f  488b7de8             REX.W movq rdi,[rbp-0x18]
+00000034F2B124E3   163  4488041f             movb [rdi+rbx*1],r8l
+00000034F2B124E7   167  488be5               REX.W movq rsp,rbp
+00000034F2B124EA   16a  5d                   pop rbp
+00000034F2B124EB   16b  c3                   retl
+00000034F2B124EC   16c  488955d8             REX.W movq [rbp-0x28],rdx
+00000034F2B124F0   170  e85beeffff           call 00000034F2B11350  (jump table)
+00000034F2B124F5   175  488b5de8             REX.W movq rbx,[rbp-0x18]
+00000034F2B124F9   179  8b4de0               movl rcx,[rbp-0x20]
+00000034F2B124FC   17c  8b45d0               movl rax,[rbp-0x30]
+00000034F2B124FF   17f  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12503   183  8b55d8               movl rdx,[rbp-0x28]
+00000034F2B12506   186  e99afeffff           jmp 00000034F2B123A5  <+0x25>
+00000034F2B1250B   18b  90                   nop
+
+Protected instructions:
+ pc offset
+       163         
+
+Source positions:
+ pc offset  position
+        39        22
+       15f       134
+       16c         0
+
+Safepoints (stack slots = 8, entries = 1, byte size = 14)
+00000034F2B123C7     47  slots (sp->fp): 00000000
+
+RelocInfo (size = 11)
+00000034F2B123C3  internal wasm call
+00000034F2B1240D  external reference (00007FF7533933F0)
+00000034F2B124F1  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[3]
+index: 3
+kind: wasm function
+compiler: TurboFan
+Body (size = 1344 = 1308 + 36 padding)
+Instructions (size = 1292)
+00000034F2B12540     0  55                   push rbp
+00000034F2B12541     1  4889e5               REX.W movq rbp,rsp
+00000034F2B12544     4  6a08                 push 0x8
+00000034F2B12546     6  56                   push rsi
+00000034F2B12547     7  4883ec18             REX.W subq rsp,0x18
+00000034F2B1254B     b  488b5e1f             REX.W movq rbx,[rsi+0x1f]
+00000034F2B1254F     f  33d2                 xorl rdx,rdx
+00000034F2B12551    11  e953010000           jmp 00000034F2B126A9  <+0x169>
+00000034F2B12556    16  660f1f840000000000   nop
+00000034F2B1255F    1f  660f1f840000000000   nop
+00000034F2B12568    28  660f1f840000000000   nop
+00000034F2B12571    31  660f1f840000000000   nop
+00000034F2B1257A    3a  660f1f440000         nop
+00000034F2B12580    40  69c00d661900         imull rax,rax,0x19660d
+00000034F2B12586    46  055ff36e3c           add rax,0x3c6ef35f
+00000034F2B1258B    4b  8bc8                 movl rcx,rax
+00000034F2B1258D    4d  c1e918               shrl rcx, 24
+00000034F2B12590    50  49ba030e07090d0b0405 REX.W movq r10,05040B0D09070E03
+00000034F2B1259A    5a  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B1259F    5f  49ba0c0801000f06020a REX.W movq r10,0A02060F0001080C
+00000034F2B125A9    69  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B125AF    6f  c5796ef9             vmovd xmm15,rcx
+00000034F2B125B3    73  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B125B8    78  49ba0f0f0f0f0f0f0f0f REX.W movq r10,0F0F0F0F0F0F0F0F
+00000034F2B125C2    82  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B125C7    87  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B125CB    8b  c5f1dbd2             vpand xmm2,xmm1,xmm2
+00000034F2B125CF    8f  49baf0333953f77f0000 REX.W movq r10,00007FF7533933F0
+00000034F2B125D9    99  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B125DE    9e  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B125E3    a3  4c8b15a8ffffff       REX.W movq r10,[rip+0xffffffa8]
+00000034F2B125EA    aa  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B125EF    af  4c8b15abffffff       REX.W movq r10,[rip+0xffffffab]
+00000034F2B125F6    b6  c4c3e922d201         vpinsrq xmm2,xmm2,r10,0x1
+00000034F2B125FC    bc  c5f171d104           vpsrlw xmm1,xmm1,4
+00000034F2B12601    c1  41ba0f0f0f0f         movl r10,000000000F0F0F0F
+00000034F2B12607    c7  c441796efa           vmovd xmm15,r10
+00000034F2B1260C    cc  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B12612    d2  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B12617    d7  4c8b15b3ffffff       REX.W movq r10,[rip+0xffffffb3]
+00000034F2B1261E    de  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12623    e3  c4c26900cf           vpshufb xmm1,xmm2,xmm15
+00000034F2B12628    e8  c5f171f104           vpsllw xmm1,xmm1,4
+00000034F2B1262D    ed  41baf0f0f0f0         movl r10,00000000F0F0F0F0
+00000034F2B12633    f3  c441796efa           vmovd xmm15,r10
+00000034F2B12638    f8  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B1263E    fe  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B12643   103  c5f9ebc1             vpor xmm0,xmm0,xmm1
+00000034F2B12647   107  c4e37914c100         vpextrb cl,xmm0,0x0
+00000034F2B1264D   10d  49baded6237b2ed91e3f REX.W movq r10,3F1ED92E7B23D6DE
+00000034F2B12657   117  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B1265C   11c  49ba721fcb1971174494 REX.W movq r10,9444177119CB1F72
+00000034F2B12666   126  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B1266C   12c  c5796efa             vmovd xmm15,rdx
+00000034F2B12670   130  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12675   135  4c8b153effffff       REX.W movq r10,[rip+0xffffff3e]
+00000034F2B1267C   13c  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12681   141  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12685   145  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12689   149  4c8b1541ffffff       REX.W movq r10,[rip+0xffffff41]
+00000034F2B12690   150  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12695   155  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B1269A   15a  c4e37914c600         vpextrb sil,xmm0,0x0
+00000034F2B126A0   160  33f1                 xorl rsi,rcx
+00000034F2B126A2   162  40883413             movb [rbx+rdx*1],sil
+00000034F2B126A6   166  83c201               addl rdx,0x1
+00000034F2B126A9   169  81fa00000100         cmpl rdx,0x10000
+00000034F2B126AF   16f  0f8373030000         jnc 00000034F2B12A28  <+0x4e8>
+00000034F2B126B5   175  69c00d661900         imull rax,rax,0x19660d
+00000034F2B126BB   17b  055ff36e3c           add rax,0x3c6ef35f
+00000034F2B126C0   180  8bc8                 movl rcx,rax
+00000034F2B126C2   182  c1e918               shrl rcx, 24
+00000034F2B126C5   185  4c8b15c6feffff       REX.W movq r10,[rip+0xfffffec6]
+00000034F2B126CC   18c  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B126D1   191  4c8b15c9feffff       REX.W movq r10,[rip+0xfffffec9]
+00000034F2B126D8   198  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B126DE   19e  c5796ef9             vmovd xmm15,rcx
+00000034F2B126E2   1a2  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B126E7   1a7  4c8b15ccfeffff       REX.W movq r10,[rip+0xfffffecc]
+00000034F2B126EE   1ae  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B126F3   1b3  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B126F7   1b7  c5f1dbd2             vpand xmm2,xmm1,xmm2
+00000034F2B126FB   1bb  4c8b15cffeffff       REX.W movq r10,[rip+0xfffffecf]
+00000034F2B12702   1c2  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B12707   1c7  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B1270C   1cc  4c8b157ffeffff       REX.W movq r10,[rip+0xfffffe7f]
+00000034F2B12713   1d3  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12718   1d8  4c8b1582feffff       REX.W movq r10,[rip+0xfffffe82]
+00000034F2B1271F   1df  c4c3e922d201         vpinsrq xmm2,xmm2,r10,0x1
+00000034F2B12725   1e5  c5f171d104           vpsrlw xmm1,xmm1,4
+00000034F2B1272A   1ea  41ba0f0f0f0f         movl r10,000000000F0F0F0F
+00000034F2B12730   1f0  c441796efa           vmovd xmm15,r10
+00000034F2B12735   1f5  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B1273B   1fb  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B12740   200  4c8b158afeffff       REX.W movq r10,[rip+0xfffffe8a]
+00000034F2B12747   207  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B1274C   20c  c4c26900cf           vpshufb xmm1,xmm2,xmm15
+00000034F2B12751   211  c5f171f104           vpsllw xmm1,xmm1,4
+00000034F2B12756   216  41baf0f0f0f0         movl r10,00000000F0F0F0F0
+00000034F2B1275C   21c  c441796efa           vmovd xmm15,r10
+00000034F2B12761   221  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B12767   227  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B1276C   22c  c5f9ebc1             vpor xmm0,xmm0,xmm1
+00000034F2B12770   230  c4e37914c100         vpextrb cl,xmm0,0x0
+00000034F2B12776   236  4c8b15d2feffff       REX.W movq r10,[rip+0xfffffed2]
+00000034F2B1277D   23d  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12782   242  4c8b15d5feffff       REX.W movq r10,[rip+0xfffffed5]
+00000034F2B12789   249  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B1278F   24f  c5796efa             vmovd xmm15,rdx
+00000034F2B12793   253  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12798   258  4c8b151bfeffff       REX.W movq r10,[rip+0xfffffe1b]
+00000034F2B1279F   25f  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B127A4   264  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B127A8   268  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B127AC   26c  4c8b151efeffff       REX.W movq r10,[rip+0xfffffe1e]
+00000034F2B127B3   273  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B127B8   278  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B127BD   27d  c4e37914c600         vpextrb sil,xmm0,0x0
+00000034F2B127C3   283  33f1                 xorl rsi,rcx
+00000034F2B127C5   285  40883413             movb [rbx+rdx*1],sil
+00000034F2B127C9   289  83c201               addl rdx,0x1
+00000034F2B127CC   28c  81fa00000100         cmpl rdx,0x10000
+00000034F2B127D2   292  0f8350020000         jnc 00000034F2B12A28  <+0x4e8>
+00000034F2B127D8   298  69c00d661900         imull rax,rax,0x19660d
+00000034F2B127DE   29e  055ff36e3c           add rax,0x3c6ef35f
+00000034F2B127E3   2a3  8bc8                 movl rcx,rax
+00000034F2B127E5   2a5  c1e918               shrl rcx, 24
+00000034F2B127E8   2a8  4c8b15a3fdffff       REX.W movq r10,[rip+0xfffffda3]
+00000034F2B127EF   2af  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B127F4   2b4  4c8b15a6fdffff       REX.W movq r10,[rip+0xfffffda6]
+00000034F2B127FB   2bb  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12801   2c1  c5796ef9             vmovd xmm15,rcx
+00000034F2B12805   2c5  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B1280A   2ca  4c8b15a9fdffff       REX.W movq r10,[rip+0xfffffda9]
+00000034F2B12811   2d1  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12816   2d6  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B1281A   2da  c5f1dbd2             vpand xmm2,xmm1,xmm2
+00000034F2B1281E   2de  4c8b15acfdffff       REX.W movq r10,[rip+0xfffffdac]
+00000034F2B12825   2e5  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B1282A   2ea  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B1282F   2ef  4c8b155cfdffff       REX.W movq r10,[rip+0xfffffd5c]
+00000034F2B12836   2f6  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B1283B   2fb  4c8b155ffdffff       REX.W movq r10,[rip+0xfffffd5f]
+00000034F2B12842   302  c4c3e922d201         vpinsrq xmm2,xmm2,r10,0x1
+00000034F2B12848   308  c5f171d104           vpsrlw xmm1,xmm1,4
+00000034F2B1284D   30d  41ba0f0f0f0f         movl r10,000000000F0F0F0F
+00000034F2B12853   313  c441796efa           vmovd xmm15,r10
+00000034F2B12858   318  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B1285E   31e  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B12863   323  4c8b1567fdffff       REX.W movq r10,[rip+0xfffffd67]
+00000034F2B1286A   32a  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B1286F   32f  c4c26900cf           vpshufb xmm1,xmm2,xmm15
+00000034F2B12874   334  c5f171f104           vpsllw xmm1,xmm1,4
+00000034F2B12879   339  41baf0f0f0f0         movl r10,00000000F0F0F0F0
+00000034F2B1287F   33f  c441796efa           vmovd xmm15,r10
+00000034F2B12884   344  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B1288A   34a  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B1288F   34f  c5f9ebc1             vpor xmm0,xmm0,xmm1
+00000034F2B12893   353  c4e37914c100         vpextrb cl,xmm0,0x0
+00000034F2B12899   359  4c8b15affdffff       REX.W movq r10,[rip+0xfffffdaf]
+00000034F2B128A0   360  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B128A5   365  4c8b15b2fdffff       REX.W movq r10,[rip+0xfffffdb2]
+00000034F2B128AC   36c  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B128B2   372  c5796efa             vmovd xmm15,rdx
+00000034F2B128B6   376  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B128BB   37b  4c8b15f8fcffff       REX.W movq r10,[rip+0xfffffcf8]
+00000034F2B128C2   382  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B128C7   387  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B128CB   38b  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B128CF   38f  4c8b15fbfcffff       REX.W movq r10,[rip+0xfffffcfb]
+00000034F2B128D6   396  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B128DB   39b  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B128E0   3a0  c4e37914c600         vpextrb sil,xmm0,0x0
+00000034F2B128E6   3a6  33f1                 xorl rsi,rcx
+00000034F2B128E8   3a8  40883413             movb [rbx+rdx*1],sil
+00000034F2B128EC   3ac  83c201               addl rdx,0x1
+00000034F2B128EF   3af  81fa00000100         cmpl rdx,0x10000
+00000034F2B128F5   3b5  0f832d010000         jnc 00000034F2B12A28  <+0x4e8>
+00000034F2B128FB   3bb  69c00d661900         imull rax,rax,0x19660d
+00000034F2B12901   3c1  055ff36e3c           add rax,0x3c6ef35f
+00000034F2B12906   3c6  8bc8                 movl rcx,rax
+00000034F2B12908   3c8  c1e918               shrl rcx, 24
+00000034F2B1290B   3cb  4c8b1580fcffff       REX.W movq r10,[rip+0xfffffc80]
+00000034F2B12912   3d2  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12917   3d7  4c8b1583fcffff       REX.W movq r10,[rip+0xfffffc83]
+00000034F2B1291E   3de  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12924   3e4  c5796ef9             vmovd xmm15,rcx
+00000034F2B12928   3e8  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B1292D   3ed  4c8b1586fcffff       REX.W movq r10,[rip+0xfffffc86]
+00000034F2B12934   3f4  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12939   3f9  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B1293D   3fd  c5f1dbd2             vpand xmm2,xmm1,xmm2
+00000034F2B12941   401  4c8b1589fcffff       REX.W movq r10,[rip+0xfffffc89]
+00000034F2B12948   408  c44169dc3a           vpaddusb xmm15,xmm2,[r10]
+00000034F2B1294D   40d  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12952   412  4c8b1539fcffff       REX.W movq r10,[rip+0xfffffc39]
+00000034F2B12959   419  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B1295E   41e  4c8b153cfcffff       REX.W movq r10,[rip+0xfffffc3c]
+00000034F2B12965   425  c4c3e922d201         vpinsrq xmm2,xmm2,r10,0x1
+00000034F2B1296B   42b  c5f171d104           vpsrlw xmm1,xmm1,4
+00000034F2B12970   430  41ba0f0f0f0f         movl r10,000000000F0F0F0F
+00000034F2B12976   436  c441796efa           vmovd xmm15,r10
+00000034F2B1297B   43b  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B12981   441  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B12986   446  4c8b1544fcffff       REX.W movq r10,[rip+0xfffffc44]
+00000034F2B1298D   44d  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12992   452  c4c26900cf           vpshufb xmm1,xmm2,xmm15
+00000034F2B12997   457  c5f171f104           vpsllw xmm1,xmm1,4
+00000034F2B1299C   45c  41baf0f0f0f0         movl r10,00000000F0F0F0F0
+00000034F2B129A2   462  c441796efa           vmovd xmm15,r10
+00000034F2B129A7   467  c4417970ff00         vpshufd xmm15,xmm15,0x0
+00000034F2B129AD   46d  c4c171dbcf           vpand xmm1,xmm1,xmm15
+00000034F2B129B2   472  c5f9ebc1             vpor xmm0,xmm0,xmm1
+00000034F2B129B6   476  c4e37914c100         vpextrb cl,xmm0,0x0
+00000034F2B129BC   47c  4c8b158cfcffff       REX.W movq r10,[rip+0xfffffc8c]
+00000034F2B129C3   483  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B129C8   488  4c8b158ffcffff       REX.W movq r10,[rip+0xfffffc8f]
+00000034F2B129CF   48f  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B129D5   495  c5796efa             vmovd xmm15,rdx
+00000034F2B129D9   499  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B129DE   49e  4c8b15d5fbffff       REX.W movq r10,[rip+0xfffffbd5]
+00000034F2B129E5   4a5  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B129EA   4aa  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B129EE   4ae  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B129F2   4b2  4c8b15d8fbffff       REX.W movq r10,[rip+0xfffffbd8]
+00000034F2B129F9   4b9  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B129FE   4be  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12A03   4c3  c4e37914c600         vpextrb sil,xmm0,0x0
+00000034F2B12A09   4c9  33f1                 xorl rsi,rcx
+00000034F2B12A0B   4cb  40883413             movb [rbx+rdx*1],sil
+00000034F2B12A0F   4cf  83c201               addl rdx,0x1
+00000034F2B12A12   4d2  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B12A16   4d6  0f8611000000         jna 00000034F2B12A2D  <+0x4ed>
+00000034F2B12A1C   4dc  81fa00000100         cmpl rdx,0x10000
+00000034F2B12A22   4e2  0f8258fbffff         jc 00000034F2B12580  <+0x40>
+00000034F2B12A28   4e8  488be5               REX.W movq rsp,rbp
+00000034F2B12A2B   4eb  5d                   pop rbp
+00000034F2B12A2C   4ec  c3                   retl
+00000034F2B12A2D   4ed  488955e8             REX.W movq [rbp-0x18],rdx
+00000034F2B12A31   4f1  48895de0             REX.W movq [rbp-0x20],rbx
+00000034F2B12A35   4f5  488945d8             REX.W movq [rbp-0x28],rax
+00000034F2B12A39   4f9  e812e9ffff           call 00000034F2B11350  (jump table)
+00000034F2B12A3E   4fe  8b55e8               movl rdx,[rbp-0x18]
+00000034F2B12A41   501  488b5de0             REX.W movq rbx,[rbp-0x20]
+00000034F2B12A45   505  8b45d8               movl rax,[rbp-0x28]
+00000034F2B12A48   508  ebd2                 jmp 00000034F2B12A1C  <+0x4dc>
+00000034F2B12A4A   50a  90                   nop
+00000034F2B12A4B   50b  90                   nop
+
+Protected instructions:
+ pc offset
+       162         
+       285         
+       3a8         
+       4cb         
+
+Source positions:
+ pc offset  position
+       162       134
+       4ed         3
+
+Safepoints (stack slots = 7, entries = 1, byte size = 15)
+00000034F2B12A3E    4fe  slots (sp->fp): 0000000
+
+RelocInfo (size = 7)
+00000034F2B125D1  external reference (00007FF7533933F0)
+00000034F2B12A3A  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[12]
+index: 12
+kind: wasm function
+compiler: TurboFan
+Body (size = 320 = 288 + 32 padding)
+Instructions (size = 272)
+00000034F2B12A80     0  55                   push rbp
+00000034F2B12A81     1  4889e5               REX.W movq rbp,rsp
+00000034F2B12A84     4  6a08                 push 0x8
+00000034F2B12A86     6  56                   push rsi
+00000034F2B12A87     7  4883ec28             REX.W subq rsp,0x28
+00000034F2B12A8B     b  488955e0             REX.W movq [rbp-0x20],rdx
+00000034F2B12A8F     f  48894dd8             REX.W movq [rbp-0x28],rcx
+00000034F2B12A93    13  48895dd0             REX.W movq [rbp-0x30],rbx
+00000034F2B12A97    17  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B12A9B    1b  0f8744000000         ja 00000034F2B12AE5  <+0x65>
+00000034F2B12AA1    21  e9c0000000           jmp 00000034F2B12B66  <+0xe6>
+00000034F2B12AA6    26  660f1f840000000000   nop
+00000034F2B12AAF    2f  660f1f840000000000   nop
+00000034F2B12AB8    38  0f1f840000000000     nop
+00000034F2B12AC0    40  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12AC4    44  8b45e0               movl rax,[rbp-0x20]
+00000034F2B12AC7    47  8b55d8               movl rdx,[rbp-0x28]
+00000034F2B12ACA    4a  8b4dd0               movl rcx,[rbp-0x30]
+00000034F2B12ACD    4d  e87ee5ffff           call 00000034F2B11050  (jump table)
+00000034F2B12AD2    52  8b5de8               movl rbx,[rbp-0x18]
+00000034F2B12AD5    55  8d43ff               leal rax,[rbx-0x1]
+00000034F2B12AD8    58  8b5dd0               movl rbx,[rbp-0x30]
+00000034F2B12ADB    5b  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12ADF    5f  8b55e0               movl rdx,[rbp-0x20]
+00000034F2B12AE2    62  8b4dd8               movl rcx,[rbp-0x28]
+00000034F2B12AE5    65  488945c8             REX.W movq [rbp-0x38],rax
+00000034F2B12AE9    69  837dc800             cmpl [rbp-0x38],0x0
+00000034F2B12AED    6d  0f846e000000         jz 00000034F2B12B61  <+0xe1>
+00000034F2B12AF3    73  8bc2                 movl rax,rdx
+00000034F2B12AF5    75  8bd1                 movl rdx,rcx
+00000034F2B12AF7    77  8bcb                 movl rcx,rbx
+00000034F2B12AF9    79  e852e5ffff           call 00000034F2B11050  (jump table)
+00000034F2B12AFE    7e  488b5dc8             REX.W movq rbx,[rbp-0x38]
+00000034F2B12B02    82  83c3ff               addl rbx,0xff
+00000034F2B12B05    85  0f8456000000         jz 00000034F2B12B61  <+0xe1>
+00000034F2B12B0B    8b  48895de8             REX.W movq [rbp-0x18],rbx
+00000034F2B12B0F    8f  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12B13    93  8b45e0               movl rax,[rbp-0x20]
+00000034F2B12B16    96  8b55d8               movl rdx,[rbp-0x28]
+00000034F2B12B19    99  8b4dd0               movl rcx,[rbp-0x30]
+00000034F2B12B1C    9c  e82fe5ffff           call 00000034F2B11050  (jump table)
+00000034F2B12B21    a1  488b5de8             REX.W movq rbx,[rbp-0x18]
+00000034F2B12B25    a5  83c3ff               addl rbx,0xff
+00000034F2B12B28    a8  0f8433000000         jz 00000034F2B12B61  <+0xe1>
+00000034F2B12B2E    ae  48895de8             REX.W movq [rbp-0x18],rbx
+00000034F2B12B32    b2  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12B36    b6  8b45e0               movl rax,[rbp-0x20]
+00000034F2B12B39    b9  8b55d8               movl rdx,[rbp-0x28]
+00000034F2B12B3C    bc  8b4dd0               movl rcx,[rbp-0x30]
+00000034F2B12B3F    bf  e80ce5ffff           call 00000034F2B11050  (jump table)
+00000034F2B12B44    c4  488b5de8             REX.W movq rbx,[rbp-0x18]
+00000034F2B12B48    c8  83eb01               subl rbx,0x1
+00000034F2B12B4B    cb  48895de8             REX.W movq [rbp-0x18],rbx
+00000034F2B12B4F    cf  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B12B53    d3  0f862b000000         jna 00000034F2B12B84  <+0x104>
+00000034F2B12B59    d9  85db                 testl rbx,rbx
+00000034F2B12B5B    db  0f855fffffff         jnz 00000034F2B12AC0  <+0x40>
+00000034F2B12B61    e1  488be5               REX.W movq rsp,rbp
+00000034F2B12B64    e4  5d                   pop rbp
+00000034F2B12B65    e5  c3                   retl
+00000034F2B12B66    e6  488945c8             REX.W movq [rbp-0x38],rax
+00000034F2B12B6A    ea  e8e1e7ffff           call 00000034F2B11350  (jump table)
+00000034F2B12B6F    ef  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12B73    f3  8b55e0               movl rdx,[rbp-0x20]
+00000034F2B12B76    f6  8b4dd8               movl rcx,[rbp-0x28]
+00000034F2B12B79    f9  8b5dd0               movl rbx,[rbp-0x30]
+00000034F2B12B7C    fc  8b45c8               movl rax,[rbp-0x38]
+00000034F2B12B7F    ff  e961ffffff           jmp 00000034F2B12AE5  <+0x65>
+00000034F2B12B84   104  e8c7e7ffff           call 00000034F2B11350  (jump table)
+00000034F2B12B89   109  8b5de8               movl rbx,[rbp-0x18]
+00000034F2B12B8C   10c  ebcb                 jmp 00000034F2B12B59  <+0xd9>
+00000034F2B12B8E   10e  90                   nop
+00000034F2B12B8F   10f  90                   nop
+
+Source positions:
+ pc offset  position
+        40         7
+        e6         0
+       104         3
+
+Safepoints (stack slots = 9, entries = 1, byte size = 15)
+00000034F2B12AD2     52  slots (sp->fp): 000000000
+
+RelocInfo (size = 12)
+00000034F2B12ACE  internal wasm call
+00000034F2B12AFA  internal wasm call
+00000034F2B12B1D  internal wasm call
+00000034F2B12B40  internal wasm call
+00000034F2B12B6B  wasm stub call  (00000034F2B11350)
+00000034F2B12B85  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[1]
+index: 1
+kind: wasm function
+compiler: TurboFan
+Body (size = 128 = 68 + 60 padding)
+Instructions (size = 52)
+00000034F2B12BC0     0  55                   push rbp
+00000034F2B12BC1     1  4889e5               REX.W movq rbp,rsp
+00000034F2B12BC4     4  6a08                 push 0x8
+00000034F2B12BC6     6  56                   push rsi
+00000034F2B12BC7     7  4883ec08             REX.W subq rsp,0x8
+00000034F2B12BCB     b  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B12BCF     f  0f860a000000         jna 00000034F2B12BDF  <+0x1f>
+00000034F2B12BD5    15  e866e4ffff           call 00000034F2B11040  (jump table)
+00000034F2B12BDA    1a  488be5               REX.W movq rsp,rbp
+00000034F2B12BDD    1d  5d                   pop rbp
+00000034F2B12BDE    1e  c3                   retl
+00000034F2B12BDF    1f  488945e8             REX.W movq [rbp-0x18],rax
+00000034F2B12BE3    23  e868e7ffff           call 00000034F2B11350  (jump table)
+00000034F2B12BE8    28  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12BEC    2c  8b45e8               movl rax,[rbp-0x18]
+00000034F2B12BEF    2f  ebe4                 jmp 00000034F2B12BD5  <+0x15>
+00000034F2B12BF1    31  90                   nop
+00000034F2B12BF2    32  6690                 nop
+
+Source positions:
+ pc offset  position
+        15         3
+        1f         0
+
+Safepoints (stack slots = 5, entries = 1, byte size = 14)
+00000034F2B12BDA     1a  slots (sp->fp): 00000
+
+RelocInfo (size = 3)
+00000034F2B12BD6  internal wasm call
+00000034F2B12BE4  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[2]
+index: 2
+kind: wasm function
+compiler: TurboFan
+Body (size = 128 = 76 + 52 padding)
+Instructions (size = 60)
+00000034F2B12C40     0  55                   push rbp
+00000034F2B12C41     1  4889e5               REX.W movq rbp,rsp
+00000034F2B12C44     4  6a08                 push 0x8
+00000034F2B12C46     6  56                   push rsi
+00000034F2B12C47     7  4883ec10             REX.W subq rsp,0x10
+00000034F2B12C4B     b  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B12C4F     f  0f860a000000         jna 00000034F2B12C5F  <+0x1f>
+00000034F2B12C55    15  e8eee3ffff           call 00000034F2B11048  (jump table)
+00000034F2B12C5A    1a  488be5               REX.W movq rsp,rbp
+00000034F2B12C5D    1d  5d                   pop rbp
+00000034F2B12C5E    1e  c3                   retl
+00000034F2B12C5F    1f  488945e8             REX.W movq [rbp-0x18],rax
+00000034F2B12C63    23  488955e0             REX.W movq [rbp-0x20],rdx
+00000034F2B12C67    27  e8e4e6ffff           call 00000034F2B11350  (jump table)
+00000034F2B12C6C    2c  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12C70    30  8b45e8               movl rax,[rbp-0x18]
+00000034F2B12C73    33  8b55e0               movl rdx,[rbp-0x20]
+00000034F2B12C76    36  ebdd                 jmp 00000034F2B12C55  <+0x15>
+00000034F2B12C78    38  90                   nop
+00000034F2B12C79    39  0f1f00               nop
+
+Source positions:
+ pc offset  position
+        15         5
+        1f         0
+
+Safepoints (stack slots = 6, entries = 1, byte size = 14)
+00000034F2B12C5A     1a  slots (sp->fp): 000000
+
+RelocInfo (size = 3)
+00000034F2B12C56  internal wasm call
+00000034F2B12C68  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[7]
+index: 7
+kind: wasm function
+compiler: TurboFan
+Body (size = 128 = 112 + 16 padding)
+Instructions (size = 96)
+00000034F2B12CC0     0  55                   push rbp
+00000034F2B12CC1     1  4889e5               REX.W movq rbp,rsp
+00000034F2B12CC4     4  6a08                 push 0x8
+00000034F2B12CC6     6  56                   push rsi
+00000034F2B12CC7     7  4883ec18             REX.W subq rsp,0x18
+00000034F2B12CCB     b  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B12CCF     f  0f8628000000         jna 00000034F2B12CFD  <+0x3d>
+00000034F2B12CD5    15  488b5e2f             REX.W movq rbx,[rsi+0x2f]
+00000034F2B12CD9    19  8b3b                 movl rdi,[rbx]
+00000034F2B12CDB    1b  8d3cbf               leal rdi,[rdi+rdi*4]
+00000034F2B12CDE    1e  83c701               addl rdi,0x1
+00000034F2B12CE1    21  893b                 movl [rbx],rdi
+00000034F2B12CE3    23  8d3cbf               leal rdi,[rdi+rdi*4]
+00000034F2B12CE6    26  83c702               addl rdi,0x2
+00000034F2B12CE9    29  893b                 movl [rbx],rdi
+00000034F2B12CEB    2b  8d3cbf               leal rdi,[rdi+rdi*4]
+00000034F2B12CEE    2e  83c703               addl rdi,0x3
+00000034F2B12CF1    31  893b                 movl [rbx],rdi
+00000034F2B12CF3    33  e858e3ffff           call 00000034F2B11050  (jump table)
+00000034F2B12CF8    38  488be5               REX.W movq rsp,rbp
+00000034F2B12CFB    3b  5d                   pop rbp
+00000034F2B12CFC    3c  c3                   retl
+00000034F2B12CFD    3d  488945e8             REX.W movq [rbp-0x18],rax
+00000034F2B12D01    41  488955e0             REX.W movq [rbp-0x20],rdx
+00000034F2B12D05    45  48894dd8             REX.W movq [rbp-0x28],rcx
+00000034F2B12D09    49  e842e6ffff           call 00000034F2B11350  (jump table)
+00000034F2B12D0E    4e  488b75f0             REX.W movq rsi,[rbp-0x10]
+00000034F2B12D12    52  8b45e8               movl rax,[rbp-0x18]
+00000034F2B12D15    55  8b55e0               movl rdx,[rbp-0x20]
+00000034F2B12D18    58  8b4dd8               movl rcx,[rbp-0x28]
+00000034F2B12D1B    5b  ebb8                 jmp 00000034F2B12CD5  <+0x15>
+00000034F2B12D1D    5d  90                   nop
+00000034F2B12D1E    5e  6690                 nop
+
+Source positions:
+ pc offset  position
+        33        37
+        3d         0
+
+Safepoints (stack slots = 7, entries = 1, byte size = 14)
+00000034F2B12CF8     38  slots (sp->fp): 0000000
+
+RelocInfo (size = 3)
+00000034F2B12CF4  internal wasm call
+00000034F2B12D0A  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+--- WebAssembly code ---
+name: wasm-function[11]
+index: 11
+kind: wasm function
+compiler: TurboFan
+Body (size = 1024 = 984 + 40 padding)
+Instructions (size = 968)
+00000034F2B12D40     0  55                   push rbp
+00000034F2B12D41     1  4889e5               REX.W movq rbp,rsp
+00000034F2B12D44     4  6a08                 push 0x8
+00000034F2B12D46     6  56                   push rsi
+00000034F2B12D47     7  4883ec10             REX.W subq rsp,0x10
+00000034F2B12D4B     b  488b461f             REX.W movq rax,[rsi+0x1f]
+00000034F2B12D4F     f  33db                 xorl rbx,rbx
+00000034F2B12D51    11  e98c000000           jmp 00000034F2B12DE2  <+0xa2>
+00000034F2B12D56    16  660f1f840000000000   nop
+00000034F2B12D5F    1f  660f1f840000000000   nop
+00000034F2B12D68    28  660f1f840000000000   nop
+00000034F2B12D71    31  660f1f840000000000   nop
+00000034F2B12D7A    3a  660f1f440000         nop
+00000034F2B12D80    40  49baded6237b2ed91e3f REX.W movq r10,3F1ED92E7B23D6DE
+00000034F2B12D8A    4a  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12D8F    4f  49ba721fcb1971174494 REX.W movq r10,9444177119CB1F72
+00000034F2B12D99    59  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12D9F    5f  c5796efb             vmovd xmm15,rbx
+00000034F2B12DA3    63  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12DA8    68  49ba0f0f0f0f0f0f0f0f REX.W movq r10,0F0F0F0F0F0F0F0F
+00000034F2B12DB2    72  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12DB7    77  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12DBB    7b  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12DBF    7f  49baf0333953f77f0000 REX.W movq r10,00007FF7533933F0
+00000034F2B12DC9    89  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12DCE    8e  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12DD3    93  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12DD9    99  83f233               xorl rdx,0x33
+00000034F2B12DDC    9c  881418               movb [rax+rbx*1],dl
+00000034F2B12DDF    9f  83c301               addl rbx,0x1
+00000034F2B12DE2    a2  83fb03               cmpl rbx,0x3
+00000034F2B12DE5    a5  0f8327010000         jnc 00000034F2B12F12  <+0x1d2>
+00000034F2B12DEB    ab  4c8b1590ffffff       REX.W movq r10,[rip+0xffffff90]
+00000034F2B12DF2    b2  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12DF7    b7  4c8b1593ffffff       REX.W movq r10,[rip+0xffffff93]
+00000034F2B12DFE    be  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12E04    c4  c5796efb             vmovd xmm15,rbx
+00000034F2B12E08    c8  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12E0D    cd  4c8b1596ffffff       REX.W movq r10,[rip+0xffffff96]
+00000034F2B12E14    d4  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12E19    d9  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12E1D    dd  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12E21    e1  4c8b1599ffffff       REX.W movq r10,[rip+0xffffff99]
+00000034F2B12E28    e8  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12E2D    ed  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12E32    f2  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12E38    f8  83f233               xorl rdx,0x33
+00000034F2B12E3B    fb  881418               movb [rax+rbx*1],dl
+00000034F2B12E3E    fe  83c301               addl rbx,0x1
+00000034F2B12E41   101  83fb03               cmpl rbx,0x3
+00000034F2B12E44   104  0f83c8000000         jnc 00000034F2B12F12  <+0x1d2>
+00000034F2B12E4A   10a  4c8b1531ffffff       REX.W movq r10,[rip+0xffffff31]
+00000034F2B12E51   111  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12E56   116  4c8b1534ffffff       REX.W movq r10,[rip+0xffffff34]
+00000034F2B12E5D   11d  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12E63   123  c5796efb             vmovd xmm15,rbx
+00000034F2B12E67   127  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12E6C   12c  4c8b1537ffffff       REX.W movq r10,[rip+0xffffff37]
+00000034F2B12E73   133  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12E78   138  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12E7C   13c  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12E80   140  4c8b153affffff       REX.W movq r10,[rip+0xffffff3a]
+00000034F2B12E87   147  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12E8C   14c  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12E91   151  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12E97   157  83f233               xorl rdx,0x33
+00000034F2B12E9A   15a  881418               movb [rax+rbx*1],dl
+00000034F2B12E9D   15d  83c301               addl rbx,0x1
+00000034F2B12EA0   160  83fb03               cmpl rbx,0x3
+00000034F2B12EA3   163  0f8369000000         jnc 00000034F2B12F12  <+0x1d2>
+00000034F2B12EA9   169  4c8b15d2feffff       REX.W movq r10,[rip+0xfffffed2]
+00000034F2B12EB0   170  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12EB5   175  4c8b15d5feffff       REX.W movq r10,[rip+0xfffffed5]
+00000034F2B12EBC   17c  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12EC2   182  c5796efb             vmovd xmm15,rbx
+00000034F2B12EC6   186  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12ECB   18b  4c8b15d8feffff       REX.W movq r10,[rip+0xfffffed8]
+00000034F2B12ED2   192  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12ED7   197  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12EDB   19b  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12EDF   19f  4c8b15dbfeffff       REX.W movq r10,[rip+0xfffffedb]
+00000034F2B12EE6   1a6  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12EEB   1ab  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12EF0   1b0  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12EF6   1b6  83f233               xorl rdx,0x33
+00000034F2B12EF9   1b9  881418               movb [rax+rbx*1],dl
+00000034F2B12EFC   1bc  83c301               addl rbx,0x1
+00000034F2B12EFF   1bf  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B12F03   1c3  0f86ce010000         jna 00000034F2B130D7  <+0x397>
+00000034F2B12F09   1c9  83fb03               cmpl rbx,0x3
+00000034F2B12F0C   1cc  0f826efeffff         jc 00000034F2B12D80  <+0x40>
+00000034F2B12F12   1d2  bb13000000           movl rbx,0000000000000013
+00000034F2B12F17   1d7  e97a000000           jmp 00000034F2B12F96  <+0x256>
+00000034F2B12F1C   1dc  660f1f840000000000   nop
+00000034F2B12F25   1e5  660f1f840000000000   nop
+00000034F2B12F2E   1ee  660f1f840000000000   nop
+00000034F2B12F37   1f7  660f1f840000000000   nop
+00000034F2B12F40   200  4c8b153bfeffff       REX.W movq r10,[rip+0xfffffe3b]
+00000034F2B12F47   207  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12F4C   20c  4c8b153efeffff       REX.W movq r10,[rip+0xfffffe3e]
+00000034F2B12F53   213  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12F59   219  c5796efb             vmovd xmm15,rbx
+00000034F2B12F5D   21d  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12F62   222  4c8b1541feffff       REX.W movq r10,[rip+0xfffffe41]
+00000034F2B12F69   229  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12F6E   22e  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12F72   232  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12F76   236  4c8b1544feffff       REX.W movq r10,[rip+0xfffffe44]
+00000034F2B12F7D   23d  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12F82   242  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12F87   247  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12F8D   24d  83f233               xorl rdx,0x33
+00000034F2B12F90   250  881418               movb [rax+rbx*1],dl
+00000034F2B12F93   253  83c301               addl rbx,0x1
+00000034F2B12F96   256  81fbfeff0000         cmpl rbx,0xfffe
+00000034F2B12F9C   25c  0f8330010000         jnc 00000034F2B130D2  <+0x392>
+00000034F2B12FA2   262  4c8b15d9fdffff       REX.W movq r10,[rip+0xfffffdd9]
+00000034F2B12FA9   269  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B12FAE   26e  4c8b15dcfdffff       REX.W movq r10,[rip+0xfffffddc]
+00000034F2B12FB5   275  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B12FBB   27b  c5796efb             vmovd xmm15,rbx
+00000034F2B12FBF   27f  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B12FC4   284  4c8b15dffdffff       REX.W movq r10,[rip+0xfffffddf]
+00000034F2B12FCB   28b  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B12FD0   290  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B12FD4   294  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B12FD8   298  4c8b15e2fdffff       REX.W movq r10,[rip+0xfffffde2]
+00000034F2B12FDF   29f  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B12FE4   2a4  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B12FE9   2a9  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B12FEF   2af  83f233               xorl rdx,0x33
+00000034F2B12FF2   2b2  881418               movb [rax+rbx*1],dl
+00000034F2B12FF5   2b5  83c301               addl rbx,0x1
+00000034F2B12FF8   2b8  81fbfeff0000         cmpl rbx,0xfffe
+00000034F2B12FFE   2be  0f83ce000000         jnc 00000034F2B130D2  <+0x392>
+00000034F2B13004   2c4  4c8b1577fdffff       REX.W movq r10,[rip+0xfffffd77]
+00000034F2B1300B   2cb  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B13010   2d0  4c8b157afdffff       REX.W movq r10,[rip+0xfffffd7a]
+00000034F2B13017   2d7  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B1301D   2dd  c5796efb             vmovd xmm15,rbx
+00000034F2B13021   2e1  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B13026   2e6  4c8b157dfdffff       REX.W movq r10,[rip+0xfffffd7d]
+00000034F2B1302D   2ed  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B13032   2f2  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B13036   2f6  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B1303A   2fa  4c8b1580fdffff       REX.W movq r10,[rip+0xfffffd80]
+00000034F2B13041   301  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B13046   306  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B1304B   30b  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B13051   311  83f233               xorl rdx,0x33
+00000034F2B13054   314  881418               movb [rax+rbx*1],dl
+00000034F2B13057   317  83c301               addl rbx,0x1
+00000034F2B1305A   31a  81fbfeff0000         cmpl rbx,0xfffe
+00000034F2B13060   320  0f836c000000         jnc 00000034F2B130D2  <+0x392>
+00000034F2B13066   326  4c8b1515fdffff       REX.W movq r10,[rip+0xfffffd15]
+00000034F2B1306D   32d  c4c1f96ec2           vmovq xmm0,r10
+00000034F2B13072   332  4c8b1518fdffff       REX.W movq r10,[rip+0xfffffd18]
+00000034F2B13079   339  c4c3f922c201         vpinsrq xmm0,xmm0,r10,0x1
+00000034F2B1307F   33f  c5796efb             vmovd xmm15,rbx
+00000034F2B13083   343  c4c27978cf           vpbroadcastb xmm1,xmm15
+00000034F2B13088   348  4c8b151bfdffff       REX.W movq r10,[rip+0xfffffd1b]
+00000034F2B1308F   34f  c4c1f96ed2           vmovq xmm2,r10
+00000034F2B13094   354  c5e96cd2             vpunpcklqdq xmm2,xmm2,xmm2
+00000034F2B13098   358  c5f1dbca             vpand xmm1,xmm1,xmm2
+00000034F2B1309C   35c  4c8b151efdffff       REX.W movq r10,[rip+0xfffffd1e]
+00000034F2B130A3   363  c44171dc3a           vpaddusb xmm15,xmm1,[r10]
+00000034F2B130A8   368  c4c27900c7           vpshufb xmm0,xmm0,xmm15
+00000034F2B130AD   36d  c4e37914c200         vpextrb dl,xmm0,0x0
+00000034F2B130B3   373  83f233               xorl rdx,0x33
+00000034F2B130B6   376  881418               movb [rax+rbx*1],dl
+00000034F2B130B9   379  83c301               addl rbx,0x1
+00000034F2B130BC   37c  493b65a0             REX.W cmpq rsp,[r13-0x60]
+00000034F2B130C0   380  0f862a000000         jna 00000034F2B130F0  <+0x3b0>
+00000034F2B130C6   386  81fbfeff0000         cmpl rbx,0xfffe
+00000034F2B130CC   38c  0f826efeffff         jc 00000034F2B12F40  <+0x200>
+00000034F2B130D2   392  488be5               REX.W movq rsp,rbp
+00000034F2B130D5   395  5d                   pop rbp
+00000034F2B130D6   396  c3                   retl
+00000034F2B130D7   397  488945e0             REX.W movq [rbp-0x20],rax
+00000034F2B130DB   39b  48895de8             REX.W movq [rbp-0x18],rbx
+00000034F2B130DF   39f  e86ce2ffff           call 00000034F2B11350  (jump table)
+00000034F2B130E4   3a4  488b45e0             REX.W movq rax,[rbp-0x20]
+00000034F2B130E8   3a8  8b5de8               movl rbx,[rbp-0x18]
+00000034F2B130EB   3ab  e919feffff           jmp 00000034F2B12F09  <+0x1c9>
+00000034F2B130F0   3b0  48895de8             REX.W movq [rbp-0x18],rbx
+00000034F2B130F4   3b4  488945e0             REX.W movq [rbp-0x20],rax
+00000034F2B130F8   3b8  e853e2ffff           call 00000034F2B11350  (jump table)
+00000034F2B130FD   3bd  8b5de8               movl rbx,[rbp-0x18]
+00000034F2B13100   3c0  488b45e0             REX.W movq rax,[rbp-0x20]
+00000034F2B13104   3c4  ebc0                 jmp 00000034F2B130C6  <+0x386>
+00000034F2B13106   3c6  90                   nop
+00000034F2B13107   3c7  90                   nop
+
+Protected instructions:
+ pc offset
+        9c         
+        fb         
+       15a         
+       1b9         
+       250         
+       2b2         
+       314         
+       376         
+
+Source positions:
+ pc offset  position
+        9c        65
+       250       147
+       397         3
+       3b0        83
+
+Safepoints (stack slots = 6, entries = 1, byte size = 15)
+00000034F2B130E4    3a4  slots (sp->fp): 000000
+
+RelocInfo (size = 8)
+00000034F2B12DC1  external reference (00007FF7533933F0)
+00000034F2B130E0  wasm stub call  (00000034F2B11350)
+00000034F2B130F9  wasm stub call  (00000034F2B11350)
+
+--- End code ---
+
+STDERR

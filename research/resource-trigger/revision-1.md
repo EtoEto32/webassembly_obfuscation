@@ -1,0 +1,9 @@
+# 一回目の設計修正：resource表現を値から内部slotへ変更
+
+初版は計算payloadをそのままresource.newに渡した。Jco 1.27.0生成JSのrscTableCreateOwnはrepに1<<30をORして保存し、rscTableRemoveはそのbitをクリアして返す。実行した2段階probeのx=0,y=0x40000000では期待値0x40000007に対して7となった。y=0x80000000は一致する。Component Model文書のrep i32を全域で扱う意図と実装のこの経路に差がある。根本原因をJco全機能に一般化せず、使用した生成コードと再現値に限定する。
+
+v2実験を正当性の失敗として保存する。通常の難読化の効果には数えない。ライブラリを修正せず、最終版ではrepを4*i（0..508）という内部bufferのbyte位置にする。payload自体は非exportの1pageメモリへ32bitで保存し、destructorがi32.loadして計算する。全slotはその呼出し中に初期化する。元プログラムにメモリ効果はなく、内部bufferは外部へ見せない。
+
+直接helper呼出しの比較対象にも同じbufferを入れる。これによりresource生成・破棄の費用を、buffer導入の費用と分ける。plainは元計算のcomponent liftを維持する。ピークhandle数はimmediateで1、deferredでN。bufferは双方64KiB確保、実使用4Nbyte。sourceがmemoryを持つ場合は依然拒否する。
+
+適応解析器には公開coreの定数アドレスload/storeを追跡する最小のsymbolic memoryを追加した。元のslot順、seed、manifestは渡さず、component結線とcore命令のみを読む。変換設計の見直し1回目であり、以後の実測はv3へ保存する。

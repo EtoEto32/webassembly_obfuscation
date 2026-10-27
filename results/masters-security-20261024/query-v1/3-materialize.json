@@ -1,0 +1,280 @@
+{
+  "mode": "materialize",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+  "warmup": 100,
+  "callsPerBatch": 300,
+  "batches": 9,
+  "queryCount": 16,
+  "scalarChecksumCounterexample": {
+    "a": [
+      1,
+      2
+    ],
+    "b": [
+      2,
+      1
+    ],
+    "query": 0
+  },
+  "memoryUsage": {
+    "rss": 49352704,
+    "heapTotal": 8060928,
+    "heapUsed": 6081648,
+    "external": 8853957,
+    "arrayBuffers": 2412795
+  },
+  "resourceUsage": {
+    "userCPUTime": 156000,
+    "systemCPUTime": 125000,
+    "maxRSS": 52744,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 0,
+    "majorPageFault": 52739,
+    "swappedOut": 0,
+    "fsRead": 11,
+    "fsWrite": 0,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 0,
+    "involuntaryContextSwitches": 0
+  },
+  "entries": [
+    {
+      "fixture": "fixed",
+      "file": "fixed-rust2.wasm",
+      "samples_us": [
+        6.025666666666667,
+        4.348,
+        5.454666666666667,
+        3.908,
+        3.7723333333333335,
+        4.1723333333333334,
+        4.818333333333333,
+        3.2523333333333335,
+        3.703
+      ],
+      "checksums": [
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 1114112
+    },
+    {
+      "fixture": "indexed",
+      "file": "indexed-rust2.wasm",
+      "samples_us": [
+        5.103666666666667,
+        4.643333333333333,
+        3.9126666666666665,
+        4.078,
+        3.36,
+        2.942,
+        2.98,
+        2.8903333333333334,
+        3.3106666666666666
+      ],
+      "checksums": [
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 1114112
+    },
+    {
+      "fixture": "branch",
+      "file": "branch-rust2.wasm",
+      "samples_us": [
+        4.853666666666667,
+        3.9233333333333333,
+        4.523,
+        3.1366666666666667,
+        3.8833333333333333,
+        3.9713333333333334,
+        4.075666666666667,
+        4.109666666666667,
+        4.470666666666667
+      ],
+      "checksums": [
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 272,
+      "postCallbackPayloadBytes": 1114112
+    },
+    {
+      "fixture": "metadata",
+      "file": "metadata-rust2.wasm",
+      "samples_us": [
+        4.624666666666667,
+        3.749,
+        3.715,
+        3.4746666666666663,
+        3.385,
+        2.8846666666666665,
+        3.143,
+        3.984,
+        4.072666666666667
+      ],
+      "checksums": [
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 1114112
+    },
+    {
+      "fixture": "loop",
+      "file": "loop-rust2.wasm",
+      "samples_us": [
+        7.613333333333333,
+        11.023,
+        8.063666666666666,
+        5.654333333333333,
+        5.906333333333333,
+        5.814,
+        5.370333333333333,
+        5.837666666666667,
+        5.982
+      ],
+      "checksums": [
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 1114112,
+      "postCallbackPayloadBytes": 1114112
+    },
+    {
+      "fixture": "copy",
+      "file": "copy-rust2.wasm",
+      "samples_us": [
+        4.655666666666667,
+        4.093666666666667,
+        3.3166666666666664,
+        3.5203333333333333,
+        3.89,
+        3.8243333333333336,
+        4.187666666666667,
+        4.05,
+        3.853
+      ],
+      "checksums": [
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 18423,
+      "postCallbackPayloadBytes": 1114112
+    },
+    {
+      "fixture": "fill",
+      "file": "fill-rust2.wasm",
+      "samples_us": [
+        4.553333333333333,
+        3.6016666666666666,
+        3.04,
+        3.4493333333333336,
+        3.6723333333333334,
+        3.5643333333333334,
+        3.6723333333333334,
+        3.549,
+        3.356
+      ],
+      "checksums": [
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 18423,
+      "postCallbackPayloadBytes": 1114112
+    },
+    {
+      "fixture": "helper",
+      "file": "helper-rust2.wasm",
+      "samples_us": [
+        3.2923333333333336,
+        3.3233333333333337,
+        3.0623333333333336,
+        3.205,
+        3.171,
+        3.3096666666666663,
+        3.07,
+        3.1316666666666664,
+        3.2223333333333333
+      ],
+      "checksums": [
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 1114112
+    }
+  ]
+}

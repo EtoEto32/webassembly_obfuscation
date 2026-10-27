@@ -1,0 +1,1 @@
+Incomplete run. Binaryen rejected the first optimization because the invocation omitted --enable-bulk-memory for memory.fill. This is a harness configuration error, not analysis resistance. No correctness or performance result is claimed for v1. Rerun uses a new v2 directory.

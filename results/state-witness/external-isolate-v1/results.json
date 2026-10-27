@@ -1,0 +1,904 @@
+{
+  "wasmtime": "50.0.1",
+  "rows": [
+    {
+      "name": "retained",
+      "selectorControl": false,
+      "segmentReplay": false,
+      "stopAt": 0,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "value": null
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 12,
+      "matches": false
+    },
+    {
+      "name": "retained",
+      "selectorControl": false,
+      "segmentReplay": false,
+      "stopAt": 1,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "value": null
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "retained",
+      "selectorControl": false,
+      "segmentReplay": true,
+      "stopAt": 0,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "value": null
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 12,
+      "matches": false
+    },
+    {
+      "name": "retained",
+      "selectorControl": false,
+      "segmentReplay": true,
+      "stopAt": 1,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "value": null
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "retained",
+      "selectorControl": true,
+      "segmentReplay": false,
+      "stopAt": 0,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "value": null
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "retained",
+      "selectorControl": true,
+      "segmentReplay": false,
+      "stopAt": 1,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "value": null
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "retained",
+      "selectorControl": true,
+      "segmentReplay": true,
+      "stopAt": 0,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "value": null
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "retained",
+      "selectorControl": true,
+      "segmentReplay": true,
+      "stopAt": 1,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "value": null
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "dropped",
+      "selectorControl": false,
+      "segmentReplay": false,
+      "stopAt": 0,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 11,
+      "matches": false
+    },
+    {
+      "name": "dropped",
+      "selectorControl": false,
+      "segmentReplay": false,
+      "stopAt": 1,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": false
+    },
+    {
+      "name": "dropped",
+      "selectorControl": false,
+      "segmentReplay": true,
+      "stopAt": 0,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 11,
+      "matches": false
+    },
+    {
+      "name": "dropped",
+      "selectorControl": false,
+      "segmentReplay": true,
+      "stopAt": 1,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "dropped",
+      "selectorControl": true,
+      "segmentReplay": false,
+      "stopAt": 0,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "dropped",
+      "selectorControl": true,
+      "segmentReplay": false,
+      "stopAt": 1,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "value": null
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": false
+    },
+    {
+      "name": "dropped",
+      "selectorControl": true,
+      "segmentReplay": true,
+      "stopAt": 0,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "dropped",
+      "selectorControl": true,
+      "segmentReplay": true,
+      "stopAt": 1,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "empty-dropped",
+      "selectorControl": false,
+      "segmentReplay": false,
+      "stopAt": 0,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 12,
+      "matches": false
+    },
+    {
+      "name": "empty-dropped",
+      "selectorControl": false,
+      "segmentReplay": false,
+      "stopAt": 1,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "empty-dropped",
+      "selectorControl": false,
+      "segmentReplay": true,
+      "stopAt": 0,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 12,
+      "matches": false
+    },
+    {
+      "name": "empty-dropped",
+      "selectorControl": false,
+      "segmentReplay": true,
+      "stopAt": 1,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "empty-dropped",
+      "selectorControl": true,
+      "segmentReplay": false,
+      "stopAt": 0,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "empty-dropped",
+      "selectorControl": true,
+      "segmentReplay": false,
+      "stopAt": 1,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": false,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "empty-dropped",
+      "selectorControl": true,
+      "segmentReplay": true,
+      "stopAt": 0,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "empty-dropped",
+      "selectorControl": true,
+      "segmentReplay": true,
+      "stopAt": 1,
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 23,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "value": null
+      },
+      "resumedValue": 23,
+      "matches": true
+    },
+    {
+      "name": "active",
+      "selectorControl": false,
+      "segmentReplay": false,
+      "stopAt": 0,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": false,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 11,
+      "matches": false
+    },
+    {
+      "name": "active",
+      "selectorControl": false,
+      "segmentReplay": false,
+      "stopAt": 1,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": false,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "active",
+      "selectorControl": false,
+      "segmentReplay": true,
+      "stopAt": 0,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 11,
+      "matches": false
+    },
+    {
+      "name": "active",
+      "selectorControl": false,
+      "segmentReplay": true,
+      "stopAt": 1,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "active",
+      "selectorControl": true,
+      "segmentReplay": false,
+      "stopAt": 0,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": false,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "active",
+      "selectorControl": true,
+      "segmentReplay": false,
+      "stopAt": 1,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": false,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "active",
+      "selectorControl": true,
+      "segmentReplay": true,
+      "stopAt": 0,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 11,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    },
+    {
+      "name": "active",
+      "selectorControl": true,
+      "segmentReplay": true,
+      "stopAt": 1,
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 22,
+      "first": {
+        "trap": true
+      },
+      "sourceValue": 22,
+      "beforeProbe": {
+        "trap": true
+      },
+      "freshProbeBeforeResume": {
+        "trap": true
+      },
+      "dropApplied": true,
+      "resumed": {
+        "trap": true
+      },
+      "resumedValue": 22,
+      "matches": true
+    }
+  ],
+  "summary": [
+    {
+      "selectorControl": false,
+      "segmentReplay": false,
+      "cases": 8,
+      "mismatches": 5
+    },
+    {
+      "selectorControl": false,
+      "segmentReplay": true,
+      "cases": 8,
+      "mismatches": 4
+    },
+    {
+      "selectorControl": true,
+      "segmentReplay": false,
+      "cases": 8,
+      "mismatches": 1
+    },
+    {
+      "selectorControl": true,
+      "segmentReplay": true,
+      "cases": 8,
+      "mismatches": 0
+    }
+  ],
+  "manifest": [
+    {
+      "name": "retained",
+      "sourceHash": "61394ed73b0cd29a39c722aa4576f09d37ff3274059bf51e94a9232115b8e843",
+      "source": "results\\state-witness\\external-v3\\retained-observed.wasm",
+      "guards": [
+        1,
+        3
+      ]
+    },
+    {
+      "name": "dropped",
+      "sourceHash": "c62c8d111883b2c376a981ef02b2c45286284a71cf4fac542e3884004fa8ef97",
+      "source": "results\\state-witness\\external-v3\\dropped-observed.wasm",
+      "guards": [
+        1,
+        3
+      ]
+    },
+    {
+      "name": "empty-dropped",
+      "sourceHash": "bb135360899db1c85c6f68ffbc2d3b9aa262e7e350af420af007b092ba9dc49e",
+      "source": "results\\state-witness\\external-v3\\empty-dropped-observed.wasm",
+      "guards": [
+        1,
+        3
+      ]
+    },
+    {
+      "name": "active",
+      "sourceHash": "e49cd571b211904eda7324331b420662c1790f7b430a6fdfc1c3e3262df09611",
+      "source": "results\\state-witness\\external-v3\\active-observed.wasm",
+      "guards": [
+        1,
+        3
+      ]
+    }
+  ],
+  "scope": "Diagnostic interventions on two-region idempotent fixtures, not a general upstream repair.",
+  "executableHash": "d9d1f498733180f0cb5cfb3166bdf05ba703ce7e3e2921bee974a76cb8a4b5a1",
+  "inputManifestHash": "d7fb1f2bcb6531ba96c8fb78aee01085781aaf2a855aa5c10c1aaeb74816ff03"
+}

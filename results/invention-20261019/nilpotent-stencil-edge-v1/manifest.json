@@ -1,0 +1,101 @@
+{
+  "models": {
+    "cubic_shift0": [
+      "i32.add",
+      [
+        "i32.mul",
+        [
+          "i32.mul",
+          [
+            "local.get",
+            "0"
+          ],
+          [
+            "local.get",
+            "0"
+          ]
+        ],
+        [
+          "local.get",
+          "0"
+        ]
+      ],
+      [
+        "i32.mul",
+        [
+          "i32.const",
+          "5"
+        ],
+        [
+          "local.get",
+          "1"
+        ]
+      ]
+    ],
+    "even_quartic_shift7": [
+      "i32.mul",
+      [
+        "i32.const",
+        "2"
+      ],
+      [
+        "i32.add",
+        [
+          "i32.mul",
+          [
+            "i32.mul",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "0"
+            ]
+          ],
+          [
+            "i32.mul",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "0"
+            ]
+          ]
+        ],
+        [
+          "local.get",
+          "1"
+        ]
+      ]
+    ]
+  },
+  "files": [
+    {
+      "model": "cubic_shift0",
+      "path": "cubic_shift0.source.wasm"
+    },
+    {
+      "model": "cubic_shift0",
+      "path": "cubic_shift0.stencil.wasm"
+    },
+    {
+      "model": "cubic_shift0",
+      "path": "cubic_shift0.recovered.wasm"
+    },
+    {
+      "model": "even_quartic_shift7",
+      "path": "even_quartic_shift7.source.wasm"
+    },
+    {
+      "model": "even_quartic_shift7",
+      "path": "even_quartic_shift7.stencil.wasm"
+    },
+    {
+      "model": "even_quartic_shift7",
+      "path": "even_quartic_shift7.recovered.wasm"
+    }
+  ]
+}

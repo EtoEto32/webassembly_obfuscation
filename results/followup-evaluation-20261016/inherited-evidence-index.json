@@ -1,0 +1,119 @@
+{
+  "status": "saved-records-and-referenced-hashes-verified",
+  "records": [
+    {
+      "path": "results\\countermeasures\\local-normalization\\static-comparison.json",
+      "sha256": "32f1a114b601325f5344a60b94e306566ea1ea1ebc6cae690eb6ab5be7cd673c",
+      "records": 18,
+      "current_normalizer_matches_recorded_sha256": true,
+      "actual_normalizer_sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9",
+      "recorded_normalizer_sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9",
+      "recorded_output_artifact_hashes_verified": 18,
+      "scope": "Static validated artifacts only; no new hashing, throughput, detector or all-input equivalence claim."
+    },
+    {
+      "path": "results\\countermeasures\\transfer\\comparison.json",
+      "sha256": "0640d11d374ba3607689313b39984c9b28f75fd98ffcb1b1b0e0c8c550d71a02",
+      "records": 72,
+      "current_normalizer_matches_recorded_sha256": true,
+      "actual_normalizer_sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9",
+      "recorded_normalizer_sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9",
+      "recorded_output_artifact_hashes_verified": 72,
+      "scope": "Static transfer to held-out programs and selected negative controls. No detector evaluation or all-input equivalence proof."
+    },
+    {
+      "path": "results\\countermeasures\\seeded-normalization\\comparison.json",
+      "sha256": "2761d37e2d169c48d951854309f0447377dbe8527b65bc9d383c46216dcee817",
+      "records": 54,
+      "current_normalizer_matches_recorded_sha256": true,
+      "actual_normalizer_sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9",
+      "recorded_normalizer_sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9",
+      "recorded_output_artifact_hashes_verified": 54,
+      "scope": "Frozen rules on new seeds and ratios; same-program generalization only. No mining or throughput measurement."
+    },
+    {
+      "path": "results\\countermeasures\\local-normalization\\synthetic-tests\\result.json",
+      "sha256": "61d3d6d19875f15d3d41160f60cdbbaf640b3313ae3a443dc9b73c5b5d347595",
+      "functions": 912,
+      "recorded_runtime_checks": 1824,
+      "current_normalizer_matches_recorded_sha256": true,
+      "scope": "Synthetic integer edge/random tests only; not public hashing vectors, real-world prevalence or all-input equivalence."
+    },
+    {
+      "path": "results\\countermeasures\\interface-signature-audit.json",
+      "sha256": "cf6a448c764ac0f736f8840a6e18bcdc9d928408c3511025578601ad29d82302",
+      "records": 144,
+      "dedicated_conditions": 72,
+      "recorded_dedicated_properties_verified": [
+        "function_signatures_equal",
+        "exported_function_signatures_equal",
+        "interface_names_kinds_equal"
+      ],
+      "scope": "Resolve function signatures through Type, Import, Function and Export sections; compare multisets independent of index/order, retaining duplicate multiplicity. Compare names/kinds for all interfaces. Does not check nonfunction resource types/limits, table elements, host behavior or whole-module semantics."
+    },
+    {
+      "path": "results\\countermeasures\\interface-resource-audit.json",
+      "sha256": "e4832a4560188a737546f3f5a82cf2dd318eeff8fad7e3acf1f2fc6289bae010",
+      "records": 144,
+      "dedicated_conditions": 72,
+      "recorded_dedicated_properties_verified": [
+        "imported_resources_equal",
+        "exported_resources_equal",
+        "defined_resource_types_equal"
+      ],
+      "scope": "Imported/exported memory and table type/limits, global type/mutability, and defined resource type multisets. Not initial values, memory/data contents, table elements, start function behavior, host effects, traps or whole-module equivalence."
+    },
+    {
+      "path": "results\\countermeasures\\flattening-xor\\checks.json",
+      "sha256": "dcb6dbf2c9a6bd15b6c40583325fa49747cb94f430b66c94779c704fef5c4951",
+      "recorded_pass": true,
+      "cases": 698,
+      "helper_calls": 1396,
+      "expressions": null,
+      "integer_checks": null,
+      "scope": "Finite isolated XOR helper output and non-scratch memory checks; not full miner equivalence, dynamic hash-path coverage or performance."
+    },
+    {
+      "path": "results\\countermeasures\\flattening-xor\\state-model-checks.json",
+      "sha256": "e422d8b5f77217b3b1bc809f7f91ff8bb9a73ab32ee51a83cb6e13dfc4974b6c",
+      "recorded_pass": true,
+      "cases": 698,
+      "helper_calls": null,
+      "expressions": null,
+      "integer_checks": null,
+      "scope": "Manually reviewed state graphs have the same role trace and sequential XOR effect as the ordinary loop model. This is not automatic recovery, dynamic instrumentation or all-input/full-module proof."
+    },
+    {
+      "path": "results\\countermeasures\\expression-analysis\\extracted-output-checks.json",
+      "sha256": "715ef8da14b0b6297011de56597c5316310fafff70d6bd1fb5caa13f8b478e27",
+      "recorded_pass": true,
+      "cases": null,
+      "helper_calls": null,
+      "expressions": 183,
+      "integer_checks": 19398,
+      "scope": "Finite independent integer checks of local expression ASTs, not full-module or dynamic-path validation."
+    },
+    {
+      "path": "results\\countermeasures\\detector-feasibility\\scale-sensitivity.json",
+      "sha256": "5148033a36e58d0883aaf84ebd4efdfa59aaf4a9932af042b8509af4c6821936",
+      "summary": {
+        "conditions": 144,
+        "normalized_malign_predictions": 92,
+        "scale_class_changes": 21,
+        "dedicated_normalized_class_changes": 0
+      },
+      "trained_model_provenance_unresolved": true,
+      "scope": "Source-grounded preprocessing sensitivity for a fixed model and corpus. Not an accuracy benchmark or selection of the most favorable preprocessing."
+    }
+  ],
+  "current_normalizer_sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9",
+  "total_static_conditions": 144,
+  "dedicated_conditions": 72,
+  "new_wasm_executions": 0,
+  "old_results_not_reclassified_as_new": true,
+  "limits": [
+    "Hashes and recorded pass fields establish correspondence, not independent reruns or all-input correctness.",
+    "Synthetic/isolated tests and detector preprocessing do not prove whole-miner behavior or detector improvements."
+  ],
+  "index_script_sha256": "bd41a93ae4398b27a27a3bc402aac0cd36ca771bc18c06f291fb8ce350e4bcc6"
+}

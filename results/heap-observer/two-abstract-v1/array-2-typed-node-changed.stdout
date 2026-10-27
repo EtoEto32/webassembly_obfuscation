@@ -1,0 +1,13 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func
+[fuzz-exec] note result: func => 1048577
+[fuzz-exec] export func_12
+[fuzz-exec] note result: func_12 => 32768
+[fuzz-exec] export func_12_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_14_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_16
+[fuzz-exec] note result: func_16 => -117
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_12","known":true,"status":"returned","unsupported":[]},{"name":"func_12_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_14_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_16","known":true,"status":"returned","unsupported":[]}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null}]}

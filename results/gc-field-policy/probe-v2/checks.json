@@ -1,0 +1,2132 @@
+[
+  {
+    "name": "public-read",
+    "secret": 12345,
+    "expectedAcceptance": true,
+    "category": "safe",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006958,
+      "validationSeconds": 0.0006182
+    }
+  },
+  {
+    "name": "pass-through",
+    "secret": 12345,
+    "expectedAcceptance": true,
+    "category": "safe",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 0,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "deny-all-gc",
+          "violations": []
+        }
+      ],
+      "totalSeconds": 0.0006726,
+      "validationSeconds": 0.0006228
+    }
+  },
+  {
+    "name": "secret-read",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006434,
+      "validationSeconds": 0.0005894
+    }
+  },
+  {
+    "name": "renumbered-read",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006814,
+      "validationSeconds": 0.0006239
+    }
+  },
+  {
+    "name": "duplicate-type-read",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006468,
+      "validationSeconds": 0.0005952
+    }
+  },
+  {
+    "name": "ancestor-read",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.000622,
+      "validationSeconds": 0.0005714
+    }
+  },
+  {
+    "name": "ancestor-write",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "write",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "write",
+              "field": 1,
+              "op": "struct.set",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "write",
+              "field": 1,
+              "op": "struct.set",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006409,
+      "validationSeconds": 0.000584
+    }
+  },
+  {
+    "name": "subtype-forge",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "create",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005942,
+      "validationSeconds": 0.0005368
+    }
+  },
+  {
+    "name": "const-forge",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "create",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006297,
+      "validationSeconds": 0.0005697
+    }
+  },
+  {
+    "name": "base-constructor",
+    "secret": 12345,
+    "expectedAcceptance": true,
+    "category": "safe",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006098,
+      "validationSeconds": 0.0005586
+    }
+  },
+  {
+    "name": "base-only-read",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "conservative-reject",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 2,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 1,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            },
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 1,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005826,
+      "validationSeconds": 0.0005304
+    }
+  },
+  {
+    "name": "different-final-type",
+    "secret": 12345,
+    "expectedAcceptance": true,
+    "category": "safe-trap",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005902,
+      "validationSeconds": 0.0005395
+    }
+  },
+  {
+    "name": "array-length",
+    "secret": 12345,
+    "expectedAcceptance": true,
+    "category": "public-length",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 0,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "deny-all-gc",
+          "violations": []
+        }
+      ],
+      "totalSeconds": 0.0006217,
+      "validationSeconds": 0.0005713
+    }
+  },
+  {
+    "name": "array-ancestor-read",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 3,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006224,
+      "validationSeconds": 0.0005712
+    }
+  },
+  {
+    "name": "array-ancestor-fill",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "write",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.write",
+              "operation": 0,
+              "protectedType": 3,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.write",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006356,
+      "validationSeconds": 0.0005848
+    }
+  },
+  {
+    "name": "array-copy-source",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 4,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.copy.source",
+              "operation": 1,
+              "protectedType": 3,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.copy.source",
+              "operation": 1,
+              "protectedType": 1,
+              "type": 2
+            },
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.copy.destination",
+              "operation": 2,
+              "protectedType": 1,
+              "type": 4
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 3,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006176,
+      "validationSeconds": 0.0005449
+    }
+  },
+  {
+    "name": "array-copy-destination",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "write",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 3,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.copy.destination",
+              "operation": 2,
+              "protectedType": 3,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.copy.source",
+              "operation": 1,
+              "protectedType": 1,
+              "type": 4
+            },
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.copy.destination",
+              "operation": 2,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006193,
+      "validationSeconds": 0.000555
+    }
+  },
+  {
+    "name": "array-subtype-forge",
+    "secret": 12345,
+    "expectedAcceptance": false,
+    "category": "create",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 3,
+              "type": 4
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006238,
+      "validationSeconds": 0.0005711
+    }
+  },
+  {
+    "name": "public-read",
+    "secret": 54321,
+    "expectedAcceptance": true,
+    "category": "safe",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.000601,
+      "validationSeconds": 0.0005539
+    }
+  },
+  {
+    "name": "pass-through",
+    "secret": 54321,
+    "expectedAcceptance": true,
+    "category": "safe",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 0,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "deny-all-gc",
+          "violations": []
+        }
+      ],
+      "totalSeconds": 0.0006195,
+      "validationSeconds": 0.0005795
+    }
+  },
+  {
+    "name": "secret-read",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0007346,
+      "validationSeconds": 0.000621
+    }
+  },
+  {
+    "name": "renumbered-read",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006171,
+      "validationSeconds": 0.0005594
+    }
+  },
+  {
+    "name": "duplicate-type-read",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006385,
+      "validationSeconds": 0.0005837
+    }
+  },
+  {
+    "name": "ancestor-read",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006075,
+      "validationSeconds": 0.0005527
+    }
+  },
+  {
+    "name": "ancestor-write",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "write",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "write",
+              "field": 1,
+              "op": "struct.set",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "write",
+              "field": 1,
+              "op": "struct.set",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005955,
+      "validationSeconds": 0.0005394
+    }
+  },
+  {
+    "name": "subtype-forge",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "create",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006329,
+      "validationSeconds": 0.0005797
+    }
+  },
+  {
+    "name": "const-forge",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "create",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 1
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006192,
+      "validationSeconds": 0.0005569
+    }
+  },
+  {
+    "name": "base-constructor",
+    "secret": 54321,
+    "expectedAcceptance": true,
+    "category": "safe",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005788,
+      "validationSeconds": 0.0005299
+    }
+  },
+  {
+    "name": "base-only-read",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "conservative-reject",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 2,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 1,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "struct.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 0
+            },
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 1,
+              "protectedType": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005537,
+      "validationSeconds": 0.0004925
+    }
+  },
+  {
+    "name": "different-final-type",
+    "secret": 54321,
+    "expectedAcceptance": true,
+    "category": "safe-trap",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 1,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005692,
+      "validationSeconds": 0.0005215
+    }
+  },
+  {
+    "name": "array-length",
+    "secret": 54321,
+    "expectedAcceptance": true,
+    "category": "public-length",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 0,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "deny-all-gc",
+          "violations": []
+        }
+      ],
+      "totalSeconds": 0.0005777,
+      "validationSeconds": 0.0005307
+    }
+  },
+  {
+    "name": "array-ancestor-read",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 3,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005845,
+      "validationSeconds": 0.0005342
+    }
+  },
+  {
+    "name": "array-ancestor-fill",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "write",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.write",
+              "operation": 0,
+              "protectedType": 3,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.write",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006152,
+      "validationSeconds": 0.000565
+    }
+  },
+  {
+    "name": "array-copy-source",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "read",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 4,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.copy.source",
+              "operation": 1,
+              "protectedType": 3,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.copy.source",
+              "operation": 1,
+              "protectedType": 1,
+              "type": 2
+            },
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.copy.destination",
+              "operation": 2,
+              "protectedType": 1,
+              "type": 4
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 3,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006121,
+      "validationSeconds": 0.0005446
+    }
+  },
+  {
+    "name": "array-copy-destination",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "write",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 3,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.copy.destination",
+              "operation": 2,
+              "protectedType": 3,
+              "type": 2
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.copy.source",
+              "operation": 1,
+              "protectedType": 1,
+              "type": 4
+            },
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.copy.destination",
+              "operation": 2,
+              "protectedType": 1,
+              "type": 2
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006106,
+      "validationSeconds": 0.0005459
+    }
+  },
+  {
+    "name": "array-subtype-forge",
+    "secret": 54321,
+    "expectedAcceptance": false,
+    "category": "create",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 3,
+              "type": 4
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 1,
+              "type": 4
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006224,
+      "validationSeconds": 0.00057
+    }
+  }
+]

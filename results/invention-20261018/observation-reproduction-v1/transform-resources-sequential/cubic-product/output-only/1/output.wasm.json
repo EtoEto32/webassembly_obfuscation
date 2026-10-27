@@ -1,0 +1,143 @@
+{
+  "mode": "output-only",
+  "seed": 20261018,
+  "inputSHA256": "adef81d0dc8db3febc947dceb421c2d016b6be5c39e975e6f313a860f600623a",
+  "outputSHA256": "3651606f58927ef336cfac724ad7eae63574cb06a01490c1db4fee4f7afea3ce",
+  "elapsed_seconds": 0.07350500000000001,
+  "regions": [
+    {
+      "source": [
+        "mul",
+        [
+          "add",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ],
+          "v2"
+        ],
+        [
+          "add",
+          [
+            "sub",
+            "v0",
+            "v2"
+          ],
+          "v1"
+        ]
+      ],
+      "target": [
+        "add",
+        [
+          "mul",
+          "v0",
+          "v1"
+        ],
+        "v2"
+      ],
+      "chosen": [
+        "mul",
+        [
+          "add",
+          "v1",
+          [
+            "sub",
+            "v0",
+            "v2"
+          ]
+        ],
+        [
+          "add",
+          "v2",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ]
+        ]
+      ],
+      "search": {
+        "attempted": 148,
+        "retained": 96,
+        "cost_rejected": 2,
+        "budget_hit": true,
+        "depth": 3,
+        "limit": 96
+      },
+      "frontier_size": 6,
+      "source_cost": 5,
+      "chosen_cost": 5,
+      "recovery": {
+        "cost": 0,
+        "expression": [
+          "add",
+          "v2",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ]
+        ]
+      },
+      "certificate": [
+        [
+          [
+            "v0",
+            "v0",
+            "v1"
+          ],
+          1
+        ],
+        [
+          [
+            "v0",
+            "v1",
+            "v1"
+          ],
+          1
+        ],
+        [
+          [
+            "v0",
+            "v1",
+            "v2"
+          ],
+          4294967295
+        ],
+        [
+          [
+            "v0",
+            "v2"
+          ],
+          1
+        ],
+        [
+          [
+            "v1",
+            "v2"
+          ],
+          1
+        ],
+        [
+          [
+            "v2",
+            "v2"
+          ],
+          4294967295
+        ]
+      ]
+    }
+  ],
+  "supported": "pure i32 add/sub/mul over local.get and i32.const; WABT folded text only",
+  "limitations": [
+    "Finite bounded rewrite pool, not complete synthesis.",
+    "Selection uses algebraic 2-operation recovery only; not a resilience verdict.",
+    "Debug/custom sections not guaranteed preserved.",
+    "No post-optimizer scoring in this CLI version."
+  ],
+  "sourceSHA256": {
+    "transform.py": "98905cb88d7e60fe345b1a5d989854bf80684119142d3073d6bbffda575a0a89",
+    "core.py": "750c89595c7c3cc2709b6b5ff4d4f1e6dfddacb708bd0ecdc4243c20993be031"
+  }
+}

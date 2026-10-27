@@ -1,0 +1,1036 @@
+{
+  "cases": [
+    {
+      "name": "drop-before-init",
+      "source": "drop-before-init.wasm",
+      "observed": "drop-before-init-observed.wasm",
+      "expectedWitness": false,
+      "params": 0,
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteProfile": {
+        "status": "accepted",
+        "actions": [
+          {
+            "name": "test",
+            "kind": "exact-noargs"
+          }
+        ]
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "init-before-drop",
+      "source": "init-before-drop.wasm",
+      "observed": "init-before-drop-observed.wasm",
+      "expectedWitness": true,
+      "params": 0,
+      "certificate": {
+        "status": "unproved",
+        "reason": "read before definite drop: ('data', 0) via [0]",
+        "roots": [
+          0
+        ],
+        "checkedRoots": []
+      },
+      "finiteProfile": {
+        "status": "accepted",
+        "actions": [
+          {
+            "name": "test",
+            "kind": "exact-noargs"
+          }
+        ]
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": false,
+          "traces": [
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "callee-drop",
+      "source": "callee-drop.wasm",
+      "observed": "callee-drop-observed.wasm",
+      "expectedWitness": false,
+      "params": 0,
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          1
+        ],
+        "checkedRoots": [
+          1
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "nonconstant bulk body"
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "callee-read",
+      "source": "callee-read.wasm",
+      "observed": "callee-read-observed.wasm",
+      "expectedWitness": true,
+      "params": 0,
+      "certificate": {
+        "status": "unproved",
+        "reason": "read before definite drop: ('data', 0) via [1, 0]",
+        "roots": [
+          1
+        ],
+        "checkedRoots": []
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "nonconstant bulk body"
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": false,
+          "traces": [
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "both-branches-drop",
+      "source": "both-branches-drop.wasm",
+      "observed": "both-branches-drop-observed.wasm",
+      "expectedWitness": false,
+      "params": 1,
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          },
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      },
+      "rows": [
+        {
+          "args": [
+            0
+          ],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        },
+        {
+          "args": [
+            1
+          ],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        },
+        {
+          "args": [
+            -1
+          ],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "one-branch-drop",
+      "source": "one-branch-drop.wasm",
+      "observed": "one-branch-drop-observed.wasm",
+      "expectedWitness": true,
+      "params": 1,
+      "certificate": {
+        "status": "unproved",
+        "reason": "read before definite drop: ('data', 0) via [0]",
+        "roots": [
+          0
+        ],
+        "checkedRoots": []
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      },
+      "rows": [
+        {
+          "args": [
+            0
+          ],
+          "same": false,
+          "traces": [
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        },
+        {
+          "args": [
+            1
+          ],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        },
+        {
+          "args": [
+            -1
+          ],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "trap-before-read",
+      "source": "trap-before-read.wasm",
+      "observed": "trap-before-read-observed.wasm",
+      "expectedWitness": false,
+      "params": 0,
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": []
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "nonconstant bulk body"
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "branch-trap-or-drop",
+      "source": "branch-trap-or-drop.wasm",
+      "observed": "branch-trap-or-drop-observed.wasm",
+      "expectedWitness": false,
+      "params": 1,
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      },
+      "rows": [
+        {
+          "args": [
+            0
+          ],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        },
+        {
+          "args": [
+            1
+          ],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        },
+        {
+          "args": [
+            -1
+          ],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "argument-call-drop",
+      "source": "argument-call-drop.wasm",
+      "observed": "argument-call-drop-observed.wasm",
+      "expectedWitness": false,
+      "params": 0,
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          1
+        ],
+        "checkedRoots": [
+          1
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "nonconstant bulk operands"
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unused-private-read",
+      "source": "unused-private-read.wasm",
+      "observed": "unused-private-read-observed.wasm",
+      "expectedWitness": false,
+      "params": 0,
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          1
+        ],
+        "checkedRoots": [
+          1
+        ],
+        "events": [
+          {
+            "function": 1,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteProfile": {
+        "status": "accepted",
+        "actions": [
+          {
+            "name": "test",
+            "kind": "exact-noargs"
+          }
+        ]
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "indirect-read",
+      "source": "indirect-read.wasm",
+      "observed": "indirect-read-observed.wasm",
+      "expectedWitness": true,
+      "params": 0,
+      "certificate": {
+        "status": "unproved",
+        "reason": "unsupported instruction: call_indirect",
+        "roots": [
+          1
+        ],
+        "checkedRoots": []
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "nonconstant bulk body"
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": false,
+          "traces": [
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "trap": true
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "safe-zero-source",
+      "source": "safe-zero-source.wasm",
+      "observed": "safe-zero-source-observed.wasm",
+      "expectedWitness": false,
+      "params": 0,
+      "certificate": {
+        "status": "unproved",
+        "reason": "read before definite drop: ('data', 0) via [0]",
+        "roots": [
+          0
+        ],
+        "checkedRoots": []
+      },
+      "finiteProfile": {
+        "status": "accepted",
+        "actions": [
+          {
+            "name": "test",
+            "kind": "exact-noargs"
+          }
+        ]
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "name": "recursive-unproved",
+      "source": "recursive-unproved.wasm",
+      "observed": "recursive-unproved-observed.wasm",
+      "expectedWitness": null,
+      "params": 0,
+      "certificate": {
+        "status": "unproved",
+        "reason": "recursive call",
+        "roots": [
+          0
+        ],
+        "checkedRoots": []
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "nonconstant bulk body"
+      },
+      "rows": []
+    },
+    {
+      "name": "return-unproved",
+      "source": "return-unproved.wasm",
+      "observed": "return-unproved-observed.wasm",
+      "expectedWitness": false,
+      "params": 0,
+      "certificate": {
+        "status": "unproved",
+        "reason": "unsupported instruction: return",
+        "roots": [
+          0
+        ],
+        "checkedRoots": []
+      },
+      "finiteProfile": {
+        "status": "unsupported",
+        "reason": "nonconstant bulk body"
+      },
+      "rows": [
+        {
+          "args": [],
+          "same": true,
+          "traces": [
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ],
+            [
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              },
+              {
+                "result": {
+                  "value": null
+                },
+                "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+              }
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

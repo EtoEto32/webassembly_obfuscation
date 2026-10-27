@@ -1,0 +1,47 @@
+[
+  {
+    "name": "in_range",
+    "proven": 0
+  },
+  {
+    "name": "unknown",
+    "proven": 0
+  },
+  {
+    "name": "out_of_range",
+    "proven": 1
+  },
+  {
+    "name": "division",
+    "action": "transform",
+    "rejected": "Unsupported source expression: (i32.div_u (local.get 0) (local.get 1))"
+  },
+  {
+    "name": "division",
+    "action": "simplify",
+    "rejected": "Outside pure recovery scope: ['i32.div_u', ['local.get', '0'], ['local.get', '1']]"
+  },
+  {
+    "name": "memory",
+    "action": "transform",
+    "rejected": "Unsupported module effect or declaration"
+  },
+  {
+    "name": "memory",
+    "action": "simplify",
+    "rejected": "Unsupported module effect or declaration"
+  },
+  {
+    "name": "observable_relaxed_value",
+    "observed_node_values": [
+      -1,
+      0
+    ],
+    "permitted_original_lane_values": [
+      0,
+      255
+    ],
+    "refined_lane_value": 0,
+    "full_result_set_equivalent": false
+  }
+]

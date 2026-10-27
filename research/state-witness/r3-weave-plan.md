@@ -1,0 +1,11 @@
+# 実アプリreplayとWeaveの合成検査（実行前）
+
+2026-10-24。小例の参照directoryは4中断点からの再開後に元tableと一致した。次はR3で正常完走した10本を対象に、閉じた記録済みworkloadについて元 / Weave / directory付きWeaveを比較する。既に元がtrapしたpathfindingは正常完走集合から除外し、以前の結果を保持する。
+
+Weaveの公開default TransformOptions（poll_period=512, stack_pages=16）を使用する別CLIを追加する。upstream sourceを修正しない。各変換60秒、各実行条件60秒、V8物理memory最大512pagesとold-space 512MiBを上限にする。Kが観測する元の論理memoryは256pagesまでで、Weaveのprivate suffixは元メモリ比較から除く。この割当上限は以前の256pagesと異なるので元binaryも同じ512pages上限で再実行する。
+
+元API完了後の全元memory bytesとtableの参照index集合、numeric globals bits、segment probeを観測する。元/observer付き元のAPIとstateを照合し、directory付きWeaveの連続実行と比較する。Weave単独対照は公開memory prefixとAPI結果を比較し、private stateの完全一致とはしない。復元は最初のpollで1回だけholdし、memory/control globalsを公開adapterで別instanceへrestoreして最後まで再開する。pollがないものはcheckpoint-not-reachedとする。
+
+復元直後はまだtable shadowがmaterializeされないため、full observerは再開完了後だけ実行する。観測instanceはその後再開しない。timeout / transform rejection / trap / state mismatch / observer failureを区別して保存する。単発時間を性能測定として使わない。初回transformと連続実行が正常でない場合も後続実験で隠さず記録する。
+
+追加directoryはWeaveの内部registryと同じ既知原理である。この実験は実アプリでの合成可能性と検査の誤診防止を評価し、新規な復元・難読化アルゴリズムを主張するものではない。

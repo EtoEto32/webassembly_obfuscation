@@ -1,0 +1,363 @@
+{
+  "created_utc": "2026-10-16T07:18:28.503605+00:00",
+  "image": "sha256:a05286e66b0f1ca712671db5849229594c92e035bae253362cc8b6d0af4a70b6",
+  "intended_node": "v18.20.4",
+  "intended_v8": "10.2.154.26-node.37",
+  "assets": [
+    {
+      "name": "host-original.cjs",
+      "path": "experiments/runtime-reference/swamped-host.cjs",
+      "sha256": "bc5ed8ba142ab2ff30832005c2b0c1a837b5ea5085f79dce43bbb05ecf5685b8"
+    },
+    {
+      "name": "glue-loader.cjs",
+      "path": "experiments/runtime-reference/proof-glue-controls.cjs",
+      "sha256": "069c9c9eb5b0b9117c981e62c7f9a4c53887dffee682067f3bf27639718cfab8"
+    },
+    {
+      "name": "webminerpoolhashcn.wasm",
+      "path": "data/objects/8bb74f8f7d0b71cab6684d122ab3f600f09cea9ae867607f145ab4a7a63387f3.bin",
+      "sha256": "8bb74f8f7d0b71cab6684d122ab3f600f09cea9ae867607f145ab4a7a63387f3"
+    },
+    {
+      "name": "webminerpoolhashcn.js",
+      "path": "results/runtime-mining/cross-dataset/proof-of-theft/original-glue/a4e28e322ca5fe915e2c9e805b0907944550895163a272d9e3f45c2675c6e8d8.js",
+      "sha256": "a4e28e322ca5fe915e2c9e805b0907944550895163a272d9e3f45c2675c6e8d8"
+    },
+    {
+      "name": "xmr-wasm.js",
+      "path": "results/runtime-mining/cross-dataset/proof-of-theft/original-glue/5e11fac2ab38a30b8366b2fdeabe2d6ebe8b4f1e766935e0a722bcc8d113aac4.js",
+      "sha256": "5e11fac2ab38a30b8366b2fdeabe2d6ebe8b4f1e766935e0a722bcc8d113aac4"
+    },
+    {
+      "name": "controlled.cjs",
+      "path": "experiments/runtime-reference/followup-controlled-check.cjs",
+      "sha256": "dc74bd25e76751d1f2a142caaf09ab6764c0e588fb0ee89b799496ad58aa1cfb"
+    },
+    {
+      "name": "xmr-wasm-baseline--unmodified.wasm",
+      "path": "results/followup-evaluation-20261016/normalization-artifacts/xmr-wasm-baseline--unmodified.wasm",
+      "sha256": "045eb0afdeb1e89e1d09108b69117d16ab46094c3c16d989e471d4d2bd5b7554"
+    },
+    {
+      "name": "xmr-wasm-baseline--nop.wasm",
+      "path": "results/followup-evaluation-20261016/normalization-artifacts/xmr-wasm-baseline--nop.wasm",
+      "sha256": "045eb0afdeb1e89e1d09108b69117d16ab46094c3c16d989e471d4d2bd5b7554"
+    },
+    {
+      "name": "xmr-wasm-baseline--integer-fold.wasm",
+      "path": "results/followup-evaluation-20261016/normalization-artifacts/xmr-wasm-baseline--integer-fold.wasm",
+      "sha256": "c0245d20d37efb5fa456038436ca9eff39e2e389f60d324e9ff176edbd08134f"
+    },
+    {
+      "name": "xmr-wasm-baseline--both.wasm",
+      "path": "results/followup-evaluation-20261016/normalization-artifacts/xmr-wasm-baseline--both.wasm",
+      "sha256": "c0245d20d37efb5fa456038436ca9eff39e2e389f60d324e9ff176edbd08134f"
+    },
+    {
+      "name": "xmr-wasm-baseline--binaryen-local.wasm",
+      "path": "results/followup-evaluation-20261016/normalization-artifacts/xmr-wasm-baseline--binaryen-local.wasm",
+      "sha256": "0c639f4a814705f13f604d38ccf33edc3aa0a03d757d4fa6df5583d4e655570f"
+    },
+    {
+      "name": "xmr-wasm-baseline--binaryen-O2.wasm",
+      "path": "results/followup-evaluation-20261016/normalization-artifacts/xmr-wasm-baseline--binaryen-O2.wasm",
+      "sha256": "d8bb33db0971de57b852b55de6ab42eb3a2ac01bc9acdec9193c9a1cdcaa2f91"
+    },
+    {
+      "name": "xmr-wasm-baseline--binaryen-O3.wasm",
+      "path": "results/followup-evaluation-20261016/normalization-artifacts/xmr-wasm-baseline--binaryen-O3.wasm",
+      "sha256": "bf730bae8205757fa2b2b7227d84ff99b2d808e4211c2a744566d384ba3da5ef"
+    }
+  ],
+  "cases": [
+    {
+      "id": "roundtrip",
+      "file": "roundtrip.wasm",
+      "sha256": "046dc081076d9cea6831967619b862cc80fa8c2381346406ec639c899cda640f"
+    },
+    {
+      "id": "nop10",
+      "file": "nop10.wasm",
+      "sha256": "8b415acfe6cc0226c68321276acead78c2587f34259ff439dfaf310f5703f9e1"
+    },
+    {
+      "id": "constsplit10",
+      "file": "constsplit10.wasm",
+      "sha256": "924fed98766c285c276fdc9a52b18d88b38c7b338d4e35b891e70a6f77883805"
+    }
+  ],
+  "references": [
+    {
+      "family": "webminerpoolhashcn",
+      "wasm": "webminerpoolhashcn.wasm",
+      "glue": "webminerpoolhashcn.js"
+    },
+    {
+      "family": "xmr-wasm",
+      "wasm": "xmr-wasm.wasm",
+      "glue": "xmr-wasm.js"
+    }
+  ],
+  "public_vectors": [
+    {
+      "id": "xmrig-cn0-0",
+      "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a0964b00000008ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+      "expected": "1a3ffbee909b420d91f7be6e5fb56db71b3110d886011e877ee5786afd080100",
+      "lite": 0,
+      "variant": 0,
+      "height": 0
+    },
+    {
+      "id": "xmrig-cn0-1",
+      "hex": "0100fb8e8ac805899323371bb790db19218afd8db8e3755d8b90f39b3d5506a9abce4fa912244500000000ee8146d49fa93ee724deb57d12cbc6c6f3b924d946127c7a97418f9348828f0f02",
+      "expected": "1b606a3f4a07d6489a1bcd07697bd16696b61c8ae982f61a90160f4e52828a7f",
+      "lite": 0,
+      "variant": 0,
+      "height": 0
+    },
+    {
+      "id": "xmrig-cn0-2",
+      "hex": "0707b487d0d60526e0c6dd9bc718c3cf5204bd4f9b27f673b93fef7bb2f72bbb3f3e9c3e9d331edeadbeef4e0091812974b270e76dd22a5f520493e6188940d8c6e3906eaa6ab7e2087e780e",
+      "expected": "a1b4fae3e576cecfb79caf3e2992e4e031240548bf8d5f7b110360aad7503f0c",
+      "lite": 0,
+      "variant": 0,
+      "height": 0
+    },
+    {
+      "id": "xmrig-cn0-3",
+      "hex": "0100eeb2d1d605ff277f26dbaab2c92630c6cf1164ea6c8ae09801f8754b49af7970aeeea7622c00000000478c63e7d840023cdaea925253acfdc78a4c31b2f2ec727bffcec0e712d4e92a01",
+      "expected": "2d30f3874f86a14ab5a21a08d0442c9d16e92849a1ff856f12bb7dab111ce7f7",
+      "lite": 0,
+      "variant": 0,
+      "height": 0
+    },
+    {
+      "id": "xmrig-cn0-4",
+      "hex": "0707a9b7d1d6053f0d5efdc703fcfcd2cebc44d8ab44a6a03ae44d8f15af6217d1e09285e473f9000000a0fc09deabf58b6f1dcaa8baac74dd7419d5d610ec38cf50296a070b938f8fa81004",
+      "expected": "2d9d19e4d226441ecd220824a89746620484904aee9914edb8c60d37a16617b0",
+      "lite": 0,
+      "variant": 0,
+      "height": 0
+    }
+  ],
+  "additional_vectors": [
+    {
+      "id": "differential-length-1",
+      "hex": "e3",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-length-8",
+      "hex": "4d1323f36f3dd387",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-length-32",
+      "hex": "6f495714667cbf7a49278b614753a643e58499141bd0830c6217e260d1ea2bf0",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-length-76",
+      "hex": "4f222524f8a3bfd22e538cf5b2d143a954cfea84da4eac67f09dfe1b2c99443c43bf836d3403733b9e6a530bd2a965c6c8129c46892910cd6a7fb8662f919e264d1037b1eab5b418ab186d29",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-length-128",
+      "hex": "b6e217962a8f24ba10cc4e26f3dc0341d818998326c83c35e03ec4b90ca62aa67f50566ea0eaaad62d1459a285e742b800f0786d2a89b73268d049e1c5e0669780a0cf9163a25fb48c2d407bd19b7cd54fd3672a23c4dda2e6c92ed49b1152772fda941e9d6c72ff6153c88a6aeef507ee105ad13441175d85fe44c7917ca60b",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-length-255",
+      "hex": "f2882b3af90d8d1fa8d20be383a9250ce2183ee0828f28c6e0702ced36e6eeb0895241a405e951741d97e4eb127ef487bd8c1a2aac598aefac4002ceb4e2b9e3a7f8233c22749b4fe879cd32d1becfd6d99339b3cc2b8d5576b3a62033bf49dc0f6d151586fdd06ae22da4f625c941f475c0b971cb88e2aebfdaca08dc656f0eab3ce542a9689de3bae8f595e8241a7c374ec74c1e954ad05da0bcb8ce21c529624d44a3902f51127b79d6ea21a7ea55a3cd4cc92022d35d5a6ea5e06c178669b8904f212e733135dbd6691a8f6d4a849539daab8dfffbff71c88ccbeffab3eaba91324ba0129fa4c68c51eaec1522251d83ce5f3b947878a0957ac932cabc",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-nonce-0",
+      "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a0960100000008ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-nonce-1",
+      "hex": "0100fb8e8ac805899323371bb790db19218afd8db8e3755d8b90f39b3d5506a9abce4fa912244505030201ee8146d49fa93ee724deb57d12cbc6c6f3b924d946127c7a97418f9348828f0f02",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-nonce-2",
+      "hex": "0707b487d0d60526e0c6dd9bc718c3cf5204bd4f9b27f673b93fef7bb2f72bbb3f3e9c3e9d331e090604024e0091812974b270e76dd22a5f520493e6188940d8c6e3906eaa6ab7e2087e780e",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-nonce-3",
+      "hex": "0100eeb2d1d605ff277f26dbaab2c92630c6cf1164ea6c8ae09801f8754b49af7970aeeea7622c0d090603478c63e7d840023cdaea925253acfdc78a4c31b2f2ec727bffcec0e712d4e92a01",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-nonce-4",
+      "hex": "0707a9b7d1d6053f0d5efdc703fcfcd2cebc44d8ab44a6a03ae44d8f15af6217d1e09285e473f9110c0804fc09deabf58b6f1dcaa8baac74dd7419d5d610ec38cf50296a070b938f8fa81004",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    },
+    {
+      "id": "differential-nonce-5",
+      "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a096150f0a0508ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+      "expected": null,
+      "oracle": "unmodified SWAMPED baseline; differential comparison only"
+    }
+  ],
+  "authorization": {
+    "user_request": "この方針でゴールモードを開始して。既存の研究成果を大事にしながら、難読化前後の性能評価を進めて、その結果を踏まえてコード正規化を検討してください。",
+    "inherited_professor_permission_sha256": "1c988efa979be57eb6b6e67ad1bb3e48c7b40187ba66d6d3f51058bcbd5838c8",
+    "scope": "Local offline correctness, dynamic-path and throughput follow-up; no pools, shares, rewards or external communications. Original permission remains associated with its original plan."
+  },
+  "input_diagnostic": {
+    "case_ids": [
+      "roundtrip",
+      "nop10",
+      "constsplit10"
+    ],
+    "length_arguments": [
+      0,
+      1,
+      8,
+      32,
+      75,
+      76,
+      77,
+      128,
+      255
+    ],
+    "short_lengths": [
+      1,
+      8,
+      32
+    ],
+    "maximum_wall_seconds": 300,
+    "expectations": [
+      "public vectors unchanged",
+      "full input ignores length argument",
+      "short input output equals canonical effective 76-byte buffer",
+      "tail outside first 76 bytes does not affect output",
+      "canonical 76-byte input matches independently distributed reference implementations"
+    ]
+  },
+  "frozen_before_execution": true,
+  "controlled": {
+    "artifacts": [
+      {
+        "id": "xmr-wasm-baseline--unmodified",
+        "family": "xmr-wasm",
+        "file": "xmr-wasm-baseline--unmodified.wasm",
+        "sha256": "045eb0afdeb1e89e1d09108b69117d16ab46094c3c16d989e471d4d2bd5b7554",
+        "glue": "xmr-wasm.js"
+      },
+      {
+        "id": "xmr-wasm-baseline--nop",
+        "family": "xmr-wasm",
+        "file": "xmr-wasm-baseline--nop.wasm",
+        "sha256": "045eb0afdeb1e89e1d09108b69117d16ab46094c3c16d989e471d4d2bd5b7554",
+        "glue": "xmr-wasm.js"
+      },
+      {
+        "id": "xmr-wasm-baseline--integer-fold",
+        "family": "xmr-wasm",
+        "file": "xmr-wasm-baseline--integer-fold.wasm",
+        "sha256": "c0245d20d37efb5fa456038436ca9eff39e2e389f60d324e9ff176edbd08134f",
+        "glue": "xmr-wasm.js"
+      },
+      {
+        "id": "xmr-wasm-baseline--both",
+        "family": "xmr-wasm",
+        "file": "xmr-wasm-baseline--both.wasm",
+        "sha256": "c0245d20d37efb5fa456038436ca9eff39e2e389f60d324e9ff176edbd08134f",
+        "glue": "xmr-wasm.js"
+      },
+      {
+        "id": "xmr-wasm-baseline--binaryen-local",
+        "family": "xmr-wasm",
+        "file": "xmr-wasm-baseline--binaryen-local.wasm",
+        "sha256": "0c639f4a814705f13f604d38ccf33edc3aa0a03d757d4fa6df5583d4e655570f",
+        "glue": "xmr-wasm.js"
+      },
+      {
+        "id": "xmr-wasm-baseline--binaryen-O2",
+        "family": "xmr-wasm",
+        "file": "xmr-wasm-baseline--binaryen-O2.wasm",
+        "sha256": "d8bb33db0971de57b852b55de6ab42eb3a2ac01bc9acdec9193c9a1cdcaa2f91",
+        "glue": "xmr-wasm.js"
+      },
+      {
+        "id": "xmr-wasm-baseline--binaryen-O3",
+        "family": "xmr-wasm",
+        "file": "xmr-wasm-baseline--binaryen-O3.wasm",
+        "sha256": "bf730bae8205757fa2b2b7227d84ff99b2d808e4211c2a744566d384ba3da5ef",
+        "glue": "xmr-wasm.js"
+      }
+    ],
+    "additional_vectors": [
+      {
+        "id": "controlled-nonce-0",
+        "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a0960000000008ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+        "nonce": 0
+      },
+      {
+        "id": "controlled-nonce-1",
+        "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a0960100000008ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+        "nonce": 1
+      },
+      {
+        "id": "controlled-nonce-2",
+        "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a0960200000008ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+        "nonce": 2
+      },
+      {
+        "id": "controlled-nonce-3",
+        "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a096ff00000008ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+        "nonce": 255
+      },
+      {
+        "id": "controlled-nonce-4",
+        "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a0960001000008ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+        "nonce": 256
+      },
+      {
+        "id": "controlled-nonce-5",
+        "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a0960403020108ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+        "nonce": 16909060
+      },
+      {
+        "id": "controlled-nonce-6",
+        "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a096ffffff7f08ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+        "nonce": 2147483647
+      },
+      {
+        "id": "controlled-nonce-7",
+        "hex": "0305a0dbd6bf05cf16e503f3a66f78007cbf34144332ecbfc22ed95c8700383b309ace1923a096ffffffff08ba939a62724c0d7581fce5761e9d8a0e6a1c3f924fdd8493d1115649c05eb601",
+        "nonce": 4294967295
+      }
+    ],
+    "generation_manifest_sha256": "8d470d03407f8a662b4e560948d38783ecfb89ae99a9bed42ab951429fe0f736",
+    "modes": [
+      "fresh-each",
+      "forward",
+      "reverse"
+    ],
+    "normalization_applied": true,
+    "contract": "Exactly 76 bytes, cn/0; xmr public vectors limited to leading byte below 7.",
+    "reference": "Published vectors plus a separately distributed original webminerpoolhashcn implementation for nonce changes.",
+    "normalization_plan_sha256": "9f5d90bb3ac2f23866cf32d9f3b4fcb38d5d6864946e85f755569f1342653d14",
+    "static_result_sha256": "029e6d1e43b8db8600c924fbc51c6cd6fe31019e57bd836be368f0a217ec1b38",
+    "scope": "Reproducibility replay, not new independent implementations or throughput samples."
+  },
+  "maximum_wall_seconds": 900
+}

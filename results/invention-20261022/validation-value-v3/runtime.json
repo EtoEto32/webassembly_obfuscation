@@ -1,0 +1,2103 @@
+{
+  "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+  "logical_cpus": 16,
+  "flags": [
+    "--no-liftoff",
+    "--no-wasm-lazy-compilation"
+  ],
+  "warmup": 1024,
+  "host_call_included": true,
+  "js_input_generation_included": true,
+  "runtime": [
+    {
+      "file": "access.plain.O3.wasm",
+      "name": "access",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.230099999999993,
+          "ns_per_call": 19.29292678833007,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.757900000000006,
+          "ns_per_call": 19.796276092529304,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.647599999999997,
+          "ns_per_call": 19.691085815429684,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.850499999999982,
+          "ns_per_call": 19.884586334228498,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.891899999999993,
+          "ns_per_call": 19.924068450927727,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.120000000000005,
+          "ns_per_call": 20.141601562500004,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.908699999999982,
+          "ns_per_call": 19.94009017944334,
+          "checksum": 428544
+        }
+      ],
+      "checksum": 162106,
+      "median_ns": 19.884586334228498,
+      "max_rss_kib": 42892,
+      "memory_bytes": 0
+    },
+    {
+      "file": "access.validator.O3.wasm",
+      "name": "access",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 8192,
+          "elapsed_ms": 22.10069999999999,
+          "ns_per_call": 2697.8393554687486,
+          "checksum": 3382
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 22.234300000000005,
+          "ns_per_call": 2714.1479492187505,
+          "checksum": 3321
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 22.19490000000002,
+          "ns_per_call": 2709.3383789062523,
+          "checksum": 3343
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 22.246800000000007,
+          "ns_per_call": 2715.673828125001,
+          "checksum": 3350
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 24.409899999999993,
+          "ns_per_call": 2979.724121093749,
+          "checksum": 3376
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 33.0531,
+          "ns_per_call": 4034.80224609375,
+          "checksum": 3332
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 24.34899999999999,
+          "ns_per_call": 2972.2900390624986,
+          "checksum": 3328
+        }
+      ],
+      "checksum": 1486,
+      "median_ns": 2715.673828125001,
+      "max_rss_kib": 43536,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "access.validator.O3.wasm",
+      "name": "access",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 65536,
+          "elapsed_ms": 15.748100000000008,
+          "ns_per_call": 240.29693603515636,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 15.59729999999999,
+          "ns_per_call": 237.9959106445311,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 15.7222,
+          "ns_per_call": 239.9017333984375,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 15.529600000000002,
+          "ns_per_call": 236.96289062500003,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 16.488699999999994,
+          "ns_per_call": 251.59759521484366,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 15.682199999999995,
+          "ns_per_call": 239.29138183593741,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 15.824900000000014,
+          "ns_per_call": 241.46881103515645,
+          "checksum": 26784
+        }
+      ],
+      "checksum": 10074,
+      "median_ns": 239.9017333984375,
+      "max_rss_kib": 44304,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "access.recovered.O3.wasm",
+      "name": "access",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.2641,
+          "ns_per_call": 20.27902603149414,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.6451,
+          "ns_per_call": 19.688701629638672,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 22.596799999999988,
+          "ns_per_call": 21.54998779296874,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 24.119999999999976,
+          "ns_per_call": 23.00262451171873,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.883499999999998,
+          "ns_per_call": 20.86973190307617,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.05589999999998,
+          "ns_per_call": 20.08047103881834,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.096100000000007,
+          "ns_per_call": 20.118808746337898,
+          "checksum": 428544
+        }
+      ],
+      "checksum": 162106,
+      "median_ns": 20.27902603149414,
+      "max_rss_kib": 42928,
+      "memory_bytes": 0
+    },
+    {
+      "file": "compat.plain.O3.wasm",
+      "name": "compat",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.6524,
+          "ns_per_call": 26.371383666992188,
+          "checksum": 288518
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.39999999999999,
+          "ns_per_call": 26.130676269531243,
+          "checksum": 288824
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.58340000000001,
+          "ns_per_call": 26.305580139160167,
+          "checksum": 289175
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.334000000000003,
+          "ns_per_call": 27.02140808105469,
+          "checksum": 288163
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.71950000000001,
+          "ns_per_call": 26.435375213623058,
+          "checksum": 289209
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.671999999999997,
+          "ns_per_call": 26.390075683593746,
+          "checksum": 288108
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.527800000000013,
+          "ns_per_call": 26.252555847167983,
+          "checksum": 289686
+        }
+      ],
+      "checksum": 251074,
+      "median_ns": 26.371383666992188,
+      "max_rss_kib": 42872,
+      "memory_bytes": 0
+    },
+    {
+      "file": "compat.validator.O3.wasm",
+      "name": "compat",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 8192,
+          "elapsed_ms": 27.630399999999995,
+          "ns_per_call": 3372.8515624999995,
+          "checksum": 2243
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 27.744800000000012,
+          "ns_per_call": 3386.8164062500014,
+          "checksum": 2199
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 27.833699999999993,
+          "ns_per_call": 3397.668457031249,
+          "checksum": 2253
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 27.92580000000001,
+          "ns_per_call": 3408.9111328125014,
+          "checksum": 2313
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 26.03460000000001,
+          "ns_per_call": 3178.0517578125014,
+          "checksum": 2227
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 26.8716,
+          "ns_per_call": 3280.224609375,
+          "checksum": 2257
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 25.834100000000035,
+          "ns_per_call": 3153.576660156254,
+          "checksum": 2267
+        }
+      ],
+      "checksum": 1576,
+      "median_ns": 3372.8515624999995,
+      "max_rss_kib": 43320,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "compat.validator.O3.wasm",
+      "name": "compat",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 32768,
+          "elapsed_ms": 18.779300000000006,
+          "ns_per_call": 573.0987548828127,
+          "checksum": 9078
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.56309999999999,
+          "ns_per_call": 566.5008544921873,
+          "checksum": 9115
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.473700000000008,
+          "ns_per_call": 563.7725830078127,
+          "checksum": 9073
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.54039999999999,
+          "ns_per_call": 565.8081054687498,
+          "checksum": 9011
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.5582,
+          "ns_per_call": 566.351318359375,
+          "checksum": 8968
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.455899999999986,
+          "ns_per_call": 563.229370117187,
+          "checksum": 8931
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.557900000000018,
+          "ns_per_call": 566.3421630859381,
+          "checksum": 9118
+        }
+      ],
+      "checksum": 8155,
+      "median_ns": 566.3421630859381,
+      "max_rss_kib": 44056,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "compat.recovered.O3.wasm",
+      "name": "compat",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 30.807599999999994,
+          "ns_per_call": 29.38041687011718,
+          "checksum": 288518
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 32.638099999999994,
+          "ns_per_call": 31.12611770629882,
+          "checksum": 288824
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 30.28030000000001,
+          "ns_per_call": 28.877544403076183,
+          "checksum": 289175
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 30.370499999999993,
+          "ns_per_call": 28.96356582641601,
+          "checksum": 288163
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 29.508199999999988,
+          "ns_per_call": 28.141212463378896,
+          "checksum": 289209
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.599099999999993,
+          "ns_per_call": 27.274227142333977,
+          "checksum": 288108
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.483400000000017,
+          "ns_per_call": 27.1638870239258,
+          "checksum": 289686
+        }
+      ],
+      "checksum": 251074,
+      "median_ns": 28.877544403076183,
+      "max_rss_kib": 42800,
+      "memory_bytes": 0
+    },
+    {
+      "file": "features.plain.O3.wasm",
+      "name": "features",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 524288,
+          "elapsed_ms": 22.9054,
+          "ns_per_call": 43.68858337402344,
+          "checksum": 111844
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.569599999999994,
+          "ns_per_call": 44.955444335937486,
+          "checksum": 111914
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.115700000000004,
+          "ns_per_call": 44.08969879150391,
+          "checksum": 111491
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.11590000000001,
+          "ns_per_call": 44.09008026123049,
+          "checksum": 112043
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.317500000000024,
+          "ns_per_call": 44.47460174560551,
+          "checksum": 111922
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.38809999999998,
+          "ns_per_call": 44.609260559081996,
+          "checksum": 111983
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.206000000000017,
+          "ns_per_call": 44.26193237304691,
+          "checksum": 112151
+        }
+      ],
+      "checksum": 38766,
+      "median_ns": 44.26193237304691,
+      "max_rss_kib": 42760,
+      "memory_bytes": 0
+    },
+    {
+      "file": "features.validator.O3.wasm",
+      "name": "features",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 4096,
+          "elapsed_ms": 16.922299999999993,
+          "ns_per_call": 4131.420898437498,
+          "checksum": 865
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.834800000000001,
+          "ns_per_call": 3865.9179687500005,
+          "checksum": 874
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.998599999999996,
+          "ns_per_call": 3905.908203124999,
+          "checksum": 862
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.874399999999994,
+          "ns_per_call": 3875.5859374999986,
+          "checksum": 894
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 16.28,
+          "ns_per_call": 3974.6093750000005,
+          "checksum": 840
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.685299999999984,
+          "ns_per_call": 3829.418945312496,
+          "checksum": 893
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 16.061499999999995,
+          "ns_per_call": 3921.2646484374986,
+          "checksum": 850
+        }
+      ],
+      "checksum": 297,
+      "median_ns": 3905.908203124999,
+      "max_rss_kib": 43496,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "features.validator.O3.wasm",
+      "name": "features",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 8192,
+          "elapsed_ms": 12.5792,
+          "ns_per_call": 1535.546875,
+          "checksum": 1756
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 12.305000000000007,
+          "ns_per_call": 1502.075195312501,
+          "checksum": 1733
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 12.469099999999997,
+          "ns_per_call": 1522.1069335937498,
+          "checksum": 1758
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 12.970100000000002,
+          "ns_per_call": 1583.2641601562502,
+          "checksum": 1781
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 12.56049999999999,
+          "ns_per_call": 1533.2641601562489,
+          "checksum": 1706
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 12.936799999999977,
+          "ns_per_call": 1579.1992187499973,
+          "checksum": 1708
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 12.732,
+          "ns_per_call": 1554.19921875,
+          "checksum": 1714
+        }
+      ],
+      "checksum": 552,
+      "median_ns": 1535.546875,
+      "max_rss_kib": 43940,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "features.recovered.O3.wasm",
+      "name": "features",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 0,
+      "samples": [
+        {
+          "n": 524288,
+          "elapsed_ms": 25.903500000000008,
+          "ns_per_call": 49.40700531005861,
+          "checksum": 111844
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 25.768299999999996,
+          "ns_per_call": 49.14913177490234,
+          "checksum": 111914
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 25.6113,
+          "ns_per_call": 48.84967803955078,
+          "checksum": 111491
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 25.71380000000002,
+          "ns_per_call": 49.0451812744141,
+          "checksum": 112043
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 25.74769999999998,
+          "ns_per_call": 49.10984039306637,
+          "checksum": 111922
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 25.80540000000002,
+          "ns_per_call": 49.21989440917972,
+          "checksum": 111983
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 26.907399999999967,
+          "ns_per_call": 51.321792602539,
+          "checksum": 112151
+        }
+      ],
+      "checksum": 38766,
+      "median_ns": 49.14913177490234,
+      "max_rss_kib": 42700,
+      "memory_bytes": 0
+    },
+    {
+      "file": "compat.plain.O3.wasm",
+      "name": "compat",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 30.183899999999994,
+          "ns_per_call": 28.785610198974602,
+          "checksum": 288518
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 29.362300000000005,
+          "ns_per_call": 28.002071380615238,
+          "checksum": 288824
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.80709999999999,
+          "ns_per_call": 26.518917083740227,
+          "checksum": 289175
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.410199999999975,
+          "ns_per_call": 26.14040374755857,
+          "checksum": 288163
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.777299999999997,
+          "ns_per_call": 26.490497589111325,
+          "checksum": 289209
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.667399999999986,
+          "ns_per_call": 26.385688781738267,
+          "checksum": 288108
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.777800000000013,
+          "ns_per_call": 26.490974426269545,
+          "checksum": 289686
+        }
+      ],
+      "checksum": 251074,
+      "median_ns": 26.490974426269545,
+      "max_rss_kib": 43048,
+      "memory_bytes": 0
+    },
+    {
+      "file": "compat.validator.O3.wasm",
+      "name": "compat",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 8192,
+          "elapsed_ms": 24.17439999999999,
+          "ns_per_call": 2950.976562499999,
+          "checksum": 2243
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 24.23870000000001,
+          "ns_per_call": 2958.825683593751,
+          "checksum": 2199
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 24.368600000000015,
+          "ns_per_call": 2974.682617187502,
+          "checksum": 2253
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 24.411399999999986,
+          "ns_per_call": 2979.907226562498,
+          "checksum": 2313
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 24.3356,
+          "ns_per_call": 2970.654296875,
+          "checksum": 2227
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 24.12299999999999,
+          "ns_per_call": 2944.7021484374986,
+          "checksum": 2257
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 24.447699999999998,
+          "ns_per_call": 2984.3383789062495,
+          "checksum": 2267
+        }
+      ],
+      "checksum": 1576,
+      "median_ns": 2970.654296875,
+      "max_rss_kib": 43532,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "compat.validator.O3.wasm",
+      "name": "compat",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 32768,
+          "elapsed_ms": 18.4615,
+          "ns_per_call": 563.4002685546875,
+          "checksum": 9078
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.66210000000001,
+          "ns_per_call": 569.5220947265628,
+          "checksum": 9115
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 17.883799999999994,
+          "ns_per_call": 545.7702636718748,
+          "checksum": 9073
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 17.84790000000001,
+          "ns_per_call": 544.6746826171878,
+          "checksum": 9011
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 17.775000000000006,
+          "ns_per_call": 542.4499511718752,
+          "checksum": 8968
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.318399999999997,
+          "ns_per_call": 559.0332031249999,
+          "checksum": 8931
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.607500000000016,
+          "ns_per_call": 567.855834960938,
+          "checksum": 9118
+        }
+      ],
+      "checksum": 8155,
+      "median_ns": 559.0332031249999,
+      "max_rss_kib": 43940,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "compat.recovered.O3.wasm",
+      "name": "compat",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.617999999999995,
+          "ns_per_call": 26.33857727050781,
+          "checksum": 288518
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.26100000000001,
+          "ns_per_call": 26.951789855957042,
+          "checksum": 288824
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.0497,
+          "ns_per_call": 26.75027847290039,
+          "checksum": 289175
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.9452,
+          "ns_per_call": 26.650619506835938,
+          "checksum": 288163
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.866500000000002,
+          "ns_per_call": 26.57556533813477,
+          "checksum": 289209
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.658799999999985,
+          "ns_per_call": 26.377487182617173,
+          "checksum": 288108
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.095800000000025,
+          "ns_per_call": 26.794242858886744,
+          "checksum": 289686
+        }
+      ],
+      "checksum": 251074,
+      "median_ns": 26.650619506835938,
+      "max_rss_kib": 42792,
+      "memory_bytes": 0
+    },
+    {
+      "file": "features.plain.O3.wasm",
+      "name": "features",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 524288,
+          "elapsed_ms": 23.3643,
+          "ns_per_call": 44.563865661621094,
+          "checksum": 111844
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.0107,
+          "ns_per_call": 43.889427185058594,
+          "checksum": 111914
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 22.23989999999999,
+          "ns_per_call": 42.419242858886705,
+          "checksum": 111491
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 22.532900000000012,
+          "ns_per_call": 42.9780960083008,
+          "checksum": 112043
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 22.289500000000004,
+          "ns_per_call": 42.513847351074226,
+          "checksum": 111922
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.108900000000006,
+          "ns_per_call": 44.07672882080079,
+          "checksum": 111983
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 22.603100000000012,
+          "ns_per_call": 43.11199188232424,
+          "checksum": 112151
+        }
+      ],
+      "checksum": 38766,
+      "median_ns": 43.11199188232424,
+      "max_rss_kib": 42696,
+      "memory_bytes": 0
+    },
+    {
+      "file": "features.validator.O3.wasm",
+      "name": "features",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 4096,
+          "elapsed_ms": 16.575500000000005,
+          "ns_per_call": 4046.7529296875014,
+          "checksum": 865
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 16.129199999999997,
+          "ns_per_call": 3937.7929687499995,
+          "checksum": 874
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 17.230999999999995,
+          "ns_per_call": 4206.787109374999,
+          "checksum": 862
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 16.332600000000014,
+          "ns_per_call": 3987.451171875003,
+          "checksum": 894
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 16.376800000000003,
+          "ns_per_call": 3998.242187500001,
+          "checksum": 840
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 16.0822,
+          "ns_per_call": 3926.318359375,
+          "checksum": 893
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 16.321699999999993,
+          "ns_per_call": 3984.790039062498,
+          "checksum": 850
+        }
+      ],
+      "checksum": 297,
+      "median_ns": 3987.451171875003,
+      "max_rss_kib": 43304,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "features.validator.O3.wasm",
+      "name": "features",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 16384,
+          "elapsed_ms": 23.988100000000003,
+          "ns_per_call": 1464.1174316406252,
+          "checksum": 3539
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 23.658999999999992,
+          "ns_per_call": 1444.0307617187495,
+          "checksum": 3414
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 23.6592,
+          "ns_per_call": 1444.04296875,
+          "checksum": 3483
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 23.346900000000005,
+          "ns_per_call": 1424.9816894531252,
+          "checksum": 3543
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 23.682299999999998,
+          "ns_per_call": 1445.4528808593748,
+          "checksum": 3551
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 23.489800000000002,
+          "ns_per_call": 1433.7036132812502,
+          "checksum": 3566
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 24.389100000000013,
+          "ns_per_call": 1488.592529296876,
+          "checksum": 3500
+        }
+      ],
+      "checksum": 1115,
+      "median_ns": 1444.04296875,
+      "max_rss_kib": 43912,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "features.recovered.O3.wasm",
+      "name": "features",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 524288,
+          "elapsed_ms": 24.600799999999992,
+          "ns_per_call": 46.922302246093736,
+          "checksum": 111844
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.705399999999997,
+          "ns_per_call": 47.12181091308593,
+          "checksum": 111914
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.534700000000015,
+          "ns_per_call": 46.79622650146487,
+          "checksum": 111491
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.517499999999984,
+          "ns_per_call": 46.76342010498044,
+          "checksum": 112043
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.058600000000013,
+          "ns_per_call": 45.888137817382834,
+          "checksum": 111922
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.66669999999999,
+          "ns_per_call": 47.04799652099608,
+          "checksum": 111983
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.384199999999993,
+          "ns_per_call": 46.50917053222655,
+          "checksum": 112151
+        }
+      ],
+      "checksum": 38766,
+      "median_ns": 46.79622650146487,
+      "max_rss_kib": 42756,
+      "memory_bytes": 0
+    },
+    {
+      "file": "access.plain.O3.wasm",
+      "name": "access",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.41969999999999,
+          "ns_per_call": 19.473743438720696,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.913200000000003,
+          "ns_per_call": 19.94438171386719,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.91149999999999,
+          "ns_per_call": 19.942760467529286,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.470199999999977,
+          "ns_per_call": 19.521903991699197,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.5933,
+          "ns_per_call": 19.639301300048828,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.83360000000002,
+          "ns_per_call": 19.868469238281268,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.77849999999998,
+          "ns_per_call": 19.815921783447248,
+          "checksum": 428544
+        }
+      ],
+      "checksum": 162106,
+      "median_ns": 19.815921783447248,
+      "max_rss_kib": 43240,
+      "memory_bytes": 0
+    },
+    {
+      "file": "access.validator.O3.wasm",
+      "name": "access",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 8192,
+          "elapsed_ms": 21.652299999999997,
+          "ns_per_call": 2643.1030273437495,
+          "checksum": 3382
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 23.626199999999997,
+          "ns_per_call": 2884.0576171874995,
+          "checksum": 3321
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 22.022800000000004,
+          "ns_per_call": 2688.3300781250005,
+          "checksum": 3343
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 21.65119999999999,
+          "ns_per_call": 2642.9687499999986,
+          "checksum": 3350
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 22.1113,
+          "ns_per_call": 2699.13330078125,
+          "checksum": 3376
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 22.46119999999999,
+          "ns_per_call": 2741.845703124999,
+          "checksum": 3332
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 22.585700000000003,
+          "ns_per_call": 2757.0434570312505,
+          "checksum": 3328
+        }
+      ],
+      "checksum": 1486,
+      "median_ns": 2699.13330078125,
+      "max_rss_kib": 43628,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "access.validator.O3.wasm",
+      "name": "access",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 65536,
+          "elapsed_ms": 14.785499999999999,
+          "ns_per_call": 225.60882568359372,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 14.648699999999991,
+          "ns_per_call": 223.5214233398436,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 14.946600000000004,
+          "ns_per_call": 228.06701660156256,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 14.624500000000012,
+          "ns_per_call": 223.15216064453142,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 15.090800000000002,
+          "ns_per_call": 230.26733398437503,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 14.836899999999986,
+          "ns_per_call": 226.39312744140602,
+          "checksum": 26784
+        },
+        {
+          "n": 65536,
+          "elapsed_ms": 15.612400000000008,
+          "ns_per_call": 238.2263183593751,
+          "checksum": 26784
+        }
+      ],
+      "checksum": 10074,
+      "median_ns": 226.39312744140602,
+      "max_rss_kib": 44380,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "access.recovered.O3.wasm",
+      "name": "access",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 1,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.629400000000004,
+          "ns_per_call": 19.673728942871097,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.630799999999994,
+          "ns_per_call": 20.628738403320305,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.9658,
+          "ns_per_call": 19.994544982910156,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.8579,
+          "ns_per_call": 19.891643524169922,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.663999999999987,
+          "ns_per_call": 19.70672607421874,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 19.890100000000018,
+          "ns_per_call": 18.96867752075197,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.10330000000002,
+          "ns_per_call": 19.172000885009783,
+          "checksum": 428544
+        }
+      ],
+      "checksum": 162106,
+      "median_ns": 19.70672607421874,
+      "max_rss_kib": 43156,
+      "memory_bytes": 0
+    },
+    {
+      "file": "features.plain.O3.wasm",
+      "name": "features",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 524288,
+          "elapsed_ms": 23.081799999999987,
+          "ns_per_call": 44.02503967285154,
+          "checksum": 111844
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.054600000000008,
+          "ns_per_call": 43.97315979003908,
+          "checksum": 111914
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.382899999999992,
+          "ns_per_call": 44.59934234619139,
+          "checksum": 111491
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.244700000000023,
+          "ns_per_call": 44.33574676513676,
+          "checksum": 112043
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.1173,
+          "ns_per_call": 44.092750549316406,
+          "checksum": 111922
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.464,
+          "ns_per_call": 44.7540283203125,
+          "checksum": 111983
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 23.18470000000002,
+          "ns_per_call": 44.22130584716801,
+          "checksum": 112151
+        }
+      ],
+      "checksum": 38766,
+      "median_ns": 44.22130584716801,
+      "max_rss_kib": 42940,
+      "memory_bytes": 0
+    },
+    {
+      "file": "features.validator.O3.wasm",
+      "name": "features",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 4096,
+          "elapsed_ms": 16.120000000000005,
+          "ns_per_call": 3935.546875000001,
+          "checksum": 865
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.588800000000006,
+          "ns_per_call": 3805.8593750000014,
+          "checksum": 874
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.804400000000001,
+          "ns_per_call": 3858.4960937500005,
+          "checksum": 862
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.608500000000006,
+          "ns_per_call": 3810.6689453125014,
+          "checksum": 894
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.714699999999993,
+          "ns_per_call": 3836.596679687498,
+          "checksum": 840
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.664200000000022,
+          "ns_per_call": 3824.2675781250055,
+          "checksum": 893
+        },
+        {
+          "n": 4096,
+          "elapsed_ms": 15.904300000000006,
+          "ns_per_call": 3882.8857421875014,
+          "checksum": 850
+        }
+      ],
+      "checksum": 297,
+      "median_ns": 3836.596679687498,
+      "max_rss_kib": 43660,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "features.validator.O3.wasm",
+      "name": "features",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 16384,
+          "elapsed_ms": 24.24409999999999,
+          "ns_per_call": 1479.7424316406243,
+          "checksum": 3539
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 24.298000000000016,
+          "ns_per_call": 1483.032226562501,
+          "checksum": 3414
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 24.098600000000005,
+          "ns_per_call": 1470.8618164062502,
+          "checksum": 3483
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 24.25309999999999,
+          "ns_per_call": 1480.2917480468743,
+          "checksum": 3543
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 24.31989999999999,
+          "ns_per_call": 1484.3688964843743,
+          "checksum": 3551
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 24.230000000000018,
+          "ns_per_call": 1478.8818359375011,
+          "checksum": 3566
+        },
+        {
+          "n": 16384,
+          "elapsed_ms": 24.391099999999994,
+          "ns_per_call": 1488.7145996093748,
+          "checksum": 3500
+        }
+      ],
+      "checksum": 1115,
+      "median_ns": 1480.2917480468743,
+      "max_rss_kib": 44040,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "features.recovered.O3.wasm",
+      "name": "features",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 524288,
+          "elapsed_ms": 24.839400000000012,
+          "ns_per_call": 47.377395629882834,
+          "checksum": 111844
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.40419999999999,
+          "ns_per_call": 46.54731750488279,
+          "checksum": 111914
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.758800000000008,
+          "ns_per_call": 47.22366333007814,
+          "checksum": 111491
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.24890000000002,
+          "ns_per_call": 46.25110626220707,
+          "checksum": 112043
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.49769999999998,
+          "ns_per_call": 46.725654602050746,
+          "checksum": 111922
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.309300000000007,
+          "ns_per_call": 46.36631011962892,
+          "checksum": 111983
+        },
+        {
+          "n": 524288,
+          "elapsed_ms": 24.530699999999996,
+          "ns_per_call": 46.78859710693359,
+          "checksum": 112151
+        }
+      ],
+      "checksum": 38766,
+      "median_ns": 46.725654602050746,
+      "max_rss_kib": 42856,
+      "memory_bytes": 0
+    },
+    {
+      "file": "access.plain.O3.wasm",
+      "name": "access",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.642799999999994,
+          "ns_per_call": 19.68650817871093,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.3472,
+          "ns_per_call": 20.3582763671875,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.548699999999997,
+          "ns_per_call": 19.596767425537106,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.5026,
+          "ns_per_call": 19.55280303955078,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.77460000000002,
+          "ns_per_call": 19.812202453613303,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.499800000000022,
+          "ns_per_call": 19.550132751464865,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.442399999999992,
+          "ns_per_call": 19.495391845703118,
+          "checksum": 428544
+        }
+      ],
+      "checksum": 162106,
+      "median_ns": 19.596767425537106,
+      "max_rss_kib": 43136,
+      "memory_bytes": 0
+    },
+    {
+      "file": "access.validator.O3.wasm",
+      "name": "access",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 8192,
+          "elapsed_ms": 21.699699999999993,
+          "ns_per_call": 2648.889160156249,
+          "checksum": 3382
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 21.5021,
+          "ns_per_call": 2624.76806640625,
+          "checksum": 3321
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 21.2958,
+          "ns_per_call": 2599.5849609375,
+          "checksum": 3343
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 21.077800000000025,
+          "ns_per_call": 2572.973632812503,
+          "checksum": 3350
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 21.988200000000006,
+          "ns_per_call": 2684.106445312501,
+          "checksum": 3376
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 21.637500000000017,
+          "ns_per_call": 2641.2963867187523,
+          "checksum": 3332
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 21.63749999999999,
+          "ns_per_call": 2641.2963867187486,
+          "checksum": 3328
+        }
+      ],
+      "checksum": 1486,
+      "median_ns": 2641.2963867187486,
+      "max_rss_kib": 43748,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "access.validator.O3.wasm",
+      "name": "access",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 131072,
+          "elapsed_ms": 28.644000000000005,
+          "ns_per_call": 218.53637695312503,
+          "checksum": 53568
+        },
+        {
+          "n": 131072,
+          "elapsed_ms": 28.955200000000005,
+          "ns_per_call": 220.91064453125003,
+          "checksum": 53568
+        },
+        {
+          "n": 131072,
+          "elapsed_ms": 28.470799999999997,
+          "ns_per_call": 217.21496582031247,
+          "checksum": 53568
+        },
+        {
+          "n": 131072,
+          "elapsed_ms": 28.737099999999998,
+          "ns_per_call": 219.24667358398435,
+          "checksum": 53568
+        },
+        {
+          "n": 131072,
+          "elapsed_ms": 29.532200000000017,
+          "ns_per_call": 225.3128051757814,
+          "checksum": 53568
+        },
+        {
+          "n": 131072,
+          "elapsed_ms": 29.07559999999998,
+          "ns_per_call": 221.82922363281236,
+          "checksum": 53568
+        },
+        {
+          "n": 131072,
+          "elapsed_ms": 28.775500000000022,
+          "ns_per_call": 219.53964233398455,
+          "checksum": 53568
+        }
+      ],
+      "checksum": 20474,
+      "median_ns": 219.53964233398455,
+      "max_rss_kib": 44396,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "access.recovered.O3.wasm",
+      "name": "access",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 29.869299999999996,
+          "ns_per_call": 28.4855842590332,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 24.29350000000001,
+          "ns_per_call": 23.16808700561524,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 22.56559999999999,
+          "ns_per_call": 21.520233154296864,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 22.071799999999996,
+          "ns_per_call": 21.049308776855465,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.547799999999995,
+          "ns_per_call": 20.54958343505859,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 21.16289999999998,
+          "ns_per_call": 20.182514190673807,
+          "checksum": 428544
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 20.839799999999997,
+          "ns_per_call": 19.874382019042965,
+          "checksum": 428544
+        }
+      ],
+      "checksum": 162106,
+      "median_ns": 21.049308776855465,
+      "max_rss_kib": 43156,
+      "memory_bytes": 0
+    },
+    {
+      "file": "compat.plain.O3.wasm",
+      "name": "compat",
+      "mode": "plain",
+      "adapter": "native",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.5188,
+          "ns_per_call": 26.243972778320312,
+          "checksum": 288518
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.828699999999998,
+          "ns_per_call": 26.539516448974606,
+          "checksum": 288824
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.2217,
+          "ns_per_call": 26.914310455322266,
+          "checksum": 289175
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.684300000000007,
+          "ns_per_call": 26.401805877685554,
+          "checksum": 288163
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.735299999999995,
+          "ns_per_call": 26.450443267822262,
+          "checksum": 289209
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.345,
+          "ns_per_call": 27.031898498535156,
+          "checksum": 288108
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 27.82390000000001,
+          "ns_per_call": 26.534938812255866,
+          "checksum": 289686
+        }
+      ],
+      "checksum": 251074,
+      "median_ns": 26.534938812255866,
+      "max_rss_kib": 43164,
+      "memory_bytes": 0
+    },
+    {
+      "file": "compat.validator.O3.wasm",
+      "name": "compat",
+      "mode": "validator",
+      "adapter": "validator",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 8192,
+          "elapsed_ms": 25.84230000000001,
+          "ns_per_call": 3154.577636718751,
+          "checksum": 2243
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 25.77730000000001,
+          "ns_per_call": 3146.6430664062514,
+          "checksum": 2199
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 25.8956,
+          "ns_per_call": 3161.083984375,
+          "checksum": 2253
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 25.87050000000002,
+          "ns_per_call": 3158.0200195312527,
+          "checksum": 2313
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 25.906900000000007,
+          "ns_per_call": 3162.463378906251,
+          "checksum": 2227
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 25.758100000000013,
+          "ns_per_call": 3144.299316406252,
+          "checksum": 2257
+        },
+        {
+          "n": 8192,
+          "elapsed_ms": 25.8536,
+          "ns_per_call": 3155.95703125,
+          "checksum": 2267
+        }
+      ],
+      "checksum": 1576,
+      "median_ns": 3155.95703125,
+      "max_rss_kib": 43580,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "compat.validator.O3.wasm",
+      "name": "compat",
+      "mode": "validator",
+      "adapter": "recognizer",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 32768,
+          "elapsed_ms": 18.904299999999992,
+          "ns_per_call": 576.9134521484373,
+          "checksum": 9078
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 19.128100000000003,
+          "ns_per_call": 583.7432861328126,
+          "checksum": 9115
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.216600000000014,
+          "ns_per_call": 555.9265136718755,
+          "checksum": 9073
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.526600000000002,
+          "ns_per_call": 565.3869628906251,
+          "checksum": 9011
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 19.30509999999998,
+          "ns_per_call": 589.1448974609369,
+          "checksum": 8968
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.7123,
+          "ns_per_call": 571.0540771484375,
+          "checksum": 8931
+        },
+        {
+          "n": 32768,
+          "elapsed_ms": 18.985899999999987,
+          "ns_per_call": 579.403686523437,
+          "checksum": 9118
+        }
+      ],
+      "checksum": 8155,
+      "median_ns": 576.9134521484373,
+      "max_rss_kib": 44016,
+      "memory_bytes": 65536
+    },
+    {
+      "file": "compat.recovered.O3.wasm",
+      "name": "compat",
+      "mode": "recovered",
+      "adapter": "native",
+      "repeat": 2,
+      "samples": [
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.203900000000004,
+          "ns_per_call": 26.897335052490238,
+          "checksum": 288518
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.313000000000002,
+          "ns_per_call": 27.00138092041016,
+          "checksum": 288824
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.686300000000017,
+          "ns_per_call": 27.357387542724627,
+          "checksum": 289175
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.48769999999999,
+          "ns_per_call": 27.167987823486317,
+          "checksum": 288163
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.25029999999998,
+          "ns_per_call": 26.941585540771467,
+          "checksum": 289209
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.24339999999998,
+          "ns_per_call": 26.935005187988263,
+          "checksum": 288108
+        },
+        {
+          "n": 1048576,
+          "elapsed_ms": 28.274100000000033,
+          "ns_per_call": 26.964282989501985,
+          "checksum": 289686
+        }
+      ],
+      "checksum": 251074,
+      "median_ns": 26.964282989501985,
+      "max_rss_kib": 42828,
+      "memory_bytes": 0
+    }
+  ],
+  "summaries": [
+    {
+      "file": "access.plain.O3.wasm",
+      "adapter": "native",
+      "median_ns": 19.815921783447248,
+      "range_ns": [
+        19.596767425537106,
+        19.884586334228498
+      ]
+    },
+    {
+      "file": "access.validator.O3.wasm",
+      "adapter": "validator",
+      "median_ns": 2699.13330078125,
+      "range_ns": [
+        2641.2963867187486,
+        2715.673828125001
+      ]
+    },
+    {
+      "file": "access.validator.O3.wasm",
+      "adapter": "recognizer",
+      "median_ns": 226.39312744140602,
+      "range_ns": [
+        219.53964233398455,
+        239.9017333984375
+      ]
+    },
+    {
+      "file": "access.recovered.O3.wasm",
+      "adapter": "native",
+      "median_ns": 20.27902603149414,
+      "range_ns": [
+        19.70672607421874,
+        21.049308776855465
+      ]
+    },
+    {
+      "file": "compat.plain.O3.wasm",
+      "adapter": "native",
+      "median_ns": 26.490974426269545,
+      "range_ns": [
+        26.371383666992188,
+        26.534938812255866
+      ]
+    },
+    {
+      "file": "compat.validator.O3.wasm",
+      "adapter": "validator",
+      "median_ns": 3155.95703125,
+      "range_ns": [
+        2970.654296875,
+        3372.8515624999995
+      ]
+    },
+    {
+      "file": "compat.validator.O3.wasm",
+      "adapter": "recognizer",
+      "median_ns": 566.3421630859381,
+      "range_ns": [
+        559.0332031249999,
+        576.9134521484373
+      ]
+    },
+    {
+      "file": "compat.recovered.O3.wasm",
+      "adapter": "native",
+      "median_ns": 26.964282989501985,
+      "range_ns": [
+        26.650619506835938,
+        28.877544403076183
+      ]
+    },
+    {
+      "file": "features.plain.O3.wasm",
+      "adapter": "native",
+      "median_ns": 44.22130584716801,
+      "range_ns": [
+        43.11199188232424,
+        44.26193237304691
+      ]
+    },
+    {
+      "file": "features.validator.O3.wasm",
+      "adapter": "validator",
+      "median_ns": 3905.908203124999,
+      "range_ns": [
+        3836.596679687498,
+        3987.451171875003
+      ]
+    },
+    {
+      "file": "features.validator.O3.wasm",
+      "adapter": "recognizer",
+      "median_ns": 1480.2917480468743,
+      "range_ns": [
+        1444.04296875,
+        1535.546875
+      ]
+    },
+    {
+      "file": "features.recovered.O3.wasm",
+      "adapter": "native",
+      "median_ns": 46.79622650146487,
+      "range_ns": [
+        46.725654602050746,
+        49.14913177490234
+      ]
+    }
+  ]
+}

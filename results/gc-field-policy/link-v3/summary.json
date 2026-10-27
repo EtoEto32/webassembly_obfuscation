@@ -1,0 +1,105 @@
+{
+  "processes": 24,
+  "n": 65536,
+  "stride": 1,
+  "warmups": 12,
+  "samples": 11,
+  "rows": [
+    {
+      "file": "accessor-merged.wasm",
+      "engine": "Node",
+      "passes": 1,
+      "medianMs": 0.07069999999999865,
+      "processMedians": [
+        0.0710000000000015,
+        0.06770000000000209,
+        0.07069999999999865
+      ],
+      "bytes": 430
+    },
+    {
+      "file": "accessor-merged.wasm",
+      "engine": "Node",
+      "passes": 8,
+      "medianMs": 0.568400000000004,
+      "processMedians": [
+        0.5696000000000012,
+        0.5444999999999993,
+        0.568400000000004
+      ],
+      "bytes": 430
+    },
+    {
+      "file": "accessor-merged.wasm",
+      "engine": "Wasmtime",
+      "passes": 1,
+      "medianMs": 0.8410999999999835,
+      "processMedians": [
+        0.8410999999999835,
+        0.834499999999988,
+        0.8514999999999773
+      ],
+      "bytes": 430
+    },
+    {
+      "file": "accessor-merged.wasm",
+      "engine": "Wasmtime",
+      "passes": 8,
+      "medianMs": 6.348500000000007,
+      "processMedians": [
+        6.332699999999969,
+        6.348500000000007,
+        6.755699999999976
+      ],
+      "bytes": 430
+    },
+    {
+      "file": "accessor-merged-o3.wasm",
+      "engine": "Node",
+      "passes": 1,
+      "medianMs": 0.07090000000000174,
+      "processMedians": [
+        0.07069999999999865,
+        0.07110000000000127,
+        0.07090000000000174
+      ],
+      "bytes": 408
+    },
+    {
+      "file": "accessor-merged-o3.wasm",
+      "engine": "Node",
+      "passes": 8,
+      "medianMs": 0.5671000000000035,
+      "processMedians": [
+        0.5720999999999989,
+        0.5671000000000035,
+        0.5655000000000001
+      ],
+      "bytes": 408
+    },
+    {
+      "file": "accessor-merged-o3.wasm",
+      "engine": "Wasmtime",
+      "passes": 1,
+      "medianMs": 0.6212000000000162,
+      "processMedians": [
+        0.6212000000000162,
+        0.6432999999999856,
+        0.5933000000000188
+      ],
+      "bytes": 408
+    },
+    {
+      "file": "accessor-merged-o3.wasm",
+      "engine": "Wasmtime",
+      "passes": 8,
+      "medianMs": 4.668199999999984,
+      "processMedians": [
+        4.668199999999984,
+        4.590199999999989,
+        4.668800000000001
+      ],
+      "bytes": 408
+    }
+  ]
+}

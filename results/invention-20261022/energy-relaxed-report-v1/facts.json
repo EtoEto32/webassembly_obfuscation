@@ -1,0 +1,297 @@
+{
+  "source_pin_counts": {
+    "energy-relaxed-v1": 217,
+    "energy-relaxed-coupled-v1": 47,
+    "energy-relaxed-audit-v1": 308,
+    "energy-relaxed-performance-v1": 21
+  },
+  "fixtures": 7,
+  "conditions": 70,
+  "distinct_main_binaries": 37,
+  "normal_calls": 180420,
+  "all_initial_calls": 2922496,
+  "recoveries": 28,
+  "old_attack_unsupported": 2,
+  "old_attack_unsupported_reasons": [
+    "Recovered rule exceeds 5-input WAT lookup profile",
+    "Recovered rule exceeds 5-input WAT lookup profile"
+  ],
+  "coupled_full_dependency_check": {
+    "dependencies": {
+      "4": [
+        2,
+        3
+      ],
+      "5": [
+        0,
+        1,
+        4,
+        6,
+        7,
+        8
+      ],
+      "6": [
+        4,
+        5
+      ],
+      "7": [
+        2,
+        3
+      ],
+      "8": [
+        5,
+        7
+      ],
+      "9": [
+        6,
+        8
+      ]
+    },
+    "topological_sort_remainder": [
+      5,
+      6,
+      8,
+      9
+    ],
+    "cyclic": true
+  },
+  "coupled_weights": {
+    "dag": [
+      5,
+      3,
+      3,
+      2,
+      2,
+      1
+    ],
+    "synth": [
+      3,
+      3,
+      3,
+      2,
+      2,
+      1
+    ]
+  },
+  "coupled_strict_deviation": {
+    "status": "sat",
+    "x": 1,
+    "state": 3,
+    "errors": [
+      0,
+      1,
+      0,
+      1,
+      1,
+      0
+    ],
+    "energy": 7,
+    "neighbor_energies": [
+      6,
+      2,
+      10,
+      6,
+      6,
+      8
+    ]
+  },
+  "recovery_total_ms_range": [
+    62.8795000000002,
+    94.10639999999981
+  ],
+  "recovery_core_median_ms_range": [
+    0.9090000000000487,
+    15.787399999999785
+  ],
+  "coupled_core_timings": [
+    {
+      "file": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag.wasm",
+      "samples_ms": [
+        1.0355999999998033,
+        0.9822999999995474,
+        0.9768000000001109,
+        0.9665000000005364,
+        0.9693000000003948,
+        0.9690000000004417,
+        0.9703000000005346,
+        0.965899999999742,
+        0.9667999999996013,
+        0.9677000000003488,
+        0.9741999999999251
+      ],
+      "median_ms": 0.9693000000003948
+    },
+    {
+      "file": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3.wasm",
+      "samples_ms": [
+        1.0642000000000706,
+        0.9993000000001473,
+        0.9788999999997827,
+        0.9839999999998739,
+        0.9736000000000189,
+        1.067500000000443,
+        0.9825000000001083,
+        1.033099999999898,
+        1.0244999999997617,
+        1.0367000000002236,
+        1.037399999999522
+      ],
+      "median_ms": 1.0244999999997617
+    },
+    {
+      "file": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth.wasm",
+      "samples_ms": [
+        0.972299999999926,
+        0.9715999999997393,
+        0.9588000000002594,
+        0.9491000000005911,
+        0.9127000000006547,
+        0.9766000000004382,
+        1.0911000000000115,
+        1.0254999999999015,
+        1.028599999999713,
+        1.066199999999462,
+        0.9531999999996543
+      ],
+      "median_ms": 0.972299999999926
+    },
+    {
+      "file": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3.wasm",
+      "samples_ms": [
+        0.9916000000007585,
+        0.9148000000003265,
+        0.9249000000002283,
+        0.9049999999994895,
+        0.9090000000000487,
+        0.9025999999998646,
+        0.9071000000000495,
+        0.9414000000003142,
+        0.9966000000005693,
+        0.9044999999998637,
+        0.8971999999998204
+      ],
+      "median_ms": 0.9090000000000487
+    }
+  ],
+  "byte_replay": 70,
+  "wabt_calls": 280,
+  "minimizer_unsat_checks": 248,
+  "output_equivalence_unsat_checks": 28,
+  "no_false_minimum_unsat_checks": 7,
+  "negative_flat_minima": 7,
+  "performance": [
+    {
+      "name": "ordered-guards",
+      "mode": "plain",
+      "file": "ordered-guards-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-plain-O3.wasm",
+      "optimized_file": "ordered-guards-plain-optimized.wasm",
+      "source_bytes": 84,
+      "optimized_bytes": 84,
+      "linear_memory_bytes": 0,
+      "ns": 1.3789156740943376,
+      "process_medians_ns": [
+        1.4200032056638254,
+        1.3789156740943376,
+        1.3763028576829412
+      ],
+      "range_ns": [
+        1.3763028576829412,
+        1.4200032056638254
+      ]
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "file": "ordered-guards-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3.wasm",
+      "optimized_file": "ordered-guards-dag-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "ns": 242.33602390388643,
+      "process_medians_ns": [
+        242.33602390388643,
+        237.56980569155442,
+        246.7840000000001
+      ],
+      "range_ns": [
+        237.56980569155442,
+        246.7840000000001
+      ]
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag-recovered",
+      "file": "ordered-guards-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-dag-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "ns": 2.8960240310220233,
+      "process_medians_ns": [
+        2.8884055414747865,
+        2.8960240310220233,
+        3.0972918923721133
+      ],
+      "range_ns": [
+        2.8884055414747865,
+        3.0972918923721133
+      ]
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "file": "ordered-guards-synth-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3.wasm",
+      "optimized_file": "ordered-guards-synth-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "ns": 237.80560697208085,
+      "process_medians_ns": [
+        244.04769886499693,
+        237.80560697208085,
+        231.71259460508446
+      ],
+      "range_ns": [
+        231.71259460508446,
+        244.04769886499693
+      ]
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth-recovered",
+      "file": "ordered-guards-synth-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-synth-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "ns": 2.975957710918998,
+      "process_medians_ns": [
+        2.9075354465789944,
+        2.975957710918998,
+        2.9764105865785586
+      ],
+      "range_ns": [
+        2.9075354465789944,
+        2.9764105865785586
+      ]
+    }
+  ],
+  "processes": 15,
+  "batches": 105,
+  "short_batches": 0,
+  "synth_plain_time_ratio": 172.45841166340352,
+  "synth_recovered_time_ratio": 79.90893355088863,
+  "synth_dag_time_ratio": 0.9813052271023379,
+  "maxRSSKiB_range": [
+    37692,
+    38404
+  ],
+  "performance_run_checks": 10430,
+  "performance_wrapper_checks": 80,
+  "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz"
+}

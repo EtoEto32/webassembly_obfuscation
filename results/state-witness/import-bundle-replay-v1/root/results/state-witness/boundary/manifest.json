@@ -1,0 +1,105 @@
+{
+  "refusals": [
+    {
+      "name": "missing-summary",
+      "status": "expected-refusal",
+      "reason": "missing host summary: ('env', 'touch')"
+    },
+    {
+      "name": "nonvoid-import",
+      "status": "expected-refusal",
+      "reason": "imports must be void with no arguments"
+    },
+    {
+      "name": "argument-import",
+      "status": "expected-refusal",
+      "reason": "imports must be void with no arguments"
+    },
+    {
+      "name": "export-import",
+      "status": "expected-refusal",
+      "reason": "directly exported import excluded"
+    },
+    {
+      "name": "import-memory",
+      "status": "expected-refusal",
+      "reason": "only function imports"
+    },
+    {
+      "name": "value-branch",
+      "status": "expected-refusal",
+      "reason": "unsupported opcode if"
+    },
+    {
+      "name": "real-loop",
+      "status": "expected-refusal",
+      "reason": "unsupported opcode br"
+    },
+    {
+      "name": "defined-call",
+      "status": "expected-refusal",
+      "reason": "only direct calls to void imports"
+    },
+    {
+      "name": "global-state",
+      "status": "expected-refusal",
+      "reason": "globals excluded"
+    },
+    {
+      "name": "offset-store",
+      "status": "expected-refusal",
+      "reason": "unsupported opcode i32.store8"
+    },
+    {
+      "name": "start-function",
+      "status": "expected-refusal",
+      "reason": "Closed module required; imports/start/other sections unsupported"
+    }
+  ],
+  "normalizations": [
+    {
+      "original": "0-store.wasm",
+      "lowered": "0-fill.wasm",
+      "expected": {
+        "outcome": "return",
+        "calls": [
+          "touch"
+        ],
+        "memory": "d02a8a5dbddd3ad6821b0f905317e147e4a0ab755815d479d81943c47e950f15"
+      }
+    },
+    {
+      "original": "65535-store.wasm",
+      "lowered": "65535-fill.wasm",
+      "expected": {
+        "outcome": "return",
+        "calls": [
+          "touch"
+        ],
+        "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+      }
+    },
+    {
+      "original": "65536-store.wasm",
+      "lowered": "65536-fill.wasm",
+      "expected": {
+        "outcome": "trap",
+        "calls": [
+          "touch"
+        ],
+        "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+      }
+    },
+    {
+      "original": "4294967295-store.wasm",
+      "lowered": "4294967295-fill.wasm",
+      "expected": {
+        "outcome": "trap",
+        "calls": [
+          "touch"
+        ],
+        "memory": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31"
+      }
+    }
+  ]
+}

@@ -1,0 +1,515 @@
+{
+  "source": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\r3-normalized-v1\\wasm-r3-bench\\pathfinding.wasm",
+  "sha256": "8e79da93beebc306e88bf014f8540360225df9bba4f4bcd493745d9930323856",
+  "bytes": 189299,
+  "validation": "passed",
+  "shape": {
+    "memory": [
+      [
+        "memory",
+        "17"
+      ]
+    ],
+    "table": [
+      [
+        "table",
+        "38",
+        "38",
+        "funcref"
+      ]
+    ],
+    "start": [],
+    "import": [],
+    "export": [
+      [
+        "export",
+        "\"_start\"",
+        [
+          "func",
+          "0"
+        ]
+      ],
+      [
+        "export",
+        "\"main\"",
+        [
+          "func",
+          "0"
+        ]
+      ],
+      [
+        "export",
+        "\"memory\"",
+        [
+          "memory",
+          "0"
+        ]
+      ],
+      [
+        "export",
+        "\"init\"",
+        [
+          "func",
+          "106"
+        ]
+      ],
+      [
+        "export",
+        "\"tick\"",
+        [
+          "func",
+          "108"
+        ]
+      ],
+      [
+        "export",
+        "\"key_down\"",
+        [
+          "func",
+          "110"
+        ]
+      ],
+      [
+        "export",
+        "\"key_up\"",
+        [
+          "func",
+          "112"
+        ]
+      ],
+      [
+        "export",
+        "\"mouse_move\"",
+        [
+          "func",
+          "113"
+        ]
+      ],
+      [
+        "export",
+        "\"js_random_range\"",
+        [
+          "func",
+          "125"
+        ]
+      ],
+      [
+        "export",
+        "\"js_random\"",
+        [
+          "func",
+          "126"
+        ]
+      ],
+      [
+        "export",
+        "\"js_log\"",
+        [
+          "func",
+          "127"
+        ]
+      ],
+      [
+        "export",
+        "\"js_create_layer\"",
+        [
+          "func",
+          "128"
+        ]
+      ],
+      [
+        "export",
+        "\"js_start_interval_tick\"",
+        [
+          "func",
+          "129"
+        ]
+      ],
+      [
+        "export",
+        "\"js_request_tick\"",
+        [
+          "func",
+          "130"
+        ]
+      ],
+      [
+        "export",
+        "\"js_set_screen_size\"",
+        [
+          "func",
+          "131"
+        ]
+      ],
+      [
+        "export",
+        "\"js_set_layer_size\"",
+        [
+          "func",
+          "132"
+        ]
+      ],
+      [
+        "export",
+        "\"js_draw_tile\"",
+        [
+          "func",
+          "133"
+        ]
+      ],
+      [
+        "export",
+        "\"js_clear_screen\"",
+        [
+          "func",
+          "134"
+        ]
+      ],
+      [
+        "export",
+        "\"js_update\"",
+        [
+          "func",
+          "135"
+        ]
+      ],
+      [
+        "export",
+        "\"js_draw_circle\"",
+        [
+          "func",
+          "136"
+        ]
+      ],
+      [
+        "export",
+        "\"js_path_count\"",
+        [
+          "func",
+          "137"
+        ]
+      ],
+      [
+        "export",
+        "\"js_draw_fps\"",
+        [
+          "func",
+          "138"
+        ]
+      ]
+    ],
+    "functionCount": 139,
+    "globalCount": 15,
+    "segmentCount": {
+      "data": 3,
+      "elem": 1
+    }
+  },
+  "status": "accepted",
+  "manifest": {
+    "profile": "full",
+    "memory": true,
+    "table": true,
+    "tableCount": 1,
+    "functions": 139,
+    "globals": [
+      {
+        "index": 0,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 1,
+        "type": "i32",
+        "result": "i32"
+      },
+      {
+        "index": 2,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 3,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 4,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 5,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 6,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 7,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 8,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 9,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 10,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 11,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 12,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 13,
+        "type": "i64",
+        "result": "i64"
+      },
+      {
+        "index": 14,
+        "type": "i64",
+        "result": "i64"
+      }
+    ],
+    "segments": [
+      {
+        "kind": "data",
+        "index": 0,
+        "mode": "active",
+        "bytesOrEntries": 5328,
+        "probe": "__sw_data_0",
+        "initialLive": false,
+        "observable": true
+      },
+      {
+        "kind": "data",
+        "index": 1,
+        "mode": "active",
+        "bytesOrEntries": 2608,
+        "probe": "__sw_data_1",
+        "initialLive": false,
+        "observable": true
+      },
+      {
+        "kind": "data",
+        "index": 2,
+        "mode": "active",
+        "bytesOrEntries": 561,
+        "probe": "__sw_data_2",
+        "initialLive": false,
+        "observable": true
+      },
+      {
+        "kind": "elem",
+        "index": 0,
+        "mode": "active",
+        "bytesOrEntries": 37,
+        "probe": "__sw_elem_0",
+        "initialLive": false,
+        "observable": true
+      }
+    ],
+    "originalExports": [
+      [
+        "export",
+        "\"_start\"",
+        [
+          "func",
+          "0"
+        ]
+      ],
+      [
+        "export",
+        "\"main\"",
+        [
+          "func",
+          "0"
+        ]
+      ],
+      [
+        "export",
+        "\"memory\"",
+        [
+          "memory",
+          "0"
+        ]
+      ],
+      [
+        "export",
+        "\"init\"",
+        [
+          "func",
+          "106"
+        ]
+      ],
+      [
+        "export",
+        "\"tick\"",
+        [
+          "func",
+          "108"
+        ]
+      ],
+      [
+        "export",
+        "\"key_down\"",
+        [
+          "func",
+          "110"
+        ]
+      ],
+      [
+        "export",
+        "\"key_up\"",
+        [
+          "func",
+          "112"
+        ]
+      ],
+      [
+        "export",
+        "\"mouse_move\"",
+        [
+          "func",
+          "113"
+        ]
+      ],
+      [
+        "export",
+        "\"js_random_range\"",
+        [
+          "func",
+          "125"
+        ]
+      ],
+      [
+        "export",
+        "\"js_random\"",
+        [
+          "func",
+          "126"
+        ]
+      ],
+      [
+        "export",
+        "\"js_log\"",
+        [
+          "func",
+          "127"
+        ]
+      ],
+      [
+        "export",
+        "\"js_create_layer\"",
+        [
+          "func",
+          "128"
+        ]
+      ],
+      [
+        "export",
+        "\"js_start_interval_tick\"",
+        [
+          "func",
+          "129"
+        ]
+      ],
+      [
+        "export",
+        "\"js_request_tick\"",
+        [
+          "func",
+          "130"
+        ]
+      ],
+      [
+        "export",
+        "\"js_set_screen_size\"",
+        [
+          "func",
+          "131"
+        ]
+      ],
+      [
+        "export",
+        "\"js_set_layer_size\"",
+        [
+          "func",
+          "132"
+        ]
+      ],
+      [
+        "export",
+        "\"js_draw_tile\"",
+        [
+          "func",
+          "133"
+        ]
+      ],
+      [
+        "export",
+        "\"js_clear_screen\"",
+        [
+          "func",
+          "134"
+        ]
+      ],
+      [
+        "export",
+        "\"js_update\"",
+        [
+          "func",
+          "135"
+        ]
+      ],
+      [
+        "export",
+        "\"js_draw_circle\"",
+        [
+          "func",
+          "136"
+        ]
+      ],
+      [
+        "export",
+        "\"js_path_count\"",
+        [
+          "func",
+          "137"
+        ]
+      ],
+      [
+        "export",
+        "\"js_draw_fps\"",
+        [
+          "func",
+          "138"
+        ]
+      ]
+    ],
+    "sourceSha256": "8e79da93beebc306e88bf014f8540360225df9bba4f4bcd493745d9930323856",
+    "outputSha256": "c1e8c874de4ebfc767377e7ff3c321f330ccb2416b42dd25d0130a7847f17394",
+    "sourceBytes": 189299,
+    "outputBytes": 192435,
+    "transformSeconds": 0.4748162
+  },
+  "seconds": 0.8128544
+}

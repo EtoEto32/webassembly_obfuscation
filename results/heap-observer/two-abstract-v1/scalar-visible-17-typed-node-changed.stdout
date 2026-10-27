@@ -1,0 +1,24 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => 42
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging null]
+[fuzz-exec] export global$_3
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_5
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_6
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_7
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_12
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_13
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_15
+[LoggingExternalInterface logging function]
+[fuzz-exec] export ref_func_target_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export ref_func_target_1_invoker
+[fuzz-exec] export func
+exception thrown: RuntimeError: dereferencing a null pointer
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"ref_func_target_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"ref_func_target_1_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null},{"id":3,"channel":"printed","name":null,"slot":null},{"id":4,"channel":"printed","name":null,"slot":null},{"id":5,"channel":"printed","name":null,"slot":null}]}

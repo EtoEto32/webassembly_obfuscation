@@ -1,0 +1,239 @@
+{
+  "targets": 30,
+  "recoveries": 12,
+  "rejections": [
+    {
+      "fixture": "reverse4",
+      "case": "short-schedule",
+      "reason": "Schedule does not cover both causal orders"
+    },
+    {
+      "fixture": "permuted8",
+      "case": "short-schedule",
+      "reason": "Schedule does not cover both causal orders"
+    },
+    {
+      "fixture": "permuted12",
+      "case": "short-schedule",
+      "reason": "Schedule does not cover both causal orders"
+    },
+    {
+      "case": "trapping-helper",
+      "reason": "Non-total helper instruction: (i32.div_s (local.get 0) (i32.const 0))"
+    }
+  ],
+  "checks": {
+    "rows_per_target": 4200,
+    "main": [
+      {
+        "file": "reverse4\\plain.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\plain-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\ordered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\ordered-raw-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\ordered-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\ordered-O3-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\cyclic.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\cyclic-raw-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\cyclic-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "reverse4\\cyclic-O3-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\plain.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\plain-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\ordered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\ordered-raw-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\ordered-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\ordered-O3-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\cyclic.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\cyclic-raw-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\cyclic-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted8\\cyclic-O3-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\plain.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\plain-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\ordered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\ordered-raw-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\ordered-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\ordered-O3-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\cyclic.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\cyclic-raw-recovered.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\cyclic-O3.wasm",
+        "calls": 4200
+      },
+      {
+        "file": "permuted12\\cyclic-O3-recovered.wasm",
+        "calls": 4200
+      }
+    ],
+    "probes": [
+      {
+        "file": "reverse4\\ordered-probe.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "reverse4\\ordered-probe-O3.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "reverse4\\cyclic-probe.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "reverse4\\cyclic-probe-O3.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "permuted8\\ordered-probe.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "permuted8\\ordered-probe-O3.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "permuted8\\cyclic-probe.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "permuted8\\cyclic-probe-O3.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "permuted12\\ordered-probe.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "permuted12\\ordered-probe-O3.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "permuted12\\cyclic-probe.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      },
+      {
+        "file": "permuted12\\cyclic-probe-O3.wasm",
+        "calls": 1024,
+        "linear_memory_bytes": 65536
+      }
+    ],
+    "negative": [
+      {
+        "file": "reverse4\\bad-short-schedule.wasm",
+        "tested": 256,
+        "differences": 39
+      },
+      {
+        "file": "permuted8\\bad-short-schedule.wasm",
+        "tested": 256,
+        "differences": 204
+      },
+      {
+        "file": "permuted12\\bad-short-schedule.wasm",
+        "tested": 256,
+        "differences": 256
+      }
+    ],
+    "main_calls": 126000,
+    "probe_calls": 12288,
+    "mismatches": 0,
+    "environment": {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "platform": "win32",
+      "arch": "x64",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz"
+    }
+  }
+}

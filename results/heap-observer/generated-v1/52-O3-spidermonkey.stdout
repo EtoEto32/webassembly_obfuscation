@@ -1,0 +1,10 @@
+[fuzz-exec] export global$
+[LoggingExternalInterface logging NaN]
+[fuzz-exec] export global$_4
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export func
+[fuzz-exec] note result: func => object(null)
+[fuzz-exec] export func_invoker
+[fuzz-exec] export func_13_invoker
+exception thrown: RuntimeError: unreachable executed
+[heap-study] {"calls":[{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_13_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable executed"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null}],"snapshots":[{"channel":"printed","slot":null,"snapshot":{"roots":[{"ref":0}],"objects":[{"id":0,"type":19,"kind":"struct","fields":[null,{"f64":"0"}]}],"truncations":0}},{"channel":"printed","slot":null,"snapshot":{"roots":[{"ref":0}],"objects":[{"id":0,"type":6,"kind":"struct","fields":[]}],"truncations":0}}],"observation_errors":[],"events":2,"limit":128}

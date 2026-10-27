@@ -1,0 +1,2684 @@
+{
+  "models": {
+    "fork": {
+      "inputs": 2,
+      "gates": [
+        [
+          "xor",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            0
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            1
+          ],
+          [
+            "gate",
+            2
+          ]
+        ]
+      ]
+    },
+    "chain": {
+      "inputs": 2,
+      "gates": [
+        [
+          "xor",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            0
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            1
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            2
+          ],
+          [
+            "input",
+            0
+          ]
+        ]
+      ]
+    },
+    "ordered": {
+      "inputs": 2,
+      "gates": [
+        [
+          "and",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "or",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            0
+          ],
+          [
+            "gate",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            2
+          ],
+          [
+            "input",
+            0
+          ]
+        ]
+      ]
+    }
+  },
+  "targets": [
+    {
+      "name": "fork",
+      "mode": "plain",
+      "file": "fork-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-plain-O3.wasm",
+      "optimized_file": "fork-plain-optimized.wasm",
+      "source_bytes": 66,
+      "optimized_bytes": 66,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "fork",
+      "mode": "dag",
+      "file": "fork-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3.wasm",
+      "optimized_file": "fork-dag-optimized.wasm",
+      "source_bytes": 446,
+      "optimized_bytes": 446,
+      "linear_memory_bytes": 65536
+    },
+    {
+      "name": "fork",
+      "mode": "dag-recovered",
+      "file": "fork-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3-recovered.wasm",
+      "optimized_file": "fork-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "file": "fork-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3.wasm",
+      "optimized_file": "fork-interaction-optimized.wasm",
+      "source_bytes": 674,
+      "optimized_bytes": 674,
+      "linear_memory_bytes": 65536
+    },
+    {
+      "name": "fork",
+      "mode": "interaction-recovered",
+      "file": "fork-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3-recovered.wasm",
+      "optimized_file": "fork-interaction-recovered-optimized.wasm",
+      "source_bytes": 216,
+      "optimized_bytes": 86,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "chain",
+      "mode": "plain",
+      "file": "chain-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-plain-O3.wasm",
+      "optimized_file": "chain-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "file": "chain-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3.wasm",
+      "optimized_file": "chain-dag-optimized.wasm",
+      "source_bytes": 458,
+      "optimized_bytes": 458,
+      "linear_memory_bytes": 65536
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "file": "chain-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3-recovered.wasm",
+      "optimized_file": "chain-dag-recovered-optimized.wasm",
+      "source_bytes": 168,
+      "optimized_bytes": 88,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "file": "chain-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3.wasm",
+      "optimized_file": "chain-interaction-optimized.wasm",
+      "source_bytes": 741,
+      "optimized_bytes": 741,
+      "linear_memory_bytes": 65536
+    },
+    {
+      "name": "chain",
+      "mode": "interaction-recovered",
+      "file": "chain-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3-recovered.wasm",
+      "optimized_file": "chain-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 58,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "ordered",
+      "mode": "plain",
+      "file": "ordered-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-plain-O3.wasm",
+      "optimized_file": "ordered-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "file": "ordered-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3.wasm",
+      "optimized_file": "ordered-dag-optimized.wasm",
+      "source_bytes": 429,
+      "optimized_bytes": 429,
+      "linear_memory_bytes": 65536
+    },
+    {
+      "name": "ordered",
+      "mode": "dag-recovered",
+      "file": "ordered-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "file": "ordered-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3.wasm",
+      "optimized_file": "ordered-interaction-optimized.wasm",
+      "source_bytes": 686,
+      "optimized_bytes": 686,
+      "linear_memory_bytes": 65536
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction-recovered",
+      "file": "ordered-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3-recovered.wasm",
+      "optimized_file": "ordered-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 100,
+      "linear_memory_bytes": 0
+    }
+  ],
+  "warmup_calls": 16384,
+  "calibration_target_ms": 20,
+  "batches": 7,
+  "processes_per_target": 3,
+  "rows": [
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3.wasm",
+      "optimized_file": "ordered-interaction-optimized.wasm",
+      "source_bytes": 686,
+      "optimized_bytes": 686,
+      "linear_memory_bytes": 65536,
+      "process": 2,
+      "count": 103226,
+      "samples": [
+        {
+          "milliseconds": 24.1342,
+          "ns": 233.79962412570475
+        },
+        {
+          "milliseconds": 24.049800000000005,
+          "ns": 232.9820006587488
+        },
+        {
+          "milliseconds": 24.136499999999998,
+          "ns": 233.82190533392748
+        },
+        {
+          "milliseconds": 24.246300000000005,
+          "ns": 234.88559083951722
+        },
+        {
+          "milliseconds": 24.265500000000003,
+          "ns": 235.07159049076787
+        },
+        {
+          "milliseconds": 24.1738,
+          "ns": 234.18324840640923
+        },
+        {
+          "milliseconds": 24.195600000000013,
+          "ns": 234.39443551043357
+        }
+      ],
+      "checksum": 4161,
+      "maxRSSKiB": 38248,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3.wasm",
+      "optimized_file": "ordered-interaction-optimized.wasm",
+      "source_bytes": 686,
+      "optimized_bytes": 686,
+      "linear_memory_bytes": 65536,
+      "process": 1,
+      "count": 90652,
+      "samples": [
+        {
+          "milliseconds": 22.799299999999995,
+          "ns": 251.50355204518374
+        },
+        {
+          "milliseconds": 22.4015,
+          "ns": 247.11534218770683
+        },
+        {
+          "milliseconds": 23.35770000000001,
+          "ns": 257.6633720160615
+        },
+        {
+          "milliseconds": 22.568799999999996,
+          "ns": 248.96086131580105
+        },
+        {
+          "milliseconds": 22.229100000000017,
+          "ns": 245.21356395887585
+        },
+        {
+          "milliseconds": 22.778699999999986,
+          "ns": 251.2763094029915
+        },
+        {
+          "milliseconds": 23.067399999999992,
+          "ns": 254.46101575254812
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 38348,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3.wasm",
+      "optimized_file": "fork-interaction-optimized.wasm",
+      "source_bytes": 674,
+      "optimized_bytes": 674,
+      "linear_memory_bytes": 65536,
+      "process": 1,
+      "count": 103897,
+      "samples": [
+        {
+          "milliseconds": 24.202599999999997,
+          "ns": 232.94801582336348
+        },
+        {
+          "milliseconds": 26.036699999999996,
+          "ns": 250.6010760657189
+        },
+        {
+          "milliseconds": 25.742199999999997,
+          "ns": 247.7665380136096
+        },
+        {
+          "milliseconds": 25.85669999999999,
+          "ns": 248.86859100840243
+        },
+        {
+          "milliseconds": 25.283999999999992,
+          "ns": 243.35640105104088
+        },
+        {
+          "milliseconds": 25.8365,
+          "ns": 248.6741676853037
+        },
+        {
+          "milliseconds": 25.561300000000017,
+          "ns": 246.02539053100685
+        }
+      ],
+      "checksum": 8320,
+      "maxRSSKiB": 38156,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3.wasm",
+      "optimized_file": "chain-interaction-optimized.wasm",
+      "source_bytes": 741,
+      "optimized_bytes": 741,
+      "linear_memory_bytes": 65536,
+      "process": 1,
+      "count": 89636,
+      "samples": [
+        {
+          "milliseconds": 26.7828,
+          "ns": 298.7951269579187
+        },
+        {
+          "milliseconds": 24.862099999999998,
+          "ns": 277.3673524030523
+        },
+        {
+          "milliseconds": 24.253199999999993,
+          "ns": 270.5743228167253
+        },
+        {
+          "milliseconds": 24.468699999999984,
+          "ns": 272.9784907849523
+        },
+        {
+          "milliseconds": 24.2586,
+          "ns": 270.63456646882946
+        },
+        {
+          "milliseconds": 24.461799999999982,
+          "ns": 272.9015127850415
+        },
+        {
+          "milliseconds": 24.652799999999985,
+          "ns": 275.0323530724261
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 37996,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3.wasm",
+      "optimized_file": "ordered-dag-optimized.wasm",
+      "source_bytes": 429,
+      "optimized_bytes": 429,
+      "linear_memory_bytes": 65536,
+      "process": 0,
+      "count": 250000,
+      "samples": [
+        {
+          "milliseconds": 23.9373,
+          "ns": 95.7492
+        },
+        {
+          "milliseconds": 24.383799999999994,
+          "ns": 97.53519999999997
+        },
+        {
+          "milliseconds": 24.304000000000002,
+          "ns": 97.21600000000001
+        },
+        {
+          "milliseconds": 24.239800000000017,
+          "ns": 96.95920000000007
+        },
+        {
+          "milliseconds": 24.20429999999999,
+          "ns": 96.81719999999996
+        },
+        {
+          "milliseconds": 24.486400000000003,
+          "ns": 97.94560000000001
+        },
+        {
+          "milliseconds": 24.30709999999999,
+          "ns": 97.22839999999997
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 38116,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 13091148,
+      "samples": [
+        {
+          "milliseconds": 25.061300000000003,
+          "ns": 1.914369923860001
+        },
+        {
+          "milliseconds": 25.125200000000007,
+          "ns": 1.9192510847788145
+        },
+        {
+          "milliseconds": 25.64569999999999,
+          "ns": 1.9590107758311184
+        },
+        {
+          "milliseconds": 26.164900000000003,
+          "ns": 1.998671163140162
+        },
+        {
+          "milliseconds": 25.883499999999998,
+          "ns": 1.977175722098627
+        },
+        {
+          "milliseconds": 26.313200000000023,
+          "ns": 2.0099994286215406
+        },
+        {
+          "milliseconds": 26.130200000000002,
+          "ns": 1.9960205170700083
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37976,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-plain-O3.wasm",
+      "optimized_file": "fork-plain-optimized.wasm",
+      "source_bytes": 66,
+      "optimized_bytes": 66,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 24260804,
+      "samples": [
+        {
+          "milliseconds": 25.211799999999997,
+          "ns": 1.0391988657919167
+        },
+        {
+          "milliseconds": 25.6695,
+          "ns": 1.0580646873862878
+        },
+        {
+          "milliseconds": 25.43379999999999,
+          "ns": 1.048349428155802
+        },
+        {
+          "milliseconds": 25.387500000000003,
+          "ns": 1.0464410000591904
+        },
+        {
+          "milliseconds": 25.522400000000005,
+          "ns": 1.0520014093514791
+        },
+        {
+          "milliseconds": 26.581799999999987,
+          "ns": 1.0956685524519298
+        },
+        {
+          "milliseconds": 26.077500000000015,
+          "ns": 1.0748819371361318
+        }
+      ],
+      "checksum": 311936,
+      "maxRSSKiB": 37816,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3-recovered.wasm",
+      "optimized_file": "fork-interaction-recovered-optimized.wasm",
+      "source_bytes": 216,
+      "optimized_bytes": 86,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 15262807,
+      "samples": [
+        {
+          "milliseconds": 25.046499999999995,
+          "ns": 1.6410153125830653
+        },
+        {
+          "milliseconds": 24.992400000000004,
+          "ns": 1.6374707483361353
+        },
+        {
+          "milliseconds": 24.922200000000004,
+          "ns": 1.6328713322523178
+        },
+        {
+          "milliseconds": 24.815799999999996,
+          "ns": 1.6259001375041955
+        },
+        {
+          "milliseconds": 24.272999999999996,
+          "ns": 1.5903365612891518
+        },
+        {
+          "milliseconds": 24.391699999999986,
+          "ns": 1.5981136366331556
+        },
+        {
+          "milliseconds": 24.287800000000004,
+          "ns": 1.5913062387541168
+        }
+      ],
+      "checksum": 311943,
+      "maxRSSKiB": 37788,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-plain-O3.wasm",
+      "optimized_file": "ordered-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 21759826,
+      "samples": [
+        {
+          "milliseconds": 25.20940000000001,
+          "ns": 1.1585294845648129
+        },
+        {
+          "milliseconds": 25.144999999999996,
+          "ns": 1.1555699020755035
+        },
+        {
+          "milliseconds": 24.540400000000005,
+          "ns": 1.1277847534258778
+        },
+        {
+          "milliseconds": 24.771100000000004,
+          "ns": 1.1383868602625777
+        },
+        {
+          "milliseconds": 24.56479999999999,
+          "ns": 1.1289060859218265
+        },
+        {
+          "milliseconds": 24.53539999999998,
+          "ns": 1.1275549721767069
+        },
+        {
+          "milliseconds": 24.40960000000001,
+          "ns": 1.1217736759475931
+        }
+      ],
+      "checksum": 155969,
+      "maxRSSKiB": 37864,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3-recovered.wasm",
+      "optimized_file": "chain-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 58,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 23320216,
+      "samples": [
+        {
+          "milliseconds": 24.594300000000004,
+          "ns": 1.0546343138502663
+        },
+        {
+          "milliseconds": 24.28819999999999,
+          "ns": 1.0415083633873712
+        },
+        {
+          "milliseconds": 24.60470000000001,
+          "ns": 1.0550802788447589
+        },
+        {
+          "milliseconds": 24.92779999999999,
+          "ns": 1.0689352105486496
+        },
+        {
+          "milliseconds": 25.301800000000014,
+          "ns": 1.0849727978505865
+        },
+        {
+          "milliseconds": 26.70840000000001,
+          "ns": 1.1452895633556743
+        },
+        {
+          "milliseconds": 25.152500000000003,
+          "ns": 1.078570627304653
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37796,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3-recovered.wasm",
+      "optimized_file": "fork-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 13120132,
+      "samples": [
+        {
+          "milliseconds": 24.460900000000002,
+          "ns": 1.864379108380922
+        },
+        {
+          "milliseconds": 24.442899999999995,
+          "ns": 1.8630071709644382
+        },
+        {
+          "milliseconds": 24.633300000000006,
+          "ns": 1.8775192200810178
+        },
+        {
+          "milliseconds": 24.45649999999999,
+          "ns": 1.8640437459013364
+        },
+        {
+          "milliseconds": 24.375499999999988,
+          "ns": 1.8578700275271611
+        },
+        {
+          "milliseconds": 24.690300000000008,
+          "ns": 1.8818636885665485
+        },
+        {
+          "milliseconds": 24.568000000000012,
+          "ns": 1.8725421360089982
+        }
+      ],
+      "checksum": 311936,
+      "maxRSSKiB": 37880,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-plain-O3.wasm",
+      "optimized_file": "chain-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 23519036,
+      "samples": [
+        {
+          "milliseconds": 23.2952,
+          "ns": 0.990482773188493
+        },
+        {
+          "milliseconds": 23.2813,
+          "ns": 0.9898917625705407
+        },
+        {
+          "milliseconds": 23.2076,
+          "ns": 0.9867581307329093
+        },
+        {
+          "milliseconds": 23.284699999999987,
+          "ns": 0.9900363263188162
+        },
+        {
+          "milliseconds": 23.386800000000022,
+          "ns": 0.9943774906420494
+        },
+        {
+          "milliseconds": 23.434200000000004,
+          "ns": 0.996392879368015
+        },
+        {
+          "milliseconds": 23.509199999999993,
+          "ns": 0.9995817855799869
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37992,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3-recovered.wasm",
+      "optimized_file": "chain-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 58,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 23327016,
+      "samples": [
+        {
+          "milliseconds": 25.217400000000005,
+          "ns": 1.0810383977101916
+        },
+        {
+          "milliseconds": 25.156999999999996,
+          "ns": 1.0784491252545974
+        },
+        {
+          "milliseconds": 25.210099999999997,
+          "ns": 1.0807254558405583
+        },
+        {
+          "milliseconds": 25.23450000000001,
+          "ns": 1.0817714533226201
+        },
+        {
+          "milliseconds": 25.2534,
+          "ns": 1.0825816726837243
+        },
+        {
+          "milliseconds": 25.19029999999998,
+          "ns": 1.0798766546051144
+        },
+        {
+          "milliseconds": 25.162599999999998,
+          "ns": 1.0786891902504803
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37804,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-plain-O3.wasm",
+      "optimized_file": "fork-plain-optimized.wasm",
+      "source_bytes": 66,
+      "optimized_bytes": 66,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 24695170,
+      "samples": [
+        {
+          "milliseconds": 24.3414,
+          "ns": 0.985674526638205
+        },
+        {
+          "milliseconds": 24.385599999999997,
+          "ns": 0.9874643503162762
+        },
+        {
+          "milliseconds": 24.2855,
+          "ns": 0.9834109261041734
+        },
+        {
+          "milliseconds": 25.532899999999984,
+          "ns": 1.0339228278242258
+        },
+        {
+          "milliseconds": 24.74030000000002,
+          "ns": 1.0018274828640588
+        },
+        {
+          "milliseconds": 24.473100000000017,
+          "ns": 0.9910075532988846
+        },
+        {
+          "milliseconds": 25.550100000000015,
+          "ns": 1.0346193202962366
+        }
+      ],
+      "checksum": 311936,
+      "maxRSSKiB": 37900,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3.wasm",
+      "optimized_file": "fork-dag-optimized.wasm",
+      "source_bytes": 446,
+      "optimized_bytes": 446,
+      "linear_memory_bytes": 65536,
+      "process": 2,
+      "count": 192193,
+      "samples": [
+        {
+          "milliseconds": 24.4193,
+          "ns": 127.0561362796772
+        },
+        {
+          "milliseconds": 24.52470000000001,
+          "ns": 127.6045433496538
+        },
+        {
+          "milliseconds": 24.5813,
+          "ns": 127.89903898685176
+        },
+        {
+          "milliseconds": 24.505300000000005,
+          "ns": 127.50360314891803
+        },
+        {
+          "milliseconds": 24.41900000000001,
+          "ns": 127.05457534873804
+        },
+        {
+          "milliseconds": 24.527300000000025,
+          "ns": 127.61807141779371
+        },
+        {
+          "milliseconds": 24.496499999999997,
+          "ns": 127.45781584136778
+        }
+      ],
+      "checksum": 8320,
+      "maxRSSKiB": 38156,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3.wasm",
+      "optimized_file": "chain-interaction-optimized.wasm",
+      "source_bytes": 741,
+      "optimized_bytes": 741,
+      "linear_memory_bytes": 65536,
+      "process": 0,
+      "count": 90015,
+      "samples": [
+        {
+          "milliseconds": 24.764700000000005,
+          "ns": 275.1174804199301
+        },
+        {
+          "milliseconds": 24.76249999999999,
+          "ns": 275.0930400488806
+        },
+        {
+          "milliseconds": 24.664399999999986,
+          "ns": 274.0032216852745
+        },
+        {
+          "milliseconds": 24.829399999999993,
+          "ns": 275.8362495139698
+        },
+        {
+          "milliseconds": 24.725299999999976,
+          "ns": 274.6797755929565
+        },
+        {
+          "milliseconds": 24.845200000000006,
+          "ns": 276.01177581514196
+        },
+        {
+          "milliseconds": 24.711000000000013,
+          "ns": 274.5209131811366
+        }
+      ],
+      "checksum": 4175,
+      "maxRSSKiB": 38116,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3.wasm",
+      "optimized_file": "ordered-dag-optimized.wasm",
+      "source_bytes": 429,
+      "optimized_bytes": 429,
+      "linear_memory_bytes": 65536,
+      "process": 2,
+      "count": 250000,
+      "samples": [
+        {
+          "milliseconds": 24.625500000000002,
+          "ns": 98.50200000000001
+        },
+        {
+          "milliseconds": 24.5852,
+          "ns": 98.3408
+        },
+        {
+          "milliseconds": 24.2693,
+          "ns": 97.0772
+        },
+        {
+          "milliseconds": 24.342799999999997,
+          "ns": 97.37119999999999
+        },
+        {
+          "milliseconds": 24.290600000000012,
+          "ns": 97.16240000000005
+        },
+        {
+          "milliseconds": 24.598900000000015,
+          "ns": 98.39560000000006
+        },
+        {
+          "milliseconds": 24.326899999999995,
+          "ns": 97.30759999999998
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 38272,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3-recovered.wasm",
+      "optimized_file": "ordered-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 100,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 12850374,
+      "samples": [
+        {
+          "milliseconds": 25.60470000000001,
+          "ns": 1.9925256650117738
+        },
+        {
+          "milliseconds": 25.446300000000008,
+          "ns": 1.9801991755259425
+        },
+        {
+          "milliseconds": 25.487899999999996,
+          "ns": 1.9834364353909073
+        },
+        {
+          "milliseconds": 25.36930000000001,
+          "ns": 1.9742071320258858
+        },
+        {
+          "milliseconds": 25.427699999999987,
+          "ns": 1.978751746836317
+        },
+        {
+          "milliseconds": 25.218099999999993,
+          "ns": 1.9624409375166818
+        },
+        {
+          "milliseconds": 27.494400000000013,
+          "ns": 2.1395797507527807
+        }
+      ],
+      "checksum": 155971,
+      "maxRSSKiB": 37920,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3-recovered.wasm",
+      "optimized_file": "chain-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 58,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 23306628,
+      "samples": [
+        {
+          "milliseconds": 25.248799999999996,
+          "ns": 1.0833313167395986
+        },
+        {
+          "milliseconds": 24.418400000000005,
+          "ns": 1.0477019670112726
+        },
+        {
+          "milliseconds": 24.368300000000005,
+          "ns": 1.0455523639026634
+        },
+        {
+          "milliseconds": 24.37170000000002,
+          "ns": 1.0456982451515517
+        },
+        {
+          "milliseconds": 24.4812,
+          "ns": 1.0503964794907268
+        },
+        {
+          "milliseconds": 24.3604,
+          "ns": 1.0452134045302477
+        },
+        {
+          "milliseconds": 24.570999999999998,
+          "ns": 1.0542494607113477
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37956,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3-recovered.wasm",
+      "optimized_file": "chain-dag-recovered-optimized.wasm",
+      "source_bytes": 168,
+      "optimized_bytes": 88,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 14639949,
+      "samples": [
+        {
+          "milliseconds": 24.2352,
+          "ns": 1.6554156028822231
+        },
+        {
+          "milliseconds": 24.38709999999999,
+          "ns": 1.665791322087255
+        },
+        {
+          "milliseconds": 24.24000000000001,
+          "ns": 1.6557434728768528
+        },
+        {
+          "milliseconds": 24.383599999999987,
+          "ns": 1.6655522502161715
+        },
+        {
+          "milliseconds": 24.32329999999999,
+          "ns": 1.6614333834086437
+        },
+        {
+          "milliseconds": 24.315399999999983,
+          "ns": 1.6608937640424828
+        },
+        {
+          "milliseconds": 24.431299999999993,
+          "ns": 1.6688104582877983
+        }
+      ],
+      "checksum": 155975,
+      "maxRSSKiB": 37804,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-plain-O3.wasm",
+      "optimized_file": "chain-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 24604029,
+      "samples": [
+        {
+          "milliseconds": 25.101699999999994,
+          "ns": 1.020227215632041
+        },
+        {
+          "milliseconds": 25.164100000000005,
+          "ns": 1.022763385622737
+        },
+        {
+          "milliseconds": 24.515600000000006,
+          "ns": 0.9964059138444361
+        },
+        {
+          "milliseconds": 24.47959999999999,
+          "ns": 0.9949427388498036
+        },
+        {
+          "milliseconds": 24.408999999999992,
+          "ns": 0.9920732901103309
+        },
+        {
+          "milliseconds": 24.45060000000001,
+          "ns": 0.9937640701041284
+        },
+        {
+          "milliseconds": 24.96090000000001,
+          "ns": 1.0145045756530369
+        }
+      ],
+      "checksum": 156031,
+      "maxRSSKiB": 38136,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3.wasm",
+      "optimized_file": "fork-dag-optimized.wasm",
+      "source_bytes": 446,
+      "optimized_bytes": 446,
+      "linear_memory_bytes": 65536,
+      "process": 1,
+      "count": 190477,
+      "samples": [
+        {
+          "milliseconds": 24.293100000000003,
+          "ns": 127.53823296250992
+        },
+        {
+          "milliseconds": 24.291399999999996,
+          "ns": 127.52930800044098
+        },
+        {
+          "milliseconds": 24.177000000000007,
+          "ns": 126.92871055298019
+        },
+        {
+          "milliseconds": 24.337000000000003,
+          "ns": 127.76870698299534
+        },
+        {
+          "milliseconds": 24.191599999999994,
+          "ns": 127.005360227219
+        },
+        {
+          "milliseconds": 24.370100000000008,
+          "ns": 127.94248124445475
+        },
+        {
+          "milliseconds": 24.221700000000027,
+          "ns": 127.16338455561578
+        }
+      ],
+      "checksum": 8320,
+      "maxRSSKiB": 38032,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-plain-O3.wasm",
+      "optimized_file": "ordered-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 21768708,
+      "samples": [
+        {
+          "milliseconds": 24.5233,
+          "ns": 1.126539066994697
+        },
+        {
+          "milliseconds": 24.615399999999994,
+          "ns": 1.1307699106442142
+        },
+        {
+          "milliseconds": 24.4033,
+          "ns": 1.121026567125619
+        },
+        {
+          "milliseconds": 24.45750000000001,
+          "ns": 1.1235163795664864
+        },
+        {
+          "milliseconds": 24.434300000000007,
+          "ns": 1.122450629591798
+        },
+        {
+          "milliseconds": 24.357699999999994,
+          "ns": 1.118931817175369
+        },
+        {
+          "milliseconds": 24.390199999999993,
+          "ns": 1.120424785889911
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37796,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-plain-O3.wasm",
+      "optimized_file": "ordered-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 21756868,
+      "samples": [
+        {
+          "milliseconds": 25.13479999999999,
+          "ns": 1.1552581924935148
+        },
+        {
+          "milliseconds": 25.39580000000001,
+          "ns": 1.1672544044482878
+        },
+        {
+          "milliseconds": 25.117800000000003,
+          "ns": 1.1544768300290282
+        },
+        {
+          "milliseconds": 25.197800000000015,
+          "ns": 1.1581538298619092
+        },
+        {
+          "milliseconds": 25.134900000000016,
+          "ns": 1.155262788743307
+        },
+        {
+          "milliseconds": 25.184499999999986,
+          "ns": 1.1575425286396914
+        },
+        {
+          "milliseconds": 25.173900000000003,
+          "ns": 1.1570553261618357
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37948,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3.wasm",
+      "optimized_file": "chain-dag-optimized.wasm",
+      "source_bytes": 458,
+      "optimized_bytes": 458,
+      "linear_memory_bytes": 65536,
+      "process": 1,
+      "count": 182858,
+      "samples": [
+        {
+          "milliseconds": 24.515299999999996,
+          "ns": 134.06741843397606
+        },
+        {
+          "milliseconds": 24.290400000000005,
+          "ns": 132.8375023242079
+        },
+        {
+          "milliseconds": 24.4863,
+          "ns": 133.9088254273808
+        },
+        {
+          "milliseconds": 24.13730000000001,
+          "ns": 132.00024062387214
+        },
+        {
+          "milliseconds": 23.801900000000018,
+          "ns": 130.16603047173226
+        },
+        {
+          "milliseconds": 23.634500000000003,
+          "ns": 129.25056601297183
+        },
+        {
+          "milliseconds": 23.869099999999975,
+          "ns": 130.53352874908384
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 38268,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3-recovered.wasm",
+      "optimized_file": "chain-dag-recovered-optimized.wasm",
+      "source_bytes": 168,
+      "optimized_bytes": 88,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 14565317,
+      "samples": [
+        {
+          "milliseconds": 24.9369,
+          "ns": 1.712073963100151
+        },
+        {
+          "milliseconds": 24.920699999999997,
+          "ns": 1.710961731900514
+        },
+        {
+          "milliseconds": 24.87140000000001,
+          "ns": 1.7075769789287805
+        },
+        {
+          "milliseconds": 24.871899999999997,
+          "ns": 1.7076113070522252
+        },
+        {
+          "milliseconds": 24.91580000000002,
+          "ns": 1.7106253162907488
+        },
+        {
+          "milliseconds": 24.89839999999998,
+          "ns": 1.70943069759484
+        },
+        {
+          "milliseconds": 24.929000000000002,
+          "ns": 1.711531578749711
+        }
+      ],
+      "checksum": 155971,
+      "maxRSSKiB": 37864,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3.wasm",
+      "optimized_file": "chain-interaction-optimized.wasm",
+      "source_bytes": 741,
+      "optimized_bytes": 741,
+      "linear_memory_bytes": 65536,
+      "process": 2,
+      "count": 90781,
+      "samples": [
+        {
+          "milliseconds": 24.114600000000003,
+          "ns": 265.6348795452793
+        },
+        {
+          "milliseconds": 24.052300000000002,
+          "ns": 264.9486125951466
+        },
+        {
+          "milliseconds": 24.127399999999994,
+          "ns": 265.7758782124012
+        },
+        {
+          "milliseconds": 24.212699999999998,
+          "ns": 266.71550214251874
+        },
+        {
+          "milliseconds": 24.186199999999985,
+          "ns": 266.4235908394927
+        },
+        {
+          "milliseconds": 24.219400000000007,
+          "ns": 266.7893061323405
+        },
+        {
+          "milliseconds": 24.343199999999996,
+          "ns": 268.1530276159108
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 38296,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3-recovered.wasm",
+      "optimized_file": "ordered-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 100,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 12844184,
+      "samples": [
+        {
+          "milliseconds": 25.088699999999996,
+          "ns": 1.953312098300678
+        },
+        {
+          "milliseconds": 25.21310000000001,
+          "ns": 1.9629974157953523
+        },
+        {
+          "milliseconds": 25.10690000000001,
+          "ns": 1.9547290820499
+        },
+        {
+          "milliseconds": 25.128800000000012,
+          "ns": 1.9564341339239621
+        },
+        {
+          "milliseconds": 25.146899999999988,
+          "ns": 1.9578433320481854
+        },
+        {
+          "milliseconds": 24.852299999999985,
+          "ns": 1.9349068808108
+        },
+        {
+          "milliseconds": 24.709699999999998,
+          "ns": 1.9238045795669072
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37892,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3.wasm",
+      "optimized_file": "chain-dag-optimized.wasm",
+      "source_bytes": 458,
+      "optimized_bytes": 458,
+      "linear_memory_bytes": 65536,
+      "process": 2,
+      "count": 182858,
+      "samples": [
+        {
+          "milliseconds": 24.447900000000004,
+          "ns": 133.6988264117512
+        },
+        {
+          "milliseconds": 24.634299999999996,
+          "ns": 134.71819663345326
+        },
+        {
+          "milliseconds": 25.293099999999995,
+          "ns": 138.32099224534883
+        },
+        {
+          "milliseconds": 24.393,
+          "ns": 133.39859344409322
+        },
+        {
+          "milliseconds": 23.81359999999998,
+          "ns": 130.2300145468067
+        },
+        {
+          "milliseconds": 23.7115,
+          "ns": 129.6716577891041
+        },
+        {
+          "milliseconds": 23.769200000000012,
+          "ns": 129.98720318498513
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 38252,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3.wasm",
+      "optimized_file": "fork-interaction-optimized.wasm",
+      "source_bytes": 674,
+      "optimized_bytes": 674,
+      "linear_memory_bytes": 65536,
+      "process": 0,
+      "count": 103393,
+      "samples": [
+        {
+          "milliseconds": 24.66819999999999,
+          "ns": 238.58675152089592
+        },
+        {
+          "milliseconds": 24.857,
+          "ns": 240.41279390287545
+        },
+        {
+          "milliseconds": 25.757500000000007,
+          "ns": 249.122281005484
+        },
+        {
+          "milliseconds": 24.935399999999987,
+          "ns": 241.17106573946
+        },
+        {
+          "milliseconds": 24.862400000000008,
+          "ns": 240.4650218099872
+        },
+        {
+          "milliseconds": 24.93949999999998,
+          "ns": 241.21072026152623
+        },
+        {
+          "milliseconds": 24.8022,
+          "ns": 239.8827773640382
+        }
+      ],
+      "checksum": 8320,
+      "maxRSSKiB": 38176,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3-recovered.wasm",
+      "optimized_file": "fork-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 12995452,
+      "samples": [
+        {
+          "milliseconds": 24.189800000000005,
+          "ns": 1.8614050515518816
+        },
+        {
+          "milliseconds": 24.27900000000001,
+          "ns": 1.8682689913363546
+        },
+        {
+          "milliseconds": 24.060199999999995,
+          "ns": 1.8514323318650245
+        },
+        {
+          "milliseconds": 24.869400000000013,
+          "ns": 1.9137002699098127
+        },
+        {
+          "milliseconds": 24.40289999999999,
+          "ns": 1.877803096036982
+        },
+        {
+          "milliseconds": 24.2543,
+          "ns": 1.8663683263960344
+        },
+        {
+          "milliseconds": 24.1173,
+          "ns": 1.855826176727058
+        }
+      ],
+      "checksum": 311936,
+      "maxRSSKiB": 37928,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3-recovered.wasm",
+      "optimized_file": "fork-interaction-recovered-optimized.wasm",
+      "source_bytes": 216,
+      "optimized_bytes": 86,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 15095764,
+      "samples": [
+        {
+          "milliseconds": 24.6548,
+          "ns": 1.6332263805925953
+        },
+        {
+          "milliseconds": 24.747500000000002,
+          "ns": 1.6393671761164261
+        },
+        {
+          "milliseconds": 24.816999999999993,
+          "ns": 1.6439711166655753
+        },
+        {
+          "milliseconds": 24.8583,
+          "ns": 1.6467069834955024
+        },
+        {
+          "milliseconds": 24.692399999999992,
+          "ns": 1.6357171455515596
+        },
+        {
+          "milliseconds": 24.742099999999994,
+          "ns": 1.6390094598723186
+        },
+        {
+          "milliseconds": 24.711899999999986,
+          "ns": 1.6370088986552773
+        }
+      ],
+      "checksum": 311936,
+      "maxRSSKiB": 37884,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3.wasm",
+      "optimized_file": "ordered-interaction-optimized.wasm",
+      "source_bytes": 686,
+      "optimized_bytes": 686,
+      "linear_memory_bytes": 65536,
+      "process": 0,
+      "count": 102400,
+      "samples": [
+        {
+          "milliseconds": 24.712799999999994,
+          "ns": 241.33593749999991
+        },
+        {
+          "milliseconds": 24.701000000000008,
+          "ns": 241.22070312500009
+        },
+        {
+          "milliseconds": 24.670599999999993,
+          "ns": 240.92382812499991
+        },
+        {
+          "milliseconds": 24.85459999999999,
+          "ns": 242.72070312499991
+        },
+        {
+          "milliseconds": 24.666300000000007,
+          "ns": 240.88183593750009
+        },
+        {
+          "milliseconds": 24.726,
+          "ns": 241.46484375
+        },
+        {
+          "milliseconds": 24.652199999999993,
+          "ns": 240.74414062499991
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 38152,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3-recovered.wasm",
+      "optimized_file": "fork-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 12813326,
+      "samples": [
+        {
+          "milliseconds": 24.591299999999997,
+          "ns": 1.91919724823984
+        },
+        {
+          "milliseconds": 24.855400000000003,
+          "ns": 1.939808602387858
+        },
+        {
+          "milliseconds": 24.631,
+          "ns": 1.92229558508072
+        },
+        {
+          "milliseconds": 24.641499999999994,
+          "ns": 1.923115044446695
+        },
+        {
+          "milliseconds": 24.556399999999996,
+          "ns": 1.916473521394835
+        },
+        {
+          "milliseconds": 24.78030000000001,
+          "ns": 1.9339475168274038
+        },
+        {
+          "milliseconds": 24.6344,
+          "ns": 1.9225609338277978
+        }
+      ],
+      "checksum": 311936,
+      "maxRSSKiB": 37884,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3.wasm",
+      "optimized_file": "ordered-dag-optimized.wasm",
+      "source_bytes": 429,
+      "optimized_bytes": 429,
+      "linear_memory_bytes": 65536,
+      "process": 1,
+      "count": 251969,
+      "samples": [
+        {
+          "milliseconds": 24.5974,
+          "ns": 97.62073905916998
+        },
+        {
+          "milliseconds": 24.7051,
+          "ns": 98.04817259266021
+        },
+        {
+          "milliseconds": 24.708399999999997,
+          "ns": 98.06126944187577
+        },
+        {
+          "milliseconds": 24.664900000000017,
+          "ns": 97.88862915676143
+        },
+        {
+          "milliseconds": 25.2337,
+          "ns": 100.14604971246463
+        },
+        {
+          "milliseconds": 25.577300000000008,
+          "ns": 101.5097095277594
+        },
+        {
+          "milliseconds": 25.678699999999992,
+          "ns": 101.91213998547437
+        }
+      ],
+      "checksum": 4161,
+      "maxRSSKiB": 38112,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-plain-O3.wasm",
+      "optimized_file": "fork-plain-optimized.wasm",
+      "source_bytes": 66,
+      "optimized_bytes": 66,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 24573799,
+      "samples": [
+        {
+          "milliseconds": 25.030099999999997,
+          "ns": 1.0185685982049417
+        },
+        {
+          "milliseconds": 25.102999999999994,
+          "ns": 1.0215351724818778
+        },
+        {
+          "milliseconds": 24.954099999999997,
+          "ns": 1.0154758733071756
+        },
+        {
+          "milliseconds": 25.2042,
+          "ns": 1.0256533798457454
+        },
+        {
+          "milliseconds": 24.42689999999999,
+          "ns": 0.9940221290163556
+        },
+        {
+          "milliseconds": 24.4692,
+          "ns": 0.9957434745844548
+        },
+        {
+          "milliseconds": 24.804699999999997,
+          "ns": 1.0093962272581458
+        }
+      ],
+      "checksum": 311943,
+      "maxRSSKiB": 37904,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 13284624,
+      "samples": [
+        {
+          "milliseconds": 25.191500000000005,
+          "ns": 1.8962900267256344
+        },
+        {
+          "milliseconds": 25.881299999999996,
+          "ns": 1.948214718007826
+        },
+        {
+          "milliseconds": 25.354799999999997,
+          "ns": 1.9085824333454975
+        },
+        {
+          "milliseconds": 25.301600000000008,
+          "ns": 1.9045778036322298
+        },
+        {
+          "milliseconds": 25.312399999999997,
+          "ns": 1.9053907735740203
+        },
+        {
+          "milliseconds": 25.233300000000014,
+          "ns": 1.8994365215003461
+        },
+        {
+          "milliseconds": 25.179900000000004,
+          "ns": 1.8954168367881548
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37932,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3-recovered.wasm",
+      "optimized_file": "fork-interaction-recovered-optimized.wasm",
+      "source_bytes": 216,
+      "optimized_bytes": 86,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 15321268,
+      "samples": [
+        {
+          "milliseconds": 25.0762,
+          "ns": 1.6366922111146414
+        },
+        {
+          "milliseconds": 25.078599999999994,
+          "ns": 1.6368488561129533
+        },
+        {
+          "milliseconds": 25.186499999999995,
+          "ns": 1.6438913541620703
+        },
+        {
+          "milliseconds": 25.004100000000008,
+          "ns": 1.6319863342903478
+        },
+        {
+          "milliseconds": 25.143,
+          "ns": 1.641052163567663
+        },
+        {
+          "milliseconds": 25.066300000000012,
+          "ns": 1.6360460504966046
+        },
+        {
+          "milliseconds": 25.045499999999976,
+          "ns": 1.6346884605112302
+        }
+      ],
+      "checksum": 311936,
+      "maxRSSKiB": 37848,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-plain-O3.wasm",
+      "optimized_file": "chain-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 24600247,
+      "samples": [
+        {
+          "milliseconds": 24.724399999999996,
+          "ns": 1.0050468192453512
+        },
+        {
+          "milliseconds": 24.488100000000003,
+          "ns": 0.9954412246348585
+        },
+        {
+          "milliseconds": 24.42689999999999,
+          "ns": 0.9929534447357373
+        },
+        {
+          "milliseconds": 24.3917,
+          "ns": 0.99152256479376
+        },
+        {
+          "milliseconds": 24.459100000000007,
+          "ns": 0.994262374682661
+        },
+        {
+          "milliseconds": 24.570700000000016,
+          "ns": 0.9987989144987046
+        },
+        {
+          "milliseconds": 24.347399999999993,
+          "ns": 0.989721769866782
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37676,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3.wasm",
+      "optimized_file": "fork-dag-optimized.wasm",
+      "source_bytes": 446,
+      "optimized_bytes": 446,
+      "linear_memory_bytes": 65536,
+      "process": 0,
+      "count": 172044,
+      "samples": [
+        {
+          "milliseconds": 22.807499999999997,
+          "ns": 132.56783148496893
+        },
+        {
+          "milliseconds": 22.866699999999994,
+          "ns": 132.91192950640533
+        },
+        {
+          "milliseconds": 22.8185,
+          "ns": 132.63176861733044
+        },
+        {
+          "milliseconds": 22.860500000000016,
+          "ns": 132.87589221361986
+        },
+        {
+          "milliseconds": 22.83869999999999,
+          "ns": 132.7491804422124
+        },
+        {
+          "milliseconds": 22.923699999999997,
+          "ns": 133.2432401013694
+        },
+        {
+          "milliseconds": 22.86529999999999,
+          "ns": 132.90379205319562
+        }
+      ],
+      "checksum": 8320,
+      "maxRSSKiB": 38284,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\fork-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3.wasm",
+      "optimized_file": "fork-interaction-optimized.wasm",
+      "source_bytes": 674,
+      "optimized_bytes": 674,
+      "linear_memory_bytes": 65536,
+      "process": 2,
+      "count": 103393,
+      "samples": [
+        {
+          "milliseconds": 24.7301,
+          "ns": 239.1854380857505
+        },
+        {
+          "milliseconds": 24.667900000000003,
+          "ns": 238.58384997050095
+        },
+        {
+          "milliseconds": 25.635299999999987,
+          "ns": 247.94038281121533
+        },
+        {
+          "milliseconds": 24.707099999999997,
+          "ns": 238.9629858887932
+        },
+        {
+          "milliseconds": 24.881400000000014,
+          "ns": 240.64878666834326
+        },
+        {
+          "milliseconds": 24.954499999999996,
+          "ns": 241.3557977812811
+        },
+        {
+          "milliseconds": 24.903800000000018,
+          "ns": 240.86543576451035
+        }
+      ],
+      "checksum": 8320,
+      "maxRSSKiB": 37876,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3.wasm",
+      "optimized_file": "chain-dag-optimized.wasm",
+      "source_bytes": 458,
+      "optimized_bytes": 458,
+      "linear_memory_bytes": 65536,
+      "process": 0,
+      "count": 182858,
+      "samples": [
+        {
+          "milliseconds": 24.590100000000007,
+          "ns": 134.47647901650464
+        },
+        {
+          "milliseconds": 24.56089999999999,
+          "ns": 134.31679226503618
+        },
+        {
+          "milliseconds": 24.692399999999992,
+          "ns": 135.03592951908033
+        },
+        {
+          "milliseconds": 24.453400000000002,
+          "ns": 133.72890439576068
+        },
+        {
+          "milliseconds": 24.61269999999999,
+          "ns": 134.60007218716157
+        },
+        {
+          "milliseconds": 24.550700000000006,
+          "ns": 134.2610112765097
+        },
+        {
+          "milliseconds": 24.60069999999999,
+          "ns": 134.5344474947773
+        }
+      ],
+      "checksum": 4160,
+      "maxRSSKiB": 38308,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 13313364,
+      "samples": [
+        {
+          "milliseconds": 25.199399999999997,
+          "ns": 1.8927898313303833
+        },
+        {
+          "milliseconds": 25.2325,
+          "ns": 1.895276054947495
+        },
+        {
+          "milliseconds": 25.282399999999996,
+          "ns": 1.8990241684971578
+        },
+        {
+          "milliseconds": 25.296800000000005,
+          "ns": 1.900105788439346
+        },
+        {
+          "milliseconds": 25.282299999999992,
+          "ns": 1.899016657247559
+        },
+        {
+          "milliseconds": 25.274599999999992,
+          "ns": 1.8984382910284727
+        },
+        {
+          "milliseconds": 25.32989999999998,
+          "ns": 1.9025920120564555
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37856,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\chain-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3-recovered.wasm",
+      "optimized_file": "chain-dag-recovered-optimized.wasm",
+      "source_bytes": 168,
+      "optimized_bytes": 88,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 14711291,
+      "samples": [
+        {
+          "milliseconds": 25.1552,
+          "ns": 1.709924710210681
+        },
+        {
+          "milliseconds": 25.20240000000001,
+          "ns": 1.7131331301923136
+        },
+        {
+          "milliseconds": 25.16340000000001,
+          "ns": 1.7104821052074908
+        },
+        {
+          "milliseconds": 25.283,
+          "ns": 1.7186119151609467
+        },
+        {
+          "milliseconds": 25.223899999999986,
+          "ns": 1.714594592683945
+        },
+        {
+          "milliseconds": 25.303799999999995,
+          "ns": 1.7200257951528521
+        },
+        {
+          "milliseconds": 25.197000000000003,
+          "ns": 1.7127660651944145
+        }
+      ],
+      "checksum": 155968,
+      "maxRSSKiB": 37852,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction-recovered",
+      "file": "results\\invention-20261022\\energy-interactions-performance-v1\\ordered-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3-recovered.wasm",
+      "optimized_file": "ordered-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 100,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 12805123,
+      "samples": [
+        {
+          "milliseconds": 25.23720000000001,
+          "ns": 1.9708674411015035
+        },
+        {
+          "milliseconds": 25.783199999999994,
+          "ns": 2.01350662543421
+        },
+        {
+          "milliseconds": 26.451300000000003,
+          "ns": 2.0656810559336294
+        },
+        {
+          "milliseconds": 25.169900000000013,
+          "ns": 1.9656117321169044
+        },
+        {
+          "milliseconds": 25.136599999999987,
+          "ns": 1.9630112104350728
+        },
+        {
+          "milliseconds": 25.395200000000017,
+          "ns": 1.983206252684962
+        },
+        {
+          "milliseconds": 25.237299999999976,
+          "ns": 1.970875250475921
+        }
+      ],
+      "checksum": 155969,
+      "maxRSSKiB": 37792,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    }
+  ],
+  "summary": [
+    {
+      "name": "fork",
+      "mode": "plain",
+      "file": "fork-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-plain-O3.wasm",
+      "optimized_file": "fork-plain-optimized.wasm",
+      "source_bytes": 66,
+      "optimized_bytes": 66,
+      "linear_memory_bytes": 0,
+      "ns": 1.0154758733071756,
+      "process_medians_ns": [
+        1.0520014093514791,
+        0.9910075532988846,
+        1.0154758733071756
+      ],
+      "range_ns": [
+        0.9910075532988846,
+        1.0520014093514791
+      ]
+    },
+    {
+      "name": "fork",
+      "mode": "dag",
+      "file": "fork-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3.wasm",
+      "optimized_file": "fork-dag-optimized.wasm",
+      "source_bytes": 446,
+      "optimized_bytes": 446,
+      "linear_memory_bytes": 65536,
+      "ns": 127.52930800044098,
+      "process_medians_ns": [
+        127.50360314891803,
+        127.52930800044098,
+        132.87589221361986
+      ],
+      "range_ns": [
+        127.50360314891803,
+        132.87589221361986
+      ]
+    },
+    {
+      "name": "fork",
+      "mode": "dag-recovered",
+      "file": "fork-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-dag-O3-recovered.wasm",
+      "optimized_file": "fork-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0,
+      "ns": 1.8663683263960344,
+      "process_medians_ns": [
+        1.864379108380922,
+        1.8663683263960344,
+        1.9225609338277978
+      ],
+      "range_ns": [
+        1.864379108380922,
+        1.9225609338277978
+      ]
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "file": "fork-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3.wasm",
+      "optimized_file": "fork-interaction-optimized.wasm",
+      "source_bytes": 674,
+      "optimized_bytes": 674,
+      "linear_memory_bytes": 65536,
+      "ns": 240.64878666834326,
+      "process_medians_ns": [
+        247.7665380136096,
+        240.4650218099872,
+        240.64878666834326
+      ],
+      "range_ns": [
+        240.4650218099872,
+        247.7665380136096
+      ]
+    },
+    {
+      "name": "fork",
+      "mode": "interaction-recovered",
+      "file": "fork-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\fork-interaction-O3-recovered.wasm",
+      "optimized_file": "fork-interaction-recovered-optimized.wasm",
+      "source_bytes": 216,
+      "optimized_bytes": 86,
+      "linear_memory_bytes": 0,
+      "ns": 1.6366922111146414,
+      "process_medians_ns": [
+        1.6259001375041955,
+        1.6390094598723186,
+        1.6366922111146414
+      ],
+      "range_ns": [
+        1.6259001375041955,
+        1.6390094598723186
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "plain",
+      "file": "chain-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-plain-O3.wasm",
+      "optimized_file": "chain-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0,
+      "ns": 0.994262374682661,
+      "process_medians_ns": [
+        0.990482773188493,
+        0.9964059138444361,
+        0.994262374682661
+      ],
+      "range_ns": [
+        0.990482773188493,
+        0.9964059138444361
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "file": "chain-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3.wasm",
+      "optimized_file": "chain-dag-optimized.wasm",
+      "source_bytes": 458,
+      "optimized_bytes": 458,
+      "linear_memory_bytes": 65536,
+      "ns": 133.39859344409322,
+      "process_medians_ns": [
+        132.00024062387214,
+        133.39859344409322,
+        134.47647901650464
+      ],
+      "range_ns": [
+        132.00024062387214,
+        134.47647901650464
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "file": "chain-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-dag-O3-recovered.wasm",
+      "optimized_file": "chain-dag-recovered-optimized.wasm",
+      "source_bytes": 168,
+      "optimized_bytes": 88,
+      "linear_memory_bytes": 0,
+      "ns": 1.7106253162907488,
+      "process_medians_ns": [
+        1.6614333834086437,
+        1.7106253162907488,
+        1.7131331301923136
+      ],
+      "range_ns": [
+        1.6614333834086437,
+        1.7131331301923136
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "file": "chain-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3.wasm",
+      "optimized_file": "chain-interaction-optimized.wasm",
+      "source_bytes": 741,
+      "optimized_bytes": 741,
+      "linear_memory_bytes": 65536,
+      "ns": 272.9784907849523,
+      "process_medians_ns": [
+        272.9784907849523,
+        275.0930400488806,
+        266.4235908394927
+      ],
+      "range_ns": [
+        266.4235908394927,
+        275.0930400488806
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "interaction-recovered",
+      "file": "chain-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\chain-interaction-O3-recovered.wasm",
+      "optimized_file": "chain-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 58,
+      "linear_memory_bytes": 0,
+      "ns": 1.0689352105486496,
+      "process_medians_ns": [
+        1.0689352105486496,
+        1.0807254558405583,
+        1.0477019670112726
+      ],
+      "range_ns": [
+        1.0477019670112726,
+        1.0807254558405583
+      ]
+    },
+    {
+      "name": "ordered",
+      "mode": "plain",
+      "file": "ordered-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-plain-O3.wasm",
+      "optimized_file": "ordered-plain-optimized.wasm",
+      "source_bytes": 64,
+      "optimized_bytes": 64,
+      "linear_memory_bytes": 0,
+      "ns": 1.1289060859218265,
+      "process_medians_ns": [
+        1.1289060859218265,
+        1.122450629591798,
+        1.1570553261618357
+      ],
+      "range_ns": [
+        1.122450629591798,
+        1.1570553261618357
+      ]
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "file": "ordered-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3.wasm",
+      "optimized_file": "ordered-dag-optimized.wasm",
+      "source_bytes": 429,
+      "optimized_bytes": 429,
+      "linear_memory_bytes": 65536,
+      "ns": 97.37119999999999,
+      "process_medians_ns": [
+        97.21600000000001,
+        97.37119999999999,
+        98.06126944187577
+      ],
+      "range_ns": [
+        97.21600000000001,
+        98.06126944187577
+      ]
+    },
+    {
+      "name": "ordered",
+      "mode": "dag-recovered",
+      "file": "ordered-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-dag-recovered-optimized.wasm",
+      "source_bytes": 161,
+      "optimized_bytes": 94,
+      "linear_memory_bytes": 0,
+      "ns": 1.9045778036322298,
+      "process_medians_ns": [
+        1.977175722098627,
+        1.9045778036322298,
+        1.899016657247559
+      ],
+      "range_ns": [
+        1.899016657247559,
+        1.977175722098627
+      ]
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "file": "ordered-interaction-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3.wasm",
+      "optimized_file": "ordered-interaction-optimized.wasm",
+      "source_bytes": 686,
+      "optimized_bytes": 686,
+      "linear_memory_bytes": 65536,
+      "ns": 241.22070312500009,
+      "process_medians_ns": [
+        234.18324840640923,
+        251.2763094029915,
+        241.22070312500009
+      ],
+      "range_ns": [
+        234.18324840640923,
+        251.2763094029915
+      ]
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction-recovered",
+      "file": "ordered-interaction-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-interactions-v1\\ordered-interaction-O3-recovered.wasm",
+      "optimized_file": "ordered-interaction-recovered-optimized.wasm",
+      "source_bytes": 202,
+      "optimized_bytes": 100,
+      "linear_memory_bytes": 0,
+      "ns": 1.970875250475921,
+      "process_medians_ns": [
+        1.9801991755259425,
+        1.9547290820499,
+        1.970875250475921
+      ],
+      "range_ns": [
+        1.9547290820499,
+        1.9801991755259425
+      ]
+    }
+  ],
+  "platform": "Windows-10-10.0.26100-SP0",
+  "cpu_affinity_fixed": false,
+  "frequency_fixed": false
+}

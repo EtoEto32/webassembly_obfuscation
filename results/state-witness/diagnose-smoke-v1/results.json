@@ -1,0 +1,899 @@
+{
+  "cases": 13,
+  "rows": [
+    {
+      "name": "full-terminal",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "full",
+        "--after-trap",
+        "terminal",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\good.json"
+      ],
+      "code": 0,
+      "stdout": "{\"status\": \"conditional\", \"method\": \"relational-fixed-point\", \"concreteStoreEvaluation\": \"different\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "full",
+        "observedResources": [
+          0
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 2,
+        "protocol": "terminal",
+        "method": "relational-fixed-point",
+        "witness": {
+          "calls": [
+            {
+              "name": "mask",
+              "args": []
+            }
+          ],
+          "shortestLength": 1
+        },
+        "concreteStoreEvaluation": "different",
+        "sourceSha256": "d12e113746060016d8890cc37f544c37c02bedaf86e6b020eef0edc73014305d",
+        "premises": {
+          "commonInitialMemoryAndTables": true,
+          "fixedMinimumCapacities": true,
+          "externalStateMutation": false,
+          "tableObservation": "original-function-index correspondence, not arbitrary function equivalence",
+          "scope": "restricted constant bulk APIs plus constant returns and byte read; not all WebAssembly"
+        },
+        "footprint": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "full-reenter",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "full",
+        "--after-trap",
+        "reenter",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\good.json"
+      ],
+      "code": 0,
+      "stdout": "{\"status\": \"conditional\", \"method\": \"relational-fixed-point\", \"concreteStoreEvaluation\": \"different\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "full",
+        "observedResources": [
+          0
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 2,
+        "protocol": "reenter",
+        "method": "relational-fixed-point",
+        "witness": {
+          "calls": [
+            {
+              "name": "mask",
+              "args": []
+            }
+          ],
+          "shortestLength": 1
+        },
+        "concreteStoreEvaluation": "different",
+        "sourceSha256": "d12e113746060016d8890cc37f544c37c02bedaf86e6b020eef0edc73014305d",
+        "premises": {
+          "commonInitialMemoryAndTables": true,
+          "fixedMinimumCapacities": true,
+          "externalStateMutation": false,
+          "tableObservation": "original-function-index correspondence, not arbitrary function equivalence",
+          "scope": "restricted constant bulk APIs plus constant returns and byte read; not all WebAssembly"
+        },
+        "footprint": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "public-terminal",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "public",
+        "--after-trap",
+        "terminal",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\good.json"
+      ],
+      "code": 0,
+      "stdout": "{\"status\": \"unconditional\", \"method\": \"relational-fixed-point\", \"concreteStoreEvaluation\": \"equal\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "public",
+        "observedResources": [],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 2,
+        "protocol": "terminal",
+        "method": "relational-fixed-point",
+        "witness": null,
+        "concreteStoreEvaluation": "equal",
+        "sourceSha256": "d12e113746060016d8890cc37f544c37c02bedaf86e6b020eef0edc73014305d",
+        "premises": {
+          "commonInitialMemoryAndTables": true,
+          "fixedMinimumCapacities": true,
+          "externalStateMutation": false,
+          "tableObservation": "original-function-index correspondence, not arbitrary function equivalence",
+          "scope": "restricted constant bulk APIs plus constant returns and byte read; not all WebAssembly"
+        },
+        "footprint": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "public-reenter",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "public",
+        "--after-trap",
+        "reenter",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\good.json"
+      ],
+      "code": 0,
+      "stdout": "{\"status\": \"conditional\", \"method\": \"relational-fixed-point\", \"concreteStoreEvaluation\": \"different\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "public",
+        "observedResources": [],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 2,
+        "protocol": "reenter",
+        "method": "relational-fixed-point",
+        "witness": {
+          "calls": [
+            {
+              "name": "mask",
+              "args": []
+            },
+            {
+              "name": "read",
+              "args": [
+                0
+              ]
+            }
+          ],
+          "shortestLength": 2
+        },
+        "concreteStoreEvaluation": "different",
+        "sourceSha256": "d12e113746060016d8890cc37f544c37c02bedaf86e6b020eef0edc73014305d",
+        "premises": {
+          "commonInitialMemoryAndTables": true,
+          "fixedMinimumCapacities": true,
+          "externalStateMutation": false,
+          "tableObservation": "original-function-index correspondence, not arbitrary function equivalence",
+          "scope": "restricted constant bulk APIs plus constant returns and byte read; not all WebAssembly"
+        },
+        "footprint": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "returns-terminal",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "returns",
+        "--after-trap",
+        "terminal",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\good.json"
+      ],
+      "code": 0,
+      "stdout": "{\"status\": \"unconditional\", \"method\": \"terminal-one-call\", \"concreteStoreEvaluation\": \"equal\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "unconditional",
+        "guard": [],
+        "witness": null,
+        "contract": "returns",
+        "protocol": "terminal",
+        "method": "terminal-one-call",
+        "concreteStoreEvaluation": "equal",
+        "sourceSha256": "d12e113746060016d8890cc37f544c37c02bedaf86e6b020eef0edc73014305d",
+        "premises": {
+          "commonInitialMemoryAndTables": true,
+          "fixedMinimumCapacities": true,
+          "externalStateMutation": false,
+          "tableObservation": "original-function-index correspondence, not arbitrary function equivalence",
+          "scope": "restricted constant bulk APIs plus constant returns and byte read; not all WebAssembly"
+        },
+        "footprint": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "returns-reenter",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "returns",
+        "--after-trap",
+        "reenter",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\good.json"
+      ],
+      "code": 0,
+      "stdout": "{\"status\": \"conditional\", \"method\": \"relational-fixed-point\", \"concreteStoreEvaluation\": \"different\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "returns",
+        "observedResources": [],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 2,
+        "protocol": "reenter",
+        "method": "relational-fixed-point",
+        "witness": {
+          "calls": [
+            {
+              "name": "mask",
+              "args": []
+            },
+            {
+              "name": "read",
+              "args": [
+                0
+              ]
+            }
+          ],
+          "shortestLength": 2
+        },
+        "concreteStoreEvaluation": "different",
+        "sourceSha256": "d12e113746060016d8890cc37f544c37c02bedaf86e6b020eef0edc73014305d",
+        "premises": {
+          "commonInitialMemoryAndTables": true,
+          "fixedMinimumCapacities": true,
+          "externalStateMutation": false,
+          "tableObservation": "original-function-index correspondence, not arbitrary function equivalence",
+          "scope": "restricted constant bulk APIs plus constant returns and byte read; not all WebAssembly"
+        },
+        "footprint": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "without-store",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "public",
+        "--after-trap",
+        "reenter"
+      ],
+      "code": 0,
+      "stdout": "{\"status\": \"conditional\", \"method\": \"relational-fixed-point\", \"concreteStoreEvaluation\": \"not-requested\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "public",
+        "observedResources": [],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 2,
+        "protocol": "reenter",
+        "method": "relational-fixed-point",
+        "witness": null,
+        "concreteStoreEvaluation": "not-requested",
+        "sourceSha256": "d12e113746060016d8890cc37f544c37c02bedaf86e6b020eef0edc73014305d",
+        "premises": {
+          "commonInitialMemoryAndTables": true,
+          "fixedMinimumCapacities": true,
+          "externalStateMutation": false,
+          "tableObservation": "original-function-index correspondence, not arbitrary function equivalence",
+          "scope": "restricted constant bulk APIs plus constant returns and byte read; not all WebAssembly"
+        },
+        "footprint": [
+          0
+        ]
+      }
+    },
+    {
+      "name": "missing",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "public",
+        "--after-trap",
+        "reenter",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\missing.json"
+      ],
+      "code": 2,
+      "stdout": "{\"status\": \"invalid-input\", \"reason\": \"store must explicitly provide every footprint cell\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "invalid-input",
+        "reason": "store must explicitly provide every footprint cell"
+      }
+    },
+    {
+      "name": "duplicate",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "public",
+        "--after-trap",
+        "reenter",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\duplicate.json"
+      ],
+      "code": 2,
+      "stdout": "{\"status\": \"invalid-input\", \"reason\": \"duplicate store cell\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "invalid-input",
+        "reason": "duplicate store cell"
+      }
+    },
+    {
+      "name": "bad-byte",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "public",
+        "--after-trap",
+        "reenter",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\bad-byte.json"
+      ],
+      "code": 2,
+      "stdout": "{\"status\": \"invalid-input\", \"reason\": \"store cell outside its typed domain\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "invalid-input",
+        "reason": "store cell outside its typed domain"
+      }
+    },
+    {
+      "name": "boolean",
+      "args": [
+        "--left",
+        "00",
+        "--right",
+        "10",
+        "--observation",
+        "public",
+        "--after-trap",
+        "reenter",
+        "--store",
+        "results\\state-witness\\diagnose-smoke-v1\\boolean.json"
+      ],
+      "code": 2,
+      "stdout": "{\"status\": \"invalid-input\", \"reason\": \"each cell must be [integer location, integer value]\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "invalid-input",
+        "reason": "each cell must be [integer location, integer value]"
+      }
+    },
+    {
+      "name": "unsupported-global",
+      "args": [
+        "--left",
+        "0",
+        "--right",
+        "1",
+        "--observation",
+        "returns",
+        "--after-trap",
+        "terminal"
+      ],
+      "code": 2,
+      "stdout": "{\"status\": \"unsupported\", \"reason\": \"globals excluded\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "unsupported",
+        "reason": "globals excluded"
+      }
+    },
+    {
+      "name": "bad-flag-count",
+      "args": [
+        "--left",
+        "0",
+        "--right",
+        "1",
+        "--observation",
+        "returns",
+        "--after-trap",
+        "terminal"
+      ],
+      "code": 2,
+      "stdout": "{\"status\": \"invalid-input\", \"reason\": \"segment state length\"}\n",
+      "stderr": "",
+      "result": {
+        "status": "invalid-input",
+        "reason": "segment state length"
+      }
+    }
+  ],
+  "scope": "CLI selection and premise validation, not an additional semantic theorem."
+}

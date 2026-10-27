@@ -1,0 +1,9 @@
+# 実アプリ由来corpusの寿命操作：調査前計画
+
+2026-10-24。限定例での正しさと、自然な用途での価値を分けるための調査。取得済みNoWaSet/NodeWasmStudy 220 binaryと取得済みWasm-R3 corpusを対象とする。追加ダウンロードや外部公開を行わない。
+
+固定された取得記録のSHA256を照合し、空file、validation失敗、disassembly失敗、時間上限、出力上限、正常完了を別集計する。WABTの命令disassemblyからdata.drop/elem.drop/memory.init/table.initを数える。data section内の似たbyte列や文字列は命令として数えない。同じfunction内でのdrop/initの存在、静的な順番、直接callの周辺を記録するが、動的到達可能性や実際のcheckpointを証明したとはしない。
+
+NoWaSetは取得済みNode package由来、R3は記録/replay変換後のprogramである。どちらも現在のWasm全体の無作為標本ではない。取得数を分母に明示し、Kが受理した小さなsubsetだけの使用率へ置き換えない。重複hashは数える前に記録する。
+
+寿命命令が見つかれば、元sourceと静的な操作位置を読む。見つからなければ、Kの自然な用途を未実証とする結論を強める。命令の存在だけから脆弱性件数やKの有効性を主張しない。実行を伴わない静的調査である。

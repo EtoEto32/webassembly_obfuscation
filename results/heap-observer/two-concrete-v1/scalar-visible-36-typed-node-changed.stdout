@@ -1,0 +1,7 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => 42
+[fuzz-exec] export func
+exception thrown: RuntimeError: float unrepresentable in integer range
+[fuzz-exec] export func_invoker
+exception thrown: RuntimeError: float unrepresentable in integer range
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: float unrepresentable in integer range"},{"name":"func_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: float unrepresentable in integer range"}],"trace":[]}

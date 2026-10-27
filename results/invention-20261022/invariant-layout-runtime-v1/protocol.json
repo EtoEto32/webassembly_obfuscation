@@ -1,0 +1,16 @@
+{
+  "processes": 45,
+  "batches_per_process": 9,
+  "warmup": 16384,
+  "target_ms": 10,
+  "cap": 4194304,
+  "flags": [
+    "--no-liftoff",
+    "--no-wasm-lazy-compilation"
+  ],
+  "shuffle_seed": 221124,
+  "memory_reset": "Before each timed call, outside timer; state preserved within each call.",
+  "cpu_affinity": "uncontrolled",
+  "frequency": "uncontrolled",
+  "wrapper": "Added after core O3; input loop, 1..8 updates and checksum included."
+}

@@ -1,0 +1,14 @@
+[fuzz-exec] export global$_3
+[LoggingExternalInterface logging -128]
+[fuzz-exec] export global$_5
+[LoggingExternalInterface logging null]
+[fuzz-exec] export global$_6
+[LoggingExternalInterface logging null]
+[fuzz-exec] export func
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_8_invoker
+[fuzz-exec] export func_10
+exception thrown: TypeError: Cannot convert null to a BigInt
+[fuzz-exec] export func_11
+[fuzz-exec] note result: func_11 => object(null)
+[caller-study] {"caller":"null","observer":"multi","calls":[{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_8_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_10","known":true,"status":"type-error","unsupported":[],"error":"TypeError: Cannot convert null to a BigInt"},{"name":"func_11","known":true,"status":"returned","unsupported":[]}],"events":1,"distinct":1,"trace":[{"id":0,"channel":"printed","name":null,"slot":null}],"multi_slots":0}

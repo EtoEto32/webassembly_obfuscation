@@ -1,0 +1,21 @@
+# 論文追補：トラップを保存するブロック表現の限界
+
+## Abstract / Motivation
+
+隣接データを混合するメモリ表現では、元の単一storeを複数の更新へ分けると、後半の範囲外trapより前に前半を書き換える危険がある。Wasmのページ境界とmemory64を利用する具体的なloweringを実装した。適用範囲内で正当性とbyte更新対照に対する費用改善を確認したが、先行する高アドレス優先storeが同じ意味保存を達成し、復号器を取り出す攻撃も成功した。独立した新規難読化の肯定的成果とは扱わない。
+
+## Method / Implementation
+
+零保存の16byte codecを使い、sourceのprivate memory32を同じページ数のprivate memory64へ移す。即値offsetの数学的加算を保持し、接触する最大2blockを更新前に読む。WABTによる実binary変換とBinaryen O3を用いた。限定scalarメモリprofileであり、任意C/Rustバイナリに対する適用率は示さない。
+
+## Related Work / Evaluation
+
+WASMixerのload/store helper置換は既知。今回新たに照合したWebAssembly/spec issue438とMozilla Bug1343981は、部分範囲外storeの問題と高アドレス優先の解決を公開している。この規則によるblock-high対照を追加した。WeBMO本文は未取得であり、内容を推測して差を主張しない。
+
+主・追加30正条件で79,820呼出し比較が一致し、trap後メモリも照合した。70のWABT照合、6本のbyte再現、誤変換2種類の反例、4拒否対照を保存した。同じcodecのbyte更新よりblock版は約4.45–5.47倍速いが、plainの約14.02–16.63倍。高アドレス優先対照より優れるとはいえない。
+
+raw/O3両方で型から候補helperを探し、12回の選択書込みで復号器を同定した。非空の12条件すべての全メモリを復元した。原sourceやcodec定数を攻撃に渡していないが、公開書込みAPIとvector helperの残存を前提とする。
+
+## Discussion / Limitations / Conclusion
+
+解析不能性を要求した結果ではない。安い復号器再利用と大きい実行費用、および既知順序規則への具体的帰着が主案不採用の根拠である。符号化した幅広アクセスの正当性を試せる回帰用fixtureと変換部品を研究資産として保持する。実アプリの型回復、人間の分析時間、複数CPU・ブラウザ、特許性は評価していない。研究全体は継続する。

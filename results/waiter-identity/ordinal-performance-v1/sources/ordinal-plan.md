@@ -1,0 +1,11 @@
+# 通知件数と解決順による一括復元
+
+2026-10-24、cross-engine-v1後に固定。Hの追加改良仮説。初期設計からの変更は有限再試行、未書込み位置、今回の解決列利用の3回であり、別原理の発明案数へ足さない。
+
+同一agentでwaitAsyncを登録し、各promiseへreactionを付け、その同じjobで全wrapperへ順にnotify-allする。正の返却件数を順に記録する。全reactionの到着順を保存し、通知件数を長さとする連続区間に切って同値類を復元する。既に通知した実体の別wrapperへのnotifyは0件となる。n登録+n通知、一回の完了barrierで実体分割を得られる可能性がある。元のn登録+k通知版より通知数は多いが、k回のawaitを除く。
+
+前提は外部wait/notifyなし、同じagentと同じjob内の登録・通知、trusted intrinsics。値変更による登録失敗は有限再試行又は判定不能。reaction順がnotifyの順を反映する根拠を仕様で確認し、他agentからの通知へ無条件に拡張しない。既知のFIFOとbatch化以上の進歩性は未確立。
+
+最初にNode/V8とSpiderMonkeyの共通290分割・実Wasm4条件・境界対照を使う。誤順序対照として到着列を逆転又は入れ替えた際に、件数だけでは誤分類し得ることを独立の小模型で示す。その後に正しさが通れば、群ごとのawait版・一括順序版・正しいregistryを同じn/k、fresh processで比較する。性能と正当性を同時実行しない。
+
+性能前追補: timerをk回から1回にするだけの効果と区別するため、群ごとのawaitを保ったsingle-deadline対照を追加する。4方式×5fresh process、各条件20warmup、31反復×20分割。registryはMapによる分類を使い、事前の来歴登録は測定外とする。単一deadlineと元の群別deadlineはタイムアウト意味が異なるが、今回の無競合成功経路ではどちらも発火しない。

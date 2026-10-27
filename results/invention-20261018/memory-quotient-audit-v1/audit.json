@@ -1,0 +1,1187 @@
+{
+  "WABT_version": "1.0.42",
+  "second_engine_executions": 108,
+  "mismatches": 0,
+  "records": [
+    {
+      "wasm": "n32-s0-original-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-original-O3.wasm",
+      "input": 31,
+      "stdout": "run(i32:31) => i32:103",
+      "expected": "103",
+      "actual": "103",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-original-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-original-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-original-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 2147483648+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-original-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967295+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-projected-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-projected-O3.wasm",
+      "input": 31,
+      "stdout": "run(i32:31) => i32:103",
+      "expected": "103",
+      "actual": "103",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-projected-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-projected-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-projected-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-projected-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-original-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-original-O3.wasm",
+      "input": 15,
+      "stdout": "run(i32:15) => i32:2",
+      "expected": "2",
+      "actual": "2",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-original-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-original-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-original-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-original-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967294+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-projected-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-projected-O3.wasm",
+      "input": 15,
+      "stdout": "run(i32:15) => i32:2",
+      "expected": "2",
+      "actual": "2",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-projected-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-projected-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-projected-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-projected-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-original-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-original-O3.wasm",
+      "input": 127,
+      "stdout": "run(i32:127) => i32:42",
+      "expected": "42",
+      "actual": "42",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-original-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-original-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-original-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 2147483648+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-original-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967295+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-projected-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-projected-O3.wasm",
+      "input": 127,
+      "stdout": "run(i32:127) => i32:42",
+      "expected": "42",
+      "actual": "42",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-projected-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-projected-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-projected-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-projected-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-original-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-original-O3.wasm",
+      "input": 63,
+      "stdout": "run(i32:63) => i32:124",
+      "expected": "124",
+      "actual": "124",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-original-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-original-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-original-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-original-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967294+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-projected-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-projected-O3.wasm",
+      "input": 63,
+      "stdout": "run(i32:63) => i32:124",
+      "expected": "124",
+      "actual": "124",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-projected-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-projected-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-projected-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-projected-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-original-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-original-O3.wasm",
+      "input": 511,
+      "stdout": "run(i32:511) => i32:218",
+      "expected": "218",
+      "actual": "218",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-original-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-original-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-original-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 2147483648+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-original-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967295+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-projected-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-projected-O3.wasm",
+      "input": 511,
+      "stdout": "run(i32:511) => i32:218",
+      "expected": "218",
+      "actual": "218",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-projected-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-projected-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-projected-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-projected-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-original-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-original-O3.wasm",
+      "input": 255,
+      "stdout": "run(i32:255) => i32:38",
+      "expected": "38",
+      "actual": "38",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-original-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-original-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-original-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-original-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967294+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-projected-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-projected-O3.wasm",
+      "input": 255,
+      "stdout": "run(i32:255) => i32:38",
+      "expected": "38",
+      "actual": "38",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-projected-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-projected-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-projected-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-projected-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-recovered-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-recovered-O3.wasm",
+      "input": 31,
+      "stdout": "run(i32:31) => i32:103",
+      "expected": "103",
+      "actual": "103",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-recovered-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-recovered-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-recovered-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 2147483648+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s0-recovered-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967295+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-recovered-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-recovered-O3.wasm",
+      "input": 15,
+      "stdout": "run(i32:15) => i32:2",
+      "expected": "2",
+      "actual": "2",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-recovered-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-recovered-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-recovered-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:137",
+      "expected": "137",
+      "actual": "137",
+      "equal": true
+    },
+    {
+      "wasm": "n32-s1-recovered-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967294+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-recovered-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-recovered-O3.wasm",
+      "input": 127,
+      "stdout": "run(i32:127) => i32:42",
+      "expected": "42",
+      "actual": "42",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-recovered-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-recovered-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-recovered-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 2147483648+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s0-recovered-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967295+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-recovered-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-recovered-O3.wasm",
+      "input": 63,
+      "stdout": "run(i32:63) => i32:124",
+      "expected": "124",
+      "actual": "124",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-recovered-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-recovered-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-recovered-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:40",
+      "expected": "40",
+      "actual": "40",
+      "equal": true
+    },
+    {
+      "wasm": "n128-s1-recovered-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967294+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-recovered-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-recovered-O3.wasm",
+      "input": 511,
+      "stdout": "run(i32:511) => i32:218",
+      "expected": "218",
+      "actual": "218",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-recovered-O3.wasm",
+      "input": 65534,
+      "stdout": "run(i32:65534) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-recovered-O3.wasm",
+      "input": 65535,
+      "stdout": "run(i32:65535) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-recovered-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => error: out of bounds memory access: access at 2147483648+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s0-recovered-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967295+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-recovered-O3.wasm",
+      "input": 0,
+      "stdout": "run(i32:0) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-recovered-O3.wasm",
+      "input": 255,
+      "stdout": "run(i32:255) => i32:38",
+      "expected": "38",
+      "actual": "38",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-recovered-O3.wasm",
+      "input": 32767,
+      "stdout": "run(i32:32767) => i32:0",
+      "expected": "0",
+      "actual": "0",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-recovered-O3.wasm",
+      "input": 32768,
+      "stdout": "run(i32:32768) => error: out of bounds memory access: access at 65536+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-recovered-O3.wasm",
+      "input": 2147483648,
+      "stdout": "run(i32:2147483648) => i32:92",
+      "expected": "92",
+      "actual": "92",
+      "equal": true
+    },
+    {
+      "wasm": "n512-s1-recovered-O3.wasm",
+      "input": 4294967295,
+      "stdout": "run(i32:4294967295) => error: out of bounds memory access: access at 4294967294+1 >= max value 65536",
+      "expected": "memory_oob",
+      "actual": "memory_oob",
+      "equal": true
+    }
+  ],
+  "rank_tests": [
+    {
+      "n": 3,
+      "shift": 0,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 8,
+      "preimages": 8
+    },
+    {
+      "n": 3,
+      "shift": 0,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 4,
+      "preimages": 8
+    },
+    {
+      "n": 3,
+      "shift": 0,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 8
+    },
+    {
+      "n": 3,
+      "shift": 1,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 4,
+      "preimages": 8
+    },
+    {
+      "n": 3,
+      "shift": 1,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 2,
+      "preimages": 8
+    },
+    {
+      "n": 3,
+      "shift": 1,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 8
+    },
+    {
+      "n": 3,
+      "shift": 2,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 2,
+      "preimages": 8
+    },
+    {
+      "n": 3,
+      "shift": 2,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 2,
+      "preimages": 8
+    },
+    {
+      "n": 3,
+      "shift": 2,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 8
+    },
+    {
+      "n": 6,
+      "shift": 0,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 64,
+      "preimages": 64
+    },
+    {
+      "n": 6,
+      "shift": 0,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 32,
+      "preimages": 64
+    },
+    {
+      "n": 6,
+      "shift": 0,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 64
+    },
+    {
+      "n": 6,
+      "shift": 1,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 8,
+      "preimages": 64
+    },
+    {
+      "n": 6,
+      "shift": 1,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 8,
+      "preimages": 64
+    },
+    {
+      "n": 6,
+      "shift": 1,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 64
+    },
+    {
+      "n": 6,
+      "shift": 2,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 4,
+      "preimages": 64
+    },
+    {
+      "n": 6,
+      "shift": 2,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 4,
+      "preimages": 64
+    },
+    {
+      "n": 6,
+      "shift": 2,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 64
+    },
+    {
+      "n": 8,
+      "shift": 0,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 256,
+      "preimages": 256
+    },
+    {
+      "n": 8,
+      "shift": 0,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 128,
+      "preimages": 256
+    },
+    {
+      "n": 8,
+      "shift": 0,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 256
+    },
+    {
+      "n": 8,
+      "shift": 1,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 16,
+      "preimages": 256
+    },
+    {
+      "n": 8,
+      "shift": 1,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 16,
+      "preimages": 256
+    },
+    {
+      "n": 8,
+      "shift": 1,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 256
+    },
+    {
+      "n": 8,
+      "shift": 2,
+      "offsets": [
+        0,
+        1
+      ],
+      "images": 4,
+      "preimages": 256
+    },
+    {
+      "n": 8,
+      "shift": 2,
+      "offsets": [
+        1,
+        3
+      ],
+      "images": 4,
+      "preimages": 256
+    },
+    {
+      "n": 8,
+      "shift": 2,
+      "offsets": [
+        0,
+        0
+      ],
+      "images": 1,
+      "preimages": 256
+    }
+  ],
+  "contradiction_rejected": true,
+  "source_hashes": [
+    {
+      "path": "research/memory-quotient/attack.py",
+      "sha256": "e2b126198fcc1a3071ae22113617bc452a9ddfb52d8f601564765829a4d3d311"
+    },
+    {
+      "path": "research/memory-quotient/audit.py",
+      "sha256": "9d01706e28a5632e05f9f00a69af7fdc779c46d0f759a6bdb63fbb632bf21686"
+    },
+    {
+      "path": "research/memory-quotient/experiment.py",
+      "sha256": "f8990eaba612d0c5563ad62052036095094a679301d8e330999df77cd01b0e21"
+    },
+    {
+      "path": "research/memory-quotient/transform.py",
+      "sha256": "5d8f9d8e73531cbc69b12cee7b0d98a90f3cc5c9c3aa1bc637bf8535f3c03308"
+    },
+    {
+      "path": "research/memory-quotient/check.cjs",
+      "sha256": "ce30179bce704cc10c4fac25719954d05cdde6168cfec7af7c1d7a948bbf26c1"
+    },
+    {
+      "path": "research/memory-quotient/measure.cjs",
+      "sha256": "15caa4514fe584b1935fbf6deb82b37be56908940e8a8abe71d78533a761f7ff"
+    },
+    {
+      "path": "research/memory-quotient/observe.cjs",
+      "sha256": "7797d07c04a2b84e3586a32f6203cd704c9aa2d8d42fbb3540519fd3aa836c6b"
+    },
+    {
+      "path": "research/memory-quotient/design.md",
+      "sha256": "0bb623282de0718686776b243c777194a2f14893da3cf223692344f79c82a0e6"
+    },
+    {
+      "path": "research/observation-synthesis/transform.py",
+      "sha256": "98905cb88d7e60fe345b1a5d989854bf80684119142d3073d6bbffda575a0a89"
+    },
+    {
+      "path": "research/observation-synthesis/core.py",
+      "sha256": "750c89595c7c3cc2709b6b5ff4d4f1e6dfddacb708bd0ecdc4243c20993be031"
+    }
+  ],
+  "manifest_sha256": "bd567200885a67b866e5875088e01d0633d5afbb95260ec064eb10570003d2b1"
+}

@@ -1,0 +1,692 @@
+{
+  "source_pr": "https://github.com/WebAssembly/binaryen/pull/7857",
+  "adaptation": "Extract nested struct creation and first ref.eq; add export and return, optionally box result in a new i32 field. Not the exact upstream test.",
+  "old_tool_sha256": "9738733f02dc4b80ea42daeca89d7b8a0755656f3d2e405949ee1233bf473598",
+  "current_tool_sha256": "4217d75f81cf33c4032d82b5d531120069af1a4b43eb7737977bdb2c99a8f4ba",
+  "rows": [
+    {
+      "form": "scalar",
+      "compiler": "none",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => 1\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          0
+        ],
+        "snapshot": {
+          "roots": [
+            1,
+            1
+          ],
+          "objects": [],
+          "truncations": 0
+        },
+        "module_bytes": 118
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "scalar",
+      "compiler": "none",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => 1\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          0
+        ],
+        "snapshot": {
+          "roots": [
+            1,
+            1
+          ],
+          "objects": [],
+          "truncations": 0
+        },
+        "module_bytes": 118
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "scalar",
+      "compiler": "binaryen123",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => 1\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          0
+        ],
+        "snapshot": {
+          "roots": [
+            1,
+            1
+          ],
+          "objects": [],
+          "truncations": 0
+        },
+        "module_bytes": 61
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "scalar",
+      "compiler": "binaryen123",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => 1\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          0
+        ],
+        "snapshot": {
+          "roots": [
+            1,
+            1
+          ],
+          "objects": [],
+          "truncations": 0
+        },
+        "module_bytes": 61
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "scalar",
+      "compiler": "binaryen133",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => 1\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          0
+        ],
+        "snapshot": {
+          "roots": [
+            1,
+            1
+          ],
+          "objects": [],
+          "truncations": 0
+        },
+        "module_bytes": 61
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "scalar",
+      "compiler": "binaryen133",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => 1\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          0
+        ],
+        "snapshot": {
+          "roots": [
+            1,
+            1
+          ],
+          "objects": [],
+          "truncations": 0
+        },
+        "module_bytes": 61
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-abstract",
+      "compiler": "none",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 121
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-abstract",
+      "compiler": "none",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 121
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-abstract",
+      "compiler": "binaryen123",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 68
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-abstract",
+      "compiler": "binaryen123",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 68
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-abstract",
+      "compiler": "binaryen133",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 68
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-abstract",
+      "compiler": "binaryen133",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 68
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-concrete",
+      "compiler": "none",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 122
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-concrete",
+      "compiler": "none",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 122
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-concrete",
+      "compiler": "binaryen123",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 69
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-concrete",
+      "compiler": "binaryen123",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 69
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-concrete",
+      "compiler": "binaryen133",
+      "engine": "node",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 69
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    },
+    {
+      "form": "boxed-concrete",
+      "compiler": "binaryen133",
+      "engine": "spidermonkey",
+      "plain": "[fuzz-exec] export get\n[fuzz-exec] note result: get => object(null)\n",
+      "observed": {
+        "status": "observed",
+        "boundary": [
+          0,
+          1
+        ],
+        "snapshot": {
+          "roots": [
+            {
+              "ref": 0
+            },
+            {
+              "ref": 1
+            }
+          ],
+          "objects": [
+            {
+              "id": 0,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            },
+            {
+              "id": 1,
+              "type": 2,
+              "kind": "struct",
+              "fields": [
+                1
+              ]
+            }
+          ],
+          "truncations": 0
+        },
+        "module_bytes": 69
+      },
+      "normal_status": "completed",
+      "observation_status": "completed"
+    }
+  ]
+}

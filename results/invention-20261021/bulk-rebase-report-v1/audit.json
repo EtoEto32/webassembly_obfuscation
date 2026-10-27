@@ -1,0 +1,2692 @@
+{
+  "correctness": {
+    "targets": 44,
+    "wasm_calls": 34144,
+    "states": 11220,
+    "byte_checks": 1102970880,
+    "expected_traps": 2640,
+    "mismatches": 0,
+    "unexpected_traps": 0
+  },
+  "adaptive": {
+    "task": "Learn equivalent position-dependent byte decoder from own instrumented clone; no source/seed/mask/encoding metadata",
+    "recovered": 44,
+    "unsupported": 0,
+    "crashes": 0,
+    "timeouts": 0,
+    "mismatches": 0
+  },
+  "adaptive_queries_per_target": 31,
+  "selected_input_verification_per_target": 4096,
+  "second_engine": {
+    "targets": 12,
+    "calls": 120,
+    "expected_traps": 48,
+    "mismatches": 0
+  },
+  "model": {
+    "cases": 112130,
+    "mismatches": 0,
+    "domain": "all binary-valued states of 1..8 bytes; all valid source/dest/length triples; fixed bijection and public position mask"
+  },
+  "negative_controls": [
+    {
+      "file": "omit-repair.wasm",
+      "name": "omit-repair",
+      "d": 1,
+      "s": 0,
+      "n": 31,
+      "expectedTrap": false,
+      "actualTrap": false,
+      "firstMismatch": {
+        "offset": 1,
+        "expected": 5,
+        "actual": 0
+      }
+    },
+    {
+      "file": "repair-before-copy.wasm",
+      "name": "repair-before-copy",
+      "d": 1,
+      "s": 0,
+      "n": 31,
+      "expectedTrap": false,
+      "actualTrap": false,
+      "firstMismatch": {
+        "offset": 1,
+        "expected": 5,
+        "actual": 0
+      }
+    },
+    {
+      "file": "forward-only.wasm",
+      "name": "forward-only",
+      "d": 1,
+      "s": 0,
+      "n": 31,
+      "expectedTrap": false,
+      "actualTrap": false,
+      "firstMismatch": {
+        "offset": 2,
+        "expected": 4,
+        "actual": 5
+      }
+    },
+    {
+      "file": "omit-upfront-bounds.wasm",
+      "name": "omit-upfront-bounds",
+      "d": 0,
+      "s": 65535,
+      "n": 2,
+      "expectedTrap": true,
+      "actualTrap": true,
+      "firstMismatch": {
+        "offset": 0,
+        "expected": 5,
+        "actual": 107
+      }
+    }
+  ],
+  "rejections": [
+    {
+      "name": "export-memory",
+      "stage": "CLI transformation",
+      "reason": "private memory required"
+    },
+    {
+      "name": "grow",
+      "stage": "CLI transformation",
+      "reason": "unsupported bulk/grow"
+    },
+    {
+      "name": "wide-load",
+      "stage": "CLI transformation",
+      "reason": "unsupported memory or vector operation"
+    },
+    {
+      "name": "nonzero-offset",
+      "stage": "CLI transformation",
+      "reason": "nonzero memory offset"
+    },
+    {
+      "name": "import",
+      "stage": "CLI transformation",
+      "reason": "unsupported module field"
+    },
+    {
+      "name": "three-pages",
+      "stage": "CLI transformation",
+      "reason": "fixed 1/2 page memory required"
+    },
+    {
+      "name": "shared",
+      "stage": "profile on valid threads-enabled input; default CLI validator also excludes threads",
+      "reason": "fixed 1/2 page memory required"
+    },
+    {
+      "name": "memory-fill",
+      "stage": "CLI transformation",
+      "reason": "unsupported bulk/grow"
+    }
+  ],
+  "identical_binaries": 44,
+  "performance_processes": 270,
+  "comparisons": 9,
+  "slower_nonoverlap": 8,
+  "sources": [
+    {
+      "file": "research\\bulk-rebase\\benchmark.py",
+      "snapshot": "research__bulk-rebase__benchmark.py",
+      "sha256": "c8e745e09f52182c7d870729504d017e5be0d0ab39c735f23b8a1c2424849cb7"
+    },
+    {
+      "file": "research\\bulk-rebase\\controls.py",
+      "snapshot": "research__bulk-rebase__controls.py",
+      "sha256": "a3918b517ad6e3da6af7c0a3bed82a8f6aa2102a6f17bd78e4976c172ded059e"
+    },
+    {
+      "file": "research\\bulk-rebase\\prototype.py",
+      "snapshot": "research__bulk-rebase__prototype.py",
+      "sha256": "5b80d8c377fb1850e14439446883684f0588bd2ee59b75ae794c97575a66e52e"
+    },
+    {
+      "file": "research\\bulk-rebase\\recover.py",
+      "snapshot": "research__bulk-rebase__recover.py",
+      "sha256": "d0fbc75154d1f9d25a8eead4726ed46aae90556002b3d6c6c1fed0a6a7e6e17c"
+    },
+    {
+      "file": "research\\bulk-rebase\\report.py",
+      "snapshot": "research__bulk-rebase__report.py",
+      "sha256": "724d3c11f38498b219280f4cf7ee318cb56da363031d4e7134f9f45c0f96be51"
+    },
+    {
+      "file": "research\\bulk-rebase\\run.py",
+      "snapshot": "research__bulk-rebase__run.py",
+      "sha256": "53a49dc27aa2eefd5a341bf6eb301c14e9f17313c54a63217d90528c1f55c5dc"
+    },
+    {
+      "file": "research\\bulk-rebase\\verify.py",
+      "snapshot": "research__bulk-rebase__verify.py",
+      "sha256": "bcaf2429f044bdb3552bf2ba9d97a3a8cf9d8ecd1a0930da628680afb42b9b88"
+    },
+    {
+      "file": "research\\bulk-rebase\\bench.cjs",
+      "snapshot": "research__bulk-rebase__bench.cjs",
+      "sha256": "d9929679e2fe9bc62bef5dfcf752ad095522c0c011ba4f8a079d9dc6c047aa3b"
+    },
+    {
+      "file": "research\\bulk-rebase\\check.cjs",
+      "snapshot": "research__bulk-rebase__check.cjs",
+      "sha256": "554a035bbbd1c61a9a7965df0181361116b117aecb80f499ceca58ffec46a8ac"
+    },
+    {
+      "file": "research\\bulk-rebase\\controls.cjs",
+      "snapshot": "research__bulk-rebase__controls.cjs",
+      "sha256": "4ad4b904d2ef94948ddca87fe5f9f6ffcb20667848f827b54f23a732e7c55a21"
+    },
+    {
+      "file": "research\\bulk-rebase\\recover.cjs",
+      "snapshot": "research__bulk-rebase__recover.cjs",
+      "sha256": "b3449e43a2ef0017e504ffbd5850c5a2aa60dc0708a030e3717d1b9ac39d9cd5"
+    },
+    {
+      "file": "research\\bulk-rebase\\algorithm.md",
+      "snapshot": "research__bulk-rebase__algorithm.md",
+      "sha256": "578c61f2cfe686f55f89ddb96a680e3d5cdd8e26783a784e03cc7d272f47ff49"
+    },
+    {
+      "file": "research\\bulk-rebase\\analysis.md",
+      "snapshot": "research__bulk-rebase__analysis.md",
+      "sha256": "a1a402a52b0b0eb73fbc9aea9d550b750336ef9f52da4d063c9de3d8568ce570"
+    },
+    {
+      "file": "research\\bulk-rebase\\paper-note.md",
+      "snapshot": "research__bulk-rebase__paper-note.md",
+      "sha256": "ff0694976d5e3aa44ec15be9c67b50488957cb278cad2f1ed1a5b4a2fc36da2b"
+    },
+    {
+      "file": "research\\bulk-rebase\\plan.md",
+      "snapshot": "research__bulk-rebase__plan.md",
+      "sha256": "86652d62206c62ad3084f4daea564df4e66b5f29a80be85eed6eb611c104eb93"
+    },
+    {
+      "file": "research\\bulk-rebase\\prior-art.md",
+      "snapshot": "research__bulk-rebase__prior-art.md",
+      "sha256": "f4fb3170d613c734a2c23787a29fd26b756930fa4af850dc01c1ba8f6c19e44b"
+    },
+    {
+      "file": "research\\bulk-rebase\\README.md",
+      "snapshot": "research__bulk-rebase__README.md",
+      "sha256": "4bb1f1b57a72e42651caaad5e5fe1521071d15ac8c996171cefc05eecddbdb13"
+    },
+    {
+      "file": "research\\bulk-rebase\\revision.md",
+      "snapshot": "research__bulk-rebase__revision.md",
+      "sha256": "3d369a0024a6dee52980a7e94454e6c0fa5f6313a95ca3d2347ae9f8dc71fd3c"
+    },
+    {
+      "file": "research\\isotope-swizzle\\prototype.py",
+      "snapshot": "research__isotope-swizzle__prototype.py",
+      "sha256": "d1857d80faad957d6d3c23b324cae0deff950097236f0f93360b1a6d7113f161"
+    },
+    {
+      "file": "research\\connectivity-elimination\\prototype.py",
+      "snapshot": "research__connectivity-elimination__prototype.py",
+      "sha256": "df630e5c288e1043fa5e213b3419f6bbd8ab78efabcadc531011fff45d48d284"
+    }
+  ],
+  "environment": {
+    "python": "3.9.0",
+    "os": "Windows-10-10.0.26100-SP0",
+    "wabt": "1.0.42",
+    "binaryen": "wasm-opt version 133 (version_133)",
+    "node": "v24.15.0",
+    "v8": "13.6.233.17-node.48",
+    "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz"
+  },
+  "performance_protocol": {
+    "order_seed": 211024,
+    "jobs": [
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 4096,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 2
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 4096,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-bulk-scalar-s7-O3.wasm",
+        "mode": "bulk-scalar",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 1
+      },
+      {
+        "file": "p1-decode-scalar-s7-O3.wasm",
+        "mode": "decode-scalar",
+        "n": 256,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 4
+      },
+      {
+        "file": "p1-bulk-simd-s7-O3.wasm",
+        "mode": "bulk-simd",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 0
+      },
+      {
+        "file": "p1-direct-simd-s7-O3.wasm",
+        "mode": "direct-simd",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 1
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 4096,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 0
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 256,
+        "layout": "backward",
+        "d": 1027,
+        "s": 1024,
+        "replicate": 2
+      },
+      {
+        "file": "p1-plain-s0-O3.wasm",
+        "mode": "plain",
+        "n": 16,
+        "layout": "separate",
+        "d": 16385,
+        "s": 1024,
+        "replicate": 3
+      },
+      {
+        "file": "p1-direct-scalar-s7-O3.wasm",
+        "mode": "direct-scalar",
+        "n": 16,
+        "layout": "forward",
+        "d": 1024,
+        "s": 1027,
+        "replicate": 3
+      }
+    ],
+    "node_flags": [
+      "--no-liftoff",
+      "--no-wasm-lazy-compilation"
+    ],
+    "warmup_bytes": 262144,
+    "batch_bytes": 1048576,
+    "batches": 9,
+    "processes": 270,
+    "measurement": "copy-only; fill/checksum excluded; O3 target plus common loop, no later wasm-opt",
+    "source_manifest_sha256": "0b6549bfc86fa70a378c67a3485639ca90f6d0bd930a80696279092a10084004"
+  }
+}

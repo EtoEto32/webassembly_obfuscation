@@ -1,0 +1,23 @@
+
+int32_t lookup(int32_t p0) {
+    int32_t l1 = 0;
+    l1 = INT32_C(64);
+    c_entry_1: ;
+    {
+        int32_t t0 = wasm_i32_eqz(l1);
+        if (((t0) != 0)) {
+            goto c_exit_1;
+        }
+        int32_t t1 = wasm_load_i32(l1, 4);
+        int32_t t2 = wasm_i32_eq(t1, p0);
+        if (((t2) != 0)) {
+            int32_t t3 = wasm_load_i32(l1, 8);
+            return t3;
+        }
+        int32_t t4 = wasm_load_i32(l1, 0);
+        l1 = t4;
+        goto c_entry_1;
+    }
+    c_exit_1: ;
+    return INT32_C(0);
+}

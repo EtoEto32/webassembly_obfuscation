@@ -1,0 +1,50 @@
+{
+  "name": "multiplyDouble",
+  "wasmtime": "50.0.1",
+  "rows": [
+    {
+      "kind": "original",
+      "status": "fuel-exhausted",
+      "outcome": {
+        "fuelExhausted": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:    0x7bc - <unknown>!7\n    1:    0x628 - <unknown>!r3 main\n\nCaused by:\n    wasm trap: all fuel consumed by WebAssembly\n",
+      "memoryBytes": 16777216,
+      "memorySha256": "0337a4ab21a9a1722de238a606d3b3f4c5b44c5b0bf8759ee6c533e8d268dff4",
+      "inputSha256": "6b953af380f19048fe5a13461a3c36a71ed1a181b602a7919258e9d0217c4b2b",
+      "fuelUsed": 500000000,
+      "executionSeconds": 0.09762380000000001,
+      "totalSeconds": 0.1406845
+    },
+    {
+      "kind": "normalized",
+      "status": "fuel-exhausted",
+      "outcome": {
+        "fuelExhausted": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:    0x7bc - <unknown>!<wasm function 8>\n    1:    0x628 - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: all fuel consumed by WebAssembly\n",
+      "memoryBytes": 16777216,
+      "memorySha256": "0337a4ab21a9a1722de238a606d3b3f4c5b44c5b0bf8759ee6c533e8d268dff4",
+      "inputSha256": "c2a98b29c41248750ff5dd2ce882571108162448d3b0ab1d4b077300188b2dde",
+      "fuelUsed": 500000000,
+      "executionSeconds": 0.09897589999999995,
+      "totalSeconds": 0.13993899999999998
+    },
+    {
+      "kind": "observed",
+      "status": "fuel-exhausted",
+      "outcome": {
+        "fuelExhausted": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:   0x2184 - <unknown>!<wasm function 8>\n    1:   0x1ff0 - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: all fuel consumed by WebAssembly\n",
+      "memoryBytes": 16777216,
+      "memorySha256": "0337a4ab21a9a1722de238a606d3b3f4c5b44c5b0bf8759ee6c533e8d268dff4",
+      "inputSha256": "8a8b44cc6d211b6c3a96506d62aa4909025817cb8a8a95fcdcdb45c1d971ea8b",
+      "fuelUsed": 500000000,
+      "executionSeconds": 0.09898790000000007,
+      "totalSeconds": 0.15232059999999997
+    }
+  ],
+  "status": "compared",
+  "scope": "API outcomes and exported memory only, within-engine byte comparison; fuel exhaustion not a completed execution."
+}

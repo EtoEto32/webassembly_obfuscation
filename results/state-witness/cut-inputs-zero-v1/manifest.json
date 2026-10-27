@@ -1,0 +1,2230 @@
+{
+  "cases": [
+    {
+      "id": 0,
+      "source": "memory_init/suite.3.wasm",
+      "sourceSha256": "4b5f3486247fe9b385e08eda23308d75b68b54709fc5e920484144dccdcb6e28",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 3,
+      "operation": [
+        "data.drop",
+        "1"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-00/original.wasm",
+      "originalObserved": "case-00/original-observed.wasm",
+      "cut": "case-00/cut.wasm",
+      "observed": "case-00/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 2,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"memory0\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"load8_u\"",
+            [
+              "func",
+              "1"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "49bd519947b0524296d682ae909d078091abbc694d743043697cddcab5c3e06d",
+        "outputSha256": "8453986ce129b103f9e28a2500e878d8ca43c0511ad142514e485aba87e52f03",
+        "sourceBytes": 197,
+        "outputBytes": 405,
+        "transformSeconds": 0.038260499999999975
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-00/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-00/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-00/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-00/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "source": "memory_init/suite.3.wasm",
+      "sourceSha256": "4b5f3486247fe9b385e08eda23308d75b68b54709fc5e920484144dccdcb6e28",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 5,
+      "operation": [
+        "data.drop",
+        "3"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-01/original.wasm",
+      "originalObserved": "case-01/original-observed.wasm",
+      "cut": "case-01/cut.wasm",
+      "observed": "case-01/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 2,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"memory0\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"load8_u\"",
+            [
+              "func",
+              "1"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "49bd519947b0524296d682ae909d078091abbc694d743043697cddcab5c3e06d",
+        "outputSha256": "8453986ce129b103f9e28a2500e878d8ca43c0511ad142514e485aba87e52f03",
+        "sourceBytes": 197,
+        "outputBytes": 405,
+        "transformSeconds": 0.037782999999999956
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-01/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-01/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-01/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-01/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "source": "memory_init/suite.6.wasm",
+      "sourceSha256": "878451c9c912d1930c2ee79fc74a46e890f2d9c8cfa01c14e024754ffb5b4432",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 2,
+      "operation": [
+        "data.drop",
+        "0"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-02/original.wasm",
+      "originalObserved": "case-02/original-observed.wasm",
+      "cut": "case-02/cut.wasm",
+      "observed": "case-02/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 1,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "ecf31edb921508b0251a8187e764e707607ca1683e5ba8eca08a8703e72555e5",
+        "outputSha256": "2c5d326703dec0d28c45b82f593971c4c005599a1e7ae157187badaefa454e03",
+        "sourceBytes": 63,
+        "outputBytes": 190,
+        "transformSeconds": 0.03722550000000002
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-02/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-02/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-02/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-02/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "source": "memory_init/suite.6.wasm",
+      "sourceSha256": "878451c9c912d1930c2ee79fc74a46e890f2d9c8cfa01c14e024754ffb5b4432",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 3,
+      "operation": [
+        "data.drop",
+        "0"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-03/original.wasm",
+      "originalObserved": "case-03/original-observed.wasm",
+      "cut": "case-03/cut.wasm",
+      "observed": "case-03/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 1,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "ecf31edb921508b0251a8187e764e707607ca1683e5ba8eca08a8703e72555e5",
+        "outputSha256": "2c5d326703dec0d28c45b82f593971c4c005599a1e7ae157187badaefa454e03",
+        "sourceBytes": 63,
+        "outputBytes": 190,
+        "transformSeconds": 0.037049200000000004
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-03/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-03/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-03/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-03/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "source": "memory_init/suite.8.wasm",
+      "sourceSha256": "084f28ab21247860caf5619c4283922e9dddb785d25577a0fff155c66c32efba",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 2,
+      "operation": [
+        "data.drop",
+        "0"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-04/original.wasm",
+      "originalObserved": "case-04/original-observed.wasm",
+      "cut": "case-04/cut.wasm",
+      "observed": "case-04/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 1,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "20d1a991f258d6331e2b46e2d6c97e517cd28252344e28f09282d60be51bb0c0",
+        "outputSha256": "4bfe4f52bf6730ca17057ee013bf50f74f30b822b655762d4995597c0ebc6ab6",
+        "sourceBytes": 71,
+        "outputBytes": 198,
+        "transformSeconds": 0.03765710000000011
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-04/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-04/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-04/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-04/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "source": "memory_init/suite.9.wasm",
+      "sourceSha256": "9fa363e1f1dcb8fee7281d57ccec441d7ed860473a3dfc80df5e8904b88a5c93",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 2,
+      "operation": [
+        "data.drop",
+        "0"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-05/original.wasm",
+      "originalObserved": "case-05/original-observed.wasm",
+      "cut": "case-05/cut.wasm",
+      "observed": "case-05/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 1,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "6692b27099c8654dcc23c65ab6ce8205db7eeff8174a3fa8484daeabb74cff8d",
+        "outputSha256": "fc6992c09bffc44af3f3636700eed483b8fb918b4745f929841f706412070908",
+        "sourceBytes": 71,
+        "outputBytes": 198,
+        "transformSeconds": 0.03700890000000001
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-05/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-05/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-05/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-05/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "source": "memory_init/suite.10.wasm",
+      "sourceSha256": "c60a4da81600ecbd34aeff8f436c5bc39bb43fe6adb439ebd2bad9a2b244eafb",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 2,
+      "operation": [
+        "data.drop",
+        "0"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-06/original.wasm",
+      "originalObserved": "case-06/original-observed.wasm",
+      "cut": "case-06/cut.wasm",
+      "observed": "case-06/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 1,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "29bb86095591ffc01f551150672dd32fd19a232f8c30c19371b3003f2c3966fd",
+        "outputSha256": "48bfc1c8d3b0b1efcbd4a64a5b4c524275f5a8daaf230797b0066448ec44610a",
+        "sourceBytes": 71,
+        "outputBytes": 198,
+        "transformSeconds": 0.03809930000000006
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-06/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-06/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-06/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-06/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "source": "memory_init/suite.11.wasm",
+      "sourceSha256": "496471fd4c190f644ea42fce10336335b350b7a094cb8eb97685af2128e52577",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 2,
+      "operation": [
+        "data.drop",
+        "0"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-07/original.wasm",
+      "originalObserved": "case-07/original-observed.wasm",
+      "cut": "case-07/cut.wasm",
+      "observed": "case-07/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 1,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "ff0c259acbdbecf8c70f2dcf8cc9da8ea7e14bcaa3571e99c117f518ee3dcb65",
+        "outputSha256": "cf72990a87746cf12da8d8c519dae72d24b74c37a5066cce1a16a0d82f4cec6e",
+        "sourceBytes": 72,
+        "outputBytes": 199,
+        "transformSeconds": 0.03670620000000002
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-07/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-07/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-07/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-07/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "source": "memory_init/suite.12.wasm",
+      "sourceSha256": "dd1a6e7ad2b8f8279473de9a958cae317242c08f5ab96e3fd367492a876f348b",
+      "entry": "test",
+      "definedFunction": 0,
+      "cutAt": 2,
+      "operation": [
+        "data.drop",
+        "0"
+      ],
+      "addedMemory": false,
+      "guestPages": 1,
+      "tables": 0,
+      "tags": {},
+      "original": "case-08/original.wasm",
+      "originalObserved": "case-08/original-observed.wasm",
+      "cut": "case-08/cut.wasm",
+      "observed": "case-08/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 1,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ]
+        ],
+        "sourceSha256": "7b51222162271b9a1e1abd87a356fe4c1157b3c56708b188b24703546adb8dbd",
+        "outputSha256": "de68187f237dbee49ddc9f7b972fcb7bfd88fa3402bb9da2cff1de2b7afde773",
+        "sourceBytes": 72,
+        "outputBytes": 199,
+        "transformSeconds": 0.036675800000000036
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-08/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-08/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-08/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-08/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "source": "table_init/suite.11.wasm",
+      "sourceSha256": "c2c011c7a7cfc4c54a7ef8b0ce35b09c0515f8692e1d7e47aa16957a2b3827ae",
+      "entry": "test",
+      "definedFunction": 10,
+      "cutAt": 2,
+      "operation": [
+        "elem.drop",
+        "2"
+      ],
+      "addedMemory": true,
+      "guestPages": 1,
+      "tables": 2,
+      "tags": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9
+      },
+      "original": "case-09/original.wasm",
+      "originalObserved": "case-09/original-observed.wasm",
+      "cut": "case-09/cut.wasm",
+      "observed": "case-09/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 2,
+        "functions": 11,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_0\"",
+            [
+              "table",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_1\"",
+            [
+              "table",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "6a226961566c2ac32953568b4c72174c3c4d0367348e5aced41d2acbf47adcbe",
+        "outputSha256": "e04364135bd921f709a6fae77a4585b62b9feee6c721762366300cfbe5181f1b",
+        "sourceBytes": 200,
+        "outputBytes": 553,
+        "transformSeconds": 0.03762850000000029
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-09/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-09/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-09/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-09/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "source": "table_init/suite.14.wasm",
+      "sourceSha256": "7eb5c38166973b962e9e471ddbd7679520a4f366f6bfdb46bd8ef1c77978477b",
+      "entry": "test",
+      "definedFunction": 10,
+      "cutAt": 2,
+      "operation": [
+        "elem.drop",
+        "1"
+      ],
+      "addedMemory": true,
+      "guestPages": 1,
+      "tables": 2,
+      "tags": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9
+      },
+      "original": "case-10/original.wasm",
+      "originalObserved": "case-10/original-observed.wasm",
+      "cut": "case-10/cut.wasm",
+      "observed": "case-10/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 2,
+        "functions": 11,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_0\"",
+            [
+              "table",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_1\"",
+            [
+              "table",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "5a305f68276be51b852d8bdd93e1b31499ba1934a7eca3c4579fd897cb513fb0",
+        "outputSha256": "f393083f79a243d77cdccef9e9b6c55460708af6697fea5dc28240d31dd3ce9b",
+        "sourceBytes": 203,
+        "outputBytes": 556,
+        "transformSeconds": 0.03727340000000012
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-10/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-10/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-10/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-10/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "source": "table_init/suite.14.wasm",
+      "sourceSha256": "7eb5c38166973b962e9e471ddbd7679520a4f366f6bfdb46bd8ef1c77978477b",
+      "entry": "test",
+      "definedFunction": 10,
+      "cutAt": 3,
+      "operation": [
+        "elem.drop",
+        "1"
+      ],
+      "addedMemory": true,
+      "guestPages": 1,
+      "tables": 2,
+      "tags": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9
+      },
+      "original": "case-11/original.wasm",
+      "originalObserved": "case-11/original-observed.wasm",
+      "cut": "case-11/cut.wasm",
+      "observed": "case-11/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 2,
+        "functions": 11,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_0\"",
+            [
+              "table",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_1\"",
+            [
+              "table",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "5a305f68276be51b852d8bdd93e1b31499ba1934a7eca3c4579fd897cb513fb0",
+        "outputSha256": "f393083f79a243d77cdccef9e9b6c55460708af6697fea5dc28240d31dd3ce9b",
+        "sourceBytes": 203,
+        "outputBytes": 556,
+        "transformSeconds": 0.039240799999999965
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-11/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-11/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-11/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-11/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "source": "table_init/suite.16.wasm",
+      "sourceSha256": "b6f93dcc1b18997a59856ff56ed938d5721e0e34b1455c9e969702c9f597f3b5",
+      "entry": "test",
+      "definedFunction": 10,
+      "cutAt": 2,
+      "operation": [
+        "elem.drop",
+        "1"
+      ],
+      "addedMemory": true,
+      "guestPages": 1,
+      "tables": 2,
+      "tags": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9
+      },
+      "original": "case-12/original.wasm",
+      "originalObserved": "case-12/original-observed.wasm",
+      "cut": "case-12/cut.wasm",
+      "observed": "case-12/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 2,
+        "functions": 11,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_0\"",
+            [
+              "table",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_1\"",
+            [
+              "table",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "d79eee2dacd307ab0eef8b91654433b8e8ec303860a2a2e0c92daf79dfcf012d",
+        "outputSha256": "5a17e7135eaa5c130c8e7d6ae03cb666d545f3a38785b28c0dce98f007d0ff98",
+        "sourceBytes": 210,
+        "outputBytes": 563,
+        "transformSeconds": 0.03837780000000013
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-12/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-12/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-12/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-12/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "source": "table_init/suite.17.wasm",
+      "sourceSha256": "180b94af04196e89ff472e081de78078fe0b0d93f682a6bcfa731b44579f2bb0",
+      "entry": "test",
+      "definedFunction": 10,
+      "cutAt": 2,
+      "operation": [
+        "elem.drop",
+        "1"
+      ],
+      "addedMemory": true,
+      "guestPages": 1,
+      "tables": 2,
+      "tags": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9
+      },
+      "original": "case-13/original.wasm",
+      "originalObserved": "case-13/original-observed.wasm",
+      "cut": "case-13/cut.wasm",
+      "observed": "case-13/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 2,
+        "functions": 11,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_0\"",
+            [
+              "table",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_1\"",
+            [
+              "table",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "7bc853985f273538148e8af80a5214aab502d545cca4f5e862b6ccd43bc4d4a0",
+        "outputSha256": "1fabeb40e8c1222e80fe9ec74a065caf72e96c7566d6b2d6bfb570e3c99afb8f",
+        "sourceBytes": 210,
+        "outputBytes": 563,
+        "transformSeconds": 0.038184499999999844
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-13/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-13/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-13/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-13/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 14,
+      "source": "table_init/suite.18.wasm",
+      "sourceSha256": "d85d07ceb6e2156d13cea97c9f12f587a925da1b88f8852e0f6a17ec4ede12f0",
+      "entry": "test",
+      "definedFunction": 10,
+      "cutAt": 2,
+      "operation": [
+        "elem.drop",
+        "1"
+      ],
+      "addedMemory": true,
+      "guestPages": 1,
+      "tables": 2,
+      "tags": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9
+      },
+      "original": "case-14/original.wasm",
+      "originalObserved": "case-14/original-observed.wasm",
+      "cut": "case-14/cut.wasm",
+      "observed": "case-14/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 2,
+        "functions": 11,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_0\"",
+            [
+              "table",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_1\"",
+            [
+              "table",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "61077058e7a4f154881732a6705a1d6c25233df30bb942bc11cfe83eb6c7b02d",
+        "outputSha256": "d95a7f34a2b25d1e3457042f240008c98b0eba712f03fac5d25bb50eb8fcdf9d",
+        "sourceBytes": 210,
+        "outputBytes": 563,
+        "transformSeconds": 0.03869319999999998
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-14/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-14/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-14/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-14/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "source": "table_init/suite.19.wasm",
+      "sourceSha256": "46f7b12d9263968e3b1004d23328a304955920d35ebe2db8de69ef2fecc71136",
+      "entry": "test",
+      "definedFunction": 10,
+      "cutAt": 2,
+      "operation": [
+        "elem.drop",
+        "1"
+      ],
+      "addedMemory": true,
+      "guestPages": 1,
+      "tables": 2,
+      "tags": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9
+      },
+      "original": "case-15/original.wasm",
+      "originalObserved": "case-15/original-observed.wasm",
+      "cut": "case-15/cut.wasm",
+      "observed": "case-15/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 2,
+        "functions": 11,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_0\"",
+            [
+              "table",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_1\"",
+            [
+              "table",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "b22ae64a083df928ca182d1a97fa5e33fa538a2643e227c8ce2fe22718814984",
+        "outputSha256": "eb45b1960a375613818fc58ca53a67a2d058f3a74eb641ea2d9fdfebb66a5847",
+        "sourceBytes": 210,
+        "outputBytes": 563,
+        "transformSeconds": 0.038317399999999946
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-15/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-15/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-15/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-15/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "source": "table_init/suite.20.wasm",
+      "sourceSha256": "3d4305a4e29e3718806a81d4e86eb401243a73ac54ecb539758375bd8f173b22",
+      "entry": "test",
+      "definedFunction": 10,
+      "cutAt": 2,
+      "operation": [
+        "elem.drop",
+        "1"
+      ],
+      "addedMemory": true,
+      "guestPages": 1,
+      "tables": 2,
+      "tags": {
+        "0": 0,
+        "1": 1,
+        "2": 2,
+        "3": 3,
+        "4": 4,
+        "5": 5,
+        "6": 6,
+        "7": 7,
+        "8": 8,
+        "9": 9
+      },
+      "original": "case-16/original.wasm",
+      "originalObserved": "case-16/original-observed.wasm",
+      "cut": "case-16/cut.wasm",
+      "observed": "case-16/cut-observed.wasm",
+      "observer": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 2,
+        "functions": 11,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "active",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 5,
+            "probe": "__sw_elem_3",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"test\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_0\"",
+            [
+              "table",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"__audit_table_1\"",
+            [
+              "table",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "c04eb12f9bc30265bfe525c9363bf9e231199659e8443908a0c603d6589160c3",
+        "outputSha256": "1aadd952af6764411e76183366b2139f4f8d5f4b6fc2a9167ea73b6de4d17bf5",
+        "sourceBytes": 210,
+        "outputBytes": 563,
+        "transformSeconds": 0.037530000000000285
+      },
+      "entries": [
+        {
+          "backend": "migrate",
+          "kind": "plain",
+          "output": "case-16/migrate-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "migrate",
+          "kind": "observed",
+          "output": "case-16/migrate-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "plain",
+          "output": "case-16/weave-plain.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "kind": "observed",
+          "output": "case-16/weave-observed.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    }
+  ],
+  "skips": [],
+  "delimiters": 0,
+  "generationSeconds": 4.4320450000000005,
+  "executableHashes": {
+    ".tools\\wasm-migrate-build\\target\\release\\wasm-migrate-target.exe": "e20b950270eb6e006f46e650d2a1403b8641b988c88b1c922f5ed8fa0f1f7305",
+    ".tools\\weave-build\\target\\release\\weave-probe.exe": "3d85034130173fd6c2439ce9003de2b8b14034eb7462ccdfd090c30556dc3909"
+  },
+  "inputHash": "6a8733aaf498dccf68bda65eab7c7afaef4530c4cedb68ebe173060d7f4542bb"
+}

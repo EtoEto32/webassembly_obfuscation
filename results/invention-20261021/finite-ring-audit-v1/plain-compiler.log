@@ -1,0 +1,35 @@
+--- WebAssembly code ---
+name: wasm-function[0]
+index: 0
+kind: wasm function
+compiler: TurboFan
+Body (size = 64 = 56 + 8 padding)
+Instructions (size = 44)
+000003FBA8A11840     0  55                   push rbp
+000003FBA8A11841     1  4889e5               REX.W movq rbp,rsp
+000003FBA8A11844     4  6a08                 push 0x8
+000003FBA8A11846     6  56                   push rsi
+000003FBA8A11847     7  8bd8                 movl rbx,rax
+000003FBA8A11849     9  23da                 andl rbx,rdx
+000003FBA8A1184B     b  0bd0                 orl rdx,rax
+000003FBA8A1184D     d  23d1                 andl rdx,rcx
+000003FBA8A1184F     f  0bd3                 orl rdx,rbx
+000003FBA8A11851    11  8bd8                 movl rbx,rax
+000003FBA8A11853    13  c1cb02               rorl rbx, 2
+000003FBA8A11856    16  8bc8                 movl rcx,rax
+000003FBA8A11858    18  c1c90d               rorl rcx, 13
+000003FBA8A1185B    1b  33cb                 xorl rcx,rbx
+000003FBA8A1185D    1d  c1c816               rorl rax, 22
+000003FBA8A11860    20  33c1                 xorl rax,rcx
+000003FBA8A11862    22  03c2                 addl rax,rdx
+000003FBA8A11864    24  488be5               REX.W movq rsp,rbp
+000003FBA8A11867    27  5d                   pop rbp
+000003FBA8A11868    28  c3                   retl
+000003FBA8A11869    29  90                   nop
+000003FBA8A1186A    2a  6690                 nop
+
+Safepoints (stack slots = 4, entries = 0, byte size = 12)
+
+RelocInfo (size = 0)
+
+--- End code ---

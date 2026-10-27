@@ -1,0 +1,584 @@
+{
+  "positive_conditions": 42,
+  "positive_calls": 136444,
+  "mismatches": 0,
+  "traps": 0,
+  "negative_counterexamples": 6,
+  "negative_calls": 19492,
+  "recoveries": 18,
+  "byte_replays": 48,
+  "wabt_calls": 168,
+  "local_rule_cases": 336,
+  "positive_byte_distinct": 30,
+  "analysis_total_ms": [
+    61.138499999999986,
+    82.8253000000001
+  ],
+  "transform_ms": [
+    36.665700000000136,
+    39.862000000000066
+  ],
+  "rss_KiB": [
+    37796,
+    38336
+  ],
+  "verified_pins": {
+    "energy-descent-v1": 135,
+    "energy-descent-performance-v1": 48,
+    "energy-descent-audit-v1": 208
+  },
+  "performance_verification": {
+    "rows": [
+      {
+        "name": "chain",
+        "mode": "plain",
+        "run_calls": 2560,
+        "bench_calls": 12
+      },
+      {
+        "name": "chain",
+        "mode": "dag",
+        "run_calls": 2560,
+        "bench_calls": 12
+      },
+      {
+        "name": "chain",
+        "mode": "dag-gauge",
+        "run_calls": 2560,
+        "bench_calls": 12
+      },
+      {
+        "name": "chain",
+        "mode": "lex-gauge",
+        "run_calls": 2560,
+        "bench_calls": 12
+      },
+      {
+        "name": "chain",
+        "mode": "dag-gauge-recovered",
+        "run_calls": 2560,
+        "bench_calls": 12
+      },
+      {
+        "name": "diamond",
+        "mode": "plain",
+        "run_calls": 3072,
+        "bench_calls": 12
+      },
+      {
+        "name": "diamond",
+        "mode": "dag",
+        "run_calls": 3072,
+        "bench_calls": 12
+      },
+      {
+        "name": "diamond",
+        "mode": "dag-gauge",
+        "run_calls": 3072,
+        "bench_calls": 12
+      },
+      {
+        "name": "diamond",
+        "mode": "lex-gauge",
+        "run_calls": 3072,
+        "bench_calls": 12
+      },
+      {
+        "name": "diamond",
+        "mode": "dag-gauge-recovered",
+        "run_calls": 3072,
+        "bench_calls": 12
+      },
+      {
+        "name": "fanout",
+        "mode": "plain",
+        "run_calls": 2304,
+        "bench_calls": 12
+      },
+      {
+        "name": "fanout",
+        "mode": "dag",
+        "run_calls": 2304,
+        "bench_calls": 12
+      },
+      {
+        "name": "fanout",
+        "mode": "dag-gauge",
+        "run_calls": 2304,
+        "bench_calls": 12
+      },
+      {
+        "name": "fanout",
+        "mode": "lex-gauge",
+        "run_calls": 2304,
+        "bench_calls": 12
+      },
+      {
+        "name": "fanout",
+        "mode": "dag-gauge-recovered",
+        "run_calls": 2304,
+        "bench_calls": 12
+      }
+    ],
+    "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+    "os": "win32",
+    "arch": "x64",
+    "node": "v24.15.0",
+    "v8": "13.6.233.17-node.48"
+  },
+  "performance": [
+    {
+      "name": "chain",
+      "mode": "plain",
+      "file": "chain-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\chain-plain-O3.wasm",
+      "source_bytes": 112,
+      "optimized_bytes": 112,
+      "linear_memory_bytes": 0,
+      "ns": 1.7864423830211524,
+      "process_medians_ns": [
+        1.7864423830211524,
+        1.841704565908111,
+        1.7841295829611579
+      ],
+      "range_ns": [
+        1.7841295829611579,
+        1.841704565908111
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "file": "chain-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\chain-dag-O3.wasm",
+      "source_bytes": 742,
+      "optimized_bytes": 742,
+      "linear_memory_bytes": 65536,
+      "ns": 1810.8731823771975,
+      "process_medians_ns": [
+        1748.5978667796865,
+        1815.6757144908804,
+        1810.8731823771975
+      ],
+      "range_ns": [
+        1748.5978667796865,
+        1815.6757144908804
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "dag-gauge",
+      "file": "chain-dag-gauge-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\chain-dag-gauge-O3.wasm",
+      "source_bytes": 730,
+      "optimized_bytes": 730,
+      "linear_memory_bytes": 65536,
+      "ns": 1773.1942780635611,
+      "process_medians_ns": [
+        1719.126261556919,
+        1773.1942780635611,
+        1775.2430604480767
+      ],
+      "range_ns": [
+        1719.126261556919,
+        1775.2430604480767
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "lex-gauge",
+      "file": "chain-lex-gauge-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\chain-lex-gauge-O3.wasm",
+      "source_bytes": 730,
+      "optimized_bytes": 730,
+      "linear_memory_bytes": 65536,
+      "ns": 1822.7328337666306,
+      "process_medians_ns": [
+        1822.7328337666306,
+        1777.0483711747286,
+        1837.0911214953258
+      ],
+      "range_ns": [
+        1777.0483711747286,
+        1837.0911214953258
+      ]
+    },
+    {
+      "name": "chain",
+      "mode": "dag-gauge-recovered",
+      "file": "chain-dag-gauge-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\chain-dag-gauge-O3-recovered.wasm",
+      "source_bytes": 274,
+      "optimized_bytes": 186,
+      "linear_memory_bytes": 0,
+      "ns": 5.382947105444522,
+      "process_medians_ns": [
+        5.378478138458894,
+        5.382947105444522,
+        5.392780397323292
+      ],
+      "range_ns": [
+        5.378478138458894,
+        5.392780397323292
+      ]
+    },
+    {
+      "name": "diamond",
+      "mode": "plain",
+      "file": "diamond-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\diamond-plain-O3.wasm",
+      "source_bytes": 124,
+      "optimized_bytes": 124,
+      "linear_memory_bytes": 0,
+      "ns": 1.9202085150773847,
+      "process_medians_ns": [
+        1.9320377167452985,
+        1.9202085150773847,
+        1.8728704591530336
+      ],
+      "range_ns": [
+        1.8728704591530336,
+        1.9320377167452985
+      ]
+    },
+    {
+      "name": "diamond",
+      "mode": "dag",
+      "file": "diamond-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\diamond-dag-O3.wasm",
+      "source_bytes": 817,
+      "optimized_bytes": 817,
+      "linear_memory_bytes": 65536,
+      "ns": 3222.7810650887573,
+      "process_medians_ns": [
+        3156.273275972775,
+        3238.227650727651,
+        3222.7810650887573
+      ],
+      "range_ns": [
+        3156.273275972775,
+        3238.227650727651
+      ]
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-gauge",
+      "file": "diamond-dag-gauge-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\diamond-dag-gauge-O3.wasm",
+      "source_bytes": 822,
+      "optimized_bytes": 822,
+      "linear_memory_bytes": 65536,
+      "ns": 3257.928091050182,
+      "process_medians_ns": [
+        3257.638617090673,
+        3257.928091050182,
+        3265.676696626288
+      ],
+      "range_ns": [
+        3257.638617090673,
+        3265.676696626288
+      ]
+    },
+    {
+      "name": "diamond",
+      "mode": "lex-gauge",
+      "file": "diamond-lex-gauge-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\diamond-lex-gauge-O3.wasm",
+      "source_bytes": 825,
+      "optimized_bytes": 825,
+      "linear_memory_bytes": 65536,
+      "ns": 3256.713995943203,
+      "process_medians_ns": [
+        3217.702888583218,
+        3256.713995943203,
+        3345.963734049699
+      ],
+      "range_ns": [
+        3217.702888583218,
+        3345.963734049699
+      ]
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-gauge-recovered",
+      "file": "diamond-dag-gauge-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\diamond-dag-gauge-O3-recovered.wasm",
+      "source_bytes": 318,
+      "optimized_bytes": 217,
+      "linear_memory_bytes": 0,
+      "ns": 5.601686157822733,
+      "process_medians_ns": [
+        5.41419567208387,
+        5.613645558456625,
+        5.601686157822733
+      ],
+      "range_ns": [
+        5.41419567208387,
+        5.613645558456625
+      ]
+    },
+    {
+      "name": "fanout",
+      "mode": "plain",
+      "file": "fanout-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\fanout-plain-O3.wasm",
+      "source_bytes": 116,
+      "optimized_bytes": 116,
+      "linear_memory_bytes": 0,
+      "ns": 1.7996470966837395,
+      "process_medians_ns": [
+        1.79068940922699,
+        1.8092583973763159,
+        1.7996470966837395
+      ],
+      "range_ns": [
+        1.79068940922699,
+        1.8092583973763159
+      ]
+    },
+    {
+      "name": "fanout",
+      "mode": "dag",
+      "file": "fanout-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\fanout-dag-O3.wasm",
+      "source_bytes": 814,
+      "optimized_bytes": 814,
+      "linear_memory_bytes": 65536,
+      "ns": 3180.3402404707085,
+      "process_medians_ns": [
+        3134.4559585492243,
+        3180.3402404707085,
+        3190.5506804018823
+      ],
+      "range_ns": [
+        3134.4559585492243,
+        3190.5506804018823
+      ]
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-gauge",
+      "file": "fanout-dag-gauge-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\fanout-dag-gauge-O3.wasm",
+      "source_bytes": 831,
+      "optimized_bytes": 831,
+      "linear_memory_bytes": 65536,
+      "ns": 3257.7583962509743,
+      "process_medians_ns": [
+        3257.7583962509743,
+        3279.161222889993,
+        3160.0078135173867
+      ],
+      "range_ns": [
+        3160.0078135173867,
+        3279.161222889993
+      ]
+    },
+    {
+      "name": "fanout",
+      "mode": "lex-gauge",
+      "file": "fanout-lex-gauge-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\fanout-lex-gauge-O3.wasm",
+      "source_bytes": 831,
+      "optimized_bytes": 831,
+      "linear_memory_bytes": 65536,
+      "ns": 3265.623777864682,
+      "process_medians_ns": [
+        3265.623777864682,
+        3447.7426931106534,
+        3151.9465351674003
+      ],
+      "range_ns": [
+        3151.9465351674003,
+        3447.7426931106534
+      ]
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-gauge-recovered",
+      "file": "fanout-dag-gauge-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-descent-v1\\fanout-dag-gauge-O3-recovered.wasm",
+      "source_bytes": 312,
+      "optimized_bytes": 205,
+      "linear_memory_bytes": 0,
+      "ns": 5.378489483601841,
+      "process_medians_ns": [
+        5.228922075845917,
+        5.378489483601841,
+        5.384717861612501
+      ],
+      "range_ns": [
+        5.228922075845917,
+        5.384717861612501
+      ]
+    }
+  ],
+  "core_timings": [
+    {
+      "name": "chain",
+      "mode": "dag",
+      "samples_ms": [
+        0.2857999999998917,
+        0.2781999999998952,
+        0.281600000000104,
+        0.2729999999999677,
+        0.284800000000196,
+        0.2676999999997598,
+        0.2661000000001579,
+        0.26860000000006323,
+        0.2744999999997333,
+        0.2679999999997129,
+        0.2596000000001375
+      ],
+      "median_ms": 0.2729999999999677
+    },
+    {
+      "name": "chain",
+      "mode": "dag-gauge",
+      "samples_ms": [
+        0.2596000000001375,
+        0.26500000000018176,
+        0.25950000000030116,
+        0.2556000000000225,
+        0.25500000000011624,
+        0.2627999999997854,
+        0.25629999999976505,
+        0.26179999999964565,
+        0.26579999999976067,
+        0.2647999999996209,
+        0.26419999999971466
+      ],
+      "median_ms": 0.26179999999964565
+    },
+    {
+      "name": "chain",
+      "mode": "lex-gauge",
+      "samples_ms": [
+        0.2645999999999482,
+        0.2563999999996014,
+        0.27020000000010924,
+        0.2637999999999252,
+        0.31560000000041555,
+        0.2617000000002534,
+        0.25630000000020914,
+        0.255200000000233,
+        0.2558999999999756,
+        0.2607000000001136,
+        0.2632999999998553
+      ],
+      "median_ms": 0.2617000000002534
+    },
+    {
+      "name": "diamond",
+      "mode": "dag",
+      "samples_ms": [
+        0.5161999999998557,
+        0.5175999999997849,
+        0.5152999999999963,
+        0.5152999999999963,
+        0.5223999999999229,
+        0.5096999999998353,
+        0.5076999999999998,
+        0.6029999999999092,
+        0.5297999999998027,
+        0.5294000000000132,
+        0.5187000000002051
+      ],
+      "median_ms": 0.5175999999997849
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-gauge",
+      "samples_ms": [
+        0.5302000000000362,
+        0.5144999999999733,
+        0.5124000000003015,
+        0.5258000000001317,
+        0.5121999999997406,
+        0.5134999999998335,
+        0.5219000000002971,
+        0.5199000000000176,
+        0.5207000000000406,
+        0.5218000000000167,
+        0.5481999999998877
+      ],
+      "median_ms": 0.5207000000000406
+    },
+    {
+      "name": "diamond",
+      "mode": "lex-gauge",
+      "samples_ms": [
+        0.5652000000000434,
+        0.5242000000000857,
+        0.5522000000000027,
+        0.5454999999998655,
+        0.5429999999999602,
+        0.5367000000000566,
+        0.5324000000004325,
+        0.5314000000002927,
+        0.5148999999997628,
+        0.5201000000001343,
+        0.5200999999996903
+      ],
+      "median_ms": 0.5324000000004325
+    },
+    {
+      "name": "fanout",
+      "mode": "dag",
+      "samples_ms": [
+        2.952900000000369,
+        2.9608000000003187,
+        2.985100000000074,
+        2.9522000000001825,
+        3.00110000000009,
+        2.9647000000001533,
+        2.9425999999999064,
+        3.017999999999965,
+        2.960400000000085,
+        3.1207000000001983,
+        2.9476999999999975
+      ],
+      "median_ms": 2.9608000000003187
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-gauge",
+      "samples_ms": [
+        2.9561999999998534,
+        3.0610999999995947,
+        3.072300000000361,
+        3.3213000000000825,
+        2.9762999999998208,
+        2.94989999999995,
+        3.00060000000002,
+        3.079300000000007,
+        3.001699999999996,
+        2.977100000000288,
+        2.9437000000003266
+      ],
+      "median_ms": 3.00060000000002
+    },
+    {
+      "name": "fanout",
+      "mode": "lex-gauge",
+      "samples_ms": [
+        3.0525000000003466,
+        3.209700000000204,
+        3.019500000000175,
+        2.9528000000000887,
+        2.9674000000001755,
+        3.007899999999619,
+        3.0461000000001626,
+        2.996900000000302,
+        2.97819999999982,
+        2.959800000000179,
+        2.969699999999964
+      ],
+      "median_ms": 2.996900000000302
+    }
+  ],
+  "versions": {
+    "wat2wasm": "1.0.42",
+    "wasm-opt": "wasm-opt version 133 (version_133)"
+  }
+}

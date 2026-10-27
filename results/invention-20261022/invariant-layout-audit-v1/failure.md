@@ -1,0 +1,3 @@
+# 計測用メモリexportの修正
+
+zero-pageのtransport版は全アクセスがtrapするとO3が判断し、不要なmemoryを消去した。監査器が存在しないmemory index 0をexportしようとして中断。変換の返り値不一致でも解析耐性でもない。実際のO3本体は保持し、監査用wrapperに限り0ページmemoryを追加して空状態を観測するよう修正した。修正版はaudit-v2へ保存する。

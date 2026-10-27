@@ -1,0 +1,956 @@
+[
+  {
+    "name": "muladd",
+    "file": "muladd-pipeline-0.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "add",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "n",
+          0
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      0,
+      0,
+      0
+    ],
+    "elapsed_ms": 37.85379999999999,
+    "memory_bytes": 0
+  },
+  {
+    "name": "muladd",
+    "file": "muladd-pipeline-1.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "add",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "n",
+          0
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      4294967295,
+      2147483648,
+      1
+    ],
+    "elapsed_ms": 36.803999999999974,
+    "memory_bytes": 0
+  },
+  {
+    "name": "muladd",
+    "file": "muladd-pipeline-2.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "add",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "n",
+          0
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      305419896,
+      1985229328,
+      2863311530
+    ],
+    "elapsed_ms": 37.03109999999998,
+    "memory_bytes": 0
+  },
+  {
+    "name": "muladd",
+    "file": "muladd-feedback-0.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "add",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "n",
+          0
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      0,
+      0,
+      0
+    ],
+    "elapsed_ms": 39.61140000000002,
+    "memory_bytes": 0
+  },
+  {
+    "name": "muladd",
+    "file": "muladd-feedback-1.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "add",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "n",
+          0
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      4294967295,
+      2147483648,
+      1
+    ],
+    "elapsed_ms": 36.12300000000002,
+    "memory_bytes": 0
+  },
+  {
+    "name": "muladd",
+    "file": "muladd-feedback-2.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "add",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "n",
+          0
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      305419896,
+      1985229328,
+      2863311530
+    ],
+    "elapsed_ms": 35.930299999999974,
+    "memory_bytes": 0
+  },
+  {
+    "name": "square",
+    "file": "square-pipeline-0.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          0
+        ]
+      ],
+      [
+        "sub",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          2
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      0,
+      0,
+      0
+    ],
+    "elapsed_ms": 38.07650000000007,
+    "memory_bytes": 0
+  },
+  {
+    "name": "square",
+    "file": "square-pipeline-1.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          0
+        ]
+      ],
+      [
+        "sub",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          2
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      4294967295,
+      2147483648,
+      1
+    ],
+    "elapsed_ms": 35.90329999999997,
+    "memory_bytes": 0
+  },
+  {
+    "name": "square",
+    "file": "square-pipeline-2.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          0
+        ]
+      ],
+      [
+        "sub",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          2
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      305419896,
+      1985229328,
+      2863311530
+    ],
+    "elapsed_ms": 36.80330000000009,
+    "memory_bytes": 0
+  },
+  {
+    "name": "square",
+    "file": "square-feedback-0.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          0
+        ]
+      ],
+      [
+        "sub",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          2
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      0,
+      0,
+      0
+    ],
+    "elapsed_ms": 36.98500000000004,
+    "memory_bytes": 0
+  },
+  {
+    "name": "square",
+    "file": "square-feedback-1.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          0
+        ]
+      ],
+      [
+        "sub",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          2
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      4294967295,
+      2147483648,
+      1
+    ],
+    "elapsed_ms": 37.85240000000001,
+    "memory_bytes": 0
+  },
+  {
+    "name": "square",
+    "file": "square-feedback-2.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "mul",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          0
+        ]
+      ],
+      [
+        "sub",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          2
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      305419896,
+      1985229328,
+      2863311530
+    ],
+    "elapsed_ms": 37.32619999999998,
+    "memory_bytes": 0
+  },
+  {
+    "name": "mixcarry",
+    "file": "mixcarry-pipeline-0.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "add",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "xor",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          1
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      0,
+      0,
+      0
+    ],
+    "elapsed_ms": 41.57410000000006,
+    "memory_bytes": 0
+  },
+  {
+    "name": "mixcarry",
+    "file": "mixcarry-pipeline-1.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "add",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "xor",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          1
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      4294967295,
+      2147483648,
+      1
+    ],
+    "elapsed_ms": 38.02720000000015,
+    "memory_bytes": 0
+  },
+  {
+    "name": "mixcarry",
+    "file": "mixcarry-pipeline-2.wasm",
+    "mode": "pipeline",
+    "rounds": 3,
+    "np": 3,
+    "nodes": [
+      [
+        "add",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "xor",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          1
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      305419896,
+      1985229328,
+      2863311530
+    ],
+    "elapsed_ms": 36.950599999999945,
+    "memory_bytes": 0
+  },
+  {
+    "name": "mixcarry",
+    "file": "mixcarry-feedback-0.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "add",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "xor",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          1
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      0,
+      0,
+      0
+    ],
+    "elapsed_ms": 38.68810000000011,
+    "memory_bytes": 0
+  },
+  {
+    "name": "mixcarry",
+    "file": "mixcarry-feedback-1.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "add",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "xor",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          1
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      4294967295,
+      2147483648,
+      1
+    ],
+    "elapsed_ms": 37.64750000000006,
+    "memory_bytes": 0
+  },
+  {
+    "name": "mixcarry",
+    "file": "mixcarry-feedback-2.wasm",
+    "mode": "feedback",
+    "rounds": 128,
+    "np": 3,
+    "nodes": [
+      [
+        "add",
+        [
+          "p",
+          0
+        ],
+        [
+          "p",
+          1
+        ]
+      ],
+      [
+        "xor",
+        [
+          "n",
+          0
+        ],
+        [
+          "p",
+          2
+        ]
+      ],
+      [
+        "mul",
+        [
+          "n",
+          1
+        ],
+        [
+          "p",
+          1
+        ]
+      ]
+    ],
+    "result": [
+      "n",
+      2
+    ],
+    "initial": [
+      305419896,
+      1985229328,
+      2863311530
+    ],
+    "elapsed_ms": 36.98470000000009,
+    "memory_bytes": 0
+  }
+]

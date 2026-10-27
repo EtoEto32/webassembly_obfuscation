@@ -1,0 +1,23 @@
+(module
+  (type $ft (func (param i32) (result i32)))
+  (type $ct (cont $ft))
+  (tag $t (param i32) (result i32))
+  (func $worker (param $x i32) (result i32)
+    (i32.add (suspend $t (local.get $x)) (i32.const 1)))
+  (elem declare func $worker)
+  (func (export "run") (param $x i32) (result i32)
+    (local $k (ref null $ct)) (local $v i32)
+    (block $on (result i32 (ref $ct))
+      (return
+        (resume $ct (on $t $on)
+          (local.get $x)
+          (cont.new $ct (ref.func $worker)))))
+    (local.set $k)
+    (local.set $v)
+    (resume $ct (i32.mul (local.get $v) (i32.const 3)) (local.get $k))))
+
+(assert_return (invoke "run" (i32.const 0)) (i32.const 1))
+(assert_return (invoke "run" (i32.const 1)) (i32.const 4))
+(assert_return (invoke "run" (i32.const -1)) (i32.const -2))
+(assert_return (invoke "run" (i32.const 2147483647)) (i32.const 2147483646))
+(assert_return (invoke "run" (i32.const -2147483648)) (i32.const -2147483647))

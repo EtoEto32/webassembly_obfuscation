@@ -1,0 +1,5317 @@
+{
+  "models": {
+    "chain": {
+      "inputs": 9,
+      "gates": [
+        [
+          "xor",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            2
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            1
+          ],
+          [
+            "input",
+            3
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            2
+          ],
+          [
+            "input",
+            4
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            3
+          ],
+          [
+            "input",
+            5
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            4
+          ],
+          [
+            "input",
+            6
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            5
+          ],
+          [
+            "input",
+            7
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            6
+          ],
+          [
+            "input",
+            8
+          ]
+        ]
+      ]
+    },
+    "diamond": {
+      "inputs": 10,
+      "gates": [
+        [
+          "and",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "xor",
+          [
+            "input",
+            2
+          ],
+          [
+            "input",
+            3
+          ]
+        ],
+        [
+          "or",
+          [
+            "input",
+            4
+          ],
+          [
+            "input",
+            5
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "gate",
+            1
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            1
+          ],
+          [
+            "gate",
+            2
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            3
+          ],
+          [
+            "gate",
+            4
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            6
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            6
+          ],
+          [
+            "input",
+            7
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            5
+          ],
+          [
+            "gate",
+            7
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            8
+          ],
+          [
+            "input",
+            9
+          ]
+        ]
+      ]
+    },
+    "fanout": {
+      "inputs": 8,
+      "gates": [
+        [
+          "xor",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            2
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            3
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            4
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            5
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            1
+          ],
+          [
+            "gate",
+            2
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            3
+          ],
+          [
+            "gate",
+            4
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            5
+          ],
+          [
+            "input",
+            6
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            6
+          ],
+          [
+            "input",
+            7
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            7
+          ],
+          [
+            "gate",
+            8
+          ]
+        ]
+      ]
+    }
+  },
+  "targets": [
+    {
+      "name": "chain",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "chain-plain.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "chain-plain-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "chain-dag.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "stage": "raw",
+      "file": "chain-dag-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "chain-dag-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "stage": "O3",
+      "file": "chain-dag-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag-gauge",
+      "stage": "raw",
+      "file": "chain-dag-gauge.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag-gauge-recovered",
+      "stage": "raw",
+      "file": "chain-dag-gauge-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag-gauge",
+      "stage": "O3",
+      "file": "chain-dag-gauge-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag-gauge-recovered",
+      "stage": "O3",
+      "file": "chain-dag-gauge-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "lex-gauge",
+      "stage": "raw",
+      "file": "chain-lex-gauge.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "lex-gauge-recovered",
+      "stage": "raw",
+      "file": "chain-lex-gauge-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "lex-gauge",
+      "stage": "O3",
+      "file": "chain-lex-gauge-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "lex-gauge-recovered",
+      "stage": "O3",
+      "file": "chain-lex-gauge-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "flat-gauge",
+      "stage": "raw",
+      "file": "chain-flat-gauge.wasm",
+      "negative": true
+    },
+    {
+      "name": "chain",
+      "mode": "flat-gauge",
+      "stage": "O3",
+      "file": "chain-flat-gauge-O3.wasm",
+      "negative": true
+    },
+    {
+      "name": "diamond",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "diamond-plain.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "diamond-plain-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "diamond-dag.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-recovered",
+      "stage": "raw",
+      "file": "diamond-dag-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "diamond-dag-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-recovered",
+      "stage": "O3",
+      "file": "diamond-dag-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-gauge",
+      "stage": "raw",
+      "file": "diamond-dag-gauge.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-gauge-recovered",
+      "stage": "raw",
+      "file": "diamond-dag-gauge-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-gauge",
+      "stage": "O3",
+      "file": "diamond-dag-gauge-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-gauge-recovered",
+      "stage": "O3",
+      "file": "diamond-dag-gauge-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "lex-gauge",
+      "stage": "raw",
+      "file": "diamond-lex-gauge.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "lex-gauge-recovered",
+      "stage": "raw",
+      "file": "diamond-lex-gauge-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "lex-gauge",
+      "stage": "O3",
+      "file": "diamond-lex-gauge-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "lex-gauge-recovered",
+      "stage": "O3",
+      "file": "diamond-lex-gauge-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "diamond",
+      "mode": "flat-gauge",
+      "stage": "raw",
+      "file": "diamond-flat-gauge.wasm",
+      "negative": true
+    },
+    {
+      "name": "diamond",
+      "mode": "flat-gauge",
+      "stage": "O3",
+      "file": "diamond-flat-gauge-O3.wasm",
+      "negative": true
+    },
+    {
+      "name": "fanout",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "fanout-plain.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "fanout-plain-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "fanout-dag.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-recovered",
+      "stage": "raw",
+      "file": "fanout-dag-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "fanout-dag-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-recovered",
+      "stage": "O3",
+      "file": "fanout-dag-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-gauge",
+      "stage": "raw",
+      "file": "fanout-dag-gauge.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-gauge-recovered",
+      "stage": "raw",
+      "file": "fanout-dag-gauge-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-gauge",
+      "stage": "O3",
+      "file": "fanout-dag-gauge-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-gauge-recovered",
+      "stage": "O3",
+      "file": "fanout-dag-gauge-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "lex-gauge",
+      "stage": "raw",
+      "file": "fanout-lex-gauge.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "lex-gauge-recovered",
+      "stage": "raw",
+      "file": "fanout-lex-gauge-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "lex-gauge",
+      "stage": "O3",
+      "file": "fanout-lex-gauge-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "lex-gauge-recovered",
+      "stage": "O3",
+      "file": "fanout-lex-gauge-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fanout",
+      "mode": "flat-gauge",
+      "stage": "raw",
+      "file": "fanout-flat-gauge.wasm",
+      "negative": true
+    },
+    {
+      "name": "fanout",
+      "mode": "flat-gauge",
+      "stage": "O3",
+      "file": "fanout-flat-gauge-O3.wasm",
+      "negative": true
+    }
+  ],
+  "transforms": [
+    {
+      "name": "chain",
+      "mode": "dag",
+      "milliseconds": 38.15549999999998,
+      "record": {
+        "inputs": 9,
+        "n": 8,
+        "output": 7,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            8
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            3,
+            -16
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            32,
+            4
+          ],
+          [
+            64,
+            3
+          ],
+          [
+            256,
+            1
+          ],
+          [
+            512,
+            15
+          ],
+          [
+            513,
+            -16
+          ],
+          [
+            514,
+            -16
+          ],
+          [
+            515,
+            32
+          ],
+          [
+            516,
+            -7
+          ],
+          [
+            1024,
+            13
+          ],
+          [
+            1028,
+            -14
+          ],
+          [
+            1032,
+            -12
+          ],
+          [
+            1536,
+            -14
+          ],
+          [
+            1540,
+            14
+          ],
+          [
+            2048,
+            6
+          ],
+          [
+            2056,
+            -12
+          ],
+          [
+            2064,
+            5
+          ],
+          [
+            3072,
+            -12
+          ],
+          [
+            3080,
+            24
+          ],
+          [
+            4096,
+            9
+          ],
+          [
+            4128,
+            -4
+          ],
+          [
+            6160,
+            -10
+          ],
+          [
+            8192,
+            7
+          ],
+          [
+            8224,
+            -8
+          ],
+          [
+            8256,
+            -6
+          ],
+          [
+            12288,
+            -8
+          ],
+          [
+            12320,
+            8
+          ],
+          [
+            16384,
+            3
+          ],
+          [
+            16448,
+            -6
+          ],
+          [
+            16512,
+            2
+          ],
+          [
+            24576,
+            -6
+          ],
+          [
+            24640,
+            12
+          ],
+          [
+            32768,
+            3
+          ],
+          [
+            33024,
+            -1
+          ],
+          [
+            49280,
+            -4
+          ],
+          [
+            65536,
+            1
+          ],
+          [
+            65792,
+            -2
+          ],
+          [
+            98304,
+            -2
+          ],
+          [
+            98560,
+            2
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "coefficient_abs_sum": 369
+      }
+    },
+    {
+      "name": "chain",
+      "mode": "dag-gauge",
+      "milliseconds": 37.8839,
+      "record": {
+        "inputs": 9,
+        "n": 8,
+        "output": 5,
+        "flip": 0,
+        "terms": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            8
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            3,
+            -16
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            8,
+            6
+          ],
+          [
+            32,
+            4
+          ],
+          [
+            64,
+            3
+          ],
+          [
+            512,
+            9
+          ],
+          [
+            544,
+            -4
+          ],
+          [
+            1024,
+            7
+          ],
+          [
+            1056,
+            -8
+          ],
+          [
+            1088,
+            -6
+          ],
+          [
+            1536,
+            -8
+          ],
+          [
+            1568,
+            8
+          ],
+          [
+            2048,
+            3
+          ],
+          [
+            2112,
+            -6
+          ],
+          [
+            2176,
+            -2
+          ],
+          [
+            3072,
+            -6
+          ],
+          [
+            3136,
+            12
+          ],
+          [
+            4096,
+            6
+          ],
+          [
+            4104,
+            -12
+          ],
+          [
+            4112,
+            5
+          ],
+          [
+            4624,
+            -10
+          ],
+          [
+            8192,
+            -3
+          ],
+          [
+            8448,
+            1
+          ],
+          [
+            10368,
+            4
+          ],
+          [
+            16384,
+            -1
+          ],
+          [
+            24576,
+            2
+          ],
+          [
+            24832,
+            -2
+          ],
+          [
+            32768,
+            15
+          ],
+          [
+            32769,
+            -16
+          ],
+          [
+            32770,
+            -16
+          ],
+          [
+            32771,
+            32
+          ],
+          [
+            32772,
+            -7
+          ],
+          [
+            65536,
+            13
+          ],
+          [
+            65540,
+            -14
+          ],
+          [
+            65544,
+            -12
+          ],
+          [
+            69632,
+            -12
+          ],
+          [
+            69640,
+            24
+          ],
+          [
+            98304,
+            -14
+          ],
+          [
+            98308,
+            14
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          8,
+          7,
+          6,
+          5,
+          4,
+          3,
+          2,
+          1
+        ],
+        "permutation": [
+          6,
+          7,
+          3,
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "coefficient_abs_sum": 369
+      }
+    },
+    {
+      "name": "chain",
+      "mode": "lex-gauge",
+      "milliseconds": 38.952900000000014,
+      "record": {
+        "inputs": 9,
+        "n": 8,
+        "output": 5,
+        "flip": 0,
+        "terms": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            128
+          ],
+          [
+            2,
+            128
+          ],
+          [
+            3,
+            -256
+          ],
+          [
+            4,
+            64
+          ],
+          [
+            8,
+            32
+          ],
+          [
+            32,
+            8
+          ],
+          [
+            64,
+            4
+          ],
+          [
+            512,
+            24
+          ],
+          [
+            544,
+            -8
+          ],
+          [
+            1024,
+            12
+          ],
+          [
+            1056,
+            -16
+          ],
+          [
+            1088,
+            -8
+          ],
+          [
+            1536,
+            -16
+          ],
+          [
+            1568,
+            16
+          ],
+          [
+            2048,
+            4
+          ],
+          [
+            2112,
+            -8
+          ],
+          [
+            2176,
+            -2
+          ],
+          [
+            3072,
+            -8
+          ],
+          [
+            3136,
+            16
+          ],
+          [
+            4096,
+            32
+          ],
+          [
+            4104,
+            -64
+          ],
+          [
+            4112,
+            16
+          ],
+          [
+            4624,
+            -32
+          ],
+          [
+            8192,
+            -3
+          ],
+          [
+            8448,
+            1
+          ],
+          [
+            10368,
+            4
+          ],
+          [
+            16384,
+            -1
+          ],
+          [
+            24576,
+            2
+          ],
+          [
+            24832,
+            -2
+          ],
+          [
+            32768,
+            192
+          ],
+          [
+            32769,
+            -256
+          ],
+          [
+            32770,
+            -256
+          ],
+          [
+            32771,
+            512
+          ],
+          [
+            32772,
+            -64
+          ],
+          [
+            65536,
+            96
+          ],
+          [
+            65540,
+            -128
+          ],
+          [
+            65544,
+            -64
+          ],
+          [
+            69632,
+            -64
+          ],
+          [
+            69640,
+            128
+          ],
+          [
+            98304,
+            -128
+          ],
+          [
+            98308,
+            128
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          128,
+          64,
+          32,
+          16,
+          8,
+          4,
+          2,
+          1
+        ],
+        "permutation": [
+          6,
+          7,
+          3,
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "coefficient_abs_sum": 2934
+      }
+    },
+    {
+      "name": "chain",
+      "mode": "flat-gauge",
+      "milliseconds": 38.173699999999975,
+      "record": {
+        "inputs": 9,
+        "n": 8,
+        "output": 5,
+        "flip": 0,
+        "terms": [
+          [
+            0,
+            2
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            -2
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            32,
+            1
+          ],
+          [
+            64,
+            1
+          ],
+          [
+            512,
+            2
+          ],
+          [
+            544,
+            -1
+          ],
+          [
+            1024,
+            2
+          ],
+          [
+            1056,
+            -2
+          ],
+          [
+            1088,
+            -2
+          ],
+          [
+            1536,
+            -2
+          ],
+          [
+            1568,
+            2
+          ],
+          [
+            2048,
+            1
+          ],
+          [
+            2112,
+            -2
+          ],
+          [
+            2176,
+            -1
+          ],
+          [
+            3072,
+            -2
+          ],
+          [
+            3136,
+            4
+          ],
+          [
+            4096,
+            1
+          ],
+          [
+            4104,
+            -2
+          ],
+          [
+            4112,
+            1
+          ],
+          [
+            4624,
+            -2
+          ],
+          [
+            8192,
+            -2
+          ],
+          [
+            8448,
+            1
+          ],
+          [
+            10368,
+            2
+          ],
+          [
+            16384,
+            -1
+          ],
+          [
+            24576,
+            2
+          ],
+          [
+            24832,
+            -2
+          ],
+          [
+            32768,
+            2
+          ],
+          [
+            32769,
+            -2
+          ],
+          [
+            32770,
+            -2
+          ],
+          [
+            32771,
+            4
+          ],
+          [
+            32772,
+            -1
+          ],
+          [
+            65536,
+            2
+          ],
+          [
+            65540,
+            -2
+          ],
+          [
+            65544,
+            -2
+          ],
+          [
+            69632,
+            -2
+          ],
+          [
+            69640,
+            4
+          ],
+          [
+            98304,
+            -2
+          ],
+          [
+            98308,
+            2
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "permutation": [
+          6,
+          7,
+          3,
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0
+        ],
+        "coefficient_abs_sum": 76
+      }
+    },
+    {
+      "name": "diamond",
+      "mode": "dag",
+      "milliseconds": 37.31260000000003,
+      "record": {
+        "inputs": 10,
+        "n": 10,
+        "output": 9,
+        "flip": 0,
+        "terms": [
+          [
+            3,
+            9
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            12,
+            -18
+          ],
+          [
+            16,
+            5
+          ],
+          [
+            32,
+            5
+          ],
+          [
+            48,
+            -5
+          ],
+          [
+            64,
+            4
+          ],
+          [
+            512,
+            1
+          ],
+          [
+            1024,
+            13
+          ],
+          [
+            1027,
+            -18
+          ],
+          [
+            1088,
+            -8
+          ],
+          [
+            2048,
+            13
+          ],
+          [
+            2052,
+            -18
+          ],
+          [
+            2056,
+            -18
+          ],
+          [
+            2060,
+            36
+          ],
+          [
+            3072,
+            4
+          ],
+          [
+            4096,
+            9
+          ],
+          [
+            4112,
+            -10
+          ],
+          [
+            4128,
+            -10
+          ],
+          [
+            4144,
+            10
+          ],
+          [
+            6144,
+            -8
+          ],
+          [
+            8192,
+            7
+          ],
+          [
+            11264,
+            -8
+          ],
+          [
+            16384,
+            7
+          ],
+          [
+            18432,
+            -8
+          ],
+          [
+            20480,
+            -8
+          ],
+          [
+            22528,
+            16
+          ],
+          [
+            24576,
+            -3
+          ],
+          [
+            32768,
+            5
+          ],
+          [
+            40960,
+            -6
+          ],
+          [
+            49152,
+            -6
+          ],
+          [
+            57344,
+            6
+          ],
+          [
+            65536,
+            4
+          ],
+          [
+            65600,
+            -8
+          ],
+          [
+            65664,
+            3
+          ],
+          [
+            66560,
+            -8
+          ],
+          [
+            66624,
+            16
+          ],
+          [
+            131072,
+            5
+          ],
+          [
+            163840,
+            -2
+          ],
+          [
+            196736,
+            -6
+          ],
+          [
+            262144,
+            3
+          ],
+          [
+            262656,
+            -2
+          ],
+          [
+            294912,
+            -4
+          ],
+          [
+            393216,
+            -4
+          ],
+          [
+            425984,
+            4
+          ],
+          [
+            524288,
+            1
+          ],
+          [
+            524800,
+            -2
+          ],
+          [
+            786432,
+            -2
+          ],
+          [
+            786944,
+            4
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          9,
+          9,
+          5,
+          4,
+          4,
+          3,
+          4,
+          3,
+          2,
+          1
+        ],
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "coefficient_abs_sum": 398
+      }
+    },
+    {
+      "name": "diamond",
+      "mode": "dag-gauge",
+      "milliseconds": 38.76599999999997,
+      "record": {
+        "inputs": 10,
+        "n": 10,
+        "output": 5,
+        "flip": 1,
+        "terms": [
+          [
+            0,
+            8
+          ],
+          [
+            3,
+            9
+          ],
+          [
+            4,
+            9
+          ],
+          [
+            8,
+            9
+          ],
+          [
+            12,
+            -18
+          ],
+          [
+            16,
+            5
+          ],
+          [
+            32,
+            5
+          ],
+          [
+            48,
+            -5
+          ],
+          [
+            64,
+            4
+          ],
+          [
+            512,
+            -1
+          ],
+          [
+            1024,
+            4
+          ],
+          [
+            1088,
+            -8
+          ],
+          [
+            1152,
+            3
+          ],
+          [
+            2048,
+            -1
+          ],
+          [
+            4096,
+            5
+          ],
+          [
+            5248,
+            -6
+          ],
+          [
+            6144,
+            -2
+          ],
+          [
+            8192,
+            13
+          ],
+          [
+            8195,
+            -18
+          ],
+          [
+            8256,
+            -8
+          ],
+          [
+            9216,
+            -8
+          ],
+          [
+            9280,
+            16
+          ],
+          [
+            16384,
+            1
+          ],
+          [
+            16896,
+            2
+          ],
+          [
+            18432,
+            -4
+          ],
+          [
+            20480,
+            -4
+          ],
+          [
+            22528,
+            4
+          ],
+          [
+            32768,
+            -1
+          ],
+          [
+            33280,
+            2
+          ],
+          [
+            49152,
+            2
+          ],
+          [
+            49664,
+            -4
+          ],
+          [
+            65536,
+            9
+          ],
+          [
+            65552,
+            -10
+          ],
+          [
+            65568,
+            -10
+          ],
+          [
+            65584,
+            10
+          ],
+          [
+            131072,
+            13
+          ],
+          [
+            131076,
+            -18
+          ],
+          [
+            131080,
+            -18
+          ],
+          [
+            131084,
+            36
+          ],
+          [
+            139264,
+            -4
+          ],
+          [
+            196608,
+            -8
+          ],
+          [
+            262144,
+            -7
+          ],
+          [
+            264192,
+            6
+          ],
+          [
+            401408,
+            8
+          ],
+          [
+            524288,
+            4
+          ],
+          [
+            589824,
+            -8
+          ],
+          [
+            655360,
+            -8
+          ],
+          [
+            720896,
+            16
+          ],
+          [
+            786432,
+            3
+          ],
+          [
+            788480,
+            -6
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          9,
+          9,
+          5,
+          4,
+          4,
+          3,
+          4,
+          3,
+          2,
+          1
+        ],
+        "permutation": [
+          3,
+          7,
+          6,
+          8,
+          9,
+          1,
+          0,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "coefficient_abs_sum": 391
+      }
+    },
+    {
+      "name": "diamond",
+      "mode": "lex-gauge",
+      "milliseconds": 36.97820000000007,
+      "record": {
+        "inputs": 10,
+        "n": 10,
+        "output": 5,
+        "flip": 1,
+        "terms": [
+          [
+            0,
+            81
+          ],
+          [
+            3,
+            512
+          ],
+          [
+            4,
+            256
+          ],
+          [
+            8,
+            256
+          ],
+          [
+            12,
+            -512
+          ],
+          [
+            16,
+            128
+          ],
+          [
+            32,
+            128
+          ],
+          [
+            48,
+            -128
+          ],
+          [
+            64,
+            8
+          ],
+          [
+            512,
+            -1
+          ],
+          [
+            1024,
+            8
+          ],
+          [
+            1088,
+            -16
+          ],
+          [
+            1152,
+            4
+          ],
+          [
+            2048,
+            -14
+          ],
+          [
+            4096,
+            6
+          ],
+          [
+            5248,
+            -8
+          ],
+          [
+            6144,
+            -2
+          ],
+          [
+            8192,
+            520
+          ],
+          [
+            8195,
+            -1024
+          ],
+          [
+            8256,
+            -16
+          ],
+          [
+            9216,
+            -16
+          ],
+          [
+            9280,
+            32
+          ],
+          [
+            16384,
+            1
+          ],
+          [
+            16896,
+            2
+          ],
+          [
+            18432,
+            -4
+          ],
+          [
+            20480,
+            -4
+          ],
+          [
+            22528,
+            4
+          ],
+          [
+            32768,
+            -1
+          ],
+          [
+            33280,
+            2
+          ],
+          [
+            49152,
+            2
+          ],
+          [
+            49664,
+            -4
+          ],
+          [
+            65536,
+            160
+          ],
+          [
+            65552,
+            -256
+          ],
+          [
+            65568,
+            -256
+          ],
+          [
+            65584,
+            256
+          ],
+          [
+            131072,
+            288
+          ],
+          [
+            131076,
+            -512
+          ],
+          [
+            131080,
+            -512
+          ],
+          [
+            131084,
+            1024
+          ],
+          [
+            139264,
+            -64
+          ],
+          [
+            196608,
+            -64
+          ],
+          [
+            262144,
+            -80
+          ],
+          [
+            264192,
+            32
+          ],
+          [
+            401408,
+            128
+          ],
+          [
+            524288,
+            32
+          ],
+          [
+            589824,
+            -64
+          ],
+          [
+            655360,
+            -64
+          ],
+          [
+            720896,
+            128
+          ],
+          [
+            786432,
+            16
+          ],
+          [
+            788480,
+            -32
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          512,
+          256,
+          128,
+          64,
+          32,
+          16,
+          8,
+          4,
+          2,
+          1
+        ],
+        "permutation": [
+          3,
+          7,
+          6,
+          8,
+          9,
+          1,
+          0,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "coefficient_abs_sum": 7668
+      }
+    },
+    {
+      "name": "diamond",
+      "mode": "flat-gauge",
+      "milliseconds": 39.862000000000066,
+      "record": {
+        "inputs": 10,
+        "n": 10,
+        "output": 5,
+        "flip": 1,
+        "terms": [
+          [
+            0,
+            3
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            1
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            12,
+            -2
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            32,
+            1
+          ],
+          [
+            48,
+            -1
+          ],
+          [
+            64,
+            1
+          ],
+          [
+            512,
+            -1
+          ],
+          [
+            1024,
+            1
+          ],
+          [
+            1088,
+            -2
+          ],
+          [
+            1152,
+            1
+          ],
+          [
+            4096,
+            2
+          ],
+          [
+            5248,
+            -2
+          ],
+          [
+            6144,
+            -1
+          ],
+          [
+            8192,
+            2
+          ],
+          [
+            8195,
+            -2
+          ],
+          [
+            8256,
+            -2
+          ],
+          [
+            9216,
+            -2
+          ],
+          [
+            9280,
+            4
+          ],
+          [
+            16896,
+            2
+          ],
+          [
+            18432,
+            -2
+          ],
+          [
+            20480,
+            -2
+          ],
+          [
+            22528,
+            2
+          ],
+          [
+            32768,
+            -1
+          ],
+          [
+            33280,
+            2
+          ],
+          [
+            49152,
+            2
+          ],
+          [
+            49664,
+            -4
+          ],
+          [
+            65536,
+            2
+          ],
+          [
+            65552,
+            -2
+          ],
+          [
+            65568,
+            -2
+          ],
+          [
+            65584,
+            2
+          ],
+          [
+            131072,
+            2
+          ],
+          [
+            131076,
+            -2
+          ],
+          [
+            131080,
+            -2
+          ],
+          [
+            131084,
+            4
+          ],
+          [
+            139264,
+            -1
+          ],
+          [
+            196608,
+            -2
+          ],
+          [
+            262144,
+            -2
+          ],
+          [
+            264192,
+            2
+          ],
+          [
+            401408,
+            2
+          ],
+          [
+            524288,
+            1
+          ],
+          [
+            589824,
+            -2
+          ],
+          [
+            655360,
+            -2
+          ],
+          [
+            720896,
+            4
+          ],
+          [
+            786432,
+            1
+          ],
+          [
+            788480,
+            -2
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "permutation": [
+          3,
+          7,
+          6,
+          8,
+          9,
+          1,
+          0,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "coefficient_abs_sum": 90
+      }
+    },
+    {
+      "name": "fanout",
+      "mode": "dag",
+      "milliseconds": 36.665700000000136,
+      "record": {
+        "inputs": 8,
+        "n": 10,
+        "output": 9,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            17
+          ],
+          [
+            2,
+            17
+          ],
+          [
+            3,
+            -34
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            16,
+            4
+          ],
+          [
+            128,
+            2
+          ],
+          [
+            256,
+            25
+          ],
+          [
+            257,
+            -34
+          ],
+          [
+            258,
+            -34
+          ],
+          [
+            259,
+            68
+          ],
+          [
+            260,
+            4
+          ],
+          [
+            264,
+            -4
+          ],
+          [
+            272,
+            -8
+          ],
+          [
+            288,
+            4
+          ],
+          [
+            512,
+            7
+          ],
+          [
+            772,
+            -8
+          ],
+          [
+            1024,
+            7
+          ],
+          [
+            1032,
+            -8
+          ],
+          [
+            1280,
+            -8
+          ],
+          [
+            1288,
+            8
+          ],
+          [
+            1536,
+            -3
+          ],
+          [
+            2048,
+            7
+          ],
+          [
+            2064,
+            -8
+          ],
+          [
+            2304,
+            -8
+          ],
+          [
+            2320,
+            16
+          ],
+          [
+            4096,
+            7
+          ],
+          [
+            4384,
+            -8
+          ],
+          [
+            6144,
+            -6
+          ],
+          [
+            8192,
+            3
+          ],
+          [
+            8256,
+            2
+          ],
+          [
+            8704,
+            -6
+          ],
+          [
+            9216,
+            -6
+          ],
+          [
+            9728,
+            6
+          ],
+          [
+            16384,
+            5
+          ],
+          [
+            16512,
+            -2
+          ],
+          [
+            18432,
+            -6
+          ],
+          [
+            20480,
+            -6
+          ],
+          [
+            22528,
+            12
+          ],
+          [
+            32768,
+            3
+          ],
+          [
+            41024,
+            -4
+          ],
+          [
+            65536,
+            3
+          ],
+          [
+            65664,
+            -4
+          ],
+          [
+            81920,
+            -4
+          ],
+          [
+            82048,
+            4
+          ],
+          [
+            98304,
+            -2
+          ],
+          [
+            131072,
+            1
+          ],
+          [
+            163840,
+            -2
+          ],
+          [
+            196608,
+            -2
+          ],
+          [
+            229376,
+            4
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          17,
+          4,
+          4,
+          4,
+          4,
+          3,
+          3,
+          2,
+          2,
+          1
+        ],
+        "permutation": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "coefficient_abs_sum": 455
+      }
+    },
+    {
+      "name": "fanout",
+      "mode": "dag-gauge",
+      "milliseconds": 36.77190000000019,
+      "record": {
+        "inputs": 8,
+        "n": 10,
+        "output": 5,
+        "flip": 1,
+        "terms": [
+          [
+            0,
+            8
+          ],
+          [
+            1,
+            17
+          ],
+          [
+            2,
+            17
+          ],
+          [
+            3,
+            -34
+          ],
+          [
+            8,
+            4
+          ],
+          [
+            16,
+            -4
+          ],
+          [
+            128,
+            2
+          ],
+          [
+            256,
+            -1
+          ],
+          [
+            384,
+            -2
+          ],
+          [
+            512,
+            3
+          ],
+          [
+            576,
+            2
+          ],
+          [
+            1024,
+            1
+          ],
+          [
+            1600,
+            -4
+          ],
+          [
+            2048,
+            17
+          ],
+          [
+            2049,
+            -34
+          ],
+          [
+            2050,
+            -34
+          ],
+          [
+            2051,
+            68
+          ],
+          [
+            2052,
+            4
+          ],
+          [
+            2056,
+            -4
+          ],
+          [
+            2064,
+            8
+          ],
+          [
+            2080,
+            4
+          ],
+          [
+            4096,
+            1
+          ],
+          [
+            4224,
+            -4
+          ],
+          [
+            4352,
+            -4
+          ],
+          [
+            4480,
+            4
+          ],
+          [
+            5120,
+            2
+          ],
+          [
+            8192,
+            -1
+          ],
+          [
+            9216,
+            2
+          ],
+          [
+            12288,
+            2
+          ],
+          [
+            13312,
+            -4
+          ],
+          [
+            16384,
+            7
+          ],
+          [
+            16392,
+            -8
+          ],
+          [
+            16896,
+            -6
+          ],
+          [
+            18432,
+            -8
+          ],
+          [
+            18440,
+            8
+          ],
+          [
+            32768,
+            7
+          ],
+          [
+            33280,
+            -6
+          ],
+          [
+            34820,
+            -8
+          ],
+          [
+            49152,
+            -3
+          ],
+          [
+            49664,
+            6
+          ],
+          [
+            65536,
+            -7
+          ],
+          [
+            65552,
+            8
+          ],
+          [
+            65792,
+            6
+          ],
+          [
+            67584,
+            8
+          ],
+          [
+            67600,
+            -16
+          ],
+          [
+            131072,
+            1
+          ],
+          [
+            131328,
+            6
+          ],
+          [
+            133152,
+            -8
+          ],
+          [
+            196608,
+            6
+          ],
+          [
+            196864,
+            -12
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          17,
+          4,
+          4,
+          4,
+          4,
+          3,
+          3,
+          2,
+          2,
+          1
+        ],
+        "permutation": [
+          3,
+          7,
+          6,
+          8,
+          9,
+          1,
+          0,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "coefficient_abs_sum": 441
+      }
+    },
+    {
+      "name": "fanout",
+      "mode": "lex-gauge",
+      "milliseconds": 36.829300000000174,
+      "record": {
+        "inputs": 8,
+        "n": 10,
+        "output": 5,
+        "flip": 1,
+        "terms": [
+          [
+            0,
+            73
+          ],
+          [
+            1,
+            512
+          ],
+          [
+            2,
+            512
+          ],
+          [
+            3,
+            -1024
+          ],
+          [
+            8,
+            128
+          ],
+          [
+            16,
+            -64
+          ],
+          [
+            128,
+            2
+          ],
+          [
+            256,
+            -6
+          ],
+          [
+            384,
+            -2
+          ],
+          [
+            512,
+            16
+          ],
+          [
+            576,
+            4
+          ],
+          [
+            1024,
+            3
+          ],
+          [
+            1600,
+            -8
+          ],
+          [
+            2048,
+            576
+          ],
+          [
+            2049,
+            -1024
+          ],
+          [
+            2050,
+            -1024
+          ],
+          [
+            2051,
+            2048
+          ],
+          [
+            2052,
+            256
+          ],
+          [
+            2056,
+            -128
+          ],
+          [
+            2064,
+            128
+          ],
+          [
+            2080,
+            32
+          ],
+          [
+            4096,
+            1
+          ],
+          [
+            4224,
+            -4
+          ],
+          [
+            4352,
+            -4
+          ],
+          [
+            4480,
+            4
+          ],
+          [
+            5120,
+            2
+          ],
+          [
+            8192,
+            -1
+          ],
+          [
+            9216,
+            2
+          ],
+          [
+            12288,
+            2
+          ],
+          [
+            13312,
+            -4
+          ],
+          [
+            16384,
+            144
+          ],
+          [
+            16392,
+            -256
+          ],
+          [
+            16896,
+            -32
+          ],
+          [
+            18432,
+            -256
+          ],
+          [
+            18440,
+            256
+          ],
+          [
+            32768,
+            272
+          ],
+          [
+            33280,
+            -32
+          ],
+          [
+            34820,
+            -512
+          ],
+          [
+            49152,
+            -16
+          ],
+          [
+            49664,
+            32
+          ],
+          [
+            65536,
+            -72
+          ],
+          [
+            65552,
+            128
+          ],
+          [
+            65792,
+            16
+          ],
+          [
+            67584,
+            128
+          ],
+          [
+            67600,
+            -256
+          ],
+          [
+            131072,
+            24
+          ],
+          [
+            131328,
+            16
+          ],
+          [
+            133152,
+            -64
+          ],
+          [
+            196608,
+            16
+          ],
+          [
+            196864,
+            -32
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          512,
+          256,
+          128,
+          64,
+          32,
+          16,
+          8,
+          4,
+          2,
+          1
+        ],
+        "permutation": [
+          3,
+          7,
+          6,
+          8,
+          9,
+          1,
+          0,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "coefficient_abs_sum": 10154
+      }
+    },
+    {
+      "name": "fanout",
+      "mode": "flat-gauge",
+      "milliseconds": 37.32349999999984,
+      "record": {
+        "inputs": 8,
+        "n": 10,
+        "output": 5,
+        "flip": 1,
+        "terms": [
+          [
+            0,
+            3
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            2,
+            1
+          ],
+          [
+            3,
+            -2
+          ],
+          [
+            8,
+            1
+          ],
+          [
+            16,
+            -1
+          ],
+          [
+            128,
+            1
+          ],
+          [
+            384,
+            -1
+          ],
+          [
+            512,
+            1
+          ],
+          [
+            576,
+            1
+          ],
+          [
+            1600,
+            -2
+          ],
+          [
+            2048,
+            1
+          ],
+          [
+            2049,
+            -2
+          ],
+          [
+            2050,
+            -2
+          ],
+          [
+            2051,
+            4
+          ],
+          [
+            2052,
+            1
+          ],
+          [
+            2056,
+            -1
+          ],
+          [
+            2064,
+            2
+          ],
+          [
+            2080,
+            1
+          ],
+          [
+            4224,
+            -2
+          ],
+          [
+            4352,
+            -2
+          ],
+          [
+            4480,
+            2
+          ],
+          [
+            5120,
+            2
+          ],
+          [
+            8192,
+            -1
+          ],
+          [
+            9216,
+            2
+          ],
+          [
+            12288,
+            2
+          ],
+          [
+            13312,
+            -4
+          ],
+          [
+            16384,
+            2
+          ],
+          [
+            16392,
+            -2
+          ],
+          [
+            16896,
+            -2
+          ],
+          [
+            18432,
+            -2
+          ],
+          [
+            18440,
+            2
+          ],
+          [
+            32768,
+            2
+          ],
+          [
+            33280,
+            -2
+          ],
+          [
+            34820,
+            -2
+          ],
+          [
+            49152,
+            -1
+          ],
+          [
+            49664,
+            2
+          ],
+          [
+            65536,
+            -2
+          ],
+          [
+            65552,
+            2
+          ],
+          [
+            65792,
+            2
+          ],
+          [
+            67584,
+            2
+          ],
+          [
+            67600,
+            -4
+          ],
+          [
+            131328,
+            2
+          ],
+          [
+            133152,
+            -2
+          ],
+          [
+            196608,
+            2
+          ],
+          [
+            196864,
+            -4
+          ]
+        ]
+      },
+      "certificate": {
+        "weights": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "permutation": [
+          3,
+          7,
+          6,
+          8,
+          9,
+          1,
+          0,
+          2,
+          4,
+          5
+        ],
+        "complements": [
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "coefficient_abs_sum": 87
+      }
+    }
+  ],
+  "attacks": [
+    {
+      "file": "chain-dag.wasm",
+      "milliseconds": 61.138499999999986,
+      "model": {
+        "inputs": 9,
+        "n": 8,
+        "output": 16,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 9,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              2,
+              9
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              3,
+              10
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              4,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              5,
+              12
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              6,
+              13
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              7,
+              14
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              8,
+              15
+            ],
+            "truth": 14,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 116,
+        "max_support": 4,
+        "milliseconds": 0.3214000000000272
+      },
+      "family_checked": true
+    },
+    {
+      "file": "chain-dag-O3.wasm",
+      "milliseconds": 77.4398,
+      "model": {
+        "inputs": 9,
+        "n": 8,
+        "output": 16,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 9,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              2,
+              9
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              3,
+              10
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              4,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              5,
+              12
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              6,
+              13
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              7,
+              14
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              8,
+              15
+            ],
+            "truth": 14,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 116,
+        "max_support": 4,
+        "milliseconds": 0.31320000000001347
+      },
+      "family_checked": true
+    },
+    {
+      "file": "chain-dag-gauge.wasm",
+      "milliseconds": 61.875800000000034,
+      "model": {
+        "inputs": 9,
+        "n": 8,
+        "output": 14,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 15,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              2,
+              15
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              3,
+              16
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              4,
+              12
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              5,
+              9
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              6,
+              10
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              7,
+              11
+            ],
+            "truth": 7,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              8,
+              13
+            ],
+            "truth": 11,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 116,
+        "max_support": 4,
+        "milliseconds": 0.36559999999996595
+      },
+      "family_checked": true
+    },
+    {
+      "file": "chain-dag-gauge-O3.wasm",
+      "milliseconds": 79.75809999999994,
+      "model": {
+        "inputs": 9,
+        "n": 8,
+        "output": 14,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 15,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              2,
+              15
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              3,
+              16
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              4,
+              12
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              5,
+              9
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              6,
+              10
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              7,
+              11
+            ],
+            "truth": 7,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              8,
+              13
+            ],
+            "truth": 11,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 116,
+        "max_support": 4,
+        "milliseconds": 0.3087000000000506
+      },
+      "family_checked": true
+    },
+    {
+      "file": "chain-lex-gauge.wasm",
+      "milliseconds": 62.37740000000003,
+      "model": {
+        "inputs": 9,
+        "n": 8,
+        "output": 14,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 15,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              2,
+              15
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              3,
+              16
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              4,
+              12
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              5,
+              9
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              6,
+              10
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              7,
+              11
+            ],
+            "truth": 7,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              8,
+              13
+            ],
+            "truth": 11,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 116,
+        "max_support": 4,
+        "milliseconds": 0.3058999999999701
+      },
+      "family_checked": true
+    },
+    {
+      "file": "chain-lex-gauge-O3.wasm",
+      "milliseconds": 78.67099999999994,
+      "model": {
+        "inputs": 9,
+        "n": 8,
+        "output": 14,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 15,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              2,
+              15
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              3,
+              16
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              4,
+              12
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              5,
+              9
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              6,
+              10
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              7,
+              11
+            ],
+            "truth": 7,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              8,
+              13
+            ],
+            "truth": 11,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 116,
+        "max_support": 4,
+        "milliseconds": 0.3090999999999511
+      },
+      "family_checked": true
+    },
+    {
+      "file": "diamond-dag.wasm",
+      "milliseconds": 63.23950000000011,
+      "model": {
+        "inputs": 10,
+        "n": 10,
+        "output": 19,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 10,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 6
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 6,
+            "before_support": 6
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              10,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              11,
+              12
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              6,
+              10
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              13,
+              14
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              7,
+              16
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 18,
+            "args": [
+              15,
+              17
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 19,
+            "args": [
+              9,
+              18
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 244,
+        "max_support": 6,
+        "milliseconds": 0.5865000000000453
+      },
+      "family_checked": true
+    },
+    {
+      "file": "diamond-dag-O3.wasm",
+      "milliseconds": 79.69200000000009,
+      "model": {
+        "inputs": 10,
+        "n": 10,
+        "output": 19,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 10,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 6
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 6,
+            "before_support": 6
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              10,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              11,
+              12
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              6,
+              10
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              13,
+              14
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              7,
+              16
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 18,
+            "args": [
+              15,
+              17
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 19,
+            "args": [
+              9,
+              18
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 244,
+        "max_support": 6,
+        "milliseconds": 0.6112000000000339
+      },
+      "family_checked": true
+    },
+    {
+      "file": "diamond-dag-gauge.wasm",
+      "milliseconds": 63.4922,
+      "model": {
+        "inputs": 10,
+        "n": 10,
+        "output": 15,
+        "flip": 1,
+        "rules": [
+          {
+            "coordinate": 13,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 6
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 6,
+            "before_support": 6
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              6,
+              13
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 18,
+            "args": [
+              13,
+              17
+            ],
+            "truth": 7,
+            "before_support": 4
+          },
+          {
+            "coordinate": 19,
+            "args": [
+              16,
+              17
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              18,
+              19
+            ],
+            "truth": 13,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              7,
+              10
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              11,
+              12
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              9,
+              14
+            ],
+            "truth": 9,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 244,
+        "max_support": 6,
+        "milliseconds": 0.6123000000000101
+      },
+      "family_checked": true
+    },
+    {
+      "file": "diamond-dag-gauge-O3.wasm",
+      "milliseconds": 78.31330000000003,
+      "model": {
+        "inputs": 10,
+        "n": 10,
+        "output": 15,
+        "flip": 1,
+        "rules": [
+          {
+            "coordinate": 13,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 6
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 6,
+            "before_support": 6
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              6,
+              13
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 18,
+            "args": [
+              13,
+              17
+            ],
+            "truth": 7,
+            "before_support": 4
+          },
+          {
+            "coordinate": 19,
+            "args": [
+              16,
+              17
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              18,
+              19
+            ],
+            "truth": 13,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              7,
+              10
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              11,
+              12
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              9,
+              14
+            ],
+            "truth": 9,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 244,
+        "max_support": 6,
+        "milliseconds": 0.5854000000000692
+      },
+      "family_checked": true
+    },
+    {
+      "file": "diamond-lex-gauge.wasm",
+      "milliseconds": 64.51289999999999,
+      "model": {
+        "inputs": 10,
+        "n": 10,
+        "output": 15,
+        "flip": 1,
+        "rules": [
+          {
+            "coordinate": 13,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 6
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 6,
+            "before_support": 6
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              6,
+              13
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 18,
+            "args": [
+              13,
+              17
+            ],
+            "truth": 7,
+            "before_support": 4
+          },
+          {
+            "coordinate": 19,
+            "args": [
+              16,
+              17
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              18,
+              19
+            ],
+            "truth": 13,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              7,
+              10
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              11,
+              12
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              9,
+              14
+            ],
+            "truth": 9,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 244,
+        "max_support": 6,
+        "milliseconds": 0.5850000000000577
+      },
+      "family_checked": true
+    },
+    {
+      "file": "diamond-lex-gauge-O3.wasm",
+      "milliseconds": 78.63189999999997,
+      "model": {
+        "inputs": 10,
+        "n": 10,
+        "output": 15,
+        "flip": 1,
+        "rules": [
+          {
+            "coordinate": 13,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 6
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 6,
+            "before_support": 6
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              6,
+              13
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 18,
+            "args": [
+              13,
+              17
+            ],
+            "truth": 7,
+            "before_support": 4
+          },
+          {
+            "coordinate": 19,
+            "args": [
+              16,
+              17
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              18,
+              19
+            ],
+            "truth": 13,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              7,
+              10
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              11,
+              12
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              9,
+              14
+            ],
+            "truth": 9,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 244,
+        "max_support": 6,
+        "milliseconds": 0.5980000000000985
+      },
+      "family_checked": true
+    },
+    {
+      "file": "fanout-dag.wasm",
+      "milliseconds": 64.33299999999997,
+      "model": {
+        "inputs": 8,
+        "n": 10,
+        "output": 17,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 8,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 10
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              2,
+              8
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              3,
+              8
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              4,
+              8
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              5,
+              8
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              9,
+              10
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              11,
+              12
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              6,
+              13
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              7,
+              14
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              15,
+              16
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 1156,
+        "max_support": 10,
+        "milliseconds": 3.180399999999972
+      },
+      "family_checked": true
+    },
+    {
+      "file": "fanout-dag-O3.wasm",
+      "milliseconds": 80.4882,
+      "model": {
+        "inputs": 8,
+        "n": 10,
+        "output": 17,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 8,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 10
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              2,
+              8
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              3,
+              8
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 11,
+            "args": [
+              4,
+              8
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              5,
+              8
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              9,
+              10
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              11,
+              12
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              6,
+              13
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              7,
+              14
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              15,
+              16
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 1156,
+        "max_support": 10,
+        "milliseconds": 3.1870999999998872
+      },
+      "family_checked": true
+    },
+    {
+      "file": "fanout-dag-gauge.wasm",
+      "milliseconds": 63.74179999999985,
+      "model": {
+        "inputs": 8,
+        "n": 10,
+        "output": 13,
+        "flip": 1,
+        "rules": [
+          {
+            "coordinate": 11,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 10
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              3,
+              11
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              2,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              4,
+              11
+            ],
+            "truth": 9,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              5,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              16,
+              17
+            ],
+            "truth": 9,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              14,
+              15
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              6,
+              9
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              7,
+              8
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              10,
+              12
+            ],
+            "truth": 9,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 1156,
+        "max_support": 10,
+        "milliseconds": 3.235600000000005
+      },
+      "family_checked": true
+    },
+    {
+      "file": "fanout-dag-gauge-O3.wasm",
+      "milliseconds": 82.8253000000001,
+      "model": {
+        "inputs": 8,
+        "n": 10,
+        "output": 13,
+        "flip": 1,
+        "rules": [
+          {
+            "coordinate": 11,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 10
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              3,
+              11
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              2,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              4,
+              11
+            ],
+            "truth": 9,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              5,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              16,
+              17
+            ],
+            "truth": 9,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              14,
+              15
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              6,
+              9
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              7,
+              8
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              10,
+              12
+            ],
+            "truth": 9,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 1156,
+        "max_support": 10,
+        "milliseconds": 3.2735999999999876
+      },
+      "family_checked": true
+    },
+    {
+      "file": "fanout-lex-gauge.wasm",
+      "milliseconds": 65.27020000000006,
+      "model": {
+        "inputs": 8,
+        "n": 10,
+        "output": 13,
+        "flip": 1,
+        "rules": [
+          {
+            "coordinate": 11,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 10
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              3,
+              11
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              2,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              4,
+              11
+            ],
+            "truth": 9,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              5,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              16,
+              17
+            ],
+            "truth": 9,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              14,
+              15
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              6,
+              9
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              7,
+              8
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              10,
+              12
+            ],
+            "truth": 9,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 1156,
+        "max_support": 10,
+        "milliseconds": 3.237399999999724
+      },
+      "family_checked": true
+    },
+    {
+      "file": "fanout-lex-gauge-O3.wasm",
+      "milliseconds": 80.66400000000007,
+      "model": {
+        "inputs": 8,
+        "n": 10,
+        "output": 13,
+        "flip": 1,
+        "rules": [
+          {
+            "coordinate": 11,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 10
+          },
+          {
+            "coordinate": 14,
+            "args": [
+              3,
+              11
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 15,
+            "args": [
+              2,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 16,
+            "args": [
+              4,
+              11
+            ],
+            "truth": 9,
+            "before_support": 4
+          },
+          {
+            "coordinate": 17,
+            "args": [
+              5,
+              11
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              16,
+              17
+            ],
+            "truth": 9,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              14,
+              15
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 10,
+            "args": [
+              6,
+              9
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 12,
+            "args": [
+              7,
+              8
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 13,
+            "args": [
+              10,
+              12
+            ],
+            "truth": 9,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 1156,
+        "max_support": 10,
+        "milliseconds": 3.118199999999849
+      },
+      "family_checked": true
+    }
+  ]
+}

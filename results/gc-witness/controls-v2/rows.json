@@ -1,0 +1,162 @@
+[
+  {
+    "name": "empty-array-get",
+    "instrumentation": {
+      "array_length_mask": null,
+      "counter_global_base": 0,
+      "sites": [
+        1,
+        1
+      ],
+      "status": "instrumented"
+    },
+    "expected": "trap",
+    "expected_counts": [
+      1,
+      0
+    ],
+    "raw": {
+      "status": "trap",
+      "error": "error while executing at wasm backtrace:\n    0:     0x2d - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: out of bounds array access\n"
+    },
+    "counted": {
+      "status": "trap",
+      "error": "error while executing at wasm backtrace:\n    0:     0x62 - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: out of bounds array access\n",
+      "counts": [
+        1,
+        0
+      ]
+    }
+  },
+  {
+    "name": "successful-get",
+    "instrumentation": {
+      "array_length_mask": null,
+      "counter_global_base": 0,
+      "sites": [
+        2,
+        1
+      ],
+      "status": "instrumented"
+    },
+    "expected": "ok",
+    "expected_counts": [
+      2,
+      1
+    ],
+    "raw": {
+      "status": "ok",
+      "result": 1
+    },
+    "counted": {
+      "status": "ok",
+      "result": 1,
+      "counts": [
+        2,
+        1
+      ]
+    }
+  },
+  {
+    "name": "null-seed",
+    "instrumentation": {
+      "array_length_mask": null,
+      "counter_global_base": 0,
+      "sites": [
+        1,
+        0
+      ],
+      "status": "instrumented"
+    },
+    "expected": "trap",
+    "expected_counts": [
+      0,
+      0
+    ],
+    "raw": {
+      "status": "trap",
+      "error": "error while executing at wasm backtrace:\n    0:     0x2a - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: null reference\n"
+    },
+    "counted": {
+      "status": "trap",
+      "error": "error while executing at wasm backtrace:\n    0:     0x58 - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: null reference\n",
+      "counts": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "name": "post-construction-trap",
+    "instrumentation": {
+      "array_length_mask": null,
+      "counter_global_base": 0,
+      "sites": [
+        1,
+        0
+      ],
+      "status": "instrumented"
+    },
+    "expected": "trap",
+    "expected_counts": [
+      1,
+      0
+    ],
+    "raw": {
+      "status": "trap",
+      "error": "error while executing at wasm backtrace:\n    0:     0x2c - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: wasm `unreachable` instruction executed\n"
+    },
+    "counted": {
+      "status": "trap",
+      "error": "error while executing at wasm backtrace:\n    0:     0x61 - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: wasm `unreachable` instruction executed\n",
+      "counts": [
+        1,
+        0
+      ]
+    }
+  },
+  {
+    "name": "function-is-not-its-result",
+    "instrumentation": {
+      "array_length_mask": null,
+      "counter_global_base": 0,
+      "sites": [
+        0,
+        0
+      ],
+      "status": "instrumented"
+    },
+    "expected": "trap",
+    "expected_counts": [
+      0,
+      0
+    ],
+    "raw": {
+      "status": "trap",
+      "error": "error while executing at wasm backtrace:\n    0:     0x35 - <unknown>!float\n    1:     0x3b - <unknown>!<wasm function 1>\n\nCaused by:\n    wasm trap: wasm `unreachable` instruction executed\n"
+    },
+    "counted": {
+      "status": "trap",
+      "error": "error while executing at wasm backtrace:\n    0:     0x63 - <unknown>!float\n    1:     0x69 - <unknown>!<wasm function 1>\n\nCaused by:\n    wasm trap: wasm `unreachable` instruction executed\n",
+      "counts": [
+        0,
+        0
+      ]
+    }
+  },
+  {
+    "name": "array-default-nonnull",
+    "status": "rejected",
+    "reason": "validation: invalid `array.new_default`: (ref (id 0)) field is not defaultable (at offset 0x29)"
+  },
+  {
+    "name": "inheritance",
+    "status": "rejected",
+    "reason": "non-final, subtype or shared type unsupported"
+  },
+  {
+    "name": "abstract-nonnull",
+    "status": "rejected",
+    "reason": "non-null abstract reference"
+  }
+]

@@ -1,0 +1,23 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_4
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_12
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export ref_func_target_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func
+[fuzz-exec] note result: func => -268435455
+[fuzz-exec] export func_10
+[fuzz-exec] note result: func_10 => object(null)
+[fuzz-exec] export func_10_invoker
+[fuzz-exec] export func_12
+[fuzz-exec] note result: func_12 => object(object(object(null)))
+[fuzz-exec] export func_12_invoker
+[fuzz-exec] export func_14
+exception thrown: RuntimeError: illegal cast
+[fuzz-exec] export func_14_invoker
+exception thrown: RuntimeError: illegal cast
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"ref_func_target_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_10","known":true,"status":"returned","unsupported":[]},{"name":"func_10_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_12","known":true,"status":"returned","unsupported":[]},{"name":"func_12_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_14","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: illegal cast"},{"name":"func_14_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: illegal cast"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null},{"id":3,"channel":"printed","name":null,"slot":null},{"id":4,"channel":"printed","name":null,"slot":null},{"id":5,"channel":"multi","name":"func_12","slot":0},{"id":6,"channel":"multi","name":"func_12","slot":1}]}

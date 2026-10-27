@@ -1,0 +1,11 @@
+# Bの第三者ライブラリ適用試験
+
+2026-10-24、取得・実行前の計画。対象はDaninet/hash-wasm 4.12.0の公開npm成果物。公式READMEが個別Wasm binaryとstate save/loadを説明するため、第三者コードへの適用範囲と、既存の小さいstate保存に対する必要性を点検する。パッケージのinstall/build scriptは実行しない。
+
+Adler32、CRC32、MD5、SHA1、SHA256、SHA512、xxHash32、xxHash64の8種を固定し、Hash_Init/Update/Finalの書込み上界を検査する。一般のexport signatureへ解析器を拡張せず、3個のi32を受け取る薄いcallback wrapperを追加して既存のvoid関数を呼ぶ。対象がこの範囲外なら非対応と記録する。元の関数本体の命令を変更しない。wrapper付与前後のdigestを比較し、暗号安全性の評価にはしない。
+
+部分退避の受理率、拒否・全量fallbackの理由、state範囲内の保存byte数と実変更byte数を記録する。全memoryではなく、libraryが公開するHash_GetState/STATE_SIZEによる旧stateを必要とするホスト契約を主対照にする。state復元はBの責務ではない。ホストが任意の期間保持するsave()では全stateのmaterializeが必要であり、短命の旧値viewと同じAPIだとは扱わない。
+
+入力は空、1/31/63/64/65/127/128/129/1024/16384byteとseed付き乱数。対象関数のpre/postをNodeで実行し、退避から復元したviewを全コピーoracleと比較する。解析器の未対応をプログラムの欠陥や防御成功と数えない。これは第三者libraryの本体を研究harnessから呼ぶ試験であり、第三者の実アプリケーションへ組み込んだ評価ではない。
+
+部分退避が得られなければ、性能の追加反復よりcoverage不足を結論として残す。既存state saveの方が用途をよく満たす場合も明記する。

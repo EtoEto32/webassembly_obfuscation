@@ -1,0 +1,127 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 1,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 2,
+      "expression": [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 3,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 4,
+      "expression": [
+        "add",
+        [
+          "mul",
+          "v0",
+          "v1"
+        ],
+        "v2"
+      ],
+      "opcode": "i32.add"
+    },
+    {
+      "id": 5,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 6,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 7,
+      "expression": [
+        "sub",
+        "v0",
+        "v2"
+      ],
+      "opcode": "i32.sub"
+    },
+    {
+      "id": 8,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 9,
+      "expression": [
+        "add",
+        [
+          "sub",
+          "v0",
+          "v2"
+        ],
+        "v1"
+      ],
+      "opcode": "i32.add"
+    },
+    {
+      "id": 10,
+      "expression": [
+        "mul",
+        [
+          "add",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ],
+          "v2"
+        ],
+        [
+          "add",
+          [
+            "sub",
+            "v0",
+            "v2"
+          ],
+          "v1"
+        ]
+      ],
+      "opcode": "i32.mul"
+    }
+  ],
+  "output_expression": [
+    "mul",
+    [
+      "add",
+      [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      "v2"
+    ],
+    [
+      "add",
+      [
+        "sub",
+        "v0",
+        "v2"
+      ],
+      "v1"
+    ]
+  ],
+  "inputSHA256": "bf1e7edeccd9e9e028e8ffa1d9ca1c61bb3844a6082a0d9a516b7d0e3c5c4bcd",
+  "probeSHA256": "88d981af3d1290a8337066f5521e220eaf487d3fed0c40c1cfd7640e54eda3c7",
+  "model": "all scalar i32 values of exported straight-line run, after Binaryen; not native JIT traces"
+}

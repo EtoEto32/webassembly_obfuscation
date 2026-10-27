@@ -1,0 +1,17 @@
+[fuzz-exec] export func
+[fuzz-exec] note result: func => null
+[fuzz-exec] export func_invoker
+[fuzz-exec] export func_12
+[fuzz-exec] note result: func_12 => 2
+[fuzz-exec] export func_14
+exception thrown: TypeError: can't convert null to BigInt
+[fuzz-exec] export func_16
+[fuzz-exec] note result: func_16 => -9223372036854776000
+[fuzz-exec] export func_16_invoker
+[fuzz-exec] export func_18
+[LoggingExternalInterface logging function]
+[fuzz-exec] note result: func_18 => NaN
+[fuzz-exec] export func_18_invoker
+[LoggingExternalInterface logging function]
+[fuzz-exec] export func_20_invoker
+[caller-study] {"caller":"null","observer":"flat","calls":[{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_12","known":true,"status":"returned","unsupported":[]},{"name":"func_14","known":true,"status":"type-error","unsupported":[],"error":"TypeError: can't convert null to BigInt"},{"name":"func_16","known":true,"status":"returned","unsupported":[]},{"name":"func_16_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_18","known":true,"status":"returned","unsupported":[]},{"name":"func_18_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_20_invoker","known":true,"status":"returned","unsupported":[]}],"events":0,"distinct":0,"trace":[],"multi_slots":0}

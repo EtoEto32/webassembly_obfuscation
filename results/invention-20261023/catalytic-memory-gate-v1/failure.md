@@ -1,0 +1,5 @@
+# 除外した開発実行
+
+2026-10-23。and-borrowed-O3の回復時にIndexErrorで終了。WABTのfolded WATはstoreをまたぐoperandをstack上に残すため、全演算を完全な二分木と仮定した初期readerが不正だった。
+
+この実行は正当性・解析耐性の集計から除外する。難読化の保護効果には数えない。readerをWasmのoperand stackどおりに処理するよう直し、v2を新規出力先で実行する。既存ファイルは保存した。

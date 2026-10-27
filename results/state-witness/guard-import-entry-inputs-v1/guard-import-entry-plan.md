@@ -1,0 +1,9 @@
+# entry一回の再開とhost importの観測
+
+2026-10-24。公開memory書込み実験には、wasm-migrateの非entry API呼出しが作者サポート範囲か未確認という限界が残る。これを除けるか調べるため、診断を元entryの中へ入れ、元からあるhost importの効果として公開memoryへ書く別実験を行う。
+
+entryはAをdrop、inert loop、Bをdrop、最後のloop内でhost.touch、Aのinit、常に範囲外のBのinitを行う。host.touchは呼出しを記録し、書込み有効時だけguest memory[7]を0にする。全て一つのentryと公開memoryだけで観測し、非entry関数は作らない。通常実行と中断復元で、hostの呼出し列・entryのreturn/trap・元guest memoryを比較する。移行のためのshould_migrateによるtrapは最終guest trapと分ける。
+
+Weaveは公開service APIでhostのcall traceをsnapshot/restoreする。restore段階ではtraceだけを復元し、guest memoryへは副作用を出さない。migrateのlocal adapterでもcall traceを保存し、fresh instanceへ引き継ぐ。外部I/Oサービスの一般的な移行ではなく、完全に管理したローカルhost効果である。
+
+移行位置ごとにhost効果の再実行・skipが起きる可能性がある。発生した場合、寿命差によるmemory差と分け、host traceが一致しない条件を寿命差だけの証拠にしない。無移行で一致しない変換は復元比較から除く。型・imports未対応、invalid output、未到達、timeoutは別分類にする。このimportを含む元moduleは現行Kのconstant bulk parser対象外であり、解析器が直接受理したとは主張しない。

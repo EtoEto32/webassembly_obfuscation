@@ -1,0 +1,596 @@
+{
+  "z3": "4.13.3",
+  "rows": [
+    {
+      "name": "masked-one",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 42
+              },
+              "failed": {
+                "outcome": false,
+                "memory": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 40
+              },
+              "failed": {
+                "outcome": false,
+                "memory": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "copy-predecessor",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "copy",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "copy",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 20,
+                "1": 0
+              },
+              "failed": {
+                "outcome": false,
+                "memory": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 65,
+                "1": 190
+              },
+              "failed": {
+                "outcome": false,
+                "memory": false,
+                "postcondition": true
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "copy-chain",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "copy",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "copy2",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "copy",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "copy2",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 40,
+                "1": 0,
+                "2": 0
+              },
+              "failed": {
+                "outcome": false,
+                "memory": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 0,
+              "api": "copy2",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy2",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 0,
+              "api": "copy2",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 65,
+                "1": 65,
+                "2": 190
+              },
+              "failed": {
+                "outcome": false,
+                "memory": false,
+                "postcondition": true
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy2",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bad-fill",
+      "status": "impossible",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "write",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "write",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "name": "good-fill",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "write",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "write",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 20
+              },
+              "failed": {
+                "outcome": false,
+                "memory": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "write",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "write",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 40
+              },
+              "failed": {
+                "outcome": false,
+                "memory": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "write",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "write",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "drop-first",
+      "status": "unconditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "name": "unmasked",
+      "status": "impossible",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "name": "shared-oob",
+      "status": "unconditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "name": "zero-source",
+      "status": "unconditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "name": "zero-nonzero-source",
+      "status": "impossible",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "name": "overlap",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "copy",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "copy",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 52,
+                "1": 0,
+                "2": 0,
+                "3": 0
+              },
+              "failed": {
+                "outcome": false,
+                "memory": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "sat",
+              "counterexampleCells": {
+                "0": 65,
+                "1": 65,
+                "2": 65,
+                "3": 190
+              },
+              "failed": {
+                "outcome": false,
+                "memory": false,
+                "postcondition": true
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "unsigned-oob",
+      "status": "unconditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    }
+  ],
+  "checkedCertificates": 12,
+  "unsatObligations": 31,
+  "rejectedWeakenings": 10,
+  "sourceManifestSha256": "07f4de2eb011bca9f97f3dd07fca6a28340983ae7c047236ce602b03a1bdc890",
+  "scope": "Shared parser, independent array effect encoding. Sufficient inductive certificates, not a machine-checked metatheorem or weakestness proof."
+}

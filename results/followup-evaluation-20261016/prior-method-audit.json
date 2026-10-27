@@ -1,0 +1,36 @@
+{
+  "status": "saved-primary-blobs-match",
+  "source_revision": "009e9e7bd812cbecacb506507e36834ae3ecddc4",
+  "files": [
+    {
+      "path": "data/upstream/source/optimization/opt/main.py",
+      "bytes": 1694,
+      "git_blob_sha1": "6571b1f8c4adac95103d365f382e77dd9b028e5c",
+      "sha256": "b36455bd1aa78068bf1fa1e83464f87b8fadc641a86b7d011e4d68c04823402b",
+      "source_url": "https://github.com/HakonHarnes/wasm-obf/blob/009e9e7bd812cbecacb506507e36834ae3ecddc4/optimization/opt/main.py"
+    },
+    {
+      "path": "data/upstream/source/optimization/opt/Dockerfile",
+      "bytes": 707,
+      "git_blob_sha1": "34c6c4686593b170190b79212246e5ca642502d3",
+      "sha256": "a7cca6250f30f8f26c190017c1b2ccfe6b56b8631ba046233275a1640cb4537e",
+      "source_url": "https://github.com/HakonHarnes/wasm-obf/blob/009e9e7bd812cbecacb506507e36834ae3ecddc4/optimization/opt/Dockerfile"
+    },
+    {
+      "path": "data/upstream/source/README.md",
+      "bytes": 3694,
+      "git_blob_sha1": "5dae51673d4852adc6ccd6b0b54ceb0528171015",
+      "sha256": "b415992e44652c7436e64d806d5cc9366945009cf9020c97820e6158cb158535",
+      "source_url": "https://github.com/HakonHarnes/wasm-obf/blob/009e9e7bd812cbecacb506507e36834ae3ecddc4/README.md"
+    }
+  ],
+  "tree_receipt_sha256": "54ba4f0aa969680fbdb148cb0ce36a58cc2a2334e1806f186b3bd9b52628c86a",
+  "prior_optimization_command": "f'wasm-opt {file} -O3 -o {file} --enable-reference-types --enable-multivalue --enable-simd'",
+  "binaryen_commit_in_saved_dockerfile": "ecbebfbee12f2f25af648119604915fc37427f6f",
+  "source_executed": false,
+  "implication": "Include an O3 baseline in the normalization comparison. Binaryen133 O3 is a current fixed comparator, not an exact reproduction of this historical compiler commit.",
+  "limitations": [
+    "Source shows configured optimization, not a proof that every released binary was built by that command.",
+    "Thesis deobfuscation chapter has not been fully inspected in this follow-up."
+  ]
+}

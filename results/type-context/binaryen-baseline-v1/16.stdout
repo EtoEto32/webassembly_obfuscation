@@ -1,0 +1,58 @@
+Running with seed 16
+Built 20 types:
+(rec
+ (type $0 (sub (func (param i64 (ref $0)) (result i64))))
+ (type $1 (func (result nullcontref)))
+)
+(type $2 (sub (array (mut (ref $1)))))
+(rec
+ (type $3 (sub (shared (descriptor $5) (struct (field (mut f32)) (field (ref null $5)) (field v128) (field (mut (ref $4))) (field (mut (ref $3))) (field (mut (ref $3)))))))
+ (type $4 (shared (struct (field f64))))
+ (type $5 (sub (shared (describes $3) (struct (field i16) (field i8) (field (mut i64)) (field (mut i64))))))
+ (type $6 (sub (array f32)))
+)
+(rec
+ (type $7 (sub (array f64)))
+ (type $8 (sub (shared (descriptor $9) (struct (field (mut (ref null $18))) (field (mut (ref null $8))) (field (mut i64)) (field (mut (ref (shared struct)))) (field (mut i32)) (field i16)))))
+ (type $9 (sub (shared (describes $8) (descriptor $10) (struct (field (mut (ref (shared array)))) (field f32) (field (mut f64)) (field (ref null $3)) (field (ref $4)) (field f32)))))
+ (type $10 (sub (shared (describes $9) (struct (field f64)))))
+ (type $11 (sub (array (mut i16))))
+ (type $12 (sub (shared (func (param (ref null $19) (ref null $6) (ref $14) (ref null $17)) (result (ref $9))))))
+ (type $13 (sub $8 (shared (descriptor $14) (struct (field (mut (ref null $18))) (field (mut (ref null $8))) (field (mut i64)) (field (mut (ref (shared struct)))) (field (mut i32)) (field i16)))))
+ (type $14 (sub $9 (shared (describes $13) (descriptor $15) (struct (field (mut (ref (shared array)))) (field f32) (field (mut f64)) (field (ref null $3)) (field (ref $4)) (field f32)))))
+ (type $15 (sub $10 (shared (describes $14) (struct (field f64) (field (mut f64)) (field (ref (shared array))) (field (ref $5)) (field (mut i8))))))
+ (type $16 (sub final $0 (func (param i64 (ref null $0)) (result i64))))
+ (type $17 (sub final $2 (array (mut (ref $1)))))
+ (type $18 (shared (func)))
+ (type $19 (sub final $6 (array f32)))
+)
+
+Inhabitable types:
+
+Built 20 types:
+(rec
+ (type $0 (sub (func (param i64 (ref $0)) (result i64))))
+ (type $1 (func (result nullcontref)))
+)
+(type $2 (sub (array (mut (ref $1)))))
+(rec
+ (type $3 (sub (shared (descriptor $5) (struct (field (mut f32)) (field (ref null $5)) (field v128) (field (mut (ref $4))) (field (mut (ref null $3))) (field (mut (ref null $3)))))))
+ (type $4 (shared (struct (field f64))))
+ (type $5 (sub (shared (describes $3) (struct (field i16) (field i8) (field (mut i64)) (field (mut i64))))))
+ (type $6 (sub (array f32)))
+)
+(rec
+ (type $7 (sub (array f64)))
+ (type $8 (sub (shared (descriptor $9) (struct (field (mut (ref null $18))) (field (mut (ref null $8))) (field (mut i64)) (field (mut (ref (shared struct)))) (field (mut i32)) (field i16)))))
+ (type $9 (sub (shared (describes $8) (descriptor $10) (struct (field (mut (ref (shared array)))) (field f32) (field (mut f64)) (field (ref null $3)) (field (ref $4)) (field f32)))))
+ (type $10 (sub (shared (describes $9) (struct (field f64)))))
+ (type $11 (sub (array (mut i16))))
+ (type $12 (sub (shared (func (param (ref null $19) (ref null $6) (ref $14) (ref null $17)) (result (ref $9))))))
+ (type $13 (sub $8 (shared (descriptor $14) (struct (field (mut (ref null $18))) (field (mut (ref null $8))) (field (mut i64)) (field (mut (ref (shared struct)))) (field (mut i32)) (field i16)))))
+ (type $14 (sub $9 (shared (describes $13) (descriptor $15) (struct (field (mut (ref (shared array)))) (field f32) (field (mut f64)) (field (ref null $3)) (field (ref $4)) (field f32)))))
+ (type $15 (sub $10 (shared (describes $14) (struct (field f64) (field (mut f64)) (field (ref (shared array))) (field (ref $5)) (field (mut i8))))))
+ (type $16 (sub final $0 (func (param i64 (ref null $0)) (result i64))))
+ (type $17 (sub final $2 (array (mut (ref $1)))))
+ (type $18 (shared (func)))
+ (type $19 (sub final $6 (array f32)))
+)

@@ -1,0 +1,103 @@
+{
+  "byte_replays": 6,
+  "wabt_calls": 24,
+  "symbolic_attacks": [
+    {
+      "status": "recovered",
+      "analysis_ms": 0.10609999999999786,
+      "bdd_nodes": 27,
+      "input_assignments": 0,
+      "vertex_updates": 40,
+      "name": "and3",
+      "optimization": "raw"
+    },
+    {
+      "status": "recovered",
+      "analysis_ms": 0.10690000000002087,
+      "bdd_nodes": 27,
+      "input_assignments": 0,
+      "vertex_updates": 40,
+      "name": "and3",
+      "optimization": "O3"
+    },
+    {
+      "status": "recovered",
+      "analysis_ms": 0.1783000000000201,
+      "bdd_nodes": 45,
+      "input_assignments": 0,
+      "vertex_updates": 40,
+      "name": "majority3",
+      "optimization": "raw"
+    },
+    {
+      "status": "recovered",
+      "analysis_ms": 0.16329999999997735,
+      "bdd_nodes": 45,
+      "input_assignments": 0,
+      "vertex_updates": 40,
+      "name": "majority3",
+      "optimization": "O3"
+    },
+    {
+      "status": "recovered",
+      "analysis_ms": 0.11859999999996873,
+      "bdd_nodes": 32,
+      "input_assignments": 0,
+      "vertex_updates": 40,
+      "name": "mux3",
+      "optimization": "raw"
+    },
+    {
+      "status": "recovered",
+      "analysis_ms": 0.12559999999994798,
+      "bdd_nodes": 32,
+      "input_assignments": 0,
+      "vertex_updates": 40,
+      "name": "mux3",
+      "optimization": "O3"
+    }
+  ],
+  "negative_controls": [
+    "recover short bound rejected",
+    "symbolic_recover short bound rejected",
+    "forged evaluator rejected"
+  ],
+  "correctness": {
+    "binaries": 6,
+    "inputs_per_binary": 4833,
+    "calls": 28998,
+    "mismatches": 0,
+    "cases": [
+      {
+        "file": "and3-raw-symbolic.wasm",
+        "calls": 4833,
+        "mismatches": 0
+      },
+      {
+        "file": "and3-O3-symbolic.wasm",
+        "calls": 4833,
+        "mismatches": 0
+      },
+      {
+        "file": "majority3-raw-symbolic.wasm",
+        "calls": 4833,
+        "mismatches": 0
+      },
+      {
+        "file": "majority3-O3-symbolic.wasm",
+        "calls": 4833,
+        "mismatches": 0
+      },
+      {
+        "file": "mux3-raw-symbolic.wasm",
+        "calls": 4833,
+        "mismatches": 0
+      },
+      {
+        "file": "mux3-O3-symbolic.wasm",
+        "calls": 4833,
+        "mismatches": 0
+      }
+    ]
+  }
+}

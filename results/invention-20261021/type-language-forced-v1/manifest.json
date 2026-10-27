@@ -1,0 +1,2382 @@
+{
+  "scope": "known loop-peeling control, not a novel obfuscator",
+  "rows": [
+    {
+      "n": 1,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-1-raw.wasm",
+      "sha256": "1d51a3fe0aca73cfce80c408e36c6e54ac80188dfe92877de71f0abfc2df5d72",
+      "bytes": 135,
+      "build_pair_ms": 52.8704,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 12,
+      "retypd": [
+        {
+          "n": 1,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 15.902699999999992,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 50,
+              "dfa_states": 19,
+              "ms": 1.5112999999999932
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 0.9741000000000333
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.21640000000000548
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.2743000000000051
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        },
+        {
+          "n": 1,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 17.466999999999956,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 1,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-1-O3.wasm",
+      "sha256": "fb85d621722fe71aba9932463996ac3c8626b7ad7723cf027eaafb878883e82e",
+      "bytes": 130,
+      "build_pair_ms": 52.8704,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 14,
+      "retypd": [
+        {
+          "n": 1,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 18.23819999999998,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 57,
+              "dfa_states": 20,
+              "ms": 1.7534999999999634
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 1.7812000000000383
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.2207000000000181
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.2730000000000232
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        },
+        {
+          "n": 1,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 18.860600000000005,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 1,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-1-raw.wasm",
+      "sha256": "9bb6719e277808315df3cd786b4c7a564705202be97cd9770d34fd1be573e136",
+      "bytes": 129,
+      "build_pair_ms": 47.82520000000012,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 10,
+      "retypd": [
+        {
+          "n": 1,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 10,
+          "solver_ms": 17.78089999999999,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 48,
+              "dfa_states": 22,
+              "ms": 1.359100000000002
+            },
+            {
+              "nfa_states": 34,
+              "dfa_states": 22,
+              "ms": 1.0831000000000035
+            },
+            {
+              "nfa_states": 13,
+              "dfa_states": 10,
+              "ms": 0.2546999999999966
+            },
+            {
+              "nfa_states": 17,
+              "dfa_states": 11,
+              "ms": 0.32090000000001284
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v5",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v1",
+            "v5.load.σ4@8 ⊑ v6",
+            "v6 ⊑ int"
+          ]
+        },
+        {
+          "n": 1,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 10,
+          "solver_ms": 26.0147,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v5",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v1",
+            "v5.load.σ4@8 ⊑ v6",
+            "v6 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 1,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-1-O3.wasm",
+      "sha256": "8b25a6846b371ceaae31a33ee3dc9083fbb82212a87aa3577133f0690c76e948",
+      "bytes": 113,
+      "build_pair_ms": 47.82520000000012,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 12,
+      "retypd": [
+        {
+          "n": 1,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 19.453299999999953,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 55,
+              "dfa_states": 23,
+              "ms": 1.7712000000000283
+            },
+            {
+              "nfa_states": 34,
+              "dfa_states": 22,
+              "ms": 1.0642000000000151
+            },
+            {
+              "nfa_states": 13,
+              "dfa_states": 10,
+              "ms": 0.25200000000003
+            },
+            {
+              "nfa_states": 17,
+              "dfa_states": 11,
+              "ms": 0.3022000000000302
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v5",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v6",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v5",
+            "v5 ⊑ v1",
+            "v6.load.σ4@8 ⊑ v7",
+            "v7 ⊑ int"
+          ]
+        },
+        {
+          "n": 1,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 19.34990000000003,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v5",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v6",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v5",
+            "v5 ⊑ v1",
+            "v6.load.σ4@8 ⊑ v7",
+            "v7 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-2-raw.wasm",
+      "sha256": "33a736b03dfdf0c107c0c627f94985db79a2097025757ca5c5eb3fb08dce8f7e",
+      "bytes": 135,
+      "build_pair_ms": 51.61099999999941,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 12,
+      "retypd": [
+        {
+          "n": 2,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 15.916199999999991,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 50,
+              "dfa_states": 19,
+              "ms": 1.3477000000000072
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 0.968300000000033
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.21979999999999222
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.2919000000000116
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        },
+        {
+          "n": 2,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 17.678899999999942,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-2-O3.wasm",
+      "sha256": "25f8650217c3616d27bdc12427f2f5eff76ccde496b63b9ade17c005f3cec54d",
+      "bytes": 130,
+      "build_pair_ms": 51.61099999999941,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 14,
+      "retypd": [
+        {
+          "n": 2,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 17.559699999999957,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 57,
+              "dfa_states": 20,
+              "ms": 1.9082000000000265
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 0.9538000000000046
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.23929999999999785
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.26369999999997784
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        },
+        {
+          "n": 2,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 19.135000000000012,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-2-raw.wasm",
+      "sha256": "04cb3110f453d3479b47e4d77837725b254a31be81fe149dc7f54584fbc376d4",
+      "bytes": 160,
+      "build_pair_ms": 51.51430000000001,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 14,
+      "retypd": [
+        {
+          "n": 2,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 28.981800000000003,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 60,
+              "dfa_states": 27,
+              "ms": 1.6985999999999946
+            },
+            {
+              "nfa_states": 45,
+              "dfa_states": 29,
+              "ms": 1.4656000000000113
+            },
+            {
+              "nfa_states": 18,
+              "dfa_states": 15,
+              "ms": 0.8819999999999939
+            },
+            {
+              "nfa_states": 23,
+              "dfa_states": 13,
+              "ms": 0.6826999999999805
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v5",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v1",
+            "v5.load.σ4@0 ⊑ v7",
+            "v5.load.σ4@4 ⊑ v6",
+            "v6 ⊑ v8",
+            "v7 ⊑ v8",
+            "v8.load.σ4@8 ⊑ v9",
+            "v9 ⊑ int"
+          ]
+        },
+        {
+          "n": 2,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 29.60549999999995,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v5",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v1",
+            "v5.load.σ4@0 ⊑ v7",
+            "v5.load.σ4@4 ⊑ v6",
+            "v6 ⊑ v8",
+            "v7 ⊑ v8",
+            "v8.load.σ4@8 ⊑ v9",
+            "v9 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-2-O3.wasm",
+      "sha256": "35bc30bf85834ada65641321d4c4610a1f072cd16213764df1a7c4e49200f7b3",
+      "bytes": 140,
+      "build_pair_ms": 51.51430000000001,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 16,
+      "retypd": [
+        {
+          "n": 2,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 16,
+          "solver_ms": 25.97569999999999,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 67,
+              "dfa_states": 28,
+              "ms": 2.280100000000007
+            },
+            {
+              "nfa_states": 45,
+              "dfa_states": 29,
+              "ms": 1.5846999999999944
+            },
+            {
+              "nfa_states": 18,
+              "dfa_states": 15,
+              "ms": 0.5033999999999872
+            },
+            {
+              "nfa_states": 23,
+              "dfa_states": 13,
+              "ms": 0.3979000000000066
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v5",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v6",
+            "v10 ⊑ int",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v5",
+            "v5 ⊑ v1",
+            "v6.load.σ4@0 ⊑ v8",
+            "v6.load.σ4@4 ⊑ v7",
+            "v7 ⊑ v9",
+            "v8 ⊑ v9",
+            "v9.load.σ4@8 ⊑ v10"
+          ]
+        },
+        {
+          "n": 2,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 16,
+          "solver_ms": 25.760899999999975,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v5",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v6",
+            "v10 ⊑ int",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v5",
+            "v5 ⊑ v1",
+            "v6.load.σ4@0 ⊑ v8",
+            "v6.load.σ4@4 ⊑ v7",
+            "v7 ⊑ v9",
+            "v8 ⊑ v9",
+            "v9.load.σ4@8 ⊑ v10"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-4-raw.wasm",
+      "sha256": "3092b61164a54d2cb4c528e5087c2e599284b0c8f659d4089ad4fba43d506497",
+      "bytes": 135,
+      "build_pair_ms": 49.49730000000052,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 12,
+      "retypd": [
+        {
+          "n": 4,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 16.26749999999999,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 50,
+              "dfa_states": 19,
+              "ms": 1.5349000000000057
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 0.9718000000000226
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.21619999999999973
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.2701999999999982
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        },
+        {
+          "n": 4,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 20.46640000000005,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-4-O3.wasm",
+      "sha256": "5b905ee23b33567270f3e2e8ebd5ac4be71f9efb08151eac0e82faf970660187",
+      "bytes": 130,
+      "build_pair_ms": 49.49730000000052,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 14,
+      "retypd": [
+        {
+          "n": 4,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 17.430700000000023,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 57,
+              "dfa_states": 20,
+              "ms": 1.8375999999999948
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 0.9480999999999518
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.21619999999999973
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.26759999999997897
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        },
+        {
+          "n": 4,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 18.662599999999973,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-4-raw.wasm",
+      "sha256": "e770ad3d4088115b925c2d03fd9b4c2bf0e1b6b4f9626105bb29ef7d7300baaa",
+      "bytes": 224,
+      "build_pair_ms": 55.029799999999796,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 22,
+      "retypd": [
+        {
+          "n": 4,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 22,
+          "solver_ms": 142.95940000000007,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 84,
+              "dfa_states": 37,
+              "ms": 3.2782999999999562
+            },
+            {
+              "nfa_states": 111,
+              "dfa_states": 63,
+              "ms": 4.460999999999937
+            },
+            {
+              "nfa_states": 48,
+              "dfa_states": 45,
+              "ms": 2.150199999999991
+            },
+            {
+              "nfa_states": 59,
+              "dfa_states": 17,
+              "ms": 0.979500000000022
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v5",
+            "v10 ⊑ v11",
+            "v11.load.σ4@0 ⊑ v13",
+            "v11.load.σ4@4 ⊑ v12",
+            "v12 ⊑ v14",
+            "v13 ⊑ v14",
+            "v14.load.σ4@8 ⊑ v15",
+            "v15 ⊑ int",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v1",
+            "v5.load.σ4@0 ⊑ v7",
+            "v5.load.σ4@4 ⊑ v6",
+            "v6 ⊑ v8",
+            "v7 ⊑ v8",
+            "v8.load.σ4@0 ⊑ v10",
+            "v8.load.σ4@4 ⊑ v9",
+            "v9 ⊑ v11"
+          ]
+        },
+        {
+          "n": 4,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 22,
+          "solver_ms": 62.77149999999998,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v5",
+            "v10 ⊑ v11",
+            "v11.load.σ4@0 ⊑ v13",
+            "v11.load.σ4@4 ⊑ v12",
+            "v12 ⊑ v14",
+            "v13 ⊑ v14",
+            "v14.load.σ4@8 ⊑ v15",
+            "v15 ⊑ int",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v1",
+            "v5.load.σ4@0 ⊑ v7",
+            "v5.load.σ4@4 ⊑ v6",
+            "v6 ⊑ v8",
+            "v7 ⊑ v8",
+            "v8.load.σ4@0 ⊑ v10",
+            "v8.load.σ4@4 ⊑ v9",
+            "v9 ⊑ v11"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-4-O3.wasm",
+      "sha256": "ffce6527959b5506970088fbdb2c62454073e6418dbd680dd11bf6f8bb3a3032",
+      "bytes": 200,
+      "build_pair_ms": 55.029799999999796,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 24,
+      "retypd": [
+        {
+          "n": 4,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 24,
+          "solver_ms": 112.33139999999997,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 91,
+              "dfa_states": 38,
+              "ms": 3.0586999999999698
+            },
+            {
+              "nfa_states": 111,
+              "dfa_states": 63,
+              "ms": 3.4418999999999977
+            },
+            {
+              "nfa_states": 48,
+              "dfa_states": 45,
+              "ms": 1.9142999999999244
+            },
+            {
+              "nfa_states": 59,
+              "dfa_states": 17,
+              "ms": 0.8645999999999932
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v5",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v6",
+            "v10 ⊑ v12",
+            "v11 ⊑ v12",
+            "v12.load.σ4@0 ⊑ v14",
+            "v12.load.σ4@4 ⊑ v13",
+            "v13 ⊑ v15",
+            "v14 ⊑ v15",
+            "v15.load.σ4@8 ⊑ v16",
+            "v16 ⊑ int",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v5",
+            "v5 ⊑ v1",
+            "v6.load.σ4@0 ⊑ v8",
+            "v6.load.σ4@4 ⊑ v7",
+            "v7 ⊑ v9",
+            "v8 ⊑ v9",
+            "v9.load.σ4@0 ⊑ v11",
+            "v9.load.σ4@4 ⊑ v10"
+          ]
+        },
+        {
+          "n": 4,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 24,
+          "solver_ms": 55.45639999999996,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v5",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v6",
+            "v10 ⊑ v12",
+            "v11 ⊑ v12",
+            "v12.load.σ4@0 ⊑ v14",
+            "v12.load.σ4@4 ⊑ v13",
+            "v13 ⊑ v15",
+            "v14 ⊑ v15",
+            "v15.load.σ4@8 ⊑ v16",
+            "v16 ⊑ int",
+            "v2 ⊑ v4",
+            "v3 ⊑ v4",
+            "v4 ⊑ v5",
+            "v5 ⊑ v1",
+            "v6.load.σ4@0 ⊑ v8",
+            "v6.load.σ4@4 ⊑ v7",
+            "v7 ⊑ v9",
+            "v8 ⊑ v9",
+            "v9.load.σ4@0 ⊑ v11",
+            "v9.load.σ4@4 ⊑ v10"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-6-raw.wasm",
+      "sha256": "99071328795e9e426e229abb91ace6cf1b68e029d5fa0a9ae82ae1f8be505a51",
+      "bytes": 135,
+      "build_pair_ms": 48.31039999999831,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 12,
+      "retypd": [
+        {
+          "n": 6,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 15.96629999999999,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 50,
+              "dfa_states": 19,
+              "ms": 1.352999999999993
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 1.0179999999999634
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.2223000000000086
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.2686000000000077
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        },
+        {
+          "n": 6,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 16.563900000000075,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-6-O3.wasm",
+      "sha256": "e3dc9f795caa7da1407dc48b97ed1bdf34335979d58d5e30ca7868a7a002318a",
+      "bytes": 130,
+      "build_pair_ms": 48.31039999999831,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 14,
+      "retypd": [
+        {
+          "n": 6,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 17.45469999999999,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 57,
+              "dfa_states": 20,
+              "ms": 1.8651000000000084
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 0.9592999999999963
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.21369999999998335
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.26969999999998384
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        },
+        {
+          "n": 6,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 18.840899999999994,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-6-raw.wasm",
+      "sha256": "e565e0eb4f91ae9a4c8e72597a12c615a6134745159144fad464e983c46117ef",
+      "bytes": 286,
+      "build_pair_ms": 49.274799999999175,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 30,
+      "retypd": [
+        {
+          "mode": "dfa",
+          "status": "timeout",
+          "seconds": 15
+        },
+        {
+          "n": 6,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 30,
+          "solver_ms": 168.24580000000006,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v5",
+            "v10 ⊑ v11",
+            "v11.load.σ4@0 ⊑ v13",
+            "v11.load.σ4@4 ⊑ v12",
+            "v12 ⊑ v14",
+            "v13 ⊑ v14",
+            "v14.load.σ4@0 ⊑ v16",
+            "v14.load.σ4@4 ⊑ v15",
+            "v15 ⊑ v17",
+            "v16 ⊑ v17",
+            "v17.load.σ4@0 ⊑ v19",
+            "v17.load.σ4@4 ⊑ v18",
+            "v18 ⊑ v20",
+            "v19 ⊑ v20",
+            "v2 ⊑ v4",
+            "v20.load.σ4@8 ⊑ v21",
+            "v21 ⊑ int",
+            "v3 ⊑ v4",
+            "v4 ⊑ v1",
+            "v5.load.σ4@0 ⊑ v7",
+            "v5.load.σ4@4 ⊑ v6",
+            "v6 ⊑ v8",
+            "v7 ⊑ v8",
+            "v8.load.σ4@0 ⊑ v10",
+            "v8.load.σ4@4 ⊑ v9",
+            "v9 ⊑ v11"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-6-O3.wasm",
+      "sha256": "08980812c59d7412dc7c6380b03aeeb43b65c9cea1038d46c7b2bbdebadc11c2",
+      "bytes": 258,
+      "build_pair_ms": 49.274799999999175,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 32,
+      "retypd": [
+        {
+          "mode": "dfa",
+          "status": "not_run_after_timeout"
+        },
+        {
+          "n": 6,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 32,
+          "solver_ms": 163.9548,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v5",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v6",
+            "v10 ⊑ v12",
+            "v11 ⊑ v12",
+            "v12.load.σ4@0 ⊑ v14",
+            "v12.load.σ4@4 ⊑ v13",
+            "v13 ⊑ v15",
+            "v14 ⊑ v15",
+            "v15.load.σ4@0 ⊑ v17",
+            "v15.load.σ4@4 ⊑ v16",
+            "v16 ⊑ v18",
+            "v17 ⊑ v18",
+            "v18.load.σ4@0 ⊑ v20",
+            "v18.load.σ4@4 ⊑ v19",
+            "v19 ⊑ v21",
+            "v2 ⊑ v4",
+            "v20 ⊑ v21",
+            "v21.load.σ4@8 ⊑ v22",
+            "v22 ⊑ int",
+            "v3 ⊑ v4",
+            "v4 ⊑ v5",
+            "v5 ⊑ v1",
+            "v6.load.σ4@0 ⊑ v8",
+            "v6.load.σ4@4 ⊑ v7",
+            "v7 ⊑ v9",
+            "v8 ⊑ v9",
+            "v9.load.σ4@0 ⊑ v11",
+            "v9.load.σ4@4 ⊑ v10"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-8-raw.wasm",
+      "sha256": "9bd94662f87267a972dd5be6ef669a2529a1745ff60856a5459e058805e5a422",
+      "bytes": 135,
+      "build_pair_ms": 44.953499999998314,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 12,
+      "retypd": [
+        {
+          "n": 8,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 16.90379999999997,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 50,
+              "dfa_states": 19,
+              "ms": 1.4109999999999956
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 0.9776999999999703
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.2218999999999971
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.2918000000000087
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        },
+        {
+          "n": 8,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 12,
+          "solver_ms": 15.66920000000005,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v7",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v1",
+            "v7 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "mode": "loop",
+      "forced": true,
+      "file": "loop-8-O3.wasm",
+      "sha256": "7355e5e89147a17e403decc139542d4976c3a67e03f60214b55e307ba30dffad",
+      "bytes": 130,
+      "build_pair_ms": 44.953499999998314,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 14,
+      "retypd": [
+        {
+          "n": 8,
+          "mode": "dfa",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 18.353799999999975,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [
+            {
+              "nfa_states": 57,
+              "dfa_states": 20,
+              "ms": 1.8742999999999954
+            },
+            {
+              "nfa_states": 32,
+              "dfa_states": 19,
+              "ms": 1.0383999999999949
+            },
+            {
+              "nfa_states": 12,
+              "dfa_states": 9,
+              "ms": 0.23519999999999097
+            },
+            {
+              "nfa_states": 16,
+              "dfa_states": 9,
+              "ms": 0.2894999999999981
+            }
+          ],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        },
+        {
+          "n": 8,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 14,
+          "solver_ms": 17.24690000000001,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v7",
+            "v1.load.σ4@0 ⊑ v4",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v3",
+            "v1.load.σ4@8 ⊑ v8",
+            "v2 ⊑ v6",
+            "v3 ⊑ v5",
+            "v4 ⊑ v5",
+            "v5 ⊑ v6",
+            "v6 ⊑ v7",
+            "v7 ⊑ v1",
+            "v8 ⊑ int"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-8-raw.wasm",
+      "sha256": "198b8efdea6450026f106a05c7e8bbc68c9486d4ddbdda69ee9d72cb4f37cd15",
+      "bytes": 348,
+      "build_pair_ms": 46.95199999999744,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 38,
+      "retypd": [
+        {
+          "mode": "dfa",
+          "status": "not_run_after_timeout"
+        },
+        {
+          "n": 8,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 38,
+          "solver_ms": 726.5911000000001,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v5",
+            "v10 ⊑ v11",
+            "v11.load.σ4@0 ⊑ v13",
+            "v11.load.σ4@4 ⊑ v12",
+            "v12 ⊑ v14",
+            "v13 ⊑ v14",
+            "v14.load.σ4@0 ⊑ v16",
+            "v14.load.σ4@4 ⊑ v15",
+            "v15 ⊑ v17",
+            "v16 ⊑ v17",
+            "v17.load.σ4@0 ⊑ v19",
+            "v17.load.σ4@4 ⊑ v18",
+            "v18 ⊑ v20",
+            "v19 ⊑ v20",
+            "v2 ⊑ v4",
+            "v20.load.σ4@0 ⊑ v22",
+            "v20.load.σ4@4 ⊑ v21",
+            "v21 ⊑ v23",
+            "v22 ⊑ v23",
+            "v23.load.σ4@0 ⊑ v25",
+            "v23.load.σ4@4 ⊑ v24",
+            "v24 ⊑ v26",
+            "v25 ⊑ v26",
+            "v26.load.σ4@8 ⊑ v27",
+            "v27 ⊑ int",
+            "v3 ⊑ v4",
+            "v4 ⊑ v1",
+            "v5.load.σ4@0 ⊑ v7",
+            "v5.load.σ4@4 ⊑ v6",
+            "v6 ⊑ v8",
+            "v7 ⊑ v8",
+            "v8.load.σ4@0 ⊑ v10",
+            "v8.load.σ4@4 ⊑ v9",
+            "v9 ⊑ v11"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "mode": "peeled",
+      "forced": true,
+      "file": "peeled-8-O3.wasm",
+      "sha256": "b20bb099d714c183d697a60ccc4657ad9070d7133350465bac9a033ea83323d1",
+      "bytes": 316,
+      "build_pair_ms": 46.95199999999744,
+      "linear_memory_bytes": 65536,
+      "wabt_decompile": {
+        "status": "error",
+        "detail": "[WinError 2] 指定されたファイルが見つかりません。"
+      },
+      "frontend": "ok",
+      "constraints": 40,
+      "retypd": [
+        {
+          "mode": "dfa",
+          "status": "not_run_after_timeout"
+        },
+        {
+          "n": 8,
+          "mode": "pathexpr",
+          "control": false,
+          "status": "ok",
+          "input_constraints": 40,
+          "solver_ms": 691.6507,
+          "output_constraints": [
+            "F.in_0 ⊑ τ$0",
+            "int ⊑ F.out",
+            "τ$0.load.σ4@0 ⊑ τ$0",
+            "τ$0.load.σ4@4 ⊑ τ$0",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@4.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@0.load.σ4@8 ⊑ int",
+            "τ$0.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@4.load.σ4@8 ⊑ int"
+          ],
+          "sketch_nodes": 7,
+          "sketch_edges": 6,
+          "determinization": [],
+          "constraints": [
+            "F.in_0 ⊑ v1",
+            "int ⊑ F.out",
+            "v1 ⊑ v5",
+            "v1.load.σ4@0 ⊑ v3",
+            "v1.load.σ4@4 ⊑ v2",
+            "v1.load.σ4@4 ⊑ v6",
+            "v10 ⊑ v12",
+            "v11 ⊑ v12",
+            "v12.load.σ4@0 ⊑ v14",
+            "v12.load.σ4@4 ⊑ v13",
+            "v13 ⊑ v15",
+            "v14 ⊑ v15",
+            "v15.load.σ4@0 ⊑ v17",
+            "v15.load.σ4@4 ⊑ v16",
+            "v16 ⊑ v18",
+            "v17 ⊑ v18",
+            "v18.load.σ4@0 ⊑ v20",
+            "v18.load.σ4@4 ⊑ v19",
+            "v19 ⊑ v21",
+            "v2 ⊑ v4",
+            "v20 ⊑ v21",
+            "v21.load.σ4@0 ⊑ v23",
+            "v21.load.σ4@4 ⊑ v22",
+            "v22 ⊑ v24",
+            "v23 ⊑ v24",
+            "v24.load.σ4@0 ⊑ v26",
+            "v24.load.σ4@4 ⊑ v25",
+            "v25 ⊑ v27",
+            "v26 ⊑ v27",
+            "v27.load.σ4@8 ⊑ v28",
+            "v28 ⊑ int",
+            "v3 ⊑ v4",
+            "v4 ⊑ v5",
+            "v5 ⊑ v1",
+            "v6.load.σ4@0 ⊑ v8",
+            "v6.load.σ4@4 ⊑ v7",
+            "v7 ⊑ v9",
+            "v8 ⊑ v9",
+            "v9.load.σ4@0 ⊑ v11",
+            "v9.load.σ4@4 ⊑ v10"
+          ]
+        }
+      ]
+    }
+  ]
+}

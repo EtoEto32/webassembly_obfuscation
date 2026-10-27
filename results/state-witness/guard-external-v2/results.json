@@ -1,0 +1,7552 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "summary": [
+    {
+      "backend": "migrate",
+      "conditions": 8,
+      "invalidOutputs": 4,
+      "continuousMismatches": 0,
+      "restored": 8,
+      "notReached": 4,
+      "entryMismatches": 0,
+      "publicObservationMismatches": 4,
+      "terminalSequences": 0
+    },
+    {
+      "backend": "weave",
+      "conditions": 8,
+      "invalidOutputs": 0,
+      "continuousMismatches": 0,
+      "restored": 16,
+      "notReached": 8,
+      "entryMismatches": 0,
+      "publicObservationMismatches": 0,
+      "terminalSequences": 16
+    }
+  ],
+  "rows": [
+    {
+      "name": "reachable-01-expose",
+      "length": 1,
+      "repair": false,
+      "backend": "migrate",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          },
+          {
+            "api": "publish",
+            "result": {
+              "return": null
+            },
+            "publicValue": 202
+          }
+        ],
+        "terminal": null
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null,
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null,
+          "publicObservationMatches": false,
+          "firstDifference": 2
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-01-expose",
+      "length": 1,
+      "repair": false,
+      "backend": "weave",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          }
+        ],
+        "terminal": {
+          "status": "trap-terminal",
+          "lifecycle": "failed",
+          "reentryRejection": {
+            "name": "Error",
+            "message": "drive is not allowed while the instance is failed"
+          }
+        }
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-01-repair",
+      "length": 1,
+      "repair": true,
+      "backend": "migrate",
+      "transformStatus": "invalid-output",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        }
+      ]
+    },
+    {
+      "name": "reachable-01-repair",
+      "length": 1,
+      "repair": true,
+      "backend": "weave",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          }
+        ],
+        "terminal": {
+          "status": "trap-terminal",
+          "lifecycle": "failed",
+          "reentryRejection": {
+            "name": "Error",
+            "message": "drive is not allowed while the instance is failed"
+          }
+        }
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-04-expose",
+      "length": 4,
+      "repair": false,
+      "backend": "migrate",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "publish",
+            "result": {
+              "return": null
+            },
+            "publicValue": 202
+          }
+        ],
+        "terminal": null
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null,
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null,
+          "publicObservationMatches": false,
+          "firstDifference": 5
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-04-expose",
+      "length": 4,
+      "repair": false,
+      "backend": "weave",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          }
+        ],
+        "terminal": {
+          "status": "trap-terminal",
+          "lifecycle": "failed",
+          "reentryRejection": {
+            "name": "Error",
+            "message": "drive is not allowed while the instance is failed"
+          }
+        }
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-04-repair",
+      "length": 4,
+      "repair": true,
+      "backend": "migrate",
+      "transformStatus": "invalid-output",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        }
+      ]
+    },
+    {
+      "name": "reachable-04-repair",
+      "length": 4,
+      "repair": true,
+      "backend": "weave",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          }
+        ],
+        "terminal": {
+          "status": "trap-terminal",
+          "lifecycle": "failed",
+          "reentryRejection": {
+            "name": "Error",
+            "message": "drive is not allowed while the instance is failed"
+          }
+        }
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-16-expose",
+      "length": 16,
+      "repair": false,
+      "backend": "migrate",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "publish",
+            "result": {
+              "return": null
+            },
+            "publicValue": 202
+          }
+        ],
+        "terminal": null
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null,
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null,
+          "publicObservationMatches": false,
+          "firstDifference": 17
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-16-expose",
+      "length": 16,
+      "repair": false,
+      "backend": "weave",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          }
+        ],
+        "terminal": {
+          "status": "trap-terminal",
+          "lifecycle": "failed",
+          "reentryRejection": {
+            "name": "Error",
+            "message": "drive is not allowed while the instance is failed"
+          }
+        }
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-16-repair",
+      "length": 16,
+      "repair": true,
+      "backend": "migrate",
+      "transformStatus": "invalid-output",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        }
+      ]
+    },
+    {
+      "name": "reachable-16-repair",
+      "length": 16,
+      "repair": true,
+      "backend": "weave",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          }
+        ],
+        "terminal": {
+          "status": "trap-terminal",
+          "lifecycle": "failed",
+          "reentryRejection": {
+            "name": "Error",
+            "message": "drive is not allowed while the instance is failed"
+          }
+        }
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-32-expose",
+      "length": 32,
+      "repair": false,
+      "backend": "migrate",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "copy",
+            "result": {
+              "return": null
+            },
+            "publicValue": null
+          },
+          {
+            "api": "publish",
+            "result": {
+              "return": null
+            },
+            "publicValue": 202
+          }
+        ],
+        "terminal": null
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null,
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "trap": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null,
+          "publicObservationMatches": false,
+          "firstDifference": 33
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-32-expose",
+      "length": 32,
+      "repair": false,
+      "backend": "weave",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 202
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          }
+        ],
+        "terminal": {
+          "status": "trap-terminal",
+          "lifecycle": "failed",
+          "reentryRejection": {
+            "name": "Error",
+            "message": "drive is not allowed while the instance is failed"
+          }
+        }
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    },
+    {
+      "name": "reachable-32-repair",
+      "length": 32,
+      "repair": true,
+      "backend": "migrate",
+      "transformStatus": "invalid-output",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        }
+      ]
+    },
+    {
+      "name": "reachable-32-repair",
+      "length": 32,
+      "repair": true,
+      "backend": "weave",
+      "transformStatus": "valid",
+      "controls": [
+        {
+          "name": "original",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "adapted",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        },
+        {
+          "name": "cut",
+          "entry": {
+            "return": null
+          },
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "copy",
+              "result": {
+                "return": null
+              },
+              "publicValue": null
+            },
+            {
+              "api": "publish",
+              "result": {
+                "return": null
+              },
+              "publicValue": 101
+            }
+          ],
+          "terminal": null
+        }
+      ],
+      "continuous": {
+        "entry": {
+          "return": null
+        },
+        "trace": [
+          {
+            "api": "mask",
+            "result": {
+              "trap": true
+            },
+            "publicValue": null
+          }
+        ],
+        "terminal": {
+          "status": "trap-terminal",
+          "lifecycle": "failed",
+          "reentryRejection": {
+            "name": "Error",
+            "message": "drive is not allowed while the instance is failed"
+          }
+        }
+      },
+      "polls": 2,
+      "scenarios": [
+        {
+          "stop": 0,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 1,
+          "status": "restored",
+          "firstOutcome": {
+            "held": true
+          },
+          "restoredOutcome": {
+            "return": null
+          },
+          "entryMatches": true,
+          "trace": [
+            {
+              "api": "mask",
+              "result": {
+                "trap": true
+              },
+              "publicValue": null
+            }
+          ],
+          "terminal": {
+            "status": "trap-terminal",
+            "lifecycle": "failed",
+            "reentryRejection": {
+              "name": "Error",
+              "message": "drive is not allowed while the instance is failed"
+            }
+          },
+          "publicObservationMatches": true,
+          "firstDifference": null
+        },
+        {
+          "stop": 2,
+          "status": "checkpoint-not-reached",
+          "firstOutcome": {
+            "return": null
+          }
+        }
+      ],
+      "continuousMatches": true,
+      "status": "executed"
+    }
+  ],
+  "contract": "Weave public drive treats trap as terminal. Migrate non-entry calls use an experimental adapter; author support for re-entry is unverified."
+}

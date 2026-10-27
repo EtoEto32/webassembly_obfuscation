@@ -1,0 +1,27 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func
+[fuzz-exec] note result: func => object(null)
+[fuzz-exec] export func_14
+[fuzz-exec] note result: func_14 => object(object(object(null)))
+[fuzz-exec] export func_14_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_16
+[fuzz-exec] note result: func_16 => object(null)
+[fuzz-exec] export func_16_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_18_invoker
+[LoggingExternalInterface logging null]
+[fuzz-exec] export func_20
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_20_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_23_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_25
+[fuzz-exec] note result: func_25 => object(null)
+[fuzz-exec] export func_28
+[fuzz-exec] note result: func_28 => null
+[fuzz-exec] export func_28_invoker
+exception thrown: RuntimeError: unreachable
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_14","known":true,"status":"returned","unsupported":[]},{"name":"func_14_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_16","known":true,"status":"returned","unsupported":[]},{"name":"func_16_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_18_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_20","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_20_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_23_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_25","known":true,"status":"returned","unsupported":[]},{"name":"func_28","known":true,"status":"returned","unsupported":[]},{"name":"func_28_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null},{"id":3,"channel":"printed","name":null,"slot":null}]}

@@ -1,0 +1,8 @@
+{
+  "status": "implementation_error",
+  "stage": "public profile key",
+  "error": "Unsupported n64.plain.O3 after zero-initialized catalog construction",
+  "cause": "The code, type, function, memory and export sections are identical. Binaryen removed the all-zero data and its data-count section from the catalog. The key incorrectly retained section 12 while ignoring section 11.",
+  "fix": "Exclude data-count as well, after validating active segments and matching catalog code that contains no memory.init/data.drop.",
+  "count_as_resilience": false
+}

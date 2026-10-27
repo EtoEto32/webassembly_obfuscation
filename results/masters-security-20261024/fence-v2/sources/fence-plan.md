@@ -1,0 +1,13 @@
+# A：限定WITからの依存抽出の生成
+
+2026-10-24、実装・測定前。Bの追試後、Aの未実装の核である生成部分を小さく検査する。
+
+リポジトリの既存`resource-trigger`はresource destructorへの計算移動を対象とした難読化研究であり、今回の権限失効とは目的が異なる。ただしresourceの所有権・borrow・Jco基盤そのものを新しく実現したとはしない。Cは正しいセマフォと同一という結果から、今回追加実装の優先対象にしない。
+
+入力は限定したWIT（1 interface、resource、record、variant、option/list、borrow、u32戻り値）と、各resource位置に対するhost側権限契約。公式Jco内のwasm-toolsでWITをvalidateし、別の限定readerから依存抽出のJSを生成する。これは完全なWIT parserでもCanonical ABI統合でもない。実際のWITでresourceを含む値がどう表現されるかと、模型のslot/generationを区別する。
+
+型だけでは権限を推論しない。全resource leafに効果契約を要求し、typo・余分な指定・未指定・未対応型は生成を拒否する。選択されたvariant、存在するoption、listの実要素だけを依存へ含める。生成物を、別に記述した手書きoracleと比較する。aliasは実体別の権限へ集約しても、slot世代の照合は全slotに残す。
+
+borrowは呼出しを越えて保存しない。遅延受付に必要な情報はhostが検証済みの実体ID、host管理の寿命、slot世代、権限世代へ変換する。Canonical ABIのborrow索引をticket内に保存して後から再利用する方式は実装しない。
+
+指標：生成成功／拒否、依存集合の一致、未選択枝への不要依存、alias・slot再利用・revoke/grant後の判定、抽出時間、依存数。WITをvalidateしただけで実Componentの非同期受付が完成したとは数えない。差分は既知のIDL生成＋権限依存の組合せとして反証を継続する。

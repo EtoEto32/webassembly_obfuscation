@@ -1,0 +1,5 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => 42
+[fuzz-exec] export func
+exception thrown: RuntimeError: table index is out of bounds
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: table index is out of bounds"}],"trace":[]}

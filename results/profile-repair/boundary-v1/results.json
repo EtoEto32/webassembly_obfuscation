@@ -1,0 +1,133 @@
+{
+  "pairChecks": 36,
+  "pairResults": {
+    "node": "v24.15.0",
+    "v8": "13.6.233.17-node.48",
+    "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+    "calls": 36,
+    "rows": [
+      {
+        "name": "[]",
+        "results": {
+          "pair-mask0-profileNone.wasm": [
+            0,
+            0,
+            0
+          ],
+          "pair-mask0-profile0.wasm": [
+            0,
+            0,
+            0
+          ],
+          "pair-mask0-profile1.wasm": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      {
+        "name": "[0]",
+        "results": {
+          "pair-mask1-profileNone.wasm": [
+            255,
+            1,
+            0
+          ],
+          "pair-mask1-profile0.wasm": [
+            0,
+            0,
+            0
+          ],
+          "pair-mask1-profile1.wasm": [
+            255,
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "name": "[1]",
+        "results": {
+          "pair-mask2-profileNone.wasm": [
+            255,
+            1,
+            0
+          ],
+          "pair-mask2-profile0.wasm": [
+            0,
+            0,
+            0
+          ],
+          "pair-mask2-profile1.wasm": [
+            255,
+            1,
+            0
+          ]
+        }
+      },
+      {
+        "name": "[0, 1]",
+        "results": {
+          "pair-mask3-profileNone.wasm": [
+            0,
+            0,
+            0
+          ],
+          "pair-mask3-profile0.wasm": [
+            0,
+            0,
+            0
+          ],
+          "pair-mask3-profile1.wasm": [
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    ]
+  },
+  "primitiveChecks": 196608,
+  "nativeProfile": 1,
+  "rejections": [
+    {
+      "name": "memory",
+      "status": "unsupported_valid_wasm",
+      "reason": "only types/function/export allowed"
+    },
+    {
+      "name": "import",
+      "status": "unsupported_valid_wasm",
+      "reason": "only types/function/export allowed"
+    },
+    {
+      "name": "loop",
+      "status": "unsupported_valid_wasm",
+      "reason": "unsupported expression (loop (result i32) (local.get 0))"
+    },
+    {
+      "name": "float",
+      "status": "unsupported_valid_wasm",
+      "reason": "unsupported expression (i32.reinterpret_f32 (f32.const 0x0p+0))"
+    },
+    {
+      "name": "division",
+      "status": "unsupported_valid_wasm",
+      "reason": "unsupported expression (i32.div_u (local.get 0) (local.get 1))"
+    },
+    {
+      "name": "other_lane",
+      "status": "unsupported_valid_wasm",
+      "reason": "unsupported expression (i8x16.extract_lane_u 1 (i8x16.relaxed_swizzle (i8x16.splat (local.get 0)) (i8x16.splat (local.get 1))))"
+    },
+    {
+      "name": "other_vector",
+      "status": "unsupported_valid_wasm",
+      "reason": "only splat/swizzle/extract lane 0 supported"
+    }
+  ],
+  "invalidWeightRejections": 5,
+  "zeroSiteAccepted": true,
+  "limitation": "Local generated functions; explicit profile models are not additional hardware architectures."
+}

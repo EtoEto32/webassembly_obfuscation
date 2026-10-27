@@ -1,0 +1,9 @@
+# Pの強い比較対象（2026-10-26、追加測定前）
+
+初回は40人工例・360プロセス。幅512・反復1024で区間版は配列版のend-to-end時間の0.72〜0.96倍。ただし短時間の単発測定にばらつきがあり、確定結果とはしない。
+
+区間表現が必要かを反証するため、flat bufferの論理長だけをpopで縮め、最後に検査済みのsignatureとbuffer位置を1件だけ覚えるcached-flatを追加する。同じ位置への同じvectorのpushなら元のbufferを再利用する。証明済み範囲に重なる書込みがあればcertificateを失効させる。直前の同一型列を再利用するだけで十分なら、Pの成果を圧縮列アルゴリズム一般に拡大しない。
+
+identityだけでなく、入力型列A→出力型列B→Aを交互に呼ぶ生成例も測る。これはidentity反復に最適化した比較の限界を調べるための追加例であり、自然な実ワークロードではない。AとBは混合numeric型であり、同一型のrun-length圧縮で代替できる例に限定しない。
+
+測定は1 sampleを10 ms目標（最大512反復）のbatchへ変え、warmup 5回＋calibration 5回、11 sample、3独立processの中央値を記録する。stockでは自作predecodeを事前に行わず、whole-process peak working setも測る。旧v1は探索測定として残す。

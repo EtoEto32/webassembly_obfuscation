@@ -1,0 +1,363 @@
+{
+  "conditions": 75,
+  "recovered": 75,
+  "correctness_calls": 138480,
+  "correctness_mismatches": 0,
+  "interpreter_calls": 300,
+  "interpreter_mismatches": 0,
+  "canonical": {
+    "ch": {
+      "bdd_hash_count": 1,
+      "output_binary_hash_count": 1,
+      "bdd_nodes": 3
+    },
+    "maj": {
+      "bdd_hash_count": 1,
+      "output_binary_hash_count": 1,
+      "bdd_nodes": 4
+    },
+    "mixed12": {
+      "bdd_hash_count": 1,
+      "output_binary_hash_count": 1,
+      "bdd_nodes": 24
+    },
+    "parity16": {
+      "bdd_hash_count": 1,
+      "output_binary_hash_count": 1,
+      "bdd_nodes": 31
+    },
+    "blend24": {
+      "bdd_hash_count": 1,
+      "output_binary_hash_count": 1,
+      "bdd_nodes": 222
+    }
+  },
+  "O3": [
+    {
+      "kernel": "ch",
+      "mode": "plain",
+      "bytes": 51,
+      "median_ns": 70.31250000000267,
+      "iqr_ns": [
+        69.53125000000449,
+        82.03125000000311
+      ],
+      "analysis_ms": 0.01709999999999212,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 38748
+    },
+    {
+      "kernel": "ch",
+      "mode": "mba",
+      "bytes": 65,
+      "median_ns": 73.43749999999538,
+      "iqr_ns": [
+        72.6562499999972,
+        84.37499999999764
+      ],
+      "analysis_ms": 0.026900000000051882,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 38888
+    },
+    {
+      "kernel": "ch",
+      "mode": "graph",
+      "bytes": 654,
+      "median_ns": 302.34374999998926,
+      "iqr_ns": [
+        295.3125000000056,
+        353.90625000000784
+      ],
+      "analysis_ms": 0.1066999999999041,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40072
+    },
+    {
+      "kernel": "ch",
+      "mode": "elim50",
+      "bytes": 671,
+      "median_ns": 164.8437500000044,
+      "iqr_ns": [
+        163.28125000000804,
+        212.4999999999766
+      ],
+      "analysis_ms": 0.08659999999993673,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 39076
+    },
+    {
+      "kernel": "ch",
+      "mode": "elim80",
+      "bytes": 689,
+      "median_ns": 145.3124999999944,
+      "iqr_ns": [
+        121.09374999999534,
+        176.56250000000483
+      ],
+      "analysis_ms": 0.06700000000003925,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 39000
+    },
+    {
+      "kernel": "maj",
+      "mode": "plain",
+      "bytes": 54,
+      "median_ns": 69.53125000000449,
+      "iqr_ns": [
+        53.906250000013145,
+        92.18750000000719
+      ],
+      "analysis_ms": 0.02079999999970994,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 38816
+    },
+    {
+      "kernel": "maj",
+      "mode": "mba",
+      "bytes": 72,
+      "median_ns": 71.09375000000084,
+      "iqr_ns": [
+        70.31250000000267,
+        79.68749999998082
+      ],
+      "analysis_ms": 0.03390000000003113,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 38968
+    },
+    {
+      "kernel": "maj",
+      "mode": "graph",
+      "bytes": 736,
+      "median_ns": 494.53124999998545,
+      "iqr_ns": [
+        476.56249999999955,
+        536.7187499999982
+      ],
+      "analysis_ms": 0.1684000000006236,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40024
+    },
+    {
+      "kernel": "maj",
+      "mode": "elim50",
+      "bytes": 772,
+      "median_ns": 264.0624999999952,
+      "iqr_ns": [
+        262.49999999999886,
+        307.81250000000426
+      ],
+      "analysis_ms": 0.12989999999923896,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 39996
+    },
+    {
+      "kernel": "maj",
+      "mode": "elim80",
+      "bytes": 808,
+      "median_ns": 199.21875000000756,
+      "iqr_ns": [
+        189.84375000000165,
+        278.12500000001796
+      ],
+      "analysis_ms": 0.10880000000001999,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 39156
+    },
+    {
+      "kernel": "mixed12",
+      "mode": "plain",
+      "bytes": 93,
+      "median_ns": 160.93749999998573,
+      "iqr_ns": [
+        108.59374999999672,
+        234.37499999998113
+      ],
+      "analysis_ms": 0.06380000000016928,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 39212
+    },
+    {
+      "kernel": "mixed12",
+      "mode": "mba",
+      "bytes": 161,
+      "median_ns": 125.78125000001216,
+      "iqr_ns": [
+        101.5625000000131,
+        178.1250000000012
+      ],
+      "analysis_ms": 0.13750000000012363,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 39360
+    },
+    {
+      "kernel": "mixed12",
+      "mode": "graph",
+      "bytes": 799,
+      "median_ns": 591.4062499999817,
+      "iqr_ns": [
+        519.5312499999827,
+        607.812499999999
+      ],
+      "analysis_ms": 1.170700000000302,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40172
+    },
+    {
+      "kernel": "mixed12",
+      "mode": "elim50",
+      "bytes": 995,
+      "median_ns": 425.7812500000069,
+      "iqr_ns": [
+        328.90625000001063,
+        454.6875000000228
+      ],
+      "analysis_ms": 1.2175000000000935,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40032
+    },
+    {
+      "kernel": "mixed12",
+      "mode": "elim80",
+      "bytes": 1037,
+      "median_ns": 286.7187499999979,
+      "iqr_ns": [
+        223.43750000000662,
+        292.9687500000111
+      ],
+      "analysis_ms": 0.4339999999993793,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 39396
+    },
+    {
+      "kernel": "parity16",
+      "mode": "plain",
+      "bytes": 97,
+      "median_ns": 161.71875000001168,
+      "iqr_ns": [
+        135.9374999999885,
+        202.34375000000026
+      ],
+      "analysis_ms": 0.11660000000013326,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 39252
+    },
+    {
+      "kernel": "parity16",
+      "mode": "mba",
+      "bytes": 97,
+      "median_ns": 153.12500000000395,
+      "iqr_ns": [
+        109.3749999999949,
+        160.9375000000135
+      ],
+      "analysis_ms": 0.11470000000013414,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 39328
+    },
+    {
+      "kernel": "parity16",
+      "mode": "graph",
+      "bytes": 3987,
+      "median_ns": 67872.65625000006,
+      "iqr_ns": [
+        67103.90625000001,
+        68317.96875000007
+      ],
+      "analysis_ms": 232.02670000000003,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40384
+    },
+    {
+      "kernel": "parity16",
+      "mode": "elim50",
+      "bytes": 11419,
+      "median_ns": 28371.87499999999,
+      "iqr_ns": [
+        28024.999999999967,
+        28634.37499999999
+      ],
+      "analysis_ms": 226.04139999999973,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40284
+    },
+    {
+      "kernel": "parity16",
+      "mode": "elim80",
+      "bytes": 37364,
+      "median_ns": 10439.062499999985,
+      "iqr_ns": [
+        10386.718749999996,
+        10589.062499999969
+      ],
+      "analysis_ms": 71.86300000000001,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40388
+    },
+    {
+      "kernel": "blend24",
+      "mode": "plain",
+      "bytes": 129,
+      "median_ns": 174.21874999998255,
+      "iqr_ns": [
+        136.71875000001444,
+        211.71874999997843
+      ],
+      "analysis_ms": 0.3201999999999927,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 39316
+    },
+    {
+      "kernel": "blend24",
+      "mode": "mba",
+      "bytes": 195,
+      "median_ns": 175.00000000000847,
+      "iqr_ns": [
+        136.71875000001444,
+        242.18749999999068
+      ],
+      "analysis_ms": 0.36569999999969127,
+      "linear_memory_bytes": 0,
+      "max_rss_kib": 39308
+    },
+    {
+      "kernel": "blend24",
+      "mode": "graph",
+      "bytes": 1126,
+      "median_ns": 671.0937499999902,
+      "iqr_ns": [
+        642.9687500000003,
+        784.3750000000039
+      ],
+      "analysis_ms": 10.93450000000007,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40524
+    },
+    {
+      "kernel": "blend24",
+      "mode": "elim50",
+      "bytes": 1121,
+      "median_ns": 414.8437500000046,
+      "iqr_ns": [
+        364.0624999999842,
+        430.4687500000237
+      ],
+      "analysis_ms": 4.225100000000204,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 40452
+    },
+    {
+      "kernel": "blend24",
+      "mode": "elim80",
+      "bytes": 1132,
+      "median_ns": 383.5937499999942,
+      "iqr_ns": [
+        347.65624999999466,
+        389.0625000000092
+      ],
+      "analysis_ms": 2.876899999999516,
+      "linear_memory_bytes": 65536,
+      "max_rss_kib": 39564
+    }
+  ],
+  "conclusion": "Reject this prototype for the invention goal: all variants normalize to identical recovered Wasm per kernel, and elimination usually makes both execution and this recovery faster. Known switching algebra; no independent new principle established."
+}

@@ -1,0 +1,6 @@
+{
+  "status": "correctness_completed",
+  "issue": "Host barrier loaded its expected value a second time after testing it, allowing a notification to be missed until its 100 ms timeout. This can inflate host latency; it does not mutate Wasm computation.",
+  "action": "Keep v1; use a single observed value for both comparison and Atomics.wait in v2, rerun correctness, and use only the corrected harness for performance.",
+  "count_as_resilience": false
+}

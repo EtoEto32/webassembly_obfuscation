@@ -1,0 +1,4997 @@
+[
+  {
+    "path": "n1024.plain.O3.wasm",
+    "dataset": "n1024",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.plain.O3.probe.wasm",
+    "bytes": 1181,
+    "sha256": "5f146ad222554a517ef353290ecd1528a22ef5ba6bd36e45388ae65398db69c1",
+    "harness_sha256": "03dd59c122df13ba6e82407cbb94449b494225278b82b62a851789435ae9d468",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          11.65,
+          10.95,
+          10.95,
+          11.6,
+          12.75,
+          11,
+          10.85,
+          10.8,
+          10.85,
+          10.95,
+          10.85
+        ],
+        "median_ns": 10.95
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.5,
+          7.25,
+          15.6,
+          7.1,
+          7.3,
+          7.3,
+          7.15,
+          7.5,
+          7.35,
+          7.3,
+          7.1
+        ],
+        "median_ns": 7.3
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.4,
+          7.55,
+          7.5,
+          7.8,
+          8.6,
+          7.8,
+          8.05,
+          7.25,
+          7.2,
+          7.25,
+          7.25
+        ],
+        "median_ns": 7.5
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          852.5,
+          834,
+          840.7,
+          836.4,
+          837.6,
+          845.2,
+          835.6,
+          830.6,
+          829,
+          824.6,
+          841.9
+        ],
+        "median_ns": 836.4
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          846.8,
+          849.4,
+          845.4,
+          852.1,
+          834.1,
+          836.6,
+          852,
+          843.5,
+          854.3,
+          852.6,
+          847.7
+        ],
+        "median_ns": 847.7
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37880
+  },
+  {
+    "path": "n1024.shared.O3.wasm",
+    "dataset": "n1024",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.shared.O3.probe.wasm",
+    "bytes": 1403,
+    "sha256": "6ee775fd7c32775960f3cd795be5b7c57ea393288f9c905d2ee9968ea0a011cf",
+    "harness_sha256": "27f4bc711771ce283b59ccb4c8713d83d3f2964b3a86fc1dec65da41eb7678a0",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          26.95,
+          30.4,
+          29.15,
+          29.9,
+          30.9,
+          31.15,
+          23.45,
+          22.5,
+          30.35,
+          22.15,
+          21.95
+        ],
+        "median_ns": 29.15
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          186.45,
+          181.6,
+          186.35,
+          180.85,
+          181.9,
+          182.45,
+          181.55,
+          182.65,
+          179.85,
+          181.75,
+          181.65
+        ],
+        "median_ns": 181.75
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          332.7,
+          342.65,
+          337.1,
+          340.5,
+          348.8,
+          334.45,
+          334.85,
+          337.1,
+          335.6,
+          336.75,
+          342.95
+        ],
+        "median_ns": 337.1
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          842,
+          860.5,
+          841.7,
+          828.3,
+          839.7,
+          824.9,
+          832.4,
+          847.6,
+          839.6,
+          843.7,
+          843.3
+        ],
+        "median_ns": 841.7
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          856,
+          859.7,
+          853.9,
+          859.8,
+          840.9,
+          861.8,
+          869.1,
+          881.5,
+          859.8,
+          854.8,
+          857.4
+        ],
+        "median_ns": 859.7
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37900
+  },
+  {
+    "path": "n8192.roundtrip.O3.wasm",
+    "dataset": "n8192",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.roundtrip.O3.probe.wasm",
+    "bytes": 8435,
+    "sha256": "7bba6727cf35c82d9d4a4dc062dcabc5e7717f0ef93d602439fd017170b070fa",
+    "harness_sha256": "f3d9f56e32ad3b7c777f14128f91dd0e3ee6b906da4274c37654fed28209917e",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          5168.25,
+          4969.6,
+          5799.6,
+          5208.05,
+          5058.2,
+          4973.75,
+          4933.15,
+          4901.65,
+          5076.6,
+          5066.6,
+          5126.5
+        ],
+        "median_ns": 5066.6
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          5058.6,
+          5041.4,
+          5055.4,
+          5046.25,
+          4954,
+          4986.45,
+          5025.1,
+          4985.8,
+          4982.6,
+          4943.75,
+          5013.3
+        ],
+        "median_ns": 5013.3
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          4933.05,
+          4974.4,
+          4933.85,
+          5025.55,
+          5001.35,
+          4931.25,
+          5043.05,
+          5044.3,
+          4959.75,
+          4977.85,
+          4980.45
+        ],
+        "median_ns": 4977.85
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6533.1,
+          6483.5,
+          6541.5,
+          6508.9,
+          6479.9,
+          6534.3,
+          6635.2,
+          6672.2,
+          6483.7,
+          6480.8,
+          6529.7
+        ],
+        "median_ns": 6529.7
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          11503.5,
+          11641.4,
+          11521.6,
+          11444.1,
+          11493.1,
+          11636.1,
+          11483.4,
+          11457.4,
+          11660.8,
+          11509.8,
+          11430
+        ],
+        "median_ns": 11503.5
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37816
+  },
+  {
+    "path": "n64.plain.O3.wasm",
+    "dataset": "n64",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.plain.O3.probe.wasm",
+    "bytes": 219,
+    "sha256": "280d832bcb6421f95189e83467a58f4a61d9edc8d502f14d2971cbf4bfed7ea9",
+    "harness_sha256": "590eef407123d079d6276b8b0bce409a16c838f731f839830a9b141cb5e7c7b6",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.25,
+          8.3,
+          7.1,
+          7.5,
+          9.7,
+          7.2,
+          6.95,
+          6.95,
+          7.55,
+          8.55,
+          6.75
+        ],
+        "median_ns": 7.25
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.35,
+          8.6,
+          14.75,
+          7.5,
+          6.95,
+          7,
+          6.65,
+          6.7,
+          7.65,
+          6.4,
+          6.45
+        ],
+        "median_ns": 7
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7,
+          7.05,
+          7.15,
+          7.3,
+          9.2,
+          10.25,
+          7.1,
+          7.15,
+          7.15,
+          6.8,
+          6.85
+        ],
+        "median_ns": 7.15
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          98,
+          90.3,
+          84.1,
+          46.4,
+          35.4,
+          32.5,
+          32.3,
+          32.2,
+          32.2,
+          32.2,
+          36.9
+        ],
+        "median_ns": 35.4
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          38.1,
+          38.1,
+          38.2,
+          38.2,
+          38,
+          38.2,
+          38.1,
+          38.1,
+          39.5,
+          40.4,
+          40.4
+        ],
+        "median_ns": 38.2
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37752
+  },
+  {
+    "path": "n1024.two.O3.wasm",
+    "dataset": "n1024",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.two.O3.probe.wasm",
+    "bytes": 1355,
+    "sha256": "0dfaa2d84bd05c6711b164f8a0ce02a58c61b1e5c47772b111f78a2b6275f538",
+    "harness_sha256": "a6d8e6eba9f054b5bd19baf18334224ec1f168b4318f50e0a043b0707e081d79",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          21.8,
+          20.9,
+          20.9,
+          21.85,
+          22.65,
+          21.05,
+          20.55,
+          20.55,
+          20.6,
+          21.05,
+          29.8
+        ],
+        "median_ns": 21.05
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          336.15,
+          334.4,
+          348.25,
+          337.2,
+          330.5,
+          331.8,
+          329.85,
+          332.05,
+          334.6,
+          365.7,
+          329.65
+        ],
+        "median_ns": 334.4
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          327.55,
+          337.05,
+          339,
+          337.1,
+          328.2,
+          332.65,
+          327,
+          330.95,
+          330.5,
+          327.4,
+          327.3
+        ],
+        "median_ns": 330.5
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          832.1,
+          821.2,
+          827,
+          820.2,
+          827.3,
+          820.3,
+          938,
+          890.2,
+          844.7,
+          802.6,
+          834.6
+        ],
+        "median_ns": 827.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          836.1,
+          817.4,
+          833.7,
+          811.9,
+          810.7,
+          839.6,
+          864.5,
+          892.8,
+          836.8,
+          863.7,
+          853.7
+        ],
+        "median_ns": 836.8
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37968
+  },
+  {
+    "path": "n1024.plain.O3.wasm",
+    "dataset": "n1024",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.plain.O3.probe.wasm",
+    "bytes": 1181,
+    "sha256": "5f146ad222554a517ef353290ecd1528a22ef5ba6bd36e45388ae65398db69c1",
+    "harness_sha256": "03dd59c122df13ba6e82407cbb94449b494225278b82b62a851789435ae9d468",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          11.4,
+          11.15,
+          10.9,
+          11.65,
+          12.6,
+          11,
+          10.85,
+          10.9,
+          10.9,
+          10.8,
+          11.15
+        ],
+        "median_ns": 11
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.45,
+          7.4,
+          15.95,
+          7.2,
+          7.25,
+          7.15,
+          7.15,
+          7.15,
+          7.1,
+          7.3,
+          7.1
+        ],
+        "median_ns": 7.2
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.9,
+          7.4,
+          7.4,
+          7.7,
+          8.6,
+          7.4,
+          7.35,
+          7.2,
+          7.2,
+          7.1,
+          7.25
+        ],
+        "median_ns": 7.4
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          841,
+          840.1,
+          871.5,
+          836.4,
+          835.8,
+          839.8,
+          836.1,
+          840.8,
+          835.7,
+          840.2,
+          822.8
+        ],
+        "median_ns": 839.8
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          863.3,
+          840.6,
+          850.5,
+          851.7,
+          836.3,
+          844.4,
+          843.8,
+          868.4,
+          852.4,
+          855.9,
+          848.8
+        ],
+        "median_ns": 850.5
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37716
+  },
+  {
+    "path": "n1024.xor.O3.wasm",
+    "dataset": "n1024",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.xor.O3.probe.wasm",
+    "bytes": 1185,
+    "sha256": "35e1a579d9b162146b247afc53b645241d5716bac90e9d5f70cfa7e77cbbc353",
+    "harness_sha256": "899ff5bbe8b5f481b38ab3d48b28387b1054080e255ff2372b994f6625116d2b",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          12.45,
+          12.1,
+          12.05,
+          12.55,
+          13.2,
+          12.1,
+          12,
+          12,
+          11.9,
+          11.95,
+          12.05
+        ],
+        "median_ns": 12.05
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.4,
+          7.35,
+          14.35,
+          7.35,
+          7.5,
+          7.3,
+          7.3,
+          7.3,
+          7.55,
+          7.7,
+          7.3
+        ],
+        "median_ns": 7.35
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.95,
+          7.55,
+          7.45,
+          7.9,
+          8.75,
+          7.6,
+          7.15,
+          6.95,
+          6.95,
+          6.95,
+          6.95
+        ],
+        "median_ns": 7.45
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          830.6,
+          825.3,
+          833.5,
+          829.5,
+          843.9,
+          845,
+          824.4,
+          838.5,
+          860.5,
+          846,
+          830.7
+        ],
+        "median_ns": 833.5
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          856.2,
+          851.4,
+          856.7,
+          848.4,
+          856.7,
+          849.4,
+          855.9,
+          848.8,
+          848.5,
+          849.5,
+          862.2
+        ],
+        "median_ns": 851.4
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37748
+  },
+  {
+    "path": "n8192.roundtrip.O3.wasm",
+    "dataset": "n8192",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.roundtrip.O3.probe.wasm",
+    "bytes": 8435,
+    "sha256": "7bba6727cf35c82d9d4a4dc062dcabc5e7717f0ef93d602439fd017170b070fa",
+    "harness_sha256": "f3d9f56e32ad3b7c777f14128f91dd0e3ee6b906da4274c37654fed28209917e",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          5242.25,
+          5254.55,
+          5302.9,
+          5322.55,
+          5321.9,
+          5234.05,
+          5111.3,
+          5260.3,
+          5233.3,
+          5090.5,
+          5078.2
+        ],
+        "median_ns": 5242.25
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          5149.95,
+          5044.6,
+          5070.4,
+          5077.05,
+          4906.25,
+          5040.8,
+          4906.85,
+          4960.15,
+          4958.3,
+          4924.8,
+          5042.55
+        ],
+        "median_ns": 5040.8
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          5040.9,
+          4961.25,
+          4894.05,
+          4868.85,
+          4905.3,
+          5190.8,
+          6098,
+          5230.1,
+          5299.8,
+          4954.65,
+          4847.85
+        ],
+        "median_ns": 4961.25
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6214.4,
+          6299.3,
+          6334.9,
+          6212.6,
+          6322.5,
+          6202.1,
+          6244.1,
+          6250.1,
+          6219.7,
+          6495.2,
+          6249.2
+        ],
+        "median_ns": 6249.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          11086.6,
+          11087.4,
+          11052.3,
+          11032.1,
+          11161.8,
+          11010.2,
+          10984.2,
+          11028.1,
+          11005.1,
+          11024.5,
+          10999.6
+        ],
+        "median_ns": 11028.1
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37836
+  },
+  {
+    "path": "n8192.xor.O3.wasm",
+    "dataset": "n8192",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.xor.O3.probe.wasm",
+    "bytes": 8356,
+    "sha256": "20b63f57066d89e284c8a3f0f30e14c091a1c08f183c85d7f612fb8a84f3f766",
+    "harness_sha256": "625768937210c1c2d8b06eee7122c252f79daedfc8f764cfb37b9e12becf13a7",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          33.25,
+          34.9,
+          34.85,
+          35.4,
+          36.1,
+          34.9,
+          34.85,
+          34.8,
+          34.8,
+          34.8,
+          34.75
+        ],
+        "median_ns": 34.85
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          9.95,
+          9.6,
+          16.85,
+          10.05,
+          9.75,
+          9.6,
+          9.6,
+          9.8,
+          9.8,
+          11.4,
+          9.55
+        ],
+        "median_ns": 9.8
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          9.65,
+          9.75,
+          10,
+          9.75,
+          10.45,
+          10.15,
+          9.85,
+          10.1,
+          9.65,
+          9.65,
+          9.85
+        ],
+        "median_ns": 9.85
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6427.4,
+          6433.3,
+          6479.6,
+          6421.7,
+          6474.5,
+          6205.4,
+          6229.5,
+          6265.5,
+          6207.8,
+          6258.7,
+          6204.2
+        ],
+        "median_ns": 6265.5
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6244,
+          6271.4,
+          6288.4,
+          6269.5,
+          6285.2,
+          6242.3,
+          6252.9,
+          6367.8,
+          6257.8,
+          6307.1,
+          6241.4
+        ],
+        "median_ns": 6269.5
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37900
+  },
+  {
+    "path": "n8192.shared.O3.wasm",
+    "dataset": "n8192",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.shared.O3.probe.wasm",
+    "bytes": 8576,
+    "sha256": "083c1724fae283664bd85346bf14174426a1a30382a4c62f31844b39b872bacb",
+    "harness_sha256": "5442af9a97adf74cd25e5880c84120244afff5baf855e4499ea5fa7a026865fa",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          38.55,
+          51.8,
+          55.15,
+          43.3,
+          41.5,
+          38.7,
+          39,
+          38.4,
+          45.85,
+          38.5,
+          38.45
+        ],
+        "median_ns": 39
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          1254.4,
+          1248.15,
+          1250.8,
+          1249.1,
+          1274.35,
+          1250.3,
+          1256.65,
+          1247.9,
+          1246.5,
+          1248.5,
+          1246.25
+        ],
+        "median_ns": 1249.1
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2466.85,
+          2464.2,
+          2491.15,
+          2470.75,
+          2465.1,
+          2444.95,
+          2382.25,
+          2389,
+          2405.4,
+          2376.05,
+          2390.1
+        ],
+        "median_ns": 2444.95
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6229.3,
+          6244.7,
+          6210.9,
+          6267,
+          6202.4,
+          6250.8,
+          6249.3,
+          6202.3,
+          6285.8,
+          6238.3,
+          6226.3
+        ],
+        "median_ns": 6238.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6312.5,
+          6246.1,
+          6273.8,
+          6391,
+          6265.4,
+          6311.7,
+          6307.8,
+          6280,
+          6342.5,
+          6256.4,
+          6345.3
+        ],
+        "median_ns": 6307.8
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37788
+  },
+  {
+    "path": "n64.shared.O3.wasm",
+    "dataset": "n64",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.shared.O3.probe.wasm",
+    "bytes": 441,
+    "sha256": "c1c5c4d9f659273152242925dc27fd105b98a4d4c5916531d252e4beb2f8e174",
+    "harness_sha256": "7efd93d3c8d505cf801e729e585c73fb641b6c2566f43619362a115b53ddaa01",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          17.6,
+          17.15,
+          17.05,
+          17.65,
+          18.25,
+          17.3,
+          17.15,
+          17.1,
+          24.25,
+          17.3,
+          17.2
+        ],
+        "median_ns": 17.3
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          90.7,
+          78.8,
+          22.05,
+          20.1,
+          20,
+          20.3,
+          18.4,
+          17.9,
+          18.05,
+          17.9,
+          17.95
+        ],
+        "median_ns": 20
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          18.5,
+          18.5,
+          18.5,
+          21.35,
+          19,
+          18.4,
+          18.35,
+          18.3,
+          18.3,
+          18.25,
+          18.25
+        ],
+        "median_ns": 18.4
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          103.3,
+          98.6,
+          62.6,
+          34.3,
+          34.3,
+          34.3,
+          34.4,
+          34.3,
+          34.4,
+          34.3,
+          34.4
+        ],
+        "median_ns": 34.4
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          43.2,
+          43.1,
+          43.2,
+          43.2,
+          43.1,
+          43.2,
+          43.1,
+          43.1,
+          43.1,
+          43.1,
+          43.3
+        ],
+        "median_ns": 43.1
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37884
+  },
+  {
+    "path": "n8192.roundtrip.O3.wasm",
+    "dataset": "n8192",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.roundtrip.O3.probe.wasm",
+    "bytes": 8435,
+    "sha256": "7bba6727cf35c82d9d4a4dc062dcabc5e7717f0ef93d602439fd017170b070fa",
+    "harness_sha256": "f3d9f56e32ad3b7c777f14128f91dd0e3ee6b906da4274c37654fed28209917e",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          4976.8,
+          4948.25,
+          4918.9,
+          4958.5,
+          5025.85,
+          4929.7,
+          4964.5,
+          4922.6,
+          4997.9,
+          4950.95,
+          4918.5
+        ],
+        "median_ns": 4950.95
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          4933.05,
+          4904.6,
+          4928,
+          4915.45,
+          4944.8,
+          4929.95,
+          4912.45,
+          4918.55,
+          5235,
+          4936.5,
+          4926.4
+        ],
+        "median_ns": 4928
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          4913.65,
+          4943.5,
+          4902.05,
+          4929.2,
+          4922.3,
+          4896.2,
+          4942.6,
+          4943.75,
+          4897.25,
+          4896.65,
+          4814.3
+        ],
+        "median_ns": 4913.65
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6292.8,
+          6242.7,
+          6207,
+          6294.4,
+          6204.6,
+          6301.5,
+          6320.8,
+          6209.8,
+          6891,
+          6618.2,
+          6287.2
+        ],
+        "median_ns": 6292.8
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          11665.9,
+          11536.4,
+          11533.7,
+          11423.2,
+          11396.9,
+          11360.5,
+          11387.4,
+          11410.1,
+          11414.4,
+          11374.2,
+          11372.4
+        ],
+        "median_ns": 11410.1
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37704
+  },
+  {
+    "path": "n64.xor.O3.wasm",
+    "dataset": "n64",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.xor.O3.probe.wasm",
+    "bytes": 223,
+    "sha256": "13dced1e031a29a813c0732ae90bd59d6daa6d49970714a072e3d8ce06e7fbb9",
+    "harness_sha256": "7621f06932c10f1d05ac1204330351452f25cb00e97c40b62f7b803c65c28830",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7,
+          6.6,
+          6.45,
+          7,
+          7.9,
+          6.9,
+          6.6,
+          6.35,
+          6.7,
+          6.35,
+          6.35
+        ],
+        "median_ns": 6.6
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.4,
+          6.55,
+          13.4,
+          6.35,
+          6.3,
+          6.8,
+          6.3,
+          6.5,
+          6.65,
+          6.5,
+          6.8
+        ],
+        "median_ns": 6.5
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.8,
+          6.5,
+          6.95,
+          6.75,
+          7.55,
+          6.7,
+          6.7,
+          6.7,
+          6.7,
+          6.7,
+          6.5
+        ],
+        "median_ns": 6.7
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          79.3,
+          59.3,
+          57.4,
+          57.6,
+          62,
+          34.2,
+          34.2,
+          34.2,
+          34.2,
+          34,
+          33.9
+        ],
+        "median_ns": 34.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          39,
+          44.1,
+          39.1,
+          39,
+          38.9,
+          38.9,
+          38.9,
+          39,
+          38.9,
+          38.9,
+          38.8
+        ],
+        "median_ns": 38.9
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37816
+  },
+  {
+    "path": "n8192.two.O3.wasm",
+    "dataset": "n8192",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.two.O3.probe.wasm",
+    "bytes": 8528,
+    "sha256": "a8c1ea8770393cd07e45e94f07d64e6a7401fea7db9d60d391ca655797259945",
+    "harness_sha256": "f76fae3495d53fff507f1ab76296ec29c23f1bfffef8df2c7cf2fc961c36027d",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          39.25,
+          38.75,
+          38.25,
+          38.75,
+          39.4,
+          38.75,
+          38.25,
+          38.5,
+          42,
+          44.25,
+          50.6
+        ],
+        "median_ns": 38.75
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2429,
+          2417.65,
+          2463.65,
+          2423.7,
+          2421.1,
+          2432.3,
+          2437.3,
+          2444.3,
+          2421.45,
+          2455.8,
+          2427.85
+        ],
+        "median_ns": 2429
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2507.25,
+          2465.4,
+          2470.25,
+          2486.45,
+          2470.35,
+          2473.05,
+          2507.25,
+          2463.85,
+          2471.25,
+          2535.7,
+          2707.65
+        ],
+        "median_ns": 2473.05
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6438.9,
+          6606.2,
+          6425.7,
+          6572.2,
+          6359.6,
+          6230.1,
+          6256.7,
+          6248.4,
+          6344.2,
+          6268.6,
+          6218.3
+        ],
+        "median_ns": 6344.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6288.1,
+          6266.7,
+          6242.2,
+          6332.6,
+          6258.4,
+          6270.9,
+          6272.6,
+          6249.1,
+          6314.9,
+          6298,
+          6293.3
+        ],
+        "median_ns": 6272.6
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37788
+  },
+  {
+    "path": "n8192.plain.O3.wasm",
+    "dataset": "n8192",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.plain.O3.probe.wasm",
+    "bytes": 8352,
+    "sha256": "290fd3152dccd844b9fafc799654231137378d23b98058eeac6e53ded01b4732",
+    "harness_sha256": "02d6b2d88068b7c15dcf60d432f9707d46e29c810fab38f8b8321e43491d35ac",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          34.6,
+          36.55,
+          36.65,
+          37.1,
+          37.85,
+          36.65,
+          36.5,
+          36.5,
+          37.5,
+          36.5,
+          36.55
+        ],
+        "median_ns": 36.55
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          11.25,
+          11.35,
+          18.55,
+          11.1,
+          11.15,
+          11.7,
+          11.35,
+          11.15,
+          11.5,
+          11.15,
+          11.3
+        ],
+        "median_ns": 11.3
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          11.55,
+          11.8,
+          12.25,
+          12.1,
+          12.65,
+          14.65,
+          14.35,
+          11.95,
+          11.95,
+          15.85,
+          14.2
+        ],
+        "median_ns": 12.25
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6442.6,
+          6550.7,
+          6450.8,
+          6509.6,
+          6447.7,
+          6456.7,
+          6452.9,
+          6201.1,
+          6249.4,
+          6210.9,
+          6200.6
+        ],
+        "median_ns": 6447.7
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6331.2,
+          6237.8,
+          6271,
+          6337.5,
+          6243.9,
+          6305.7,
+          6252.6,
+          6269.8,
+          6326.2,
+          6250.5,
+          6418.4
+        ],
+        "median_ns": 6271
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37796
+  },
+  {
+    "path": "n64.two.O3.wasm",
+    "dataset": "n64",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.two.O3.probe.wasm",
+    "bytes": 393,
+    "sha256": "ab87d448c2ff7f7ce3d8ce8f0d3c8a5d4922dcaf5f691055306478b569ff85ab",
+    "harness_sha256": "a4de0802507cb7a1aa64c5c8ae02381702d06549d550214057e60e602211818f",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          14.8,
+          14.45,
+          14.35,
+          14.8,
+          15.5,
+          14.4,
+          14.25,
+          14.15,
+          14.7,
+          14.25,
+          21.2
+        ],
+        "median_ns": 14.45
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          79.65,
+          79.35,
+          51.65,
+          21.9,
+          22.7,
+          21.3,
+          21.35,
+          21.4,
+          21.2,
+          21.35,
+          21.25
+        ],
+        "median_ns": 21.4
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          18.1,
+          18.15,
+          18.05,
+          18.1,
+          21.2,
+          18.05,
+          18.05,
+          18.05,
+          18.05,
+          17.9,
+          18.1
+        ],
+        "median_ns": 18.05
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          125.4,
+          115.9,
+          53.2,
+          34.2,
+          34.2,
+          34.3,
+          34.2,
+          34.2,
+          34.5,
+          37.1,
+          35.9
+        ],
+        "median_ns": 34.5
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          42.2,
+          42.1,
+          42.1,
+          42.1,
+          42.1,
+          42.1,
+          42.1,
+          42.1,
+          42.1,
+          42.2,
+          42.1
+        ],
+        "median_ns": 42.1
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37788
+  },
+  {
+    "path": "n1024.shared.O3.wasm",
+    "dataset": "n1024",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.shared.O3.probe.wasm",
+    "bytes": 1403,
+    "sha256": "6ee775fd7c32775960f3cd795be5b7c57ea393288f9c905d2ee9968ea0a011cf",
+    "harness_sha256": "27f4bc711771ce283b59ccb4c8713d83d3f2964b3a86fc1dec65da41eb7678a0",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          20.5,
+          19.55,
+          19.25,
+          20.1,
+          20.45,
+          19.9,
+          19.05,
+          19.15,
+          26.2,
+          19.35,
+          19.4
+        ],
+        "median_ns": 19.55
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          170.35,
+          171.25,
+          172,
+          172.35,
+          172.85,
+          172.95,
+          173,
+          171.25,
+          170.4,
+          172.75,
+          176.05
+        ],
+        "median_ns": 172.35
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          317.7,
+          316.15,
+          314,
+          315.8,
+          314.15,
+          347.75,
+          314.25,
+          315.2,
+          317.1,
+          312.15,
+          313.45
+        ],
+        "median_ns": 315.2
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          788.7,
+          822.6,
+          787.4,
+          790.7,
+          826,
+          847.5,
+          842.1,
+          821.4,
+          790,
+          787.2,
+          797.4
+        ],
+        "median_ns": 797.4
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          806,
+          869.6,
+          775.4,
+          786.4,
+          772.6,
+          785.3,
+          772.7,
+          789.3,
+          774.3,
+          789.9,
+          784.6
+        ],
+        "median_ns": 785.3
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 38036
+  },
+  {
+    "path": "n64.xor.O3.wasm",
+    "dataset": "n64",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.xor.O3.probe.wasm",
+    "bytes": 223,
+    "sha256": "13dced1e031a29a813c0732ae90bd59d6daa6d49970714a072e3d8ce06e7fbb9",
+    "harness_sha256": "7621f06932c10f1d05ac1204330351452f25cb00e97c40b62f7b803c65c28830",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7,
+          6.35,
+          6.7,
+          7.05,
+          7.85,
+          6.65,
+          6.6,
+          6.6,
+          6.35,
+          6.35,
+          6.3
+        ],
+        "median_ns": 6.6
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.45,
+          6.35,
+          13.4,
+          6.55,
+          6.45,
+          6.55,
+          6.5,
+          6.5,
+          6.3,
+          6.35,
+          6.3
+        ],
+        "median_ns": 6.45
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.8,
+          6.4,
+          6.55,
+          6.9,
+          7.45,
+          6.85,
+          6.8,
+          6.4,
+          6.45,
+          6.35,
+          6.3
+        ],
+        "median_ns": 6.55
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          81.8,
+          63.4,
+          60.2,
+          57.7,
+          47.4,
+          34.3,
+          34.2,
+          34.1,
+          34.2,
+          34.2,
+          34.2
+        ],
+        "median_ns": 34.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          39.3,
+          44.4,
+          39.2,
+          39.2,
+          39.1,
+          39,
+          38.9,
+          39.2,
+          38.9,
+          39,
+          39.1
+        ],
+        "median_ns": 39.1
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37796
+  },
+  {
+    "path": "n64.roundtrip.O3.wasm",
+    "dataset": "n64",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.roundtrip.O3.probe.wasm",
+    "bytes": 300,
+    "sha256": "86060ed8cc2a5b128c3aead98771268a6406e86ed12f47b9154c0015711930de",
+    "harness_sha256": "8f62f5d5f23ed0f05d95d3aaa5864033d2bd282a1b9e7cb4d088f39761f4fb16",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          187.6,
+          157.85,
+          41.85,
+          42.05,
+          43,
+          41.8,
+          44.25,
+          41.75,
+          41.65,
+          41.65,
+          41.85
+        ],
+        "median_ns": 41.85
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          41.75,
+          42.2,
+          45.1,
+          41.9,
+          42.05,
+          41.55,
+          41.4,
+          41.25,
+          41.4,
+          41.3,
+          40.75
+        ],
+        "median_ns": 41.55
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          40.7,
+          40.85,
+          40.55,
+          40.65,
+          41.1,
+          40.7,
+          42.25,
+          40.65,
+          40.35,
+          40.7,
+          40.4
+        ],
+        "median_ns": 40.7
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          68,
+          63.5,
+          62.5,
+          34.2,
+          34.3,
+          34.4,
+          34.4,
+          34.4,
+          34.4,
+          34.4,
+          34.3
+        ],
+        "median_ns": 34.4
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          83.3,
+          83.2,
+          83.3,
+          83.3,
+          83.2,
+          83.2,
+          83.4,
+          83.2,
+          83.3,
+          83.3,
+          85.9
+        ],
+        "median_ns": 83.3
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37756
+  },
+  {
+    "path": "n1024.roundtrip.O3.wasm",
+    "dataset": "n1024",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.roundtrip.O3.probe.wasm",
+    "bytes": 1263,
+    "sha256": "6fb0a8578060544ba6c99bf7fd0c938ac1a0d80e697bf9e3a09672cc0e459be1",
+    "harness_sha256": "9336b1e917764c0f4eeae27ea8b503fcff6c709261d64b2781aaf121fcda3a09",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          639.4,
+          642,
+          645.45,
+          642.9,
+          644.15,
+          641.35,
+          642.05,
+          637.4,
+          653.7,
+          642.25,
+          638.6
+        ],
+        "median_ns": 642.05
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          642.55,
+          633.4,
+          650.1,
+          642.85,
+          638.4,
+          642.2,
+          653.3,
+          638.95,
+          668.3,
+          637.75,
+          637.9
+        ],
+        "median_ns": 642.2
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          632.4,
+          629.25,
+          633.65,
+          635.75,
+          630.55,
+          631.85,
+          632,
+          629.4,
+          633.7,
+          657.7,
+          640.55
+        ],
+        "median_ns": 632.4
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          788.3,
+          787.4,
+          793.5,
+          787.1,
+          788.5,
+          787.1,
+          788.3,
+          795.9,
+          814,
+          787.3,
+          788.5
+        ],
+        "median_ns": 788.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          1469.9,
+          1457.1,
+          1433.2,
+          1437.6,
+          1435.4,
+          1436.4,
+          1438.4,
+          1446.5,
+          1438.5,
+          1439.9,
+          1434.2
+        ],
+        "median_ns": 1438.4
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37776
+  },
+  {
+    "path": "n1024.two.O3.wasm",
+    "dataset": "n1024",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.two.O3.probe.wasm",
+    "bytes": 1355,
+    "sha256": "0dfaa2d84bd05c6711b164f8a0ce02a58c61b1e5c47772b111f78a2b6275f538",
+    "harness_sha256": "a6d8e6eba9f054b5bd19baf18334224ec1f168b4318f50e0a043b0707e081d79",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          20.05,
+          19.5,
+          19.6,
+          19.95,
+          20.85,
+          19.4,
+          19.45,
+          19.35,
+          19.25,
+          19.2,
+          27.8
+        ],
+        "median_ns": 19.5
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          316,
+          315.3,
+          322.6,
+          315.6,
+          315.55,
+          314.8,
+          313.8,
+          315.05,
+          316.95,
+          313.05,
+          313
+        ],
+        "median_ns": 315.3
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          313.95,
+          315.4,
+          314.95,
+          315.05,
+          315.55,
+          315.2,
+          312.95,
+          339.4,
+          363,
+          312.8,
+          324.8
+        ],
+        "median_ns": 315.2
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          790.7,
+          787.5,
+          787.3,
+          789.7,
+          790.4,
+          789.7,
+          787.3,
+          787.3,
+          789.4,
+          797.6,
+          789.7
+        ],
+        "median_ns": 789.7
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          820.5,
+          826.1,
+          805.5,
+          802.6,
+          804.7,
+          802.7,
+          804.8,
+          802.6,
+          802.8,
+          804.6,
+          802.6
+        ],
+        "median_ns": 804.6
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37772
+  },
+  {
+    "path": "n64.shared.O3.wasm",
+    "dataset": "n64",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.shared.O3.probe.wasm",
+    "bytes": 441,
+    "sha256": "c1c5c4d9f659273152242925dc27fd105b98a4d4c5916531d252e4beb2f8e174",
+    "harness_sha256": "7efd93d3c8d505cf801e729e585c73fb641b6c2566f43619362a115b53ddaa01",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          15.55,
+          14.45,
+          14.45,
+          14.95,
+          15.5,
+          14.55,
+          14.8,
+          14.4,
+          22,
+          14.85,
+          15.15
+        ],
+        "median_ns": 14.85
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          74.4,
+          75.25,
+          44.25,
+          24.2,
+          20.65,
+          18.85,
+          19.5,
+          18.15,
+          18.1,
+          18.1,
+          17.85
+        ],
+        "median_ns": 19.5
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          18.35,
+          18.3,
+          18.2,
+          18.3,
+          18.8,
+          18.1,
+          20.9,
+          18.1,
+          18.25,
+          18.3,
+          18.05
+        ],
+        "median_ns": 18.3
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          68.5,
+          63.9,
+          69.7,
+          38.3,
+          34.4,
+          34.4,
+          34.4,
+          34.4,
+          34.4,
+          34.3,
+          34.3
+        ],
+        "median_ns": 34.4
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          71.8,
+          63.8,
+          44.8,
+          42.5,
+          44,
+          44,
+          44.8,
+          42.3,
+          42.2,
+          42.2,
+          42.3
+        ],
+        "median_ns": 44
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37848
+  },
+  {
+    "path": "n1024.xor.O3.wasm",
+    "dataset": "n1024",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.xor.O3.probe.wasm",
+    "bytes": 1185,
+    "sha256": "35e1a579d9b162146b247afc53b645241d5716bac90e9d5f70cfa7e77cbbc353",
+    "harness_sha256": "899ff5bbe8b5f481b38ab3d48b28387b1054080e255ff2372b994f6625116d2b",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          10.8,
+          10.35,
+          10.3,
+          10.8,
+          11.35,
+          10.5,
+          10.35,
+          10.35,
+          10.25,
+          10.35,
+          10.35
+        ],
+        "median_ns": 10.35
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.75,
+          6.95,
+          14.15,
+          6.85,
+          6.9,
+          6.9,
+          6.7,
+          6.85,
+          6.85,
+          6.7,
+          7.05
+        ],
+        "median_ns": 6.85
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.95,
+          7,
+          6.75,
+          6.95,
+          8,
+          7.5,
+          6.9,
+          6.7,
+          6.7,
+          6.7,
+          6.7
+        ],
+        "median_ns": 6.9
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          789.2,
+          791.1,
+          787.9,
+          789.2,
+          787.8,
+          789.9,
+          787.9,
+          787.9,
+          789.9,
+          824,
+          790.4
+        ],
+        "median_ns": 789.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          796.9,
+          808.2,
+          797,
+          796.9,
+          799,
+          797,
+          800,
+          797,
+          798.1,
+          798.5,
+          818.8
+        ],
+        "median_ns": 798.1
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37936
+  },
+  {
+    "path": "n64.plain.O3.wasm",
+    "dataset": "n64",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.plain.O3.probe.wasm",
+    "bytes": 219,
+    "sha256": "280d832bcb6421f95189e83467a58f4a61d9edc8d502f14d2971cbf4bfed7ea9",
+    "harness_sha256": "590eef407123d079d6276b8b0bce409a16c838f731f839830a9b141cb5e7c7b6",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7,
+          6.6,
+          6.4,
+          6.85,
+          7.9,
+          6.7,
+          6.35,
+          6.55,
+          6.45,
+          6.4,
+          6.55
+        ],
+        "median_ns": 6.55
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.45,
+          6.75,
+          13.4,
+          6.3,
+          6.7,
+          6.6,
+          6.4,
+          6.35,
+          12.8,
+          6.7,
+          6.7
+        ],
+        "median_ns": 6.7
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.75,
+          6.7,
+          6.9,
+          6.75,
+          7.45,
+          6.9,
+          7,
+          6.6,
+          6.8,
+          6.8,
+          6.8
+        ],
+        "median_ns": 6.8
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          112.1,
+          81,
+          77.4,
+          72,
+          32.3,
+          32.3,
+          32.2,
+          32.1,
+          32.1,
+          32.3,
+          32.4
+        ],
+        "median_ns": 32.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          37.9,
+          37.5,
+          37.7,
+          37.7,
+          37.7,
+          37.7,
+          37.6,
+          37.5,
+          37.6,
+          37.7,
+          37.8
+        ],
+        "median_ns": 37.7
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37936
+  },
+  {
+    "path": "n1024.plain.O3.wasm",
+    "dataset": "n1024",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.plain.O3.probe.wasm",
+    "bytes": 1181,
+    "sha256": "5f146ad222554a517ef353290ecd1528a22ef5ba6bd36e45388ae65398db69c1",
+    "harness_sha256": "03dd59c122df13ba6e82407cbb94449b494225278b82b62a851789435ae9d468",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          10.75,
+          10.3,
+          10.25,
+          10.75,
+          11.4,
+          10.35,
+          10.25,
+          10.25,
+          10.25,
+          10.3,
+          10.3
+        ],
+        "median_ns": 10.3
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.95,
+          6.9,
+          13.9,
+          6.8,
+          6.75,
+          6.65,
+          6.75,
+          6.9,
+          6.9,
+          6.9,
+          6.8
+        ],
+        "median_ns": 6.9
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.15,
+          7.35,
+          7.35,
+          7.25,
+          10.6,
+          7.1,
+          7,
+          7.2,
+          7.25,
+          6.85,
+          7
+        ],
+        "median_ns": 7.2
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          786.2,
+          787.6,
+          785,
+          785,
+          786.7,
+          812.1,
+          787.8,
+          785,
+          784.9,
+          787,
+          804.3
+        ],
+        "median_ns": 786.7
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          794.8,
+          800,
+          794.7,
+          796.8,
+          794.6,
+          797.3,
+          809.2,
+          797,
+          794.7,
+          794.7,
+          796.5
+        ],
+        "median_ns": 796.5
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37716
+  },
+  {
+    "path": "n64.shared.O3.wasm",
+    "dataset": "n64",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.shared.O3.probe.wasm",
+    "bytes": 441,
+    "sha256": "c1c5c4d9f659273152242925dc27fd105b98a4d4c5916531d252e4beb2f8e174",
+    "harness_sha256": "7efd93d3c8d505cf801e729e585c73fb641b6c2566f43619362a115b53ddaa01",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          15.6,
+          15.55,
+          14.9,
+          15.7,
+          16.15,
+          14.9,
+          14.6,
+          14.85,
+          22,
+          14.8,
+          14.85
+        ],
+        "median_ns": 14.9
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          58.1,
+          60.95,
+          60.9,
+          57.45,
+          31.8,
+          17.85,
+          17.85,
+          17.9,
+          17.95,
+          17.85,
+          17.85
+        ],
+        "median_ns": 17.95
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          18.2,
+          18.25,
+          18.15,
+          18.2,
+          19,
+          18.35,
+          18.25,
+          18.25,
+          18.2,
+          18.3,
+          18.15
+        ],
+        "median_ns": 18.25
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          76.5,
+          65.9,
+          65.5,
+          49.9,
+          34.3,
+          34.3,
+          34.3,
+          34.3,
+          34.4,
+          34.4,
+          34.3
+        ],
+        "median_ns": 34.4
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          43.2,
+          42.9,
+          43,
+          42.7,
+          42.8,
+          43,
+          43.2,
+          42.8,
+          42.9,
+          42.9,
+          43.1
+        ],
+        "median_ns": 42.9
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37904
+  },
+  {
+    "path": "n8192.plain.O3.wasm",
+    "dataset": "n8192",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.plain.O3.probe.wasm",
+    "bytes": 8352,
+    "sha256": "290fd3152dccd844b9fafc799654231137378d23b98058eeac6e53ded01b4732",
+    "harness_sha256": "02d6b2d88068b7c15dcf60d432f9707d46e29c810fab38f8b8321e43491d35ac",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          30.8,
+          30.45,
+          29.8,
+          30.35,
+          31.65,
+          30.5,
+          29.9,
+          29.75,
+          29.75,
+          29.8,
+          31.95
+        ],
+        "median_ns": 30.35
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          12.45,
+          28.5,
+          19.5,
+          12.8,
+          12.95,
+          12.45,
+          12.45,
+          12.45,
+          12.65,
+          12.5,
+          12.5
+        ],
+        "median_ns": 12.5
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          12.55,
+          12.6,
+          12.4,
+          12.2,
+          13.65,
+          12.6,
+          12.55,
+          12.3,
+          12.4,
+          12.4,
+          12.3
+        ],
+        "median_ns": 12.4
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6518.8,
+          6452.3,
+          6475.1,
+          6566.3,
+          6418.8,
+          6442.8,
+          6421.5,
+          6506.5,
+          6447.5,
+          6418.8,
+          6474.9
+        ],
+        "median_ns": 6452.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6464.7,
+          6463,
+          6518.3,
+          6489.9,
+          6503,
+          6462.1,
+          6488.8,
+          6479.3,
+          6513.4,
+          6744.4,
+          6467.6
+        ],
+        "median_ns": 6488.8
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37892
+  },
+  {
+    "path": "n8192.two.O3.wasm",
+    "dataset": "n8192",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.two.O3.probe.wasm",
+    "bytes": 8528,
+    "sha256": "a8c1ea8770393cd07e45e94f07d64e6a7401fea7db9d60d391ca655797259945",
+    "harness_sha256": "f76fae3495d53fff507f1ab76296ec29c23f1bfffef8df2c7cf2fc961c36027d",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          40.15,
+          39.65,
+          39.75,
+          41.1,
+          40.35,
+          39.55,
+          39.3,
+          53.2,
+          41.2,
+          39.4,
+          52.85
+        ],
+        "median_ns": 40.15
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2591.05,
+          2603.65,
+          2556.7,
+          2516.3,
+          2575.1,
+          2445.05,
+          2431.6,
+          2499.3,
+          2445.15,
+          2433.3,
+          2497.55
+        ],
+        "median_ns": 2499.3
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2469.85,
+          2530.4,
+          2500.15,
+          2480.25,
+          2502.9,
+          2481.25,
+          2475.75,
+          2545.4,
+          2473.65,
+          2476.25,
+          2496.65
+        ],
+        "median_ns": 2481.25
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6561.1,
+          6468,
+          6508.2,
+          6452.4,
+          6524.9,
+          6448.6,
+          6467.6,
+          6619.9,
+          6431.4,
+          6519.8,
+          6455.1
+        ],
+        "median_ns": 6468
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6488.9,
+          6575.8,
+          6485.9,
+          6489.3,
+          6562,
+          6538,
+          6617.5,
+          6499.3,
+          6611.4,
+          6489.4,
+          6509.1
+        ],
+        "median_ns": 6509.1
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 38116
+  },
+  {
+    "path": "n1024.two.O3.wasm",
+    "dataset": "n1024",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.two.O3.probe.wasm",
+    "bytes": 1355,
+    "sha256": "0dfaa2d84bd05c6711b164f8a0ce02a58c61b1e5c47772b111f78a2b6275f538",
+    "harness_sha256": "a6d8e6eba9f054b5bd19baf18334224ec1f168b4318f50e0a043b0707e081d79",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          21.1,
+          21.3,
+          21.05,
+          21.85,
+          22.8,
+          20.15,
+          20.05,
+          19.75,
+          19.7,
+          19.75,
+          26.45
+        ],
+        "median_ns": 21.05
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          315.85,
+          314.35,
+          318.05,
+          314,
+          311.95,
+          314.45,
+          313.95,
+          313.85,
+          313.7,
+          314.5,
+          314.3
+        ],
+        "median_ns": 314.3
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          317.35,
+          310.95,
+          315.9,
+          314.7,
+          311.05,
+          313.1,
+          312.55,
+          314.9,
+          313.55,
+          313.35,
+          313.9
+        ],
+        "median_ns": 313.55
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          788.9,
+          789.4,
+          787.3,
+          789.2,
+          787.2,
+          787.2,
+          789,
+          787.3,
+          831.4,
+          787.5,
+          787.4
+        ],
+        "median_ns": 787.5
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          804.7,
+          802.4,
+          804.5,
+          827.7,
+          805,
+          802.3,
+          824.8,
+          820.6,
+          806.1,
+          805.1,
+          814.2
+        ],
+        "median_ns": 805.1
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37892
+  },
+  {
+    "path": "n64.two.O3.wasm",
+    "dataset": "n64",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.two.O3.probe.wasm",
+    "bytes": 393,
+    "sha256": "ab87d448c2ff7f7ce3d8ce8f0d3c8a5d4922dcaf5f691055306478b569ff85ab",
+    "harness_sha256": "a4de0802507cb7a1aa64c5c8ae02381702d06549d550214057e60e602211818f",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          15,
+          14.55,
+          14.55,
+          15.05,
+          16.15,
+          14.5,
+          14.4,
+          14.6,
+          14.4,
+          14.5,
+          21.1
+        ],
+        "median_ns": 14.55
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          81.1,
+          79.45,
+          53.85,
+          21.8,
+          22.85,
+          21.35,
+          21.25,
+          21.3,
+          21.2,
+          21.2,
+          21.25
+        ],
+        "median_ns": 21.35
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          18.05,
+          18.1,
+          18.05,
+          18.05,
+          18.85,
+          18.15,
+          18,
+          17.95,
+          17.95,
+          18,
+          18
+        ],
+        "median_ns": 18.05
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          115,
+          111.3,
+          51.4,
+          34.3,
+          34.3,
+          34.3,
+          34.4,
+          34.3,
+          34.3,
+          34.3,
+          34.2
+        ],
+        "median_ns": 34.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          42,
+          42.1,
+          42,
+          42,
+          42,
+          42,
+          42,
+          42,
+          42,
+          42,
+          42
+        ],
+        "median_ns": 42
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37916
+  },
+  {
+    "path": "n8192.two.O3.wasm",
+    "dataset": "n8192",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.two.O3.probe.wasm",
+    "bytes": 8528,
+    "sha256": "a8c1ea8770393cd07e45e94f07d64e6a7401fea7db9d60d391ca655797259945",
+    "harness_sha256": "f76fae3495d53fff507f1ab76296ec29c23f1bfffef8df2c7cf2fc961c36027d",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          38.85,
+          38.25,
+          37.9,
+          38.75,
+          39.2,
+          37.8,
+          37.95,
+          37.75,
+          37.65,
+          37.85,
+          44.5
+        ],
+        "median_ns": 37.95
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2422.95,
+          2420.45,
+          2536.4,
+          2421.7,
+          2437.8,
+          2545.95,
+          2421.35,
+          2422.55,
+          2434.5,
+          2449.25,
+          2422.4
+        ],
+        "median_ns": 2422.95
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2467.35,
+          2462.2,
+          2483.5,
+          2476.35,
+          2478.4,
+          2497.5,
+          2466.7,
+          2479.3,
+          2490.75,
+          2476.25,
+          2486.7
+        ],
+        "median_ns": 2478.4
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6513.9,
+          6616.3,
+          6456.2,
+          6449.9,
+          6429.9,
+          6455.8,
+          6428.8,
+          6473.1,
+          6530.3,
+          6429.1,
+          6488.5
+        ],
+        "median_ns": 6456.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6558.9,
+          6469.6,
+          6595.4,
+          6525,
+          6580.6,
+          6532.1,
+          6490.5,
+          6566.1,
+          6510.6,
+          6539.7,
+          6511.1
+        ],
+        "median_ns": 6532.1
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37936
+  },
+  {
+    "path": "n64.plain.O3.wasm",
+    "dataset": "n64",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.plain.O3.probe.wasm",
+    "bytes": 219,
+    "sha256": "280d832bcb6421f95189e83467a58f4a61d9edc8d502f14d2971cbf4bfed7ea9",
+    "harness_sha256": "590eef407123d079d6276b8b0bce409a16c838f731f839830a9b141cb5e7c7b6",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.25,
+          6.6,
+          6.5,
+          6.95,
+          7.95,
+          6.45,
+          6.3,
+          6.35,
+          6.55,
+          6.35,
+          6.3
+        ],
+        "median_ns": 6.5
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.55,
+          6.45,
+          13.75,
+          6.45,
+          6.55,
+          6.4,
+          6.4,
+          6.7,
+          6.55,
+          6.85,
+          6.85
+        ],
+        "median_ns": 6.55
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          7.45,
+          6.75,
+          6.7,
+          7.2,
+          8,
+          7.15,
+          7.55,
+          6.45,
+          6.3,
+          6.3,
+          6.3
+        ],
+        "median_ns": 6.75
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          59.8,
+          64.3,
+          61.9,
+          60,
+          57.5,
+          32.4,
+          32.5,
+          32.4,
+          32.4,
+          32.3,
+          32.3
+        ],
+        "median_ns": 32.5
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          38.3,
+          38.1,
+          38,
+          38,
+          42.8,
+          38.1,
+          38.1,
+          38.3,
+          38.1,
+          38.2,
+          38.6
+        ],
+        "median_ns": 38.1
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37848
+  },
+  {
+    "path": "n8192.shared.O3.wasm",
+    "dataset": "n8192",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.shared.O3.probe.wasm",
+    "bytes": 8576,
+    "sha256": "083c1724fae283664bd85346bf14174426a1a30382a4c62f31844b39b872bacb",
+    "harness_sha256": "5442af9a97adf74cd25e5880c84120244afff5baf855e4499ea5fa7a026865fa",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          39.7,
+          37.8,
+          37.5,
+          38.05,
+          38.75,
+          38,
+          37.6,
+          38.5,
+          44.25,
+          41.35,
+          43.45
+        ],
+        "median_ns": 38.5
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          1258.45,
+          1247.6,
+          1248.8,
+          1248,
+          1246.35,
+          1248.45,
+          1251.3,
+          1291.45,
+          1248.1,
+          1252.4,
+          1248.75
+        ],
+        "median_ns": 1248.75
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2608.5,
+          2477.75,
+          2466.3,
+          2504.3,
+          2466.8,
+          2467.7,
+          2499.2,
+          2470.85,
+          2463.55,
+          2496.95,
+          2484.3
+        ],
+        "median_ns": 2477.75
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6421.5,
+          6449.2,
+          6522.2,
+          6421.3,
+          6465.1,
+          6430.2,
+          6516.7,
+          6478.5,
+          6430.5,
+          6565.4,
+          6505
+        ],
+        "median_ns": 6465.1
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6477.1,
+          6536,
+          6490.5,
+          6484.3,
+          6477,
+          6496,
+          6498.2,
+          6522.3,
+          6529,
+          6470.7,
+          6722.2
+        ],
+        "median_ns": 6496
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37992
+  },
+  {
+    "path": "n8192.xor.O3.wasm",
+    "dataset": "n8192",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.xor.O3.probe.wasm",
+    "bytes": 8356,
+    "sha256": "20b63f57066d89e284c8a3f0f30e14c091a1c08f183c85d7f612fb8a84f3f766",
+    "harness_sha256": "625768937210c1c2d8b06eee7122c252f79daedfc8f764cfb37b9e12becf13a7",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          32.4,
+          34.5,
+          34.4,
+          34.9,
+          35.45,
+          34.45,
+          34.35,
+          34.4,
+          34.4,
+          34.4,
+          34.45
+        ],
+        "median_ns": 34.4
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          9.8,
+          9.55,
+          16.35,
+          9.6,
+          9.55,
+          9.55,
+          9.5,
+          9.7,
+          9.5,
+          10.9,
+          9.95
+        ],
+        "median_ns": 9.6
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          9.7,
+          9.65,
+          9.75,
+          10,
+          10.6,
+          9.6,
+          9.75,
+          9.5,
+          9.6,
+          9.6,
+          9.8
+        ],
+        "median_ns": 9.7
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6436.5,
+          6477.4,
+          6428.5,
+          6485.5,
+          6490.3,
+          6430.7,
+          6484.1,
+          6421.3,
+          6530.5,
+          6451.6,
+          6457.2
+        ],
+        "median_ns": 6457.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6555.5,
+          6477.7,
+          6487.5,
+          6497.4,
+          6512,
+          6661.1,
+          6491.3,
+          6491.1,
+          6466.6,
+          6563.4,
+          6460.3
+        ],
+        "median_ns": 6491.3
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 38008
+  },
+  {
+    "path": "n1024.roundtrip.O3.wasm",
+    "dataset": "n1024",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.roundtrip.O3.probe.wasm",
+    "bytes": 1263,
+    "sha256": "6fb0a8578060544ba6c99bf7fd0c938ac1a0d80e697bf9e3a09672cc0e459be1",
+    "harness_sha256": "9336b1e917764c0f4eeae27ea8b503fcff6c709261d64b2781aaf121fcda3a09",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          648.7,
+          685.7,
+          611.1,
+          609.4,
+          611.1,
+          608.95,
+          606.45,
+          607.65,
+          606.2,
+          607.35,
+          606.4
+        ],
+        "median_ns": 608.95
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          608.3,
+          617.65,
+          651.4,
+          613.95,
+          609.1,
+          604.85,
+          609.4,
+          610.3,
+          611.4,
+          617.7,
+          608.75
+        ],
+        "median_ns": 610.3
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          617.15,
+          621.8,
+          620.15,
+          663.25,
+          637.4,
+          617.9,
+          606.6,
+          606.55,
+          614.95,
+          622.05,
+          619.25
+        ],
+        "median_ns": 619.25
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          759.3,
+          766.6,
+          757.3,
+          769.3,
+          762.9,
+          782.5,
+          824.9,
+          771.1,
+          766.2,
+          757.9,
+          764.7
+        ],
+        "median_ns": 766.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          1394.3,
+          1374.5,
+          1373.4,
+          1379.5,
+          1377.9,
+          1377.3,
+          1425,
+          1404.9,
+          1383.6,
+          1376.7,
+          1378.3
+        ],
+        "median_ns": 1378.3
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37716
+  },
+  {
+    "path": "n8192.xor.O3.wasm",
+    "dataset": "n8192",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.xor.O3.probe.wasm",
+    "bytes": 8356,
+    "sha256": "20b63f57066d89e284c8a3f0f30e14c091a1c08f183c85d7f612fb8a84f3f766",
+    "harness_sha256": "625768937210c1c2d8b06eee7122c252f79daedfc8f764cfb37b9e12becf13a7",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          37,
+          34.85,
+          34.95,
+          35.5,
+          36.1,
+          35.05,
+          34.8,
+          34.85,
+          34.95,
+          34.95,
+          34.8
+        ],
+        "median_ns": 34.95
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          9.85,
+          9.95,
+          16.7,
+          10.05,
+          9.7,
+          9.6,
+          9.65,
+          9.5,
+          9.55,
+          11.1,
+          9.6
+        ],
+        "median_ns": 9.7
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          9.8,
+          9.7,
+          9.85,
+          10,
+          15.35,
+          10.25,
+          9.85,
+          9.65,
+          9.6,
+          9.8,
+          9.6
+        ],
+        "median_ns": 9.8
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6424.3,
+          6220.9,
+          6206.6,
+          6280.9,
+          6316.6,
+          6294.4,
+          6236.3,
+          6327,
+          6221.1,
+          6356.2,
+          6330
+        ],
+        "median_ns": 6294.4
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6340.5,
+          6346.9,
+          6287,
+          6247.3,
+          6453.5,
+          6248.8,
+          6276.4,
+          6350.6,
+          6246.1,
+          6414.1,
+          6267
+        ],
+        "median_ns": 6287
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37992
+  },
+  {
+    "path": "n64.xor.O3.wasm",
+    "dataset": "n64",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.xor.O3.probe.wasm",
+    "bytes": 223,
+    "sha256": "13dced1e031a29a813c0732ae90bd59d6daa6d49970714a072e3d8ce06e7fbb9",
+    "harness_sha256": "7621f06932c10f1d05ac1204330351452f25cb00e97c40b62f7b803c65c28830",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.85,
+          6.4,
+          6.6,
+          6.85,
+          7.55,
+          6.5,
+          6.55,
+          6.35,
+          6.35,
+          6.35,
+          6.35
+        ],
+        "median_ns": 6.5
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.85,
+          6.55,
+          13.25,
+          6.45,
+          6.3,
+          6.3,
+          6.3,
+          6.35,
+          6.3,
+          6.3,
+          6.5
+        ],
+        "median_ns": 6.35
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.55,
+          6.55,
+          6.5,
+          6.75,
+          7.7,
+          6.9,
+          6.6,
+          6.4,
+          6.4,
+          6.4,
+          6.6
+        ],
+        "median_ns": 6.55
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          12935,
+          63.2,
+          88.6,
+          55.2,
+          34.2,
+          34.1,
+          34.1,
+          34.1,
+          34.2,
+          34.2,
+          34.2
+        ],
+        "median_ns": 34.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          39,
+          39,
+          39,
+          38.9,
+          38.9,
+          39,
+          39,
+          39,
+          39,
+          38.9,
+          38.9
+        ],
+        "median_ns": 39
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37712
+  },
+  {
+    "path": "n8192.plain.O3.wasm",
+    "dataset": "n8192",
+    "mode": "plain",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.plain.O3.probe.wasm",
+    "bytes": 8352,
+    "sha256": "290fd3152dccd844b9fafc799654231137378d23b98058eeac6e53ded01b4732",
+    "harness_sha256": "02d6b2d88068b7c15dcf60d432f9707d46e29c810fab38f8b8321e43491d35ac",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          31.85,
+          31.2,
+          31.2,
+          31.7,
+          32.35,
+          31.4,
+          31.2,
+          31.2,
+          31.25,
+          31.2,
+          31.15
+        ],
+        "median_ns": 31.2
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          10.1,
+          9.7,
+          16.75,
+          9.9,
+          10,
+          10,
+          10.7,
+          9.6,
+          9.6,
+          9.75,
+          9.8
+        ],
+        "median_ns": 9.9
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          9.95,
+          10.45,
+          10.25,
+          10.1,
+          10.9,
+          10.25,
+          9.75,
+          9.6,
+          9.6,
+          9.65,
+          12.1
+        ],
+        "median_ns": 10.1
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6441.1,
+          6460.7,
+          6442.7,
+          6537.4,
+          6431,
+          6432.4,
+          6462,
+          6438.3,
+          6480.9,
+          6428.1,
+          6501
+        ],
+        "median_ns": 6442.7
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6541.1,
+          6466.1,
+          6555.1,
+          6519.1,
+          6465.5,
+          6519.1,
+          6465.3,
+          6513.6,
+          6507.2,
+          6465.9,
+          6608.8
+        ],
+        "median_ns": 6513.6
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37804
+  },
+  {
+    "path": "n64.two.O3.wasm",
+    "dataset": "n64",
+    "mode": "two",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.two.O3.probe.wasm",
+    "bytes": 393,
+    "sha256": "ab87d448c2ff7f7ce3d8ce8f0d3c8a5d4922dcaf5f691055306478b569ff85ab",
+    "harness_sha256": "a4de0802507cb7a1aa64c5c8ae02381702d06549d550214057e60e602211818f",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          15.6,
+          15.05,
+          14.95,
+          15.5,
+          16.3,
+          15.3,
+          14.9,
+          14.8,
+          14.95,
+          15.05,
+          21.7
+        ],
+        "median_ns": 15.05
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          83.6,
+          82.7,
+          53.25,
+          22,
+          22.05,
+          22.15,
+          22.75,
+          21.1,
+          21.25,
+          21.2,
+          21.15
+        ],
+        "median_ns": 22.05
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          18.15,
+          18.15,
+          18.15,
+          18.2,
+          21.3,
+          18.3,
+          18.05,
+          18.15,
+          18.05,
+          18.15,
+          18.2
+        ],
+        "median_ns": 18.15
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          69.5,
+          64.2,
+          63,
+          38.9,
+          34.3,
+          34.3,
+          34.2,
+          34.2,
+          34.3,
+          34.3,
+          34.2
+        ],
+        "median_ns": 34.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          42.9,
+          42.8,
+          42.8,
+          42.9,
+          42.8,
+          42.8,
+          42.9,
+          42.8,
+          42.9,
+          42.8,
+          42.8
+        ],
+        "median_ns": 42.8
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37800
+  },
+  {
+    "path": "n64.roundtrip.O3.wasm",
+    "dataset": "n64",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.roundtrip.O3.probe.wasm",
+    "bytes": 300,
+    "sha256": "86060ed8cc2a5b128c3aead98771268a6406e86ed12f47b9154c0015711930de",
+    "harness_sha256": "8f62f5d5f23ed0f05d95d3aaa5864033d2bd282a1b9e7cb4d088f39761f4fb16",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          175.6,
+          144.8,
+          41.25,
+          41.7,
+          42.4,
+          41.5,
+          41.2,
+          41.3,
+          41.2,
+          43.5,
+          41.15
+        ],
+        "median_ns": 41.5
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          41.5,
+          41.15,
+          44.15,
+          41.05,
+          41.1,
+          41.45,
+          41.1,
+          41.1,
+          41.15,
+          41.15,
+          41.1
+        ],
+        "median_ns": 41.15
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          40.35,
+          40.3,
+          40.05,
+          40.15,
+          40.95,
+          40.55,
+          40.1,
+          41.9,
+          42.05,
+          42.6,
+          40.65
+        ],
+        "median_ns": 40.55
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          90.9,
+          96,
+          62.1,
+          34.2,
+          34.2,
+          34.3,
+          34.3,
+          34.2,
+          34.2,
+          34.1,
+          34.2
+        ],
+        "median_ns": 34.2
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          83.2,
+          83.2,
+          83.2,
+          83.1,
+          83.1,
+          83.2,
+          83.3,
+          83.2,
+          83.2,
+          83.2,
+          83.2
+        ],
+        "median_ns": 83.2
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37704
+  },
+  {
+    "path": "n64.roundtrip.O3.wasm",
+    "dataset": "n64",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n64.roundtrip.O3.probe.wasm",
+    "bytes": 300,
+    "sha256": "86060ed8cc2a5b128c3aead98771268a6406e86ed12f47b9154c0015711930de",
+    "harness_sha256": "8f62f5d5f23ed0f05d95d3aaa5864033d2bd282a1b9e7cb4d088f39761f4fb16",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          153.1,
+          155.1,
+          49.35,
+          41.6,
+          41.9,
+          41.3,
+          41.1,
+          43.75,
+          41.15,
+          41.15,
+          41.3
+        ],
+        "median_ns": 41.6
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          41,
+          41.25,
+          44.45,
+          41.4,
+          41.5,
+          41.1,
+          40.95,
+          41.05,
+          41.15,
+          41.35,
+          41
+        ],
+        "median_ns": 41.15
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          40.7,
+          40.75,
+          40.45,
+          40.05,
+          41,
+          40.55,
+          40.5,
+          42.45,
+          40.15,
+          40.9,
+          40.55
+        ],
+        "median_ns": 40.55
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          70.4,
+          63.8,
+          64.2,
+          44.5,
+          34.2,
+          34.2,
+          34.3,
+          34.2,
+          34.2,
+          34.3,
+          34.2
+        ],
+        "median_ns": 34.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          83.2,
+          83.2,
+          83.1,
+          83.2,
+          83.1,
+          83.1,
+          83.2,
+          83.3,
+          83.2,
+          83.2,
+          85.8
+        ],
+        "median_ns": 83.2
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37812
+  },
+  {
+    "path": "n1024.xor.O3.wasm",
+    "dataset": "n1024",
+    "mode": "xor",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.xor.O3.probe.wasm",
+    "bytes": 1185,
+    "sha256": "35e1a579d9b162146b247afc53b645241d5716bac90e9d5f70cfa7e77cbbc353",
+    "harness_sha256": "899ff5bbe8b5f481b38ab3d48b28387b1054080e255ff2372b994f6625116d2b",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          10.75,
+          10.4,
+          10.3,
+          10.85,
+          15.4,
+          10.4,
+          10.2,
+          10.25,
+          10.3,
+          10.15,
+          10.2
+        ],
+        "median_ns": 10.3
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.75,
+          6.7,
+          13.4,
+          6.9,
+          6.85,
+          6.8,
+          6.85,
+          6.85,
+          6.85,
+          6.65,
+          6.9
+        ],
+        "median_ns": 6.85
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          6.9,
+          7,
+          6.8,
+          7.8,
+          8,
+          7.6,
+          7.8,
+          7.55,
+          7.5,
+          7.25,
+          7.25
+        ],
+        "median_ns": 7.5
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          1021.6,
+          972.7,
+          947.4,
+          832.6,
+          827.7,
+          1026.9,
+          958.4,
+          794.7,
+          791,
+          797.9,
+          790.4
+        ],
+        "median_ns": 832.6
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          797.3,
+          796.9,
+          799.3,
+          796.9,
+          798.3,
+          797,
+          852,
+          797.2,
+          797,
+          798.9,
+          820.1
+        ],
+        "median_ns": 797.3
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37804
+  },
+  {
+    "path": "n1024.roundtrip.O3.wasm",
+    "dataset": "n1024",
+    "mode": "roundtrip",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.roundtrip.O3.probe.wasm",
+    "bytes": 1263,
+    "sha256": "6fb0a8578060544ba6c99bf7fd0c938ac1a0d80e697bf9e3a09672cc0e459be1",
+    "harness_sha256": "9336b1e917764c0f4eeae27ea8b503fcff6c709261d64b2781aaf121fcda3a09",
+    "repeat": 0,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          628.2,
+          630.85,
+          629.65,
+          668.8,
+          634.05,
+          630.45,
+          630.7,
+          631.65,
+          626.85,
+          630,
+          629.75
+        ],
+        "median_ns": 630.45
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          623.7,
+          624.6,
+          630.2,
+          649.75,
+          630.25,
+          628,
+          629.55,
+          631.55,
+          633.35,
+          630.6,
+          629.5
+        ],
+        "median_ns": 630.2
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          640.8,
+          644.3,
+          630.55,
+          651.1,
+          664.8,
+          635.05,
+          633.25,
+          630.55,
+          637.55,
+          637.5,
+          638.55
+        ],
+        "median_ns": 637.55
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          794.8,
+          790.7,
+          790.7,
+          792.8,
+          790.7,
+          792.4,
+          829.3,
+          800,
+          789.8,
+          791.8,
+          789.6
+        ],
+        "median_ns": 791.8
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          1425.3,
+          1429.2,
+          1427.1,
+          1426.6,
+          1429.6,
+          1425.4,
+          1715.3,
+          1485.3,
+          1478.6,
+          1432,
+          1423.3
+        ],
+        "median_ns": 1429.2
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37764
+  },
+  {
+    "path": "n8192.shared.O3.wasm",
+    "dataset": "n8192",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n8192.shared.O3.probe.wasm",
+    "bytes": 8576,
+    "sha256": "083c1724fae283664bd85346bf14174426a1a30382a4c62f31844b39b872bacb",
+    "harness_sha256": "5442af9a97adf74cd25e5880c84120244afff5baf855e4499ea5fa7a026865fa",
+    "repeat": 1,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          38.3,
+          38.2,
+          37.9,
+          38.1,
+          39.5,
+          37.8,
+          37.5,
+          37.4,
+          44.35,
+          37.75,
+          37.5
+        ],
+        "median_ns": 37.9
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          1247.45,
+          1249.95,
+          1248.75,
+          1252.7,
+          1247.6,
+          1268.6,
+          1247.6,
+          1245.95,
+          1248.55,
+          1263.85,
+          1250.2
+        ],
+        "median_ns": 1248.75
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          2462.25,
+          2462.45,
+          2490.95,
+          2463.35,
+          2477.05,
+          2521.15,
+          2463.7,
+          2467.5,
+          2480.3,
+          2467.85,
+          2481.85
+        ],
+        "median_ns": 2467.85
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6426,
+          6477.7,
+          6430.8,
+          6462.3,
+          6435.6,
+          6449.3,
+          6480.9,
+          6420.4,
+          6461.6,
+          6439.3,
+          6462.3
+        ],
+        "median_ns": 6449.3
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          6500,
+          6477,
+          6521.6,
+          6516.2,
+          6466.4,
+          6490.4,
+          6471.9,
+          6542,
+          6472,
+          6477.1,
+          6506.9
+        ],
+        "median_ns": 6490.4
+      }
+    ],
+    "sink": -977433977,
+    "maxRSS_KiB": 37996
+  },
+  {
+    "path": "n1024.shared.O3.wasm",
+    "dataset": "n1024",
+    "mode": "shared",
+    "opt": "O3",
+    "recovered": false,
+    "probe": "n1024.shared.O3.probe.wasm",
+    "bytes": 1403,
+    "sha256": "6ee775fd7c32775960f3cd795be5b7c57ea393288f9c905d2ee9968ea0a011cf",
+    "harness_sha256": "27f4bc711771ce283b59ccb4c8713d83d3f2964b3a86fc1dec65da41eb7678a0",
+    "repeat": 2,
+    "rows": [
+      {
+        "scenario": "near",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          20.75,
+          20.6,
+          20.35,
+          20.5,
+          21.45,
+          20.4,
+          20.25,
+          20.5,
+          27.15,
+          20.3,
+          20.45
+        ],
+        "median_ns": 20.5
+      },
+      {
+        "scenario": "far",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          173.4,
+          170.55,
+          177.1,
+          174.6,
+          169.55,
+          170.15,
+          172.2,
+          169.85,
+          171.1,
+          169.55,
+          184.35
+        ],
+        "median_ns": 171.1
+      },
+      {
+        "scenario": "tail",
+        "warmup": 2000,
+        "calls_per_sample": 2000,
+        "samples_ns": [
+          312.7,
+          313.65,
+          317.1,
+          313,
+          314.3,
+          315.4,
+          312.95,
+          313.7,
+          315.45,
+          314.35,
+          313.35
+        ],
+        "median_ns": 313.7
+      },
+      {
+        "scenario": "digest",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          790.9,
+          787.4,
+          825.9,
+          787.4,
+          787.3,
+          804,
+          790.1,
+          788.8,
+          852.2,
+          789.1,
+          791.7
+        ],
+        "median_ns": 790.1
+      },
+      {
+        "scenario": "paired",
+        "warmup": 2000,
+        "calls_per_sample": 1000,
+        "samples_ns": [
+          807.6,
+          807.5,
+          809.2,
+          810.8,
+          809.3,
+          807.5,
+          807.5,
+          812.8,
+          807.5,
+          809.8,
+          807.5
+        ],
+        "median_ns": 807.6
+      }
+    ],
+    "sink": 0,
+    "maxRSS_KiB": 37860
+  }
+]

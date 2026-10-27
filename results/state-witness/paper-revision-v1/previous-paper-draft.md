@@ -1,0 +1,123 @@
+# 観測契約に基づくWebAssembly復元差の分類と条件合成
+
+研究ノート草稿、2026-10-24。完成した新規論文ではない。目的は修士研究の可否を判断できる実装・反証・再現資料を残すこと。
+
+## Abstract
+
+WebAssemblyの復元をmemory bytesだけで検査すると、segmentの寿命やtable参照の差を見落とし得る。一方、内部状態差を全て元APIの失敗と扱うと、観測できない差まで誤って集計する。本稿は観測範囲とtrap後の利用契約を指定し、限定bulk memory/table APIの一致条件と反例を生成する試作を示す。既知の等式抽象と固定点を用い、private storeの差を左右別々に追跡する。公式由来67状態対中55対を受理し、実測由来18対では2対が初期memory依存となった。全store契約の393反例列を2engineで再現したが、そのうち63列は追加observerだけの差だった。別の78初期状態では、trap後再入を許す21差が、trap終端では13差へ変わった。限定terminal/returns契約には一回判定で十分という簡約も示す。独立した新しい一般検証原理ではなく、復元診断の限定問題への適用、条件合成、適用境界の実証として位置付ける。
+
+追加して、公式testの14 moduleから17位置を選ぶ中断点生成器を実装した。公開wasm-migrateとWeaveの272変換条件をNode/Wasmtimeで比較し、前者の4つの元moduleでentry成功/trapの差を確認した。状態差が再実行によって解消される場合もあり、状態復元契約と元API同値を分ける必要を実測した。既存Weaveにもdrop後のloopで復元を検査する手書きtestがあるため、自動化をそのまま新原理と主張しない。
+
+## Introduction
+
+安全なrequest再利用やcheckpointの評価には、何を復元し、何を観測するかの契約が必要である。先行試作Jは同一instanceの論理状態を戻したが、直接の先行実装Weaveと多くの機構が重なった。小memoryでの速度改善だけでは新規性を主張できず、大memoryではpoolingにも劣った。このため機構の追加から、検査の観測範囲を明確にする研究へ移った。
+
+研究課題は、(1) 同じ復元差でも契約により判定が変わることを実対象で確認できるか、(2) 固定した具体storeを超えて、API観測が一致する初期store条件を自動生成できるか、(3) 条件不成立を実行可能な反例へ結び付けられるか、である。新しい一般的な同値判定・最弱前提理論を主張するものではない。
+
+## Related Work
+
+Wasm仕様はstoreの構成を明記し、公式bulk-memory testはdrop後の0長initも既に検査する。Weaveはcheckpoint前後のdrop状態を含む意味保存testを持つ。WESTはSpecTecからのtest生成、WASMakerは意味を考慮したbinary生成を扱う。Kがこれらを超えるとの主張は行わない。読了範囲・書誌情報・反証は[文献表](prior-art.md)に記録した。
+
+Namjoshi/XueのWasm関係witness検証、PSyCOの条件合成、Iris-Wasmの高階WPとhost合成、YagiらのCHCによる自動安全検証も先行する。Interface AutomataとLifestateはAPI利用順序・例外・lifecycleの環境仮定を扱うため、protocolの選択も一般原理として新規ではない。Kの対象はsegment寿命が異なる初期状態からの限定API診断である。対象差と自動診断の実証が貢献候補であり、既知原理への単なる適用に留まるという評価リスクは残る。先行実装を全て同一課題で実行した比較ではない。
+
+## Motivation
+
+追加の課題は、hostが公開memory/tableへ書ける場合である。閉じたAPI列についての条件がtrueでも、途中のprivate/public関係をhost書込みが壊すことがある。このため単に初期条件を強めるだけでは足りない。環境入力を遷移として含める既知の考え方を、限定bulk profileの条件合成へ実装し、その必要性を元exportだけの反例で示した。
+
+非空passive segmentをdropしても、その時点のmemory bytesは変わらない。しかし後続initはtrapし得る。他方、元APIにinitへの道がなければその差は表に出ない。これら二つを同じ「復元失敗」や「情報漏えい」と集計するのは不適切である。
+
+## Threat Model
+
+trusted test hostがWasmのreset/restore差を検査する。悪意あるengineを標準APIだけで完全に証明するものではない。基本profileはimportsを除外し、別の同期void import profileでは、hostの公開store read/writeをtrusted summaryとして指定する。再入・grow・host例外・外部I/Oをそのsummaryに暗黙に含めない。shared state、活性stack、外部資源、時間・OOMの観測は対象外。observer追加でprivate stateを公開する場合、そのbinaryは検査専用である。
+
+## Proposed Method
+
+moduleの各index空間を列挙し、memoryの読取り、globalの生bit getter、tableのcanonical export対応、segmentの0長initを生成する。probeの成功/trapを含むdescriptorを比較し、差の種類を分類する。元APIでの影響は別にsuffixを実行して確認する。生成規則と限定モデルの十分条件は[algorithm.md](algorithm.md)を参照。実装の先行性が未確定なので、方式名を与えたことを新規性の根拠にしない。
+
+さらに定数bulk memory/table APIでは、segment状態対から各callのtrap位置とcopy/constant写像を求め、結果・store一致の等式条件を後続APIから逆伝播する固定点を実装した。[初期の条件合成](guard-results.md)と[table拡張](guard-table-results.md)は全store一致を要求した。[契約版](guard-contract-results.md)はfull/public/returnsを選べる。private store差を許す場合、左右のstoreを別変数で保持し、両側写像で逆代入する。segment寿命が揃ってもprivate差は残り得るためそこで打ち切らない。
+
+[protocol版](guard-protocol-results.md)はtrap後の再入を許すか、trapで列を終えるかを分ける。終端辺ではその一回の観測を比較し、後続条件だけを省く。通常のpredicate transformer、二項関係、protocol制約の応用で、一般原理の発明ではない。さらに限定terminal/returnsでは、共通storeと共通drop集合を正常prefixの不変条件にでき、一回のreturn/trap一致だけで十分となる。この簡約を他契約や任意Wasmへ広げない。
+
+条件を満たさない具体storeでは、固定点の各反復層を調べる。初めて不成立となる層から原因のAPIを選び、rankを減らして反例列を得る。限定modelの各層が呼出し深さの条件と一致するため、最初に不成立となる層から得る列は最短となる。[論証](guard-proof.md)は非機械検証で、実装の各層は別のarray式でも照合した。
+
+## Implementation
+
+[同期import profile](guard-import-results.md)は、直線的void APIをhost境界で区切り、左右を次のimportまたは終了まで別々に実行する。同じhost名列とoutcomeを要求し、指定されたread観測・writeの共通任意入力を内部境界ごとに含めて条件を逆伝播する。否定時の具体host入力は別array式のSMTで生成する。この拡張の反例について最短性は主張しない。非反復loopと定数store8の限定正規化は行うが、任意のWasm制御やhost programを自動解析するものではない。
+
+[公開書込み版](guard-environment-results.md)では、書込み可能cellの左右を同じ新変数へ置き換えて普遍量化し、この環境閉包を各寿命対の固定点へ含める。等式連言の特性により、閉包は有限項の検査で計算できる。[限定論証](guard-environment-proof.md)に、二値の代表代入による反例抽出と適用境界を記した。新契約の最短長はguest callと一括host書込みを各1と数え、旧契約のguest呼出し数だけの長さとは区別する。
+
+追加比較として、標準的なCHC符号化をZ3 Spacerへ渡した。[全156具体状態query](guard-chc-results.md)でKと同じ判定を得たため、既存汎用solverでは解けないという主張は棄却した。これは自作encoderの比較でありWhiskやWasmVerifierの著者実装の追試ではない。Kの出力差候補は共通初期storeの条件と最短API列で、具体状態の到達可能性判定とは区別する。
+
+PythonでWABTのfolded WATを処理し、標準Wasm binaryを生成する。Node側でobserverを実行し、Wasmtimeでscalar/boundary/segmentを再確認した。table参照の保存には関数pointer値を使わず、同じinstance内のexportsとのidentityを使う。最適化によるexport aliasを集合として保持する。
+
+現在の[統合CLI](diagnose.py)は観測範囲とtrap後protocolを必須引数にし、terminal/returnsだけ専用の一回判定へ切り替える。具体storeを与えない場合は条件だけを返し、実行確認済みとは表示しない。[手順](quickstart.md)に入力形式と前提を記した。
+
+Weaveはfuncref signatureを受理せずexport関数もwrapperへ変えるため、この参照observerをそのまま合成できなかった。numeric observerとhost Table.get、元関数の追加directory tableを用いる別実装で対応した。directoryは既知のregistry方式であり、新しい原理として数えない。小例で、元APIは正しいまま旧照合だけが3slotで失敗することを確認した。
+
+## Evaluation
+
+memory条件合成の12自作例では216初期memory、実測由来の受理11条件では143memoryを用いた。Node/Wasmtimeでそれぞれ10,428および2,176 API呼出しが条件と整合した。規則固定後の96生成例・576memoryでも各engine119,160 API呼出しが整合した。memory版の十分性検査は119条件438義務がUNSAT、弱めた102対照がSATだった。
+
+table拡張では12自作例・144store・各engine6,758呼出しが整合した。公式由来67状態対は全store一致41、満たすstoreなし14、未対応12となった。実測由来18対では全store一致14、条件付き2、満たすstoreなし2となり、条件付き2対ではmemory[7..10]が[2,7,1,8]と等しい条件を得た。table版の85条件124帰納義務はUNSAT、弱めた16対照はSATだった。memory版と重複する条件があり、独立例として件数を加算しない。
+
+[反例抽出](guard-witness-results.md)は134module・964storeで571肯定、393反例を返した。393反例は2engine各1,806 API呼出しで再現し、具体BFSと最短長も一致した。[観測範囲の監査](guard-observation-audit.md)では元return/trap差96、元公開memory差234、追加observerだけのprivate store差63だった。最後の63は元関数APIの結果が同一で、公開API不具合とは数えない。最長128呼出しの対照を含み、10人工例は深さ4ではprivate store差が出なかった。別array式で固定点の各層と一段遷移条件の同値を確認した130条件667義務はUNSAT、検査器の位置数上限で4条件を保留した。共有parserからのmodel内の検査であり、Wasm公式意味論に対する機械化証明ではない。
+
+[解析費用](guard-cost-results.md)は3 process、2 warmup/7反復で測った。長さ128のmemory chainを1storeだけ調べる場合、準備込み反例生成約60.3msに対しBFS約13.9msだった。末尾5位置の異なる32割当てでは約162.6ms対423.2msとなった。無関係なsegment状態の列挙は[依存関係削減](guard-projection-results.md)で改善し、512状態の例を2状態にできた。いずれも人工対照の結果であり、一般的な高速性を主張しない。
+
+主実験は[results.md](results.md)。J fullの48回は状態が一致し、3種のmutantの144回は差を検出した。これはmutant sensitivityの検査であって、既存製品144bugsの発見ではない。公式testの69module中63受理・6 imports未対応、別途GC末尾15行がツール未対応。full観測は代表例で約51–125µsとなり、trap捕捉の費用が大きい。
+
+[外部比較](external-results.md)では正常対照を通過した後の元API差を確認し、segment再現とresume selectorを別に補う介入で二つの原因を分けた。[Weave](weave-results.md)の32復元は両engineで一致した。[公式由来のcut生成](cut-results.md)では、0個版は中断未到達、入口1個版は差なし、drop後1個版は4つの元moduleで差が出た。2個版も同じ4 moduleであり、2個必須仮説は棄却した。Kなしでも元API差は出るため、Kは原因分類を助けたもので、これらの反例発見に不可欠だとは言わない。
+
+## Discussion
+
+[実配布ffmpeg-mtの制御変種](post-start-live-results.md)では、start専用の7,320 data.dropを省き、二engineで寿命差7,320個と同じ1 GiB memory hashを確認した。追加observer全29,280呼出しはmemoryを変えなかった。ただし元API実行数は0であり、動画変換の追試ではない。起動後の不可観測性は静的な到達十分条件による。自然な復元不具合の発見とも、Kの条件合成が必要な実用例とも区別する。
+
+[atom worklistへの置換](guard-import-worklist-results.md)も400契約で同じ全状態条件を生成した。条件のみを出す比較では、rank履歴を保存しない全反復版より96 cell例で約8.4–8.7倍速い一方、小例では遅かった。既知の分配的データフロー処理で説明できる改善で、独立した発明数に加えない。
+
+[直接反例生成](guard-import-direct-results.md)は、任意部分書込みをno-op/全書込みへ縮約できる等式言語と、全書込みの失敗をN+1個の二値代入で構成できる性質を用いる。既存のAPI間書込み版の候補基底を内部importへ接続したもので、独立した一般探索原理ではない。280小caseを両engineで再生し、自作SMT版に対して反例生成batchは中央値22.457 ms対848.841 msだった。ただし共通前処理が約2.65 sあり、各processの前処理と生成中央値の和では約1.3倍となる。最大97 APIの12反例も再生したが、この追加集合は性能測定に混ぜていない。一般Boolean条件への反例を保存し、等式連言という制限を外さない。
+
+[host書込みのmay/mustの区別](guard-import-may-results.md)も追加した。旧`writes: public`は全対象cellへの必須上書きであり、書込みを省く選択を含まない。任意subsetを許す`may-public`では、等式連言Rの条件変換を`R ∧ close_all(R)`に簡約できる。36 atomの別array検査と一般Boolean式への反例を保存した。旧16 moduleの128対応契約では差が出なかったが、別の2-import対照では必須上書きの無条件一致がmay-writeの充足不能へ変わった。32初期storeの反例を両engineで再現し、初期値が揃っていても3回のAPIで差が出た。既知のeffect区分の具体化であり、独立した新原理ではない。
+
+host書込み拡張は同じ混合コーパスの339初期storeを一致から反例へ変えた。各engine150,360 API呼出しと14,482 cell書込みが整合し、普遍入力を含む別array式2,654義務はUNSATだった。初期条件だけへの閉包を破る手書き例も両engineで再現した。新しい576具体状態queryはSpacerでも全て解けた。公開復元器では最初の配置に差がなく、再実行位置を変える別の元入力で、診断前memoryが一致するのにhost書込み後だけ公開差が出る二つのサイズ対照をmigrateで得た。修復・0長・Weave対照は一致した。これらを独立した新規bug件数へ換算しない。
+
+前向きに生成した[混合resourceの96 module](guard-holdout-results.md)でも576契約・2,304初期storeが両engineと整合した。肯定1,846中1,102は条件に合わせて作っており、無作為検査だけの成功数としない。別array式の2,838義務もUNSATだった。この追加集合から、共通trap前の同じ書込みが初期一致条件を壊し、その後の再入で公開差が出る例を取り出した。元exportだけの3対照で再現できたが、不変条件の維持が必要という一般原理は既知である。
+
+import境界の16対照・256契約では、512初期storeの358が条件を満たし、154から具体反例を得た。Node/Wasmtimeそれぞれ1,228組・2,732診断API呼出しが整合し、別array式1,164義務がUNSATとなった。importをnop扱いする意図的なアブレーションでは90 storeを一致と誤判定した。単純な有限domain BFSも1,024初期storeの全てで条件合成と一致したため、汎用探索では解けないという主張には使えない。
+
+[元entryだけの復元比較](guard-import-entry-results.md)ではmigrate24復元のうち4条件でpublic memoryだけに差があり、entryのtrapとhost traceは一致した。Weave24復元は全て一致した。migrateはWasmtimeでも同じ差を再現した。4条件は二つのサイズ×二つの停止位置で、独立した4bugではない。明示した継続位置からの16条件を新profileで解析し、derived継続binaryの32呼出しを両engineで照合した。保存PCやstackとの対応は自動証明していない。
+
+将来の観測を復元契約とする考えは[StateFork](https://arxiv.org/html/2609.38648v1)にも明記されている。環境入力、二項関係、data independence、前提条件合成も先行する。本稿で残る研究課題は、Wasmの限定bulk/segment診断を契約に応じた条件と実行可能な反例へ具体化し、その必要性と適用境界を示すことである。既知の手法を特化しただけとの反論は残る。
+
+追加の[契約比較](guard-contract-results.md)では、同じ964初期storeがfull 393差/public 330差/returns 114差に分かれた。新しい13module・39契約・78storeでは左右別のstoreを追跡し、segment状態が揃った後に公開差へ伝わる列を生成した。Node/Wasmtime各4,378 API呼出しで整合し、各層の301再帰義務を別array式で検査した。元binary8本においても、到達可能state対から2/5/17/33呼出し後の公開差と上書き対照を再現した。
+
+[実復元への適用](guard-external-results.md)はwasm-migrateの実験hostで同じ4長さの公開差を再現した。しかしWeaveの公開JS driverはtrapでfailedとなり再呼出しを拒否した。そこで[trap終端版](guard-protocol-results.md)を追加し、78storeの差21件が13件へ変わることを確認した。Node/Wasmtime各606呼出し、独立array式285義務が整合した。これらは独立した製品不具合数ではない。
+
+限定terminal/returnsでは一回判定と汎用固定点が147module・全7,536寿命対で一致した。正常時のstore保存と共通dropによるoutcome一致保存を別array式963義務で確認した。globalsを含む適用外例では初期の一回比較が一致してもarm→probeで差が出るため、parserは拒否する。この結果は、全契約で固定点が必要という主張への反証でもある。
+
+[実アプリ由来replayへの追試](r3-results.md)は取得23本中11本を受理した。Node/Wasmtimeで元/名前除去/observer付きのAPI結果と公開memoryが一致し、10本が正常、1本が同じtrapとなった。正常10本にWeaveを適用した[合成試験](r3-weave-results.md)では20変換、通常20条件、到達した復元16条件が一致した。4条件は中断未到達だった。directory構成では完了後のtable参照等も比較したが、Weave合成の実行はNodeのみである。
+
+解析器を固定した[追加評価](disjoint-results.md)では、cut開発の14元moduleを除いた45 module・67状態対を用いた。元WASTのAPI列は14反例を示し、保守的解析は24対の十分条件を確認した。有限APIモデルは同一観測41・反例14・未対応12へ分類し、独立engineでも一致した。重複を除く61対では未対応6対である。これは人工的なsegment寿命差の実験で、実製品での不具合発見件数や一般的な精度とは扱わない。
+
+[残存差の追試](context-results.md)では、entryと可視storeが一致しsegmentだけが異なる18回を選び、元programのAPIで区別できるかを調べた。保守的なread-before-drop解析は14回を分類し、有限APIモデルの遷移閉包は16回の同一観測と2回の反例を得た。2回では途中に寿命差を読んでも、既存bytesへの同値な書込みと後のtrapによって結果が一致した。Node/Wasmtimeで遷移モデルは一致したが、実測guest storeを元programへ再構成したモデルであり、復元器の再開metadataを含む証明ではない。
+
+memory同一性、table nullness、生NaN値等の弱いoracleを使うと、それぞれ異なるstate差を見落とす。一方、stateの完全一致を要求すると、元APIでは区別できない差も検出する。実例でこの区別を示せたことは評価手順として有用であるが、既存の仕様testの自動化を超える研究上の貢献は別途必要である。
+
+外部比較では、復元直後のsegment差が再実行で消えるケースもあった。また、Weaveのexport wrapperを通ったobserverは再開metadataを更新するため、source上の非破壊性が変換後の物理state全体へ合成できるとは限らない。snapshot取得後の観測用複製とresume用複製を分け、検査器自身が再開を妨げる交絡を避けた。
+
+## Limitations
+
+出力課題を揃えた[一般SMT WP/QE](guard-import-generic-results.md)も、256契約と遅延chain8条件で同じ初期条件を生成した。人工的なreadありchainでは、各方式3 process・2 warmup/5反復でKが約25–34倍速かったが、cache・support置換・solver再利用を一般対照へ追加すると約8–23倍へ縮んだ。さらに最適化した先行最良実装への優位は未実証。Kにしか条件生成できないという能力上の主張は棄却する。
+
+[対象命令の使用調査](coverage-results.md)では、既存NoWaSet220 fileとR3取得分23 fileのうち空の1本を除く242本を全走査し、明示的dropを持つものは0本だった。R3の10本にはmemory.init計1,742命令があるが、これを自然な寿命破棄の証拠とはしない。公式tool conventionに記述される共有memoryのstart初期化は現profile外であり、実アプリへの適用性は本研究の重要な不足である。
+
+別に目的抽出した[ffmpeg.wasm core/core-mt 0.12.10](post-start-results.md)では、後者に7,320個のdropを見つけた。しかし全readerが非公開start一つに集中し、exportと全literal関数参照からの保守的な到達閉包にも入らなかった。起動後・保留frameなし・寿命だけの相違という前提では、既知の到達検査だけで観測不能と判定できる。自然な用途の不足は解消されていない。
+
+公開wasm-migrateを固定commitで実行し、local adapter上の復元反例を確認した。不一致を示した対象は小さなfixtureで、作者確認は得ていない。追加の実アプリ由来replay10本はWeaveの正常対照となったが、drop命令がないためsegment寿命の問題を自然な実アプリで実証したわけではない。限定features、単一Windows host、非機械検証の意味論証である。numeric profileはfunction identityを見ず、小例のWasmtime追試も全table identityを含まない。
+
+directoryの対応関係には追加の信頼前提がある。元tableとdirectoryへ同じ入替えを意図的に加える対照ではdescriptorが一致し、元APIの結果だけが変わる反例を得た。これはWeaveの不具合として観測したものではない。独立の元API比較を併用し、observerを信頼不要な証明器とは呼ばない。全入力同値性、一般の脆弱性検出率、新規な原理の完成を主張しない。
+
+## Conclusion
+
+実行可能なobserver生成器と、復元契約・元API観測を分ける実験を得た。Jの主要機構に先行実装があること、Kの核となるprobeが既存仕様testにあることも確認した。現段階では補助検査器として保存し、修士研究の主成果として採用するには実対象での独立した価値を追加検証する必要がある。
+
+限定bulk APIについては、具体的な復元差の観測を初期storeの条件へ一般化し、不成立時の最短反例へ接続できた。条件合成と反例抽出の一般原理は既知であり、自然な実アプリでのsegment寿命差、先行検証器との同一課題比較、意味論の機械化は残る課題である。

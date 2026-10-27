@@ -1,0 +1,11 @@
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging -14740]
+[fuzz-exec] export func
+[fuzz-exec] note result: func => object(object(object(null)))
+[fuzz-exec] export func_invoker
+exception thrown: RuntimeError: unreachable executed
+[fuzz-exec] export func_12_invoker
+exception thrown: TypeError: can't access property "value", exportList[index] is undefined
+[fuzz-exec] export func_15
+exception thrown: RuntimeError: unreachable executed
+[heap-study] {"calls":[{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable executed"},{"name":"func_12_invoker","known":true,"status":"type-error","unsupported":[],"error":"TypeError: can't access property \"value\", exportList[index] is undefined"},{"name":"func_15","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable executed"}],"trace":[],"snapshots":[],"observation_errors":[],"events":0,"limit":128}

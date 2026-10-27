@@ -1,0 +1,2372 @@
+{
+  "processes": 360,
+  "warmups": 12,
+  "samples": 11,
+  "seed": 261026,
+  "platform": "Windows-10-10.0.26100-SP0",
+  "python": "3.9.0 (tags/v3.9.0:9cf6752, Oct  5 2020, 15:34:40) [MSC v.1927 64 bit (AMD64)]",
+  "smoke": false,
+  "pairs": [
+    {
+      "mode": "shared",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\shared-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\shared-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\shared-policy.json",
+      "allowedImports": [
+        "refresh",
+        "view"
+      ],
+      "libraryBytes": 373,
+      "consumerBytes": 372,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 3,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": false,
+            "mode": "deny-all-gc",
+            "violations": [
+              {
+                "action": "read",
+                "field": 0,
+                "op": "array.get",
+                "operation": 0,
+                "type": 1
+              },
+              {
+                "action": "read",
+                "field": 0,
+                "op": "struct.get",
+                "operation": 1,
+                "type": 0
+              },
+              {
+                "action": "read",
+                "field": 1,
+                "op": "struct.get",
+                "operation": 2,
+                "type": 0
+              }
+            ]
+          }
+        ],
+        "totalSeconds": 0.0006605,
+        "validationSeconds": 0.0005968
+      },
+      "checkerWallMs": 9.892700000000005
+    },
+    {
+      "mode": "accessor",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\accessor-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\accessor-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\accessor-policy.json",
+      "allowedImports": [
+        "refresh",
+        "x",
+        "y"
+      ],
+      "libraryBytes": 394,
+      "consumerBytes": 358,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 0,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "deny-all-gc",
+            "violations": []
+          }
+        ],
+        "totalSeconds": 0.0006558,
+        "validationSeconds": 0.0006005
+      },
+      "checkerWallMs": 8.875899999999993
+    },
+    {
+      "mode": "project",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\project-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\project-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\project-policy.json",
+      "allowedImports": [
+        "refresh",
+        "view"
+      ],
+      "libraryBytes": 458,
+      "consumerBytes": 372,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 3,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": false,
+            "mode": "deny-all-gc",
+            "violations": [
+              {
+                "action": "read",
+                "field": 0,
+                "op": "array.get",
+                "operation": 0,
+                "type": 3
+              },
+              {
+                "action": "read",
+                "field": 0,
+                "op": "struct.get",
+                "operation": 1,
+                "type": 2
+              },
+              {
+                "action": "read",
+                "field": 1,
+                "op": "struct.get",
+                "operation": 2,
+                "type": 2
+              }
+            ]
+          }
+        ],
+        "totalSeconds": 0.0006446,
+        "validationSeconds": 0.000579
+      },
+      "checkerWallMs": 8.8839
+    },
+    {
+      "mode": "split",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\split-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\split-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\split-policy.json",
+      "allowedImports": [
+        "refresh",
+        "view"
+      ],
+      "libraryBytes": 387,
+      "consumerBytes": 372,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 3,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": false,
+            "mode": "deny-all-gc",
+            "violations": [
+              {
+                "action": "read",
+                "field": 0,
+                "op": "array.get",
+                "operation": 0,
+                "type": 3
+              },
+              {
+                "action": "read",
+                "field": 0,
+                "op": "struct.get",
+                "operation": 1,
+                "type": 2
+              },
+              {
+                "action": "read",
+                "field": 1,
+                "op": "struct.get",
+                "operation": 2,
+                "type": 2
+              }
+            ]
+          }
+        ],
+        "totalSeconds": 0.0007062,
+        "validationSeconds": 0.0006428
+      },
+      "checkerWallMs": 8.655400000000007
+    },
+    {
+      "mode": "cached-project",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\cached-project-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\cached-project-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-v2\\cached-project-policy.json",
+      "allowedImports": [
+        "refresh",
+        "view"
+      ],
+      "libraryBytes": 458,
+      "consumerBytes": 372,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 3,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": false,
+            "mode": "deny-all-gc",
+            "violations": [
+              {
+                "action": "read",
+                "field": 0,
+                "op": "array.get",
+                "operation": 0,
+                "type": 3
+              },
+              {
+                "action": "read",
+                "field": 0,
+                "op": "struct.get",
+                "operation": 1,
+                "type": 2
+              },
+              {
+                "action": "read",
+                "field": 1,
+                "op": "struct.get",
+                "operation": 2,
+                "type": 2
+              }
+            ]
+          }
+        ],
+        "totalSeconds": 0.0006493,
+        "validationSeconds": 0.0005871
+      },
+      "checkerWallMs": 8.709300000000002
+    }
+  ],
+  "rows": [
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0005000000000023874,
+      "processMedians": [
+        0.0006000000000057071,
+        0.0005000000000023874,
+        0.0005000000000023874
+      ],
+      "pooledIqrMs": 0.00019999999999953388,
+      "medianSetupMs": 10.846600000000002,
+      "medianInitMs": 0.08360000000000412,
+      "peakBytes": 39264256
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.0418000000000085,
+      "processMedians": [
+        0.04109999999998837,
+        0.0418000000000085,
+        0.04400000000001625
+      ],
+      "pooledIqrMs": 0.002599999999991498,
+      "medianSetupMs": 13.481800000000002,
+      "medianInitMs": 0.11690000000000311,
+      "peakBytes": 27713536
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.0005999999999986017,
+      "processMedians": [
+        0.0008999999999943498,
+        0.0005999999999986017,
+        0.0005999999999986017
+      ],
+      "pooledIqrMs": 0.00030000000000285354,
+      "medianSetupMs": 10.8294,
+      "medianInitMs": 0.09279999999999688,
+      "peakBytes": 39153664
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.04229999999999512,
+      "processMedians": [
+        0.04250000000000087,
+        0.04199999999998649,
+        0.04229999999999512
+      ],
+      "pooledIqrMs": 0.0008000000000230045,
+      "medianSetupMs": 13.500600000000015,
+      "medianInitMs": 0.11469999999999536,
+      "peakBytes": 27725824
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0022999999999981924,
+      "processMedians": [
+        0.002400000000001512,
+        0.0022999999999981924,
+        0.0022999999999981924
+      ],
+      "pooledIqrMs": 0.0002000000000066393,
+      "medianSetupMs": 10.996100000000002,
+      "medianInitMs": 0.0799999999999983,
+      "peakBytes": 39280640
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04399999999998849,
+      "processMedians": [
+        0.04399999999998849,
+        0.04399999999998849,
+        0.04329999999999612
+      ],
+      "pooledIqrMs": 0.00109999999997612,
+      "medianSetupMs": 13.860899999999981,
+      "medianInitMs": 0.11549999999999061,
+      "peakBytes": 27860992
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.0027000000000043656,
+      "processMedians": [
+        0.0024999999999977263,
+        0.0027000000000043656,
+        0.0027000000000043656
+      ],
+      "pooledIqrMs": 0.00010000000000331966,
+      "medianSetupMs": 11.153500000000001,
+      "medianInitMs": 0.08270000000000266,
+      "peakBytes": 39305216
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.044600000000005746,
+      "processMedians": [
+        0.046400000000001995,
+        0.044600000000005746,
+        0.043399999999998995
+      ],
+      "pooledIqrMs": 0.0034000000000145025,
+      "medianSetupMs": 15.168500000000002,
+      "medianInitMs": 0.11500000000000399,
+      "peakBytes": 28282880
+    },
+    {
+      "mode": "shared",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.008100000000005991,
+      "processMedians": [
+        0.008099999999998886,
+        0.0081999999999951,
+        0.008100000000005991
+      ],
+      "pooledIqrMs": 0.0007000000000019213,
+      "medianSetupMs": 10.975200000000001,
+      "medianInitMs": 0.10960000000000036,
+      "peakBytes": 39460864
+    },
+    {
+      "mode": "shared",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.072600000000006,
+      "processMedians": [
+        0.072600000000006,
+        0.07290000000001462,
+        0.07229999999999737
+      ],
+      "pooledIqrMs": 0.0060000000000060005,
+      "medianSetupMs": 13.34239999999999,
+      "medianInitMs": 0.2207000000000181,
+      "peakBytes": 28360704
+    },
+    {
+      "mode": "shared",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.011099999999999,
+      "processMedians": [
+        0.011000000000002785,
+        0.011299999999998533,
+        0.011099999999999
+      ],
+      "pooledIqrMs": 0.0007000000000019213,
+      "medianSetupMs": 10.9908,
+      "medianInitMs": 0.10889999999999844,
+      "peakBytes": 39493632
+    },
+    {
+      "mode": "shared",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.07660000000001,
+      "processMedians": [
+        0.07660000000001,
+        0.07809999999999762,
+        0.07640000000000424
+      ],
+      "pooledIqrMs": 0.0029000000000001247,
+      "medianSetupMs": 13.600399999999999,
+      "medianInitMs": 0.2154999999999796,
+      "peakBytes": 27881472
+    },
+    {
+      "mode": "shared",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.02669999999999817,
+      "processMedians": [
+        0.02669999999999817,
+        0.026600000000001955,
+        0.03350000000000364
+      ],
+      "pooledIqrMs": 0.04250000000000398,
+      "medianSetupMs": 10.882099999999998,
+      "medianInitMs": 0.10999999999999943,
+      "peakBytes": 41365504
+    },
+    {
+      "mode": "shared",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.2602999999999911,
+      "processMedians": [
+        0.2894999999999981,
+        0.2602999999999911,
+        0.25999999999998247
+      ],
+      "pooledIqrMs": 0.022700000000014375,
+      "medianSetupMs": 13.809199999999993,
+      "medianInitMs": 0.2279000000000031,
+      "peakBytes": 27881472
+    },
+    {
+      "mode": "shared",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.027100000000004343,
+      "processMedians": [
+        0.027300000000003877,
+        0.027100000000004343,
+        0.027000000000001023
+      ],
+      "pooledIqrMs": 0.001100000000000989,
+      "medianSetupMs": 10.9236,
+      "medianInitMs": 0.11209999999999809,
+      "peakBytes": 41336832
+    },
+    {
+      "mode": "shared",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.2866999999999731,
+      "processMedians": [
+        0.28700000000000947,
+        0.2866999999999731,
+        0.2860999999999836
+      ],
+      "pooledIqrMs": 0.004999999999977245,
+      "medianSetupMs": 13.445399999999996,
+      "medianInitMs": 0.21899999999999697,
+      "peakBytes": 28229632
+    },
+    {
+      "mode": "shared",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.05649999999999977,
+      "processMedians": [
+        0.056699999999999307,
+        0.05649999999999977,
+        0.05409999999999826
+      ],
+      "pooledIqrMs": 0.0023999999999944066,
+      "medianSetupMs": 10.903699999999997,
+      "medianInitMs": 3.051700000000004,
+      "peakBytes": 46501888
+    },
+    {
+      "mode": "shared",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.48280000000000545,
+      "processMedians": [
+        0.48280000000000545,
+        0.4811999999999872,
+        0.49599999999999644
+      ],
+      "pooledIqrMs": 0.017199999999994997,
+      "medianSetupMs": 13.723199999999991,
+      "medianInitMs": 1.3467000000000062,
+      "peakBytes": 31670272
+    },
+    {
+      "mode": "shared",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.22440000000000282,
+      "processMedians": [
+        0.22440000000000282,
+        0.1893000000000029,
+        0.22529999999999717
+      ],
+      "pooledIqrMs": 0.025200000000005218,
+      "medianSetupMs": 10.989800000000002,
+      "medianInitMs": 2.8352000000000004,
+      "peakBytes": 46288896
+    },
+    {
+      "mode": "shared",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.756899999999977,
+      "processMedians": [
+        0.6979000000000013,
+        2.495999999999998,
+        0.756899999999977
+      ],
+      "pooledIqrMs": 1.332999999999973,
+      "medianSetupMs": 14.210299999999995,
+      "medianInitMs": 1.4666000000000123,
+      "peakBytes": 31485952
+    },
+    {
+      "mode": "shared",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.4491999999999976,
+      "processMedians": [
+        0.43019999999999925,
+        0.4491999999999976,
+        0.4528000000000034
+      ],
+      "pooledIqrMs": 0.015100000000003888,
+      "medianSetupMs": 10.784500000000001,
+      "medianInitMs": 2.809899999999999,
+      "peakBytes": 46297088
+    },
+    {
+      "mode": "shared",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 3.4999000000000002,
+      "processMedians": [
+        3.4321000000000215,
+        3.4999000000000002,
+        3.6457000000000015
+      ],
+      "pooledIqrMs": 0.15780000000001326,
+      "medianSetupMs": 13.546100000000006,
+      "medianInitMs": 1.3708999999999805,
+      "peakBytes": 31285248
+    },
+    {
+      "mode": "shared",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 1.8196999999999974,
+      "processMedians": [
+        1.8196999999999974,
+        2.0290999999999997,
+        1.4902000000000015
+      ],
+      "pooledIqrMs": 0.3865000000000123,
+      "medianSetupMs": 10.793100000000003,
+      "medianInitMs": 2.8922000000000025,
+      "peakBytes": 46284800
+    },
+    {
+      "mode": "shared",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 5.226599999999998,
+      "processMedians": [
+        4.790500000000003,
+        5.67419999999999,
+        5.226599999999998
+      ],
+      "pooledIqrMs": 0.7782000000000346,
+      "medianSetupMs": 13.493299999999985,
+      "medianInitMs": 1.36929999999999,
+      "peakBytes": 31367168
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.001300000000000523,
+      "processMedians": [
+        0.001300000000000523,
+        0.001300000000000523,
+        0.001300000000000523
+      ],
+      "pooledIqrMs": 0.00019999999999953388,
+      "medianSetupMs": 10.921399999999998,
+      "medianInitMs": 0.08389999999999986,
+      "peakBytes": 39284736
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04300000000001525,
+      "processMedians": [
+        0.04429999999999712,
+        0.04300000000001525,
+        0.04200000000001425
+      ],
+      "pooledIqrMs": 0.002300000000010627,
+      "medianSetupMs": 13.7361,
+      "medianInitMs": 0.11150000000001437,
+      "peakBytes": 28139520
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.001300000000000523,
+      "processMedians": [
+        0.001300000000000523,
+        0.001300000000000523,
+        0.001300000000000523
+      ],
+      "pooledIqrMs": 0.0002999999999957481,
+      "medianSetupMs": 10.9342,
+      "medianInitMs": 0.08429999999999893,
+      "peakBytes": 39194624
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.04300000000001525,
+      "processMedians": [
+        0.04300000000001525,
+        0.04259999999997599,
+        0.04490000000001437
+      ],
+      "pooledIqrMs": 0.004699999999996374,
+      "medianSetupMs": 13.477099999999991,
+      "medianInitMs": 0.11359999999999149,
+      "peakBytes": 28155904
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.007800000000003138,
+      "processMedians": [
+        0.008200000000002206,
+        0.007699999999999818,
+        0.007800000000003138
+      ],
+      "pooledIqrMs": 0.0005999999999986017,
+      "medianSetupMs": 11.205599999999997,
+      "medianInitMs": 0.08279999999999887,
+      "peakBytes": 39198720
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04879999999998774,
+      "processMedians": [
+        0.04879999999998774,
+        0.04850000000000687,
+        0.05510000000000237
+      ],
+      "pooledIqrMs": 0.0030000000000030003,
+      "medianSetupMs": 13.55619999999999,
+      "medianInitMs": 0.11079999999999424,
+      "peakBytes": 28262400
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.008099999999998886,
+      "processMedians": [
+        0.007800000000003138,
+        0.00840000000000174,
+        0.008099999999998886
+      ],
+      "pooledIqrMs": 0.0005000000000023874,
+      "medianSetupMs": 11.115900000000003,
+      "medianInitMs": 0.08620000000000516,
+      "peakBytes": 39407616
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.049199999999999244,
+      "processMedians": [
+        0.048600000000009747,
+        0.049199999999999244,
+        0.049199999999999244
+      ],
+      "pooledIqrMs": 0.001000000000001,
+      "medianSetupMs": 13.59550000000001,
+      "medianInitMs": 0.11420000000000874,
+      "peakBytes": 28528640
+    },
+    {
+      "mode": "accessor",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.03059999999999974,
+      "processMedians": [
+        0.03059999999999974,
+        0.03229999999999933,
+        0.029699999999998283
+      ],
+      "pooledIqrMs": 0.0028000000000076852,
+      "medianSetupMs": 11.0563,
+      "medianInitMs": 0.10909999999999798,
+      "peakBytes": 39956480
+    },
+    {
+      "mode": "accessor",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.09620000000001849,
+      "processMedians": [
+        0.09680000000000799,
+        0.09620000000001849,
+        0.09549999999999836
+      ],
+      "pooledIqrMs": 0.0036999999999953737,
+      "medianSetupMs": 13.769000000000018,
+      "medianInitMs": 0.21740000000000648,
+      "peakBytes": 28381184
+    },
+    {
+      "mode": "accessor",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.034799999999997056,
+      "processMedians": [
+        0.034799999999997056,
+        0.03779999999999717,
+        0.03370000000000317
+      ],
+      "pooledIqrMs": 0.0062999999999959755,
+      "medianSetupMs": 11.584699999999998,
+      "medianInitMs": 0.11410000000000053,
+      "peakBytes": 39874560
+    },
+    {
+      "mode": "accessor",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.09510000000001462,
+      "processMedians": [
+        0.09510000000001462,
+        0.09400000000001074,
+        0.09600000000001274
+      ],
+      "pooledIqrMs": 0.005299999999985872,
+      "medianSetupMs": 13.482199999999986,
+      "medianInitMs": 0.2234999999999876,
+      "peakBytes": 28225536
+    },
+    {
+      "mode": "accessor",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.12250000000000227,
+      "processMedians": [
+        0.12250000000000227,
+        0.12099999999999511,
+        0.12330000000000041
+      ],
+      "pooledIqrMs": 0.001100000000000989,
+      "medianSetupMs": 11.003700000000002,
+      "medianInitMs": 0.10949999999999704,
+      "peakBytes": 41537536
+    },
+    {
+      "mode": "accessor",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.4461000000000048,
+      "processMedians": [
+        0.5054999999999921,
+        0.4461000000000048,
+        0.4423000000000066
+      ],
+      "pooledIqrMs": 0.05979999999999874,
+      "medianSetupMs": 13.645299999999985,
+      "medianInitMs": 0.2173000000000036,
+      "peakBytes": 28368896
+    },
+    {
+      "mode": "accessor",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.12689999999999912,
+      "processMedians": [
+        0.12689999999999912,
+        0.12630000000000052,
+        0.1338000000000008
+      ],
+      "pooledIqrMs": 0.007099999999994111,
+      "medianSetupMs": 10.961900000000004,
+      "medianInitMs": 0.11070000000000135,
+      "peakBytes": 41512960
+    },
+    {
+      "mode": "accessor",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.4331999999999947,
+      "processMedians": [
+        0.4322999999999966,
+        0.4981000000000013,
+        0.4331999999999947
+      ],
+      "pooledIqrMs": 0.062200000000012245,
+      "medianSetupMs": 13.423999999999992,
+      "medianInitMs": 0.21779999999999022,
+      "peakBytes": 28561408
+    },
+    {
+      "mode": "accessor",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.2518000000000029,
+      "processMedians": [
+        0.24929999999999808,
+        0.2518000000000029,
+        0.25659999999999883
+      ],
+      "pooledIqrMs": 0.019599999999996953,
+      "medianSetupMs": 10.709399999999999,
+      "medianInitMs": 2.8393000000000015,
+      "peakBytes": 46166016
+    },
+    {
+      "mode": "accessor",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.8492999999999973,
+      "processMedians": [
+        0.8461000000000163,
+        0.8492999999999973,
+        0.8597999999999939
+      ],
+      "pooledIqrMs": 0.017100000000019877,
+      "medianSetupMs": 13.590099999999994,
+      "medianInitMs": 1.3456000000000023,
+      "peakBytes": 31211520
+    },
+    {
+      "mode": "accessor",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.3907000000000025,
+      "processMedians": [
+        0.38870000000000005,
+        0.3907000000000025,
+        0.40979999999999706
+      ],
+      "pooledIqrMs": 0.021799999999991826,
+      "medianSetupMs": 10.884800000000002,
+      "medianInitMs": 2.8629000000000033,
+      "peakBytes": 46211072
+    },
+    {
+      "mode": "accessor",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.9589999999999876,
+      "processMedians": [
+        0.9589999999999876,
+        1.070500000000002,
+        0.9019999999999861
+      ],
+      "pooledIqrMs": 0.12019999999998698,
+      "medianSetupMs": 13.321800000000009,
+      "medianInitMs": 1.3402999999999887,
+      "peakBytes": 31518720
+    },
+    {
+      "mode": "accessor",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 2.004400000000004,
+      "processMedians": [
+        1.9299999999999926,
+        2.004400000000004,
+        2.022199999999998
+      ],
+      "pooledIqrMs": 0.07110000000000127,
+      "medianSetupMs": 10.959600000000002,
+      "medianInitMs": 2.8517999999999972,
+      "peakBytes": 46297088
+    },
+    {
+      "mode": "accessor",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 6.555000000000005,
+      "processMedians": [
+        6.536299999999995,
+        6.555000000000005,
+        6.577599999999989
+      ],
+      "pooledIqrMs": 0.12280000000000602,
+      "medianSetupMs": 13.247300000000003,
+      "medianInitMs": 1.3392999999999877,
+      "peakBytes": 31383552
+    },
+    {
+      "mode": "accessor",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 3.225200000000001,
+      "processMedians": [
+        3.298099999999991,
+        3.053699999999992,
+        3.225200000000001
+      ],
+      "pooledIqrMs": 0.16070000000000562,
+      "medianSetupMs": 11.004399999999997,
+      "medianInitMs": 2.990700000000004,
+      "peakBytes": 46321664
+    },
+    {
+      "mode": "accessor",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 6.976499999999996,
+      "processMedians": [
+        6.976499999999996,
+        7.208300000000001,
+        6.827899999999998
+      ],
+      "pooledIqrMs": 0.3776999999999813,
+      "medianSetupMs": 13.642500000000002,
+      "medianInitMs": 1.3629000000000002,
+      "peakBytes": 31817728
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.001300000000000523,
+      "processMedians": [
+        0.001300000000000523,
+        0.001300000000000523,
+        0.001300000000000523
+      ],
+      "pooledIqrMs": 0.0002999999999957481,
+      "medianSetupMs": 11.130399999999998,
+      "medianInitMs": 0.08630000000000138,
+      "peakBytes": 39362560
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.046100000000021124,
+      "processMedians": [
+        0.046100000000021124,
+        0.045400000000000995,
+        0.04629999999999912
+      ],
+      "pooledIqrMs": 0.0037000000000231292,
+      "medianSetupMs": 13.773099999999996,
+      "medianInitMs": 0.13240000000000474,
+      "peakBytes": 28512256
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.0014000000000038426,
+      "processMedians": [
+        0.0014000000000038426,
+        0.001300000000000523,
+        0.0014000000000038426
+      ],
+      "pooledIqrMs": 0.00019999999999953388,
+      "medianSetupMs": 10.813600000000001,
+      "medianInitMs": 0.08619999999999806,
+      "peakBytes": 39297024
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.049400000000004995,
+      "processMedians": [
+        0.049400000000004995,
+        0.0508000000000175,
+        0.0458000000000125
+      ],
+      "pooledIqrMs": 0.008300000000016627,
+      "medianSetupMs": 13.913199999999987,
+      "medianInitMs": 0.12390000000001011,
+      "peakBytes": 28135424
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.003099999999996328,
+      "processMedians": [
+        0.003099999999996328,
+        0.003400000000006287,
+        0.0030000000000001137
+      ],
+      "pooledIqrMs": 0.000800000000005241,
+      "medianSetupMs": 10.886399999999998,
+      "medianInitMs": 0.08299999999999841,
+      "peakBytes": 39370752
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04830000000000112,
+      "processMedians": [
+        0.04609999999999337,
+        0.048600000000009747,
+        0.04830000000000112
+      ],
+      "pooledIqrMs": 0.0032000000000087514,
+      "medianSetupMs": 13.732499999999995,
+      "medianInitMs": 0.11880000000000224,
+      "peakBytes": 28229632
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.0034999999999953957,
+      "processMedians": [
+        0.003500000000002501,
+        0.0034999999999953957,
+        0.0031999999999996476
+      ],
+      "pooledIqrMs": 0.0002999999999957481,
+      "medianSetupMs": 10.893899999999999,
+      "medianInitMs": 0.08189999999999742,
+      "peakBytes": 39272448
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.047400000000002995,
+      "processMedians": [
+        0.047400000000002995,
+        0.04870000000001262,
+        0.04690000000001637
+      ],
+      "pooledIqrMs": 0.003699999999967618,
+      "medianSetupMs": 13.7853,
+      "medianInitMs": 0.14490000000000336,
+      "peakBytes": 28086272
+    },
+    {
+      "mode": "project",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.040399999999998215,
+      "processMedians": [
+        0.03750000000000142,
+        0.040500000000001535,
+        0.040399999999998215
+      ],
+      "pooledIqrMs": 0.020800000000008367,
+      "medianSetupMs": 10.8035,
+      "medianInitMs": 0.11169999999999902,
+      "peakBytes": 44277760
+    },
+    {
+      "mode": "project",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.5541999999999769,
+      "processMedians": [
+        0.6095999999999879,
+        0.5541999999999769,
+        0.5425000000000013
+      ],
+      "pooledIqrMs": 0.042299999999967364,
+      "medianSetupMs": 14.203199999999999,
+      "medianInitMs": 0.24639999999997997,
+      "peakBytes": 28459008
+    },
+    {
+      "mode": "project",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.03999999999999915,
+      "processMedians": [
+        0.036599999999999966,
+        0.03999999999999915,
+        0.04260000000000019
+      ],
+      "pooledIqrMs": 0.01680000000000348,
+      "medianSetupMs": 11.094100000000001,
+      "medianInitMs": 0.11080000000000467,
+      "peakBytes": 44437504
+    },
+    {
+      "mode": "project",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.5518999999999941,
+      "processMedians": [
+        0.5518999999999941,
+        0.5534000000000094,
+        0.5459999999999909
+      ],
+      "pooledIqrMs": 0.013199999999990997,
+      "medianSetupMs": 14.051500000000008,
+      "medianInitMs": 0.21540000000000448,
+      "peakBytes": 28508160
+    },
+    {
+      "mode": "project",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.056800000000002626,
+      "processMedians": [
+        0.056800000000002626,
+        0.06970000000000454,
+        0.04560000000000031
+      ],
+      "pooledIqrMs": 0.023699999999998056,
+      "medianSetupMs": 10.898899999999998,
+      "medianInitMs": 0.1121000000000052,
+      "peakBytes": 44736512
+    },
+    {
+      "mode": "project",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.7338999999999818,
+      "processMedians": [
+        0.7337000000000038,
+        0.7411000000000223,
+        0.7338999999999818
+      ],
+      "pooledIqrMs": 0.020799999999987495,
+      "medianSetupMs": 13.86939999999999,
+      "medianInitMs": 0.2344999999999986,
+      "peakBytes": 28340224
+    },
+    {
+      "mode": "project",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.045999999999999375,
+      "processMedians": [
+        0.045999999999999375,
+        0.04399999999999693,
+        0.05299999999999727
+      ],
+      "pooledIqrMs": 0.00999999999999801,
+      "medianSetupMs": 11.642900000000001,
+      "medianInitMs": 0.11050000000000182,
+      "peakBytes": 44781568
+    },
+    {
+      "mode": "project",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.7610000000000117,
+      "processMedians": [
+        0.7610000000000117,
+        0.7599999999999829,
+        0.7646999999999793
+      ],
+      "pooledIqrMs": 0.010600000000027254,
+      "medianSetupMs": 13.712500000000002,
+      "medianInitMs": 0.23110000000001185,
+      "peakBytes": 28643328
+    },
+    {
+      "mode": "project",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.31450000000000244,
+      "processMedians": [
+        0.31450000000000244,
+        0.3024000000000058,
+        0.3171000000000035
+      ],
+      "pooledIqrMs": 0.1418999999999997,
+      "medianSetupMs": 11.148900000000005,
+      "medianInitMs": 2.872399999999999,
+      "peakBytes": 77750272
+    },
+    {
+      "mode": "project",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 8.523899999999973,
+      "processMedians": [
+        8.523899999999973,
+        8.798899999999998,
+        8.453700000000008
+      ],
+      "pooledIqrMs": 0.4062999999999981,
+      "medianSetupMs": 14.020999999999992,
+      "medianInitMs": 1.4266,
+      "peakBytes": 39526400
+    },
+    {
+      "mode": "project",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.47760000000000247,
+      "processMedians": [
+        0.5669999999999931,
+        0.47760000000000247,
+        0.4341000000000008
+      ],
+      "pooledIqrMs": 0.13479999999999848,
+      "medianSetupMs": 10.996299999999998,
+      "medianInitMs": 2.9055999999999997,
+      "peakBytes": 78188544
+    },
+    {
+      "mode": "project",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 8.885399999999988,
+      "processMedians": [
+        8.786499999999975,
+        8.915000000000006,
+        8.885399999999988
+      ],
+      "pooledIqrMs": 0.2624999999999993,
+      "medianSetupMs": 14.046799999999985,
+      "medianInitMs": 1.4486999999999972,
+      "peakBytes": 39014400
+    },
+    {
+      "mode": "project",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.721899999999998,
+      "processMedians": [
+        0.721899999999998,
+        0.6762000000000015,
+        0.7683000000000106
+      ],
+      "pooledIqrMs": 0.13630000000001985,
+      "medianSetupMs": 10.935699999999997,
+      "medianInitMs": 2.923000000000002,
+      "peakBytes": 77766656
+    },
+    {
+      "mode": "project",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 11.647499999999978,
+      "processMedians": [
+        11.832100000000011,
+        11.647499999999978,
+        11.449900000000014
+      ],
+      "pooledIqrMs": 0.3496000000000059,
+      "medianSetupMs": 14.127200000000006,
+      "medianInitMs": 1.4356999999999842,
+      "peakBytes": 38887424
+    },
+    {
+      "mode": "project",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 2.072500000000005,
+      "processMedians": [
+        2.0619999999999976,
+        2.1210000000000093,
+        2.072500000000005
+      ],
+      "pooledIqrMs": 0.3447000000000031,
+      "medianSetupMs": 10.911499999999997,
+      "medianInitMs": 2.9168999999999983,
+      "peakBytes": 77987840
+    },
+    {
+      "mode": "project",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 13.261599999999984,
+      "processMedians": [
+        13.046999999999976,
+        13.261599999999984,
+        13.361899999999983
+      ],
+      "pooledIqrMs": 0.3247000000000124,
+      "medianSetupMs": 13.80619999999999,
+      "medianInitMs": 1.3826999999999867,
+      "peakBytes": 39288832
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0005999999999986017,
+      "processMedians": [
+        0.0005999999999986017,
+        0.0005999999999986017,
+        0.0005000000000023874
+      ],
+      "pooledIqrMs": 9.999999999621423e-05,
+      "medianSetupMs": 10.9772,
+      "medianInitMs": 0.08590000000000231,
+      "peakBytes": 39211008
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.042399999999997995,
+      "processMedians": [
+        0.043200000000021,
+        0.04099999999998549,
+        0.042399999999997995
+      ],
+      "pooledIqrMs": 0.0021000000000048757,
+      "medianSetupMs": 13.744999999999994,
+      "medianInitMs": 0.11479999999999824,
+      "peakBytes": 28262400
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.0005999999999986017,
+      "processMedians": [
+        0.0005999999999986017,
+        0.0005999999999986017,
+        0.0006000000000057071
+      ],
+      "pooledIqrMs": 9.999999999621423e-05,
+      "medianSetupMs": 11.1648,
+      "medianInitMs": 0.08639999999999759,
+      "peakBytes": 39235584
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.04190000000001137,
+      "processMedians": [
+        0.04190000000001137,
+        0.04149999999999987,
+        0.04209999999998937
+      ],
+      "pooledIqrMs": 0.000799999999995249,
+      "medianSetupMs": 13.802899999999992,
+      "medianInitMs": 0.11230000000000961,
+      "peakBytes": 27897856
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0022999999999981924,
+      "processMedians": [
+        0.0022999999999981924,
+        0.002300000000005298,
+        0.0022999999999981924
+      ],
+      "pooledIqrMs": 0.00010000000000331966,
+      "medianSetupMs": 11.044900000000002,
+      "medianInitMs": 0.08680000000000376,
+      "peakBytes": 39297024
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04389999999998562,
+      "processMedians": [
+        0.04389999999998562,
+        0.04390000000001337,
+        0.043600000000004746
+      ],
+      "pooledIqrMs": 0.0005999999999894978,
+      "medianSetupMs": 13.994900000000005,
+      "medianInitMs": 0.11469999999999536,
+      "peakBytes": 27881472
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.0027000000000043656,
+      "processMedians": [
+        0.0025999999999939405,
+        0.0027000000000043656,
+        0.0027000000000043656
+      ],
+      "pooledIqrMs": 0.00010000000000331966,
+      "medianSetupMs": 10.8738,
+      "medianInitMs": 0.08679999999999666,
+      "peakBytes": 39178240
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.04399999999998849,
+      "processMedians": [
+        0.04399999999998849,
+        0.043600000000004746,
+        0.04499999999998949
+      ],
+      "pooledIqrMs": 0.0018999999999991246,
+      "medianSetupMs": 13.750899999999996,
+      "medianInitMs": 0.11280000000002399,
+      "peakBytes": 27840512
+    },
+    {
+      "mode": "split",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.008000000000002672,
+      "processMedians": [
+        0.008000000000002672,
+        0.008000000000002672,
+        0.007999999999995566
+      ],
+      "pooledIqrMs": 0.0004000000000061732,
+      "medianSetupMs": 10.892699999999998,
+      "medianInitMs": 0.1121000000000052,
+      "peakBytes": 39464960
+    },
+    {
+      "mode": "split",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.0710000000000155,
+      "processMedians": [
+        0.07170000000000787,
+        0.0710000000000155,
+        0.07070000000000687
+      ],
+      "pooledIqrMs": 0.001000000000001,
+      "medianSetupMs": 13.38800000000001,
+      "medianInitMs": 0.2177000000000151,
+      "peakBytes": 27836416
+    },
+    {
+      "mode": "split",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.010899999999999466,
+      "processMedians": [
+        0.010899999999999466,
+        0.01120000000000232,
+        0.010899999999999466
+      ],
+      "pooledIqrMs": 0.0006000000000057071,
+      "medianSetupMs": 11.008499999999998,
+      "medianInitMs": 0.11539999999999395,
+      "peakBytes": 39530496
+    },
+    {
+      "mode": "split",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.07729999999997461,
+      "processMedians": [
+        0.07509999999999462,
+        0.08259999999998824,
+        0.07729999999997461
+      ],
+      "pooledIqrMs": 0.006900000000004125,
+      "medianSetupMs": 13.736600000000015,
+      "medianInitMs": 0.22700000000000498,
+      "peakBytes": 27783168
+    },
+    {
+      "mode": "split",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.026300000000006207,
+      "processMedians": [
+        0.026600000000001955,
+        0.025900000000000034,
+        0.026300000000006207
+      ],
+      "pooledIqrMs": 0.03629999999999711,
+      "medianSetupMs": 10.817299999999996,
+      "medianInitMs": 0.11399999999999721,
+      "peakBytes": 41332736
+    },
+    {
+      "mode": "split",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.2600000000000102,
+      "processMedians": [
+        0.2627000000000046,
+        0.25780000000000247,
+        0.2600000000000102
+      ],
+      "pooledIqrMs": 0.004500000000018378,
+      "medianSetupMs": 13.759700000000013,
+      "medianInitMs": 0.2167000000000141,
+      "peakBytes": 28200960
+    },
+    {
+      "mode": "split",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.026499999999998636,
+      "processMedians": [
+        0.02690000000000481,
+        0.026299999999999102,
+        0.026499999999998636
+      ],
+      "pooledIqrMs": 0.0008999999999943498,
+      "medianSetupMs": 11.1874,
+      "medianInitMs": 0.11419999999999675,
+      "peakBytes": 41312256
+    },
+    {
+      "mode": "split",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.28600000000000847,
+      "processMedians": [
+        0.2858000000000027,
+        0.28659999999999797,
+        0.28600000000000847
+      ],
+      "pooledIqrMs": 0.004899999999974369,
+      "medianSetupMs": 13.971199999999989,
+      "medianInitMs": 0.24160000000000847,
+      "peakBytes": 28098560
+    },
+    {
+      "mode": "split",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.05289999999999395,
+      "processMedians": [
+        0.05229999999999535,
+        0.05290000000000106,
+        0.05289999999999395
+      ],
+      "pooledIqrMs": 0.0009999999999976694,
+      "medianSetupMs": 10.8324,
+      "medianInitMs": 1.5805000000000007,
+      "peakBytes": 45019136
+    },
+    {
+      "mode": "split",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.47880000000000145,
+      "processMedians": [
+        0.47880000000000145,
+        0.5083000000000171,
+        0.47789999999997557
+      ],
+      "pooledIqrMs": 0.027700000000019376,
+      "medianSetupMs": 14.0565,
+      "medianInitMs": 1.543700000000009,
+      "peakBytes": 30461952
+    },
+    {
+      "mode": "split",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.22749999999999915,
+      "processMedians": [
+        0.22749999999999915,
+        0.22800000000000153,
+        0.22749999999999915
+      ],
+      "pooledIqrMs": 0.005299999999998306,
+      "medianSetupMs": 10.918600000000001,
+      "medianInitMs": 1.612099999999998,
+      "peakBytes": 44888064
+    },
+    {
+      "mode": "split",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.7133,
+      "processMedians": [
+        0.7069000000000103,
+        0.7133,
+        0.7267999999999997
+      ],
+      "pooledIqrMs": 0.030300000000010874,
+      "medianSetupMs": 13.8485,
+      "medianInitMs": 1.549899999999993,
+      "peakBytes": 30576640
+    },
+    {
+      "mode": "split",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.39869999999999806,
+      "processMedians": [
+        0.39630000000000365,
+        0.45810000000000173,
+        0.39869999999999806
+      ],
+      "pooledIqrMs": 0.05040000000000333,
+      "medianSetupMs": 11.324400000000004,
+      "medianInitMs": 1.628700000000002,
+      "peakBytes": 45129728
+    },
+    {
+      "mode": "split",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 3.585999999999978,
+      "processMedians": [
+        3.913599999999989,
+        3.585999999999978,
+        3.5854999999999917
+      ],
+      "pooledIqrMs": 0.18419999999999526,
+      "medianSetupMs": 13.627999999999988,
+      "medianInitMs": 1.6038999999999914,
+      "peakBytes": 30625792
+    },
+    {
+      "mode": "split",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 1.845399999999998,
+      "processMedians": [
+        1.531000000000006,
+        1.845399999999998,
+        1.9067000000000007
+      ],
+      "pooledIqrMs": 0.4007000000000005,
+      "medianSetupMs": 11.054199999999998,
+      "medianInitMs": 1.5509999999999948,
+      "peakBytes": 45043712
+    },
+    {
+      "mode": "split",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 5.439200000000005,
+      "processMedians": [
+        5.439200000000005,
+        5.7674999999999805,
+        4.973200000000011
+      ],
+      "pooledIqrMs": 0.7274000000000171,
+      "medianSetupMs": 13.6106,
+      "medianInitMs": 1.5210000000000223,
+      "peakBytes": 30494720
+    },
+    {
+      "mode": "cached-project",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0005999999999986017,
+      "processMedians": [
+        0.0005999999999986017,
+        0.0005999999999986017,
+        0.0005000000000023874
+      ],
+      "pooledIqrMs": 0.00010000000000331966,
+      "medianSetupMs": 11.060400000000001,
+      "medianInitMs": 0.08929999999999438,
+      "peakBytes": 41447424
+    },
+    {
+      "mode": "cached-project",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.042199999999992244,
+      "processMedians": [
+        0.0418000000000085,
+        0.042199999999992244,
+        0.042199999999992244
+      ],
+      "pooledIqrMs": 0.0005999999999894978,
+      "medianSetupMs": 14.3968,
+      "medianInitMs": 0.12290000000000911,
+      "peakBytes": 28401664
+    },
+    {
+      "mode": "cached-project",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.0006000000000057071,
+      "processMedians": [
+        0.0006000000000057071,
+        0.0006000000000057071,
+        0.0006000000000057071
+      ],
+      "pooledIqrMs": 0.00010000000000331966,
+      "medianSetupMs": 10.970300000000002,
+      "medianInitMs": 0.09680000000000177,
+      "peakBytes": 39223296
+    },
+    {
+      "mode": "cached-project",
+      "n": 128,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.042199999999992244,
+      "processMedians": [
+        0.04209999999998937,
+        0.042199999999992244,
+        0.042600000000003746
+      ],
+      "pooledIqrMs": 0.0022999999999828713,
+      "medianSetupMs": 14.127500000000001,
+      "medianInitMs": 0.1255000000000006,
+      "peakBytes": 28405760
+    },
+    {
+      "mode": "cached-project",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0022999999999981924,
+      "processMedians": [
+        0.0022999999999981924,
+        0.0022999999999981924,
+        0.002899999999996794
+      ],
+      "pooledIqrMs": 0.0006000000000057071,
+      "medianSetupMs": 10.964000000000002,
+      "medianInitMs": 0.08770000000000522,
+      "peakBytes": 39247872
+    },
+    {
+      "mode": "cached-project",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04329999999999612,
+      "processMedians": [
+        0.0428000000000095,
+        0.04329999999999612,
+        0.043399999999998995
+      ],
+      "pooledIqrMs": 0.0005999999999894978,
+      "medianSetupMs": 14.356099999999996,
+      "medianInitMs": 0.12139999999999374,
+      "peakBytes": 28020736
+    },
+    {
+      "mode": "cached-project",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.00269999999999726,
+      "processMedians": [
+        0.0024999999999977263,
+        0.00269999999999726,
+        0.00280000000000058
+      ],
+      "pooledIqrMs": 0.0002999999999957481,
+      "medianSetupMs": 11.020499999999998,
+      "medianInitMs": 0.0929000000000002,
+      "peakBytes": 39211008
+    },
+    {
+      "mode": "cached-project",
+      "n": 128,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.04390000000001337,
+      "processMedians": [
+        0.04400000000001625,
+        0.04390000000001337,
+        0.043600000000004746
+      ],
+      "pooledIqrMs": 0.0006999999999923734,
+      "medianSetupMs": 14.825099999999994,
+      "medianInitMs": 0.11600000000000499,
+      "peakBytes": 28073984
+    },
+    {
+      "mode": "cached-project",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.008200000000002206,
+      "processMedians": [
+        0.008200000000002206,
+        0.008100000000005991,
+        0.008200000000002206
+      ],
+      "pooledIqrMs": 0.0007999999999981355,
+      "medianSetupMs": 11.194700000000005,
+      "medianInitMs": 0.6702999999999975,
+      "peakBytes": 40534016
+    },
+    {
+      "mode": "cached-project",
+      "n": 4096,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.07509999999999462,
+      "processMedians": [
+        0.07520000000002525,
+        0.07429999999999937,
+        0.07509999999999462
+      ],
+      "pooledIqrMs": 0.001000000000001,
+      "medianSetupMs": 14.653200000000005,
+      "medianInitMs": 0.30990000000000184,
+      "peakBytes": 28069888
+    },
+    {
+      "mode": "cached-project",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.011299999999998533,
+      "processMedians": [
+        0.011299999999998533,
+        0.01120000000000232,
+        0.011400000000001853
+      ],
+      "pooledIqrMs": 0.0008999999999943498,
+      "medianSetupMs": 11.119799999999998,
+      "medianInitMs": 0.7086000000000041,
+      "peakBytes": 40701952
+    },
+    {
+      "mode": "cached-project",
+      "n": 4096,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.07999999999999674,
+      "processMedians": [
+        0.07999999999999674,
+        0.08020000000000249,
+        0.07989999999999386
+      ],
+      "pooledIqrMs": 0.005299999999985872,
+      "medianSetupMs": 14.514700000000005,
+      "medianInitMs": 0.3218999999999861,
+      "peakBytes": 28372992
+    },
+    {
+      "mode": "cached-project",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.02680000000000149,
+      "processMedians": [
+        0.02680000000000149,
+        0.028799999999996828,
+        0.02680000000000149
+      ],
+      "pooledIqrMs": 0.03359999999999985,
+      "medianSetupMs": 10.955199999999998,
+      "medianInitMs": 0.6041000000000025,
+      "peakBytes": 42483712
+    },
+    {
+      "mode": "cached-project",
+      "n": 4096,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.2680000000000182,
+      "processMedians": [
+        0.27510000000000034,
+        0.2680000000000182,
+        0.26769999999998184
+      ],
+      "pooledIqrMs": 0.008499999999994623,
+      "medianSetupMs": 14.348300000000009,
+      "medianInitMs": 0.3131000000000106,
+      "peakBytes": 28299264
+    },
+    {
+      "mode": "cached-project",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.0286000000000044,
+      "processMedians": [
+        0.02850000000000108,
+        0.030000000000001137,
+        0.0286000000000044
+      ],
+      "pooledIqrMs": 0.0014000000000038426,
+      "medianSetupMs": 10.9438,
+      "medianInitMs": 0.6215000000000046,
+      "peakBytes": 42512384
+    },
+    {
+      "mode": "cached-project",
+      "n": 4096,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.29600000000001847,
+      "processMedians": [
+        0.2944000000000002,
+        0.29960000000001097,
+        0.29600000000001847
+      ],
+      "pooledIqrMs": 0.00780000000000225,
+      "medianSetupMs": 14.31600000000001,
+      "medianInitMs": 0.31790000000000984,
+      "peakBytes": 28549120
+    },
+    {
+      "mode": "cached-project",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.056699999999999307,
+      "processMedians": [
+        0.05679999999999552,
+        0.05519999999999925,
+        0.056699999999999307
+      ],
+      "pooledIqrMs": 0.001300000000000523,
+      "medianSetupMs": 10.8418,
+      "medianInitMs": 5.022200000000005,
+      "peakBytes": 50020352
+    },
+    {
+      "mode": "cached-project",
+      "n": 65536,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.49029999999999907,
+      "processMedians": [
+        0.49880000000002145,
+        0.49029999999999907,
+        0.49029999999999907
+      ],
+      "pooledIqrMs": 0.012900000000010126,
+      "medianSetupMs": 14.833599999999988,
+      "medianInitMs": 2.8988000000000067,
+      "peakBytes": 33775616
+    },
+    {
+      "mode": "cached-project",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 0.22330000000000183,
+      "processMedians": [
+        0.22330000000000183,
+        0.22390000000000043,
+        0.2231000000000023
+      ],
+      "pooledIqrMs": 0.0024000000000086175,
+      "medianSetupMs": 11.167099999999998,
+      "medianInitMs": 5.1440000000000055,
+      "peakBytes": 50094080
+    },
+    {
+      "mode": "cached-project",
+      "n": 65536,
+      "passes": 1,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 0.714100000000023,
+      "processMedians": [
+        0.714100000000023,
+        0.7186000000000137,
+        0.6894000000000067
+      ],
+      "pooledIqrMs": 0.08130000000000637,
+      "medianSetupMs": 14.831100000000013,
+      "medianInitMs": 2.932299999999999,
+      "peakBytes": 34054144
+    },
+    {
+      "mode": "cached-project",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.4502999999999986,
+      "processMedians": [
+        0.4502999999999986,
+        0.45129999999999626,
+        0.4475000000000051
+      ],
+      "pooledIqrMs": 0.010399999999989973,
+      "medianSetupMs": 11.339899999999997,
+      "medianInitMs": 5.166699999999999,
+      "peakBytes": 50032640
+    },
+    {
+      "mode": "cached-project",
+      "n": 65536,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 3.637400000000013,
+      "processMedians": [
+        3.637400000000013,
+        3.6280999999999954,
+        3.6411999999999836
+      ],
+      "pooledIqrMs": 0.11399999999997545,
+      "medianSetupMs": 14.413600000000013,
+      "medianInitMs": 2.977599999999997,
+      "peakBytes": 33595392
+    },
+    {
+      "mode": "cached-project",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Node",
+      "medianMs": 1.8029000000000082,
+      "processMedians": [
+        1.8029000000000082,
+        1.8238999999999947,
+        1.3678000000000026
+      ],
+      "pooledIqrMs": 0.4538999999999902,
+      "medianSetupMs": 11.026200000000003,
+      "medianInitMs": 4.936999999999998,
+      "peakBytes": 50167808
+    },
+    {
+      "mode": "cached-project",
+      "n": 65536,
+      "passes": 8,
+      "stride": 17,
+      "engine": "Wasmtime",
+      "medianMs": 5.179200000000023,
+      "processMedians": [
+        5.090399999999995,
+        5.179200000000023,
+        9.960199999999976
+      ],
+      "pooledIqrMs": 2.9130999999999743,
+      "medianSetupMs": 14.470699999999988,
+      "medianInitMs": 3.028799999999998,
+      "peakBytes": 33734656
+    }
+  ]
+}

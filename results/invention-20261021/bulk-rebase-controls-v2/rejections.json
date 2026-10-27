@@ -1,0 +1,42 @@
+[
+  {
+    "name": "export-memory",
+    "stage": "CLI transformation",
+    "reason": "private memory required"
+  },
+  {
+    "name": "grow",
+    "stage": "CLI transformation",
+    "reason": "unsupported bulk/grow"
+  },
+  {
+    "name": "wide-load",
+    "stage": "CLI transformation",
+    "reason": "unsupported memory or vector operation"
+  },
+  {
+    "name": "nonzero-offset",
+    "stage": "CLI transformation",
+    "reason": "nonzero memory offset"
+  },
+  {
+    "name": "import",
+    "stage": "CLI transformation",
+    "reason": "unsupported module field"
+  },
+  {
+    "name": "three-pages",
+    "stage": "CLI transformation",
+    "reason": "fixed 1/2 page memory required"
+  },
+  {
+    "name": "shared",
+    "stage": "profile on valid threads-enabled input; default CLI validator also excludes threads",
+    "reason": "fixed 1/2 page memory required"
+  },
+  {
+    "name": "memory-fill",
+    "stage": "CLI transformation",
+    "reason": "unsupported bulk/grow"
+  }
+]

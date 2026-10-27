@@ -1,0 +1,11 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export global$
+[LoggingExternalInterface logging function]
+[fuzz-exec] export global$_2
+[LoggingExternalInterface logging null]
+[fuzz-exec] export func_10_invoker
+exception thrown: RuntimeError: float unrepresentable in integer range
+[fuzz-exec] export func_13
+exception thrown: RuntimeError: illegal cast
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func_10_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: float unrepresentable in integer range"},{"name":"func_13","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: illegal cast"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null}]}

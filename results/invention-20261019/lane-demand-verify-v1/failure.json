@@ -1,0 +1,7 @@
+{
+  "status": "incomplete",
+  "failed_stage": "nonzero_cursor_control",
+  "reason": "The helper parser expected a module, but index_expr passed a scalar expression.",
+  "impact": "The 24 main recoveries have zero residual cursor and did not use this branch. The deliberately nonzero cursor control exposed an analysis-tool implementation bug, not resistance of the transformation.",
+  "repair": "Wrap the scalar expression in a module for parsing; rerun into a new verification directory."
+}

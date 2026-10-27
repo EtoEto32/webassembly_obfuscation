@@ -1,0 +1,4718 @@
+{
+  "models": {
+    "fork": {
+      "inputs": 2,
+      "gates": [
+        [
+          "xor",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            0
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            1
+          ],
+          [
+            "gate",
+            2
+          ]
+        ]
+      ]
+    },
+    "chain": {
+      "inputs": 2,
+      "gates": [
+        [
+          "xor",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "input",
+            0
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            1
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            2
+          ],
+          [
+            "input",
+            0
+          ]
+        ]
+      ]
+    },
+    "ordered": {
+      "inputs": 2,
+      "gates": [
+        [
+          "and",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "or",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            0
+          ],
+          [
+            "gate",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            2
+          ],
+          [
+            "input",
+            0
+          ]
+        ]
+      ]
+    }
+  },
+  "targets": [
+    {
+      "name": "fork",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "fork-plain.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "fork-plain-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "fork-dag.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "dag-recovered",
+      "stage": "raw",
+      "file": "fork-dag-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "fork-dag-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "dag-recovered",
+      "stage": "O3",
+      "file": "fork-dag-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "stage": "raw",
+      "file": "fork-interaction.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "interaction-recovered",
+      "stage": "raw",
+      "file": "fork-interaction-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "stage": "O3",
+      "file": "fork-interaction-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "fork",
+      "mode": "interaction-recovered",
+      "stage": "O3",
+      "file": "fork-interaction-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "chain-plain.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "chain-plain-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "chain-dag.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "stage": "raw",
+      "file": "chain-dag-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "chain-dag-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "dag-recovered",
+      "stage": "O3",
+      "file": "chain-dag-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "stage": "raw",
+      "file": "chain-interaction.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "interaction-recovered",
+      "stage": "raw",
+      "file": "chain-interaction-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "stage": "O3",
+      "file": "chain-interaction-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "chain",
+      "mode": "interaction-recovered",
+      "stage": "O3",
+      "file": "chain-interaction-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "ordered-plain.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "ordered-plain-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "ordered-dag.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "dag-recovered",
+      "stage": "raw",
+      "file": "ordered-dag-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "ordered-dag-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "dag-recovered",
+      "stage": "O3",
+      "file": "ordered-dag-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "stage": "raw",
+      "file": "ordered-interaction.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction-recovered",
+      "stage": "raw",
+      "file": "ordered-interaction-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "stage": "O3",
+      "file": "ordered-interaction-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction-recovered",
+      "stage": "O3",
+      "file": "ordered-interaction-O3-recovered.wasm",
+      "negative": false
+    }
+  ],
+  "transforms": [
+    {
+      "name": "fork",
+      "mode": "dag",
+      "milliseconds": 45.880599999999994,
+      "weights": [
+        5,
+        2,
+        2,
+        1
+      ],
+      "synthesis": {
+        "status": "dominance-certified"
+      },
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            -10
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            -8
+          ],
+          [
+            6,
+            -12
+          ],
+          [
+            7,
+            20
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            13,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            24,
+            -2
+          ],
+          [
+            32,
+            3
+          ],
+          [
+            34,
+            -4
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            38,
+            4
+          ],
+          [
+            40,
+            -2
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            56,
+            4
+          ]
+        ]
+      },
+      "deviation": {
+        "strict": {
+          "status": "unsat"
+        },
+        "tie": {
+          "status": "unsat"
+        }
+      }
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            -7
+          ],
+          [
+            6,
+            -10
+          ],
+          [
+            7,
+            15
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -1
+          ],
+          [
+            10,
+            -3
+          ],
+          [
+            11,
+            2
+          ],
+          [
+            12,
+            -3
+          ],
+          [
+            13,
+            -2
+          ],
+          [
+            14,
+            4
+          ],
+          [
+            15,
+            -2
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            18,
+            -1
+          ],
+          [
+            20,
+            -1
+          ],
+          [
+            21,
+            2
+          ],
+          [
+            22,
+            1
+          ],
+          [
+            24,
+            -4
+          ],
+          [
+            26,
+            2
+          ],
+          [
+            28,
+            2
+          ],
+          [
+            30,
+            -2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            34,
+            -3
+          ],
+          [
+            36,
+            -3
+          ],
+          [
+            37,
+            3
+          ],
+          [
+            38,
+            3
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            42,
+            2
+          ],
+          [
+            44,
+            2
+          ],
+          [
+            45,
+            -2
+          ],
+          [
+            46,
+            -2
+          ],
+          [
+            48,
+            -1
+          ],
+          [
+            53,
+            -4
+          ],
+          [
+            56,
+            6
+          ]
+        ]
+      },
+      "synthesis": {
+        "status": "sat",
+        "inputs": 2,
+        "gates": [
+          [
+            "xor",
+            [
+              "input",
+              0
+            ],
+            [
+              "input",
+              1
+            ]
+          ],
+          [
+            "and",
+            [
+              "gate",
+              0
+            ],
+            [
+              "input",
+              0
+            ]
+          ],
+          [
+            "or",
+            [
+              "gate",
+              0
+            ],
+            [
+              "input",
+              1
+            ]
+          ],
+          [
+            "xor",
+            [
+              "gate",
+              1
+            ],
+            [
+              "gate",
+              2
+            ]
+          ]
+        ],
+        "bound": 16,
+        "minimum_arity": 3,
+        "nonroot_constraints": 60,
+        "milliseconds": 1562.3612999999998,
+        "z3": "4.13.3",
+        "weights": [
+          4,
+          2,
+          2,
+          1
+        ],
+        "interactions": [
+          [
+            0,
+            1,
+            -1
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            3,
+            0
+          ],
+          [
+            1,
+            2,
+            -1
+          ],
+          [
+            1,
+            3,
+            2
+          ],
+          [
+            2,
+            3,
+            -1
+          ]
+        ],
+        "objective_lower": "14"
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 53.00959999999999
+      },
+      "milliseconds": 1713.4568
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "milliseconds": 38.65309999999988,
+      "weights": [
+        4,
+        3,
+        2,
+        1
+      ],
+      "synthesis": {
+        "status": "dominance-certified"
+      },
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            -5
+          ],
+          [
+            6,
+            -8
+          ],
+          [
+            7,
+            16
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            10,
+            -2
+          ],
+          [
+            13,
+            -6
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            -2
+          ],
+          [
+            32,
+            3
+          ],
+          [
+            33,
+            -2
+          ],
+          [
+            34,
+            -4
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            42,
+            4
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            49,
+            4
+          ]
+        ]
+      },
+      "deviation": {
+        "strict": {
+          "status": "unsat"
+        },
+        "tie": {
+          "status": "unsat"
+        }
+      }
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            3,
+            -11
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            -4
+          ],
+          [
+            6,
+            -10
+          ],
+          [
+            7,
+            20
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            10,
+            -2
+          ],
+          [
+            11,
+            -1
+          ],
+          [
+            12,
+            2
+          ],
+          [
+            13,
+            -12
+          ],
+          [
+            14,
+            -2
+          ],
+          [
+            15,
+            4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            -2
+          ],
+          [
+            18,
+            -1
+          ],
+          [
+            19,
+            2
+          ],
+          [
+            21,
+            -1
+          ],
+          [
+            26,
+            1
+          ],
+          [
+            27,
+            -2
+          ],
+          [
+            29,
+            2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            1
+          ],
+          [
+            34,
+            -5
+          ],
+          [
+            36,
+            2
+          ],
+          [
+            37,
+            -5
+          ],
+          [
+            40,
+            -2
+          ],
+          [
+            41,
+            -6
+          ],
+          [
+            42,
+            3
+          ],
+          [
+            43,
+            4
+          ],
+          [
+            44,
+            -4
+          ],
+          [
+            45,
+            10
+          ],
+          [
+            46,
+            4
+          ],
+          [
+            47,
+            -8
+          ],
+          [
+            48,
+            -1
+          ],
+          [
+            49,
+            2
+          ],
+          [
+            53,
+            2
+          ],
+          [
+            56,
+            -2
+          ],
+          [
+            57,
+            4
+          ],
+          [
+            61,
+            -4
+          ]
+        ]
+      },
+      "synthesis": {
+        "status": "sat",
+        "inputs": 2,
+        "gates": [
+          [
+            "xor",
+            [
+              "input",
+              0
+            ],
+            [
+              "input",
+              1
+            ]
+          ],
+          [
+            "and",
+            [
+              "gate",
+              0
+            ],
+            [
+              "input",
+              0
+            ]
+          ],
+          [
+            "or",
+            [
+              "gate",
+              1
+            ],
+            [
+              "input",
+              1
+            ]
+          ],
+          [
+            "xor",
+            [
+              "gate",
+              2
+            ],
+            [
+              "input",
+              0
+            ]
+          ]
+        ],
+        "bound": 16,
+        "minimum_arity": 3,
+        "nonroot_constraints": 60,
+        "milliseconds": 1316.7412000000002,
+        "z3": "4.13.3",
+        "weights": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "interactions": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            2
+          ],
+          [
+            0,
+            3,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            1,
+            3,
+            1
+          ],
+          [
+            2,
+            3,
+            -1
+          ]
+        ],
+        "objective_lower": "14"
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 70.45349999999972
+      },
+      "milliseconds": 1487.6505
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "milliseconds": 38.69120000000059,
+      "weights": [
+        3,
+        3,
+        2,
+        1
+      ],
+      "synthesis": {
+        "status": "dominance-certified"
+      },
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            7,
+            -6
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -6
+          ],
+          [
+            10,
+            -6
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            1
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            44,
+            8
+          ],
+          [
+            49,
+            -2
+          ]
+        ]
+      },
+      "deviation": {
+        "strict": {
+          "status": "unsat"
+        },
+        "tie": {
+          "status": "unsat"
+        }
+      }
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            -1
+          ],
+          [
+            6,
+            -1
+          ],
+          [
+            7,
+            -5
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -6
+          ],
+          [
+            10,
+            -6
+          ],
+          [
+            11,
+            7
+          ],
+          [
+            12,
+            -5
+          ],
+          [
+            13,
+            2
+          ],
+          [
+            14,
+            2
+          ],
+          [
+            15,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            1
+          ],
+          [
+            18,
+            1
+          ],
+          [
+            19,
+            -2
+          ],
+          [
+            20,
+            -1
+          ],
+          [
+            23,
+            2
+          ],
+          [
+            24,
+            1
+          ],
+          [
+            25,
+            -2
+          ],
+          [
+            26,
+            -2
+          ],
+          [
+            27,
+            2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            2
+          ],
+          [
+            35,
+            -1
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            37,
+            -1
+          ],
+          [
+            39,
+            2
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            41,
+            -1
+          ],
+          [
+            44,
+            8
+          ],
+          [
+            49,
+            -4
+          ],
+          [
+            51,
+            2
+          ],
+          [
+            53,
+            2
+          ],
+          [
+            55,
+            -4
+          ],
+          [
+            57,
+            2
+          ]
+        ]
+      },
+      "synthesis": {
+        "status": "sat",
+        "inputs": 2,
+        "gates": [
+          [
+            "and",
+            [
+              "input",
+              0
+            ],
+            [
+              "input",
+              1
+            ]
+          ],
+          [
+            "or",
+            [
+              "input",
+              0
+            ],
+            [
+              "input",
+              1
+            ]
+          ],
+          [
+            "xor",
+            [
+              "gate",
+              0
+            ],
+            [
+              "gate",
+              1
+            ]
+          ],
+          [
+            "and",
+            [
+              "gate",
+              2
+            ],
+            [
+              "input",
+              0
+            ]
+          ]
+        ],
+        "bound": 16,
+        "minimum_arity": 3,
+        "nonroot_constraints": 60,
+        "milliseconds": 465.3580000000002,
+        "z3": "4.13.3",
+        "weights": [
+          4,
+          3,
+          2,
+          1
+        ],
+        "interactions": [
+          [
+            0,
+            1,
+            -1
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            0,
+            3,
+            -1
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            1,
+            3,
+            1
+          ],
+          [
+            2,
+            3,
+            0
+          ]
+        ],
+        "objective_lower": "13"
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 60.14419999999987
+      },
+      "milliseconds": 621.4385
+    }
+  ],
+  "attacks": [
+    {
+      "name": "fork",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "fork-dag.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            -10
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            -8
+          ],
+          [
+            6,
+            -12
+          ],
+          [
+            7,
+            20
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            13,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            24,
+            -2
+          ],
+          [
+            32,
+            3
+          ],
+          [
+            34,
+            -4
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            38,
+            4
+          ],
+          [
+            40,
+            -2
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            56,
+            4
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 2,
+            "before_support": 2
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 3
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              1,
+              2
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              3,
+              5
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 92,
+        "trace": [
+          {
+            "coordinate": 4,
+            "terms_before": 18,
+            "terms_after": 13,
+            "args": [
+              3,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 9,
+            "args": [
+              1,
+              2
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 9,
+            "terms_after": 5,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 3,
+            "terms_before": 5,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.38559999999998595
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 26.65879999999987
+      },
+      "family_checked": true,
+      "milliseconds": 88.08550000000004
+    },
+    {
+      "name": "fork",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "fork-dag-O3.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            7
+          ],
+          [
+            3,
+            -10
+          ],
+          [
+            4,
+            7
+          ],
+          [
+            5,
+            -8
+          ],
+          [
+            6,
+            -12
+          ],
+          [
+            7,
+            20
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            13,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            24,
+            -2
+          ],
+          [
+            32,
+            3
+          ],
+          [
+            34,
+            -4
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            38,
+            4
+          ],
+          [
+            40,
+            -2
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            56,
+            4
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 2,
+            "before_support": 2
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 3
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              1,
+              2
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              3,
+              5
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 92,
+        "trace": [
+          {
+            "coordinate": 4,
+            "terms_before": 18,
+            "terms_after": 13,
+            "args": [
+              3,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 9,
+            "args": [
+              1,
+              2
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 9,
+            "terms_after": 5,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 3,
+            "terms_before": 5,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.3495000000000026
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 26.38589999999974
+      },
+      "family_checked": true,
+      "milliseconds": 108.66970000000009
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "stage": "raw",
+      "file": "fork-interaction.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            -7
+          ],
+          [
+            6,
+            -10
+          ],
+          [
+            7,
+            15
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -1
+          ],
+          [
+            10,
+            -3
+          ],
+          [
+            11,
+            2
+          ],
+          [
+            12,
+            -3
+          ],
+          [
+            13,
+            -2
+          ],
+          [
+            14,
+            4
+          ],
+          [
+            15,
+            -2
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            18,
+            -1
+          ],
+          [
+            20,
+            -1
+          ],
+          [
+            21,
+            2
+          ],
+          [
+            22,
+            1
+          ],
+          [
+            24,
+            -4
+          ],
+          [
+            26,
+            2
+          ],
+          [
+            28,
+            2
+          ],
+          [
+            30,
+            -2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            34,
+            -3
+          ],
+          [
+            36,
+            -3
+          ],
+          [
+            37,
+            3
+          ],
+          [
+            38,
+            3
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            42,
+            2
+          ],
+          [
+            44,
+            2
+          ],
+          [
+            45,
+            -2
+          ],
+          [
+            46,
+            -2
+          ],
+          [
+            48,
+            -1
+          ],
+          [
+            53,
+            -4
+          ],
+          [
+            56,
+            6
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 3
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              1,
+              2,
+              5
+            ],
+            "truth": 23552,
+            "before_support": 4
+          },
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "truth": 547397664,
+            "before_support": 5
+          }
+        ],
+        "enumerated_candidate_rows": 192,
+        "trace": [
+          {
+            "coordinate": 3,
+            "terms_before": 37,
+            "terms_after": 18,
+            "args": [
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "ties": 8,
+            "candidates": 4
+          },
+          {
+            "coordinate": 4,
+            "terms_before": 18,
+            "terms_after": 11,
+            "args": [
+              0,
+              1,
+              2,
+              5
+            ],
+            "ties": 8,
+            "candidates": 3
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 11,
+            "terms_after": 7,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 7,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.9968999999996342
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 57.99200000000005
+      },
+      "family_checked": true,
+      "milliseconds": 120.49509999999985
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "stage": "O3",
+      "file": "fork-interaction-O3.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            -7
+          ],
+          [
+            6,
+            -10
+          ],
+          [
+            7,
+            15
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -1
+          ],
+          [
+            10,
+            -3
+          ],
+          [
+            11,
+            2
+          ],
+          [
+            12,
+            -3
+          ],
+          [
+            13,
+            -2
+          ],
+          [
+            14,
+            4
+          ],
+          [
+            15,
+            -2
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            18,
+            -1
+          ],
+          [
+            20,
+            -1
+          ],
+          [
+            21,
+            2
+          ],
+          [
+            22,
+            1
+          ],
+          [
+            24,
+            -4
+          ],
+          [
+            26,
+            2
+          ],
+          [
+            28,
+            2
+          ],
+          [
+            30,
+            -2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            34,
+            -3
+          ],
+          [
+            36,
+            -3
+          ],
+          [
+            37,
+            3
+          ],
+          [
+            38,
+            3
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            42,
+            2
+          ],
+          [
+            44,
+            2
+          ],
+          [
+            45,
+            -2
+          ],
+          [
+            46,
+            -2
+          ],
+          [
+            48,
+            -1
+          ],
+          [
+            53,
+            -4
+          ],
+          [
+            56,
+            6
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 3
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              1,
+              2,
+              5
+            ],
+            "truth": 23552,
+            "before_support": 4
+          },
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "truth": 547397664,
+            "before_support": 5
+          }
+        ],
+        "enumerated_candidate_rows": 192,
+        "trace": [
+          {
+            "coordinate": 3,
+            "terms_before": 37,
+            "terms_after": 18,
+            "args": [
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "ties": 8,
+            "candidates": 4
+          },
+          {
+            "coordinate": 4,
+            "terms_before": 18,
+            "terms_after": 11,
+            "args": [
+              0,
+              1,
+              2,
+              5
+            ],
+            "ties": 8,
+            "candidates": 3
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 11,
+            "terms_after": 7,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 7,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.8879999999997779
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 57.480899999999835
+      },
+      "family_checked": true,
+      "milliseconds": 137.3587999999999
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "chain-dag.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            -5
+          ],
+          [
+            6,
+            -8
+          ],
+          [
+            7,
+            16
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            10,
+            -2
+          ],
+          [
+            13,
+            -6
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            -2
+          ],
+          [
+            32,
+            3
+          ],
+          [
+            33,
+            -2
+          ],
+          [
+            34,
+            -4
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            42,
+            4
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            49,
+            4
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 2,
+            "before_support": 2
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 3
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              1,
+              3
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              5
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 88,
+        "trace": [
+          {
+            "coordinate": 4,
+            "terms_before": 19,
+            "terms_after": 14,
+            "args": [
+              0,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 14,
+            "terms_after": 9,
+            "args": [
+              1,
+              3
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 9,
+            "terms_after": 5,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 3,
+            "terms_before": 5,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.36940000000029727
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 30.387300000000117
+      },
+      "family_checked": true,
+      "milliseconds": 100.40890000000059
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "chain-dag-O3.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            -5
+          ],
+          [
+            6,
+            -8
+          ],
+          [
+            7,
+            16
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            10,
+            -2
+          ],
+          [
+            13,
+            -6
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            -2
+          ],
+          [
+            32,
+            3
+          ],
+          [
+            33,
+            -2
+          ],
+          [
+            34,
+            -4
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            42,
+            4
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            49,
+            4
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 2,
+            "before_support": 2
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 3
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              1,
+              3
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              5
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 88,
+        "trace": [
+          {
+            "coordinate": 4,
+            "terms_before": 19,
+            "terms_after": 14,
+            "args": [
+              0,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 14,
+            "terms_after": 9,
+            "args": [
+              1,
+              3
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 9,
+            "terms_after": 5,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 3,
+            "terms_before": 5,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.3555999999997894
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 27.639599999999653
+      },
+      "family_checked": true,
+      "milliseconds": 108.79240000000046
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "stage": "raw",
+      "file": "chain-interaction.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            3,
+            -11
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            -4
+          ],
+          [
+            6,
+            -10
+          ],
+          [
+            7,
+            20
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            10,
+            -2
+          ],
+          [
+            11,
+            -1
+          ],
+          [
+            12,
+            2
+          ],
+          [
+            13,
+            -12
+          ],
+          [
+            14,
+            -2
+          ],
+          [
+            15,
+            4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            -2
+          ],
+          [
+            18,
+            -1
+          ],
+          [
+            19,
+            2
+          ],
+          [
+            21,
+            -1
+          ],
+          [
+            26,
+            1
+          ],
+          [
+            27,
+            -2
+          ],
+          [
+            29,
+            2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            1
+          ],
+          [
+            34,
+            -5
+          ],
+          [
+            36,
+            2
+          ],
+          [
+            37,
+            -5
+          ],
+          [
+            40,
+            -2
+          ],
+          [
+            41,
+            -6
+          ],
+          [
+            42,
+            3
+          ],
+          [
+            43,
+            4
+          ],
+          [
+            44,
+            -4
+          ],
+          [
+            45,
+            10
+          ],
+          [
+            46,
+            4
+          ],
+          [
+            47,
+            -8
+          ],
+          [
+            48,
+            -1
+          ],
+          [
+            49,
+            2
+          ],
+          [
+            53,
+            2
+          ],
+          [
+            56,
+            -2
+          ],
+          [
+            57,
+            4
+          ],
+          [
+            61,
+            -4
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 4,
+            "before_support": 2
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 14,
+            "before_support": 3
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "truth": 2963447968,
+            "before_support": 5
+          }
+        ],
+        "enumerated_candidate_rows": 196,
+        "trace": [
+          {
+            "coordinate": 3,
+            "terms_before": 42,
+            "terms_after": 24,
+            "args": [
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 24,
+            "terms_after": 13,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 5,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 4,
+            "terms_before": 5,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.9449999999997516
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 63.48580000000048
+      },
+      "family_checked": true,
+      "milliseconds": 125.42529999999985
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "stage": "O3",
+      "file": "chain-interaction-O3.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            8
+          ],
+          [
+            3,
+            -11
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            -4
+          ],
+          [
+            6,
+            -10
+          ],
+          [
+            7,
+            20
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            2
+          ],
+          [
+            10,
+            -2
+          ],
+          [
+            11,
+            -1
+          ],
+          [
+            12,
+            2
+          ],
+          [
+            13,
+            -12
+          ],
+          [
+            14,
+            -2
+          ],
+          [
+            15,
+            4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            -2
+          ],
+          [
+            18,
+            -1
+          ],
+          [
+            19,
+            2
+          ],
+          [
+            21,
+            -1
+          ],
+          [
+            26,
+            1
+          ],
+          [
+            27,
+            -2
+          ],
+          [
+            29,
+            2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            1
+          ],
+          [
+            34,
+            -5
+          ],
+          [
+            36,
+            2
+          ],
+          [
+            37,
+            -5
+          ],
+          [
+            40,
+            -2
+          ],
+          [
+            41,
+            -6
+          ],
+          [
+            42,
+            3
+          ],
+          [
+            43,
+            4
+          ],
+          [
+            44,
+            -4
+          ],
+          [
+            45,
+            10
+          ],
+          [
+            46,
+            4
+          ],
+          [
+            47,
+            -8
+          ],
+          [
+            48,
+            -1
+          ],
+          [
+            49,
+            2
+          ],
+          [
+            53,
+            2
+          ],
+          [
+            56,
+            -2
+          ],
+          [
+            57,
+            4
+          ],
+          [
+            61,
+            -4
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 4,
+            "before_support": 2
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 14,
+            "before_support": 3
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "truth": 2963447968,
+            "before_support": 5
+          }
+        ],
+        "enumerated_candidate_rows": 196,
+        "trace": [
+          {
+            "coordinate": 3,
+            "terms_before": 42,
+            "terms_after": 24,
+            "args": [
+              0,
+              1,
+              2,
+              4,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 24,
+            "terms_after": 13,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 5,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 4,
+            "terms_before": 5,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.9679999999994138
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 59.16249999999934
+      },
+      "family_checked": true,
+      "milliseconds": 138.72790000000012
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "ordered-dag.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            7,
+            -6
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -6
+          ],
+          [
+            10,
+            -6
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            1
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            44,
+            8
+          ],
+          [
+            49,
+            -2
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 2
+          },
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 6,
+            "before_support": 2
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              5
+            ],
+            "truth": 8,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 100,
+        "trace": [
+          {
+            "coordinate": 4,
+            "terms_before": 16,
+            "terms_after": 13,
+            "args": [
+              0,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 8,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 3,
+            "terms_before": 8,
+            "terms_after": 3,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 3,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.35730000000011586
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 23.9174000000002
+      },
+      "family_checked": true,
+      "milliseconds": 83.91129999999958
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "ordered-dag-O3.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            5
+          ],
+          [
+            7,
+            -6
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -6
+          ],
+          [
+            10,
+            -6
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            1
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            44,
+            8
+          ],
+          [
+            49,
+            -2
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 2
+          },
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 6,
+            "before_support": 2
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              5
+            ],
+            "truth": 8,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 100,
+        "trace": [
+          {
+            "coordinate": 4,
+            "terms_before": 16,
+            "terms_after": 13,
+            "args": [
+              0,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 8,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 3,
+            "terms_before": 8,
+            "terms_after": 3,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 3,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.35420000000030427
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 24.168300000000364
+      },
+      "family_checked": true,
+      "milliseconds": 106.88689999999923
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "stage": "raw",
+      "file": "ordered-interaction.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            -1
+          ],
+          [
+            6,
+            -1
+          ],
+          [
+            7,
+            -5
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -6
+          ],
+          [
+            10,
+            -6
+          ],
+          [
+            11,
+            7
+          ],
+          [
+            12,
+            -5
+          ],
+          [
+            13,
+            2
+          ],
+          [
+            14,
+            2
+          ],
+          [
+            15,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            1
+          ],
+          [
+            18,
+            1
+          ],
+          [
+            19,
+            -2
+          ],
+          [
+            20,
+            -1
+          ],
+          [
+            23,
+            2
+          ],
+          [
+            24,
+            1
+          ],
+          [
+            25,
+            -2
+          ],
+          [
+            26,
+            -2
+          ],
+          [
+            27,
+            2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            2
+          ],
+          [
+            35,
+            -1
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            37,
+            -1
+          ],
+          [
+            39,
+            2
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            41,
+            -1
+          ],
+          [
+            44,
+            8
+          ],
+          [
+            49,
+            -4
+          ],
+          [
+            51,
+            2
+          ],
+          [
+            53,
+            2
+          ],
+          [
+            55,
+            -4
+          ],
+          [
+            57,
+            2
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 2
+          },
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 14,
+            "before_support": 3
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "truth": 2192179200,
+            "before_support": 5
+          }
+        ],
+        "enumerated_candidate_rows": 184,
+        "trace": [
+          {
+            "coordinate": 4,
+            "terms_before": 38,
+            "terms_after": 18,
+            "args": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "ties": 8,
+            "candidates": 4
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 18,
+            "terms_after": 11,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 3,
+            "terms_before": 11,
+            "terms_after": 7,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 7,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.8663000000002086
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 57.30840000000015
+      },
+      "family_checked": true,
+      "milliseconds": 120.02420000000046
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "stage": "O3",
+      "file": "ordered-interaction-O3.wasm",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            -1
+          ],
+          [
+            6,
+            -1
+          ],
+          [
+            7,
+            -5
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -6
+          ],
+          [
+            10,
+            -6
+          ],
+          [
+            11,
+            7
+          ],
+          [
+            12,
+            -5
+          ],
+          [
+            13,
+            2
+          ],
+          [
+            14,
+            2
+          ],
+          [
+            15,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            1
+          ],
+          [
+            18,
+            1
+          ],
+          [
+            19,
+            -2
+          ],
+          [
+            20,
+            -1
+          ],
+          [
+            23,
+            2
+          ],
+          [
+            24,
+            1
+          ],
+          [
+            25,
+            -2
+          ],
+          [
+            26,
+            -2
+          ],
+          [
+            27,
+            2
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            2
+          ],
+          [
+            35,
+            -1
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            37,
+            -1
+          ],
+          [
+            39,
+            2
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            41,
+            -1
+          ],
+          [
+            44,
+            8
+          ],
+          [
+            49,
+            -4
+          ],
+          [
+            51,
+            2
+          ],
+          [
+            53,
+            2
+          ],
+          [
+            55,
+            -4
+          ],
+          [
+            57,
+            2
+          ]
+        ]
+      },
+      "model": {
+        "inputs": 2,
+        "n": 4,
+        "output": 4,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 2
+          },
+          {
+            "coordinate": 3,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 14,
+            "before_support": 3
+          },
+          {
+            "coordinate": 2,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "truth": 2192179200,
+            "before_support": 5
+          }
+        ],
+        "enumerated_candidate_rows": 184,
+        "trace": [
+          {
+            "coordinate": 4,
+            "terms_before": 38,
+            "terms_after": 18,
+            "args": [
+              0,
+              1,
+              2,
+              3,
+              5
+            ],
+            "ties": 8,
+            "candidates": 4
+          },
+          {
+            "coordinate": 2,
+            "terms_before": 18,
+            "terms_after": 11,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 3,
+            "terms_before": 11,
+            "terms_after": 7,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 7,
+            "terms_after": 0,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 0.8227000000005091
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 57.39800000000006
+      },
+      "family_checked": true,
+      "milliseconds": 138.29470000000032
+    }
+  ],
+  "probes": [
+    {
+      "name": "fork",
+      "mode": "dag",
+      "file": "fork-dag-probe.wasm",
+      "n": 4
+    },
+    {
+      "name": "fork",
+      "mode": "interaction",
+      "file": "fork-interaction-probe.wasm",
+      "n": 4
+    },
+    {
+      "name": "chain",
+      "mode": "dag",
+      "file": "chain-dag-probe.wasm",
+      "n": 4
+    },
+    {
+      "name": "chain",
+      "mode": "interaction",
+      "file": "chain-interaction-probe.wasm",
+      "n": 4
+    },
+    {
+      "name": "ordered",
+      "mode": "dag",
+      "file": "ordered-dag-probe.wasm",
+      "n": 4
+    },
+    {
+      "name": "ordered",
+      "mode": "interaction",
+      "file": "ordered-interaction-probe.wasm",
+      "n": 4
+    }
+  ],
+  "ablations": [
+    {
+      "name": "fork",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            4
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            5,
+            -6
+          ],
+          [
+            6,
+            -10
+          ],
+          [
+            7,
+            16
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            13,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            24,
+            -2
+          ],
+          [
+            32,
+            3
+          ],
+          [
+            34,
+            -4
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            38,
+            4
+          ],
+          [
+            40,
+            -2
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            56,
+            4
+          ]
+        ]
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "sat",
+            "counterexample": "[z3 = False,\n z1 = False,\n x1 = False,\n z2 = False,\n z0 = False,\n x0 = True]"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": false,
+        "milliseconds": 33.35319999999986
+      }
+    },
+    {
+      "name": "chain",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            6
+          ],
+          [
+            3,
+            -8
+          ],
+          [
+            4,
+            4
+          ],
+          [
+            5,
+            -5
+          ],
+          [
+            6,
+            -8
+          ],
+          [
+            7,
+            16
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            10,
+            -2
+          ],
+          [
+            13,
+            -6
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            17,
+            -2
+          ],
+          [
+            32,
+            3
+          ],
+          [
+            33,
+            -2
+          ],
+          [
+            34,
+            -4
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            42,
+            4
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            49,
+            4
+          ]
+        ]
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 30.696899999999694
+      }
+    },
+    {
+      "name": "ordered",
+      "record": {
+        "inputs": 2,
+        "n": 4,
+        "output": 2,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            4,
+            6
+          ],
+          [
+            7,
+            -8
+          ],
+          [
+            8,
+            5
+          ],
+          [
+            9,
+            -6
+          ],
+          [
+            10,
+            -6
+          ],
+          [
+            11,
+            6
+          ],
+          [
+            12,
+            -4
+          ],
+          [
+            16,
+            1
+          ],
+          [
+            32,
+            2
+          ],
+          [
+            33,
+            1
+          ],
+          [
+            36,
+            -4
+          ],
+          [
+            40,
+            -4
+          ],
+          [
+            44,
+            8
+          ],
+          [
+            49,
+            -2
+          ]
+        ]
+      },
+      "public_certificate": {
+        "checks": {
+          "negative_energy": {
+            "status": "unsat"
+          },
+          "false_local_minimum": {
+            "status": "unsat"
+          },
+          "ambiguous_zero_output": {
+            "status": "unsat"
+          }
+        },
+        "accepted": true,
+        "milliseconds": 26.41019999999994
+      }
+    }
+  ]
+}

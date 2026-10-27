@@ -1,0 +1,11 @@
+# trap後の利用契約を明示する比較
+
+2026-10-24。Weaveの公開JS driverを読んだ結果を受けた実装前計画。
+
+現在の条件合成は全て、hostがtrapを捕捉し、同じinstanceを再度呼ぶことを許す。標準のWasm engine上で可能でも、復元ライブラリの公開driverは保証しない場合がある。そこで観測範囲full/public/returnsとは別に、trap後の継続を許すreenter、trapで呼出し列を終えるterminalを選択する。
+
+terminalでも、trapが起きた一回の呼出しの観測結果と、契約に含むpost-storeは比較する。両側trapの後続条件だけを省く。片側trap/片側returnはその時点の差である。read-byte APIの不正indexも終端だが、正しいindexの経路が存在する場合はその後続を保持する。
+
+既存134module/964store、13module/39契約/78storeで分類を比較する。新しい契約で反例とした列はengineへ実行し、trap後に呼ばないことを検査する。肯定状態の有限テストは無限列の証明には代用しない。独立array式で層ごとの再帰式を検査する。
+
+これは一般的なprotocol automatonとの積、終端状態の扱いという既知原理である。新しい検証原理とは主張しない。復元器の利用契約に合わない反例を避け、どの差が契約依存かを定量化するための拡張である。

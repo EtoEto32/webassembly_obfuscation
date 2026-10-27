@@ -1,0 +1,226 @@
+{
+  "verified_pins": {
+    "dyadic-difference-v1": 81,
+    "dyadic-difference-performance-v1": 77,
+    "dyadic-difference-audit-v1": 342,
+    "dyadic-difference-guarded-v1": 94,
+    "dyadic-difference-guarded-performance-v1": 77,
+    "dyadic-difference-guarded-audit-v1": 220,
+    "dyadic-difference-high-degree-v1": 70
+  },
+  "main_calls": 247830,
+  "main_positive": 30,
+  "main_negative": 6,
+  "main_unique_positive": 20,
+  "static_recoveries": 12,
+  "static_different_coefficients": 8,
+  "guarded_calls": 297396,
+  "guarded_positive": 36,
+  "guarded_unique_positive": 20,
+  "public_recoveries": 18,
+  "public_queries_each": 34,
+  "public_queries_total": 612,
+  "helper_calls": 56448,
+  "wabt_calls_initial": 240,
+  "wabt_calls_guarded": 288,
+  "small_models": {
+    "widths": [
+      1,
+      10
+    ],
+    "degrees": [
+      1,
+      12
+    ],
+    "coefficients_per_setting": 8,
+    "cases": 960,
+    "all_residue_checks": 196416
+  },
+  "high_degree_calls": 49260,
+  "high_degree_recoveries": 6,
+  "high_degree_queries": 204,
+  "high_degree_wabt_calls": 96,
+  "performance": [
+    {
+      "name": "cubic",
+      "plain": {
+        "median_ns": 1.5858471393585205,
+        "process_medians_ns": [
+          1.5858471393585205,
+          1.6019821166992188,
+          1.3909399509429932
+        ],
+        "bytes": 55,
+        "batch_range_ns": [
+          1.381075382232666,
+          2.158987522125244
+        ]
+      },
+      "delta": {
+        "median_ns": 147.0916748046875,
+        "process_medians_ns": [
+          147.0916748046875,
+          146.90017700195312,
+          153.0426025390625
+        ],
+        "bytes": 964,
+        "batch_range_ns": [
+          145.89767456054688,
+          157.30133056640625
+        ]
+      },
+      "guarded": {
+        "median_ns": 160.25161743164062,
+        "process_medians_ns": [
+          158.79364013671875,
+          160.77346801757812,
+          160.25161743164062
+        ],
+        "bytes": 1470,
+        "batch_range_ns": [
+          154.47158813476562,
+          167.6177978515625
+        ]
+      },
+      "recovered": {
+        "median_ns": 1.3940036296844482,
+        "process_medians_ns": [
+          1.3940036296844482,
+          1.3797640800476074,
+          1.6537606716156006
+        ],
+        "bytes": 55,
+        "batch_range_ns": [
+          1.363670825958252,
+          1.9739747047424316
+        ]
+      },
+      "delta_over_plain": 92.75274467133477,
+      "guarded_over_delta": 1.0894676238096226,
+      "guarded_over_plain": 101.05111233889973
+    },
+    {
+      "name": "septic",
+      "plain": {
+        "median_ns": 1.738649606704712,
+        "process_medians_ns": [
+          1.7350196838378906,
+          1.997995376586914,
+          1.738649606704712
+        ],
+        "bytes": 94,
+        "batch_range_ns": [
+          1.7072677612304688,
+          2.7713894844055176
+        ]
+      },
+      "delta": {
+        "median_ns": 168.66378784179688,
+        "process_medians_ns": [
+          164.33258056640625,
+          174.92828369140625,
+          168.66378784179688
+        ],
+        "bytes": 2227,
+        "batch_range_ns": [
+          160.17227172851562,
+          184.6099853515625
+        ]
+      },
+      "guarded": {
+        "median_ns": 170.3399658203125,
+        "process_medians_ns": [
+          166.87698364257812,
+          174.15313720703125,
+          170.3399658203125
+        ],
+        "bytes": 2733,
+        "batch_range_ns": [
+          163.73214721679688,
+          177.93121337890625
+        ]
+      },
+      "recovered": {
+        "median_ns": 1.7428040504455566,
+        "process_medians_ns": [
+          1.7428040504455566,
+          2.076852321624756,
+          1.7322957515716553
+        ],
+        "bytes": 91,
+        "batch_range_ns": [
+          1.6904592514038086,
+          2.702927589416504
+        ]
+      },
+      "delta_over_plain": 97.00849854472278,
+      "guarded_over_delta": 1.0099379837246858,
+      "guarded_over_plain": 97.97256742441643
+    },
+    {
+      "name": "degree11",
+      "plain": {
+        "median_ns": 2.5255441665649414,
+        "process_medians_ns": [
+          2.5255441665649414,
+          2.6247382164001465,
+          2.5164127349853516
+        ],
+        "bytes": 131,
+        "batch_range_ns": [
+          2.4733662605285645,
+          3.4521102905273438
+        ]
+      },
+      "delta": {
+        "median_ns": 167.58041381835938,
+        "process_medians_ns": [
+          167.58041381835938,
+          164.51873779296875,
+          179.74700927734375
+        ],
+        "bytes": 3478,
+        "batch_range_ns": [
+          162.79144287109375,
+          189.886474609375
+        ]
+      },
+      "guarded": {
+        "median_ns": 159.97314453125,
+        "process_medians_ns": [
+          171.221923828125,
+          159.97314453125,
+          157.76290893554688
+        ],
+        "bytes": 3984,
+        "batch_range_ns": [
+          156.45065307617188,
+          193.2159423828125
+        ]
+      },
+      "recovered": {
+        "median_ns": 2.622997760772705,
+        "process_medians_ns": [
+          2.622997760772705,
+          2.6364564895629883,
+          2.559483051300049
+        ],
+        "bytes": 140,
+        "batch_range_ns": [
+          2.4881362915039062,
+          2.672111988067627
+        ]
+      },
+      "delta_over_plain": 66.35418063042226,
+      "guarded_over_delta": 0.9546052601627126,
+      "guarded_over_plain": 63.342049863587874
+    }
+  ],
+  "processes": 36,
+  "batches": 252,
+  "short_batches": 0,
+  "node_rss_kib": [
+    36424,
+    37536
+  ]
+}

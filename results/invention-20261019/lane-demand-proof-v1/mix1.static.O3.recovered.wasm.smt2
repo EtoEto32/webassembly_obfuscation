@@ -1,0 +1,15 @@
+; benchmark generated from python API
+(set-info :status unknown)
+(declare-fun y () (_ BitVec 32))
+(declare-fun x () (_ BitVec 32))
+(assert
+ (let ((?x45 (bvmul x (_ bv73244475 32))))
+(let ((?x46 (bvadd ?x45 y)))
+(let ((?x56 (bvlshr ?x46 (bvand (_ bv28 32) (_ bv31 32)))))
+(let ((?x53 (bvshl ?x46 (bvand (_ bv4 32) (_ bv31 32)))))
+(let ((?x57 (bvor ?x53 ?x56)))
+(let ((?x58 (bvxor ?x57 (_ bv2654435769 32))))
+(let ((?x48 (ext_rotate_left ?x46 (_ bv4 32))))
+(let ((?x50 (bvxor ?x48 (_ bv2654435769 32))))
+(and (distinct ?x50 ?x58) true))))))))))
+(check-sat)

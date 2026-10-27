@@ -1,0 +1,109 @@
+[
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "parse",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\masters-security-20261024\\component-fence.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\raw.wasm"
+    ],
+    "returncode": 0,
+    "ms": 212.50830000000002,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "opt",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\raw.wasm",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\optimized.wasm"
+    ],
+    "returncode": 0,
+    "ms": 572.0916000000001,
+    "stdout": "\nOptimized WebAssembly Component Internal Core Modules:\n\n - Core Module 1:  0.04 KiB -> 0.02 KiB (64%)\n - Core Module 2:   0.4 KiB ->  0.3 KiB (75%)\n                                             \n = Total:          0.44 KiB => 0.33 KiB (74%)\n\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "transpile",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\raw.wasm",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\raw",
+      "--name",
+      "unit",
+      "--instantiation",
+      "async",
+      "--base64-cutoff",
+      "0",
+      "--no-wasi-shim",
+      "--quiet"
+    ],
+    "returncode": 0,
+    "ms": 256.25320000000005,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "wit",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\raw.wasm"
+    ],
+    "returncode": 0,
+    "ms": 205.7297,
+    "stdout": "package root:component;\n\nworld root {\n  import research:fence/storage;\n\n  export setup: func(a-id: u32, b-id: u32);\n  export release: func();\n  export request: func(mode: u32, count: u32) -> u32;\n}\n\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "transpile",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\optimized.wasm",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\optimized",
+      "--name",
+      "unit",
+      "--instantiation",
+      "async",
+      "--base64-cutoff",
+      "0",
+      "--no-wasi-shim",
+      "--quiet"
+    ],
+    "returncode": 0,
+    "ms": 246.06139999999988,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "wit",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2\\optimized.wasm"
+    ],
+    "returncode": 0,
+    "ms": 220.3872,
+    "stdout": "package root:component;\n\nworld root {\n  import research:fence/storage;\n\n  export setup: func(a-id: u32, b-id: u32);\n  export release: func();\n  export request: func(mode: u32, count: u32) -> u32;\n}\n\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\masters-security-20261024\\component-fence.cjs",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\component-fence-v2"
+    ],
+    "returncode": 0,
+    "ms": 245.2283999999998,
+    "stdout": "{\"componentPrepares\":2178,\"decisions\":2178,\"mismatches\":0}\n",
+    "stderr": ""
+  }
+]

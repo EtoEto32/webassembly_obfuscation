@@ -1,0 +1,849 @@
+[
+  {
+    "algorithm": "adler32",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "adler32-Hash_Init-raw.wasm",
+    "original": "adler32-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "34ee972f62b47f6e06a33afb23a1480ca1a6024439dca92e91039cef6a6464f7",
+    "bytes": 1475,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "const",
+            0
+          ],
+          "offset": 1028,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ],
+      "visitedFunctions": [
+        1,
+        6
+      ],
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.043699999999979866
+  },
+  {
+    "algorithm": "adler32",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "adler32-Hash_Init-O3.wasm",
+    "original": "adler32-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "3a0f8b9ed50224653bd68a35db8240372774f881ac4a03b97813b0912b32cd4c",
+    "bytes": 1440,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "const",
+            1028
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ],
+      "visitedFunctions": [
+        6
+      ],
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.029599999999990745
+  },
+  {
+    "algorithm": "adler32",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "adler32-Hash_Update-raw.wasm",
+    "original": "adler32-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "ad44fb85f4fb2307ca7311b0b1f61c025d4613b7e0dd17277262bcbe3aab8aa9",
+    "bytes": 1477,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.shr_u",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04290000000001237
+  },
+  {
+    "algorithm": "adler32",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "adler32-Hash_Update-O3.wasm",
+    "original": "adler32-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "931b2ff5c49ee38ce631f9ec9a78c68415e84cc6791e7e0cd5ed1fe37d240223",
+    "bytes": 1436,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.shr_u",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.12529999999999486
+  },
+  {
+    "algorithm": "adler32",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "adler32-Hash_Final-raw.wasm",
+    "original": "adler32-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "7aebc3452b44bc8c59f3ced6962a71c7f3a3a1a566d9098f9fc36cff082e9fd9",
+    "bytes": 1475,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.or",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03979999999997874
+  },
+  {
+    "algorithm": "adler32",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "adler32-Hash_Final-O3.wasm",
+    "original": "adler32-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "4568c18bb07b64f6ff8617a1b02a1880f49c76393b2b145f5119cd800ce6585e",
+    "bytes": 1434,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.or",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.038399999999993994
+  },
+  {
+    "algorithm": "crc32",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "crc32-Hash_Init-raw.wasm",
+    "original": "crc32-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "a36c984ef6ff9f550df3e5c5c57ac4058de785a6f9c2b6b56da14687dbccf24b",
+    "bytes": 1256,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: loop",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.053499999999984116
+  },
+  {
+    "algorithm": "crc32",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "crc32-Hash_Init-O3.wasm",
+    "original": "crc32-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "03881cd5e88155a39ba5569f2abb4af54af804a468dd6fa59ccf6e931a88bf79",
+    "bytes": 1226,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: loop",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.049200000000027
+  },
+  {
+    "algorithm": "crc32",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "crc32-Hash_Update-raw.wasm",
+    "original": "crc32-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "50a95216282665b17ecc6fff2787d3e9c26e99fa80f1e9eb3f02b592ad98568a",
+    "bytes": 1256,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.xor",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03850000000005238
+  },
+  {
+    "algorithm": "crc32",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "crc32-Hash_Update-O3.wasm",
+    "original": "crc32-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "6f980226797d3bea1d4a190aa8cca1c0850e6fe4403d107d092ff20e727f23df",
+    "bytes": 1226,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.xor",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04009999999998737
+  },
+  {
+    "algorithm": "crc32",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "crc32-Hash_Final-raw.wasm",
+    "original": "crc32-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "f53c71e8a7a1e751b72620f3e4ab524d4c469ee3bde2755a67aea50ff8a6e927",
+    "bytes": 1254,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.or",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.0388000000000055
+  },
+  {
+    "algorithm": "crc32",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "crc32-Hash_Final-O3.wasm",
+    "original": "crc32-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "d0061e9926d55930fb7d5ba8386b1061347f4cbdb25f9b108e1a0a22e351a559",
+    "bytes": 1224,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.or",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.036599999999942234
+  },
+  {
+    "algorithm": "md5",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "md5-Hash_Init-raw.wasm",
+    "original": "md5-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "c31ebb22bee94634694dcc64c92bd991b12fd56cf26e3895b37d3cec050ba3f5",
+    "bytes": 3544,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.035499999999966114
+  },
+  {
+    "algorithm": "md5",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "md5-Hash_Init-O3.wasm",
+    "original": "md5-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "fc90aa3b59a9ed5ac6591a160c0dd1639970652dd79b7d6b4ed7f237e1dcd29a",
+    "bytes": 3539,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03290000000000237
+  },
+  {
+    "algorithm": "md5",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "md5-Hash_Update-raw.wasm",
+    "original": "md5-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "35cbbb339accf18b25323237879770f3b10006d549d8f4861656047f235d686b",
+    "bytes": 3546,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.shr_u",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.053699999999934356
+  },
+  {
+    "algorithm": "md5",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "md5-Hash_Update-O3.wasm",
+    "original": "md5-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "e01e1ead4eb899c284e4a3b87857fe88970dd5db2cfae7a49f9a771c7078b48c",
+    "bytes": 3500,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.shr_u",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.051299999999976365
+  },
+  {
+    "algorithm": "md5",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "md5-Hash_Final-raw.wasm",
+    "original": "md5-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "3bb789e6f2c17b9e6c5c6d0ae0e1f7e91f40d8188e3f01479656f7c17c9cd3c0",
+    "bytes": 3544,
+    "summary": {
+      "kind": "full",
+      "reason": "unknown store address",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04429999999999712
+  },
+  {
+    "algorithm": "md5",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "md5-Hash_Final-O3.wasm",
+    "original": "md5-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "717bc4bf77ef4d1485f948d4eb589102655999d12b20d72dd12065bd57637571",
+    "bytes": 3498,
+    "summary": {
+      "kind": "full",
+      "reason": "unknown store address",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04350000000008514
+  },
+  {
+    "algorithm": "sha1",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "sha1-Hash_Init-raw.wasm",
+    "original": "sha1-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "82a8ef9e1e63eb84b106d699562e92a7092d72f1e6009e1c222630e453087886",
+    "bytes": 5615,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03819999999987722
+  },
+  {
+    "algorithm": "sha1",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "sha1-Hash_Init-O3.wasm",
+    "original": "sha1-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "ee02eca5f61906e4fa9f42eed8756b0141f8a035bc9d97f26e4c4284631c4c79",
+    "bytes": 5629,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.033500000000019625
+  },
+  {
+    "algorithm": "sha1",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "sha1-Hash_Update-raw.wasm",
+    "original": "sha1-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "d7059a0d0cef84d88e6f0837777df27455a28ad83bf2e2f3a004839bff3c59df",
+    "bytes": 5617,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.shl",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.0548000000000215
+  },
+  {
+    "algorithm": "sha1",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "sha1-Hash_Update-O3.wasm",
+    "original": "sha1-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "a27712e457955f52a98b37f885bd773377fa51d959626bbffc39bc938df11692",
+    "bytes": 5580,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported value: i32.shl",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04660000000011877
+  },
+  {
+    "algorithm": "sha1",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "sha1-Hash_Final-raw.wasm",
+    "original": "sha1-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "32447fc35f1fe923716983d811d6b53afb70d8ff40dcf23aadd26ccf9fba96e3",
+    "bytes": 5615,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: global.set",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.07570000000001187
+  },
+  {
+    "algorithm": "sha1",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "sha1-Hash_Final-O3.wasm",
+    "original": "sha1-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "4d0c58299fcc6cb591cf1c1408bf0f993d08de01ded5164137ad864be3f5ccc3",
+    "bytes": 5575,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: global.set",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.047499999999978115
+  },
+  {
+    "algorithm": "sha256",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "sha256-Hash_Init-raw.wasm",
+    "original": "sha256-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "8c74ff2a70cd00bf50cff00170833dc90f028e8ce8a700f579f199f2b2e154c7",
+    "bytes": 9714,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04240000000010902
+  },
+  {
+    "algorithm": "sha256",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "sha256-Hash_Init-O3.wasm",
+    "original": "sha256-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "c1818d97e0041ef6a4f003becd6a8f1e054e0fc4da9468c46fccdd02d23a0a8e",
+    "bytes": 9676,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.05329999999981183
+  },
+  {
+    "algorithm": "sha256",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "sha256-Hash_Update-raw.wasm",
+    "original": "sha256-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "b16997d0d70865bca1ea06d0d67b7571207739df4d05cd827e01aa2901dc600d",
+    "bytes": 9714,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.036200000000041754
+  },
+  {
+    "algorithm": "sha256",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "sha256-Hash_Update-O3.wasm",
+    "original": "sha256-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "b98022606740c6c5aa5f71a03fa308406cc08aeeeeef3ca710cdfc3560b06082",
+    "bytes": 9676,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.042600000000003746
+  },
+  {
+    "algorithm": "sha256",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "sha256-Hash_Final-raw.wasm",
+    "original": "sha256-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "1031f547dde001fed44503711063ebef282dd4d5de1da6bc01038e95f5a58bfc",
+    "bytes": 9712,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.037100000000123146
+  },
+  {
+    "algorithm": "sha256",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "sha256-Hash_Final-O3.wasm",
+    "original": "sha256-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "47f26467ae9d30c631c68b98e224a418b592d520bef52bde60e76f799ae00d60",
+    "bytes": 9674,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03779999999986572
+  },
+  {
+    "algorithm": "sha512",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "sha512-Hash_Init-raw.wasm",
+    "original": "sha512-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "eeff5e13bfa05b22c67fa2dcd45b082ce9f79e2c54297edd033f66c4c20cf1a2",
+    "bytes": 13547,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04239999999988697
+  },
+  {
+    "algorithm": "sha512",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "sha512-Hash_Init-O3.wasm",
+    "original": "sha512-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "13ea5f14c24b81148f7c45e2089c485a5d3896ee0bb0b557c2ad700bcff547d8",
+    "bytes": 13511,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.05389999999971806
+  },
+  {
+    "algorithm": "sha512",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "sha512-Hash_Update-raw.wasm",
+    "original": "sha512-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "3fbecce09753f9e2d8fe233dec3f3bbaed63441489300adc1e33e068b3f91ad6",
+    "bytes": 13547,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.040900000000121395
+  },
+  {
+    "algorithm": "sha512",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "sha512-Hash_Update-O3.wasm",
+    "original": "sha512-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "e4528bb01208750ba5d2311f15d3dd7b6fd55106cb0e4401a367c6b9c5bf8965",
+    "bytes": 13511,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.041899999999817084
+  },
+  {
+    "algorithm": "sha512",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "sha512-Hash_Final-raw.wasm",
+    "original": "sha512-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "495a9c07e9895fa08d3b26a4b8a7840b2f2086db5c824b7708a79ca844239207",
+    "bytes": 13545,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03969999999986484
+  },
+  {
+    "algorithm": "sha512",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "sha512-Hash_Final-O3.wasm",
+    "original": "sha512-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "dd78744456fd951cb3d16a9b8af93d31268823f18800fc23e586ef7458981e8e",
+    "bytes": 13509,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03950000000019216
+  },
+  {
+    "algorithm": "xxhash32",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "xxhash32-Hash_Init-raw.wasm",
+    "original": "xxhash32-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "d930ed2862a11ec03e572e5dbd189b8ed075dee4c0ca3afcc53cb48f1f64bb7c",
+    "bytes": 2500,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.049200000000304556
+  },
+  {
+    "algorithm": "xxhash32",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "xxhash32-Hash_Init-O3.wasm",
+    "original": "xxhash32-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "a7218316fda8d9067b6280908736790988a69bc825b1942e28e8f3e7c6b873ad",
+    "bytes": 2441,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03729999999979583
+  },
+  {
+    "algorithm": "xxhash32",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "xxhash32-Hash_Update-raw.wasm",
+    "original": "xxhash32-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "5ae94946d975d8ade8e0aca1ed99ff4b4ef2084479bf4d4d28d3ee04ccf3eb68",
+    "bytes": 2500,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04939999999997724
+  },
+  {
+    "algorithm": "xxhash32",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "xxhash32-Hash_Update-O3.wasm",
+    "original": "xxhash32-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "0e3681f742513f1eaf41c8d9406b78f09f21ed0e04e7c68501ca5afc7b29dd16",
+    "bytes": 2441,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported statement: i64.store",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.04440000000016653
+  },
+  {
+    "algorithm": "xxhash32",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "xxhash32-Hash_Final-raw.wasm",
+    "original": "xxhash32-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "70b5c466e3dcdf49451388b54121db4cfe3a485e8a6db65f0112a74232926cad",
+    "bytes": 2498,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.031099999999728567
+  },
+  {
+    "algorithm": "xxhash32",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "xxhash32-Hash_Final-O3.wasm",
+    "original": "xxhash32-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "8e4c8ecfe33ff1d06360a4778d6618d9c95f044e8f4f62b0dc784eb1673ecc71",
+    "bytes": 2439,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.032699999999774576
+  },
+  {
+    "algorithm": "xxhash64",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "xxhash64-Hash_Init-raw.wasm",
+    "original": "xxhash64-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "6906ad84ef38efbf08716ac15af9175e5ee7f4c7a88575bd94cf2907dd0820ae",
+    "bytes": 2409,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03139999999968168
+  },
+  {
+    "algorithm": "xxhash64",
+    "operation": "Hash_Init",
+    "status": "built",
+    "file": "xxhash64-Hash_Init-O3.wasm",
+    "original": "xxhash64-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "75c65abb363b08f7178a4685fa810bf3ac8c78aaf8c0e292e076852719c99e02",
+    "bytes": 2365,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.032700000000218665
+  },
+  {
+    "algorithm": "xxhash64",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "xxhash64-Hash_Update-raw.wasm",
+    "original": "xxhash64-original.wasm",
+    "params": 1,
+    "optimized": false,
+    "sha256": "32433a0b68ef8af10c433874bf171a063722b466061de93db34b2af5429f4c07",
+    "bytes": 2411,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03289999999989135
+  },
+  {
+    "algorithm": "xxhash64",
+    "operation": "Hash_Update",
+    "status": "built",
+    "file": "xxhash64-Hash_Update-O3.wasm",
+    "original": "xxhash64-original.wasm",
+    "params": 1,
+    "optimized": true,
+    "sha256": "55ed48cd1bd7aa10998df98de77e4a19be2ceac8557cd955d4779db56900c296",
+    "bytes": 2367,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03390000000003113
+  },
+  {
+    "algorithm": "xxhash64",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "xxhash64-Hash_Final-raw.wasm",
+    "original": "xxhash64-original.wasm",
+    "params": 0,
+    "optimized": false,
+    "sha256": "caf64c08e333327a44ead08f4558ac9a73f0ab1ccf6e474290c0867e1505f4d4",
+    "bytes": 2409,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.032000000000032
+  },
+  {
+    "algorithm": "xxhash64",
+    "operation": "Hash_Final",
+    "status": "built",
+    "file": "xxhash64-Hash_Final-O3.wasm",
+    "original": "xxhash64-original.wasm",
+    "params": 0,
+    "optimized": true,
+    "sha256": "d7784b3dd45ce0b92e05bc90b4ec1358b126e4bc6c707bba1c5d84774ed247aa",
+    "bytes": 2365,
+    "summary": {
+      "kind": "full",
+      "reason": "only i32 params/locals and void functions supported",
+      "analyzer": "acyclic-v1"
+    },
+    "analysis_ms": 0.03570000000019391
+  }
+]

@@ -1,0 +1,169 @@
+{
+  "scope": "known peeling control and type-recovery gate; goal not achieved",
+  "correctness": {
+    "regular": {
+      "modules": 20,
+      "calls": 35220,
+      "traps": 1800
+    },
+    "forced": {
+      "modules": 20,
+      "calls": 35220,
+      "traps": 1800
+    }
+  },
+  "solver_status": {
+    "regular": {
+      "ok": 40
+    },
+    "forced": {
+      "ok": 36,
+      "timeout": 1,
+      "not_run_after_timeout": 3
+    }
+  },
+  "runtime": [
+    {
+      "kind": "regular",
+      "n": 1,
+      "mode": "loop",
+      "median_ns": 37.774658203125,
+      "range_ns": [
+        36.7919921875,
+        38.19580078125
+      ],
+      "bytes": 113
+    },
+    {
+      "kind": "regular",
+      "n": 1,
+      "mode": "peeled",
+      "median_ns": 39.94140625,
+      "range_ns": [
+        39.617919921875,
+        44.232177734375
+      ],
+      "bytes": 130
+    },
+    {
+      "kind": "regular",
+      "n": 4,
+      "mode": "loop",
+      "median_ns": 40.234375,
+      "range_ns": [
+        39.324951171875,
+        40.49072265625
+      ],
+      "bytes": 113
+    },
+    {
+      "kind": "regular",
+      "n": 4,
+      "mode": "peeled",
+      "median_ns": 41.546630859375,
+      "range_ns": [
+        38.934326171875,
+        44.0185546875
+      ],
+      "bytes": 217
+    },
+    {
+      "kind": "regular",
+      "n": 8,
+      "mode": "loop",
+      "median_ns": 46.5576171875,
+      "range_ns": [
+        43.096923828125,
+        48.760986328125
+      ],
+      "bytes": 113
+    },
+    {
+      "kind": "regular",
+      "n": 8,
+      "mode": "peeled",
+      "median_ns": 45.208740234375,
+      "range_ns": [
+        44.268798828125,
+        47.247314453125
+      ],
+      "bytes": 333
+    },
+    {
+      "kind": "forced",
+      "n": 1,
+      "mode": "loop",
+      "median_ns": 39.959716796875,
+      "range_ns": [
+        39.41650390625,
+        41.485595703125
+      ],
+      "bytes": 130
+    },
+    {
+      "kind": "forced",
+      "n": 1,
+      "mode": "peeled",
+      "median_ns": 39.825439453125,
+      "range_ns": [
+        37.408447265625,
+        41.4794921875
+      ],
+      "bytes": 113
+    },
+    {
+      "kind": "forced",
+      "n": 4,
+      "mode": "loop",
+      "median_ns": 44.3359375,
+      "range_ns": [
+        44.25048828125,
+        45.9716796875
+      ],
+      "bytes": 130
+    },
+    {
+      "kind": "forced",
+      "n": 4,
+      "mode": "peeled",
+      "median_ns": 38.800048828125,
+      "range_ns": [
+        38.787841796875,
+        40.90576171875
+      ],
+      "bytes": 200
+    },
+    {
+      "kind": "forced",
+      "n": 8,
+      "mode": "loop",
+      "median_ns": 60.09521484375,
+      "range_ns": [
+        45.758056640625,
+        61.7431640625
+      ],
+      "bytes": 130
+    },
+    {
+      "kind": "forced",
+      "n": 8,
+      "mode": "peeled",
+      "median_ns": 44.854736328125,
+      "range_ns": [
+        42.529296875,
+        46.42333984375
+      ],
+      "bytes": 316
+    }
+  ],
+  "shape_recovered": 40,
+  "shape_ms_range": [
+    0.1854999999999496,
+    1.411799999999852
+  ],
+  "reader_ms_range": [
+    18.29069999999966,
+    23.734000000000144
+  ],
+  "replayed_binaries": 40
+}

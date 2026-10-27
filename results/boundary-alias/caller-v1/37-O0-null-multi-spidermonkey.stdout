@@ -1,0 +1,11 @@
+[fuzz-exec] export global$_2
+[LoggingExternalInterface logging null]
+[fuzz-exec] export global$_4
+[LoggingExternalInterface logging null]
+[fuzz-exec] export func_11
+[fuzz-exec] note result: func_11 => function
+[fuzz-exec] export func_11_invoker
+[fuzz-exec] export func_14_invoker
+[fuzz-exec] export func_18_invoker
+exception thrown: RuntimeError: dereferencing null pointer
+[caller-study] {"caller":"null","observer":"multi","calls":[{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func_11","known":true,"status":"returned","unsupported":[]},{"name":"func_11_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_14_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_18_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing null pointer"}],"events":0,"distinct":0,"trace":[],"multi_slots":0}

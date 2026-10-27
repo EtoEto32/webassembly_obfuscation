@@ -1,0 +1,22 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func
+[fuzz-exec] note result: func => object(null)
+[fuzz-exec] export func_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_10
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_11_invoker
+[LoggingExternalInterface logging null]
+[fuzz-exec] export func_13
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_13_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_16
+[LoggingExternalInterface logging 0 0]
+[fuzz-exec] note result: func_16 => -5
+[fuzz-exec] export func_16_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_18
+[fuzz-exec] note result: func_18 => 257
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_10","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_11_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_13","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_13_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_16","known":true,"status":"returned","unsupported":[]},{"name":"func_16_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_18","known":true,"status":"returned","unsupported":[]}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null}]}

@@ -1,0 +1,11 @@
+# Aのローカルファイル効果受付
+
+2026-10-24、実装前の計画。これまでの受付先はhost内ログだった。新規に作る実験directory内の3ファイルだけを対象として、実Componentのprepareから同期ファイルI/Oへつなぐ。既存ファイル・外部サービスを操作しない。
+
+信頼するhostが3つのbackendファイルを開き、opaque resourceから実体を解決する。guestのborrowは同期prepare中だけ使用し、操作計画には実体IDとhost所有の記録だけを残す。依存抽出は同じWIT生成器を使用し、read/write/copy/list/optionの効果はhostの契約に明示する。WITから任意のOS操作を推定しない。
+
+失効処理、世代検査、効果受付を単一JSスレッドの同期区間で直列化する。executorは信頼する同期のfs.readSync/writeSync/ftruncateSyncのみ。非同期executorを一般に安全化したという主張はしない。受付後の失効では、既に実行したwriteを取り消さない。複数ファイルwriteを一つのtransactionにする主張もしない。
+
+条件はraw/最適化後、read/write/copy/batch/optional/idle、aliasあり/なし、失効なし・関連write/readの事前失効・無関係な資源/操作の事前失効・実drop・受付後失効。判定だけでなくファイルの内容を独立に期待値と比べる。再受付は拒否し、二度目のI/Oが発生しないことを検査する。
+
+例外時はticketを消費しhost側予約を解放する。I/Oの失敗や中途の副作用を認可成功と混同しない。既存instance内の資源とbackendのhost所有を区別し、試験用fdは全ケース終了時にcloseする。trap後のcomponent全体teardownは別課題であり、この試験で解決済みとしない。

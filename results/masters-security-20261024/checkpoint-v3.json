@@ -1,0 +1,292 @@
+{
+  "dateUTC": "2026-10-23T18:39:19.233132+00:00",
+  "scope": "Three Wasm security invention hypotheses; strong patent novelty remains unestablished",
+  "quota_observation": {
+    "usedPercent": 5,
+    "remainingPercent": 95,
+    "isExactTokenBalance": false,
+    "history": [
+      {
+        "usedPercent": 51,
+        "remainingPercent": 49
+      },
+      {
+        "usedPercent": 0,
+        "remainingPercent": 100
+      }
+    ],
+    "note": "usage display changed with a different resetsAt; cause unknown; requested remaining-20-percent threshold not reached"
+  },
+  "priority": "A then B then C for the next experiment; not a patentability probability",
+  "latest_results": {
+    "A_component": {
+      "directory": "component-fence-v3",
+      "decisions": 2178,
+      "mismatches": 0
+    },
+    "A_files": {
+      "directory": "fence-file-v3",
+      "conditions": 288,
+      "mismatches": 0,
+      "rejected": 64,
+      "controlledFailures": 6
+    },
+    "A_teardown": {
+      "directory": "fence-teardown-v2",
+      "conditions": 60,
+      "closedFDs": 180
+    },
+    "A_shapes": {
+      "directory": "fence-shapes-v2",
+      "componentCalls": 336,
+      "bindingChecks": 14,
+      "mismatches": 0
+    },
+    "A_negatives": {
+      "directory": "fence-negatives-v1",
+      "negativeCases": 6,
+      "correctedControls": 6
+    },
+    "A_performance": {
+      "directory": "fence-performance-v2",
+      "independentProcesses": 20,
+      "ratioRangeToCorrectManual": [
+        0.96,
+        1.081
+      ]
+    },
+    "A_revision2": {
+      "directory": "effect-plan-v2",
+      "conditions": 288,
+      "mismatches": 0,
+      "invalidRecipesRejected": 6,
+      "externalExecutorCasesRejected": 2,
+      "mechanism": "same typed concrete read/write plan drives authorization dependency and synchronous execution"
+    },
+    "A_revision2_performance": {
+      "directory": "effect-performance-v1",
+      "independentProcesses": 15,
+      "ratioRangeToCorrectManual": [
+        0.992,
+        1.005
+      ]
+    },
+    "A_revision2_strong_baseline": {
+      "directory": "effect-performance-v2",
+      "independentProcesses": 20,
+      "ratioRangeToManualSinglePlan": [
+        0.994,
+        1.018
+      ],
+      "securityAdvantageOverCorrectManual": false
+    },
+    "A_revision2_compiler": {
+      "directory": "effect-compiler-audit-v1",
+      "unitCases": 576,
+      "seedConfigurations": 12,
+      "distinctRecipes": 6,
+      "mismatches": 0
+    },
+    "A_boundary_supplement": {
+      "directory": "abi-preflight-v4",
+      "componentCalls": 45,
+      "mismatches": 0,
+      "performanceDirectory": "abi-performance-v2",
+      "memoSlowerCases": 5,
+      "totalCases": 6,
+      "adoptedAsInvention": false
+    },
+    "B_library": {
+      "directory": "library-v1",
+      "conditions": 48,
+      "inputs": 1680,
+      "savedBeforeBytes": 147000,
+      "savedAfterBytes": 147000
+    },
+    "B_checker": {
+      "directory": "checker-audit-v2",
+      "binaries": 224,
+      "rangeAccepted": 98,
+      "mutationsRejected": 501
+    },
+    "B_cli": {
+      "directory": "checker-cli-audit-v1",
+      "acceptedControl": 1,
+      "rejectedMalformedCases": 12
+    },
+    "C": "initial model equals correct semaphore; general generator unimplemented"
+  },
+  "pending": [
+    "nontrivial technical novelty beyond close prior art",
+    "third-party application-level benefits",
+    "general WIT binding coverage and contract completeness",
+    "concurrent/external effect admission",
+    "complete patent search; unacquired leads remain",
+    "independently verified formal soundness"
+  ],
+  "failed_runs": {
+    "fence-shapes-v1": "Jco mkdir EPERM before component execution; retained separately",
+    "abi-preflight-v1": "test import object mismatch; not a security rejection",
+    "abi-performance-v1": "completed but non-memo baseline had unnecessary key construction; v2 is the corrected primary comparison"
+  },
+  "audit": {
+    "pinnedFilesChecked": 2194,
+    "localMarkdownLinksChecked": 99
+  },
+  "artifact_hashes": {
+    "research\\masters-security-20261024\\abi-performance-plan.md": "933605e91b88153c23eb21426345878814015132d2350a6850bbf3b8afaa318a",
+    "research\\masters-security-20261024\\abi-performance.cjs": "1871c5fcfb507a83f6e3dd57bb33787f8bca753c57530632225d23956b297a51",
+    "research\\masters-security-20261024\\abi-performance.py": "62c659820c0ed8b4f8dbb317feef2a46f1fb93593f201835468d6af57356fcf9",
+    "research\\masters-security-20261024\\abi-preflight-analysis.md": "b3ed873924f664c80b7955ae652f668d1626495bd9a0b690819d0de8ed857e10",
+    "research\\masters-security-20261024\\abi-preflight-plan.md": "93041f38216e2bc24b7e42f1d609d1cd884534b94f059e2053e8985d67fdb1ad",
+    "research\\masters-security-20261024\\abi-preflight-test.cjs": "5da890c50f71bc39fc5a079c906ee3f4876a80d3ab46b6e69dd6f9bd6d61a803",
+    "research\\masters-security-20261024\\abi-preflight.cjs": "3fd7f270a7bcab8e987aa19d96179e67ade28ddf4dac7d578ec37a015b6c9f5c",
+    "research\\masters-security-20261024\\abi-preflight.py": "0eaf8f8a7220b54e46765e5c80aaaf47a162f8c53834729987a10882dd54ff8e",
+    "research\\masters-security-20261024\\abi-preflight.wat": "1bede5165f7749083c8438ad08922952d97590c41b0d2d0c3056b918d826335b",
+    "research\\masters-security-20261024\\audit.py": "a9cd68f71d1f36a9533d7663c69531eb5eeaf969d6bc55a3bb7505af4667384c",
+    "research\\masters-security-20261024\\boundary-audit.py": "59bcc9b02ab412736e2425cb78f8412f0460138e05550d87f7e5bda8af469406",
+    "research\\masters-security-20261024\\boundary.cjs": "59ac12a95030c811f931b478120849ea12e6edab95feafb9b4ed20e8bfddb553",
+    "research\\masters-security-20261024\\boundary.py": "900019298f9744dfaf393f5a3c8d47ceec5e914bb52ba1878219c73b6e76f021",
+    "research\\masters-security-20261024\\byte-checker.py": "e5817a470ccb821335382ebfef09d6fe1b7be70aee5ef4583b4d902cd2a3c924",
+    "research\\masters-security-20261024\\candidate-a.md": "0ec6ccdebc59c496c942d997175dabfecdb7f03413a6013587d2b1d16f011bf2",
+    "research\\masters-security-20261024\\candidate-b.md": "dabad0aa4763ebb9bcf9d382fddf98469ccad2ca20c30f177915292e6eb50dd6",
+    "research\\masters-security-20261024\\candidate-c.md": "cf67e01a4b8e3095e5a0e744d5fd8157ee6e7dcfefffa765f67f703561f33dbf",
+    "research\\masters-security-20261024\\certify.py": "88f7eb06af546686eb36f888e423e06f40003a38769b8a28d4b55054aaa8a707",
+    "research\\masters-security-20261024\\check-certificate.py": "2f59d922f4543432d3bcc9b843bf689774e5a99097252bcf5cdacdc23cf7a417",
+    "research\\masters-security-20261024\\checker-audit.py": "d645d9e0b6f4abd75e57c4d7f31f8625b9d6c2561ad6f635c75df83034aaa846",
+    "research\\masters-security-20261024\\checker-cli-audit.py": "cccfffd07fcfb86033cef06cc977b8088af4949905422a5e548e546aa20098d6",
+    "research\\masters-security-20261024\\checker-plan.md": "5fd1a3e45a4713dd4dd21a55bcf08a6cafb1f8e218b36ce8d7739fc8a1f59c48",
+    "research\\masters-security-20261024\\checkpoint.py": "1c54432edca402b8ec8a434fe380549eacb5f1e491dfc53e568063b19ec2a0b4",
+    "research\\masters-security-20261024\\claim-chart.md": "5f60b474a3faf553a730f68b6c87dca18f87c86ac19b5e4fdcae66bb6426aeb7",
+    "research\\masters-security-20261024\\compiler-fixture.rs": "2056057d2ac7f6c2d6244c3311bd659672820191c367798a990fbe7870e990c7",
+    "research\\masters-security-20261024\\compiler-plan.md": "59e577da87c70740637c774a0322c39bb341b3c65ce20e7e3c4087740cf83172",
+    "research\\masters-security-20261024\\compiler.cjs": "d529509dde2e311bd38dfb8b2b247453b01636de6a859b5c070d6b1aba354e45",
+    "research\\masters-security-20261024\\compiler.py": "8ba2f6d55ba6d46eea6f5c6c4552f19e3fb6fe070524cc7883f2c031f4d5ae30",
+    "research\\masters-security-20261024\\component-fence-plan.md": "155ae2d2301d5f5b480ba9b4c628576003a2da464aac3e82d9c78d6ec9bcb321",
+    "research\\masters-security-20261024\\component-fence.cjs": "2375f59c2f8db37a522e29cb78100e83b92a3d93524fcae2f0aa819447545a77",
+    "research\\masters-security-20261024\\component-fence.py": "6cfccbad045c83810704b514bb95495a7045f89ffdefdce483d22c4aaec84ad2",
+    "research\\masters-security-20261024\\component-fence.wat": "fff84ad1b9e78add3dc4ca54407e06ab395e69aa393615ce36aeea1eea6874bf",
+    "research\\masters-security-20261024\\consumer-plan.md": "08d99bf994c1c4206703b15db0a54e7752e683add50ba05e30a8d1b9215ddf7e",
+    "research\\masters-security-20261024\\consumer.cjs": "7117e51900f2189b95b69a55b7677ce62ce1af024f341c5bb48556f66e479da7",
+    "research\\masters-security-20261024\\consumer.py": "7ae8114480039318d86f5300ad9901c5de08f126bf9515932dc15d5e0877a229",
+    "research\\masters-security-20261024\\contract-audit.cjs": "10d1c073b20885ebdd91e3b67407e5e3d845dc42500b12e47e30e395db68b3bc",
+    "research\\masters-security-20261024\\contract-audit.py": "ee205b15ad56f76095bf079e5a7a9258ec38a9f4f18441b3499a59a9c6c10e04",
+    "research\\masters-security-20261024\\decision.md": "2f05600ea092ba1938cb1fa01d42eecb04966743a5c69190830b6cbdb4549c09",
+    "research\\masters-security-20261024\\effect-baseline-plan.md": "4dcfda5a0a692bd73a807fc3b43b964469fcd01e6bbb68a11510fc46be7297db",
+    "research\\masters-security-20261024\\effect-compiler-audit-plan.md": "897ac57f6545b1ba2f9fab8f2e45fc87e2235386a756b5fd85390c2ef819b5d9",
+    "research\\masters-security-20261024\\effect-compiler-audit.cjs": "1b5b7cc29e5b39deadf6b80b0d8faea23eb4a44b63583f88a0e471435ce3bc61",
+    "research\\masters-security-20261024\\effect-compiler-audit.py": "2558fbfeca17f17394985c9053090d583d6e298b0c5962a26668fd1faf8111b0",
+    "research\\masters-security-20261024\\effect-engine.cjs": "50f618f82917b0a364311cff3eac9328ffdca47602d7afb5c247f05e14ed6052",
+    "research\\masters-security-20261024\\effect-performance-plan.md": "51975391e493fa7e600aa8173ae626c63b83908aa4850c453776a5d289cd7647",
+    "research\\masters-security-20261024\\effect-performance.cjs": "bfe8919287136cc612e4fec2457bc8b154060c5b1ab66724304329ad9bd00b2a",
+    "research\\masters-security-20261024\\effect-performance.py": "7035fcb09ddf189620b3fc840d15e71a3285ece3747e59d773e7b9c0521570b1",
+    "research\\masters-security-20261024\\effect-plan-design.md": "0c9551aa8157cf9e6106a9b4a981340eda001a3ef24f760f58d48ae2b514b6d5",
+    "research\\masters-security-20261024\\effect-plan-plan.md": "80de6e130a792a271c7ed3763e270c8b1209570a2018eda4f5ca2caef4796b8a",
+    "research\\masters-security-20261024\\effect-plan.cjs": "147d840b4d5eb29183ba9c7c8f905a0ffafb325ef583bd90671a08dc22b1496d",
+    "research\\masters-security-20261024\\effect-plan.py": "ce53f3835aa7e9de4a6ca06efb1d14e8ff9066a116e0466c7892a0b1817006ab",
+    "research\\masters-security-20261024\\effect-recipes.json": "ef81631c4fab30f72770d929909a54a2291e60fac7e2624e27501256561cfdf9",
+    "research\\masters-security-20261024\\effects-audit.cjs": "1145cf900caedb4e074797ac0e17ea8edec66f7884dedfd2f913f5d68a2aafd3",
+    "research\\masters-security-20261024\\effects-audit.py": "8199a441f6240ef28daae65808fa1516049813c3655c4eeb3215ef8e750416fb",
+    "research\\masters-security-20261024\\effects.py": "19e516c5b325ec482ba7c411d01cb2fe5d9a49ef9d2552a2181f6c3fb7ff9848",
+    "research\\masters-security-20261024\\fence-file-plan.md": "82c0dc5840f01122c36d78734453a119e5f7b288164cba144b12f47878465b5f",
+    "research\\masters-security-20261024\\fence-file.cjs": "b6f6150da6fab6bf91195665a953f00db44ef808c9e288806fd8e2b50b799d80",
+    "research\\masters-security-20261024\\fence-file.py": "ea09c9d2c065bf995ac0f70599d6fe20bad3f266064113b4f2c58208cf044a8f",
+    "research\\masters-security-20261024\\fence-negatives-plan.md": "1e135dc1865ab59d9548fdd2d5a3eb0083a8fa6881a6b5965718bf63d7cb4b59",
+    "research\\masters-security-20261024\\fence-negatives.cjs": "081a2e40654f230c26784ccc7baead55291b0061c33d248f5b9756a041ec9e79",
+    "research\\masters-security-20261024\\fence-negatives.py": "f4eadaa97f40e6b299c65d7c6e801be855c20bc65423605173a7f5230599cb68",
+    "research\\masters-security-20261024\\fence-performance-plan.md": "106347c7a03940274d6ff5aca1129734b516159ad1c58e62a83b4ee52e34dc5a",
+    "research\\masters-security-20261024\\fence-performance.cjs": "45daafb8c1e589935efe5f465f2562d30e76b05ac76079e6cbd2644f0e1931d2",
+    "research\\masters-security-20261024\\fence-performance.py": "de1df85631d464830541badabcbbd5fcf84b25222cdd842a8b28f9c515f9656b",
+    "research\\masters-security-20261024\\fence-plan.md": "2ed929c4a9893479bbd24b67b28f842a9a83e43c64848e14b24ff0073e3e4f94",
+    "research\\masters-security-20261024\\fence-policy.json": "296b3f42ab449cd461ce4688f7f49649a2c7923c0e57b8e83e4f8f97bdc4a8a8",
+    "research\\masters-security-20261024\\fence-runtime.cjs": "86902bd4139d9507d55cd66fca25ad5895a7b82bf923d55d2e87186bdd6072d6",
+    "research\\masters-security-20261024\\fence-shapes-plan.md": "314ddd3a930c1b25436f66291ad86802ee54402f4da6672f503ff5443ee6f044",
+    "research\\masters-security-20261024\\fence-shapes-policy.json": "d815a7707cde6ae3d6d9f54bf9137914aeced3962d192a6e7904fe21c1e5aa88",
+    "research\\masters-security-20261024\\fence-shapes.cjs": "9d13ba6b436630289551636a475b8673de6deb991cf8e20b7dc78d4ef1b83a48",
+    "research\\masters-security-20261024\\fence-shapes.py": "ee3cd1447bb411518a09d1971304be36c76f98a99467e45a24dad9cc993ae7a0",
+    "research\\masters-security-20261024\\fence-shapes.wat": "1f58860372fc86abaad60c6aeeed24795ce8031e7f51bfed9e340b3e8e508143",
+    "research\\masters-security-20261024\\fence-shapes.wit": "774026bb9e4906973d4c6cfb1f71ff9fad7f5098dd8692fee5168e49f2a9d525",
+    "research\\masters-security-20261024\\fence-soundness.md": "c68b697d4471abd3eb5c93795a273b8a9f072012ce3bef388d680a3d578a584e",
+    "research\\masters-security-20261024\\fence-teardown-plan.md": "7c5d37c7259fe4ff5203360e2e6e35aaaaab5f3b1ad2c53e6129991f90c237f2",
+    "research\\masters-security-20261024\\fence-teardown.cjs": "55413865c8954220e058e755c5189d668e5d91e062df792b52f2fe73ac516fdb",
+    "research\\masters-security-20261024\\fence-teardown.py": "fc6075e9f5b3029b3780d92d57f29237d0c1a8e956e29798ba1dcdf403e31908",
+    "research\\masters-security-20261024\\fence.cjs": "5b9cd2eb244af7822c6ceb94890b8e1c7438ff8fceccc3329d020ac5621adcb3",
+    "research\\masters-security-20261024\\fence.py": "0667fdcbc0e2c80dd15fd9814d39f787a79ed536458a2efda0ec4d23a0ae0ece",
+    "research\\masters-security-20261024\\fence.wit": "c5eaa5a151ce41090d641dc5de6ad7d9a3aa7cdebfa111ffdcac9d81eeb379c4",
+    "research\\masters-security-20261024\\fetch-followups.py": "2ae17f776380962dcfe3fdf739d44d81401de56b169b44143f4be2742f7b35f5",
+    "research\\masters-security-20261024\\fetch-leads.py": "0d2902544efde227d4d2e57af4f62dd20cc3a62d4a6bfe56a1863f47cb11424d",
+    "research\\masters-security-20261024\\library-plan.md": "273327791b806d3bb5c663915be0944d782aefef0abcb8a287a6df6184f56753",
+    "research\\masters-security-20261024\\library.cjs": "e9f21151a1ffe92e6f7c8d15fba07db3c3ac905f35e8d207826f3425d8d021f4",
+    "research\\masters-security-20261024\\library.py": "e8bdd1e323ff04081aec668fc9e460e3ee5ce3075838575781986f02cb32e642",
+    "research\\masters-security-20261024\\paper-a-draft.md": "c485e16e827e95b97f62f2d588972f81ffb99c4a39ac417e2a48efaac5e6563a",
+    "research\\masters-security-20261024\\paper-a-plan-draft.md": "43b79c35acdba0fb99283c63c489ec05e62b9fb82ff67f5a17083b63438feeaa",
+    "research\\masters-security-20261024\\paper-draft.md": "d60e2a1c3f9cf21ae298ec5829f16dc0f245d7c7e845f9b0bdfb7657189526d3",
+    "research\\masters-security-20261024\\plan.md": "513cb758e207ecd07b2496e1ed155bda7bb37eb47fd123e2b5c232d06947ef6c",
+    "research\\masters-security-20261024\\prior-art-followup.md": "ae28da2170b01401639a9d2d583453913ddf52b9d80f31bc2f4c9ceb60f9ebfd",
+    "research\\masters-security-20261024\\prior-art.md": "b9bef5ac2d404dc7f2dbd1fe5f56204ca8754c8ae92cd565c342ed19e14bf037",
+    "research\\masters-security-20261024\\probe.cjs": "924098a45637ec4858ef325614837811ea08f0bc166b25a9aa4c9058d3a676f7",
+    "research\\masters-security-20261024\\probe.py": "04b3c0b7413e57d6d284600a1d4839cf44eba0895d270d4669b18b085f9192ad",
+    "research\\masters-security-20261024\\query-plan.md": "3ca97e97972c9b1dc4408e0b6b9e3ea84ef5b34c77ddba899c41c1a751a4a8c5",
+    "research\\masters-security-20261024\\query.cjs": "bfae5000541a595a4532715c7ad21d0053855645358b1c615ca7ccb28e172276",
+    "research\\masters-security-20261024\\query.py": "afaba02284f4975da13ba408e98ba969c725bc9cbfe54f572cb17b3a3de70ff6",
+    "research\\masters-security-20261024\\README.md": "369020ba76e38d435ec415fce0f64eb63b3bb1fe737033ca545f5509192ae89e",
+    "research\\masters-security-20261024\\reanalyze.py": "ee1f6fdbe11e2bd926b95cd67c67f50193df163f18b49879883446b69861bca7",
+    "research\\masters-security-20261024\\report.py": "ba3b4c452c85f2d7a12dd0a0d772c8c926daa9805e07253e143a71e3d9b8ce12",
+    "research\\masters-security-20261024\\setup-hash-library.py": "2c8b0189836f97730b403e609db0ca3c6690234efb68270ab25d4d63c9e1359b",
+    "research\\masters-security-20261024\\setup-rust.py": "66508cdeb9acdd55270fe9c292bd8e4d2cc65a3bf5e0d708d21fe66f31173fe8",
+    "research\\masters-security-20261024\\soundness.md": "3665c1fdf4d69bbb9a1e5dbe211ea18f566261aacbea10564dbf3988f65b3b25",
+    "README.md": "5d5277f68c9897e3271cd81870576023732f5287c81218ab2a40c76a0c8305d7",
+    "research\\STATUS.md": "6a71486225d1a75a9718abd3b676503a409a038dbc931c13ffbaa16ae7c9c0dc"
+  },
+  "result_manifests": {
+    "results\\masters-security-20261024\\abi-performance-v1\\sha256.json": "10c6c7a5b030548ee7d89462441b2553e260b155533d73c160b37d5ee8192e53",
+    "results\\masters-security-20261024\\abi-performance-v2\\sha256.json": "7c4715a85b0d690faff76f6d15a65f6c5d08331718a9f2a69054f2bf28543864",
+    "results\\masters-security-20261024\\abi-preflight-v1\\sha256.json": "54f10a4963380429ccb8c29ec63d60b19997be4f01a3b1cb8511274cfc82e923",
+    "results\\masters-security-20261024\\abi-preflight-v2\\sha256.json": "b623bd9e28afb78b543e2448844af8fdf41a374dd99dc6cb69352d4035b60647",
+    "results\\masters-security-20261024\\abi-preflight-v3\\sha256.json": "899ea0fab2bf7613c88d3b16c331a17f1b155403a33d80c151d38d7adca8ae88",
+    "results\\masters-security-20261024\\abi-preflight-v4\\sha256.json": "d63b48124ad24b7630a27c76f1a49b6b9296245be617573e1d4d0ca01d55a186",
+    "results\\masters-security-20261024\\audit-v1\\sha256.json": "22f9ab57d4e6846976ac284eba41a77b3f0de4d7d7a74d0abce86aff681ebbc1",
+    "results\\masters-security-20261024\\boundary-audit-v1\\sha256.json": "a1826f3bb59e2dad96fe28b752a67406bc850a8cb14cfd70b842978549704bf7",
+    "results\\masters-security-20261024\\boundary-v1\\sha256.json": "88934fc9d2d4aef6ff8a1da7d0ca16cb1ac0ef928744885a06c032a23139c005",
+    "results\\masters-security-20261024\\checker-audit-v1\\sha256.json": "595f05ce2281e0991d4173c06cfd0299955253fe3c71c680d345bc7c7ce52e06",
+    "results\\masters-security-20261024\\checker-audit-v2\\sha256.json": "b99f0393ea3f785401621663a12960c19de81a918d49d6866d89c0b25ac8f55e",
+    "results\\masters-security-20261024\\checker-cli-audit-v1\\sha256.json": "7da9e4f7805e060ab89229f9bbf142c7c5c6de12b5264200a783c69dbfb43ebe",
+    "results\\masters-security-20261024\\compiler-v1\\sha256.json": "8190f496be5c9f9310a21f217342d5bdc6a6087e148f7c86ae718558b06a812b",
+    "results\\masters-security-20261024\\compiler-v2\\sha256.json": "5377e1314c29a93e149dd6c4bbbedd896beb62af7a016481f98f1cadfdaeb916",
+    "results\\masters-security-20261024\\component-fence-v1\\sha256.json": "ef46dc834a9f77469ba544e233bb0bb5380b1cefb015b709b8f92d37fb5178d0",
+    "results\\masters-security-20261024\\component-fence-v2\\sha256.json": "33007d51a0d15bb50873a78e2f24a91cf88ffb2e76cda7d260bbac305cc856f0",
+    "results\\masters-security-20261024\\component-fence-v3\\sha256.json": "a85f9c9db58c6a0fcee6bb16f367d0849c84f3816f2f5220ac0879e839de5e92",
+    "results\\masters-security-20261024\\consumer-v1\\sha256.json": "536084aae1557be8541d66a0bbf926c0e3cc11a0ebe7763206434af8544f340b",
+    "results\\masters-security-20261024\\consumer-v2\\sha256.json": "b62c4db7655215c5ba31ce98b6ba5b952a2f7eadf20e85b162d9b1d7c05e69e7",
+    "results\\masters-security-20261024\\contract-audit-v1\\sha256.json": "55586843e073934db1763671e4c147ef74696e64a077c95ce7ce3fc046770657",
+    "results\\masters-security-20261024\\contract-audit-v2\\sha256.json": "4be1a76ecfcecfdef86e5c9a9aae44a905a9a5fbc404a6705a3423439b7abd23",
+    "results\\masters-security-20261024\\contract-audit-v3\\sha256.json": "b7397c26c972e8a93c8206077b4f9e887e65580c152715e740d2a29dd5a2b3ea",
+    "results\\masters-security-20261024\\contract-audit-v4\\sha256.json": "0751510d4ca28f3ba712a8a8ee42fdc24a48d1cc5d2cc10e2a3300c03b519c42",
+    "results\\masters-security-20261024\\contract-audit-v5\\sha256.json": "2325f13ce62b465a3723224a5931b3c65d1a2852f6bc8b09875cea86d7e19546",
+    "results\\masters-security-20261024\\effect-compiler-audit-v1\\sha256.json": "2c17a8d89acf37361cc14d51f099584cad1ea21bb603d1e8cb445211436dde55",
+    "results\\masters-security-20261024\\effect-performance-v1\\sha256.json": "145658c1381edc803e1530ede138fecf931398add00d708a857630a1a768a21e",
+    "results\\masters-security-20261024\\effect-performance-v2\\sha256.json": "86a0a35213c4440547ad6468b1b15fee77615b9b03273623d202dd0aa42ff880",
+    "results\\masters-security-20261024\\effect-plan-v1\\sha256.json": "d0b8a3367b14294c3dffc6d04cb8204e63301a6e431f05bb5b3145bf3f2620d7",
+    "results\\masters-security-20261024\\effect-plan-v2\\sha256.json": "fda69115983d742a294bf200d4c604918deeb2c30f78634c9cdd819e2a7be836",
+    "results\\masters-security-20261024\\effects-audit-v1\\sha256.json": "366733053df1a7d67bbe11085772f66a0c6d7002fd5773ce327f98100b084c55",
+    "results\\masters-security-20261024\\fence-file-v1\\sha256.json": "d35c13a8ad2bd8a9f6e8d6e2c7650e74caa9c9b2e9edeff51c29ae6f94e0bbec",
+    "results\\masters-security-20261024\\fence-file-v2\\sha256.json": "1d44a8e5391871382b86aee7761ecfdcbd584e60aa9292e09f0eb70882545576",
+    "results\\masters-security-20261024\\fence-file-v3\\sha256.json": "480f0b1c734f636a1f6ec3230d0081255449e07847774442b08e09a380f85c36",
+    "results\\masters-security-20261024\\fence-negatives-v1\\sha256.json": "eebd2d64e5817ac1f58223ea4e44e9dc0bbdadaa3b34b3398a0fed148b18807a",
+    "results\\masters-security-20261024\\fence-performance-v1\\sha256.json": "509e6fa64f60182d8a63a98316ea74ba74c86aa166002c9b8c170efe143660c2",
+    "results\\masters-security-20261024\\fence-performance-v2\\sha256.json": "7511ecbd07cd305a2ec62eba2ade07ba4678f6aa57180e531f972a7d556df0a7",
+    "results\\masters-security-20261024\\fence-shapes-v1\\sha256.json": "1c7edb927c2c01bf5c665f0e8f75b97e4339dcdbb8a38e9e7c48ddc19db4080d",
+    "results\\masters-security-20261024\\fence-shapes-v2\\sha256.json": "132ffeb42e2ed8dd9903838fd22464c632e6f8555722827edaccba6a9ab58b6b",
+    "results\\masters-security-20261024\\fence-teardown-v1\\sha256.json": "aa337824bd3cbcc1b074bc807cb18dd5ae10f88ad63a6efda4bda12a16bd07cf",
+    "results\\masters-security-20261024\\fence-teardown-v2\\sha256.json": "a1f291286220f787da56f56260714e9a9f119780e8de3190102223b88c28e611",
+    "results\\masters-security-20261024\\fence-v1\\sha256.json": "a74f980000016a846cfca1d93af1a506778d5dbf2ca27829cc3122dd30344eeb",
+    "results\\masters-security-20261024\\fence-v2\\sha256.json": "7a3f8e7b9df80586e74cbce118cd9a189155f17e6dcedfd7d90023718d4e2fdc",
+    "results\\masters-security-20261024\\fence-v3\\sha256.json": "a47eddb1fcbf35e0fb4745ead4cd1087cb564aff69182a281c2d5ab0c087e250",
+    "results\\masters-security-20261024\\library-v1\\sha256.json": "6d9e2281f057ccad7041c151c045c26b8472ee5462661060f492cac6bc08a34a",
+    "results\\masters-security-20261024\\literature-v1\\sha256.json": "eff2bdb21407168d4afdf6203cbfe6b2a91706907b53e99bfcf50df1ca9f907f",
+    "results\\masters-security-20261024\\literature-v2\\sha256.json": "9a28fe9c5b8fda94e3a0b5d8c8eb2cff2e1c67a89b552c90f135201edb09a4a1",
+    "results\\masters-security-20261024\\probe-v1\\sha256.json": "a2a243f1724f39cdb325f54fd55ff11eacf72e37b12be58aa19d352a3bffc326",
+    "results\\masters-security-20261024\\probe-v2\\sha256.json": "0d6e2f4e8bccaa0a534bbf195377b7c5061238b179f67142ce723ff0cf37b64b",
+    "results\\masters-security-20261024\\query-v1\\sha256.json": "8c790b446b9bb34ae15243cbd245a636581e255c87df5c8224686274437660ff"
+  }
+}

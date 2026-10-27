@@ -1,0 +1,75 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 1,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 2,
+      "expression": [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 3,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 4,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 5,
+      "expression": [
+        "mul",
+        "v2",
+        "v2"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 6,
+      "expression": [
+        "sub",
+        [
+          "mul",
+          "v0",
+          "v1"
+        ],
+        [
+          "mul",
+          "v2",
+          "v2"
+        ]
+      ],
+      "opcode": "i32.sub"
+    }
+  ],
+  "output_expression": [
+    "sub",
+    [
+      "mul",
+      "v0",
+      "v1"
+    ],
+    [
+      "mul",
+      "v2",
+      "v2"
+    ]
+  ],
+  "inputSHA256": "54aa215c3b06bc9c2b4190a2b1f2df1b81f313f0e5985cc283ba12197b1c03ee",
+  "probeSHA256": "ddfd7922805a6debe4cea1b0aed3f43694a3c106e69d5c3453bc05114cc8e84c",
+  "model": "all scalar i32 values of exported straight-line run, after Binaryen; not native JIT traces"
+}

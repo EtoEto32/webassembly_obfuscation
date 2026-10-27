@@ -1,0 +1,7 @@
+{
+  "status": "verifier_error",
+  "error": "TypeError: Cannot perform %TypedArray%.prototype.fill on a detached ArrayBuffer",
+  "cause": "The verifier kept a view across WebAssembly.Memory.grow(0).",
+  "repair": "Create the view after grow(0). Transformer and arithmetic were not changed.",
+  "successful_run": "checks.json is produced only after the repaired verifier completes."
+}

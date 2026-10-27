@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-19",
+  "candidate": "Component resource lifecycle as computation trigger",
+  "scope": "Pure i32 state chains compiled from actual core Wasm into actual components; Jco execution path",
+  "status": "Negative research candidate completed; overall invention goal remains active",
+  "outcome": "Generated ordering does not add measured recovery cost over immediate resource destruction. Public canonical links and handle-to-slot propagation recover the computation.",
+  "novelty_established": false,
+  "patent_main_candidate": false,
+  "major_design_revisions": 1,
+  "revision_reason": "Jco 1.27.0 generated resource representation masks bit 30. Payloads moved into private scratch memory; small slot indices used as reps. Same scratch baseline used for direct calls.",
+  "correctness": "72 main + 32 control conditions, 459680 positive calls, zero mismatches/traps; 9 negative witnesses; 567 independent core checks",
+  "adaptive_recovery": "104 of 104 conditions, including 52 resource conditions, recovered from public binary only",
+  "performance": "135 fresh processes after lengthening warmup/batches; 360 analysis records reused with identical extractor hash",
+  "reproduction": "144 main component/recovered core binaries byte-identical",
+  "not_claimed": ["general component support", "full-input machine-checked proof", "native component runtime measurement", "human reverse-engineering time", "superiority over WASMixer", "patentability"],
+  "failures_retained": ["resource-trigger-v1/failure.json", "resource-trigger-v2/check.json", "resource-trigger-report-v1/failure.json", "resource-trigger-performance-v1", "resource-trigger-runtime-probe-v1/probe.json"],
+  "external_publication": false,
+  "push": false
+}

@@ -1,0 +1,9 @@
+
+int32_t run(int32_t p0, int32_t p1) {
+    int32_t t0 = wasm_i32_add(p0, INT32_C(-1640531527));
+    int32_t t1 = wasm_i32_sub(p1, p0);
+    int32_t t2 = wasm_i32_mul(t0, t1);
+    int32_t t3 = wasm_i32_mul(p1, INT32_C(17));
+    int32_t t4 = wasm_i32_add(t2, t3);
+    return t4;
+}

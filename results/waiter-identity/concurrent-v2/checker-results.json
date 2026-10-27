@@ -1,0 +1,72 @@
+[
+  {
+    "name": "writer",
+    "validWasm": true,
+    "expected": true,
+    "accepted": true,
+    "reason": null
+  },
+  {
+    "name": "atomic-store",
+    "validWasm": true,
+    "expected": true,
+    "accepted": true,
+    "reason": null
+  },
+  {
+    "name": "ordinary-store",
+    "validWasm": true,
+    "expected": true,
+    "accepted": true,
+    "reason": null
+  },
+  {
+    "name": "atomic-load",
+    "validWasm": true,
+    "expected": true,
+    "accepted": true,
+    "reason": null
+  },
+  {
+    "name": "wait32",
+    "validWasm": true,
+    "expected": false,
+    "accepted": false,
+    "reason": "unsupported instruction memory.atomic.wait32"
+  },
+  {
+    "name": "wait64",
+    "validWasm": true,
+    "expected": false,
+    "accepted": false,
+    "reason": "unsupported instruction memory.atomic.wait64"
+  },
+  {
+    "name": "notify",
+    "validWasm": true,
+    "expected": false,
+    "accepted": false,
+    "reason": "unsupported instruction memory.atomic.notify"
+  },
+  {
+    "name": "dead-notify",
+    "validWasm": true,
+    "expected": false,
+    "accepted": false,
+    "reason": "unsupported instruction memory.atomic.notify"
+  },
+  {
+    "name": "host-import",
+    "validWasm": true,
+    "expected": false,
+    "accepted": false,
+    "reason": "exact sole shared-memory import required"
+  },
+  {
+    "name": "memory-export",
+    "validWasm": true,
+    "expected": false,
+    "accepted": false,
+    "reason": "single numerical entry required"
+  }
+]

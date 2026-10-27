@@ -1,0 +1,13 @@
+# 妥当性判定へ条件式を移す仮説
+
+2026-10-22、実装前の設計。共有memoryの符号化とは別に、Wasmの型検査状態を計算媒体として使う。主発明への採用は未定。
+
+CNFの各clauseを空結果型blockにし、literalが真ならunreachable、偽ならnopを生成する。末尾にoperandのないi32.add/dropを置く。clause内にunreachableがあればstack-polymorphicな検査で通り、なければunderflowで落ちる。全blockが通ることがCNFの真と一致する。生成した補助モジュールは実行せず、標準WebAssembly.validateで判定する。外側の変換プログラムは常に妥当な実Wasmである。
+
+Wasm固有のunreachable typingを利用するが、言語・実行モデルを変える一般的難読化は既知。新規性の候補は条件式を型検査の妥当性へ移す具体的な生成規則に限定する。既存研究と同一の先行例が検索で見つからないだけで新規と断言しない。
+
+前案の安いdecoderを持たないことを狙うが、より強い反証として、バイナリとホスト実装だけからvalidatorの動作を要約して元のBoolean条件を取り出す。この専用解析が低費用なら、host境界や標準optimizerに残ることを耐性と数えない。
+
+比較：元のCNF直接評価、同じbyte生成を専用のclause recognizerで判定する対照、標準validator版、回復した条件式。入力は2個のi32を64個のBoolean変数と解釈した小規模policy条件。3種類のCNFを使うが、実アプリ3件とはしない。raw/O3、境界・固定seed乱数・正負の具体例・別WABT判定で検証する。実行時間、サイズ、線形memory、process RSS、変換時間、解析時間を測る。
+
+ホスト契約の変更を隠さない。元の純粋関数に対し、変換後は専用memoryと同期validate importを要する。ホストは渡されたbyte列の標準validation結果だけを返し、callbackや再入を行わない。全Wasmへ適用できる汎用変換ではない。変換器の形式証明、解析不能性、秘密鍵、検出回避を目的としない。

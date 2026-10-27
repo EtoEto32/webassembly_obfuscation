@@ -1,0 +1,154 @@
+{
+  "cliVersion": "wasmtime 50.0.0 (ebe5e8df1 2026-10-20)",
+  "cases": [
+    {
+      "name": "accepted-0-0",
+      "expected": "accepted",
+      "actual": "accepted",
+      "run": {
+        "command": [
+          "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-wasmtime-cli-v50.0.0\\wasmtime.exe",
+          "wizer",
+          "results\\state-witness\\wizer-comparison-v1\\accepted-0-0.wasm",
+          "-o",
+          "results\\state-witness\\wizer-comparison-v1\\accepted-0-0-snapshot.wasm"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "snapshotBytes": 168
+    },
+    {
+      "name": "accepted-0-1",
+      "expected": "accepted",
+      "actual": "accepted",
+      "run": {
+        "command": [
+          "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-wasmtime-cli-v50.0.0\\wasmtime.exe",
+          "wizer",
+          "results\\state-witness\\wizer-comparison-v1\\accepted-0-1.wasm",
+          "-o",
+          "results\\state-witness\\wizer-comparison-v1\\accepted-0-1-snapshot.wasm"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "snapshotBytes": 176
+    },
+    {
+      "name": "accepted-1-0",
+      "expected": "accepted",
+      "actual": "accepted",
+      "run": {
+        "command": [
+          "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-wasmtime-cli-v50.0.0\\wasmtime.exe",
+          "wizer",
+          "results\\state-witness\\wizer-comparison-v1\\accepted-1-0.wasm",
+          "-o",
+          "results\\state-witness\\wizer-comparison-v1\\accepted-1-0-snapshot.wasm"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "snapshotBytes": 168
+    },
+    {
+      "name": "accepted-1-1",
+      "expected": "accepted",
+      "actual": "accepted",
+      "run": {
+        "command": [
+          "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-wasmtime-cli-v50.0.0\\wasmtime.exe",
+          "wizer",
+          "results\\state-witness\\wizer-comparison-v1\\accepted-1-1.wasm",
+          "-o",
+          "results\\state-witness\\wizer-comparison-v1\\accepted-1-1-snapshot.wasm"
+        ],
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "snapshotBytes": 176
+    },
+    {
+      "name": "drop-init",
+      "expected": "unsupported-data.drop",
+      "actual": "unsupported-data.drop",
+      "run": {
+        "command": [
+          "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-wasmtime-cli-v50.0.0\\wasmtime.exe",
+          "wizer",
+          "results\\state-witness\\wizer-comparison-v1\\drop-init.wasm",
+          "-o",
+          "results\\state-witness\\wizer-comparison-v1\\drop-init-snapshot.wasm"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Error: unsupported `data.drop` instruction\n"
+      }
+    },
+    {
+      "name": "drop-later",
+      "expected": "unsupported-data.drop",
+      "actual": "unsupported-data.drop",
+      "run": {
+        "command": [
+          "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-wasmtime-cli-v50.0.0\\wasmtime.exe",
+          "wizer",
+          "results\\state-witness\\wizer-comparison-v1\\drop-later.wasm",
+          "-o",
+          "results\\state-witness\\wizer-comparison-v1\\drop-later-snapshot.wasm"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Error: unsupported `data.drop` instruction\n"
+      }
+    },
+    {
+      "name": "drop-unreachable",
+      "expected": "unsupported-data.drop",
+      "actual": "unsupported-data.drop",
+      "run": {
+        "command": [
+          "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-wasmtime-cli-v50.0.0\\wasmtime.exe",
+          "wizer",
+          "results\\state-witness\\wizer-comparison-v1\\drop-unreachable.wasm",
+          "-o",
+          "results\\state-witness\\wizer-comparison-v1\\drop-unreachable-snapshot.wasm"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Error: unsupported `data.drop` instruction\n"
+      }
+    },
+    {
+      "name": "table-later",
+      "expected": "unsupported-table.init",
+      "actual": "unsupported-table.init",
+      "run": {
+        "command": [
+          "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-wasmtime-cli-v50.0.0\\wasmtime.exe",
+          "wizer",
+          "results\\state-witness\\wizer-comparison-v1\\table-later.wasm",
+          "-o",
+          "results\\state-witness\\wizer-comparison-v1\\table-later-snapshot.wasm"
+        ],
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Error: unsupported `table.init` instruction\n"
+      }
+    }
+  ],
+  "accepted": 4,
+  "unsupported": 4,
+  "originalApiCallsPerEngine": 40,
+  "observationPairsPerEngine": 20,
+  "initializersPerEngine": 4,
+  "mismatchesPerEngine": 0,
+  "contract": "original after initializer vs pre-initialized output; same original API and public memory",
+  "generalEquivalenceProof": false,
+  "naturalBug": false
+}

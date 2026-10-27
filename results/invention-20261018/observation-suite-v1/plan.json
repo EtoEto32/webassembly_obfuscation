@@ -1,0 +1,247 @@
+{
+  "date": "2026-10-18",
+  "programs": {
+    "product": [
+      "mul",
+      [
+        "add",
+        [
+          "mul",
+          "v0",
+          "v1"
+        ],
+        [
+          "mul",
+          "v2",
+          "v0"
+        ]
+      ],
+      [
+        "add",
+        [
+          "mul",
+          "v1",
+          "v2"
+        ],
+        1
+      ]
+    ],
+    "score-square": [
+      "mul",
+      [
+        "add",
+        [
+          "add",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ],
+          [
+            "mul",
+            "v2",
+            "v0"
+          ]
+        ],
+        [
+          "mul",
+          "v1",
+          "v2"
+        ]
+      ],
+      [
+        "add",
+        [
+          "add",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ],
+          [
+            "mul",
+            "v2",
+            "v0"
+          ]
+        ],
+        [
+          "mul",
+          "v1",
+          "v2"
+        ]
+      ]
+    ],
+    "interpolation": [
+      "add",
+      [
+        "add",
+        "v0",
+        [
+          "mul",
+          [
+            "sub",
+            "v1",
+            "v0"
+          ],
+          "v2"
+        ]
+      ],
+      [
+        "mul",
+        [
+          "sub",
+          "v0",
+          "v1"
+        ],
+        [
+          "add",
+          [
+            "mul",
+            "v2",
+            "v2"
+          ],
+          1
+        ]
+      ]
+    ],
+    "cubic-product": [
+      "mul",
+      [
+        "add",
+        [
+          "mul",
+          "v0",
+          "v1"
+        ],
+        "v2"
+      ],
+      [
+        "add",
+        [
+          "sub",
+          "v0",
+          "v2"
+        ],
+        "v1"
+      ]
+    ],
+    "determinant-control": [
+      "sub",
+      [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      [
+        "mul",
+        "v2",
+        "v2"
+      ]
+    ]
+  },
+  "targets": {
+    "product": [
+      "add",
+      [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      [
+        "mul",
+        "v2",
+        "v0"
+      ]
+    ],
+    "score-square": [
+      "add",
+      [
+        "add",
+        [
+          "mul",
+          "v0",
+          "v1"
+        ],
+        [
+          "mul",
+          "v2",
+          "v0"
+        ]
+      ],
+      [
+        "mul",
+        "v1",
+        "v2"
+      ]
+    ],
+    "interpolation": [
+      "mul",
+      [
+        "sub",
+        "v0",
+        "v1"
+      ],
+      [
+        "add",
+        [
+          "mul",
+          "v2",
+          "v2"
+        ],
+        1
+      ]
+    ],
+    "cubic-product": [
+      "add",
+      [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      "v2"
+    ],
+    "determinant-control": null
+  },
+  "modes": [
+    "plain",
+    "output-only",
+    "random",
+    "frontier",
+    "mba"
+  ],
+  "levels": [
+    "raw",
+    "O2",
+    "O3"
+  ],
+  "seed": 20261018,
+  "training": 12,
+  "holdout": 128,
+  "correctness_random": 512,
+  "timing": {
+    "warmup_batches": 12,
+    "calls_per_batch": 200000,
+    "blocks": 15,
+    "order": "cyclic Latin square over 15 variants per program"
+  },
+  "flags": [
+    "--no-liftoff",
+    "--no-wasm-tier-up",
+    "--no-wasm-lazy-compilation",
+    "--trace-wasm-compilation-times"
+  ],
+  "attack": {
+    "operations": [
+      "add",
+      "sub",
+      "mul",
+      "xor",
+      "and",
+      "or"
+    ],
+    "max_ops": 2,
+    "max_attempts": 1000000
+  },
+  "scope": "Five controlled integer kernels, not five independent real-world applications. One no-applicable-region control.",
+  "success": "Do not credit unsupported probes, bounded search failures, or 1-vs-2 operation differences as practical resistance."
+}

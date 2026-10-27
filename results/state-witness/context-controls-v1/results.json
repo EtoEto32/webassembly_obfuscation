@@ -1,0 +1,187 @@
+{
+  "node": "v24.15.0",
+  "summary": {
+    "controls": 14,
+    "executed": 13,
+    "inputConditions": 19,
+    "apiCallsPerEngine": 76
+  },
+  "rows": [
+    {
+      "name": "drop-before-init",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "init-before-drop",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": false
+        }
+      ]
+    },
+    {
+      "name": "callee-drop",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "callee-read",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": false
+        }
+      ]
+    },
+    {
+      "name": "both-branches-drop",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [
+            0
+          ],
+          "same": true
+        },
+        {
+          "args": [
+            1
+          ],
+          "same": true
+        },
+        {
+          "args": [
+            -1
+          ],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "one-branch-drop",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [
+            0
+          ],
+          "same": false
+        },
+        {
+          "args": [
+            1
+          ],
+          "same": true
+        },
+        {
+          "args": [
+            -1
+          ],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "trap-before-read",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "branch-trap-or-drop",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [
+            0
+          ],
+          "same": true
+        },
+        {
+          "args": [
+            1
+          ],
+          "same": true
+        },
+        {
+          "args": [
+            -1
+          ],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "argument-call-drop",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "unused-private-read",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "indirect-read",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": false
+        }
+      ]
+    },
+    {
+      "name": "safe-zero-source",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": true
+        }
+      ]
+    },
+    {
+      "name": "recursive-unproved",
+      "status": "not-executed-recursion"
+    },
+    {
+      "name": "return-unproved",
+      "status": "matches-wasmtime",
+      "observations": [
+        {
+          "args": [],
+          "same": true
+        }
+      ]
+    }
+  ]
+}

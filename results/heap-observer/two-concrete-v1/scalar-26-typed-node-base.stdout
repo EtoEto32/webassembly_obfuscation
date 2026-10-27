@@ -1,0 +1,22 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export global$
+[LoggingExternalInterface logging -255]
+[fuzz-exec] export global$_3
+[LoggingExternalInterface logging null]
+[fuzz-exec] export func
+[fuzz-exec] note result: func => function
+[fuzz-exec] export func_13
+exception thrown: RuntimeError: illegal cast
+[fuzz-exec] export func_17
+[fuzz-exec] note result: func_17 => function
+[fuzz-exec] export func_18
+[fuzz-exec] note result: func_18 => function
+[fuzz-exec] export func_19_invoker
+[fuzz-exec] export func_21_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_23_invoker
+[fuzz-exec] export func_25
+[LoggingExternalInterface logging null]
+exception thrown: RuntimeError: dereferencing a null pointer
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_13","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: illegal cast"},{"name":"func_17","known":true,"status":"returned","unsupported":[]},{"name":"func_18","known":true,"status":"returned","unsupported":[]},{"name":"func_19_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_21_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_23_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_25","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null}]}

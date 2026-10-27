@@ -1,0 +1,13 @@
+[fuzz-exec] export func_10
+[fuzz-exec] note result: func_10 => object(object(object(null)))
+[fuzz-exec] export func_10_invoker
+[fuzz-exec] export func_12
+[LoggingExternalInterface logging -536870912 -1]
+[LoggingExternalInterface logging -4096]
+exception thrown: RuntimeError: dereferencing null pointer
+[fuzz-exec] export func_13_invoker
+[LoggingExternalInterface logging 0]
+[LoggingExternalInterface logging 0]
+[fuzz-exec] export func_17_invoker
+[fuzz-exec] export func_19_invoker
+[caller-study] {"caller":"typed","observer":"flat","calls":[{"name":"func_10","known":true,"status":"returned","unsupported":[]},{"name":"func_10_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_12","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing null pointer"},{"name":"func_13_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_17_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_19_invoker","known":true,"status":"returned","unsupported":[]}],"events":0,"distinct":0,"trace":[],"multi_slots":0}

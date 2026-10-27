@@ -1,0 +1,11 @@
+# 任意部分書込みと全上書きの契約を分ける
+
+2026-10-24、実装前計画。既存`writes: public`は、各importで解析対象の全公開cellへ左右共通の任意値を必ず代入する効果である。これは許可範囲のmay-write summaryではない。書込みを省くhostや一部cellだけ書くhostを含むと解釈してはいけない。旧実験のharnessは全cellを代入していたため、その実測契約を変更しない。
+
+`writes: may-public`を追加する。各呼出し・各公開cellに共通Boolean maskと共通の任意値を与え、maskが真のcellだけ上書きする。全mask偽、すなわちno-opも含む。readはwrite前に観測し、左右で同じmask/valueを使う。引数/返値・再入・grow・host trap等の旧制限は維持する。
+
+Kの等式連言Rに対して、部分書込み閉包は `R AND close_all(R)` で計算できると予想する。全上書き後にも普遍的に成立する非自明な等式は、書込み外の等式か、同一cellの左右一致だけである。前者は任意maskで不変、後者はno-op時のRと共通代入から保たれる。新しい一般WP原理ではなく、この限定等式言語の簡約である。一般Boolean式へは拡張しない。
+
+独立arrayモデルは全cellのmaskをForAllで量化する。具体BFSは各cellについて書かない選択と全代表値を列挙する。従来16 controlの128追加契約を両engine・array義務・BFSで照合し、旧256契約の条件が変わらないことも確かめる。must-overwriteをmay-writeと誤読したときに判定が変わる件数を分離する。
+
+加えて2cell以上の独立controlで部分maskを検査する。一般Boolean式では、両cellの左右一致状態が同じという同値式が、no-opと全上書きでは保たれても片方だけの上書きでは壊れる。この反例を添えて適用範囲を限定する。

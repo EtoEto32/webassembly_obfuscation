@@ -1,0 +1,204 @@
+{
+  "summary": {
+    "hostContractNegativeCases": 6,
+    "correctedControls": 6,
+    "mismatches": 0
+  },
+  "rows": [
+    {
+      "optimization": "raw",
+      "kind": "wrong-contract",
+      "corrected": false,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "revoke-1-write",
+        "physical-write-1"
+      ],
+      "contents": [
+        "",
+        "effect",
+        ""
+      ]
+    },
+    {
+      "optimization": "raw",
+      "kind": "wrong-contract",
+      "corrected": true,
+      "admitted": false,
+      "effects": 0,
+      "order": [
+        "revoke-1-write"
+      ],
+      "contents": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "optimization": "raw",
+      "kind": "mutable-destination",
+      "corrected": false,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "revoke-2-write",
+        "physical-write-2"
+      ],
+      "contents": [
+        "",
+        "",
+        "effect"
+      ]
+    },
+    {
+      "optimization": "raw",
+      "kind": "mutable-destination",
+      "corrected": true,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "revoke-2-write",
+        "physical-write-0"
+      ],
+      "contents": [
+        "effect",
+        "",
+        ""
+      ]
+    },
+    {
+      "optimization": "raw",
+      "kind": "async-executor",
+      "corrected": false,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "logical-admission",
+        "revoke-0-write",
+        "physical-write-0"
+      ],
+      "contents": [
+        "effect",
+        "",
+        ""
+      ]
+    },
+    {
+      "optimization": "raw",
+      "kind": "async-executor",
+      "corrected": true,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "logical-admission",
+        "physical-write-0",
+        "revoke-0-write"
+      ],
+      "contents": [
+        "effect",
+        "",
+        ""
+      ]
+    },
+    {
+      "optimization": "optimized",
+      "kind": "wrong-contract",
+      "corrected": false,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "revoke-1-write",
+        "physical-write-1"
+      ],
+      "contents": [
+        "",
+        "effect",
+        ""
+      ]
+    },
+    {
+      "optimization": "optimized",
+      "kind": "wrong-contract",
+      "corrected": true,
+      "admitted": false,
+      "effects": 0,
+      "order": [
+        "revoke-1-write"
+      ],
+      "contents": [
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "optimization": "optimized",
+      "kind": "mutable-destination",
+      "corrected": false,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "revoke-2-write",
+        "physical-write-2"
+      ],
+      "contents": [
+        "",
+        "",
+        "effect"
+      ]
+    },
+    {
+      "optimization": "optimized",
+      "kind": "mutable-destination",
+      "corrected": true,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "revoke-2-write",
+        "physical-write-0"
+      ],
+      "contents": [
+        "effect",
+        "",
+        ""
+      ]
+    },
+    {
+      "optimization": "optimized",
+      "kind": "async-executor",
+      "corrected": false,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "logical-admission",
+        "revoke-0-write",
+        "physical-write-0"
+      ],
+      "contents": [
+        "effect",
+        "",
+        ""
+      ]
+    },
+    {
+      "optimization": "optimized",
+      "kind": "async-executor",
+      "corrected": true,
+      "admitted": true,
+      "effects": 1,
+      "order": [
+        "logical-admission",
+        "physical-write-0",
+        "revoke-0-write"
+      ],
+      "contents": [
+        "effect",
+        "",
+        ""
+      ]
+    }
+  ],
+  "scope": "deliberately trusted-host contract violations; not attacks inside the declared threat model; async case distinguishes logical admission from OS invocation, not reversal of a previously admitted effect"
+}

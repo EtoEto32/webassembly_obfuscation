@@ -1,0 +1,735 @@
+{
+  "binaries": {
+    "controls/memory-after.wasm": "a9b313918e40e683070cd82e960e0a1d4bfc9eaa9ce405e8666a5e0a0b8e10fb",
+    "controls/memory-before.wasm": "f4d5bbd9d66e64440a0f918de081c11f456e1d9a14ef773098e7369bf98e0364",
+    "controls/memory-read-after-repair.wasm": "08de813911c38a01f0541d5238bc5dd4138bd6d07a8b6074ede8ec1096637f7f",
+    "controls/memory-read-before-repair.wasm": "043402ea3447072b7ce5472687ea48d7060af63a8eb7b6c3b28f04bfaccb4acd",
+    "controls/memory-repair.wasm": "f074b9d13dcf3bcce0f90751e5808e20998963262d227822a8059dcb7988c893",
+    "controls/memory-twice.wasm": "556c9e4674394b917be71a74e2906b581bf8ac5dbc35aae34349b6066ed70e9e",
+    "controls/memory-unreachable.wasm": "348f83043dbdea5c29ce5d450d5943b22149ffb9b1fcb1fa2ae67a26ad0df105",
+    "controls/memory-zero.wasm": "627f46f864aa98edc290406c6850a7309993f5fa993699e59529f62b30072379",
+    "controls/table-after.wasm": "c28c261b2e88d6b4860a875197ac1eebf4d931861ec2f4a4377e17c0c0e29c32",
+    "controls/table-before.wasm": "25abe88d65bb3897ca399739f1c715cb7eae660298aeca65ef0595e9cfbd2813",
+    "controls/table-read-after-repair.wasm": "99b683293e74ce0e2ffefd233f60b75e435b9c6ce0767b5a4085ecb0c8e66bba",
+    "controls/table-read-before-repair.wasm": "f8f9de261ae63759370f53dd29bbd448ac6f1c105f953efe90253ad6d6e51895",
+    "controls/table-repair.wasm": "db598528acedb2a9326988fb6e7b347082b9ff1bfe29eb30047727bb5d03a885",
+    "controls/table-twice.wasm": "562eaeb93476233d4f627337062e780dc4a3396cca3c1cb076d75d6b6a34e8d0",
+    "controls/table-unreachable.wasm": "23be2b12ebf22def492ad3dd7b948b6784ea13a9793412238f958bbea467b40a",
+    "controls/table-zero.wasm": "d2c8c80b8b5837ec9c849a98ae07dc23fff73dffc74fc71bf60aa10f70cd380b",
+    "boundary/0-fill.wasm": "448a6ff9c04d551a47b5575d94ec4f6ab1584cbfe6b2be2b97aa25e8795a72c9",
+    "boundary/0-store.wasm": "850dcdd62c7df9f168e32ab7921494d23e200bd03b47175e6b19c0c618e84560",
+    "boundary/4294967295-fill.wasm": "4b13e618b22ae4f0ecd2abef56e931b277196cb4e749a6f9f5a4b25a8a3a8398",
+    "boundary/4294967295-store.wasm": "5d0592ce86d27d6f7bee25d99c3a991b7bdb6710588e44c4b6ad731f8c40463b",
+    "boundary/65535-fill.wasm": "101b35768f61e85d892ce80e087430b6fce5c737dd97214cb3c377efdc8e3ff4",
+    "boundary/65535-store.wasm": "4831658c2d4b042a7a6120a09da7845ec0688f34cbddb76cac8313071f6628fd",
+    "boundary/65536-fill.wasm": "d8dc23bbd0688a9d422abf961914058f18a0caf8ad9aedf7295e061e6c7f78d6",
+    "boundary/65536-store.wasm": "5e11b6ee0c91e6dbb72f943b613495bbf32b8b894d99f7a07ea4cfbd5bbbcc52",
+    "boundary/argument-import.wasm": "7916490cea59d4a26e7c164ed4150f6f4763f04deedaa0bc3c115c4a6514f134",
+    "boundary/defined-call.wasm": "3e3a231542f3c0a83537a278ee8cefb689280a48403f8245802cba3734cc4c60",
+    "boundary/export-import.wasm": "d909c4939e7873e3383e3a9bfcb0265d897e8d9bcd4caa688ca1acdca25f8449",
+    "boundary/global-state.wasm": "51b5451c989264a081021b4645e3aaffb20a9aa7c082197caca9edd70922343a",
+    "boundary/import-memory.wasm": "7735acd4853529d6b28545a11afc8aadd80e8e5603d348a3c756941964decdde",
+    "boundary/missing-summary.wasm": "eefdcbecbdebedd4d937d8a7bd2328d5520a9387bf72571dd5ea267f25784819",
+    "boundary/nonvoid-import.wasm": "0a5642eed86c0ce3bad1a2c77531ab390c4a5c1c0766785c3e22e0c001295184",
+    "boundary/offset-store.wasm": "dd65c17a6d35932c0dfd054dc8a622c75cfeaf344b9f1fba8ded75de4080ffc8",
+    "boundary/real-loop.wasm": "2b05757b3016cd0376c99c3494732c85f5dfb3a6959e0a46cffbe3268d89ea6b",
+    "boundary/start-function.wasm": "e8547cbdce20971def167e0d898163fff2fb6612436793f6e073ae98ee01f25e",
+    "boundary/value-branch.wasm": "f8a3f4a0897608f14ffcc1e8758fe63a005652d43aeb56827acc4ccf93242f47",
+    "chain/chain-1.wasm": "4a1cb34e030ea1c331d34a75509e44586490d9bbd2eb848a1bf3434387ea5b2f",
+    "chain/chain-32.wasm": "53eeb5ed4dd814245f82e997bd9b51b86d182fe90e6ae4c37c5e922741037eb6",
+    "chain/chain-8.wasm": "2d263f50e969c2fc2d9050fbec2051d74b52ce5465b9eee7552197fee1ec9d11",
+    "chain/chain-96.wasm": "38920e8d8669693f360c2c9e0a2aa70fded7dab7e977028c397bf822da9e1509",
+    "may/memory-after.wasm": "a9b313918e40e683070cd82e960e0a1d4bfc9eaa9ce405e8666a5e0a0b8e10fb",
+    "may/memory-before.wasm": "f4d5bbd9d66e64440a0f918de081c11f456e1d9a14ef773098e7369bf98e0364",
+    "may/memory-read-after-repair.wasm": "08de813911c38a01f0541d5238bc5dd4138bd6d07a8b6074ede8ec1096637f7f",
+    "may/memory-read-before-repair.wasm": "043402ea3447072b7ce5472687ea48d7060af63a8eb7b6c3b28f04bfaccb4acd",
+    "may/memory-repair.wasm": "f074b9d13dcf3bcce0f90751e5808e20998963262d227822a8059dcb7988c893",
+    "may/memory-twice.wasm": "556c9e4674394b917be71a74e2906b581bf8ac5dbc35aae34349b6066ed70e9e",
+    "may/memory-unreachable.wasm": "348f83043dbdea5c29ce5d450d5943b22149ffb9b1fcb1fa2ae67a26ad0df105",
+    "may/memory-zero.wasm": "627f46f864aa98edc290406c6850a7309993f5fa993699e59529f62b30072379",
+    "may/table-after.wasm": "c28c261b2e88d6b4860a875197ac1eebf4d931861ec2f4a4377e17c0c0e29c32",
+    "may/table-before.wasm": "25abe88d65bb3897ca399739f1c715cb7eae660298aeca65ef0595e9cfbd2813",
+    "may/table-read-after-repair.wasm": "99b683293e74ce0e2ffefd233f60b75e435b9c6ce0767b5a4085ecb0c8e66bba",
+    "may/table-read-before-repair.wasm": "f8f9de261ae63759370f53dd29bbd448ac6f1c105f953efe90253ad6d6e51895",
+    "may/table-repair.wasm": "db598528acedb2a9326988fb6e7b347082b9ff1bfe29eb30047727bb5d03a885",
+    "may/table-twice.wasm": "562eaeb93476233d4f627337062e780dc4a3396cca3c1cb076d75d6b6a34e8d0",
+    "may/table-unreachable.wasm": "23be2b12ebf22def492ad3dd7b948b6784ea13a9793412238f958bbea467b40a",
+    "may/table-zero.wasm": "d2c8c80b8b5837ec9c849a98ae07dc23fff73dffc74fc71bf60aa10f70cd380b",
+    "may-pair/memory.wasm": "86b251c8c1b51d20aae3065bbb3e35c6018735fbc9788d372e6fc206dceee728",
+    "may-pair/table.wasm": "7a38484fd526344d58642e341527c2c2f641a90549940efefc8be6bca595f034",
+    "direct/memory-after.wasm": "a9b313918e40e683070cd82e960e0a1d4bfc9eaa9ce405e8666a5e0a0b8e10fb",
+    "direct/memory-before.wasm": "f4d5bbd9d66e64440a0f918de081c11f456e1d9a14ef773098e7369bf98e0364",
+    "direct/memory-read-after-repair.wasm": "08de813911c38a01f0541d5238bc5dd4138bd6d07a8b6074ede8ec1096637f7f",
+    "direct/memory-read-before-repair.wasm": "043402ea3447072b7ce5472687ea48d7060af63a8eb7b6c3b28f04bfaccb4acd",
+    "direct/memory-repair.wasm": "f074b9d13dcf3bcce0f90751e5808e20998963262d227822a8059dcb7988c893",
+    "direct/memory-twice.wasm": "556c9e4674394b917be71a74e2906b581bf8ac5dbc35aae34349b6066ed70e9e",
+    "direct/memory-unreachable.wasm": "348f83043dbdea5c29ce5d450d5943b22149ffb9b1fcb1fa2ae67a26ad0df105",
+    "direct/memory-zero.wasm": "627f46f864aa98edc290406c6850a7309993f5fa993699e59529f62b30072379",
+    "direct/table-after.wasm": "c28c261b2e88d6b4860a875197ac1eebf4d931861ec2f4a4377e17c0c0e29c32",
+    "direct/table-before.wasm": "25abe88d65bb3897ca399739f1c715cb7eae660298aeca65ef0595e9cfbd2813",
+    "direct/table-read-after-repair.wasm": "99b683293e74ce0e2ffefd233f60b75e435b9c6ce0767b5a4085ecb0c8e66bba",
+    "direct/table-read-before-repair.wasm": "f8f9de261ae63759370f53dd29bbd448ac6f1c105f953efe90253ad6d6e51895",
+    "direct/table-repair.wasm": "db598528acedb2a9326988fb6e7b347082b9ff1bfe29eb30047727bb5d03a885",
+    "direct/table-twice.wasm": "562eaeb93476233d4f627337062e780dc4a3396cca3c1cb076d75d6b6a34e8d0",
+    "direct/table-unreachable.wasm": "23be2b12ebf22def492ad3dd7b948b6784ea13a9793412238f958bbea467b40a",
+    "direct/table-zero.wasm": "d2c8c80b8b5837ec9c849a98ae07dc23fff73dffc74fc71bf60aa10f70cd380b",
+    "direct-pair/memory.wasm": "86b251c8c1b51d20aae3065bbb3e35c6018735fbc9788d372e6fc206dceee728",
+    "direct-pair/table.wasm": "7a38484fd526344d58642e341527c2c2f641a90549940efefc8be6bca595f034",
+    "direct-chain/chain-1.wasm": "4a1cb34e030ea1c331d34a75509e44586490d9bbd2eb848a1bf3434387ea5b2f",
+    "direct-chain/chain-32.wasm": "53eeb5ed4dd814245f82e997bd9b51b86d182fe90e6ae4c37c5e922741037eb6",
+    "direct-chain/chain-8.wasm": "2d263f50e969c2fc2d9050fbec2051d74b52ce5465b9eee7552197fee1ec9d11",
+    "direct-chain/chain-96.wasm": "38920e8d8669693f360c2c9e0a2aa70fded7dab7e977028c397bf822da9e1509"
+  },
+  "results": {
+    "controls": {
+      "contracts": 256,
+      "runtimeComparisons": 1228,
+      "apiCalls": 2732,
+      "hostCalls": 1988,
+      "cellWrites": 896,
+      "preparationCalls": 2456,
+      "pureTagCalls": 1847
+    },
+    "check": {
+      "contracts": 256,
+      "unsat": 1164,
+      "unknown": 0
+    },
+    "ablation": {
+      "summary": {
+        "erase-import": {
+          "falseEqual": 90,
+          "falseDifferent": 0
+        },
+        "ignore-read": {
+          "falseEqual": 14,
+          "falseDifferent": 0
+        },
+        "ignore-write": {
+          "falseEqual": 34,
+          "falseDifferent": 0
+        },
+        "boundary-only": {
+          "falseEqual": 70,
+          "falseDifferent": 12
+        }
+      },
+      "contracts": 256,
+      "samples": 512
+    },
+    "finite": {
+      "contracts": 256,
+      "initialStores": 1024,
+      "equal": 674,
+      "different": 350,
+      "maxStates": 14,
+      "transitions": 13490
+    },
+    "generic": {
+      "contracts": 256,
+      "statuses": {
+        "same-condition": 256
+      }
+    },
+    "boundary": {
+      "refusals": 11,
+      "normalizations": 4,
+      "entryCalls": 8
+    },
+    "chain": {
+      "contracts": 8,
+      "apiCalls": 564,
+      "hostCalls": 548,
+      "preparationCalls": 16,
+      "pureTagCalls": 290
+    },
+    "cached": {
+      "contracts": 256,
+      "statuses": {
+        "same-condition": 256
+      }
+    },
+    "may": {
+      "contracts": 128,
+      "runtimeComparisons": 2038,
+      "apiCalls": 4536,
+      "hostCalls": 3020,
+      "cellWrites": 1504,
+      "preparationCalls": 4076,
+      "pureTagCalls": 2584
+    },
+    "may-check": {
+      "contracts": 128,
+      "unsat": 588,
+      "unknown": 0
+    },
+    "may-finite": {
+      "contracts": 128,
+      "initialStores": 512,
+      "equal": 310,
+      "different": 202,
+      "maxStates": 14,
+      "transitions": 12304
+    },
+    "may-generic": {
+      "contracts": 128,
+      "statuses": {
+        "same-condition": 128
+      }
+    },
+    "may-pair": {
+      "pairsPerEngine": 96,
+      "entryCallsPerEngine": 384,
+      "preparationCallsPerEngine": 192,
+      "lemma": {
+        "atomicObligations": [
+          {
+            "atom": [
+              [
+                "l",
+                0
+              ],
+              [
+                "l",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                0
+              ],
+              [
+                "l",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                0
+              ],
+              [
+                "l",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                0
+              ],
+              [
+                "r",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                0
+              ],
+              [
+                "r",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                0
+              ],
+              [
+                "r",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                0
+              ],
+              [
+                "c",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                0
+              ],
+              [
+                "c",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                1
+              ],
+              [
+                "l",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                1
+              ],
+              [
+                "l",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                1
+              ],
+              [
+                "r",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                1
+              ],
+              [
+                "r",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                1
+              ],
+              [
+                "r",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                1
+              ],
+              [
+                "c",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                1
+              ],
+              [
+                "c",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                2
+              ],
+              [
+                "l",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                2
+              ],
+              [
+                "r",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                2
+              ],
+              [
+                "r",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                2
+              ],
+              [
+                "r",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                2
+              ],
+              [
+                "c",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "l",
+                2
+              ],
+              [
+                "c",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                0
+              ],
+              [
+                "r",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                0
+              ],
+              [
+                "r",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                0
+              ],
+              [
+                "r",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                0
+              ],
+              [
+                "c",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                0
+              ],
+              [
+                "c",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                1
+              ],
+              [
+                "r",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                1
+              ],
+              [
+                "r",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                1
+              ],
+              [
+                "c",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                1
+              ],
+              [
+                "c",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                2
+              ],
+              [
+                "r",
+                2
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                2
+              ],
+              [
+                "c",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "r",
+                2
+              ],
+              [
+                "c",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "c",
+                0
+              ],
+              [
+                "c",
+                0
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "c",
+                0
+              ],
+              [
+                "c",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          },
+          {
+            "atom": [
+              [
+                "c",
+                1
+              ],
+              [
+                "c",
+                1
+              ]
+            ],
+            "answer": "unsat"
+          }
+        ],
+        "generalBooleanCounterexample": {
+          "initial": {
+            "left": [
+              0,
+              0
+            ],
+            "right": [
+              1,
+              1
+            ]
+          },
+          "identity": true,
+          "allWrite": true,
+          "partialWrite": false
+        }
+      }
+    },
+    "may-witness": {
+      "pairsPerEngine": 32,
+      "apiCallsPerEngine": 132,
+      "preparationCallsPerEngine": 64
+    },
+    "direct": {
+      "contracts": 384,
+      "runtimeComparisons": 248,
+      "apiCalls": 560,
+      "hostCalls": 436,
+      "cellWrites": 256,
+      "preparationCalls": 496,
+      "pureTagCalls": 510,
+      "isolatedImport": "no-z3-import"
+    },
+    "direct-pair": {
+      "pairsPerEngine": 32,
+      "apiCallsPerEngine": 132,
+      "preparationCallsPerEngine": 64,
+      "extractor": "direct"
+    },
+    "direct-chain": {
+      "contracts": 16,
+      "negativeWitnesses": 12,
+      "maxApiLength": 97,
+      "apiCalls": 1128,
+      "hostCalls": 1096,
+      "cellWrites": 548,
+      "pureTagCalls": 1128,
+      "preparationCalls": 32
+    },
+    "direct-lemma": {
+      "unsat": 90,
+      "unknown": 0,
+      "generalBooleanCounterexample": {
+        "relation": "x == 0 OR y == 0",
+        "candidates": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "missed": [
+          1,
+          1
+        ]
+      }
+    }
+  },
+  "resultFiles": {
+    "may-pair": "manifest.json",
+    "may-witness": "manifest.json",
+    "direct": "manifest.json",
+    "direct-pair": "manifest.json"
+  }
+}

@@ -1,0 +1,11 @@
+# Aの実境界性能と拒否精度
+
+2026-10-24、性能実行前に固定。実Component追試の後、生成された抽出器のコストを正しい手書き抽出と比較する。新規性の証明にはしない。
+
+方式はgenerated-operation、manual-operation、generated-object、generated-global。3後者を別の安全方式であると混同しない。operationは必要な操作だけ、objectは同じ実体の全権限、globalは全体の変更を世代で検査する。全方式がslot寿命とone-shot受付を保持する。baselineにも必要な入口認可を実行させる。
+
+Jco opt後の同じComponentからread、copy、batch長1/8/64、optionalを実行する。現在のguestは二つのresourceしか持たないため、list長64は64個の独立実体でなくaliasを含む。同じ2実体での結果を大規模資源数に外挿しない。
+
+各方式5独立process、順序をseedで入れ替える。100 warmup、200回×9 batch。setup→prepare→JS継続→admit→releaseの全経路を測る。台帳初期化・全体整合性assertは測定外にするが全方式で同じ。通常ケースの時間、process RSS/heapとlogical pinの残留、Componentと生成code量を報告。JS測定ではGCとスケジューリングの揺れが残る。
+
+別の非計時テストで二つの実体へのread/write、無関係な第三実体への変更を適用し、oracleと比べる。不正受付・不要拒否を別計上する。性能をよく見せるために失効検査を抜いた方式を安全方式として比較しない。entry-onlyは既存の正当性追試の弱い対照に留める。

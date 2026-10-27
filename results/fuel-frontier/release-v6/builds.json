@@ -1,0 +1,119 @@
+[
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\release.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=release_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=0",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-0.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-0.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-0.wasm"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\release.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=release_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-2.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-2.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-2.wasm"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\release.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=release_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=s",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-s.o"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-s.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\release-v6\\rust-s.wasm"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

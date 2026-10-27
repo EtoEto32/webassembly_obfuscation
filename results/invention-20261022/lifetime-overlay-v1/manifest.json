@@ -1,0 +1,1026 @@
+{
+  "targets": [
+    {
+      "name": "serial",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "serial-plain.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "plain-recovered",
+      "stage": "raw",
+      "file": "serial-plain-recovered.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "serial-plain-O3.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "first",
+      "stage": "raw",
+      "file": "serial-first.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "first-recovered",
+      "stage": "raw",
+      "file": "serial-first-recovered.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "first",
+      "stage": "O3",
+      "file": "serial-first-O3.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "conflict",
+      "stage": "raw",
+      "file": "serial-conflict.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "conflict-recovered",
+      "stage": "raw",
+      "file": "serial-conflict-recovered.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "conflict",
+      "stage": "O3",
+      "file": "serial-conflict-O3.wasm"
+    },
+    {
+      "name": "serial",
+      "mode": "bad",
+      "stage": "raw",
+      "negative": true,
+      "file": "serial-bad.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "branch-plain.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "plain-recovered",
+      "stage": "raw",
+      "file": "branch-plain-recovered.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "branch-plain-O3.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "first",
+      "stage": "raw",
+      "file": "branch-first.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "first-recovered",
+      "stage": "raw",
+      "file": "branch-first-recovered.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "first",
+      "stage": "O3",
+      "file": "branch-first-O3.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "conflict",
+      "stage": "raw",
+      "file": "branch-conflict.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "conflict-recovered",
+      "stage": "raw",
+      "file": "branch-conflict-recovered.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "conflict",
+      "stage": "O3",
+      "file": "branch-conflict-O3.wasm"
+    },
+    {
+      "name": "branch",
+      "mode": "bad",
+      "stage": "raw",
+      "negative": true,
+      "file": "branch-bad.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "diamond-plain.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "plain-recovered",
+      "stage": "raw",
+      "file": "diamond-plain-recovered.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "diamond-plain-O3.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "first",
+      "stage": "raw",
+      "file": "diamond-first.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "first-recovered",
+      "stage": "raw",
+      "file": "diamond-first-recovered.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "first",
+      "stage": "O3",
+      "file": "diamond-first-O3.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "conflict",
+      "stage": "raw",
+      "file": "diamond-conflict.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "conflict-recovered",
+      "stage": "raw",
+      "file": "diamond-conflict-recovered.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "conflict",
+      "stage": "O3",
+      "file": "diamond-conflict-O3.wasm"
+    },
+    {
+      "name": "diamond",
+      "mode": "bad",
+      "stage": "raw",
+      "negative": true,
+      "file": "diamond-bad.wasm"
+    }
+  ],
+  "transforms": [
+    {
+      "name": "serial",
+      "mode": "first",
+      "cells": 12,
+      "interference_edges": 6,
+      "placement": [
+        {
+          "source": 0,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 16,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 64,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 80,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 128,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 144,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 192,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 208,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 256,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 272,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 320,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 336,
+          "width": 8,
+          "target": 0
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 0,
+        "multi_view_bytes": 0
+      },
+      "elapsed_ms": 44.06499999999999
+    },
+    {
+      "name": "serial",
+      "mode": "conflict",
+      "cells": 12,
+      "interference_edges": 6,
+      "placement": [
+        {
+          "source": 0,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 16,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 64,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 80,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 128,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 144,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 192,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 208,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 256,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 272,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 320,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 336,
+          "width": 8,
+          "target": 0
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 0,
+        "multi_view_bytes": 0
+      },
+      "elapsed_ms": 39.9417
+    },
+    {
+      "name": "branch",
+      "mode": "first",
+      "cells": 5,
+      "interference_edges": 1,
+      "placement": [
+        {
+          "source": 0,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 16,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 32,
+          "width": 4,
+          "target": 0
+        },
+        {
+          "source": 48,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 64,
+          "width": 8,
+          "target": 0
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 4,
+        "multi_view_bytes": 4
+      },
+      "elapsed_ms": 38.662399999999984
+    },
+    {
+      "name": "branch",
+      "mode": "conflict",
+      "cells": 5,
+      "interference_edges": 1,
+      "placement": [
+        {
+          "source": 0,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 16,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 32,
+          "width": 4,
+          "target": 4
+        },
+        {
+          "source": 48,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 64,
+          "width": 8,
+          "target": 4
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 8,
+        "multi_view_bytes": 8
+      },
+      "elapsed_ms": 37.83160000000008
+    },
+    {
+      "name": "diamond",
+      "mode": "first",
+      "cells": 33,
+      "interference_edges": 16,
+      "placement": [
+        {
+          "source": 0,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 32,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 48,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 64,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 80,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 96,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 112,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 128,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 144,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 160,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 176,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 192,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 208,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 224,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 240,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 256,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 272,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 288,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 304,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 320,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 336,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 352,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 368,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 384,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 400,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 416,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 432,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 448,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 464,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 480,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 496,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 512,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 528,
+          "width": 8,
+          "target": 0
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 0,
+        "multi_view_bytes": 0
+      },
+      "elapsed_ms": 43.430499999999924
+    },
+    {
+      "name": "diamond",
+      "mode": "conflict",
+      "cells": 33,
+      "interference_edges": 16,
+      "placement": [
+        {
+          "source": 0,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 32,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 48,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 64,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 80,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 96,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 112,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 128,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 144,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 160,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 176,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 192,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 208,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 224,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 240,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 256,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 272,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 288,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 304,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 320,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 336,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 352,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 368,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 384,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 400,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 416,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 432,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 448,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 464,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 480,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 496,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 512,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 528,
+          "width": 8,
+          "target": 4
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 4,
+        "multi_view_bytes": 8
+      },
+      "elapsed_ms": 45.87319999999995
+    }
+  ],
+  "attacks": [
+    {
+      "file": "serial-plain.wasm",
+      "status": "recovered",
+      "loads": 18,
+      "stores": 12,
+      "phis": 0,
+      "new_locals": 12,
+      "reader_ms": 15.873399999999982,
+      "normalization_and_compile_ms": 21.397,
+      "elapsed_ms": 37.2709,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "serial-plain-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 0 (i32.xor (local.get 0) (local.get 1)))"
+    },
+    {
+      "file": "serial-first.wasm",
+      "status": "recovered",
+      "loads": 18,
+      "stores": 12,
+      "phis": 0,
+      "new_locals": 12,
+      "reader_ms": 16.358600000000003,
+      "normalization_and_compile_ms": 21.03589999999999,
+      "elapsed_ms": 37.39499999999995,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "serial-first-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 0 (i32.xor (local.get 0) (local.get 1)))"
+    },
+    {
+      "file": "serial-conflict.wasm",
+      "status": "recovered",
+      "loads": 18,
+      "stores": 12,
+      "phis": 0,
+      "new_locals": 12,
+      "reader_ms": 16.899500000000067,
+      "normalization_and_compile_ms": 21.256599999999956,
+      "elapsed_ms": 38.15690000000005,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "serial-conflict-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 0 (i32.xor (local.get 0) (local.get 1)))"
+    },
+    {
+      "file": "branch-plain.wasm",
+      "status": "recovered",
+      "loads": 8,
+      "stores": 6,
+      "phis": 1,
+      "new_locals": 7,
+      "reader_ms": 16.36789999999999,
+      "normalization_and_compile_ms": 21.403700000000022,
+      "elapsed_ms": 37.77209999999997,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "branch-plain-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 2 (i64.load (i32.const 16)))"
+    },
+    {
+      "file": "branch-first.wasm",
+      "status": "recovered",
+      "loads": 8,
+      "stores": 6,
+      "phis": 1,
+      "new_locals": 7,
+      "reader_ms": 16.70689999999997,
+      "normalization_and_compile_ms": 21.313000000000024,
+      "elapsed_ms": 38.020300000000006,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "branch-first-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 2 (i64.load align=1 (i32.const 0)))"
+    },
+    {
+      "file": "branch-conflict.wasm",
+      "status": "recovered",
+      "loads": 8,
+      "stores": 6,
+      "phis": 1,
+      "new_locals": 7,
+      "reader_ms": 15.723200000000048,
+      "normalization_and_compile_ms": 22.178999999999945,
+      "elapsed_ms": 37.90260000000001,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "branch-conflict-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 2 (i64.load align=1 (i32.const 0)))"
+    },
+    {
+      "file": "diamond-plain.wasm",
+      "status": "recovered",
+      "loads": 98,
+      "stores": 65,
+      "phis": 16,
+      "new_locals": 81,
+      "reader_ms": 17.39650000000004,
+      "normalization_and_compile_ms": 22.388300000000022,
+      "elapsed_ms": 39.78539999999997,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "diamond-plain-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 2 (i64.load (i32.const 0)))"
+    },
+    {
+      "file": "diamond-first.wasm",
+      "status": "recovered",
+      "loads": 98,
+      "stores": 65,
+      "phis": 16,
+      "new_locals": 81,
+      "reader_ms": 17.920999999999854,
+      "normalization_and_compile_ms": 21.84730000000013,
+      "elapsed_ms": 39.76889999999989,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "diamond-first-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 2 (i64.load align=1 (i32.const 0)))"
+    },
+    {
+      "file": "diamond-conflict.wasm",
+      "status": "recovered",
+      "loads": 98,
+      "stores": 65,
+      "phis": 16,
+      "new_locals": 81,
+      "reader_ms": 17.35169999999986,
+      "normalization_and_compile_ms": 22.909500000000136,
+      "elapsed_ms": 40.26160000000001,
+      "remaining_memory_ops": 0
+    },
+    {
+      "file": "diamond-conflict-O3.wasm",
+      "status": "unsupported",
+      "reason": "Unsupported expression: (local.tee 2 (i64.load align=1 (i32.const 0)))"
+    }
+  ],
+  "metrics": [
+    {
+      "file": "serial-plain.wasm",
+      "touched_bytes": 72,
+      "cross_width_bytes": 0,
+      "multi_view_bytes": 0
+    },
+    {
+      "file": "serial-plain-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 0 (i32.xor (local.get 0) (local.get 1)))"
+    },
+    {
+      "file": "serial-first.wasm",
+      "touched_bytes": 12,
+      "cross_width_bytes": 0,
+      "multi_view_bytes": 0
+    },
+    {
+      "file": "serial-first-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 0 (i32.xor (local.get 0) (local.get 1)))"
+    },
+    {
+      "file": "serial-conflict.wasm",
+      "touched_bytes": 12,
+      "cross_width_bytes": 0,
+      "multi_view_bytes": 0
+    },
+    {
+      "file": "serial-conflict-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 0 (i32.xor (local.get 0) (local.get 1)))"
+    },
+    {
+      "file": "branch-plain.wasm",
+      "touched_bytes": 32,
+      "cross_width_bytes": 0,
+      "multi_view_bytes": 0
+    },
+    {
+      "file": "branch-plain-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 2 (i64.load (i32.const 16)))"
+    },
+    {
+      "file": "branch-first.wasm",
+      "touched_bytes": 12,
+      "cross_width_bytes": 4,
+      "multi_view_bytes": 4
+    },
+    {
+      "file": "branch-first-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 2 (i64.load align=1 (i32.const 0)))"
+    },
+    {
+      "file": "branch-conflict.wasm",
+      "touched_bytes": 12,
+      "cross_width_bytes": 8,
+      "multi_view_bytes": 8
+    },
+    {
+      "file": "branch-conflict-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 2 (i64.load align=1 (i32.const 0)))"
+    },
+    {
+      "file": "diamond-plain.wasm",
+      "touched_bytes": 200,
+      "cross_width_bytes": 0,
+      "multi_view_bytes": 0
+    },
+    {
+      "file": "diamond-plain-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 2 (i64.load (i32.const 0)))"
+    },
+    {
+      "file": "diamond-first.wasm",
+      "touched_bytes": 12,
+      "cross_width_bytes": 0,
+      "multi_view_bytes": 0
+    },
+    {
+      "file": "diamond-first-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 2 (i64.load align=1 (i32.const 0)))"
+    },
+    {
+      "file": "diamond-conflict.wasm",
+      "touched_bytes": 12,
+      "cross_width_bytes": 4,
+      "multi_view_bytes": 8
+    },
+    {
+      "file": "diamond-conflict-O3.wasm",
+      "unsupported": "Unsupported expression: (local.tee 2 (i64.load align=1 (i32.const 0)))"
+    }
+  ]
+}

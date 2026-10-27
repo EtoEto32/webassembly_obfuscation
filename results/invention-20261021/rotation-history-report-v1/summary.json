@@ -1,0 +1,240 @@
+{
+  "classification": "negative protection result and finite-suffix obstruction; not a new adopted invention",
+  "source_directories": [
+    "rotation-history-v1",
+    "rotation-history-model-v1",
+    "rotation-history-audit-v1",
+    "rotation-history-runtime-v1"
+  ],
+  "wasm_calls": 26496,
+  "wasm_binaries": 24,
+  "expected_traps": 7776,
+  "recovered_source": 8,
+  "recovered_history": 8,
+  "queries_per_binary": 64,
+  "byte_replays": 24,
+  "interpreter_calls": 192,
+  "model": {
+    "exhaustive": [
+      {
+        "width": 1,
+        "sequences": 8,
+        "steps": 16
+      },
+      {
+        "width": 2,
+        "sequences": 384,
+        "steps": 768
+      },
+      {
+        "width": 3,
+        "sequences": 10752,
+        "steps": 21504
+      },
+      {
+        "width": 4,
+        "sequences": 245760,
+        "steps": 491520
+      }
+    ],
+    "random_sequences": 512,
+    "random_steps": 32768,
+    "mismatches": 0,
+    "elapsed_s": 1.7831331
+  },
+  "runtime": [
+    {
+      "file": "wide-source-O3.wasm",
+      "name": "wide",
+      "mode": "source",
+      "bytes": 103,
+      "median_ns": 65.77301025390621,
+      "process_medians_ns": [
+        65.77301025390621,
+        65.58532714843751,
+        66.12243652343746
+      ],
+      "rss_kib": [
+        40752,
+        40800,
+        40704
+      ],
+      "history": 2,
+      "batch_calls": [
+        131072,
+        131072,
+        131072
+      ]
+    },
+    {
+      "file": "wide-history-O3.wasm",
+      "name": "wide",
+      "mode": "history",
+      "bytes": 159,
+      "median_ns": 146.03271484375009,
+      "process_medians_ns": [
+        137.11547851562506,
+        146.03271484375009,
+        146.9985961914061
+      ],
+      "rss_kib": [
+        40748,
+        40952,
+        40788
+      ],
+      "history": 2,
+      "batch_calls": [
+        65536,
+        65536,
+        65536
+      ]
+    },
+    {
+      "file": "byte-source-O3.wasm",
+      "name": "byte",
+      "mode": "source",
+      "bytes": 100,
+      "median_ns": 63.74053955078118,
+      "process_medians_ns": [
+        63.74053955078118,
+        63.903808593750036,
+        63.67034912109384
+      ],
+      "rss_kib": [
+        40764,
+        41036,
+        40880
+      ],
+      "history": 6,
+      "batch_calls": [
+        131072,
+        131072,
+        131072
+      ]
+    },
+    {
+      "file": "byte-history-O3.wasm",
+      "name": "byte",
+      "mode": "history",
+      "bytes": 274,
+      "median_ns": 339.1906738281249,
+      "process_medians_ns": [
+        321.8902587890623,
+        457.08618164062506,
+        339.1906738281249
+      ],
+      "rss_kib": [
+        40872,
+        40688,
+        40640
+      ],
+      "history": 6,
+      "batch_calls": [
+        32768,
+        16384,
+        16384
+      ]
+    },
+    {
+      "file": "half-source-O3.wasm",
+      "name": "half",
+      "mode": "source",
+      "bytes": 101,
+      "median_ns": 64.19143676757817,
+      "process_medians_ns": [
+        65.63110351562503,
+        62.8730773925781,
+        64.19143676757817
+      ],
+      "rss_kib": [
+        41308,
+        40900,
+        40972
+      ],
+      "history": 2,
+      "batch_calls": [
+        131072,
+        131072,
+        131072
+      ]
+    },
+    {
+      "file": "half-history-O3.wasm",
+      "name": "half",
+      "mode": "history",
+      "bytes": 141,
+      "median_ns": 88.09204101562504,
+      "process_medians_ns": [
+        87.59307861328121,
+        93.2342529296876,
+        88.09204101562504
+      ],
+      "rss_kib": [
+        40976,
+        40900,
+        40868
+      ],
+      "history": 2,
+      "batch_calls": [
+        65536,
+        65536,
+        65536
+      ]
+    },
+    {
+      "file": "bit-source-O3.wasm",
+      "name": "bit",
+      "mode": "source",
+      "bytes": 99,
+      "median_ns": 66.47262573242197,
+      "process_medians_ns": [
+        63.0813598632812,
+        66.47262573242197,
+        66.62216186523433
+      ],
+      "rss_kib": [
+        40704,
+        40664,
+        40676
+      ],
+      "history": 32,
+      "batch_calls": [
+        131072,
+        131072,
+        131072
+      ]
+    },
+    {
+      "file": "bit-history-O3.wasm",
+      "name": "bit",
+      "mode": "history",
+      "bytes": 947,
+      "median_ns": 1979.858398437501,
+      "process_medians_ns": [
+        1937.768554687502,
+        1979.858398437501,
+        2094.7265624999995
+      ],
+      "rss_kib": [
+        40748,
+        40712,
+        40720
+      ],
+      "history": 32,
+      "batch_calls": [
+        4096,
+        4096,
+        4096
+      ]
+    }
+  ],
+  "dynamic_suffix_pairs": 12,
+  "dynamic_bit_pairs": 104,
+  "initial_hashes_verified": 83,
+  "environment": {
+    "node": "v24.15.0",
+    "python": "3.9.0 (tags/v3.9.0:9cf6752, Oct  5 2020, 15:34:40) [MSC v.1927 64 bit (AMD64)]",
+    "wabt": "1.0.42",
+    "binaryen": "wasm-opt version 133 (version_133)"
+  }
+}

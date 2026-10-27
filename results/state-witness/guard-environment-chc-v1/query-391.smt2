@@ -1,0 +1,188 @@
+(declare-rel State (Bool Bool Bool Bool Bool Bool Bool Bool Int Int Int Int Int Int Int Int))
+(declare-rel Bad ())
+(declare-var A Int)
+(declare-var B Int)
+(declare-var C Int)
+(declare-var D Int)
+(declare-var E Int)
+(declare-var F Int)
+(declare-var G Int)
+(declare-var H Int)
+(declare-var I Bool)
+(declare-var J Bool)
+(declare-var K Bool)
+(declare-var L Bool)
+(declare-var M Bool)
+(declare-var N Bool)
+(declare-var O Bool)
+(declare-var P Bool)
+(declare-var Q Int)
+(declare-var R Int)
+(declare-var S Int)
+(declare-var T Int)
+(declare-var U Int)
+(declare-var V Int)
+(declare-var W Int)
+(declare-var X Int)
+(declare-var Y Int)
+(declare-var Z Int)
+(declare-var A1 Bool)
+(declare-var B1 Bool)
+(declare-var C1 Bool)
+(declare-var D1 Bool)
+(declare-var E1 Bool)
+(declare-var F1 Bool)
+(declare-var G1 Bool)
+(declare-var H1 Bool)
+(rule (State false false true true true false true true 65 182 258 256 65 182 258 256))
+(rule (! (let ((a!1 (and (State P O N M L K J I H G F E D C B A)
+                (not (and (= H D) (= G C) (= F B) (= E A))))))
+  (=> a!1 Bad)) :named observe_0))
+(rule (! (let ((a!1 (State P O N M L K J I H G F E D C B A)))
+  (=> (and a!1 (= H D) (= G C) (= F B) (= E A) true) a!1)) :named step_0))
+(rule (! (let ((a!1 (and (State P O N M L K J I H G F E D C B A)
+                (not (and (= H D) (= G C) (= F B) (= E A))))))
+  (=> a!1 Bad)) :named observe_1))
+(rule (! (let ((a!1 (State P O N M L K J I H G F E D C B A)))
+  (=> (and a!1 (= H D) (= G C) (= F B) (= E A) true) a!1)) :named step_1))
+(rule (! (let ((a!1 (store (store (store ((as const (Array Int Int)) 0) 1 G)
+                         4294967298
+                         F)
+                  4294967299
+                  E))
+      (a!2 (store (store (store ((as const (Array Int Int)) 0) 0 H) 1 G)
+                  4294967298
+                  F))
+      (a!5 (store (store (store ((as const (Array Int Int)) 0) 1 C)
+                         4294967298
+                         B)
+                  4294967299
+                  A))
+      (a!6 (store (store (store ((as const (Array Int Int)) 0) 0 D) 1 C)
+                  4294967298
+                  B)))
+(let ((a!3 (ite P (store a!1 0 65) (store a!2 4294967299 E)))
+      (a!7 (ite L (store a!5 0 65) (store a!6 4294967299 A))))
+(let ((a!4 (ite (and P O)
+                (select (ite (and P O) (store a!3 1 67) a!3) 0)
+                (select a!3 0)))
+      (a!8 (ite (and L K)
+                (select (ite (and L K) (store a!7 1 67) a!7) 0)
+                (select a!7 0)))
+      (a!9 (store (store (ite (and P O) (store a!3 1 67) a!3)
+                         4294967298
+                         (select a!3 4294967298))
+                  4294967299
+                  (select (ite (and P O) (store a!3 1 67) a!3) 4294967299)))
+      (a!10 (store (store (ite (and L K) (store a!7 1 67) a!7)
+                          4294967298
+                          (select a!7 4294967298))
+                   4294967299
+                   (select (ite (and L K) (store a!7 1 67) a!7) 4294967299))))
+(let ((a!11 (= (select (ite (and P O) a!9 a!3) 1)
+               (select (ite (and L K) a!10 a!7) 1)))
+      (a!12 (= (select (ite (and P O) a!9 a!3) 4294967298)
+               (select (ite (and L K) a!10 a!7) 4294967298)))
+      (a!13 (= (select (ite (and P O) a!9 a!3) 4294967299)
+               (select (ite (and L K) a!10 a!7) 4294967299))))
+(let ((a!14 (and (State P O N M L K J I H G F E D C B A)
+                 (not (and (= a!4 a!8) a!11 a!12 a!13)))))
+  (=> a!14 Bad)))))) :named observe_2))
+(rule (! (let ((a!1 (store (store (store ((as const (Array Int Int)) 0) 1 G)
+                         4294967298
+                         F)
+                  4294967299
+                  E))
+      (a!2 (store (store (store ((as const (Array Int Int)) 0) 0 H) 1 G)
+                  4294967298
+                  F))
+      (a!5 (store (store (store ((as const (Array Int Int)) 0) 1 C)
+                         4294967298
+                         B)
+                  4294967299
+                  A))
+      (a!6 (store (store (store ((as const (Array Int Int)) 0) 0 D) 1 C)
+                  4294967298
+                  B)))
+(let ((a!3 (ite P (store a!1 0 65) (store a!2 4294967299 E)))
+      (a!7 (ite L (store a!5 0 65) (store a!6 4294967299 A))))
+(let ((a!4 (ite (and P O)
+                (select (ite (and P O) (store a!3 1 67) a!3) 0)
+                (select a!3 0)))
+      (a!8 (ite (and L K)
+                (select (ite (and L K) (store a!7 1 67) a!7) 0)
+                (select a!7 0)))
+      (a!9 (select (ite (and P O) (store a!3 1 67) a!3) 4294967299))
+      (a!11 (select (ite (and L K) (store a!7 1 67) a!7) 4294967299))
+      (a!16 (ite (and P O)
+                 (select (ite (and P O) (store a!3 1 67) a!3) 1)
+                 (select a!3 1)))
+      (a!17 (ite (and L K)
+                 (select (ite (and L K) (store a!7 1 67) a!7) 1)
+                 (select a!7 1))))
+(let ((a!10 (store (store (ite (and P O) (store a!3 1 67) a!3)
+                          4294967298
+                          (select a!3 4294967298))
+                   4294967299
+                   a!9))
+      (a!12 (store (store (ite (and L K) (store a!7 1 67) a!7)
+                          4294967298
+                          (select a!7 4294967298))
+                   4294967299
+                   a!11)))
+(let ((a!13 (= (select (ite (and P O) a!10 a!3) 1)
+               (select (ite (and L K) a!12 a!7) 1)))
+      (a!14 (= (select (ite (and P O) a!10 a!3) 4294967298)
+               (select (ite (and L K) a!12 a!7) 4294967298)))
+      (a!15 (= (select (ite (and P O) a!10 a!3) 4294967299)
+               (select (ite (and L K) a!12 a!7) 4294967299))))
+  (=> (and (State P O N M L K J I H G F E D C B A)
+           (= a!4 a!8)
+           a!13
+           a!14
+           a!15
+           false)
+      (State false
+             O
+             N
+             M
+             false
+             K
+             J
+             I
+             a!4
+             a!16
+             (select a!3 4294967298)
+             (ite (and P O) a!9 (select a!3 4294967299))
+             a!8
+             a!17
+             (select a!7 4294967298)
+             (ite (and L K) a!11 (select a!7 4294967299))))))))) :named step_2))
+(rule (! (let ((a!1 (and (State P O N M L K J I H G F E D C B A)
+                (not (and (= H D) (= G C) (= F B) (= E A))))))
+  (=> a!1 Bad)) :named observe_3))
+(rule (! (let ((a!1 (State P O N M L K J I H G F E D C B A)))
+  (=> (and a!1 (= H D) (= G C) (= F B) (= E A) false) a!1)) :named step_3))
+(rule (! (let ((a!1 (and (State P O N M L K J I H G F E D C B A)
+                (not (and (= H D) (= G C) (= F B) (= E A))))))
+  (=> a!1 Bad)) :named observe_4))
+(rule (! (=> (and (State P O N M L K J I H G F E D C B A)
+         (= H D)
+         (= G C)
+         (= F B)
+         (= E A)
+         false)
+    (State false O N M false K J I H G F E D C B A)) :named step_4))
+(rule (! (let ((a!1 (and (State P O N M L K J I H G F E D C B A)
+                (not (and (= H D) (= G C) (= F B) (= E A))))))
+  (=> a!1 Bad)) :named observe_5))
+(rule (! (let ((a!1 (State P O N M L K J I H G F E D C B A)))
+  (=> (and a!1 (= H D) (= G C) (= F B) (= E A) true) a!1)) :named step_5))
+(rule (! (=> (and (State P O N M L K J I R Q H G F E D C)
+         (>= B 0)
+         (<= B 255)
+         (>= A 0)
+         (<= A 255))
+    (State P O N M L K J I B A H G B A D C)) :named common_public_assignment))
+
+(query Bad)

@@ -1,0 +1,161 @@
+{
+  "byte_replays": 3,
+  "SMT": [
+    {
+      "name": "mix8",
+      "mode": "feedback",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "mix8",
+      "mode": "feedback",
+      "optimization": "-O3",
+      "status": "unsat"
+    },
+    {
+      "name": "mix8",
+      "mode": "coupled",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "mix8",
+      "mode": "coupled",
+      "optimization": "-O3",
+      "status": "unsat"
+    },
+    {
+      "name": "select10",
+      "mode": "feedback",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "select10",
+      "mode": "feedback",
+      "optimization": "-O3",
+      "status": "unsat"
+    },
+    {
+      "name": "select10",
+      "mode": "coupled",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "select10",
+      "mode": "coupled",
+      "optimization": "-O3",
+      "status": "unsat"
+    },
+    {
+      "name": "chain12",
+      "mode": "feedback",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "chain12",
+      "mode": "feedback",
+      "optimization": "-O3",
+      "status": "unsat"
+    },
+    {
+      "name": "chain12",
+      "mode": "coupled",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "chain12",
+      "mode": "coupled",
+      "optimization": "-O3",
+      "status": "unsat"
+    }
+  ],
+  "scratch": {
+    "targets": 6,
+    "calls": 1536,
+    "mismatches": 0,
+    "descriptor_and_tail_checks": 1536,
+    "seed": "0x37251649"
+  },
+  "certificate_crosscheck": {
+    "cases": 512,
+    "accepted": 0,
+    "rejected": 512,
+    "mismatches": 0
+  },
+  "unsafe_switching": {
+    "analysis": {
+      "status": "stalled",
+      "remaining": [
+        0,
+        1
+      ],
+      "groups": [
+        {
+          "group": [
+            2
+          ],
+          "local_bound": 1,
+          "cumulative_bound": 1
+        }
+      ],
+      "attempts": 6,
+      "bdd_nodes": 33,
+      "analysis_ms": 0.38040000000005847,
+      "read_ms": 34.220200000000034
+    },
+    "actual_second_word_after8": 0,
+    "correct_second_word": 4294967295
+  },
+  "short_round": {
+    "status": "bound_not_certified",
+    "verified_bound": 11,
+    "emitted_bound": 1,
+    "groups": [
+      {
+        "group": [
+          3
+        ],
+        "local_bound": 1,
+        "cumulative_bound": 1
+      },
+      {
+        "group": [
+          4
+        ],
+        "local_bound": 1,
+        "cumulative_bound": 2
+      },
+      {
+        "group": [
+          0,
+          5
+        ],
+        "local_bound": 3,
+        "cumulative_bound": 5
+      },
+      {
+        "group": [
+          1
+        ],
+        "local_bound": 1,
+        "cumulative_bound": 6
+      },
+      {
+        "group": [
+          2,
+          6,
+          7
+        ],
+        "local_bound": 5,
+        "cumulative_bound": 11
+      }
+    ],
+    "attempts": 25,
+    "read_ms": 35.587700000000666
+  }
+}

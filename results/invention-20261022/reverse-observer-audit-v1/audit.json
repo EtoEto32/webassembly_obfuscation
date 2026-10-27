@@ -1,0 +1,112 @@
+{
+  "verified_pins": {
+    "reverse-observer-v1": 99,
+    "reverse-observer-performance-v1": 59
+  },
+  "reproduced_targets": 48,
+  "unique_positive_binaries": 24,
+  "helper_checks": {
+    "node": "v24.15.0",
+    "v8": "13.6.233.17-node.48",
+    "conditions": 18,
+    "calls": 7488,
+    "mismatches": 0
+  },
+  "wabt_calls": 336,
+  "wabt_traps": 42,
+  "rejected_controls": 9,
+  "attack_repetitions": 60,
+  "attack_summary": [
+    {
+      "name": "suffix001",
+      "opt": "raw",
+      "reverse": {
+        "total_ms": 78.67789999999886,
+        "table_ms": 0.11189999999849931,
+        "orbit_ms": 0.016900000000319437
+      },
+      "mixed": {
+        "total_ms": 79.2818000000004,
+        "table_ms": 0.20909999999929596,
+        "orbit_ms": 0.017200000000272553
+      },
+      "total_ratio": 1.0076755988657748
+    },
+    {
+      "name": "suffix001",
+      "opt": "O3",
+      "reverse": {
+        "total_ms": 113.37289999999989,
+        "table_ms": 0.10400000000032605,
+        "orbit_ms": 0.017099999999103943
+      },
+      "mixed": {
+        "total_ms": 114.90270000000002,
+        "table_ms": 0.20780000000009125,
+        "orbit_ms": 0.017099999999103943
+      },
+      "total_ratio": 1.0134935244666066
+    },
+    {
+      "name": "contains01101",
+      "opt": "raw",
+      "reverse": {
+        "total_ms": 79.21140000000015,
+        "table_ms": 0.4039000000002346,
+        "orbit_ms": 0.05600000000072214
+      },
+      "mixed": {
+        "total_ms": 101.04779999999991,
+        "table_ms": 3.671599999998776,
+        "orbit_ms": 0.055300000001423655
+      },
+      "total_ratio": 1.2756724410880216
+    },
+    {
+      "name": "contains01101",
+      "opt": "O3",
+      "reverse": {
+        "total_ms": 113.9834999999998,
+        "table_ms": 0.36669999999894287,
+        "orbit_ms": 0.052900000000022374
+      },
+      "mixed": {
+        "total_ms": 134.48590000000138,
+        "table_ms": 3.7541999999994857,
+        "orbit_ms": 0.05359999999932086
+      },
+      "total_ratio": 1.1798716480894307
+    },
+    {
+      "name": "mod7",
+      "opt": "raw",
+      "reverse": {
+        "total_ms": 81.84160000000062,
+        "table_ms": 1.2233000000012595,
+        "orbit_ms": 0.1049000000001854
+      },
+      "mixed": {
+        "total_ms": 194.55480000000057,
+        "table_ms": 18.660200000001126,
+        "orbit_ms": 0.11139999999976169
+      },
+      "total_ratio": 2.377211589216231
+    },
+    {
+      "name": "mod7",
+      "opt": "O3",
+      "reverse": {
+        "total_ms": 115.24059999999992,
+        "table_ms": 1.1894000000012284,
+        "orbit_ms": 0.105899999999437
+      },
+      "mixed": {
+        "total_ms": 186.701900000001,
+        "table_ms": 17.655500000000046,
+        "orbit_ms": 0.10650000000111959
+      },
+      "total_ratio": 1.6201052406877534
+    }
+  ],
+  "limitations": "Reproduction and repeats are not independent program cases. Helper states exhaustive only for widths 4,6,7; high bits tested all-zero/all-one, not exhaustively. No whole-tool formal proof."
+}

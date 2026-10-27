@@ -1,0 +1,94 @@
+[
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v2\\library.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v2\\library.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 13.820500000000013
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v2\\original.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v2\\original.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 12.994699999999998
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v2\\different-brand.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v2\\different-brand.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 13.125800000000021
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v2\\fresh-descriptor.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v2\\fresh-descriptor.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 12.678600000000012
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v2\\copied-descriptor.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v2\\copied-descriptor.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 12.637100000000013
+  },
+  {
+    "args": [
+      "node",
+      "--experimental-wasm-custom-descriptors",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\descriptor-screen.mjs",
+      "results\\gc-field-policy\\descriptor-screen-v2\\spec.json"
+    ],
+    "code": 1,
+    "stdout": "",
+    "stderr": "file:///C:/Users/ettotto/Documents/webassembly_obfuscation/research/gc-field-policy/descriptor-screen.mjs:4\n  const lib=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(spec.library)));\n                                     ^\n\nCompileError: WebAssembly.Module(): Compiling function #0 failed: invalid gc opcode: fb20 @+96\n    at file:///C:/Users/ettotto/Documents/webassembly_obfuscation/research/gc-field-policy/descriptor-screen.mjs:4:38\n    at ModuleJob.run (node:internal/modules/esm/module_job:437:25)\n    at async node:internal/modules/esm/loader:639:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.15.0\n",
+    "wallMs": 61.773500000000006
+  }
+]

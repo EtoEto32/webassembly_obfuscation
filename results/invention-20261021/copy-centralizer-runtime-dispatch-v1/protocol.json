@@ -1,0 +1,447 @@
+{
+  "warmup": 128,
+  "batches": 9,
+  "pilot_target_ns": 5000000,
+  "max_iterations": 1048576,
+  "order_seed": 211045,
+  "flags": [
+    "--no-liftoff",
+    "--no-wasm-lazy-compilation"
+  ],
+  "copy_workload": "one input-selected copy",
+  "unit": "one logical byte write, copy workload, one logical byte read, loop and checksum",
+  "jobs": [
+    {
+      "kernel": "irregular8",
+      "mode": "plain",
+      "file": "irregular8-plain-O3.wasm",
+      "sha256": "f86c6a35c8612452a3d6350ec9689289db9160502efcfff5979fd8eb6d8e58c6",
+      "core_sha256": "7e8702f7478051ead01054f188f29658c90cd9e265029a6b60d81471bfb7b1b0",
+      "core_bytes": 159,
+      "repetition": 2
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "plain",
+      "file": "overlap8-plain-O3.wasm",
+      "sha256": "c2be02cf113a12bf5cf18040545bebf7b25f2a151be65dccdf3b0342b1667900",
+      "core_sha256": "7faa9386fe68b3a595d8a5227e4de0fc5e8a95c3f5f54e7d53b12340755af041",
+      "core_bytes": 181,
+      "repetition": 2
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "plain",
+      "file": "overlap8-plain-O3.wasm",
+      "sha256": "c2be02cf113a12bf5cf18040545bebf7b25f2a151be65dccdf3b0342b1667900",
+      "core_sha256": "7faa9386fe68b3a595d8a5227e4de0fc5e8a95c3f5f54e7d53b12340755af041",
+      "core_bytes": 181,
+      "repetition": 0
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "uniform",
+      "file": "allcells8-uniform-O3.wasm",
+      "sha256": "cf2f6f049f1b464bd2aeb4ee0b9654e1dafc7a3da5728cfeea98197d57a7e8de",
+      "core_sha256": "9a952866fdb6d90f88ef7ac58463e62191c703b442679695758fb694a7eb1ffa",
+      "core_bytes": 1397,
+      "repetition": 0
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "uniform",
+      "file": "blocks16-uniform-O3.wasm",
+      "sha256": "d8cbc4e2a1ac9c79b57e70bf17893f28de71a54a52c33ef4a04b4b2e8d0c0c46",
+      "core_sha256": "9d79557085c5cd66ee5b61c6752437fddf729b79f4046c2af88daf891a4bffff",
+      "core_bytes": 235,
+      "repetition": 0
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "conjugate",
+      "file": "allcells8-conjugate-O3.wasm",
+      "sha256": "3b0cefc4db9620f45bbb58818e3777098ce18bf33d84c7a55b0cd0499869840c",
+      "core_sha256": "70cc57db763373aaf66e89089ca9886de0c3d7628cc2fdff9933c04a5ee5f839",
+      "core_bytes": 13962,
+      "repetition": 2
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "conjugate",
+      "file": "irregular8-conjugate-O3.wasm",
+      "sha256": "a6312165f20327f9efd00d2adbb19e9af3fc5215aa46c81e5f00135735f92480",
+      "core_sha256": "73b493d490ad72f0aa9b9c5b8c2a9a7dcac91b2cdad62888012d804dca53dcac",
+      "core_bytes": 1484,
+      "repetition": 0
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "conjugate",
+      "file": "overlap8-conjugate-O3.wasm",
+      "sha256": "a0959c800198b0f659cfe6d3f7541d432f01c32a10e96e7f33ccdf358056c492",
+      "core_sha256": "8d9f55a518079cafbfbccd9501f464ab97b050ebea885103cdddd886dfd312fe",
+      "core_bytes": 1606,
+      "repetition": 0
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "plain",
+      "file": "allcells8-plain-O3.wasm",
+      "sha256": "2d7f73f927cd0c4bacc96b3b24b89ae0432f154bc598fc187572278fe4081b9f",
+      "core_sha256": "fac0451c46717c5685bd201569e6e2b58e502e2dcca05904a3bd5953d29cd734",
+      "core_bytes": 1373,
+      "repetition": 0
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "uniform",
+      "file": "blocks16-uniform-O3.wasm",
+      "sha256": "d8cbc4e2a1ac9c79b57e70bf17893f28de71a54a52c33ef4a04b4b2e8d0c0c46",
+      "core_sha256": "9d79557085c5cd66ee5b61c6752437fddf729b79f4046c2af88daf891a4bffff",
+      "core_bytes": 235,
+      "repetition": 2
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "native",
+      "file": "irregular8-native-O3.wasm",
+      "sha256": "a2b17d43d41937d6fb4d738e818758e482a00c978bdd438df68d31cb327a1b68",
+      "core_sha256": "d9d326d354428038f1573210a6b3bf44fae4f619d48417e41d90b612251ef9b8",
+      "core_bytes": 701,
+      "repetition": 2
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "conjugate",
+      "file": "blocks16-conjugate-O3.wasm",
+      "sha256": "b00be035e18e84974485879ef7f4e35c2fa9b7122c8fdb6c25f020e5222928b7",
+      "core_sha256": "710b0da9ccccc99fb57f00d79f19a261b18f3f5d2c918111aafa3839c64da8c5",
+      "core_bytes": 4369,
+      "repetition": 2
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "native",
+      "file": "allcells8-native-O3.wasm",
+      "sha256": "2ef06df9ce7403777426cf022b2bbf849bd33d7488649f7a15bfbf389f3384e0",
+      "core_sha256": "c0c048cdffc14d21928d1565f3bd38b3e5858102c6dcc5ca90922869e083944c",
+      "core_bytes": 1698,
+      "repetition": 2
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "native",
+      "file": "overlap8-native-O3.wasm",
+      "sha256": "ed72669c08a6b3e6a11f0e4de11c0ccbc8b82bdd3d2a9ccd54ec53f3f94d33be",
+      "core_sha256": "0fec692594be2f1caa9c0fefed632f5ccb08886c40c62a88a7dfaffcd520a197",
+      "core_bytes": 618,
+      "repetition": 2
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "uniform",
+      "file": "overlap8-uniform-O3.wasm",
+      "sha256": "ac27ce8c02639f98eb382547011f302a78cc36783628ed1927fbd92db538e73d",
+      "core_sha256": "87a74807bb133b25628bf8478d72c86e33a8593fa8cd2c98c7bf1bab01bfaa49",
+      "core_bytes": 205,
+      "repetition": 0
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "uniform",
+      "file": "irregular8-uniform-O3.wasm",
+      "sha256": "6aa15c272d80bcd725f820276589f26d43a45ea60030d6edbc4328a47253568a",
+      "core_sha256": "3e3e2933ddf0a1325c5b81d1ae96bfc8a2330425f7e5b1483205e55718169a88",
+      "core_bytes": 183,
+      "repetition": 1
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "native",
+      "file": "allcells8-native-O3.wasm",
+      "sha256": "2ef06df9ce7403777426cf022b2bbf849bd33d7488649f7a15bfbf389f3384e0",
+      "core_sha256": "c0c048cdffc14d21928d1565f3bd38b3e5858102c6dcc5ca90922869e083944c",
+      "core_bytes": 1698,
+      "repetition": 1
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "conjugate",
+      "file": "blocks16-conjugate-O3.wasm",
+      "sha256": "b00be035e18e84974485879ef7f4e35c2fa9b7122c8fdb6c25f020e5222928b7",
+      "core_sha256": "710b0da9ccccc99fb57f00d79f19a261b18f3f5d2c918111aafa3839c64da8c5",
+      "core_bytes": 4369,
+      "repetition": 0
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "conjugate",
+      "file": "blocks16-conjugate-O3.wasm",
+      "sha256": "b00be035e18e84974485879ef7f4e35c2fa9b7122c8fdb6c25f020e5222928b7",
+      "core_sha256": "710b0da9ccccc99fb57f00d79f19a261b18f3f5d2c918111aafa3839c64da8c5",
+      "core_bytes": 4369,
+      "repetition": 1
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "native",
+      "file": "irregular8-native-O3.wasm",
+      "sha256": "a2b17d43d41937d6fb4d738e818758e482a00c978bdd438df68d31cb327a1b68",
+      "core_sha256": "d9d326d354428038f1573210a6b3bf44fae4f619d48417e41d90b612251ef9b8",
+      "core_bytes": 701,
+      "repetition": 1
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "uniform",
+      "file": "overlap8-uniform-O3.wasm",
+      "sha256": "ac27ce8c02639f98eb382547011f302a78cc36783628ed1927fbd92db538e73d",
+      "core_sha256": "87a74807bb133b25628bf8478d72c86e33a8593fa8cd2c98c7bf1bab01bfaa49",
+      "core_bytes": 205,
+      "repetition": 2
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "native",
+      "file": "blocks16-native-O3.wasm",
+      "sha256": "99df404f2668e52977e5a08269ad0868580dbabde63764aa73f6bd93e9eb6e05",
+      "core_sha256": "35ccf3bd6ed77b8fd268cbcc195a1b04e01dec8ab5f80c987408b2dd3c9a0113",
+      "core_bytes": 1484,
+      "repetition": 2
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "plain",
+      "file": "irregular8-plain-O3.wasm",
+      "sha256": "f86c6a35c8612452a3d6350ec9689289db9160502efcfff5979fd8eb6d8e58c6",
+      "core_sha256": "7e8702f7478051ead01054f188f29658c90cd9e265029a6b60d81471bfb7b1b0",
+      "core_bytes": 159,
+      "repetition": 1
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "native",
+      "file": "overlap8-native-O3.wasm",
+      "sha256": "ed72669c08a6b3e6a11f0e4de11c0ccbc8b82bdd3d2a9ccd54ec53f3f94d33be",
+      "core_sha256": "0fec692594be2f1caa9c0fefed632f5ccb08886c40c62a88a7dfaffcd520a197",
+      "core_bytes": 618,
+      "repetition": 0
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "plain",
+      "file": "blocks16-plain-O3.wasm",
+      "sha256": "9b3e45d6c4b86ded842b39ae0e70a15ab177361da23005dc53cba69e3d028c21",
+      "core_sha256": "366faf7fb4c61b1ff46f6c669edef4c18ed288cfea7743fc215c565089570ff6",
+      "core_bytes": 211,
+      "repetition": 0
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "conjugate",
+      "file": "irregular8-conjugate-O3.wasm",
+      "sha256": "a6312165f20327f9efd00d2adbb19e9af3fc5215aa46c81e5f00135735f92480",
+      "core_sha256": "73b493d490ad72f0aa9b9c5b8c2a9a7dcac91b2cdad62888012d804dca53dcac",
+      "core_bytes": 1484,
+      "repetition": 2
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "plain",
+      "file": "allcells8-plain-O3.wasm",
+      "sha256": "2d7f73f927cd0c4bacc96b3b24b89ae0432f154bc598fc187572278fe4081b9f",
+      "core_sha256": "fac0451c46717c5685bd201569e6e2b58e502e2dcca05904a3bd5953d29cd734",
+      "core_bytes": 1373,
+      "repetition": 1
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "native",
+      "file": "overlap8-native-O3.wasm",
+      "sha256": "ed72669c08a6b3e6a11f0e4de11c0ccbc8b82bdd3d2a9ccd54ec53f3f94d33be",
+      "core_sha256": "0fec692594be2f1caa9c0fefed632f5ccb08886c40c62a88a7dfaffcd520a197",
+      "core_bytes": 618,
+      "repetition": 1
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "conjugate",
+      "file": "irregular8-conjugate-O3.wasm",
+      "sha256": "a6312165f20327f9efd00d2adbb19e9af3fc5215aa46c81e5f00135735f92480",
+      "core_sha256": "73b493d490ad72f0aa9b9c5b8c2a9a7dcac91b2cdad62888012d804dca53dcac",
+      "core_bytes": 1484,
+      "repetition": 1
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "plain",
+      "file": "blocks16-plain-O3.wasm",
+      "sha256": "9b3e45d6c4b86ded842b39ae0e70a15ab177361da23005dc53cba69e3d028c21",
+      "core_sha256": "366faf7fb4c61b1ff46f6c669edef4c18ed288cfea7743fc215c565089570ff6",
+      "core_bytes": 211,
+      "repetition": 1
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "uniform",
+      "file": "blocks16-uniform-O3.wasm",
+      "sha256": "d8cbc4e2a1ac9c79b57e70bf17893f28de71a54a52c33ef4a04b4b2e8d0c0c46",
+      "core_sha256": "9d79557085c5cd66ee5b61c6752437fddf729b79f4046c2af88daf891a4bffff",
+      "core_bytes": 235,
+      "repetition": 1
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "plain",
+      "file": "blocks16-plain-O3.wasm",
+      "sha256": "9b3e45d6c4b86ded842b39ae0e70a15ab177361da23005dc53cba69e3d028c21",
+      "core_sha256": "366faf7fb4c61b1ff46f6c669edef4c18ed288cfea7743fc215c565089570ff6",
+      "core_bytes": 211,
+      "repetition": 2
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "native",
+      "file": "irregular8-native-O3.wasm",
+      "sha256": "a2b17d43d41937d6fb4d738e818758e482a00c978bdd438df68d31cb327a1b68",
+      "core_sha256": "d9d326d354428038f1573210a6b3bf44fae4f619d48417e41d90b612251ef9b8",
+      "core_bytes": 701,
+      "repetition": 0
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "plain",
+      "file": "irregular8-plain-O3.wasm",
+      "sha256": "f86c6a35c8612452a3d6350ec9689289db9160502efcfff5979fd8eb6d8e58c6",
+      "core_sha256": "7e8702f7478051ead01054f188f29658c90cd9e265029a6b60d81471bfb7b1b0",
+      "core_bytes": 159,
+      "repetition": 0
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "plain",
+      "file": "allcells8-plain-O3.wasm",
+      "sha256": "2d7f73f927cd0c4bacc96b3b24b89ae0432f154bc598fc187572278fe4081b9f",
+      "core_sha256": "fac0451c46717c5685bd201569e6e2b58e502e2dcca05904a3bd5953d29cd734",
+      "core_bytes": 1373,
+      "repetition": 2
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "uniform",
+      "file": "irregular8-uniform-O3.wasm",
+      "sha256": "6aa15c272d80bcd725f820276589f26d43a45ea60030d6edbc4328a47253568a",
+      "core_sha256": "3e3e2933ddf0a1325c5b81d1ae96bfc8a2330425f7e5b1483205e55718169a88",
+      "core_bytes": 183,
+      "repetition": 0
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "uniform",
+      "file": "allcells8-uniform-O3.wasm",
+      "sha256": "cf2f6f049f1b464bd2aeb4ee0b9654e1dafc7a3da5728cfeea98197d57a7e8de",
+      "core_sha256": "9a952866fdb6d90f88ef7ac58463e62191c703b442679695758fb694a7eb1ffa",
+      "core_bytes": 1397,
+      "repetition": 1
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "uniform",
+      "file": "allcells8-uniform-O3.wasm",
+      "sha256": "cf2f6f049f1b464bd2aeb4ee0b9654e1dafc7a3da5728cfeea98197d57a7e8de",
+      "core_sha256": "9a952866fdb6d90f88ef7ac58463e62191c703b442679695758fb694a7eb1ffa",
+      "core_bytes": 1397,
+      "repetition": 2
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "native",
+      "file": "blocks16-native-O3.wasm",
+      "sha256": "99df404f2668e52977e5a08269ad0868580dbabde63764aa73f6bd93e9eb6e05",
+      "core_sha256": "35ccf3bd6ed77b8fd268cbcc195a1b04e01dec8ab5f80c987408b2dd3c9a0113",
+      "core_bytes": 1484,
+      "repetition": 0
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "uniform",
+      "file": "overlap8-uniform-O3.wasm",
+      "sha256": "ac27ce8c02639f98eb382547011f302a78cc36783628ed1927fbd92db538e73d",
+      "core_sha256": "87a74807bb133b25628bf8478d72c86e33a8593fa8cd2c98c7bf1bab01bfaa49",
+      "core_bytes": 205,
+      "repetition": 1
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "native",
+      "file": "allcells8-native-O3.wasm",
+      "sha256": "2ef06df9ce7403777426cf022b2bbf849bd33d7488649f7a15bfbf389f3384e0",
+      "core_sha256": "c0c048cdffc14d21928d1565f3bd38b3e5858102c6dcc5ca90922869e083944c",
+      "core_bytes": 1698,
+      "repetition": 0
+    },
+    {
+      "kernel": "blocks16",
+      "mode": "native",
+      "file": "blocks16-native-O3.wasm",
+      "sha256": "99df404f2668e52977e5a08269ad0868580dbabde63764aa73f6bd93e9eb6e05",
+      "core_sha256": "35ccf3bd6ed77b8fd268cbcc195a1b04e01dec8ab5f80c987408b2dd3c9a0113",
+      "core_bytes": 1484,
+      "repetition": 1
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "conjugate",
+      "file": "allcells8-conjugate-O3.wasm",
+      "sha256": "3b0cefc4db9620f45bbb58818e3777098ce18bf33d84c7a55b0cd0499869840c",
+      "core_sha256": "70cc57db763373aaf66e89089ca9886de0c3d7628cc2fdff9933c04a5ee5f839",
+      "core_bytes": 13962,
+      "repetition": 0
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "plain",
+      "file": "overlap8-plain-O3.wasm",
+      "sha256": "c2be02cf113a12bf5cf18040545bebf7b25f2a151be65dccdf3b0342b1667900",
+      "core_sha256": "7faa9386fe68b3a595d8a5227e4de0fc5e8a95c3f5f54e7d53b12340755af041",
+      "core_bytes": 181,
+      "repetition": 1
+    },
+    {
+      "kernel": "irregular8",
+      "mode": "uniform",
+      "file": "irregular8-uniform-O3.wasm",
+      "sha256": "6aa15c272d80bcd725f820276589f26d43a45ea60030d6edbc4328a47253568a",
+      "core_sha256": "3e3e2933ddf0a1325c5b81d1ae96bfc8a2330425f7e5b1483205e55718169a88",
+      "core_bytes": 183,
+      "repetition": 2
+    },
+    {
+      "kernel": "allcells8",
+      "mode": "conjugate",
+      "file": "allcells8-conjugate-O3.wasm",
+      "sha256": "3b0cefc4db9620f45bbb58818e3777098ce18bf33d84c7a55b0cd0499869840c",
+      "core_sha256": "70cc57db763373aaf66e89089ca9886de0c3d7628cc2fdff9933c04a5ee5f839",
+      "core_bytes": 13962,
+      "repetition": 1
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "conjugate",
+      "file": "overlap8-conjugate-O3.wasm",
+      "sha256": "a0959c800198b0f659cfe6d3f7541d432f01c32a10e96e7f33ccdf358056c492",
+      "core_sha256": "8d9f55a518079cafbfbccd9501f464ab97b050ebea885103cdddd886dfd312fe",
+      "core_bytes": 1606,
+      "repetition": 1
+    },
+    {
+      "kernel": "overlap8",
+      "mode": "conjugate",
+      "file": "overlap8-conjugate-O3.wasm",
+      "sha256": "a0959c800198b0f659cfe6d3f7541d432f01c32a10e96e7f33ccdf358056c492",
+      "core_sha256": "8d9f55a518079cafbfbccd9501f464ab97b050ebea885103cdddd886dfd312fe",
+      "core_bytes": 1606,
+      "repetition": 2
+    }
+  ]
+}

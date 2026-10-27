@@ -1,0 +1,12 @@
+package research:shapes;
+interface storage {
+  resource file;
+  record request {
+    first-file: borrow<file>,
+    nested: option<option<option<borrow<file>>>>,
+    batches: list<option<borrow<file>>>,
+  }
+  prepare: func(value: request) -> u32;
+}
+world plugin { import storage; }
+

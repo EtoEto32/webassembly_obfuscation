@@ -1,0 +1,221 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 1,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 2,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 3,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 4,
+      "expression": [
+        "sub",
+        "v0",
+        "v2"
+      ],
+      "opcode": "i32.sub"
+    },
+    {
+      "id": 5,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 6,
+      "expression": [
+        "add",
+        [
+          "sub",
+          "v0",
+          "v2"
+        ],
+        "v1"
+      ],
+      "opcode": "i32.add"
+    },
+    {
+      "id": 7,
+      "expression": [
+        "mul",
+        "v1",
+        [
+          "add",
+          [
+            "sub",
+            "v0",
+            "v2"
+          ],
+          "v1"
+        ]
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 8,
+      "expression": [
+        "mul",
+        "v0",
+        [
+          "mul",
+          "v1",
+          [
+            "add",
+            [
+              "sub",
+              "v0",
+              "v2"
+            ],
+            "v1"
+          ]
+        ]
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 9,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 10,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 11,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 12,
+      "expression": [
+        "sub",
+        "v0",
+        "v2"
+      ],
+      "opcode": "i32.sub"
+    },
+    {
+      "id": 13,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 14,
+      "expression": [
+        "add",
+        [
+          "sub",
+          "v0",
+          "v2"
+        ],
+        "v1"
+      ],
+      "opcode": "i32.add"
+    },
+    {
+      "id": 15,
+      "expression": [
+        "mul",
+        "v2",
+        [
+          "add",
+          [
+            "sub",
+            "v0",
+            "v2"
+          ],
+          "v1"
+        ]
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 16,
+      "expression": [
+        "add",
+        [
+          "mul",
+          "v0",
+          [
+            "mul",
+            "v1",
+            [
+              "add",
+              [
+                "sub",
+                "v0",
+                "v2"
+              ],
+              "v1"
+            ]
+          ]
+        ],
+        [
+          "mul",
+          "v2",
+          [
+            "add",
+            [
+              "sub",
+              "v0",
+              "v2"
+            ],
+            "v1"
+          ]
+        ]
+      ],
+      "opcode": "i32.add"
+    }
+  ],
+  "output_expression": [
+    "add",
+    [
+      "mul",
+      "v0",
+      [
+        "mul",
+        "v1",
+        [
+          "add",
+          [
+            "sub",
+            "v0",
+            "v2"
+          ],
+          "v1"
+        ]
+      ]
+    ],
+    [
+      "mul",
+      "v2",
+      [
+        "add",
+        [
+          "sub",
+          "v0",
+          "v2"
+        ],
+        "v1"
+      ]
+    ]
+  ],
+  "inputSHA256": "ff7831dcc31d28faf6d62c17b551903ddb413f0b3c17e219cbc9699739aaec5f",
+  "probeSHA256": "d1d8373a6a0ddfa3f003f7eaf1c88af912c74639aca00a4bb7479a3df7ae1173",
+  "model": "all scalar i32 values of exported straight-line run, after Binaryen; not native JIT traces"
+}
