@@ -1,0 +1,365 @@
+{
+  "toolchain": {
+    "url": "https://static.rust-lang.org/dist/2026-05-12/rust-std-nightly-wasm32-unknown-unknown.tar.xz",
+    "sha256": "1bb4a3876e1748c40ef72a1e29d2540639ef7b5b5d4f5d4d93b21fad86b93076",
+    "archiveBytes": 21926416,
+    "rustc": "rustc 1.97.0-nightly (64a965e90 2026-05-11)",
+    "sysroot": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+    "linker": "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+    "libraryFiles": 54
+  },
+  "records": [
+    {
+      "case": "swap",
+      "opt": "0",
+      "binary": "swap-0.wasm",
+      "bytes": 337,
+      "status": "unsupported",
+      "reason": "unsupported expression: (return (local.get 5))"
+    },
+    {
+      "case": "swap",
+      "opt": "0",
+      "binary": "swap-0-O3.wasm",
+      "bytes": 200,
+      "status": "unsupported",
+      "reason": "unsupported expression: (global.set 0 (i32.add (local.get 2) (i32.const 16)))"
+    },
+    {
+      "case": "swap",
+      "opt": "2",
+      "binary": "swap-2.wasm",
+      "bytes": 169,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100
+        ],
+        "prefix": [
+          2,
+          33
+        ],
+        "segment": [
+          2,
+          31
+        ],
+        "delta": [
+          2,
+          31
+        ]
+      }
+    },
+    {
+      "case": "swap",
+      "opt": "2",
+      "binary": "swap-2-O3.wasm",
+      "bytes": 155,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100
+        ],
+        "prefix": [
+          2,
+          33
+        ],
+        "segment": [
+          2,
+          31
+        ],
+        "delta": [
+          2,
+          31
+        ]
+      }
+    },
+    {
+      "case": "swap",
+      "opt": "s",
+      "binary": "swap-s.wasm",
+      "bytes": 169,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100
+        ],
+        "prefix": [
+          2,
+          33
+        ],
+        "segment": [
+          2,
+          31
+        ],
+        "delta": [
+          2,
+          31
+        ]
+      }
+    },
+    {
+      "case": "swap",
+      "opt": "s",
+      "binary": "swap-s-O3.wasm",
+      "bytes": 155,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100
+        ],
+        "prefix": [
+          2,
+          33
+        ],
+        "segment": [
+          2,
+          31
+        ],
+        "delta": [
+          2,
+          31
+        ]
+      }
+    },
+    {
+      "case": "stages",
+      "opt": "0",
+      "binary": "stages-0.wasm",
+      "bytes": 364,
+      "status": "unsupported",
+      "reason": "unsupported expression: (return (local.get 3))"
+    },
+    {
+      "case": "stages",
+      "opt": "0",
+      "binary": "stages-0-O3.wasm",
+      "bytes": 335,
+      "status": "unsupported",
+      "reason": "unsupported expression: (global.set 0 (i32.add (local.get 2) (i32.const 16)))"
+    },
+    {
+      "case": "stages",
+      "opt": "2",
+      "binary": "stages-2.wasm",
+      "bytes": 178,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100,
+          101
+        ],
+        "prefix": [
+          2,
+          4,
+          35
+        ],
+        "segment": [
+          2,
+          2,
+          31
+        ],
+        "delta": [
+          2,
+          2,
+          31
+        ]
+      }
+    },
+    {
+      "case": "stages",
+      "opt": "2",
+      "binary": "stages-2-O3.wasm",
+      "bytes": 160,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100,
+          101
+        ],
+        "prefix": [
+          2,
+          4,
+          35
+        ],
+        "segment": [
+          2,
+          2,
+          31
+        ],
+        "delta": [
+          2,
+          2,
+          31
+        ]
+      }
+    },
+    {
+      "case": "stages",
+      "opt": "s",
+      "binary": "stages-s.wasm",
+      "bytes": 178,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100,
+          101
+        ],
+        "prefix": [
+          2,
+          4,
+          35
+        ],
+        "segment": [
+          2,
+          2,
+          31
+        ],
+        "delta": [
+          2,
+          2,
+          31
+        ]
+      }
+    },
+    {
+      "case": "stages",
+      "opt": "s",
+      "binary": "stages-s-O3.wasm",
+      "bytes": 160,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100,
+          101
+        ],
+        "prefix": [
+          2,
+          4,
+          35
+        ],
+        "segment": [
+          2,
+          2,
+          31
+        ],
+        "delta": [
+          2,
+          2,
+          31
+        ]
+      }
+    },
+    {
+      "case": "classify",
+      "opt": "0",
+      "binary": "classify-0.wasm",
+      "bytes": 167,
+      "status": "unsupported",
+      "reason": "unsupported expression: (return (local.get 3))"
+    },
+    {
+      "case": "classify",
+      "opt": "0",
+      "binary": "classify-0-O3.wasm",
+      "bytes": 143,
+      "status": "unsupported",
+      "reason": "unsupported expression: (global.set 0 (i32.add (local.get 2) (i32.const 16)))"
+    },
+    {
+      "case": "classify",
+      "opt": "2",
+      "binary": "classify-2.wasm",
+      "bytes": 92,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100
+        ],
+        "prefix": [
+          2,
+          5
+        ],
+        "segment": [
+          2,
+          3
+        ],
+        "delta": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "case": "classify",
+      "opt": "2",
+      "binary": "classify-2-O3.wasm",
+      "bytes": 78,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100
+        ],
+        "prefix": [
+          2,
+          5
+        ],
+        "segment": [
+          2,
+          3
+        ],
+        "delta": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "case": "classify",
+      "opt": "s",
+      "binary": "classify-s.wasm",
+      "bytes": 92,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100
+        ],
+        "prefix": [
+          2,
+          5
+        ],
+        "segment": [
+          2,
+          3
+        ],
+        "delta": [
+          2,
+          3
+        ]
+      }
+    },
+    {
+      "case": "classify",
+      "opt": "s",
+      "binary": "classify-s-O3.wasm",
+      "bytes": 78,
+      "status": "accepted",
+      "summary": {
+        "events": [
+          100
+        ],
+        "prefix": [
+          2,
+          5
+        ],
+        "segment": [
+          2,
+          3
+        ],
+        "delta": [
+          2,
+          3
+        ]
+      }
+    }
+  ]
+}

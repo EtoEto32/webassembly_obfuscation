@@ -1,0 +1,695 @@
+[
+  {
+    "name": "rec-sibling-0",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "struct.get",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 1
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "struct.get",
+              "operation": 0,
+              "type": 1
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006433,
+      "validationSeconds": 0.0005917
+    },
+    "wasmtime": {
+      "type": "return",
+      "value": 12345
+    },
+    "expectedAcceptance": false
+  },
+  {
+    "name": "rec-sibling-1",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "struct.get",
+              "operation": 0,
+              "type": 1
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005478,
+      "validationSeconds": 0.0004855
+    },
+    "wasmtime": {
+      "type": "trap"
+    },
+    "expectedAcceptance": true
+  },
+  {
+    "name": "packed-s",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006662,
+      "validationSeconds": 0.0006124
+    },
+    "wasmtime": {
+      "type": "return",
+      "value": -1
+    },
+    "expectedAcceptance": false
+  },
+  {
+    "name": "packed-u",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 0,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006188,
+      "validationSeconds": 0.0005677
+    },
+    "wasmtime": {
+      "type": "return",
+      "value": 255
+    },
+    "expectedAcceptance": false
+  },
+  {
+    "name": "new-default",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005946,
+      "validationSeconds": 0.0005422
+    },
+    "wasmtime": {
+      "type": "return",
+      "value": 3
+    },
+    "expectedAcceptance": false
+  },
+  {
+    "name": "new-data",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005957,
+      "validationSeconds": 0.0005432
+    },
+    "wasmtime": {
+      "type": "return",
+      "value": 3
+    },
+    "expectedAcceptance": false
+  },
+  {
+    "name": "init-data",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 1,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.write",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.write",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.write",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "write",
+              "field": 0,
+              "op": "array.write",
+              "operation": 0,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005338,
+      "validationSeconds": 0.0004845
+    },
+    "wasmtime": {
+      "type": "return",
+      "value": 1
+    },
+    "expectedAcceptance": false
+  },
+  {
+    "name": "same-shape-independent-array",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 2,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "local-index",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 1,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "canonical-exact",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 1,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "closure",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "protectedType": 0,
+              "type": 0
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 1,
+              "protectedType": 0,
+              "type": 0
+            }
+          ]
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "type": 0
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0006341,
+      "validationSeconds": 0.0005748
+    },
+    "wasmtime": {
+      "type": "return",
+      "value": 77
+    },
+    "expectedAcceptance": false
+  },
+  {
+    "name": "empty-policy",
+    "check": {
+      "features": "WASM2 + GC + function-references + tail-call + extended-const",
+      "obligations": 2,
+      "results": [
+        {
+          "accepted": true,
+          "mode": "none",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "local-index",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "canonical-exact",
+          "violations": []
+        },
+        {
+          "accepted": true,
+          "mode": "closure",
+          "violations": []
+        },
+        {
+          "accepted": false,
+          "mode": "deny-all-gc",
+          "violations": [
+            {
+              "action": "create",
+              "field": null,
+              "op": "array.new",
+              "operation": 0,
+              "type": 0
+            },
+            {
+              "action": "read",
+              "field": 0,
+              "op": "array.get",
+              "operation": 1,
+              "type": 0
+            }
+          ]
+        }
+      ],
+      "totalSeconds": 0.0005589,
+      "validationSeconds": 0.0005088
+    },
+    "wasmtime": {
+      "type": "return",
+      "value": 77
+    },
+    "expectedAcceptance": true
+  },
+  {
+    "name": "threads",
+    "status": "unsupported",
+    "error": "threads must be enabled for shared memories (at offset 0xb)\n"
+  },
+  {
+    "name": "memory64",
+    "status": "unsupported",
+    "error": "memory64 must be enabled for 64-bit memories (at offset 0xb)\n"
+  },
+  {
+    "name": "multi-memory",
+    "status": "unsupported",
+    "error": "multiple memories (at offset 0xa)\n"
+  },
+  {
+    "name": "exceptions",
+    "status": "unsupported",
+    "error": "exceptions proposal not enabled (at offset 0x11)\n"
+  },
+  {
+    "name": "bad-type",
+    "status": "invalid-policy",
+    "error": "policy type out of range\n"
+  },
+  {
+    "name": "bad-field",
+    "status": "invalid-policy",
+    "error": "policy field out of range\n"
+  },
+  {
+    "name": "bad-action",
+    "status": "invalid-policy",
+    "error": "unknown policy action\n"
+  }
+]

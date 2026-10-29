@@ -1,0 +1,40 @@
+--- upstream/src/core/code_builder.rs
++++ patched/src/core/code_builder.rs
+@@ -6149,7 +6149,7 @@
+         && module
+             .array_types
+             .iter()
+-            .any(|i| builder.field_type_on_stack(module, module.ty(*i).unwrap_array().0))
++            .any(|i| (cfg!(feature = "gc-witness-zero-seed") || builder.field_type_on_stack(module, module.ty(*i).unwrap_array().0)))
+ }
+ 
+ fn array_new_fixed(
+@@ -6161,7 +6161,7 @@
+     let n = module
+         .array_types
+         .iter()
+-        .filter(|i| builder.field_type_on_stack(module, module.ty(**i).unwrap_array().0))
++        .filter(|i| (cfg!(feature = "gc-witness-zero-seed") || builder.field_type_on_stack(module, module.ty(**i).unwrap_array().0)))
+         .count();
+     debug_assert!(n > 0);
+     let i = u.int_in_range(0..=n - 1)?;
+@@ -6169,7 +6169,7 @@
+         .array_types
+         .iter()
+         .copied()
+-        .filter(|i| builder.field_type_on_stack(module, module.ty(*i).unwrap_array().0))
++        .filter(|i| (cfg!(feature = "gc-witness-zero-seed") || builder.field_type_on_stack(module, module.ty(*i).unwrap_array().0)))
+         .nth(i)
+         .unwrap();
+     let elem_ty = module
+@@ -6182,8 +6182,8 @@
+     let m = (0..builder.operands().len())
+         .take_while(|i| builder.type_on_stack_at(module, *i, elem_ty))
+         .count();
+-    debug_assert!(m > 0);
+-    let array_size = u.int_in_range(0..=m - 1)?;
++    debug_assert!(m > 0 || cfg!(feature = "gc-witness-zero-seed"));
++    let array_size = if m == 0 { 0 } else { u.int_in_range(0..=m - 1)? };
+     let array_size = u32::try_from(array_size).unwrap();
+ 
+     for _ in 0..array_size {

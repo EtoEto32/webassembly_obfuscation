@@ -1,0 +1,21 @@
+{
+  "selection_sha256": "55f4cb9fa1178ec19b7be3050e46e44036f938123692a8b4252e1d5c73f15cb7",
+  "scales": [
+    {
+      "name": "get_pixels",
+      "divisor": 1
+    },
+    {
+      "name": "encode",
+      "divisor": 255
+    }
+  ],
+  "class_order": [
+    "MALIGN",
+    "BENIGN"
+  ],
+  "decision": "argmax; ties MALIGN",
+  "rationale": "Published get_pixels returns uint8; data_set_builder uses encode which divides resized pixels by255. The saved model training path is not established by source availability.",
+  "threshold_tuned": false,
+  "retrained": false
+}

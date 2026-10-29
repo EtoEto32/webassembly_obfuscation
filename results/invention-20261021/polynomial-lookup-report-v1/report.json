@@ -1,0 +1,593 @@
+{
+  "conditions": 70,
+  "node_calls": 92230,
+  "interpreter_probes": 210,
+  "arithmetic_checks": 4312,
+  "recovered_conditions": 28,
+  "replayed_binaries": 56,
+  "rejections": 4,
+  "negative_witnesses": 3,
+  "runtime_processes": 96,
+  "analysis_processes": 36,
+  "analysis": [
+    {
+      "name": "n8",
+      "mode": "array",
+      "processes": 3,
+      "read_ms": 21.189299999999996,
+      "body_ms": 0.0680000000000125,
+      "total_ms": 21.257300000000008,
+      "min_total_ms": 20.957900000000002,
+      "max_total_ms": 21.6325
+    },
+    {
+      "name": "n8",
+      "mode": "poly",
+      "processes": 3,
+      "read_ms": 20.937000000000012,
+      "body_ms": 5.2696,
+      "total_ms": 26.52349999999999,
+      "min_total_ms": 26.11490000000001,
+      "max_total_ms": 27.130100000000006
+    },
+    {
+      "name": "n8",
+      "mode": "poly-pruned",
+      "processes": 3,
+      "read_ms": 22.018499999999996,
+      "body_ms": 5.222099999999993,
+      "total_ms": 27.24059999999999,
+      "min_total_ms": 27.202500000000004,
+      "max_total_ms": 27.594599999999996
+    },
+    {
+      "name": "n32",
+      "mode": "array",
+      "processes": 3,
+      "read_ms": 21.527699999999996,
+      "body_ms": 0.11560000000000736,
+      "total_ms": 21.643300000000004,
+      "min_total_ms": 21.474599999999995,
+      "max_total_ms": 21.82569999999999
+    },
+    {
+      "name": "n32",
+      "mode": "poly",
+      "processes": 3,
+      "read_ms": 21.804500000000004,
+      "body_ms": 50.71220000000001,
+      "total_ms": 72.5308,
+      "min_total_ms": 70.25869999999999,
+      "max_total_ms": 74.67989999999999
+    },
+    {
+      "name": "n32",
+      "mode": "poly-pruned",
+      "processes": 3,
+      "read_ms": 21.476599999999998,
+      "body_ms": 50.668300000000016,
+      "total_ms": 72.1449,
+      "min_total_ms": 69.9797,
+      "max_total_ms": 72.7002
+    },
+    {
+      "name": "n128",
+      "mode": "array",
+      "processes": 3,
+      "read_ms": 21.371200000000005,
+      "body_ms": 0.34679999999999434,
+      "total_ms": 21.718,
+      "min_total_ms": 21.583000000000006,
+      "max_total_ms": 22.055199999999996
+    },
+    {
+      "name": "n128",
+      "mode": "poly",
+      "processes": 3,
+      "read_ms": 22.42269999999999,
+      "body_ms": 650.5657,
+      "total_ms": 672.8346,
+      "min_total_ms": 668.9298,
+      "max_total_ms": 681.9439
+    },
+    {
+      "name": "n128",
+      "mode": "poly-pruned",
+      "processes": 3,
+      "read_ms": 21.7677,
+      "body_ms": 647.8060999999999,
+      "total_ms": 669.5738,
+      "min_total_ms": 667.4578,
+      "max_total_ms": 673.959
+    },
+    {
+      "name": "full32",
+      "mode": "array",
+      "processes": 3,
+      "read_ms": 20.996799999999997,
+      "body_ms": 0.1799999999999996,
+      "total_ms": 21.198999999999995,
+      "min_total_ms": 20.7426,
+      "max_total_ms": 21.930999999999994
+    },
+    {
+      "name": "full32",
+      "mode": "poly",
+      "processes": 3,
+      "read_ms": 21.257300000000008,
+      "body_ms": 177.6804,
+      "total_ms": 199.38009999999997,
+      "min_total_ms": 198.9135,
+      "max_total_ms": 205.83689999999999
+    },
+    {
+      "name": "full32",
+      "mode": "poly-pruned",
+      "processes": 3,
+      "read_ms": 22.085000000000008,
+      "body_ms": 180.16199999999998,
+      "total_ms": 202.53059999999996,
+      "min_total_ms": 201.4087,
+      "max_total_ms": 203.60669999999996
+    }
+  ],
+  "runtime": [
+    {
+      "name": "n8",
+      "mode": "list",
+      "kind": "hit",
+      "median_ns": 1.8344879150390625,
+      "min_ns": 1.83258056640625,
+      "max_ns": 1.8466949462890625,
+      "bytes": 196,
+      "rss_kib": [
+        40480,
+        40228,
+        40136
+      ]
+    },
+    {
+      "name": "n8",
+      "mode": "list",
+      "kind": "miss",
+      "median_ns": 3.5411834716796875,
+      "min_ns": 3.53240966796875,
+      "max_ns": 3.70025634765625,
+      "bytes": 196,
+      "rss_kib": [
+        40192,
+        40284,
+        40180
+      ]
+    },
+    {
+      "name": "n8",
+      "mode": "array",
+      "kind": "hit",
+      "median_ns": 1.6674041748046875,
+      "min_ns": 1.6368865966796875,
+      "max_ns": 1.78070068359375,
+      "bytes": 168,
+      "rss_kib": [
+        40344,
+        40472,
+        40536
+      ]
+    },
+    {
+      "name": "n8",
+      "mode": "array",
+      "kind": "miss",
+      "median_ns": 3.0765533447265625,
+      "min_ns": 3.055572509765625,
+      "max_ns": 3.3069610595703125,
+      "bytes": 168,
+      "rss_kib": [
+        40240,
+        40200,
+        40292
+      ]
+    },
+    {
+      "name": "n8",
+      "mode": "poly",
+      "kind": "hit",
+      "median_ns": 25.148773193359375,
+      "min_ns": 24.737930297851562,
+      "max_ns": 25.662994384765625,
+      "bytes": 278,
+      "rss_kib": [
+        40528,
+        40408,
+        40388
+      ]
+    },
+    {
+      "name": "n8",
+      "mode": "poly",
+      "kind": "miss",
+      "median_ns": 10.504913330078125,
+      "min_ns": 10.491180419921875,
+      "max_ns": 10.528182983398438,
+      "bytes": 278,
+      "rss_kib": [
+        40264,
+        40324,
+        40316
+      ]
+    },
+    {
+      "name": "n8",
+      "mode": "poly-pruned",
+      "kind": "hit",
+      "median_ns": 17.724990844726562,
+      "min_ns": 17.71240234375,
+      "max_ns": 17.97027587890625,
+      "bytes": 261,
+      "rss_kib": [
+        40392,
+        40284,
+        40396
+      ]
+    },
+    {
+      "name": "n8",
+      "mode": "poly-pruned",
+      "kind": "miss",
+      "median_ns": 9.833526611328125,
+      "min_ns": 9.819412231445312,
+      "max_ns": 9.843063354492188,
+      "bytes": 261,
+      "rss_kib": [
+        39976,
+        40360,
+        40320
+      ]
+    },
+    {
+      "name": "n32",
+      "mode": "list",
+      "kind": "hit",
+      "median_ns": 10.27984619140625,
+      "min_ns": 10.265350341796875,
+      "max_ns": 10.284423828125,
+      "bytes": 486,
+      "rss_kib": [
+        40188,
+        40276,
+        40344
+      ]
+    },
+    {
+      "name": "n32",
+      "mode": "list",
+      "kind": "miss",
+      "median_ns": 23.272705078125,
+      "min_ns": 23.255157470703125,
+      "max_ns": 23.339080810546875,
+      "bytes": 486,
+      "rss_kib": [
+        40344,
+        40376,
+        40244
+      ]
+    },
+    {
+      "name": "n32",
+      "mode": "array",
+      "kind": "hit",
+      "median_ns": 4.566192626953125,
+      "min_ns": 4.5597076416015625,
+      "max_ns": 4.575347900390625,
+      "bytes": 362,
+      "rss_kib": [
+        40448,
+        40268,
+        40552
+      ]
+    },
+    {
+      "name": "n32",
+      "mode": "array",
+      "kind": "miss",
+      "median_ns": 8.794784545898438,
+      "min_ns": 8.764266967773438,
+      "max_ns": 8.806228637695312,
+      "bytes": 362,
+      "rss_kib": [
+        40164,
+        40252,
+        40216
+      ]
+    },
+    {
+      "name": "n32",
+      "mode": "poly",
+      "kind": "hit",
+      "median_ns": 178.631591796875,
+      "min_ns": 178.2470703125,
+      "max_ns": 179.1778564453125,
+      "bytes": 472,
+      "rss_kib": [
+        40300,
+        40272,
+        40420
+      ]
+    },
+    {
+      "name": "n32",
+      "mode": "poly",
+      "kind": "miss",
+      "median_ns": 62.024688720703125,
+      "min_ns": 61.9781494140625,
+      "max_ns": 62.0513916015625,
+      "bytes": 472,
+      "rss_kib": [
+        40416,
+        40392,
+        40416
+      ]
+    },
+    {
+      "name": "n32",
+      "mode": "poly-pruned",
+      "kind": "hit",
+      "median_ns": 121.17919921875,
+      "min_ns": 120.941162109375,
+      "max_ns": 121.2860107421875,
+      "bytes": 455,
+      "rss_kib": [
+        40016,
+        40308,
+        40476
+      ]
+    },
+    {
+      "name": "n32",
+      "mode": "poly-pruned",
+      "kind": "miss",
+      "median_ns": 61.05194091796875,
+      "min_ns": 60.712432861328125,
+      "max_ns": 62.87689208984375,
+      "bytes": 455,
+      "rss_kib": [
+        40288,
+        40008,
+        40456
+      ]
+    },
+    {
+      "name": "n128",
+      "mode": "list",
+      "kind": "hit",
+      "median_ns": 61.925506591796875,
+      "min_ns": 60.341644287109375,
+      "max_ns": 62.1429443359375,
+      "bytes": 1638,
+      "rss_kib": [
+        40376,
+        40244,
+        40364
+      ]
+    },
+    {
+      "name": "n128",
+      "mode": "list",
+      "kind": "miss",
+      "median_ns": 153.4942626953125,
+      "min_ns": 150.59814453125,
+      "max_ns": 153.759765625,
+      "bytes": 1638,
+      "rss_kib": [
+        40236,
+        40412,
+        40228
+      ]
+    },
+    {
+      "name": "n128",
+      "mode": "array",
+      "kind": "hit",
+      "median_ns": 16.558456420898438,
+      "min_ns": 15.980148315429688,
+      "max_ns": 17.305755615234375,
+      "bytes": 1130,
+      "rss_kib": [
+        40436,
+        40368,
+        40296
+      ]
+    },
+    {
+      "name": "n128",
+      "mode": "array",
+      "kind": "miss",
+      "median_ns": 37.82386779785156,
+      "min_ns": 37.76702880859375,
+      "max_ns": 37.85552978515625,
+      "bytes": 1130,
+      "rss_kib": [
+        40212,
+        40228,
+        40220
+      ]
+    },
+    {
+      "name": "n128",
+      "mode": "poly",
+      "kind": "hit",
+      "median_ns": 927.5390625,
+      "min_ns": 901.79443359375,
+      "max_ns": 927.685546875,
+      "bytes": 1243,
+      "rss_kib": [
+        40416,
+        40496,
+        40344
+      ]
+    },
+    {
+      "name": "n128",
+      "mode": "poly",
+      "kind": "miss",
+      "median_ns": 311.99951171875,
+      "min_ns": 310.205078125,
+      "max_ns": 312.200927734375,
+      "bytes": 1243,
+      "rss_kib": [
+        40456,
+        40272,
+        40304
+      ]
+    },
+    {
+      "name": "n128",
+      "mode": "poly-pruned",
+      "kind": "hit",
+      "median_ns": 623.44970703125,
+      "min_ns": 604.656982421875,
+      "max_ns": 624.9755859375,
+      "bytes": 1225,
+      "rss_kib": [
+        40272,
+        40272,
+        40368
+      ]
+    },
+    {
+      "name": "n128",
+      "mode": "poly-pruned",
+      "kind": "miss",
+      "median_ns": 310.65673828125,
+      "min_ns": 301.7822265625,
+      "max_ns": 313.720703125,
+      "bytes": 1225,
+      "rss_kib": [
+        40244,
+        40344,
+        40324
+      ]
+    },
+    {
+      "name": "full32",
+      "mode": "list",
+      "kind": "hit",
+      "median_ns": 26.359939575195312,
+      "min_ns": 25.606918334960938,
+      "max_ns": 26.494979858398438,
+      "bytes": 870,
+      "rss_kib": [
+        40412,
+        40340,
+        40392
+      ]
+    },
+    {
+      "name": "full32",
+      "mode": "list",
+      "kind": "miss",
+      "median_ns": 60.153961181640625,
+      "min_ns": 59.124755859375,
+      "max_ns": 60.16082763671875,
+      "bytes": 870,
+      "rss_kib": [
+        40196,
+        40156,
+        40272
+      ]
+    },
+    {
+      "name": "full32",
+      "mode": "array",
+      "kind": "hit",
+      "median_ns": 8.489227294921875,
+      "min_ns": 8.470535278320312,
+      "max_ns": 8.502960205078125,
+      "bytes": 618,
+      "rss_kib": [
+        40332,
+        40628,
+        40220
+      ]
+    },
+    {
+      "name": "full32",
+      "mode": "array",
+      "kind": "miss",
+      "median_ns": 16.90673828125,
+      "min_ns": 16.584396362304688,
+      "max_ns": 16.973495483398438,
+      "bytes": 618,
+      "rss_kib": [
+        40008,
+        40268,
+        40332
+      ]
+    },
+    {
+      "name": "full32",
+      "mode": "poly",
+      "kind": "hit",
+      "median_ns": 428.070068359375,
+      "min_ns": 413.470458984375,
+      "max_ns": 428.228759765625,
+      "bytes": 731,
+      "rss_kib": [
+        40368,
+        40200,
+        40436
+      ]
+    },
+    {
+      "name": "full32",
+      "mode": "poly",
+      "kind": "miss",
+      "median_ns": 146.2921142578125,
+      "min_ns": 146.014404296875,
+      "max_ns": 146.7559814453125,
+      "bytes": 731,
+      "rss_kib": [
+        40304,
+        40420,
+        40444
+      ]
+    },
+    {
+      "name": "full32",
+      "mode": "poly-pruned",
+      "kind": "hit",
+      "median_ns": 287.6556396484375,
+      "min_ns": 287.3382568359375,
+      "max_ns": 288.1561279296875,
+      "bytes": 713,
+      "rss_kib": [
+        40492,
+        40460,
+        40436
+      ]
+    },
+    {
+      "name": "full32",
+      "mode": "poly-pruned",
+      "kind": "miss",
+      "median_ns": 147.39227294921875,
+      "min_ns": 147.21832275390625,
+      "max_ns": 147.65472412109375,
+      "bytes": 713,
+      "rss_kib": [
+        40420,
+        40404,
+        40104
+      ]
+    }
+  ],
+  "transform_total_ms_range": [
+    36.071300000000136,
+    67.80410000000003
+  ],
+  "peak_process_rss_kib": [
+    39976,
+    40628
+  ],
+  "decision": "Concrete known-representation experiment; independent novelty unestablished; main invention goal active"
+}

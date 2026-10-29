@@ -1,0 +1,21 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export global$
+[LoggingExternalInterface logging externref(68)]
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging NaN]
+[fuzz-exec] export global$_2
+[LoggingExternalInterface logging 221]
+[fuzz-exec] export global$_4
+[LoggingExternalInterface logging -3.4028234663852886e+38]
+[fuzz-exec] export global$_22
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_24
+[LoggingExternalInterface logging null]
+[fuzz-exec] export ref_func_target_1_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export ref_func_target_2_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func
+exception thrown: RuntimeError: dereferencing a null pointer
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"ref_func_target_1_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"ref_func_target_2_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null}]}

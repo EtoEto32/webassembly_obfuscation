@@ -1,0 +1,92 @@
+[
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\before.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\before.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\capture.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\capture.raw.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\capture.raw.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\capture.O2.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\capture.O2.wasm",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\capture.O2.wat"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\before.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\capture.raw.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\experiments\\sha-prefix-reachability\\artifacts\\capture.O2.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "--version"
+    ],
+    "exit": 0,
+    "stdout": "1.0.42\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "--version"
+    ],
+    "exit": 0,
+    "stdout": "wasm-opt version 133 (version_133)\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,352 @@
+{
+  "programs": {
+    "mixed": [
+      [
+        "add",
+        "x",
+        "y"
+      ],
+      [
+        "mul",
+        0,
+        "x"
+      ],
+      [
+        "add",
+        1,
+        "y"
+      ],
+      [
+        "rotl",
+        "x",
+        7
+      ],
+      [
+        "xor",
+        2,
+        3
+      ]
+    ],
+    "cross": [
+      [
+        "add",
+        "x",
+        "y"
+      ],
+      [
+        "mul",
+        "x",
+        "y"
+      ],
+      [
+        "add",
+        0,
+        1
+      ],
+      [
+        "rotl",
+        2,
+        5
+      ],
+      [
+        "add",
+        3,
+        "y"
+      ]
+    ],
+    "select": [
+      [
+        "add",
+        "x",
+        "y"
+      ],
+      [
+        "rotl",
+        "x",
+        3
+      ],
+      [
+        "mul",
+        0,
+        1
+      ],
+      [
+        "add",
+        2,
+        "y"
+      ],
+      [
+        "lt",
+        2,
+        3
+      ],
+      [
+        "select",
+        0,
+        3,
+        4
+      ]
+    ]
+  },
+  "bounds": {
+    "mixed": {
+      "scheduled": 4,
+      "carry": 68
+    },
+    "cross": {
+      "scheduled": 4,
+      "carry": 100
+    },
+    "select": {
+      "scheduled": 5,
+      "carry": 69
+    }
+  },
+  "binaries": [
+    {
+      "file": "mixed.normal.wasm",
+      "program": "mixed",
+      "mode": "normal",
+      "bytes": 76,
+      "sha256": "e71c54822514e17fe4b74b5a9db8acae84ecbddc38f2b44b567a2aeb755796a6"
+    },
+    {
+      "file": "mixed.normal.O2.wasm",
+      "program": "mixed",
+      "mode": "normal",
+      "bytes": 54,
+      "sha256": "620945383ab70940c6878fbda9f02ef34fc7a5bd68fd31e064265d96e0a98824"
+    },
+    {
+      "file": "mixed.scheduled.wasm",
+      "program": "mixed",
+      "mode": "scheduled",
+      "bytes": 248,
+      "sha256": "56e387e79351aee500889eb968a356351e24037c241abfa8bd74eb56dbb3cf3c"
+    },
+    {
+      "file": "mixed.scheduled.O2.wasm",
+      "program": "mixed",
+      "mode": "scheduled",
+      "bytes": 204,
+      "sha256": "5172c965def8a89277a057f12784d3527b983ef19275ff5b28fd6b4d844c7d4d"
+    },
+    {
+      "file": "mixed.carry.wasm",
+      "program": "mixed",
+      "mode": "carry",
+      "bytes": 293,
+      "sha256": "8fa4f46ba6dee7573852e91b5ee4565e30f2b35839c42915ce1b5e673abaa9d5"
+    },
+    {
+      "file": "mixed.carry.O2.wasm",
+      "program": "mixed",
+      "mode": "carry",
+      "bytes": 264,
+      "sha256": "a9ea17d07a53afd1dae78812410de13063335c193c74da10feb646ff16ab8e7a"
+    },
+    {
+      "file": "cross.normal.wasm",
+      "program": "cross",
+      "mode": "normal",
+      "bytes": 76,
+      "sha256": "d5bb51fd8f57d910c313dc0e39630167b1c6272290432b0cc72a83d324589494"
+    },
+    {
+      "file": "cross.normal.O2.wasm",
+      "program": "cross",
+      "mode": "normal",
+      "bytes": 54,
+      "sha256": "a9837167b91386288dd55e6a6c68a9b625cf30410209df5371041f604866b95c"
+    },
+    {
+      "file": "cross.scheduled.wasm",
+      "program": "cross",
+      "mode": "scheduled",
+      "bytes": 248,
+      "sha256": "9d4571260e9100516a5fc8a2459d671f516479847506dc9f3dfda016dd9fa4b6"
+    },
+    {
+      "file": "cross.scheduled.O2.wasm",
+      "program": "cross",
+      "mode": "scheduled",
+      "bytes": 204,
+      "sha256": "d8bfe82313ed017069cdcac89f20566b1d52004b56fa19ca03a1fd0fee8fc79b"
+    },
+    {
+      "file": "cross.carry.wasm",
+      "program": "cross",
+      "mode": "carry",
+      "bytes": 315,
+      "sha256": "24bed9033e859c97688b49204732c534bfc9306f0c4e71dc5100723821e2af02"
+    },
+    {
+      "file": "cross.carry.O2.wasm",
+      "program": "cross",
+      "mode": "carry",
+      "bytes": 294,
+      "sha256": "89677bed6d8c919022ee994261fd80c560c04664d292c811286128b169e8a477"
+    },
+    {
+      "file": "select.normal.wasm",
+      "program": "select",
+      "mode": "normal",
+      "bytes": 85,
+      "sha256": "0befe9e0e15f0ed84795256c4c32f0a7f5eaf6bbc541aa7bf829953ffedfb62b"
+    },
+    {
+      "file": "select.normal.O2.wasm",
+      "program": "select",
+      "mode": "normal",
+      "bytes": 67,
+      "sha256": "b78e702fdb383c603e3fcffc786b21778d430116a4f4d7302fa0c523d2eb1105"
+    },
+    {
+      "file": "select.scheduled.wasm",
+      "program": "select",
+      "mode": "scheduled",
+      "bytes": 281,
+      "sha256": "804f736036569fdfac957b2f85c883cedbf3f1254f496cec4b65a0679862eb26"
+    },
+    {
+      "file": "select.scheduled.O2.wasm",
+      "program": "select",
+      "mode": "scheduled",
+      "bytes": 229,
+      "sha256": "7ca566ba7d08bcb17eb19fe43d2097d667b9d4a91188da6718d1a056800e8ddf"
+    },
+    {
+      "file": "select.carry.wasm",
+      "program": "select",
+      "mode": "carry",
+      "bytes": 326,
+      "sha256": "d1a67eaefe9c7539c0226db1ed32e4baad4c72087775df09fb89fe4a9b59edf9"
+    },
+    {
+      "file": "select.carry.O2.wasm",
+      "program": "select",
+      "mode": "carry",
+      "bytes": 290,
+      "sha256": "28c8057f3737e27a2c6ef123a2644b42319308872037c71259fad19db62dbd7d"
+    }
+  ],
+  "commands": [
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.normal.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.normal.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.normal.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.normal.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.scheduled.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.scheduled.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.scheduled.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.scheduled.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.carry.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.carry.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.carry.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\mixed.carry.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.normal.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.normal.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.normal.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.normal.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.scheduled.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.scheduled.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.scheduled.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.scheduled.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.carry.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.carry.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.carry.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\cross.carry.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.normal.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.normal.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.normal.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.normal.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.scheduled.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.scheduled.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.scheduled.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.scheduled.O2.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.carry.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.carry.wasm"
+    ],
+    [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.carry.wasm",
+      "-O2",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\tmp\\settling-carry\\select.carry.O2.wasm"
+    ]
+  ]
+}

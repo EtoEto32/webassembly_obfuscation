@@ -1,0 +1,78 @@
+{
+  "rows": [
+    {
+      "test": "own-buffer-shadow",
+      "old": [
+        0,
+        1
+      ],
+      "current": [
+        0,
+        0
+      ]
+    },
+    {
+      "test": "impostor",
+      "status": "rejected"
+    },
+    {
+      "test": "cross-realm",
+      "status": "ok"
+    },
+    {
+      "test": "grow-before-probe",
+      "oldBytes": 65536,
+      "currentBytes": 131072,
+      "cloneBytes": 131072
+    },
+    {
+      "test": "offset",
+      "offset": 0,
+      "status": "ok"
+    },
+    {
+      "test": "offset",
+      "offset": 4,
+      "status": "ok"
+    },
+    {
+      "test": "offset",
+      "offset": 65532,
+      "status": "ok"
+    },
+    {
+      "test": "input-list-mutation",
+      "status": "captured bindings retained"
+    },
+    {
+      "test": "worker-roundtrip",
+      "partition": [
+        0,
+        0
+      ],
+      "status": "ok"
+    },
+    {
+      "test": "worker-roundtrip",
+      "partition": [
+        0,
+        1
+      ],
+      "status": "ok"
+    },
+    {
+      "test": "worker-roundtrip",
+      "partition": [
+        0,
+        1,
+        0,
+        2,
+        1,
+        2
+      ],
+      "status": "ok"
+    }
+  ],
+  "node": "v24.15.0",
+  "note": "Shadowed buffer was a prototype bug, not a runtime vulnerability. Worker is trusted and sends no concurrent notifications."
+}

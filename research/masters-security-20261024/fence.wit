@@ -1,0 +1,26 @@
+package research:fence;
+
+interface storage {
+  resource file;
+  record pair {
+    source: borrow<file>,
+    destination: borrow<file>,
+  }
+  record optional-write {
+    primary: borrow<file>,
+    backup: option<borrow<file>>,
+  }
+  variant request {
+    read(borrow<file>),
+    write(borrow<file>),
+    copy(pair),
+    batch(list<borrow<file>>),
+    optional(optional-write),
+    idle,
+  }
+  prepare: func(value: request) -> u32;
+}
+
+world plugin {
+  import storage;
+}

@@ -1,0 +1,1697 @@
+{
+  "domain": "all 16 assignments of two 2-bit inputs",
+  "grammar": "add/sub/xor/mul, constants 0/1, <=3 expression-tree operations",
+  "stats": {
+    "all_profiles": {
+      "attempts": 9892,
+      "levels": [
+        4,
+        19,
+        243,
+        3388
+      ],
+      "profiles": 3654
+    },
+    "output_only": {
+      "attempts": 4644,
+      "levels": [
+        4,
+        19,
+        79,
+        286
+      ],
+      "profiles": 388
+    },
+    "span_frontier": {
+      "attempts": 4644,
+      "levels": [
+        4,
+        19,
+        79,
+        290
+      ],
+      "profiles": 392
+    }
+  },
+  "comparisons": {
+    "all_profiles": {
+      "1": {
+        "equal": 3008,
+        "strict_superset": 526,
+        "strict_subset": 114,
+        "strict_subset_same_cost": 98,
+        "strict_subset_extra_cost": 16,
+        "incomparable": 6
+      },
+      "2": {
+        "equal": 3010,
+        "strict_superset": 529,
+        "strict_subset": 114,
+        "strict_subset_same_cost": 98,
+        "strict_subset_extra_cost": 16,
+        "incomparable": 1
+      },
+      "3": {
+        "equal": 3084,
+        "strict_superset": 494,
+        "strict_subset": 76,
+        "strict_subset_same_cost": 60,
+        "strict_subset_extra_cost": 16
+      },
+      "4": {
+        "equal": 3654
+      }
+    },
+    "span_frontier": {
+      "1": {
+        "equal": 344,
+        "strict_subset": 45,
+        "strict_subset_same_cost": 45,
+        "incomparable": 3
+      },
+      "2": {
+        "equal": 346,
+        "strict_subset": 45,
+        "strict_subset_same_cost": 45,
+        "strict_superset": 1
+      },
+      "3": {
+        "equal": 375,
+        "strict_subset": 17,
+        "strict_subset_same_cost": 17
+      },
+      "4": {
+        "equal": 392
+      }
+    }
+  },
+  "second_degree_examples": [
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "add",
+        "b",
+        [
+          "add",
+          "a",
+          "a"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 2,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "xor",
+        "a",
+        [
+          "xor",
+          "b",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "add",
+        "b",
+        [
+          "sub",
+          "a",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "add",
+        "b",
+        [
+          "mul",
+          "a",
+          [
+            "add",
+            "one",
+            "one"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "sub",
+        "zero",
+        [
+          "sub",
+          [
+            "add",
+            "a",
+            "a"
+          ],
+          "b"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "a",
+          "a"
+        ],
+        [
+          "sub",
+          "zero",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "xor",
+        [
+          "xor",
+          "a",
+          "b"
+        ],
+        [
+          "sub",
+          "zero",
+          "a"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "a",
+          "a"
+        ],
+        "b"
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "sub",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 2,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    }
+  ],
+  "direct_product_checks": 3654,
+  "source_target_audit": [
+    {
+      "candidate": [
+        "add",
+        "b",
+        [
+          "add",
+          "a",
+          "a"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 2,
+      "baseline_cost": 2,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "a",
+          "a"
+        ],
+        "b"
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "sub",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 2,
+      "baseline_cost": 2,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        "b",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 2,
+      "baseline_cost": 2,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "b",
+          "b"
+        ],
+        "a"
+      ],
+      "baseline": [
+        "sub",
+        "b",
+        [
+          "sub",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 2,
+      "baseline_cost": 2,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "mul",
+          "a",
+          "a"
+        ],
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "add",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "mul",
+          "a",
+          "a"
+        ],
+        [
+          "sub",
+          "a",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "sub",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "mul",
+          "a",
+          "a"
+        ],
+        [
+          "add",
+          "b",
+          "one"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "add",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "mul",
+          "a",
+          "a"
+        ],
+        [
+          "xor",
+          "b",
+          "one"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "mul",
+          "a",
+          "a"
+        ],
+        [
+          "sub",
+          "b",
+          "a"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "sub",
+            "b",
+            "a"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "add",
+        [
+          "add",
+          "a",
+          "a"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          [
+            "mul",
+            "b",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "a",
+          "a"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "sub",
+          "a",
+          [
+            "mul",
+            "b",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "mul",
+          "a",
+          "a"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "b",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "xor",
+        "a",
+        [
+          "add",
+          "one",
+          [
+            "xor",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          [
+            "add",
+            "b",
+            "one"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "xor",
+        "a",
+        [
+          "xor",
+          "b",
+          [
+            "sub",
+            "a",
+            "one"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "sub",
+          "a",
+          [
+            "add",
+            "b",
+            "one"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "xor",
+        "a",
+        [
+          "sub",
+          [
+            "xor",
+            "a",
+            "b"
+          ],
+          "one"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          [
+            "sub",
+            "b",
+            "one"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "xor",
+        "a",
+        [
+          "xor",
+          "b",
+          [
+            "add",
+            "a",
+            "one"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "sub",
+          "a",
+          [
+            "sub",
+            "b",
+            "one"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "mul",
+          "a",
+          "a"
+        ],
+        [
+          "sub",
+          "b",
+          "one"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "sub",
+            "b",
+            "one"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        "b",
+        [
+          "mul",
+          "a",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "sub",
+            "zero",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "add",
+        "b",
+        [
+          "add",
+          "a",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "sub",
+          "a",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ],
+        "b"
+      ],
+      "baseline": [
+        "sub",
+        "a",
+        [
+          "add",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "xor",
+        "a",
+        [
+          "xor",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "sub",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "a",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ],
+        "b"
+      ],
+      "baseline": [
+        "sub",
+        "a",
+        [
+          "sub",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "add",
+        "a",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        "a",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "sub",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        "b",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        "b",
+        [
+          "add",
+          "a",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "add",
+          "b",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        "b",
+        [
+          "sub",
+          "a",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "b",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ],
+        "a"
+      ],
+      "baseline": [
+        "mul",
+        "a",
+        [
+          "sub",
+          [
+            "mul",
+            "a",
+            "b"
+          ],
+          "one"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "sub",
+          "b",
+          [
+            "mul",
+            "b",
+            "b"
+          ]
+        ],
+        "a"
+      ],
+      "baseline": [
+        "sub",
+        "b",
+        [
+          "add",
+          "a",
+          [
+            "mul",
+            "b",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "b",
+          [
+            "mul",
+            "b",
+            "b"
+          ]
+        ],
+        "a"
+      ],
+      "baseline": [
+        "sub",
+        "b",
+        [
+          "sub",
+          "a",
+          [
+            "mul",
+            "b",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "add",
+        [
+          "mul",
+          "a",
+          "a"
+        ],
+        [
+          "add",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "b",
+        [
+          "add",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "b",
+          "b"
+        ],
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "b",
+        [
+          "sub",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "add",
+        "b",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "b",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        "b",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "sub",
+        "b",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "add",
+          "a",
+          "b"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "b",
+        [
+          "mul",
+          "b",
+          [
+            "add",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "sub",
+          "a",
+          "b"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "b",
+        [
+          "mul",
+          "b",
+          [
+            "sub",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "xor",
+          "a",
+          "b"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "b",
+        [
+          "mul",
+          "b",
+          [
+            "xor",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "add",
+          "a",
+          "one"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "b",
+        [
+          "add",
+          "b",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "xor",
+          "a",
+          "one"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "b",
+        [
+          "sub",
+          "b",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "mul",
+        [
+          "sub",
+          "a",
+          "one"
+        ],
+        [
+          "mul",
+          "b",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "mul",
+        "b",
+        [
+          "mul",
+          "b",
+          [
+            "sub",
+            "a",
+            "one"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "b",
+            "b"
+          ]
+        ],
+        "b"
+      ],
+      "baseline": [
+        "mul",
+        "b",
+        [
+          "sub",
+          [
+            "mul",
+            "a",
+            "b"
+          ],
+          "one"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "add",
+        "one",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "one",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        "one",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "sub",
+        "one",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    },
+    {
+      "candidate": [
+        "sub",
+        [
+          "mul",
+          "b",
+          [
+            "mul",
+            "a",
+            "a"
+          ]
+        ],
+        "one"
+      ],
+      "baseline": [
+        "sub",
+        [
+          "mul",
+          "a",
+          [
+            "mul",
+            "a",
+            "b"
+          ]
+        ],
+        "one"
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 3,
+      "unrecovered_baseline_intermediate_bits": []
+    }
+  ],
+  "rank_improvements_with_any_unrecovered_source_intermediate": 0
+}

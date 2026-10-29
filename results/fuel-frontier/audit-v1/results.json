@@ -1,0 +1,53 @@
+{
+  "checks": 1152,
+  "adaptivePairs": 28800,
+  "boundChecks": 4032,
+  "fixtures": 24,
+  "binaries": 48,
+  "underReservation": {
+    "reserved": 51,
+    "actualFirstPrefix": 52,
+    "markersActuallyExecuted": 1
+  },
+  "creditLoss": {
+    "paths": [
+      [
+        90,
+        10
+      ],
+      [
+        10,
+        90
+      ]
+    ],
+    "reservation": [
+      90,
+      10
+    ],
+    "noCarry": [
+      [
+        true,
+        true
+      ],
+      [
+        true,
+        false
+      ]
+    ]
+  },
+  "secretRefund": {
+    "refund": [
+      0,
+      80
+    ]
+  },
+  "correlation": {
+    "abstractTotal": 157,
+    "concreteMax": 93
+  },
+  "limitations": [
+    "creditLoss and secretRefund are arithmetic countermodels, not Wasm tests",
+    "underReservation uses an unguarded original Wasm to show why an externally supplied schedule cannot be trusted",
+    "adaptive observer changes budget only at public markers; no time-based interruption or reentry"
+  ]
+}

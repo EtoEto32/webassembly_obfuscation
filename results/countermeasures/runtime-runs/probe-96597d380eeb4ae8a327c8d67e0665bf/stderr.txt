@@ -1,0 +1,21 @@
+node:internal/fs/utils:356
+    throw err;
+    ^
+
+Error: ENOMEM: not enough memory, read
+    at Object.readSync (node:fs:744:3)
+    at tryReadSync (node:fs:444:20)
+    at Object.readFileSync (node:fs:482:19)
+    at Object.<anonymous> (/inputs/runner.cjs:7:16)
+    at Module._compile (node:internal/modules/cjs/loader:1364:14)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1422:10)
+    at Module.load (node:internal/modules/cjs/loader:1203:32)
+    at Module._load (node:internal/modules/cjs/loader:1019:12)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49 {
+  errno: -12,
+  syscall: 'read',
+  code: 'ENOMEM'
+}
+
+Node.js v18.20.4

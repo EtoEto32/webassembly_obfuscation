@@ -1,0 +1,26 @@
+
+int32_t run(int32_t p0, int32_t p1) {
+    int64_t l2 = 0LL;
+    int64_t l3 = 0LL;
+    int64_t t0 = wasm_i64_extend_i32_u(p0);
+    l2 = t0;
+    int64_t t1 = wasm_i64_rem_u(l2, INT64_C(65537));
+    int64_t t2 = wasm_i64_extend_i32_u(p1);
+    l3 = t2;
+    int64_t t3 = wasm_i64_rem_u(l3, INT64_C(65537));
+    int64_t t4 = wasm_i64_mul(t1, t3);
+    int64_t t5 = wasm_i64_rem_u(t4, INT64_C(65537));
+    int64_t t6 = wasm_i64_add(t5, INT64_C(65537));
+    int64_t t7 = wasm_i64_and(l2, INT64_C(4294967295));
+    int64_t t8 = wasm_i64_and(l3, INT64_C(4294967295));
+    int64_t t9 = wasm_i64_mul(t7, t8);
+    int64_t t10 = wasm_i64_and(t9, INT64_C(4294967295));
+    l2 = t10;
+    int64_t t11 = wasm_i64_rem_u(l2, INT64_C(65537));
+    int64_t t12 = wasm_i64_sub(t6, t11);
+    int64_t t13 = wasm_i64_rem_u(t12, INT64_C(65537));
+    int64_t t14 = wasm_i64_shl(t13, INT64_C(32));
+    int64_t t15 = wasm_i64_add(t14, l2);
+    int32_t t16 = wasm_i32_wrap_i64(t15);
+    return t16;
+}

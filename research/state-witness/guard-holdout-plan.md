@@ -1,0 +1,9 @@
+# 混合resourceでの前向き検査
+
+2026-10-24。二つのstore・選択観測・trap終端の実装を固定した後に、新しいgeneratorを作る。従来の96乱数例はmemory/full契約中心、新しい13例は狙った遅延公開の手書き例だった。memory/tableを混在させた任意順序の操作と、観測契約の組合せの実装誤りは未解決の検査課題である。
+
+固定seed0x71024で96moduleを生成する。memoryのみ/tableのみ/両方を32本ずつ。元resourceのexport有無を変え、3個のvoid APIに定数init/copy/fill/drop/nopを混ぜる。半数は全てのbodyを乱数で作り、半数は先頭APIに同じtrapで副作用を隠すprefixを持たせる。後者は意図的な対照であり、実アプリ分布を模した生成とは主張しない。0長・境界・範囲外を含める。全て標準binaryのvalidationを通す。
+
+full/public/returnsとreenter/terminalの6契約を調べる。各契約で4共通初期storeを作り、2つは乱数、条件が充足可能なら残り2つをその条件へ合わせる。tableはnullと二つの純粋定数関数に限定する。否定storeは合成反例を、肯定storeは全単発APIと16個の固定乱数列（長さ2–4）を実行する。terminalではtrap後を呼ばない。Node/Wasmtimeの返値/trapと指定resourceの比較を一致させる。
+
+生成seed・module・初期store・実行列・結果を保存する。正例の有限テストを無限列証明としない。条件を満たすよう生成した正例と無作為正例を区別する。最短性は固定点modelからの性質で、engineの有限実行が独立に最短性を証明したとはしない。失敗時は生成規則と解析器のどちらに原因があるかを分け、旧結果を上書きしない。

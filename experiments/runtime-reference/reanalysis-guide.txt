@@ -1,0 +1,136 @@
+保存済み結果の再解析・レビュー手順（2026-10-08）
+
+この記録時点の制約
+大学PCで新しいハッシュ計算を実行する許可は、指導教員に確認している段階である。
+ここで示すコマンドは保存済みJSON/CSVの分析であり，Wasmを実行しない。
+外部プール接続，ジョブ取得，share提出，保護設定変更は行わない。
+
+作業ディレクトリ
+C:\Users\ettotto\Documents\webassembly_obfuscation
+
+結果を確認するためのファイル
+results/runtime-mining/cross-dataset/current-evidence-index.json
+  主要な根拠ファイル33件の絶対パス・サイズ・SHA-256と，実測時の依存ファイル照合7件。
+  ハッシュの一致はファイルが変わっていないことの確認であり，仕組み・性能の科学的妥当性を証明しない。
+results/runtime-mining/cross-dataset/rq1-rq2-runtime-evidence.csv
+  ローカルで繰り返し測定した13バイナリをSHAでRQ1/RQ2へ対応付ける。
+  Proof-of-Theft配布10，SWAMPED入力1，今回作成した変換版2件。
+  配布名，ビルド指定，確認済みの仕組み，適用範囲，hook，アルゴリズム，出力照合，速度を区別して記録している。
+results/runtime-mining/cross-dataset/runtime-number-audit.json
+  39ブロックのcount/elapsedと中央値・min/maxの再計算結果。
+
+保存済み結果だけを再解析するPowerShellコマンド
+Set-Location -LiteralPath 'C:\Users\ettotto\Documents\webassembly_obfuscation'
+& '.\.tools\runtime-analysis-py312\Scripts\python.exe' '.\scripts\audit_runtime_report_numbers.py'
+& '.\.tools\runtime-analysis-py312\Scripts\python.exe' '.\scripts\link_runtime_rq_evidence.py'
+& '.\.tools\runtime-analysis-py312\Scripts\python.exe' '.\scripts\index_current_research_evidence.py'
+これらは分析JSON/CSVを再保存する。測定原本とpaper/main.texは変更しない。
+数値検査の対象は記録された出力条件と集計の算術であり，独立した再実行ではない。
+
+実測結果の対応
+Proof-of-Theft/webminerpoolhashcn
+  hash-throughput-preliminary-20261007-retry.json，preliminary-summary.csv。
+  cn-pico，1秒のウォームアップ，5秒以上の測定を3回，13件の受理済み入力を順次使用。
+  追加でoriginal-glue-public-vector-check-corrected-20261008.jsonにcn/0の5公表入力照合。
+  cn/0の公表照合とcn-pico速度測定を同じアルゴリズムの検証として扱わない。
+  配布5ディレクトリのMakefileが同じbcf指定を持つため，4手法の因果効果とは解釈しない。
+Proof-of-Theft/xmr-wasm
+  xmr-repeated-throughput-20261008.json，xmr-repeated-summary.json。
+  cn/0，3秒のウォームアップ，30秒以上の測定を3回，測定回ごとに実行順を回転，元JavaScriptのホスト処理。
+  公開された5入力のうち，ラッパのvariant選択でcn/0に該当する3入力を使用。
+  最大targetを指定し，検査出力でnonce不変を確認。デモmainは実行しない。
+  同梱ソース46ファイルは一致するが，過去のビルド条件が同じとは証明していない。
+SWAMPED入力＋今回作成した基準版・変換版の組
+  controlled-pair-manifest.json，controlled-pair-repeated-throughput.json，controlled-pair-summary.json。
+  cn/0，3秒のウォームアップ，30秒以上の測定を3回，測定回ごとに実行順を回転，初期化時刻固定，復元したホスト側の処理。
+  3ファイル×5公表入力，測定後の5入力，最終出力の照合を記録。
+  Wasmバイナリに変換し直した基準版のSHAは元の入力と一致。公開された変換関数を入力に合わせて調整し、nop挿入版と整数定数分割版を作成した。
+  ソースのコミット、乱数シード、変換位置、調整内容、浮動小数点定数を除外したことは、マニフェストを参照する。
+  旧seed単独27.78 H/sは初期化の時刻条件が異なるため，対の基準32.39 H/sと直接比較しない。
+  繰り返し測定で得た値の範囲が重なることは有意差なしや同等性能の証明ではない。
+
+記録された実行環境
+Node v18.20.4，V8 10.2.154.26-node.37，CPU Intel Core i9-11900K。
+Docker image sha256:a05286e66b0f1ca712671db5849229594c92e035bae253362cc8b6d0af4a70b6。
+workerは1つで，ネットワークは無効にした。xmrとSWAMPEDの原本にscript/host/manifestのdigestがある。
+ホスト側の他負荷は完全には統制されていない。ブラウザや外部プールでの実験とは区別する。
+
+RQ1のレビュー箇所
+proof-of-theft/runtime-mechanism-audit.json：配布設定，Wasabi，未確認のファイル。
+proof-of-theft/xmr-core-substitution-review.json：内部ループの同値式。
+proof-of-theft/xmr-helper-flattening-review.json：8バイトXOR関数112の状態遷移。
+proof-of-theft/xmr-helper-path-review.json：16バイトXOR関数118と呼出しのblock位置。
+proof-of-theft/xmr-cleanup-flattening-review.json：f86のポインタ検査・解放・終了の8状態。配布oaes_freeソースとの対応をレビュー。f111の呼出しはループ外の末尾1箇所であり，主ループ内の動的負荷と混同しない。scripts/review_proof_xmr_cleanup_flattening.pyで再解析，新規実行なし。
+proof-of-theft/xmr-split-wrapper-review.json：分割設定版f35の局所データフロー。32バイト一括と16×3の確保，保存位置，引数転送，入口位置への復元を比較。分割の仕組みの確定や全体の同値証明ではない。
+proof-of-theft/xmr-split-helper-review.json：f112/f118の一時保存先と構造化分岐の比較。XOR対象と上限8/16・増分1は対応し，block/loopの入れ子と終了経路が変わる。LLVM基本ブロック分割の確定や動的負荷の測定ではない。再解析はscripts/review_proof_xmr_split_helpers.pyで新規Wasm実行なし。
+swamped/controlled-pair-mechanism-audit.json：変換を戻したWATの全体一致。
+results/rq-validation/refreshed-rq1-controls-audit.json：旧計測・通常処理・平坦化対照。
+仕組みが存在すること，静的な呼出し位置，実行時に確認できた経路の範囲，すべての入力で変換前後の動作が同じであることを混同しない。
+proof-of-theft/xmr-v0-core-scope-review.json：関数111の命令列増加9428行はvariant>=4ブロック内。そのブロックの処理部分を除く3609行はlocal・branch labelの一貫した改名と型照合で一致。動的命令数ではなく，宣言数増加・呼出し先・モジュール状態・JIT効果は比較の外。scripts/review_proof_xmr_v0_core_scope.pyは保存テキストのみ。
+proof-of-theft/xmr-normal-interpreter-review.json：採掘アルゴリズム自身の演算解釈を通常処理の対照として確認。参照関数111の70 br_tableはvariant>=4のblock内，変換版では0。最初のopcode選択とMUL処理のみ目視対応，全70分岐の同値性ではない。scripts/review_proof_xmr_normal_interpreter.pyは静的解析のみ。
+proof-of-theft/xmr-f113-variant-guard-review.json：f113の直接呼出しはvariant>=4の場合に限って実行され，保存済み測定の3入力はvariant0を選ぶ。通常版/平坦化版の先頭から呼び出しまでの命令列はlocal名対応で一致。scripts/review_proof_xmr_f113_variant_guard.pyは保存テキストのみ。間接呼び出しを含むすべての到達経路や未実行コードのJIT/配置影響は未検証。
+proof-of-theft/xmr-f113-dispatch-entry-review.json：関数113の中央の分岐処理入口と最初の条件だけを確認。239行の初期化処理部分はlocal名の対応と17箇所の位置の違いを除いて一致する。すべての状態、元のソース名、実行時に通った経路の範囲は未確認である。scripts/review_proof_xmr_f113_dispatch_entry.pyで保存命令列のみを再解析できる。
+proof-of-theft/xmr-key-import-flattening-review.json：関数82の24状態を扱う中央の分岐処理と同梱oaes_key_import_dataの引数・鍵長検査，確保・コピー・展開・解放の対応。scripts/review_proof_xmr_key_import_flattening.pyで保存資料から再解析可能。関数111の2呼出し位置はいずれも構造化ループ外であり，動的回数・実行時間への影響は未確認。
+proof-of-theft/xmr-initialization-flattening-review.json：関数83の確保後の4状態を扱う中央の分岐処理と同梱oaes_alloc非ISAAC経路の対応。scripts/review_proof_xmr_initialization_flattening.pyは保存WAT・ソース読み取りのみ。関数111内の呼出しは構造化ループ前の1箇所であり，動的回数や実行時間への影響は未測定。
+repetition-order-review.json/csv/pdf：保存済み30秒測定の順序・各反復内比・基準版の経時変動。中央値の比と各反復の比の中央値を区別。逐次測定なので同時の対や統計的信頼区間ではない。scripts/review_runtime_repetition_order.pyで新規ハッシュ実行なく再解析できる。
+proof-of-theft/source-reuse-review.json：配布参照ソースの共通部品。OpenAES設定のバイト一致とAESラウンドのコメント・空白除外一致を確認。その他の関数本体一致は字句的な候補であり，前処理・全体の同値性・バイナリの生成・加工履歴は証明しない。scripts/review_proof_source_reuse.pyはアーカイブ読取りのみで再解析できる。
+
+原稿と提出
+RQ1の実測対象節は仕組み，呼出し位置・測定経路，置換，未確認の分割，対照との対応の順に整理済み。詳細の状態値・オフセットは保存JSON/WATに残す。編集前原稿はpaper/revisions/before-rq1-mechanism-compact-20261008/main.tex。compact_rq1_runtime_mechanisms.pyは特定版に対する編集用であり，解析再現コマンドとして繰り返し実行しない。
+paper/main.texを現在のエディタで保持。別文書・別PDFに置き換えない。
+experiments/runtime-reference/csec-submission-draft.txtは未送信の申込案。
+この記録時点では，内蔵LaTeXコンパイラで標準ディレクトリの環境エラーが続き，PDFの表示と6〜8ページの条件は未確認である。
+申込・投稿の送信はユーザー自身が行う。
+
+残る研究作業
+実行時に確認できた経路の範囲と適用範囲の確認，配布された変換版を同じ条件でビルドし直すこと，比較する実装の共通性と生成履歴の確認，
+必要な追加実測、原稿の短縮、PDFの表示確認が残っている。研究全体は未完了である。
+追加実測は指導教員の許可を確認してから，承認されたローカル環境に限定する。
+
+重複照合の訂正：全取得記録で046dc081入力はMinerRay/WasmBench/WASMixer/WasmMalにも同一SHAがある。従来の採掘候補だけの探索では見落としていた。SWAMPEDの元ファイル42種類中35種類が，他の取得済みデータセットにも含まれる。measured-corpus-overlap.jsonのexact全取得/core候補限定という調査範囲を参照。
+先行評価の追加確認：prior-work/wasmixer-primary-review.json。WASMixer arXiv v1は第5.2/5.5節で採掘D3を時間評価から明示除外し，第5.3の出力照合はD1/D2に限る。046dc081入力のWASMixer再収録は取得記録の完全SHAで照合し，論文表4の8文字IDだけで同一性を確定しない。今回の変換対はSWAMPED手法なので，WASMixer変換の未報告速度を測ったとは主張しない。旧paper生成スクリプトを無条件に再実行すると7行の先行比較や最新の範囲説明を上書きする可能性があるため差分確認が必要。
+
+編集に関する利用者の希望（2026-10-08）：難読化手法の一般的な説明は短くし、先行研究に対して何が追加で分かったかを優先する。具体的には、対象ファイルの範囲、測定時に実行される経路、ハッシュ出力全体の正しさと計算速度、条件を揃えた比較と配布ファイル同士の比較の違い、データセット間の再収録を扱う。一般的な手法説明は背景情報として用いる。導入と考察はこの方針に合わせて書き直し、以前の原稿をpaper/revisions/before-empirical-focus-20261008に保存した。
+
+2026-10-08 cryptonight-hashの呼び出し入口の確認：scripts/review_proof_cryptonight_entrypoints.pyで、選んだ7モジュール、元の生成済みJavaScript、アーカイブ内のbuild.sh、Cの入口関数のソース2件を静的に確認した。6件にはmain -> f9 -> f10という呼び出しがあり、f10の引数は3つのi32である。ただし、内部のハッシュ関数の候補とする判断に限る。encodearithは別途復元が必要である。実行、ビルド、HTMLの実行は行っていない。エクスポートがないことを、出力の不一致や内部ハッシュコードの不存在とは扱わない。今後、関数のエクスポートだけを追加した版を作る場合は、大学PCでの実行許可を得た後、元ファイルと区別して識別し、ABIと出力を検証する必要がある。既存の実測マニフェスト、ログ、ホスト側の処理は変更していない。確認結果はresults/runtime-mining/cross-dataset/proof-of-theft/cryptonight-entrypoint-review.jsonである。
+
+2026-10-08 cryptonightのABIの部分的な確認：scripts/review_proof_cryptonight_hash_abi.pyで、候補5件のf10について、引数を保存するパターン、保存した入力と長さを最初の呼び出しへ渡す処理、保存した出力ポインタと200バイトの内部状態を最後の間接呼び出しへ渡す処理を確認した。基準版の最終処理には、ソースのextra_hashesに対応する通常の4方向のハッシュ選択がある。難読化による間接化の根拠ではない。判断は分岐のない処理と選んだ箇所に限り、関数全体のシンボリック実行、テーブル内の呼び出し先の同値性、ハッシュの正しさは確認していない。Boguscfとencodearithは別途確認が必要である。ハッシュ計算は実行していない。報告はresults/runtime-mining/cross-dataset/proof-of-theft/cryptonight-hash-abi-review.jsonである。アカウントの利用枠は使用23%、残り77%と記録した。
+
+2026-10-08 最終ハッシュの選択処理：scripts/review_proof_cryptonight_final_table.pyで、基準版とboguscfを含む変換版5件について、アドレス536870912にある初期化済みポインタ配列（添字1..4）と、elemにあるf20/f16/f21/f22の対応を静的に読み取った。基準版のラッパー冒頭では、output/input/lengthをf31へ、input/8*length/outputをf32へ、256/input/8*length/outputをf41/f50へ渡す。これは配布されたBlake/Groestl/JH/Skeinのラッパーと整合する。RQ1では通常の最終処理の比較例として使えるが、呼び出し先全体の同値性、変換後のラッパーの動作、メモリとテーブルの初期化状態が維持されることは証明していない。ハッシュ計算は実行していない。報告はresults/runtime-mining/cross-dataset/proof-of-theft/cryptonight-final-table-review.jsonである。
+
+2026-10-08 実測結果をまとめた図：scripts/plot_hash_structure_comparison.pyで、既存の集計からxmr変換版3件と、条件を揃えて作成したSWAMPED変換版2件のサイズ・命令数・計算速度の比を求めた。PDF/PNG/CSV/JSONをresults/runtime-mining/cross-dataset/hash-structure-comparison.*に保存した。JSONには元の集計ファイルのハッシュを保持した。変換版の最小値・最大値は基準版の中央値で割っており、信頼区間でも、基準版の変動を含めた範囲でもない。Boguscfは-O2という条件が他と異なるため図から除いたが、表には残した。main.texのSWAMPEDだけの図を置き換え、元の図ファイルとラベルは保持した。新たな実行測定は行っていない。
+
+2026-10-08 統合図の更新：hash-structure-comparison.*では、従来の最小値・最大値を表す線を、同じ測定回の変換版／基準版の速度比を示す3つの白い点に置き換えた。緑の棒は、それぞれの中央値の比を引き続き表す。生データのハッシュをrepetition-order-review.jsonと照合し、countsとelapsed_msから各測定回の比を再計算して、保存済みの測定順レビューと一致することを確認した。平坦化版と命令置換版は3回とも基準版より遅かったが、分割版とSWAMPEDの変換版2件は測定回によって大小関係が変わった。逐次測定では時間経過による変動を除けず、同時測定した対に基づく因果効果も推定できない。図の説明と本文の解釈を更新した。以前の最小値・最大値の線に関する記述は、この更新で置き換える。新たな実行測定は行っていない。
+
+2026-10-08 WASMixerの版の照合：SpringerのDOI 10.1007/978-3-031-70896-1_5と著者の業績一覧で、ESORICS 2024のpp88-109、初回オンライン公開日2024-09-06を確認した。確認した情報源では刊行版の全文を入手できず、書誌情報と要旨だけを読んだ。arXivの履歴はv1だけだが、刊行版と本文が同じことは証明できない。原稿、一次資料の確認記録、評価範囲の比較では、D3を実行時間の評価から除外したという記述をarXiv v1に限るようにした。刊行版に採掘速度の報告がないとは主張しない。刊行版の全文との比較は未完了である。
+
+2026-10-08 選んだ配布モジュールの評価状況の確認：scripts/audit_selected_hash_evaluation_status.pyで、変更していない元JavaScriptのマニフェスト・入力照合ログと実測の生ログをSHAで対応付けた。保存バイナリのSHA、count/elapsedから求める速度、測定時間、出力の確認フラグ、RQ1へのリンクを再確認した。選んだPoTモジュール19件のうち、10件は適用可能な公開cn/0入力の出力と一致し、合計30測定ブロックがある。入力ごとの関数をエクスポートしていない7件と、実行時の関数シグネチャエラーがある2件には、返された出力も有効な測定値もない。返された出力に公開入力の期待値との不一致は記録されていないが、未評価の9件の正しさは証明できない。WMPの速度測定はcn/pico、公開入力の照合はcn/0であり、アルゴリズムが異なる。selected-hash-evaluation-status.csv/jsonでは、インターフェースやエラーの状態、測定値の欠測、仕組みの確認状況を分けた。SWAMPEDの3件と過去の外部プール実行は対象外であり、データセット全体を評価した記録ではない。ソースの引用・参照と2つの図のパスは解決できたが、PDFのコンパイル成功を示すものではない。ハッシュ計算は実行していない。
+
+2026-10-08 エクスポートだけを追加する版の準備：scripts/prepare_cryptonight_export_only.pyで、ABIを部分的に確認したcryptonightの候補5件（baseline/substitution/split/flattening/fsplitflatten）を準備した。インポート・定義済み関数のWAT上の順序から求めた実際の関数番号10を、__research_hashとして追加した。既存のエクスポートはすべて保持し、変更はセクション7だけである。code/data/table/import/typeを含む他のセクションは、元のバイト列と完全に一致する。WABTの静的検証には通ったが、インスタンス生成、生成済みJavaScript、ハッシュ計算、ビルドスクリプトは実行していない。results/runtime-mining/cross-dataset/proof-of-theft/cryptonight-export-only-manifest.jsonには元ファイルと加工後のSHA、各セクションのハッシュ、execution_authorizedがfalseであること、ハッシュの正しさが未検証で速度も未測定であることを記録した。新しいファイルは評価用に加工した版であり、元の公開モジュールや実測結果として数えない。速度測定の前には、指導教員の許可、ネットワークを無効にした隔離環境と有限時間のランナー、noInitialRun、stack/memory/ctorsの正しいホスト側初期化、公開入力による出力照合が必要である。エクスポートの追加はエンジンのコンパイルに影響し得るため、命令のバイト列が同じでも測定時間が同じとは保証できない。Boguscfとencodearithは未準備である。元の測定マニフェスト・ローダー・ログは変更していない。
+
+2026-10-08 公開入力を照合するランナーの準備：experiments/runtime-reference/proof-cryptonight-export-check.cjsは、元の生成済みJavaScriptからインスタンスのエクスポートを取得する。noInitialRunを指定し、新旧Emscriptenのスタック用インターフェースに対応して、公開cn/0入力5件、期待する32バイトの出力、入力の保持、出力領域の32バイトの目印を検査する。大きなメモリを解放するため、子プロセスごとに加工版1件を扱う。大学PCでの実行許可を明示的に確認する変数に加え、外部ネットワークのインターフェースがない非rootのLinux Dockerコンテナを必須とする。人間による許可を確認するまでは許可変数を設定しない。外部からのプロセスのタイムアウトと資源制限も必要である。JavaScriptのタイマーでは同期実行中のWasmを中断できない。node --checkには通り、許可がない場合の検査ではWasmを読み込む前に拒否した。生成済みJavaScript、Wasm、main、ハッシュ計算は実行していない。元の実測ランナーとマニフェストは変更していない。新ランナーの実行時互換性と正しさは未検証である。準備の記録はresults/runtime-mining/cross-dataset/proof-of-theft/cryptonight-runner-preparation.jsonである。
+
+2026-10-08：cryptonight-core-flattening-review.jsonで、f10の入れ子のラベル付きblockと、3状態のループ部分を静的に解析した。157行の処理は、ローカル変数名を一貫して対応付け、確認した+16のスタック位置の差を考慮すると一致し、6箇所の直接呼び出しも変わっていない。確認は断片に限り、新たなハッシュ計算、出力照合、速度測定は行っていない。原稿のRQ1では、実測13件に含まれない未測定の候補として扱う。この記録時点では、内蔵コンパイラでのPDFコンパイルは未確認である。
+2026-10-08 検証：内蔵コンパイラはUnable to find standard directories for platformを返した。原稿は保存したが、この記録時点ではPDFを確認できていない。根拠一覧には60ファイルがあり、実測時に記録した依存ファイル7件のハッシュは一致した。大学PCでの新たな実行許可は確認待ちである。
+
+2026-10-08 カウンタ処理の対応：Wasmを実行せず、分岐のないWATの断片6件をシンボリックに追跡した。両版ともカウンタを0に初期化し、符号なしで524288と同じ条件で比較し、+16ずれた対応するスタック位置で1ずつ増加させる。基準版のB6/L7への分岐は、変換版の状態値の書き込みとB1への復帰に対応する。断片間のメモリや呼び出し先の影響、ループ全体の同値性は未検証である。RQ1の段落を更新し、実測13件は変更していない。
+
+2026-10-08 主張の範囲：RQ1への回答と結論では、メモリから読み取った値を使う間接呼び出しを、追加を独立に確認できた変換と一括して扱わないようにした。Antialiasanalysisでは呼び出し先を取得する処理を確認したが、基準版や呼び出し先との対応は未確定である。通常のCryptoNightの4方向の最終ハッシュ選択は比較例として残した。限界の説明には、未測定のcryptonight-hashの断片を追加した。mechanism-claim-scope-review.jsonを参照する。新たな実行は行っていない。
+
+2026-10-08 ソースの共有関係の追加確認：cryptonight-source-reuse-review.jsonで、cryptonight-hashのソース26件をwebminerpoolhashcnの22件、xmr-wasmの46件と比較した。ヘッダのバイト単位または字句単位の一致と、選んだ16バイトのコピー・XOR・加算の補助関数の抜粋の一致を確認した。これは部品の再利用を示すもので、採掘プログラム全体やバイナリの同値性を示すものではない。一致しない部分があっても独立した実装とは断定できない。未測定の候補に関する考察を更新した。コンパイルやハッシュ計算は実行していない。
+
+2026-10-08 ランナーの準備を拡張：proof-cryptonight-export-check.cjsに任意の--throughput-blockを追加した。既存の許可・隔離条件と公開入力5件の照合を通った後、新しいプロセスごとに3 sのウォームアップと>=30 sの測定を1回行う。5入力を順番に使い、最終出力・入力・保護領域、単調増加する時計によるcount/elapsedの速度、実時刻を検査する。対応するファイルについて実行順を回転させた3回の測定と、外部からのタイムアウトが必要である。JavaScript側の入力コピーとループの負荷を含み、有限個の入力を繰り返すためnonceの多様性は評価しない。Nodeの構文検査と許可がない場合の拒否検査には通ったが、Wasmや採掘用ハッシュは実行していない。確認した著者・リポジトリの情報源ではWASMixer刊行版の全文を引き続き入手できず、評価に関する判断はプレプリントの範囲に限る。
+
+2026-10-08 再現手順の準備：Linux用ファイルパスで両方の区切り文字を正規化するようにした。文字列だけを使う正規化・拒否検査と、許可がない場合の拒否検査に通った。prepare_cryptonight_repetitions.pyは、3回の測定で実行順を回転させる15段階の逐次実行計画を作る。既存ログについて、source/vector/runner/glue/helperのハッシュ、基準出力5件、>=30 sの測定と3 sのウォームアップ、最終出力・保護領域、UTCで重ならないプロセス実行時間、空でなく一貫したimage ID/Node/V8を検査する。全15段階を通るまでは集計を作らない。この時点のログ確認では受理0件、欠測15件で、速度は得られていない。Wasmや採掘用ハッシュは実行しておらず、大学PCでの実行許可は確認待ちである。
+
+2026-10-08 原稿検査を修正：audit_mining_paper.pyが、古いRQの文言や「実行評価なし」という記述を必須としないようにした。また、古いmain.log/main.pdfを、現原稿が7ページにコンパイルできた根拠として受け入れないようにした。現在の静的指標、ソース内のRQ、引用キー、ラベル、図ファイルの存在は検査に通った。paper-audit.jsonではcompilation_verified=falseとpage_count_verified=falseを明示した。過去の報告は別に保持する。主張に対応する節の識別子は、現在の節名・ラベルに更新した。ZIPのファイル一覧ではxmr-wasmの.ll/.bc/.oも見つからず、過去の中間表現がないため分割パスの適用履歴を直接確認できない。ハッシュ計算は実行していない。
+
+2026-10-08 要件の確認：goal-requirements-audit.json/txtで、目的に含まれる14要件を確認した。既存の13モジュールの対応付けと、XMR/SWAMPの>=30 sの24測定ブロックには、有限個の入力の出力照合と算術の根拠がある。一方、過去のビルド条件に関する因果関係、実装の独立性、新たなcryptonightの実行、仕組みの独立したレビュー、現原稿をコンパイルした6-8ページのPDFは、この記録時点では未完了である。コンパイラは引き続き標準ディレクトリの環境エラーを返した。Win32_Processの照会は拒否され、稼働中のプロセスは確認できず、再起動もしていない。指導教員への許可確認には回答がなく、新たなハッシュ計算は行っていない。研究全体の目標は完了扱いにしていない。
+
+2026-10-08 文書を更新：paper/README.mdに、RQ1の仕組みとRQ2の出力検証済み計算速度の対応、記録済み13モジュールの範囲と注意点、ソース・記録への案内、未実行のcryptonight候補、許可条件を反映した。この記録時点では、現原稿のPDFとページ数は未確認である。件数の集計を中心にした古い目的、著者未記入という記述、参考文献数の固定値、タイトルをデータ点検に狭める助言を削除した。以前のREADMEはrevisionsに保持した。terminology-review.mdは、現在のタイトル・性能・ページ数の根拠ではなく、Oct7時点の用語の記録であることを明記した。main.texの変更や新たなハッシュ計算は行っていない。
+
+2026-10-08 作業を進められない条件の確認：静的解析、実行準備、文書更新を進めた後、指導教員の許可とローカルのコンパイラの問題が引き続き残ることを再確認した。この時点で次に必要なのは、新たな有効な測定値と現原稿のコンパイル済みPDFである。状況の追記やコード変更だけでは、どちらも完了を確認できない。許可の状況を明示的に質問した。稼働中の実験は確認できず、開始もしていない。目標の全範囲、生データ、再開手順はgoal-blocked-handoff.txtに保持した。研究全体の目標は未達成である。
+
+2026-10-08 更新：既存の C:\texlive\2026 を発見し、現在の main.tex を build.ps1 でコンパイルできた。この更新時点のPDFは15ページである。表のはみ出しを修正し、全ページを画像化して表示を確認した。内蔵APIのエラーは残るが、コンパイルできない状態は解消した。6～8ページへの短縮と追加実測の許可確認は未完了。証拠：results/mining-methods/current-compilation.json。
+
+2026-10-08 短縮完了：main.texでは、重複する説明と個別箇所の解析の詳細を整理し、15ページから参考文献込み7ページに短縮した。RQ1/RQ2、実測した13バイナリ、図2点、表3点は保持した。公式クラス・余白・本文フォントは変更せず、全7ページの表示を確認した。6～8ページの条件は達成した。追加実測の許可確認と、別の研究者による確認は未完了である。

@@ -1,0 +1,12 @@
+{
+ "date": "2026-10-12",
+ "purpose": "Early mathematical rejection of three concrete state representations; no adopted new algorithm",
+ "budget": {"designs":3,"small_width_max":8,"random_i32":4096,"build_timeout_seconds":30,"full_SHA_integrations_if_rejected":0},
+ "seed": 1128354386,
+ "candidates": ["rotation by invariant popcount", "additive XOR-difference profile", "SHA round shared-T1 cancellation"],
+ "rejection_conditions": ["representation merges states distinguishable by a legal continuation", "state recovers with explicit short rule from the entire representation", "only ordinary known recoding/rescheduling remains as novelty argument"],
+ "observer": "Knows representation family and word/slot correspondence, reads complete representation. No source value supplied to recovery functions. This is a rule-aware early rejection oracle, not a blind binary attack.",
+ "cases": "Complete widths 2..8 for scalar maps; all bit offsets in each difference profile; 4096 seeded i32 plus boundary words; 4096 independent SHA one-round states/words/constants",
+ "execution": "Only one small Wasm encoding/recovery probe for the difference-profile repair; no full transform, performance or security claim",
+ "proof_scope": "Algebraic arguments and exact finite checks; no SMT execution claimed"
+}

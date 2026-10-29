@@ -1,0 +1,1630 @@
+{
+  "executions": 108,
+  "mismatches": 0,
+  "engine": "1.0.42",
+  "script_sha256": "e0f0ec6cd261e3f738f3b886cb4d01ab9c266abc9ce6408321d157e1c9c33090",
+  "manifest_sha256": "7f30ff5bdeb1d36817e4e41c9fd8abb3244f7e78104740fe2ee4fc488c1e5b6d",
+  "scope": "Uninstrumented controls only; Python reference independent of JS checker.",
+  "records": [
+    {
+      "wasm": "chain48-fixed.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed-O2.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed-O2.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed-O2.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed-O2.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed-O3.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed-O3.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed-O3.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-fixed-O3.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node-O2.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node-O2.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node-O2.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node-O2.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node-O3.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node-O3.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node-O3.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-per-node-O3.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded-O2.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded-O2.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded-O2.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded-O2.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded-O3.wasm",
+      "args": [
+        9,
+        0
+      ],
+      "stdout": "run(i32:9, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded-O3.wasm",
+      "args": [
+        9,
+        255
+      ],
+      "stdout": "run(i32:9, i32:255) => i32:3981256800",
+      "expected": {
+        "value_u32": 3981256800
+      },
+      "got": {
+        "value_u32": 3981256800
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded-O3.wasm",
+      "args": [
+        47,
+        123
+      ],
+      "stdout": "run(i32:47, i32:123) => i32:3274621763",
+      "expected": {
+        "value_u32": 3274621763
+      },
+      "got": {
+        "value_u32": 3274621763
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain48-encoded-O3.wasm",
+      "args": [
+        48,
+        255
+      ],
+      "stdout": "run(i32:48, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed-O2.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed-O2.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed-O2.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed-O2.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed-O3.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed-O3.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed-O3.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-fixed-O3.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node-O2.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node-O2.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node-O2.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node-O2.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node-O3.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node-O3.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node-O3.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-per-node-O3.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded-O2.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded-O2.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded-O2.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded-O2.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded-O3.wasm",
+      "args": [
+        67,
+        0
+      ],
+      "stdout": "run(i32:67, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded-O3.wasm",
+      "args": [
+        67,
+        255
+      ],
+      "stdout": "run(i32:67, i32:255) => i32:1789200374",
+      "expected": {
+        "value_u32": 1789200374
+      },
+      "got": {
+        "value_u32": 1789200374
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded-O3.wasm",
+      "args": [
+        95,
+        123
+      ],
+      "stdout": "run(i32:95, i32:123) => i32:699716189",
+      "expected": {
+        "value_u32": 699716189
+      },
+      "got": {
+        "value_u32": 699716189
+      },
+      "equal": true
+    },
+    {
+      "wasm": "cycle96-encoded-O3.wasm",
+      "args": [
+        96,
+        255
+      ],
+      "stdout": "run(i32:96, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed-O2.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed-O2.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed-O2.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed-O2.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed-O3.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed-O3.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed-O3.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-fixed-O3.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node-O2.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node-O2.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node-O2.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node-O2.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node-O3.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node-O3.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node-O3.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-per-node-O3.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded-O2.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded-O2.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded-O2.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded-O2.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded-O3.wasm",
+      "args": [
+        36,
+        0
+      ],
+      "stdout": "run(i32:36, i32:0) => i32:0",
+      "expected": {
+        "value_u32": 0
+      },
+      "got": {
+        "value_u32": 0
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded-O3.wasm",
+      "args": [
+        36,
+        255
+      ],
+      "stdout": "run(i32:36, i32:255) => i32:104376223",
+      "expected": {
+        "value_u32": 104376223
+      },
+      "got": {
+        "value_u32": 104376223
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded-O3.wasm",
+      "args": [
+        127,
+        123
+      ],
+      "stdout": "run(i32:127, i32:123) => i32:1194541675",
+      "expected": {
+        "value_u32": 1194541675
+      },
+      "got": {
+        "value_u32": 1194541675
+      },
+      "equal": true
+    },
+    {
+      "wasm": "chain128-encoded-O3.wasm",
+      "args": [
+        128,
+        255
+      ],
+      "stdout": "run(i32:128, i32:255) => error: unreachable executed",
+      "expected": {
+        "trap": "unreachable"
+      },
+      "got": {
+        "trap": "unreachable"
+      },
+      "equal": true
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "main_positive_conditions": 18,
+  "main_positive_calls": 16470,
+  "main_positive_traps": 6946,
+  "encoded_recovery_conditions": 14,
+  "encoded_recovery_success": 14,
+  "attack_ms_range": [
+    0.2266999999999939,
+    0.44290000000000873
+  ],
+  "extra_conditions": 10,
+  "extra_paired_calls": 4000,
+  "extra_paired_traps": 2400,
+  "parallel_positive_conditions": 18,
+  "parallel_positive_operations": 328448,
+  "ticket_negative_results": [
+    {
+      "file": "counter-bad-split-raw.wasm",
+      "negative": true,
+      "kind": "ticket",
+      "workers": 4,
+      "operations": 32768,
+      "final": 19746,
+      "valid": false,
+      "unique": 19746
+    },
+    {
+      "file": "counter-bad-split-O3.wasm",
+      "negative": true,
+      "kind": "ticket",
+      "workers": 4,
+      "operations": 32768,
+      "final": 18480,
+      "valid": false,
+      "unique": 18480
+    }
+  ],
+  "and_negative_witnesses": [
+    {
+      "test": {
+        "name": "and",
+        "p": 0,
+        "y": 0,
+        "z": 2309737967
+      },
+      "trap": false,
+      "shouldTrap": false,
+      "actual": 2147483647,
+      "want": 2147483647,
+      "difference": 0
+    },
+    {
+      "test": {
+        "name": "and",
+        "p": 0,
+        "y": 0,
+        "z": 2309737967
+      },
+      "trap": false,
+      "shouldTrap": false,
+      "actual": 2147483647,
+      "want": 2147483647,
+      "difference": 0
+    }
+  ],
+  "replay_binaries": 22,
+  "wabt_calls": 162,
+  "rejections": 5,
+  "model_candidates": 2728,
+  "model_checks": 173922,
+  "runtime": [
+    {
+      "mode": "plain",
+      "median_ns": 7.131671905517578,
+      "min_ns": 6.9240570068359375,
+      "max_ns": 7.141399383544922,
+      "bytes": 312,
+      "rss_kib": [
+        37928,
+        37804,
+        37988
+      ]
+    },
+    {
+      "mode": "native-neg",
+      "median_ns": 7.121562957763672,
+      "min_ns": 7.120180130004883,
+      "max_ns": 7.123804092407227,
+      "bytes": 351,
+      "rss_kib": [
+        38052,
+        38116,
+        38168
+      ]
+    },
+    {
+      "mode": "cas-neg",
+      "median_ns": 7.557058334350586,
+      "min_ns": 7.552814483642578,
+      "max_ns": 7.562351226806641,
+      "bytes": 533,
+      "rss_kib": [
+        38456,
+        38064,
+        38376
+      ]
+    },
+    {
+      "mode": "cas-affine",
+      "median_ns": 8.311748504638672,
+      "min_ns": 8.288002014160156,
+      "max_ns": 8.37392807006836,
+      "bytes": 760,
+      "rss_kib": [
+        38084,
+        38032,
+        38196
+      ]
+    },
+    {
+      "mode": "native-affine",
+      "median_ns": 7.134532928466797,
+      "min_ns": 7.13043212890625,
+      "max_ns": 7.147693634033203,
+      "bytes": 533,
+      "rss_kib": [
+        38072,
+        38124,
+        38064
+      ]
+    }
+  ],
+  "native_neg_time_reduction": 0.05762763198576504,
+  "native_affine_time_reduction": 0.14163272330904708
+}

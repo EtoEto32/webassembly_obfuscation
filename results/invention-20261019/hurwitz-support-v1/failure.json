@@ -1,0 +1,7 @@
+{
+  "status": "incomplete",
+  "stage": "repeated16.base.raw analysis",
+  "classification": "analysis implementation recursion defect",
+  "evidence": "Runner exited 1 after producing repeated16.base.raw. A direct CLI reproduction raised RecursionError in support(), whereas the runner had raised Python recursion limit and exited without a traceback. No Python process remained.",
+  "conclusion": "No obfuscation-resilience credit. Replace recursive product traversal with explicit stacks; preserve this partial directory and rerun into v2."
+}

@@ -1,0 +1,58 @@
+{
+  "created_utc": "2026-10-05T19:08:01.418109+00:00",
+  "scope": "Complete WasmMal root-label inventory; analysis failures retained",
+  "reference_scope": [
+    "WasmBench filtered release",
+    "SWAMPED experimental seeds",
+    "MineSweeper pinned repository samples; crawled archive excluded"
+  ],
+  "unique_sha256": 15024,
+  "reference_hashes": 61,
+  "usable_reference_anchors": 60,
+  "reference_failures": [
+    {
+      "sha256": "9d30e7f065cd00a47d8e10e27acc443a33977176484ca11077f08fc20b1a672c",
+      "status": "read_failed"
+    }
+  ],
+  "labels": [
+    {
+      "author_label": "malware",
+      "unique_sha256": 7512,
+      "analysis_status_counts": {
+        "ok": 7510,
+        "read_failed": 2
+      },
+      "counter_reference_body_matches": 121,
+      "interpretation": "Exact increment-bearing function reuse is a structural finding; may coexist with obfuscation."
+    },
+    {
+      "author_label": "benign",
+      "unique_sha256": 7512,
+      "analysis_status_counts": {
+        "ok": 7510,
+        "validation_failed": 2
+      },
+      "counter_reference_body_matches": 3,
+      "interpretation": "Exact increment-bearing function reuse is a structural finding; may coexist with obfuscation."
+    }
+  ],
+  "thresholds": [
+    0.8,
+    0.9,
+    0.95,
+    0.99,
+    1.0
+  ],
+  "similarity": "Byte-length-weighted multiset Jaccard of exact function bodies including local declarations; excludes imports, globals, data, and metadata",
+  "tie_rule": "Anchor seeds keep own identity; other best-score ties resolved by lexicographic SHA and disclosed",
+  "weighting": "Mean within each modeled group, then equal mean across groups; unmatched files are singleton groups",
+  "limitations": [
+    "Not verified parent/family grouping",
+    "Exact-body matching misses changed instrumented functions",
+    "Common library code can induce high similarity",
+    "No whole-module absence-of-obfuscation claim",
+    "Structural markers are not obfuscation prevalence",
+    "No field-prevalence or time-trend inference"
+  ]
+}

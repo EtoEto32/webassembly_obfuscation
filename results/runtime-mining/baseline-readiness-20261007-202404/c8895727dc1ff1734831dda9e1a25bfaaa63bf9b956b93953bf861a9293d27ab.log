@@ -1,0 +1,17 @@
+Traceback (most recent call last):
+  File "/opt/experiment/readiness.py", line 88, in <module>
+    main()
+  File "/opt/experiment/readiness.py", line 62, in main
+    ASSETS['module'] = MODULE.read_bytes()
+                       ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/pathlib.py", line 1052, in read_bytes
+    return f.read()
+           ^^^^^^^^
+OSError: [Errno 12] Cannot allocate memory
+Exception: C:\Users\ettotto\Documents\webassembly_obfuscation\experiments\runtime-reference\run-readiness.ps1:13
+Line |
+  13 |  … ($LASTEXITCODE -ne 0) { throw 'Offline Wasm readiness check failed' }
+     |                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Offline Wasm readiness check failed
+
+

@@ -1,0 +1,1064 @@
+PAGE 1
+HAL Id: hal-01388108
+https://inria.hal.science/hal-01388108
+Submitted on 26 Oct 2016
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of sci-
+entific research documents, whether they are pub-
+lished or not. The documents may come from
+teaching and research institutions in France or
+abroad, or from public or private research centers.
+L’archive ouverte pluridisciplinaire HAL, est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+Binary Permutation Polynomial Inversion and
+Application to Obfuscation Techniques
+Lucas Barthelemy, Ninon Eyrolles, Guénaël Renault, Raphaël Roblin
+To cite this version:
+Lucas Barthelemy, Ninon Eyrolles, Guénaël Renault, Raphaël Roblin. Binary Permutation Polyno-
+mial Inversion and Application to Obfuscation Techniques. 2nd International Workshop on Software
+PROtection, Oct 2016, Vienna, Austria. ￿10.1145/2995306.2995310￿. ￿hal-01388108￿
+PAGE 2
+Binary Permutation Polynomial Inversion and Application
+to Obfuscation Techniques
+Lucas Barthelemy abd
+lbarthelemy@quarkslab.com
+Ninon Eyrolles a
+neyrolles@quarkslab.com
+Guenaël Renault bce
+guenael.renault@upmc.fr
+Raphaël Roblin bd
+raph.roblin@gmail.com
+aQuarkslab, Paris, France
+bSorbonne Universités, UPMC Univ Paris 06, F-75005, Paris, France
+cCNRS, UMR 7606, LIP6, F-75005, Paris, France
+dUPMC Computer Science Master Department, SFPN Course
+eInria, Paris Center, PolSys Project
+Keywords
+Obfuscation, Permutation Polynomial
+ABSTRACT
+Whether it is for constant obfusation, opaque predicate or
+equation obfuscation, Mixed Boolean-Arithmetic (MBA) ex-
+pressions are a powerful tool providing concrete ways to
+achieve obfuscation. Recent papers [22, 1] presented ways
+to mix such a tool with permutation polynomials modulo
+2n in order to make the obfuscation technique more resilient
+to SMT solvers. However, because of limitations regarding
+the inversion of such permutations, the set of permutation
+polynomials presented suﬀers some restrictions. Those re-
+strictions allow several methods of arithmetic simpliﬁcation,
+decreasing the eﬀectiveness of the technique at hiding infor-
+mation. In this work, we present general methods for per-
+mutation polynomials inversion. These methods allow us to
+remove some of the restrictions presented in the literature,
+making simpliﬁcation attacks less eﬀective. We discuss com-
+plexity and limits of these methods, and conclude that not
+only current simpliﬁcation attacks may not be as eﬀective
+as we thought, but they are still many uses of polynomial
+permutations in obfuscation that are yet to be explored.
+1. INTRODUCTION
+Obfuscation techniques often use invertible functions to
+hide meaningful components of the program, especially in
+data-ﬂow obfuscation. A common example is the encoding
+of variables or constants with aﬃne functions [4], also used in
+cryptographic white-box setups [3]. A natural generalization
+of an aﬃne function is a polynomial and if it is bijective, it
+is called permutation polynomial.
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for proﬁt or commercial advantage and that copies bear this notice and the full citation
+on the ﬁrst page. Copyrights for components of this work owned by others than the
+author(s) must be honored. Abstracting with credit is permitted. To copy otherwise, or
+republish, to post on servers or to redistribute to lists, requires prior speciﬁc permission
+and/or a fee. Request permissions from permissions@acm.org.
+SPRO’16, October 28 2016, Vienna, Austria
+c⃝ 2016 Copyright held by the owner/author(s). Publication rights licensed to ACM.
+ISBN 978-1-4503-4576-7/16/10. . . $15.00
+DOI: http://dx.doi.org/10.1145/2995306.2995310
+Permutation polynomials are the subject of many research
+eﬀorts in mathematics [12, 13, 21]. The well-studied Dickson
+polynomials [8, 15] provide examples of permutation poly-
+nomials. Most of the results on these polynomials assume
+that their coeﬃcients are in a ﬁnite ﬁeld.
+In the cryptographic context, applications of permutation
+polynomials appeared as a generalization of the RSA cryp-
+tosystem or for designing symmetric protocols [10, 14, 11,
+7]. Only little work focuses on permutation polynomial with
+coeﬃcients in the ring of integer modulo 2 n [6, 16], which
+represents the main application of such polynomials in the
+context of software obfuscation. In the context of error cor-
+recting code applied to mobile communications, permutation
+polynomials modulo 2 n appear as a central object to design
+interleavers [9, 19, 18].
+To the best of our knowledge, papers related to applica-
+tions of permutation polynomials modulo 2 n present results
+on the characterization of such polynomials or study sub-
+families for which the inverse polynomial is given thanks to
+a closed-form formula.
+This is particularly the case for the paper by Rivest [16]
+which provides a characterization of all the permutation
+polynomials modulo 2n and the one by Zhou et al. [22] which
+uses a (strict) subfamily for which a closed-form formula is
+known for the inverse. Using a subfamily is a problem in
+the context of obfuscation since such polynomials will have
+an intrinsic form which can be recognized more easily and
+thus help the reverser. The attack proposed in [1] relies on
+this property.
+Our main objective in this paper is to provide algorithms
+and implementations for the computation of the inverse of
+any permutation polynomial modulo 2 n. Thus, obfuscation
+designer can stop relying on permutation polynomials with
+speciﬁc form (and so easily breakable).
+Before presenting our contributions, we recall some theo-
+retical results which will be used in the sequel.
+1.1 Binary Permutation Polynomials
+In the sequel, we will be mainly interested in bijective
+functions of Z2n = Z/2nZ the integer ring modulo 2n. More
+precisely, we will consider objects as deﬁned in the following:
+Definition 1. LetA be a ﬁnite ring. A map f :A→A
+is said to be a polynomial function if there exists a polyno-
+PAGE 3
+mial P in A[x] such that ∀a∈ A : f(a) = P (a). If, more-
+over f is bijective, this function and the polynomial P are
+said to be a permutation polynomial of A. When A = Z2n
+we will call them binary permutation polynomial .
+In [16] Rivest provides the following result which charac-
+terizes binary permutation polynomials.
+Theorem 1 ([16]). Let A = Z2n with n≥ 2 and let
+P (x) = a0 +a1x +··· +adxd be a polynomial with integral
+coeﬃcients. The polynomial P represents a function f of A
+which is a binary permutation polynomial if and only if a1
+is odd, (a2 +a4 +a6 +... ) is even, and (a3 +a5 +a7 +... )
+is even.
+It is worth to note that the function f in the preceding
+theorem can be represented by many diﬀerent polynomials.
+More precisely, we have the following results.
+Proposition 1. Let A be a ﬁnite ring. The ring F(A)
+of polynomial functions on A is isomorphic to the quotient
+ring A[X]/I where I is the polynomial ideal deﬁned by I =
+{P ∈ A[x] : ∀a∈ A, P(a) = 0}. In particular, the group
+P(A) (for the composition) of permutation polynomials of A
+is a subset of this quotient ring.
+In the case where A is a ﬁnite ﬁeld, the structure ofF(A)
+can be identiﬁed (since every function is polynomial) [13],
+but in the case of a ﬁnite ring it is far from easy. When A
+is a ﬁnite ring, there are many papers providing theoreti-
+cal results on F(A) or P(A) (e.g. structure, isomorphism,
+cardinality) but only few reports on algorithmic aspects. In
+the rest of this paper, we will address the problem of eﬃ-
+ciently computing a polynomial representing the inverse of
+a given binary permutation polynomial and consider some
+applications to obfuscation.
+1.2 MBA Obfuscation using Binary Permuta-
+tion Polynomials
+In [22], Zhou et al. present a constant obfuscation based
+on two components: Mixed Boolean-Arithmetic (MBA) ex-
+pressions and binary permutation polynomials. They present
+their own subset of binary permutation polynomials for which
+they provide a closed-form formula for inversion. For a given
+degree m> 0, they deﬁne the following subset of P(Z2n):
+Pm(Z2n) =
+{ m∑
+i=0
+aixi|a1 is odd and a2
+i = 0 for i> 1
+}
+and prove the following theorem.
+Theorem 2 ([22]). The set Pm(Z2n) is a permutation
+group under the functional composition operator ◦. The in-
+verse of an element f(x) = ∑m
+i=0aixi∈ Pm(Z2n) is given
+by g(x) = ∑m
+j=0bjxj where each coeﬃcient can be com-
+puted by: bm =−a−m−1
+1 am, b1 =a−1−a−1
+1
+∑m
+j=2jaj−1
+0 Aj,
+b0 =−∑m
+j=1aj
+0bj and
+bk =−a−k−1
+1 −a−1
+1
+m∑
+j=k+1
+(
+n
+r
+)
+aj−k
+0 Aj,m− 1≥k≥ 2
+whereAm =−a−m
+1 am, and Ak are recursively deﬁned by
+Ak =−a−k
+1 ak−
+m∑
+j=k+1
+(
+j
+k
+)
+aj−k
+0 Aj, for 2≤k<m.
+From this set, Zhou et al. propose an obfuscation tech-
+nique based on the composition of two binary permutation
+polynomials P (x) and Q(x) = P−1(x), and an m-variable
+MBA identity E = 0 with multiple non-zero terms. For
+a certain constant K ∈ Z2n, one has K = Q(P (K)) =
+Q(E +P (K)). Expanding the expression yields an obfus-
+cated expression containing m variables and yet having al-
+waysK as an output value.
+While this work provides an interesting way of using bi-
+nary permutation polynomials in obfuscation, it presents
+two drawbacks: ﬁrstly, only a small subset of P(Z2n) is
+used and secondly, public work describing attacks of this
+technique [1] was recently published.
+1.3 Attack of MBA Obfuscation
+In [1], Biondi et al. describe three approaches to attack
+the MBA-based constant obfuscation: albegraic simpliﬁca-
+tion, SMT solver-based deobfuscation, and synthesis-based
+deobfuscation. The algebraic simpliﬁcation method is of ﬁrst
+interest for us, since it is strongly based on the form (see
+Theorem 2) of the set of polynomials deﬁned by Zhou et
+al. As stated by the authors of the attack, the recovering of
+both polynomialsP andQ is based on the fact that the coef-
+ﬁcients ofQ(x) =∑m
+j=0bjxj are all even except for b1. It is
+indeed stressed in [1] that, should polynomials from another
+family that the one of Theorem 2 be used to obfuscate, the
+reduction attack presented would fail.
+In Section 2.3, we present how to compute the inverse
+of any binary permutation polynomial as characterized by
+Rivest, thus enlarging the family of potential obfuscating
+polynomials to be used in the MBA-based obfuscation. More
+precisely, we present the following contributions.
+1.4 Contributions
+In this paper, we assess the feasability of binary permu-
+tation polynomials inversion with two known methods: La-
+grange interpolation and Newton’s inversion algorithm. We
+show in Section 2.1 that using a ring extension, it is possible
+to use Lagrange interpolation in order to compute the in-
+verse of a restrained set of permutation polynomials, namely
+the one deﬁned by Expression (4) (this set includes the one
+deﬁned in [22]). As Lagrange interpolation does not provide
+a method to inverse all binary permutation polynomials, and
+has a high complexity due to the fact that it operates on a
+ring extension, we detail in Section 2.3 how Newton’s inver-
+sion method can be used in the context of binary permuta-
+tion polynomials.
+Through the use of the zero ideal as mentioned in Propo-
+sition 1 and in Section 2.2.1, we deﬁne a ring of reduced per-
+mutation polynomials, and we adapt Newton’s method for
+compositional inversion on this particular ring. As opposed
+to the method used in [22] and Lagrange interpolation, this
+new method successfully inverts all the binary permutation
+polynomials. Moreover, the complexity of Newton’s method
+proved to be far better than Lagrange interpolation since
+computations are made on integer modulo 2 n, and thus the
+cost of multiplication is far less than the one in the ring
+extension used during Lagrange interpolation.
+Both the zero ideal and the algorithm for permutation
+polynomial inversion provide new possibilities for obfusca-
+tion, as well as for working with polynomials in Z2n. In
+particular, it oﬀers resilience of the technique presented by
+Zhou et al. from the algebraic attack in [1].
+PAGE 4
+2. ON INVERTING BINARY PERMUTA TION
+POLYNOMIALS
+In this section, we introduce two methods to invert per-
+mutation polynomials in Z2n[x]. In contrary to the formula
+given in [22] that allows to invert a thin part of all the per-
+mutation polynomials, we present two general algorithms
+that eﬃciently inverse more permutation polynomials, one
+of them even inverting all polynomials as characterized by
+Rivest in [16].
+We ﬁrst introduce an interpolation method and show its
+limitations, then present a more eﬃcient inversion method
+based on a modular functional Newton approach. Even if
+the ﬁrst method is far more costly in term of performances
+than the second one, its exposition greatly helps to under-
+stand what is the best strategy for inverting permutation
+polynomials.
+2.1 Inversion Through Interpolation
+In order to identify a polynomial given as a black box, it is
+usual to proceed by interpolation [23, 5]. The main problem
+here is to ﬁnd enough sample points. In this section, we
+present a method allowing this computation in Z2n[x].
+Thorough this article, we consider applications Z2n →
+Z2n which are deﬁned by evaluation of a polynomial f(x).
+We will use the same notation for the polynomial and the
+corresponding function. In particular, X will denote the
+identity application: x
+X
+−→x ∀x∈ Z2n.
+2.1.1 Lagrange Interpolation in a Modular Ring
+Let us consider a function ϕ taking as entry an integer
+in Z2n and supplying the polynomial evaluation of f at this
+point:
+x
+ϕ
+− →f(x)
+For each point evaluated, we can predict the result of ϕ−1
+without its knowledge:
+x
+ϕ
+− →y ⇔ y
+ϕ−1
+−−−→x
+Let us assume that ϕ−1 can be deﬁned as the evaluation of
+an (unknown) polynomialf−1. If, moreover, the polynomial
+f is taking values in a ﬁnite ﬁeld and f−1 is of degree dinv,
+then from dinv + 1 tuples (yi =f(xi),x i) one can ﬁnd f−1
+by computing a Lagrange interpolation:
+f−1(x) =
+dinv∑
+j=0
+xj
+∏
+i̸=j
+(x−yi)
+(yj−yi) (1)
+In the case of binary permutation polynomials, the Ex-
+pression (1) is not always computable, as half of the ele-
+ments in Z2n are zero-divisors. Thus, by considering the
+determinant of the Vandermonde’s matrix Vf of f
+det(Vf) =
+∏
+0≤i<j≤dinv
+(yj−yi) (2)
+which is equal to the denominator of Expression (1), the
+computation of the Lagrange interpolation is possible if and
+only if det(Vf) is inversible.
+However, it can be shown that if theyi are in the ring Z2n,
+then as soon as dinv≥ 2, the product ∏
+0≤i<j≤dinv
+(yj−yi)
+is not invertible. Therefore, Lagrange interpolation is not
+applicable as usual on this particular ring.
+2.1.2 Ring Extension
+The impossibility to use Lagrange interpolation comes
+from the fact that there is no invertible combination of three
+or more elements in Z2n such that the product in Expres-
+sion (2) is invertible. To bypass this problem, the base ring
+needs to be extended. The approach is similar to ﬁeld exten-
+sion, i.e. to extend the base ring Z2n with a new symbolic
+elementω, which deﬁnes the bigger ring Z2n[ω] as the quo-
+tient of Z2n[x] by an irreducible polynomialP of degreem to
+whichω is a root. The resulting ring is Z2n[ω] = Z2n[x]/P
+and will be noted as Zm
+2n. We will show how such a suf-
+ﬁciently big extension allows Lagrange interpolation in our
+context. These extensions generally are called Galois rings.
+To know if the application of a Lagrange interpolation is
+possible in such an extension, the progression of the number
+of invertible elements is of ﬁrst interest. The following fun-
+damental result from [20] gives a formal deﬁnition of Galois
+rings which will help us recognize invertible elements.
+Theorem 3. In the Galois ring Z2n[ω], there exists a
+nonzero element α of multiplicative order 2m− 1 which is
+a root of a monic basic primitive polynomial h(x) in Z2n[x]
+of degreem and dividing x2m−1− 1. The element α veriﬁes
+that
+Z2n[α] ={a0 +a1α +··· +am−1αm−1
+:a0,a 1,...,a m−1∈ Z2n}
+is isomorphic to Z2n[ω].
+This theorem states that any Galois ring extension can be
+deﬁned by an elementα which is primitive. This means that
+any element of the extension can be written with powers of
+α as explained in the following Theorem.
+Theorem 4. With the same notations as in Theorem 3.
+Let the set
+T ={0, 1,α,...,α 2m−2},
+then any element e∈ Z2n[α] can be written uniquely as
+e =a0 +a1× 2 +··· +an−1× 2n−1
+wherea0,a 1,...,a n−1∈T . Moreover, e is invertible if and
+only if a0̸= 0.
+This representation is called 2-adic representation. If we
+take a look at this representation modulo 2, we have:
+e =a0 mod 2
+Therefore, in order to have a0̸= 0, we need e̸= 0 mod 2.
+Whene is represented as a polynomial inω, to achieve such a
+condition,e needs to have at least one odd coeﬃcient (since
+all even coeﬃcients become null modulo 2). Thus we can
+characterize the invertible elements of Zm
+2n as elements with
+at least one odd coeﬃcient, while elements with only even
+coeﬃcients are zero-divisors.
+In order to compute Lagrange interpolation, we needdinv + 1
+elementsyi such that the product
+∏
+0≤i<j≤dinv
+(yj−yi) (3)
+is invertible.
+In order to obtain a set of elements such that the product
+of their diﬀerence is invertible (as in Expression (3)), for any
+PAGE 5
+couple of elements within that set, there must be at least
+one degree on which their coeﬃcients have diﬀerent parity
+(so that the diﬀerence between those two coeﬃcients is odd).
+Note that the value of said coeﬃcients is not important, only
+their parity. Thus, let us consider the elements of Zm
+2n with
+coeﬃcients in{0, 1}. The number of elements for which the
+product of diﬀerences are invertible is the number of distinct
+elements with m coeﬃcients in{0, 1}, i.e. a set of elements
+for which the result of Expression (3) is of size at most 2 m.
+To compute Lagrange interpolation, we need a set of size
+at least dinv elements. Thus, when choosing the extension
+degree m, we need:
+m> log2(dinv)
+Note that n does not appears in this inequality. However,
+the following section will demonstrate that dinv needs to be
+estimated, and that estimation depends on n.
+The problem is that we are using extended Lagrange in-
+terpolation to invert a polynomial f(x), therefore we do not
+generate the set{y0,...,y dinv} but{x0,...,x dinv} on which
+f will be evaluated on. Predicting the invertibility of
+∏
+0≤i<j≤dinv
+(f(xj)−f(xi))
+is a non-trivial problem. But by knowing the number of in-
+vertible elements in Zm
+2n, the probability that the matrix Vf
+is invertible when randomly drawing a setE ofdinv elements
+can be computed. Let Pr (V−1
+f,E) be the probability that the
+Vandermonde matrix determinant of the polynomialf eval-
+uated on the random set of elementsE is invertible. In other
+words:
+E ={x0,...,x dinv}
+Pr (V−1
+f,E) =Pr
+( ∏
+0≤i<j≤dinv
+(f(xj)−f(xi)) is invertible
+)
+Assuming that the permutation polynomial f is injective
+within the extended ring, the following property holds:
+Proposition 2. The probability to obtain an invertible
+Vandermonde matrix when randomly drawing dinv elements
+in Zm
+2n is:
+Pr (V−1
+f,E) = 1−Pr (V−1
+f,E)
+= 1− 2(n−1)m
+2nm = 1− 1
+2m
+Therefore that probability increases proportionally to m.
+Regarding complexity, Lagrange interpolation has a com-
+plexity quadratic in the number of points we interpolate on.
+But those points are now elements of Zm
+2n, meaning comput-
+ing on those points is equivalent to computing on polynomi-
+als of degree m. Thus we achieve a complexity of:
+O((dinvM(m))2)≈O((dinvm2)2)
+We need to ﬁnd a balance between the cost of computing
+det(Vf) with evaluation points E and that of performing
+Lagrange interpolation.
+This allows us to perform a Lagrange interpolation suc-
+cessfully. Moreover, Zm
+2n being extended from Z2n, if f−1
+exists in Z2n, then the interpolation should produce a result
+in Z2n (i.e. all coeﬃcients in α are null). We will see in
+Sections 2.1.3 and 2.2.3 that this is not always the case, due
+to non-uniqueness of compositional identity.
+2.1.3 Reachable Polynomials and Complexity
+While the complexity of the extended Lagrange interpo-
+lation is far worse than the closed-form expression provided
+in [22], it successfully inverts all polynomials of the set pro-
+vided in this paper.
+Let us consider an intermediary set between the one de-
+ﬁned in [22] and the full set of permutation polynomials as
+characterized in [16]:
+f(x) =
+d∑
+i=0
+aixi
+{
+a1 is odd
+ai is even∀i≥ 2 (4)
+The extended Lagrange interpolation also oﬀers the possi-
+bility of inverting such polynomials, but the alleged inverse
+degree has to be greatly increased. With our own imple-
+mentation of extended Lagrange, we determined empirically
+that dinv needs to be approximately equal to d×n. As re-
+called above the Lagrange interpolation is quadratic in the
+number of elements interpolated on, that are themselves ele-
+ments of Zm
+2n. Thus, we obtain a complexity of O((dn)2m4)
+for such a computation when dinv =d×n.
+Using this Lagrangian strategy our goal of inverting the
+full set of permutation polynomials is not achieved but pro-
+vide more inversions than the close formula given in [22].
+Unfortunately, the result of the extended Lagrange inter-
+polation remains in Zm
+2n regardless of the number of points
+interpolated on.
+A main drawback of ring extension, apart from the in-
+crease in complexity, is that it requires to work on the ring
+Z2n[X] as opposed to P(A) as described in Section 2.1.2.
+The next section will develop why this prevents the inverse
+computation of all permutation polynomials as character-
+ized by Rivest.
+2.2 On Polynomial Ideals
+Addressing the problem ofdinv alleged huge value requires
+to focus on the problem of polynomial simpliﬁcation, mean-
+ing that for a given polynomial f, one asks for a polynomial
+g (if it exists) verifying:
+g(x) =f(x) mod 2 n ∀x∈ Z2n with deg(g)<deg (f)
+In [17], a method for polynomial simpliﬁcation using poly-
+nomial ideal is presented: in this section, we adapt their
+method to our case. An ideal of Z2n[x] generated by the
+ﬁnite sequence of polynomials {F0,F 1,...,F s} is the set of
+all its Z2n[x]-linear combinations:
+⟨F0,...,F s⟩ ={
+s∑
+i=0
+GiFi :Gi∈ Z2n[x]}
+2.2.1 Zero Ideal on Z∗
+2n and Z2n
+The method presented in [17] is deﬁned in the ring of
+polynomials with coeﬃcients in Z∗
+2n, the ring of inversible
+elements in Z2n. The authors deﬁne an idealI∗ generated by
+a ﬁnite set {P∗
+1,...,P ∗
+d∗
+n+1
+} of polynomials which evaluate
+globally to 0 as a function taking values in Z∗
+2n. Thus the
+ideal I∗ veriﬁes:
+P∈I∗ ⇐⇒ P (x) = 0 mod 2 n ∀x∈ Z∗
+2n
+The authors deﬁne this set of polynomials in the following
+PAGE 6
+way (we choose here to use positive roots):
+P∗
+i (x) = 2n−i−ti
+i∏
+j=0
+(x− 2j− 1)
+where ti is the largest integer ℓ such that 2 ℓ divides i!. The
+integerd∗
+n is deﬁned as the largest integeri such thatn−i−ti
+is positive. In particular, P∗
+0 = 2n andP∗
+d∗
+n+1
+= (x− 1)(x−
+3)··· (x− 2d∗
+n + 1).
+Let us recall that, in a ﬁeld, for a variablea to be root of a
+polynomial, (x−a) must divide that polynomial. However,
+in a general ring, zero-divisors provide an alternative way of
+producing 0.
+When x is an odd integer, the value ∏i
+j=1(x− 2j− 1)
+is a product of i consecutive even numbers. Therefore, as
+explained in [17], it is divisible by 2 ii! and so it is divisible
+by 2i+ti. Multiplying this polynomial by 2 n−i−ti results in
+2n which is equal to zero in Z2n.
+From The P∗
+i generating the ideal I∗ on Z∗
+2n, we deduce
+the set of polynomials Pi generating the ideal I in Z2n[x]
+of all the polynomials evaluating to 0 for any value of x in
+Z2n, i.e. I is the zero ideal of Z2n[x] (see Proposition 1).
+The deﬁnition of Pi is derived from P∗
+i , by considering even
+roots, so that if x is even, it still induces a product of i
+consecutive even numbers:
+Pi = 2n−i−ti
+2i−1∏
+j=0
+(x−j)
+Note thatP0 is equal to 2n and the degree ofPi is increasing
+with i. The index of the polynomial Pi with highest degree
+is deﬁned as follows. Let imax be the greatest integer ℓ such
+that n− (ℓ− 1)−tℓ−1 > 0. Two cases are possible, i.e
+n−imax−timax equals 0 or is negative, but the polynomial
+Pimax is always deﬁned as
+Pimax =
+2imax−1∏
+j=0
+(x−j)
+2.2.2 Polynomial Simpliﬁcation
+The generating set{Po,...,P imax} of the zero idealI pro-
+vides an algorithmic method to compute in Z2n[x] modulo
+I. In particular, for a given f, this let us compute a poly-
+nomial g of smallest degree in the class {f +h : h∈I} of
+f modulo I. Such a computation is called polynomial sim-
+pliﬁcation. As stated in Proposition 1, any polynomial g in
+the class of f will deﬁne the same function on Z2n, thus the
+simpliﬁcation procedure let us deﬁne a binary permutation
+polynomial with the smallest polynomial as possible.
+We now describe this simpliﬁcation method. First, note
+that for all i, the polynomial Pi is the product of a monic
+polynomial (with a leading coeﬃcient equals to 1) and a
+constant equal to a power of 2 (which we will refer as expi
+in the sequel). Moreover, the more i increases (therefore the
+degree ofPi), the smallerexpi gets. From these remarks, one
+can simplify a given permutation polynomial f by using the
+following procedure. If expi divides the leading coeﬃcient
+ad of f(x) =∑d
+i=0aixi and deg(Pi)<d , let us deﬁne g the
+permutation interpreted as the polynomial:
+g(x) =f(x)− ( ad
+expi
+)(xd−deg(Pi))Pi
+Then g is in the same class as f modulo I and deg(g) < d
+(i.e g is a reduction of f modulo I).
+The process continues with the new polynomial g while
+the conditions on the leading coeﬃcient and the degree are
+true. At the end, one obtains the reduction of f modulo I
+with the smallest degree.
+To resume the previous discussion, the permutation poly-
+nomial set P(Z2n) is now seen as a quotient sub-group of
+Z2n[X]/I as described in the introduction. For each class in
+P(Z2n), one can choose, as a representative, a polynomial
+of degree smaller than the ones of the Pi. Hence, these rep-
+resentatives have a degree smaller than dn = 2×imax the
+degree of Pimax and thus, the setP(Z2n) is ﬁnite.
+We then deduce the following central result.
+Theorem 5. The ideal I =⟨P0,...,P imax⟩ veriﬁes
+for f,g ∈ Z2n[X] and h∈I
+f =g−h ⇐⇒ f(x) =g(x) mod 2 n ∀x∈ Z2n
+Moreover any binary permutation polynomial can be equally
+represented by a polynomial of degree at mostdn = Deg(Pimax).
+We do not provide a complete proof of this result, it will be
+detailed in an extended version of this paper.
+2.2.3 Identity Polynomials in Z2n
+Simpliﬁcation is not the only result induced by the zero
+ideal. Let us deﬁne the set I2n:
+I2n ={x +h(x)} ∀h∈I
+This set deﬁnes a class of polynomials which are, as func-
+tions, equivalent toX. Therefore, for a given polynomial f,
+if there exists g such as g◦f∈I 2n, g is equivalent to f−1.
+This is an important result as it hints the reason why
+Lagrange interpolation struggles to invert some polynomi-
+als. Lagrange interpolation searches for a polynomial veri-
+fyingg(f(x)) =x mod 2 n, but as we shown, there are other
+choices producing a compositional inverse. That is to say,
+x (the polynomial) is not the only permutation polynomial
+deﬁning X (the function). This means that:
+g(f(x)) =x mod 2 n ∀x∈ Z2n ̸ ⇐⇒g◦f =X
+Letg be a polynomial such asg(f(x)) =x+h(x) withh∈I,
+we witnessed, through experimentation, that replacing x in
+the Lagrange formula by x +h(x) produced a valid g. The
+problem with such an approach is that, unlike P(Z2n),I2n
+is not ﬁnite. Therefore predicting h before interpolation did
+not seem reliable in practice.
+However, other inversion methods do not present such re-
+strictions. Newton’s method for compositional inversion is
+one of them.
+2.3 Inversion Through Newton’s Method
+In this section we present an adaption for the binary per-
+mutation polynomials of the Newton’s method for the com-
+putation of the compositional inverse as presented in [2].
+2.3.1 Iterative Inversion in Fields
+Newton’s method (also known as Newton-Raphson method)
+aims to ﬁnd successively better approximations of the roots
+of a functionf on some setE. It is based on the assumption
+that, near a point x0 in the vicinity of a root, a function’s
+behavior is almost that of its tangent line:
+f(x)≈f(x0) +f′(x0)(x−x0) ∀x∈E
+PAGE 7
+Therefore, one can approximate a better root by ﬁnding
+x such that:
+f(x0) +f′(x0)(x−x0) = 0
+x =x0− f(x0)
+f′(x0)
+As long as f is derivable and that its derivative evalua-
+tion in some xi is invertible, one can deﬁne the following
+iteration:
+xi+1 =xi− f(xi)
+f′(xi)
+Where xi+1 is a better root approximation than xi. There-
+fore, if a root exists, the algorithm should converge to it
+(they are some exceptions in which the algorithm is ”trapped”
+in a cycle, but we never encountered this problem while test-
+ing this algorithm in Z2n).
+This method can be adapted for other purposes, for ex-
+ample:
+xi+1 =xi− f(xi)− 7
+f′(xi)
+should converge to x such as f(x) = 7.
+The formula linked to our problematic is that of compo-
+sitional inverse:
+gi+1 =gi− f◦ (gi−X)
+f′◦gi
+The main problem with this formula is the arithmetic in-
+version of f′(gi). But it is possible to use the following
+simpliﬁcation:
+f◦g =X
+(f◦g)′ = (f′◦g)×g′ = 1
+g′ = 1
+f′◦g
+gi+1 =gi−g′
+i× (f◦ (gi−X))
+This method was deﬁned on a ﬁeld, and in the following
+section we address the subject of its use in Z2n.
+2.3.2 The Z2n Case
+In order to assess the correctness of the method in Z2n,
+we use the two properties for Newton’s method to correctly
+compute a compositional inverse [2]:
+f(0) = 0
+f′(0) is invertible
+The second condition is respected as f′(0) = a1 which is
+always invertible, regardless of the polynomial we study.
+In order to check for the ﬁrst property, let us consider the
+polynomial:
+r(x) =
+d∑
+i=1
+aixi
+we have f = r +a0, meaning f produces the same permu-
+tation as r with an additional shift. Therefore, if we invert
+r, we have the following equality:
+r−1◦f =f◦r−1 =a0 +r◦r−1 =a0 +X
+(r−1◦f)−a0 =X
+The polynomial r(x) having no constant coeﬃcient, this
+meansr−1−a0 is inverse of f. However, r(0) = 0, thus r is
+invertible through Newton’s method (in practice, Newton’s
+method in Z2n converges while f(0)̸= 0 most of the time).
+Therefore, if there exists g such as g◦f = X, Newton’s
+method should converge to g. We tried to use this method
+on the set of polynomials which were invertible through La-
+grange interpolation and the method succeeded every time.
+However, the full set of permutation polynomials as char-
+acterized in [16] still remains out of reach for Newton’s method
+as it is. But, as mentioned in Section 2.2.3, this results from
+the fact that:
+g(f(x)) =x mod 2 n ∀x∈ Z2n ̸ ⇐⇒g◦f =x
+Let us take a second look at the formula presented in the
+previous section:
+gi+1 =gi− f◦ (gi−X)
+f′◦gi
+The problem is that x is not the only polynomial equivalent
+to the identity function X modulo the zero ideal I. Thus if
+g(f(x)) = x +h(x) with h∈I not equal to 0, this formula
+would become:
+gi+1 =gi− f◦ (gi−x−h(x)))
+f′◦gi
+However, we will see in the next section an alternative way of
+computing on reduced polynomials, which does not assume
+the knowledge of h.
+2.3.3 The Full Set is Reachable
+Unlike Lagrange interpolation, Newton’s method does not
+require the use of an extended ring. Thus, one can compute
+Newton’s method in the ring of reduced polynomialsF(Z2n)
+where:
+g(f(x)) =x mod 2 n ∀x∈ Z2n ⇐⇒ g(f) =x
+Using Newton’s method in the ring of reduced polynomi-
+als consists in reducing modulo I the result of each iteration
+(see Section 2.2.2). Then, during the computation, if a poly-
+nomial g equivalent to x appears it would be reduced to x.
+Thus, the problem emphasized above is now solved.
+We tried to inverse all the permutation polynomials as
+characterized in [16]. Not only does it succeed in invert-
+ing all the polynomials, but the fact that the degrees of
+the reduced polynomials are bounded prevents unnecessary
+increase of the size of the objects during composition and
+multiplication.
+As far as computation goes, each iteration requires a com-
+position and a multiplication (along with some additions
+and subtractions). In theory, Newton’s method converge to
+a solution with quadratic speed (see [2]). Meaning to in-
+verse a polynomial, the number of iterations required would
+be squared in the degree of its inverse. This degree being
+bounded by n, we get at most √n iterations.
+Considering a quadratic cost for polynomial multiplica-
+tion and composition, an overall complexity of O(d2
+n×√n)
+is achieved, where dn is a bound on the degree of a reduced
+polynomial (see Section 2.2.2). This complexity is far bet-
+ter than the one of the Lagrange interpolation as described
+above.
+Note that the cost of polynomial reduction does not change
+this complexity estimation. Actually. if we consider consider
+PAGE 8
+the product of two polynomials of degree dmax, the result-
+ing polynomial before reduction is then of degree 2 ×dmax.
+Reducing that polynomial to a polynomial of degreedmax re-
+quiresdmax polynomial subtractions, and therefore presents
+a complexity of O(d2
+max). On the same principle, further
+reduction from this polynomial of degree dmax to a poly-
+nomial of smaller degree will at most be quadratic in the
+degree, which is the same complexity as the other computa-
+tions performed (multiplications and compositions) during
+each iterations of Newton’s inversion.
+2.3.4 On the degree of the inverse
+An interesting result which could follow this study is the
+relation between the degree of a permutation polynomial and
+the degree of its minimal inverse (let us recall that in con-
+trary to the set deﬁned in [22], the degree of a permutation
+polynomial is not necessary the same as its inverse).
+Because the polynomial set deﬁned in [22] does not present
+such a problem, our hypothesis is that this diﬀerence in de-
+gree is tight to the diﬀerence between this set and the full
+characterization given in [16].
+Permutation polynomials presented in [22] are polynomi-
+als∑
+iaixi such that:
+2
+n
+2|ai ∀i≥ 2
+Therefore each coeﬃcient ai with i ≥ 2 has a very high
+2-adic valuation.
+The set of all the permutation polynomials as character-
+ized by Rivest does not present such a restriction: it includes
+polynomials with coeﬃcients of small 2-adic valuation. In
+the opposite, those polynomials results in high degree diﬀer-
+ences between a polynomial and its inverse. We leave these
+observations as an open problem that will be studied in a
+future work.
+3. RESULTS AND APPLICA TIONS
+3.1 Experimental Results
+We have implemented all these methods in Python and C
+language. In this section we report on their performances
+and applications. Experimental results presented in Fig-
+ures 1 and 2 were realized on a Lenovo T430 with an Intel
+Core i7− 3520M CPU @ 2.90GHz× 4.
+3.1.1 Performances
+For the results presented in Figures 1, we uniformely drawn
+permutation polynomials of various degrees and mesured in-
+version time.
+As stated in Section 2.3.3, Newton’s iterative method for
+computing a compositional inverse on Z2n converges in√n
+iterations, regardless of the degrees of f andf−1 (while the
+cost of performing one iteration does depend on the degree).
+However, our experimental results tend to show a conver-
+gence in log 2(n) iterations. Newton’s method is known to
+show such convergence rates in some very peculiar cases
+(see [2]). We have yet to formalize the fact that our prob-
+lem belongs to one of those, this will be part of our following
+work on this topic.
+Moreover, as one can see on Figure 1 the complexity of the
+Newton’s method seems to depend linearly in the bound on
+the degree of the given polynomial than quadratically. This
+behavior may be explained by the simpliﬁcation method us-
+ing the zero ideal presented in Section 2.2.2. This reduction
+allows us to bound the degree of the intermediate polynomi-
+als, reducing costs even further. This bound being reached
+extremely rapidly by the degree of our intermediate polyno-
+mial (composition and multiplication induce a rapid growth
+of its degree), the cost of increasing the degree of the initial
+polynomial only aﬀects the operations of composition and
+multiplication linearly. We also plan to study more precisely,
+in an extended version of this paper, the tight complexity of
+the Newton’s method in this context.
+	0
+	0.1
+	0.2
+	0.3
+	0.4
+	0.5
+	0.6
+	0.7
+	0 	10 	20 	30 	40 	50 	60 	70
+inversion	time	(s)
+degree
+Figure 1: Invertion time using Newton’s method on
+64 bits.
+3.2 Applications in Obfuscation
+In this section, we assess the use of our contributions in the
+ﬁeld of program obfuscation, whereas by using permutation
+polynomial inversion, or identity polynomials as presented
+in Section 2.2.3.
+The cost of obfuscation can be determined either during
+obfuscation time or during execution. We focus more on the
+latter, since obfuscation usually has limitations regarding
+the performance overhead it produces, but more rarely on
+the time needed to actually obfuscate the input program.
+3.2.1 Using Permutation Polynomial Inversion
+The obfuscation technique presented in [22] aims at hiding
+a constant K with a permutation polynomial f, its inverse
+f−1 and an MBA expression E equivalent to zero, with the
+following process:
+K =f−1(E +f(K))
+Thus what will appear in the obfuscated code is a polynomial
+in the variables of E. Obviously, this method could be used
+with any non-trivial expression E equivalent to zero, not
+only MBA expressions.
+Our results regarding binary permutation polynomial in-
+version allow any designer to use any of these permutations
+for this type of obfuscation. This oﬀer both more diver-
+sity in the obfuscation technique, and resilience to algebraic
+attacks such as presented in [1].
+For example, the binary permutation polynomial:
+f = 195907858x3 + 727318528x2 + 3506639707x + 6132886
+could be used to obfuscate a constantK. However 195907858
+is only divisible by 2 while 727318528 is divisible by 2 16.
+PAGE 9
+Therefore, when trying to simplifyf with the technique pre-
+sented in [1], the factor 2 16 is supposed to divide both co-
+eﬃcients a3 and a2, and in fact, it only divides a3. This
+polynomial thus provides a counter example to the attack
+proposed in [1].
+More generally,f andf−1 can be used to encode variables
+or constants. For constants, this means computing the value
+f(K) during obfuscation, storing this value in the program
+instead ofK, and usingf−1(f(K)) during execution. In the
+same manner, one can replace every writing occurrences of
+a variable x with f(x) and all reading instructions of f(x)
+with f−1(f(x)). This process is quite common in obfusca-
+tion as it prevents the value ofx from appearing in memory,
+but is more costly since it requires two evaluations of a per-
+mutation polynomial (f andf−1) compared to the encoding
+of a constant (f(K) is computed during obfuscation). This
+also means that during the obfuscation process, encoding
+a variable requires to check for the degrees of both f and
+f−1 for performances issues, while constant encoding only
+requires a small degree for f−1.
+Regarding encoding of variables or constants, the use of
+permutation polynomials does not provide much more se-
+curity compared to aﬃne functions, as much as it provides
+diversity. Indeed, we showed in Section 2.3 that inverting
+permutation polynomials is not a diﬃcult problem, as New-
+ton’s method eﬃciently invert all binary permutation poly-
+nomials. Nevertheless, encoding with such polynomials con-
+tributes to the diversity of the obfuscation technique, thus
+increasing the diﬃculty to detect it by reverse engineering.
+3.2.2 Using Polynomials of the Zero Ideal I
+From the zero ideal I we deﬁned in Section 2.2.1, we
+can use polynomials in I to design two obfuscation tech-
+niques. Let us consider a polynomial h∈ I, then h(x) = 0
+mod 2 n ∀x∈ Z2n. Therefore h can be used to produce an
+opaque zero, i.e. a non-trivial null expression. This could
+be used for example as an opaque predicate (see [4]), or in
+replacement of the MBA expression in Zhou et al. [22] ob-
+fuscation:
+K =f−1(h(x) +f(K))
+Another use for the polynomial of this ideal is to obfus-
+cate arithmetic expressions, namely polynomials in Z2n[x].
+Let us consider a polynomial g(x) to obfuscate, one could
+write it (h(x) + 1)×g(x) and expand the product to hide
+the details of g. It is also possible to add dependencies to
+other variables of the obfuscated program by using h(z) for
+some other variable z of the context: adding dependencies
+increases the resilience of the obfuscation technique by mak-
+ing the analysis of the program more complex.
+On the other hand, once one example of the obfuscation
+scheme has been reversed, its weakness is that the analyst
+only needs to identify the variablez not inﬂuencing the out-
+put of the computation, and remove any term inz. Keeping
+the same input for h andg (e.g. (h(x) + 1)×g(x)) removes
+this weakness, but quotienting by the ideal will removeh(x).
+In term of performance, we conducted some experiments
+to benchmark our approach. In Figure 2, one can see the
+ratio between execution time of an obfuscated polynomial
+modulo 2 64 and execution time of an unobfuscated one in
+function of the degree of h. We conducted our test on nu-
+merous polynomials h∈I drawn uniformly. We chose poly-
+nomials g in Z2n[X], drawn uniformly as well. As one can
+see, this ratio is quite small, it never exceeds 10 even for
+Figure 2: Obfuscation overhead ratio depending on
+the degree of h.
+polynomial h of degree up to 64. All in all, we think this
+approach can make analysis more diﬃcult with a negligible
+impact on the eﬃciency of the program.
+4. CONCLUSION
+In this paper, we have investigated two methods for invert-
+ing binary permutation polynomials. These methods allow
+us to expand the set of permutation polynomials usable for
+obfuscation purposes. Increasing the variety of those poly-
+nomials makes the elaboration of a simpliﬁcation method
+harder. Moreover, we introduced some notions (zero ideal)
+that can be used to improve obfuscation methods using per-
+mutation polynomials.
+Future works will regard the application of our result to
+polynomial permutation modulo pn with p > 2 as well as
+multivariate permutation polynomials. In particular, this
+would require to adapt the zero ideal formula to diﬀerent
+rings.
+5. REFERENCES
+[1] F. Biondi, S. Josse, A. Legay, and T. Sirvent.
+Eﬀectiveness of Synthesis in Concolic Deobfuscation.
+Preprint, Dec. 2015.
+[2] A. Bostan. Algorithmes rapides pour les polynˆ omes,
+s´ eries formelles et matrices. InActes des Journ´ ees
+Nationales de Calcul Formel , Les cours du CIRM,
+tome 1, num´ ero 2, pages 75–262, Luminy, France,
+2010.
+[3] S. Chow, P. Eisen, H. Johnson, and P. C. V. Oorschot.
+White-Box Cryptography and an AES
+Implementation. In Proceedings of the Ninth
+Workshop on Selected Areas in Cryptography (SAC
+2002, pages 250–270. Springer-Verlag, 2002.
+[4] C. Collberg, C. Thomborson, and D. Low. A
+Taxonomy of Obfuscating Transformations. Technical
+Report 148, University of Auckland, 1997.
+PAGE 10
+[5] J. Dumas. On newton-raphson iteration for
+multiplicative inverses modulo prime powers. IEEE
+Trans. Computers, 63(8):2106–2109, 2014.
+[6] J. Gomez-Calderon and G. L. Mullen. Galois rings
+and algebraic cryptography. Acta Arith.,
+59(4):317–328, 1991.
+[7] I. Gupta, L. Narain, and C. V. Madhavan.
+Cryptological applications of permutation
+polynomials. Electronic Notes in Discrete
+Mathematics, 15:91 –, 2003. Proceedings of the R.C.
+Bose Centenary Symposium on Discrete Mathematics
+and Applications.
+[8] S. Hong, X. Qin, and W. Zhao. Necessary conditions
+for reversed dickson polynomials of the second kind to
+be permutational. Finite Fields and Their
+Applications, 37:54–71, 2016.
+[9] J. Lahtonen, J. Ryu, and E. Suvitie. On the degree of
+the inverse of quadratic permutation polynomial
+interleavers. IEEE Trans. Inform. Theory,
+58(6):3925–3932, 2012.
+[10] R. Lidl and W. B. M ¨uller. Permutation Polynomials
+in RSA-Cryptosystems, pages 293–301. Springer US,
+Boston, MA, 1984.
+[11] R. Lidl and W. B. M ¨uller. Permutation polynomials in
+RSA-cryptosystems. In Advances in cryptology (Santa
+Barbara, Calif., 1983), pages 293–301. Plenum, New
+York, 1984.
+[12] G. L. Mullen. Permutation polynomials over ﬁnite
+ﬁelds. In Finite ﬁelds, coding theory, and advances in
+communications and computing (Las Vegas, NV,
+1991), volume 141 of Lecture Notes in Pure and Appl.
+Math., pages 131–151. Dekker, New York, 1993.
+[13] G. L. Mullen and H. Niederreiter. The structure of a
+group of permutation polynomials. J. Austral. Math.
+Soc. Ser. A , 38(2):164–170, 1985.
+[14] W. B. M ¨uller and W. N ¨obauer. Some remarks on
+public-key cryptosystems. Studia Sci. Math. Hungar. ,
+16(1-2):71–76, 1981.
+[15] L. Qu and C. Ding. Dickson polynomials of the second
+kind that permute z m. SIAM J. Discrete Math. ,
+28(2):722–735, 2014.
+[16] Ronald L. Rivest. Permutation Polynomials Modulo
+2w. Finite Fields and Their Applications ,
+7(2):287–292, Apr. 2001.
+[17] Z. S. Smile Markovski, Danilo Gilgoroski. Polynomial
+functions on the units of z2n. Quasigroups and Related
+Systems, 18:59–82, 2010.
+[18] J. Sun and O. Y. Takeshita. Interleavers for turbo
+codes using permutation polynomials over integer
+rings. IEEE Trans. Inform. Theory, 51(1):101–119,
+2005.
+[19] O. Y. Takeshita. Permutation polynomial interleavers:
+an algebraic-geometric perspective. IEEE Trans.
+Inform. Theory, 53(6):2116–2132, 2007.
+[20] Z. Wan. Lectures on Finite ﬁelds and Galois rings .
+World scientiﬁc, New Jersey, River Edge, 2003.
+[21] L. Wang. On permutation polynomials. Finite Fields
+and Their Applications , 8(3):311 – 322, 2002.
+[22] Y. Zhou, A. Main, Y. X. Gu, and H. Johnson.
+Information Hiding in Software with Mixed
+Boolean-Arithmetic Transforms. In 8th International
+Workshop in Information Security Applications
+(WISA’07), pages 61–75, 2007.
+[23] R. Zippel. Interpolating polynomials from their values.
+J. Symb. Comput. , 9(3):375–403, 1990.

@@ -1,0 +1,39 @@
+"""Align abstracts and the unsent CSEC draft with completed empirical findings."""
+from pathlib import Path
+import re
+ROOT=Path(__file__).resolve().parents[1]
+p=ROOT/'paper/main.tex';old=p.read_text(encoding='utf-8')
+ja='公開WebAssembly採掘データセットの難読化について，変換の適用範囲と，正しいハッシュ計算を実行した際の性能を対応付けて評価する．既存研究の対象と測定条件を照合し，Proof-of-Theftの配布10標本，SWAMPED入力1標本と公開変換コードから生成した2標本を，公表テストベクトルによる出力照合と反復速度測定の対象とした．xmr-wasmでは30秒以上・3反復の速度中央値が配布基準9.11 H/s，平坦化版6.18 H/sであり，命令数の増加量と速度低下の順位は置換版との間で一致しなかった．また，命令列で確認した変換の一部は今回のv0入力では通らず，静的な増加量だけでは実行負荷を説明できない．SWAMPEDの同一組立条件の自生成対では，nop挿入・整数定数分割の命令数比が1.097・1.034，速度中央値比が0.960・0.973で，反復範囲が重なった．配布設定の不一致，最適化条件の違い，同一標本の再収録も確認し，手法の因果効果や独立した実装での再現と区別した．追加実測は外部プールを用いないローカル環境で行った．本稿は手法の一般的な説明ではなく，公開標本の機構，測定経路，出力・速度・構造変化を結び付けた追加評価を示す．結果は評価した標本・入力・条件に限られる．'
+en='We evaluate obfuscation in public WebAssembly mining artifacts by relating transformation scope to validated hashing throughput. After comparing prior evaluation targets and conditions, we check public test vectors and repeatedly measure ten distributed Proof-of-Theft artifacts, one SWAMPED input, and two locally generated transformations using public code. For xmr-wasm, three measurements of at least 30 seconds yield median rates of 9.11 hashes/s for the distributed reference and 6.18 hashes/s for the flattened artifact. Instruction growth and throughput loss rank differently for flattening and substitution. Some statically confirmed transformations occur on paths skipped by the measured v0 inputs, limiting explanations based on whole-file growth. Under the same assembly conditions, SWAMPED NOP insertion and integer constant splitting yield instruction-count ratios of 1.097 and 1.034 and median throughput ratios of 0.960 and 0.973, with overlapping observed ranges. Build-label discrepancies, optimization differences, and reused artifacts limit causal and implementation-independence claims. Additional measurements run locally without external pools. The contribution is an artifact-specific correspondence among mechanisms, measured paths, validated outputs, throughput, and structural changes, rather than a general description of obfuscation techniques. Findings are limited to the evaluated artifacts, inputs, and conditions.'
+for env,value in [('abstract',ja),('eabstract',en)]:
+    pattern=r'(\\begin\{'+env+r'\}\n).*?(\n\\end\{'+env+r'\})'
+    old,n=re.subn(pattern,lambda m:m[1]+value+m[2],old,count=1,flags=re.S)
+    assert n==1
+backup=ROOT/'paper/revisions/before-empirical-abstracts-20261008'
+backup.mkdir(parents=True,exist_ok=True)
+if not (backup/'main.tex').exists():(backup/'main.tex').write_bytes(p.read_bytes())
+p.write_text(old,encoding='utf-8')
+draft=ROOT/'experiments/runtime-reference/csec-submission-draft.txt'
+if not (backup/'csec-submission-draft.txt').exists():(backup/'csec-submission-draft.txt').write_bytes(draft.read_bytes())
+content='''CSEC 2026年12月研究会：発表申込案（未送信、2026-10-08更新）
+和文タイトル：公開WebAssembly採掘データセットにおける難読化とハッシュ計算性能の実証分析
+英文タイトル：An Empirical Analysis of Obfuscation and Hashing Performance in Public WebAssembly Mining Datasets
+
+和文概要案：
+'''+ja+'''
+
+English abstract draft:
+'''+en+'''
+
+実施済みと残る計画の区別：
+Proof-of-Theft配布10標本とSWAMPED入力1・自生成2の計13標本で，適用可能な公表CN/0出力に一致した．xmr-wasmの5標本とSWAMPEDの3標本は各30秒以上・3反復を完了．webminerpoolhashcnの5標本は5秒・3反復の予備測定で，速度測定のcn/picoと公表ベクトル照合のcn/0を分けて記録する．既存Cryptic Bytesのプール実験は過去の記録として再利用し，新たな外部プール接続は行わない．
+残る計画は，元配布変換版のビルド条件を再現した対照，実装の系譜を確認した追加比較，必要な追加反復，独立した機構レビュー，原稿PDFの確認である．大学PCの新規実行は教員の許可確認後に限定する．未実施の計画を結果として申告しない．
+
+先行研究との差と主張の範囲：
+確認したProof-of-Theft本文・補足には同標本の出力と反復hashes/sの比較報告がないが，hashrate.jsがあるため過去の測定自体を否定しない．SWAMPEDの空のimportを用いた時間評価と完全なハッシュ計算を区別する．Cryptic Bytes・元のwasm_evasion等には既存のハッシュ速度評価がある．SWAMPEDの入力046dc081…はMinerRay・WasmBench・WASMixer・WasmMalにも同一SHAで収録され，独立した新標本とは数えない．今回の自生成変換はSWAMPEDの手法でありWASMixer変換の評価ではない．全件評価，世界初，完全網羅，検出回避の有効性，採択を主張しない．先行比較の出典はresults/runtime-mining/cross-dataset/prior-work/evaluation-comparison.csvに記録した．
+
+公式募集：https://www.ipsj.or.jp/kenkyukai/event/eip114spt65csec115.html
+確認済み申込締切：2026-10-09 23:59 JST．原稿締切：2026-11-12 23:59 JST（公式の曜日表記に不整合があり通知で照合要）．申込・投稿はユーザー自身の操作．このファイルの保存は申込完了を意味しない．
+'''
+draft.write_text(content,encoding='utf-8')
+print('Japanese/English abstracts and unsent submission draft aligned; measured results and unfinished plans separated.')

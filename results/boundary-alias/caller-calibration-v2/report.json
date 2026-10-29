@@ -1,0 +1,19 @@
+{
+  "fixtures": 10,
+  "processes": 80,
+  "calls": 104,
+  "passed": 80,
+  "rejections": [
+    {
+      "name": "invalid",
+      "reason": "magic header not detected: bad magic number - expected=[\n    0x0,\n    0x61,\n    0x73,\n    0x6d,\n] actual=[\n    0x6e,\n    0x6f,\n    0x74,\n    0x77,\n] (at offset 0x0)",
+      "status": "rejected"
+    },
+    {
+      "name": "oversize",
+      "reason": "input exceeds 1 MiB limit",
+      "status": "rejected"
+    }
+  ],
+  "errors": []
+}

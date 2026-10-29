@@ -1,0 +1,47 @@
+FUNCTION 40
+
+--- 22a8da398015d3e5442be1f0d4e373d1c4f2fd47bd0781cba5813c14259e806f
+
++++ 4ab6ed5e0cff47586fb586a91b180c8c6eaef4002e33dc2bb27bf8235673c00e
+
+@@ -697,20 +697,16 @@
+
+ local.tee 13
+ i64.add
+ local.set 12
+ local.get 10
+ i64.const 22
+ i64.shl
+ local.get 10
+ i64.const 42
+-i64.const 0
+-i64.xor
+-i64.const 0
+-i64.sub
+ i64.shr_u
+ i64.or
+ local.get 12
+ i64.xor
+ local.tee 10
+ local.get 9
+ i64.const 12
+ i64.shl
+FUNCTION 71
+
+--- 22a8da398015d3e5442be1f0d4e373d1c4f2fd47bd0781cba5813c14259e806f
+
++++ 4ab6ed5e0cff47586fb586a91b180c8c6eaef4002e33dc2bb27bf8235673c00e
+
+@@ -1,7 +1,11 @@
+
+ local.get 0
+ local.get 1
+ local.get 3
++i32.const 745275909
++drop
+ local.get 2
++local.get 2
++i32.and
+ i32.const 0
+ call 33
+ end

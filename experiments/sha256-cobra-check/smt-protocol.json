@@ -1,0 +1,12 @@
+{
+ "date":"2026-10-12",
+ "scope":"Frozen CoBRA output expression pairs and recorded replacement ASTs, not whole-program equivalence",
+ "inputs":["artifacts/results.json","artifacts/rewritten/manifest.json","../sha256-research-baseline/mba-add.smt2"],
+ "checks":"Every returned pair, every saved rewrite AST pair, the saved MBA query, and two deliberately incorrect controls",
+ "logic":"QF_BV with 32-bit values; Wasm shift counts masked modulo32",
+ "solver":"existing Z3 installation; record actual version and generated queries",
+ "timeout_ms_per_query":5000,
+ "memory_mb":512,
+ "acceptance":"unsat for valid local equalities, sat with independently replayed counterexamples for invalid controls; unknown and timeout are unverified",
+ "budget":"one pass, no parameter extensions; no Docker, compiler or SHA runtime rerun"
+}

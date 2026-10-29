@@ -1,0 +1,1071 @@
+{
+  "source_pins_verified": {
+    "results\\invention-20261022\\lifetime-overlay-v2": 79,
+    "results\\invention-20261022\\lifetime-overlay-performance-v1": 57,
+    "results\\invention-20261022\\lifetime-overlay-audit-v1": 369
+  },
+  "positive_conditions": 36,
+  "byte_distinct_positive": 23,
+  "calls": 943104,
+  "unexpected_traps": 0,
+  "negative_counterexamples": 3,
+  "recovered": 18,
+  "attacked": 18,
+  "performance": [
+    {
+      "name": "serial",
+      "variants": {
+        "plain": {
+          "name": "serial",
+          "mode": "plain",
+          "stage": "O3",
+          "file": "serial-plain.wasm",
+          "bytes": 365,
+          "linear_memory_bytes": 65536,
+          "median_ns": 7.317209243774414,
+          "process_medians": [
+            6.959390640258789,
+            7.714176177978516,
+            7.317209243774414
+          ],
+          "process_min_ns": 6.959390640258789,
+          "process_max_ns": 7.714176177978516
+        },
+        "first": {
+          "name": "serial",
+          "mode": "first",
+          "stage": "O3",
+          "file": "serial-first.wasm",
+          "bytes": 350,
+          "linear_memory_bytes": 65536,
+          "median_ns": 7.5748443603515625,
+          "process_medians": [
+            7.612323760986328,
+            7.5748443603515625,
+            7.519721984863281
+          ],
+          "process_min_ns": 7.519721984863281,
+          "process_max_ns": 7.612323760986328
+        },
+        "conflict": {
+          "name": "serial",
+          "mode": "conflict",
+          "stage": "O3",
+          "file": "serial-conflict.wasm",
+          "bytes": 350,
+          "linear_memory_bytes": 65536,
+          "median_ns": 7.433342933654785,
+          "process_medians": [
+            7.433342933654785,
+            7.552576065063477,
+            7.375001907348633
+          ],
+          "process_min_ns": 7.375001907348633,
+          "process_max_ns": 7.552576065063477
+        },
+        "recovered": {
+          "name": "serial",
+          "mode": "recovered",
+          "stage": "O3",
+          "file": "serial-recovered.wasm",
+          "bytes": 231,
+          "linear_memory_bytes": 0,
+          "median_ns": 4.774069786071777,
+          "process_medians": [
+            4.774069786071777,
+            4.63564395904541,
+            4.99577522277832
+          ],
+          "process_min_ns": 4.63564395904541,
+          "process_max_ns": 4.99577522277832
+        }
+      },
+      "conflict_over_first": 0.9813195598529486,
+      "conflict_over_plain": 1.015871309130483
+    },
+    {
+      "name": "branch",
+      "variants": {
+        "plain": {
+          "name": "branch",
+          "mode": "plain",
+          "stage": "O3",
+          "file": "branch-plain.wasm",
+          "bytes": 217,
+          "linear_memory_bytes": 65536,
+          "median_ns": 2.713775634765625,
+          "process_medians": [
+            2.7101635932922363,
+            2.745378017425537,
+            2.713775634765625
+          ],
+          "process_min_ns": 2.7101635932922363,
+          "process_max_ns": 2.745378017425537
+        },
+        "first": {
+          "name": "branch",
+          "mode": "first",
+          "stage": "O3",
+          "file": "branch-first.wasm",
+          "bytes": 215,
+          "linear_memory_bytes": 65536,
+          "median_ns": 2.7602553367614746,
+          "process_medians": [
+            2.7390241622924805,
+            2.7602553367614746,
+            2.7916669845581055
+          ],
+          "process_min_ns": 2.7390241622924805,
+          "process_max_ns": 2.7916669845581055
+        },
+        "conflict": {
+          "name": "branch",
+          "mode": "conflict",
+          "stage": "O3",
+          "file": "branch-conflict.wasm",
+          "bytes": 215,
+          "linear_memory_bytes": 65536,
+          "median_ns": 2.8746724128723145,
+          "process_medians": [
+            3.406548500061035,
+            2.8746724128723145,
+            2.755272388458252
+          ],
+          "process_min_ns": 2.755272388458252,
+          "process_max_ns": 3.406548500061035
+        },
+        "recovered": {
+          "name": "branch",
+          "mode": "recovered",
+          "stage": "O3",
+          "file": "branch-recovered.wasm",
+          "bytes": 152,
+          "linear_memory_bytes": 0,
+          "median_ns": 2.2803783416748047,
+          "process_medians": [
+            2.3148298263549805,
+            2.2803783416748047,
+            2.2100448608398438
+          ],
+          "process_min_ns": 2.2100448608398438,
+          "process_max_ns": 2.3148298263549805
+        }
+      },
+      "conflict_over_first": 1.0414516275313435,
+      "conflict_over_plain": 1.0592889021647456
+    },
+    {
+      "name": "diamond",
+      "variants": {
+        "plain": {
+          "name": "diamond",
+          "mode": "plain",
+          "stage": "O3",
+          "file": "diamond-plain.wasm",
+          "bytes": 1459,
+          "linear_memory_bytes": 65536,
+          "median_ns": 38.52100372314453,
+          "process_medians": [
+            38.76514434814453,
+            38.483619689941406,
+            38.52100372314453
+          ],
+          "process_min_ns": 38.483619689941406,
+          "process_max_ns": 38.76514434814453
+        },
+        "first": {
+          "name": "diamond",
+          "mode": "first",
+          "stage": "O3",
+          "file": "diamond-first.wasm",
+          "bytes": 1399,
+          "linear_memory_bytes": 65536,
+          "median_ns": 38.280677795410156,
+          "process_medians": [
+            38.280677795410156,
+            38.00621032714844,
+            38.68865966796875
+          ],
+          "process_min_ns": 38.00621032714844,
+          "process_max_ns": 38.68865966796875
+        },
+        "conflict": {
+          "name": "diamond",
+          "mode": "conflict",
+          "stage": "O3",
+          "file": "diamond-conflict.wasm",
+          "bytes": 1399,
+          "linear_memory_bytes": 65536,
+          "median_ns": 38.938140869140625,
+          "process_medians": [
+            38.938140869140625,
+            40.373992919921875,
+            37.69721984863281
+          ],
+          "process_min_ns": 37.69721984863281,
+          "process_max_ns": 40.373992919921875
+        },
+        "recovered": {
+          "name": "diamond",
+          "mode": "recovered",
+          "stage": "O3",
+          "file": "diamond-recovered.wasm",
+          "bytes": 775,
+          "linear_memory_bytes": 0,
+          "median_ns": 37.73002624511719,
+          "process_medians": [
+            37.549781799316406,
+            37.73002624511719,
+            38.71307373046875
+          ],
+          "process_min_ns": 37.549781799316406,
+          "process_max_ns": 38.71307373046875
+        }
+      },
+      "conflict_over_first": 1.017174802317876,
+      "conflict_over_plain": 1.0108288233866936
+    }
+  ],
+  "attack": [
+    {
+      "name": "serial",
+      "stage": "raw",
+      "mode": "plain",
+      "repetitions": 5,
+      "reader_ms": 16.89480000000021,
+      "normalize_ms": 0.2941999999999112,
+      "compile_ms": 21.498399999999585,
+      "elapsed_ms": 38.850300000000004,
+      "min_total_ms": 37.72350000000024,
+      "max_total_ms": 41.4911,
+      "phis": 0
+    },
+    {
+      "name": "serial",
+      "stage": "raw",
+      "mode": "first",
+      "repetitions": 5,
+      "reader_ms": 16.908400000000157,
+      "normalize_ms": 0.3039000000004677,
+      "compile_ms": 21.949399999999564,
+      "elapsed_ms": 39.10389999999975,
+      "min_total_ms": 38.087299999999935,
+      "max_total_ms": 39.40900000000003,
+      "phis": 0
+    },
+    {
+      "name": "serial",
+      "stage": "raw",
+      "mode": "conflict",
+      "repetitions": 5,
+      "reader_ms": 17.24049999999977,
+      "normalize_ms": 0.30929999999962376,
+      "compile_ms": 21.88370000000006,
+      "elapsed_ms": 39.40430000000017,
+      "min_total_ms": 38.54649999999982,
+      "max_total_ms": 47.40939999999938,
+      "phis": 0
+    },
+    {
+      "name": "serial",
+      "stage": "O3",
+      "mode": "plain",
+      "repetitions": 5,
+      "reader_ms": 17.086799999999513,
+      "normalize_ms": 0.27840000000001197,
+      "compile_ms": 21.566699999999273,
+      "elapsed_ms": 39.06339999999986,
+      "min_total_ms": 38.316799999999596,
+      "max_total_ms": 40.25180000000006,
+      "phis": 0
+    },
+    {
+      "name": "serial",
+      "stage": "O3",
+      "mode": "first",
+      "repetitions": 5,
+      "reader_ms": 16.903000000000112,
+      "normalize_ms": 0.28309999999986957,
+      "compile_ms": 21.650800000000636,
+      "elapsed_ms": 38.735100000000244,
+      "min_total_ms": 37.56710000000041,
+      "max_total_ms": 39.44389999999931,
+      "phis": 0
+    },
+    {
+      "name": "serial",
+      "stage": "O3",
+      "mode": "conflict",
+      "repetitions": 5,
+      "reader_ms": 16.618900000000103,
+      "normalize_ms": 0.2813000000001509,
+      "compile_ms": 21.975500000000814,
+      "elapsed_ms": 39.09729999999989,
+      "min_total_ms": 36.74330000000037,
+      "max_total_ms": 40.54420000000025,
+      "phis": 0
+    },
+    {
+      "name": "branch",
+      "stage": "raw",
+      "mode": "plain",
+      "repetitions": 5,
+      "reader_ms": 16.554699999999478,
+      "normalize_ms": 0.15359999999997598,
+      "compile_ms": 21.35279999999984,
+      "elapsed_ms": 38.06229999999999,
+      "min_total_ms": 36.9006999999999,
+      "max_total_ms": 38.81820000000058,
+      "phis": 1
+    },
+    {
+      "name": "branch",
+      "stage": "raw",
+      "mode": "first",
+      "repetitions": 5,
+      "reader_ms": 16.31339999999959,
+      "normalize_ms": 0.15880000000034755,
+      "compile_ms": 21.173799999999687,
+      "elapsed_ms": 37.751599999999996,
+      "min_total_ms": 37.34339999999925,
+      "max_total_ms": 38.021900000000386,
+      "phis": 1
+    },
+    {
+      "name": "branch",
+      "stage": "raw",
+      "mode": "conflict",
+      "repetitions": 5,
+      "reader_ms": 16.345600000000182,
+      "normalize_ms": 0.15579999999992822,
+      "compile_ms": 21.33699999999994,
+      "elapsed_ms": 37.84030000000005,
+      "min_total_ms": 37.4528999999999,
+      "max_total_ms": 38.822600000000484,
+      "phis": 1
+    },
+    {
+      "name": "branch",
+      "stage": "O3",
+      "mode": "plain",
+      "repetitions": 5,
+      "reader_ms": 17.00889999999955,
+      "normalize_ms": 0.15230000000077126,
+      "compile_ms": 21.312499999999623,
+      "elapsed_ms": 38.54859999999949,
+      "min_total_ms": 37.73030000000066,
+      "max_total_ms": 46.35760000000033,
+      "phis": 1
+    },
+    {
+      "name": "branch",
+      "stage": "O3",
+      "mode": "first",
+      "repetitions": 5,
+      "reader_ms": 16.804900000000345,
+      "normalize_ms": 0.14800000000025904,
+      "compile_ms": 21.22569999999957,
+      "elapsed_ms": 38.03029999999996,
+      "min_total_ms": 36.13160000000004,
+      "max_total_ms": 52.60130000000007,
+      "phis": 1
+    },
+    {
+      "name": "branch",
+      "stage": "O3",
+      "mode": "conflict",
+      "repetitions": 5,
+      "reader_ms": 17.666300000000135,
+      "normalize_ms": 0.15900000000002024,
+      "compile_ms": 21.912900000000235,
+      "elapsed_ms": 39.74719999999987,
+      "min_total_ms": 37.639200000000095,
+      "max_total_ms": 48.92649999999943,
+      "phis": 1
+    },
+    {
+      "name": "diamond",
+      "stage": "raw",
+      "mode": "plain",
+      "repetitions": 5,
+      "reader_ms": 18.625500000000184,
+      "normalize_ms": 1.0499000000008252,
+      "compile_ms": 22.25649999999968,
+      "elapsed_ms": 41.91620000000018,
+      "min_total_ms": 41.1583000000002,
+      "max_total_ms": 45.04559999999991,
+      "phis": 16
+    },
+    {
+      "name": "diamond",
+      "stage": "raw",
+      "mode": "first",
+      "repetitions": 5,
+      "reader_ms": 19.625000000000448,
+      "normalize_ms": 1.0792999999997832,
+      "compile_ms": 22.236100000000647,
+      "elapsed_ms": 42.934000000000694,
+      "min_total_ms": 41.503100000000344,
+      "max_total_ms": 70.8233000000007,
+      "phis": 16
+    },
+    {
+      "name": "diamond",
+      "stage": "raw",
+      "mode": "conflict",
+      "repetitions": 5,
+      "reader_ms": 19.794599999999996,
+      "normalize_ms": 1.124299999999856,
+      "compile_ms": 22.736300000000043,
+      "elapsed_ms": 43.96039999999957,
+      "min_total_ms": 42.58389999999945,
+      "max_total_ms": 47.155599999999964,
+      "phis": 16
+    },
+    {
+      "name": "diamond",
+      "stage": "O3",
+      "mode": "plain",
+      "repetitions": 5,
+      "reader_ms": 19.293799999999806,
+      "normalize_ms": 1.032000000000366,
+      "compile_ms": 22.357900000000264,
+      "elapsed_ms": 43.31869999999949,
+      "min_total_ms": 42.25019999999979,
+      "max_total_ms": 47.697099999999715,
+      "phis": 16
+    },
+    {
+      "name": "diamond",
+      "stage": "O3",
+      "mode": "first",
+      "repetitions": 5,
+      "reader_ms": 18.921999999999883,
+      "normalize_ms": 1.0678000000003962,
+      "compile_ms": 22.890400000000533,
+      "elapsed_ms": 42.8974000000002,
+      "min_total_ms": 41.53930000000017,
+      "max_total_ms": 45.095699999999184,
+      "phis": 16
+    },
+    {
+      "name": "diamond",
+      "stage": "O3",
+      "mode": "conflict",
+      "repetitions": 5,
+      "reader_ms": 20.118599999999986,
+      "normalize_ms": 1.181399999999222,
+      "compile_ms": 23.30439999999978,
+      "elapsed_ms": 44.83010000000043,
+      "min_total_ms": 42.59449999999987,
+      "max_total_ms": 51.891200000000026,
+      "phis": 16
+    }
+  ],
+  "transforms": [
+    {
+      "name": "serial",
+      "mode": "first",
+      "cells": 12,
+      "interference_edges": 6,
+      "placement": [
+        {
+          "source": 0,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 16,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 64,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 80,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 128,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 144,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 192,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 208,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 256,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 272,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 320,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 336,
+          "width": 8,
+          "target": 0
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 0,
+        "multi_view_bytes": 0
+      },
+      "elapsed_ms": 40.623099999999994
+    },
+    {
+      "name": "serial",
+      "mode": "conflict",
+      "cells": 12,
+      "interference_edges": 6,
+      "placement": [
+        {
+          "source": 0,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 16,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 64,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 80,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 128,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 144,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 192,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 208,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 256,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 272,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 320,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 336,
+          "width": 8,
+          "target": 0
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 0,
+        "multi_view_bytes": 0
+      },
+      "elapsed_ms": 38.90290000000002
+    },
+    {
+      "name": "branch",
+      "mode": "first",
+      "cells": 5,
+      "interference_edges": 1,
+      "placement": [
+        {
+          "source": 0,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 16,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 32,
+          "width": 4,
+          "target": 0
+        },
+        {
+          "source": 48,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 64,
+          "width": 8,
+          "target": 0
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 4,
+        "multi_view_bytes": 4
+      },
+      "elapsed_ms": 39.29530000000003
+    },
+    {
+      "name": "branch",
+      "mode": "conflict",
+      "cells": 5,
+      "interference_edges": 1,
+      "placement": [
+        {
+          "source": 0,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 16,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 32,
+          "width": 4,
+          "target": 4
+        },
+        {
+          "source": 48,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 64,
+          "width": 8,
+          "target": 4
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 8,
+        "multi_view_bytes": 8
+      },
+      "elapsed_ms": 38.34530000000002
+    },
+    {
+      "name": "diamond",
+      "mode": "first",
+      "cells": 33,
+      "interference_edges": 16,
+      "placement": [
+        {
+          "source": 0,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 32,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 48,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 64,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 80,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 96,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 112,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 128,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 144,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 160,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 176,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 192,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 208,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 224,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 240,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 256,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 272,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 288,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 304,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 320,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 336,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 352,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 368,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 384,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 400,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 416,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 432,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 448,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 464,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 480,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 496,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 512,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 528,
+          "width": 8,
+          "target": 0
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 0,
+        "multi_view_bytes": 0
+      },
+      "elapsed_ms": 42.841600000000035
+    },
+    {
+      "name": "diamond",
+      "mode": "conflict",
+      "cells": 33,
+      "interference_edges": 16,
+      "placement": [
+        {
+          "source": 0,
+          "width": 8,
+          "target": 0
+        },
+        {
+          "source": 32,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 48,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 64,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 80,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 96,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 112,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 128,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 144,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 160,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 176,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 192,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 208,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 224,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 240,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 256,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 272,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 288,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 304,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 320,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 336,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 352,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 368,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 384,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 400,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 416,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 432,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 448,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 464,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 480,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 496,
+          "width": 8,
+          "target": 4
+        },
+        {
+          "source": 512,
+          "width": 4,
+          "target": 8
+        },
+        {
+          "source": 528,
+          "width": 8,
+          "target": 4
+        }
+      ],
+      "footprint": 12,
+      "metric": {
+        "touched_bytes": 12,
+        "cross_width_bytes": 4,
+        "multi_view_bytes": 8
+      },
+      "elapsed_ms": 44.93229999999993
+    }
+  ],
+  "interpreter_calls": 144,
+  "reproduced_binaries": 36,
+  "short_batches_below_10ms": 0,
+  "node_max_rss_kib_range": [
+    36456,
+    36712
+  ],
+  "environment": {
+    "python": "3.9.0",
+    "platform": "Windows-10-10.0.26100-SP0",
+    "machine": "AMD64",
+    "wabt": "1.0.42",
+    "binaryen": "wasm-opt version 133 (version_133)"
+  }
+}

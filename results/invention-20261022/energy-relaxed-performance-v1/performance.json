@@ -1,0 +1,928 @@
+{
+  "models": {
+    "ordered-guards": {
+      "inputs": 4,
+      "gates": [
+        [
+          "xor",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "input",
+            2
+          ],
+          [
+            "input",
+            3
+          ]
+        ],
+        [
+          "or",
+          [
+            "input",
+            2
+          ],
+          [
+            "input",
+            3
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "gate",
+            1
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            0
+          ],
+          [
+            "gate",
+            2
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            3
+          ],
+          [
+            "gate",
+            4
+          ]
+        ]
+      ]
+    }
+  },
+  "targets": [
+    {
+      "name": "ordered-guards",
+      "mode": "plain",
+      "file": "ordered-guards-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-plain-O3.wasm",
+      "optimized_file": "ordered-guards-plain-optimized.wasm",
+      "source_bytes": 84,
+      "optimized_bytes": 84,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "file": "ordered-guards-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3.wasm",
+      "optimized_file": "ordered-guards-dag-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag-recovered",
+      "file": "ordered-guards-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-dag-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "file": "ordered-guards-synth-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3.wasm",
+      "optimized_file": "ordered-guards-synth-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth-recovered",
+      "file": "ordered-guards-synth-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-synth-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0
+    }
+  ],
+  "warmup_calls": 16384,
+  "calibration_target_ms": 20,
+  "batches": 7,
+  "processes_per_target": 3,
+  "rows": [
+    {
+      "name": "ordered-guards",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-dag-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 8345504,
+      "samples": [
+        {
+          "milliseconds": 24.4144,
+          "ns": 2.925455430852349
+        },
+        {
+          "milliseconds": 24.166399999999996,
+          "ns": 2.8957388313515873
+        },
+        {
+          "milliseconds": 24.179500000000004,
+          "ns": 2.897308538825217
+        },
+        {
+          "milliseconds": 24.02919999999999,
+          "ns": 2.879298841627778
+        },
+        {
+          "milliseconds": 24.105199999999996,
+          "ns": 2.8884055414747865
+        },
+        {
+          "milliseconds": 23.977800000000002,
+          "ns": 2.873139836731251
+        },
+        {
+          "milliseconds": 24.104299999999995,
+          "ns": 2.888297698976598
+        }
+      ],
+      "checksum": 484288,
+      "maxRSSKiB": 37928,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth-recovered",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-synth-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-synth-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 8444609,
+      "samples": [
+        {
+          "milliseconds": 25.056799999999996,
+          "ns": 2.967194810322183
+        },
+        {
+          "milliseconds": 25,
+          "ns": 2.960468625604809
+        },
+        {
+          "milliseconds": 24.552999999999997,
+          "ns": 2.9075354465789944
+        },
+        {
+          "milliseconds": 24.280400000000014,
+          "ns": 2.8752544966854017
+        },
+        {
+          "milliseconds": 24.626100000000008,
+          "ns": 2.9161918568402645
+        },
+        {
+          "milliseconds": 24.211000000000013,
+          "ns": 2.8670362357807226
+        },
+        {
+          "milliseconds": 24.324300000000022,
+          "ns": 2.8804530795919647
+        }
+      ],
+      "checksum": 484289,
+      "maxRSSKiB": 37984,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth-recovered",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-synth-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-synth-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 8477271,
+      "samples": [
+        {
+          "milliseconds": 26.0083,
+          "ns": 3.0680038422742415
+        },
+        {
+          "milliseconds": 26.294399999999996,
+          "ns": 3.101752910812925
+        },
+        {
+          "milliseconds": 25.615899999999996,
+          "ns": 3.0217153609929417
+        },
+        {
+          "milliseconds": 25.083,
+          "ns": 2.958853149793135
+        },
+        {
+          "milliseconds": 25.216000000000008,
+          "ns": 2.97454216103272
+        },
+        {
+          "milliseconds": 25.22800000000001,
+          "ns": 2.975957710918998
+        },
+        {
+          "milliseconds": 25.038399999999996,
+          "ns": 2.9535920227158003
+        }
+      ],
+      "checksum": 484288,
+      "maxRSSKiB": 37832,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-dag-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 8311257,
+      "samples": [
+        {
+          "milliseconds": 25.184799999999996,
+          "ns": 3.0302034938878677
+        },
+        {
+          "milliseconds": 23.9632,
+          "ns": 2.883222116702684
+        },
+        {
+          "milliseconds": 24.580699999999993,
+          "ns": 2.957518940877414
+        },
+        {
+          "milliseconds": 24.309999999999988,
+          "ns": 2.9249486569841348
+        },
+        {
+          "milliseconds": 23.903099999999995,
+          "ns": 2.8759909602121554
+        },
+        {
+          "milliseconds": 24.06960000000001,
+          "ns": 2.8960240310220233
+        },
+        {
+          "milliseconds": 23.892799999999994,
+          "ns": 2.874751677153046
+        }
+      ],
+      "checksum": 484289,
+      "maxRSSKiB": 37692,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-synth-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3.wasm",
+      "optimized_file": "ordered-guards-synth-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "process": 2,
+      "count": 104405,
+      "samples": [
+        {
+          "milliseconds": 25.479800000000004,
+          "ns": 244.04769886499693
+        },
+        {
+          "milliseconds": 25.916799999999995,
+          "ns": 248.2333221589004
+        },
+        {
+          "milliseconds": 26.073199999999986,
+          "ns": 249.7313347061921
+        },
+        {
+          "milliseconds": 25.55539999999999,
+          "ns": 244.7718021167568
+        },
+        {
+          "milliseconds": 24.88809999999998,
+          "ns": 238.38034576888063
+        },
+        {
+          "milliseconds": 25.1678,
+          "ns": 241.0593362386859
+        },
+        {
+          "milliseconds": 24.608499999999992,
+          "ns": 235.7023131076097
+        }
+      ],
+      "checksum": 12542,
+      "maxRSSKiB": 38316,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth-recovered",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-synth-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-synth-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 8418395,
+      "samples": [
+        {
+          "milliseconds": 25.084399999999995,
+          "ns": 2.979712878761331
+        },
+        {
+          "milliseconds": 25.056600000000003,
+          "ns": 2.9764105865785586
+        },
+        {
+          "milliseconds": 25.033299999999997,
+          "ns": 2.9736428380944346
+        },
+        {
+          "milliseconds": 25.071100000000015,
+          "ns": 2.9781330051631
+        },
+        {
+          "milliseconds": 25.1062,
+          "ns": 2.982302446012571
+        },
+        {
+          "milliseconds": 25.007000000000005,
+          "ns": 2.9705187271445452
+        },
+        {
+          "milliseconds": 24.9914,
+          "ns": 2.9686656423225566
+        }
+      ],
+      "checksum": 484289,
+      "maxRSSKiB": 37756,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-plain-O3.wasm",
+      "optimized_file": "ordered-guards-plain-optimized.wasm",
+      "source_bytes": 84,
+      "optimized_bytes": 84,
+      "linear_memory_bytes": 0,
+      "process": 1,
+      "count": 17568904,
+      "samples": [
+        {
+          "milliseconds": 24.994200000000006,
+          "ns": 1.422638543645068
+        },
+        {
+          "milliseconds": 24.868700000000004,
+          "ns": 1.4154952409097348
+        },
+        {
+          "milliseconds": 24.906899999999993,
+          "ns": 1.4176695370411263
+        },
+        {
+          "milliseconds": 24.96610000000001,
+          "ns": 1.4210391268573164
+        },
+        {
+          "milliseconds": 25.131200000000007,
+          "ns": 1.4304364119696942
+        },
+        {
+          "milliseconds": 24.947900000000004,
+          "ns": 1.4200032056638254
+        },
+        {
+          "milliseconds": 24.912500000000023,
+          "ns": 1.4179882820237404
+        }
+      ],
+      "checksum": 484291,
+      "maxRSSKiB": 37876,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag-recovered",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-dag-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 8385745,
+      "samples": [
+        {
+          "milliseconds": 26.780299999999997,
+          "ns": 3.193550483588518
+        },
+        {
+          "milliseconds": 26.130200000000002,
+          "ns": 3.1160260656626217
+        },
+        {
+          "milliseconds": 25.717799999999997,
+          "ns": 3.066847370150177
+        },
+        {
+          "milliseconds": 25.872299999999996,
+          "ns": 3.0852714934689756
+        },
+        {
+          "milliseconds": 25.973099999999988,
+          "ns": 3.0972918923721133
+        },
+        {
+          "milliseconds": 25.91809999999998,
+          "ns": 3.0907331429705986
+        },
+        {
+          "milliseconds": 27.263800000000003,
+          "ns": 3.251207853327284
+        }
+      ],
+      "checksum": 484289,
+      "maxRSSKiB": 37852,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3.wasm",
+      "optimized_file": "ordered-guards-dag-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "process": 0,
+      "count": 96386,
+      "samples": [
+        {
+          "milliseconds": 24.212199999999996,
+          "ns": 251.2003817981864
+        },
+        {
+          "milliseconds": 24.691599999999994,
+          "ns": 256.17413317286736
+        },
+        {
+          "milliseconds": 23.6241,
+          "ns": 245.0988732803519
+        },
+        {
+          "milliseconds": 23.2778,
+          "ns": 241.50602784636774
+        },
+        {
+          "milliseconds": 23.357799999999997,
+          "ns": 242.33602390388643
+        },
+        {
+          "milliseconds": 22.774,
+          "ns": 236.27912767414355
+        },
+        {
+          "milliseconds": 23.079000000000008,
+          "ns": 239.44348764343377
+        }
+      ],
+      "checksum": 12480,
+      "maxRSSKiB": 38236,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-plain-O3.wasm",
+      "optimized_file": "ordered-guards-plain-optimized.wasm",
+      "source_bytes": 84,
+      "optimized_bytes": 84,
+      "linear_memory_bytes": 0,
+      "process": 0,
+      "count": 17687376,
+      "samples": [
+        {
+          "milliseconds": 25.1021,
+          "ns": 1.4192099495142751
+        },
+        {
+          "milliseconds": 24.597099999999998,
+          "ns": 1.3906585126024344
+        },
+        {
+          "milliseconds": 24.211,
+          "ns": 1.3688293843021146
+        },
+        {
+          "milliseconds": 24.38940000000001,
+          "ns": 1.3789156740943376
+        },
+        {
+          "milliseconds": 24.353999999999985,
+          "ns": 1.3769142466355657
+        },
+        {
+          "milliseconds": 24.138599999999997,
+          "ns": 1.3647360693864368
+        },
+        {
+          "milliseconds": 24.430499999999995,
+          "ns": 1.381239365296469
+        }
+      ],
+      "checksum": 484288,
+      "maxRSSKiB": 37912,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "plain",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-plain-O3.wasm",
+      "optimized_file": "ordered-guards-plain-optimized.wasm",
+      "source_bytes": 84,
+      "optimized_bytes": 84,
+      "linear_memory_bytes": 0,
+      "process": 2,
+      "count": 17817372,
+      "samples": [
+        {
+          "milliseconds": 24.350100000000005,
+          "ns": 1.3666493577167274
+        },
+        {
+          "milliseconds": 24.9272,
+          "ns": 1.399039095103363
+        },
+        {
+          "milliseconds": 24.83720000000001,
+          "ns": 1.3939878451210432
+        },
+        {
+          "milliseconds": 24.495999999999995,
+          "ns": 1.3748379951880667
+        },
+        {
+          "milliseconds": 24.54310000000001,
+          "ns": 1.3774814826788155
+        },
+        {
+          "milliseconds": 24.522100000000023,
+          "ns": 1.3763028576829412
+        },
+        {
+          "milliseconds": 24.475599999999986,
+          "ns": 1.3736930451920735
+        }
+      ],
+      "checksum": 484290,
+      "maxRSSKiB": 37856,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3.wasm",
+      "optimized_file": "ordered-guards-dag-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "process": 1,
+      "count": 104576,
+      "samples": [
+        {
+          "milliseconds": 24.808099999999996,
+          "ns": 237.2255584455324
+        },
+        {
+          "milliseconds": 24.844099999999997,
+          "ns": 237.56980569155442
+        },
+        {
+          "milliseconds": 24.75659999999999,
+          "ns": 236.73309363525084
+        },
+        {
+          "milliseconds": 24.8818,
+          "ns": 237.93030905752755
+        },
+        {
+          "milliseconds": 24.773800000000023,
+          "ns": 236.89756731946167
+        },
+        {
+          "milliseconds": 24.89749999999998,
+          "ns": 238.08043910648698
+        },
+        {
+          "milliseconds": 24.873999999999995,
+          "ns": 237.85572215422272
+        }
+      ],
+      "checksum": 12480,
+      "maxRSSKiB": 38164,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-synth-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3.wasm",
+      "optimized_file": "ordered-guards-synth-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "process": 0,
+      "count": 103728,
+      "samples": [
+        {
+          "milliseconds": 24.77049999999999,
+          "ns": 238.80244485577657
+        },
+        {
+          "milliseconds": 24.638200000000012,
+          "ns": 237.5269936757675
+        },
+        {
+          "milliseconds": 24.667100000000005,
+          "ns": 237.80560697208085
+        },
+        {
+          "milliseconds": 24.8523,
+          "ns": 239.591045812124
+        },
+        {
+          "milliseconds": 24.7568,
+          "ns": 238.6703686564862
+        },
+        {
+          "milliseconds": 24.60330000000002,
+          "ns": 237.190536788524
+        },
+        {
+          "milliseconds": 24.601799999999997,
+          "ns": 237.17607589079125
+        }
+      ],
+      "checksum": 12480,
+      "maxRSSKiB": 38236,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3.wasm",
+      "optimized_file": "ordered-guards-dag-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "process": 2,
+      "count": 100000,
+      "samples": [
+        {
+          "milliseconds": 24.675199999999997,
+          "ns": 246.75199999999995
+        },
+        {
+          "milliseconds": 24.685599999999994,
+          "ns": 246.85599999999994
+        },
+        {
+          "milliseconds": 24.6533,
+          "ns": 246.533
+        },
+        {
+          "milliseconds": 24.81540000000001,
+          "ns": 248.1540000000001
+        },
+        {
+          "milliseconds": 25.132900000000006,
+          "ns": 251.32900000000006
+        },
+        {
+          "milliseconds": 24.67840000000001,
+          "ns": 246.7840000000001
+        },
+        {
+          "milliseconds": 24.634199999999993,
+          "ns": 246.34199999999993
+        }
+      ],
+      "checksum": 12480,
+      "maxRSSKiB": 38404,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "file": "results\\invention-20261022\\energy-relaxed-performance-v1\\ordered-guards-synth-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3.wasm",
+      "optimized_file": "ordered-guards-synth-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "process": 1,
+      "count": 103060,
+      "samples": [
+        {
+          "milliseconds": 24.4893,
+          "ns": 237.62177372404426
+        },
+        {
+          "milliseconds": 24.512600000000006,
+          "ns": 237.8478556180866
+        },
+        {
+          "milliseconds": 23.880300000000005,
+          "ns": 231.71259460508446
+        },
+        {
+          "milliseconds": 24.015500000000003,
+          "ns": 233.0244517756647
+        },
+        {
+          "milliseconds": 23.828100000000006,
+          "ns": 231.20609353774506
+        },
+        {
+          "milliseconds": 23.738,
+          "ns": 230.33184552687754
+        },
+        {
+          "milliseconds": 23.826299999999975,
+          "ns": 231.18862798369855
+        }
+      ],
+      "checksum": 12481,
+      "maxRSSKiB": 38192,
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48"
+    }
+  ],
+  "summary": [
+    {
+      "name": "ordered-guards",
+      "mode": "plain",
+      "file": "ordered-guards-plain-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-plain-O3.wasm",
+      "optimized_file": "ordered-guards-plain-optimized.wasm",
+      "source_bytes": 84,
+      "optimized_bytes": 84,
+      "linear_memory_bytes": 0,
+      "ns": 1.3789156740943376,
+      "process_medians_ns": [
+        1.4200032056638254,
+        1.3789156740943376,
+        1.3763028576829412
+      ],
+      "range_ns": [
+        1.3763028576829412,
+        1.4200032056638254
+      ]
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "file": "ordered-guards-dag-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3.wasm",
+      "optimized_file": "ordered-guards-dag-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "ns": 242.33602390388643,
+      "process_medians_ns": [
+        242.33602390388643,
+        237.56980569155442,
+        246.7840000000001
+      ],
+      "range_ns": [
+        237.56980569155442,
+        246.7840000000001
+      ]
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag-recovered",
+      "file": "ordered-guards-dag-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-dag-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-dag-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "ns": 2.8960240310220233,
+      "process_medians_ns": [
+        2.8884055414747865,
+        2.8960240310220233,
+        3.0972918923721133
+      ],
+      "range_ns": [
+        2.8884055414747865,
+        3.0972918923721133
+      ]
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "file": "ordered-guards-synth-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3.wasm",
+      "optimized_file": "ordered-guards-synth-optimized.wasm",
+      "source_bytes": 567,
+      "optimized_bytes": 567,
+      "linear_memory_bytes": 65536,
+      "ns": 237.80560697208085,
+      "process_medians_ns": [
+        244.04769886499693,
+        237.80560697208085,
+        231.71259460508446
+      ],
+      "range_ns": [
+        231.71259460508446,
+        244.04769886499693
+      ]
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth-recovered",
+      "file": "ordered-guards-synth-recovered-bench.wasm",
+      "source": "results\\invention-20261022\\energy-relaxed-coupled-v1\\ordered-guards-synth-O3-recovered.wasm",
+      "optimized_file": "ordered-guards-synth-recovered-optimized.wasm",
+      "source_bytes": 231,
+      "optimized_bytes": 131,
+      "linear_memory_bytes": 0,
+      "ns": 2.975957710918998,
+      "process_medians_ns": [
+        2.9075354465789944,
+        2.975957710918998,
+        2.9764105865785586
+      ],
+      "range_ns": [
+        2.9075354465789944,
+        2.9764105865785586
+      ]
+    }
+  ],
+  "platform": "Windows-10-10.0.26100-SP0",
+  "cpu_affinity_fixed": false,
+  "frequency_fixed": false
+}

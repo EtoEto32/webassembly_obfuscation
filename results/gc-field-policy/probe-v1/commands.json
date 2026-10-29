@@ -1,0 +1,408 @@
+[
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\public-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]}],\"totalSeconds\":0.0008048,\"validationSeconds\":0.0007072}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\pass-through.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":0,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":true,\"mode\":\"deny-all-gc\",\"violations\":[]}],\"totalSeconds\":0.0006478,\"validationSeconds\":0.0005961}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\secret-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":false,\"mode\":\"local-index\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]}],\"totalSeconds\":0.0006774,\"validationSeconds\":0.0006236}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\renumbered-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":2}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":2}]}],\"totalSeconds\":0.000604,\"validationSeconds\":0.0005399}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\duplicate-type-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":4}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":4}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0007532,\"validationSeconds\":0.0006991}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\ancestor-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":0}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":0}]}],\"totalSeconds\":0.0006288,\"validationSeconds\":0.0005771}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\ancestor-write.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"write\",\"field\":1,\"op\":\"struct.set\",\"operation\":0,\"protectedType\":1,\"type\":0}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"write\",\"field\":1,\"op\":\"struct.set\",\"operation\":0,\"protectedType\":1,\"type\":0}]}],\"totalSeconds\":0.0006076,\"validationSeconds\":0.0005468}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\subtype-forge.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":4}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0007776,\"validationSeconds\":0.0007239}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\const-forge.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":false,\"mode\":\"local-index\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":1}]}],\"totalSeconds\":0.0006612,\"validationSeconds\":0.0006068}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\base-constructor.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":0}]}],\"totalSeconds\":0.0006303,\"validationSeconds\":0.0005831}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\base-only-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":2,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":1,\"protectedType\":1,\"type\":0}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":0},{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":1,\"protectedType\":1,\"type\":0}]}],\"totalSeconds\":0.0005795,\"validationSeconds\":0.0005302}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\different-final-type.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0006045,\"validationSeconds\":0.0005556}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-length.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":0,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":true,\"mode\":\"deny-all-gc\",\"violations\":[]}],\"totalSeconds\":0.0005899,\"validationSeconds\":0.0005337}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-ancestor-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":0,\"protectedType\":3,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":0,\"protectedType\":1,\"type\":2}]}],\"totalSeconds\":0.0005687,\"validationSeconds\":0.000518}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-ancestor-fill.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"write\",\"field\":0,\"op\":\"array.write\",\"operation\":0,\"protectedType\":3,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"write\",\"field\":0,\"op\":\"array.write\",\"operation\":0,\"protectedType\":1,\"type\":2}]}],\"totalSeconds\":0.0006456,\"validationSeconds\":0.0005938}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-copy-source.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":4,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.copy.source\",\"operation\":1,\"protectedType\":3,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"array.new\",\"operation\":0,\"protectedType\":1,\"type\":4},{\"action\":\"read\",\"field\":0,\"op\":\"array.copy.source\",\"operation\":1,\"protectedType\":1,\"type\":2},{\"action\":\"write\",\"field\":0,\"op\":\"array.copy.destination\",\"operation\":2,\"protectedType\":1,\"type\":4},{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":3,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.000662,\"validationSeconds\":0.000582}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-copy-destination.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":3,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"write\",\"field\":0,\"op\":\"array.copy.destination\",\"operation\":2,\"protectedType\":3,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"array.new\",\"operation\":0,\"protectedType\":1,\"type\":4},{\"action\":\"read\",\"field\":0,\"op\":\"array.copy.source\",\"operation\":1,\"protectedType\":1,\"type\":4},{\"action\":\"write\",\"field\":0,\"op\":\"array.copy.destination\",\"operation\":2,\"protectedType\":1,\"type\":2}]}],\"totalSeconds\":0.00072,\"validationSeconds\":0.0006596}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-12345.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-subtype-forge.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"array.new\",\"operation\":0,\"protectedType\":3,\"type\":4}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"array.new\",\"operation\":0,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0007467,\"validationSeconds\":0.0006821}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\public-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]}],\"totalSeconds\":0.0006355,\"validationSeconds\":0.0005859}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\pass-through.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":0,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":true,\"mode\":\"deny-all-gc\",\"violations\":[]}],\"totalSeconds\":0.000574,\"validationSeconds\":0.0005302}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\secret-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":false,\"mode\":\"local-index\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":1}]}],\"totalSeconds\":0.0006569,\"validationSeconds\":0.0006042}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\renumbered-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":2}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":2}]}],\"totalSeconds\":0.0006389,\"validationSeconds\":0.0005862}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\duplicate-type-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":4}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":4}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0006191,\"validationSeconds\":0.0005692}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\ancestor-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":0}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":0}]}],\"totalSeconds\":0.0005814,\"validationSeconds\":0.0005327}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\ancestor-write.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"write\",\"field\":1,\"op\":\"struct.set\",\"operation\":0,\"protectedType\":1,\"type\":0}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"write\",\"field\":1,\"op\":\"struct.set\",\"operation\":0,\"protectedType\":1,\"type\":0}]}],\"totalSeconds\":0.0006281,\"validationSeconds\":0.0005746}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\subtype-forge.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":4}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0005634,\"validationSeconds\":0.0005135}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\const-forge.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":false,\"mode\":\"local-index\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":1}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":1}]}],\"totalSeconds\":0.000552,\"validationSeconds\":0.0004973}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\base-constructor.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":0}]}],\"totalSeconds\":0.0005641,\"validationSeconds\":0.0005184}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\base-only-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":2,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":1,\"protectedType\":1,\"type\":0}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"struct.new\",\"operation\":0,\"protectedType\":1,\"type\":0},{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":1,\"protectedType\":1,\"type\":0}]}],\"totalSeconds\":0.0006667,\"validationSeconds\":0.0006148}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\different-final-type.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":0,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0006397,\"validationSeconds\":0.0005707}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-length.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":0,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":true,\"mode\":\"deny-all-gc\",\"violations\":[]}],\"totalSeconds\":0.0005636,\"validationSeconds\":0.0005171}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-ancestor-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":0,\"protectedType\":3,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":0,\"protectedType\":1,\"type\":2}]}],\"totalSeconds\":0.0005389,\"validationSeconds\":0.0004884}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-ancestor-fill.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"write\",\"field\":0,\"op\":\"array.write\",\"operation\":0,\"protectedType\":3,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"write\",\"field\":0,\"op\":\"array.write\",\"operation\":0,\"protectedType\":1,\"type\":2}]}],\"totalSeconds\":0.0006179,\"validationSeconds\":0.0005599}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-copy-source.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":4,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.copy.source\",\"operation\":1,\"protectedType\":3,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"array.new\",\"operation\":0,\"protectedType\":1,\"type\":4},{\"action\":\"read\",\"field\":0,\"op\":\"array.copy.source\",\"operation\":1,\"protectedType\":1,\"type\":2},{\"action\":\"write\",\"field\":0,\"op\":\"array.copy.destination\",\"operation\":2,\"protectedType\":1,\"type\":4},{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":3,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0006043,\"validationSeconds\":0.0005412}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-copy-destination.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":3,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"write\",\"field\":0,\"op\":\"array.copy.destination\",\"operation\":2,\"protectedType\":3,\"type\":2}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"array.new\",\"operation\":0,\"protectedType\":1,\"type\":4},{\"action\":\"read\",\"field\":0,\"op\":\"array.copy.source\",\"operation\":1,\"protectedType\":1,\"type\":4},{\"action\":\"write\",\"field\":0,\"op\":\"array.copy.destination\",\"operation\":2,\"protectedType\":1,\"type\":2}]}],\"totalSeconds\":0.000645,\"validationSeconds\":0.0005782}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\probe-v1\\library-54321.wasm",
+      "results\\gc-field-policy\\probe-v1\\policy.json",
+      "results\\gc-field-policy\\probe-v1\\array-subtype-forge.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":1,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"array.new\",\"operation\":0,\"protectedType\":3,\"type\":4}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"create\",\"field\":null,\"op\":\"array.new\",\"operation\":0,\"protectedType\":1,\"type\":4}]}],\"totalSeconds\":0.0005635,\"validationSeconds\":0.0005098}\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\replay.mjs",
+      "results\\gc-field-policy\\probe-v1\\replay.json"
+    ],
+    "code": 0,
+    "stdout": "{\"node\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"rows\":[{\"name\":\"public-read\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":5},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"pass-through\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"secret-read\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":12345},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"renumbered-read\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":12345},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"duplicate-type-read\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":12345},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"ancestor-read\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":12345},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"ancestor-write\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":77,\"afterArray\":12345},{\"name\":\"subtype-forge\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":77},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"const-forge\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":77},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"base-constructor\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"base-only-read\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":77},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"different-final-type\",\"secret\":12345,\"result\":{\"type\":\"trap\"},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"array-length\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":3},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"array-ancestor-read\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":12345},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"array-ancestor-fill\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":12345,\"afterArray\":77},{\"name\":\"array-copy-source\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":12345},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"array-copy-destination\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":12345,\"afterArray\":77},{\"name\":\"array-subtype-forge\",\"secret\":12345,\"result\":{\"type\":\"return\",\"value\":3},\"afterStruct\":12345,\"afterArray\":12345},{\"name\":\"public-read\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":5},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"pass-through\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"secret-read\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":54321},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"renumbered-read\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":54321},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"duplicate-type-read\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":54321},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"ancestor-read\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":54321},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"ancestor-write\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":77,\"afterArray\":54321},{\"name\":\"subtype-forge\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":77},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"const-forge\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":77},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"base-constructor\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"base-only-read\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":77},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"different-final-type\",\"secret\":54321,\"result\":{\"type\":\"trap\"},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"array-length\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":3},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"array-ancestor-read\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":54321},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"array-ancestor-fill\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":54321,\"afterArray\":77},{\"name\":\"array-copy-source\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":54321},\"afterStruct\":54321,\"afterArray\":54321},{\"name\":\"array-copy-destination\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":1},\"afterStruct\":54321,\"afterArray\":77},{\"name\":\"array-subtype-forge\",\"secret\":54321,\"result\":{\"type\":\"return\",\"value\":3},\"afterStruct\":54321,\"afterArray\":54321}]}\n",
+    "stderr": ""
+  }
+]

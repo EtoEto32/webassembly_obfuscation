@@ -1,0 +1,95 @@
+{
+  "authorized_date_jst": "2026-10-07",
+  "objective": "Cross-dataset measurement of mining hash computation and its relationship with obfuscation mechanisms and static code changes",
+  "include_previously_evaluated_samples": true,
+  "include_research_generated_and_collected_samples": true,
+  "measurement_priority": [
+    "Proof-of-Theft",
+    "SWAMPED cryptomining subset",
+    "MinerRay",
+    "Cryptic Bytes",
+    "MineSweeper",
+    "original wasm_evasion artifacts",
+    "other publicly available mining implementations"
+  ],
+  "research_questions": [
+    "Which obfuscation mechanisms are supported by evidence in each public mining corpus?",
+    "How do verified obfuscation mechanisms and static structural changes relate to hash throughput and correctness?",
+    "Which relationships reproduce across distinct mining implementations and datasets, and where do they differ?"
+  ],
+  "prior_work": [
+    {
+      "name": "Cryptic Bytes",
+      "source": "https://arxiv.org/html/2403.15197v1",
+      "hash_rate_evaluated": true,
+      "evidence": "Sections 4.2.7, 4.3.3 and 5.3.2; 100-second hash-rate measurements",
+      "current_role": "Reproduction/control and cross-dataset comparison; not first hash-rate evaluation"
+    },
+    {
+      "name": "WebAssembly Diversification for Malware Evasion",
+      "source": "https://arxiv.org/abs/2212.08427",
+      "hash_rate_evaluated": true,
+      "evidence": "Sections 5.3 and 6.3, Table 4; pool validity and nominal 1000-second rate measurements",
+      "current_role": "Methodological reference; recovered inputs retain reconstruction limitations"
+    },
+    {
+      "name": "Proof-of-Theft",
+      "source": "https://doi.org/10.4230/LIPIcs.ECOOP.2026.25",
+      "hash_rate_evaluated": null,
+      "evidence": "Main paper Section 6 RQs concern graph simplification and miner detection; supplementary.pdf (2 pages) contains theorem proof and graph examples. Artifact includes hashrate.js in cryptonight-hash baseline and obfuscated directories, so runtime measurement capability exists. Reviewed paper/supplement/README and artifact path inventory do not establish a published paired throughput/correctness result.",
+      "current_role": "Priority 1: measure paired original and obfuscated uninstrumented modules, with verified hash outputs and algorithm-specific throughput; do not claim hashing was never run."
+    },
+    {
+      "name": "SWAMPED",
+      "source": "https://yonghwi-kwon.github.io/data/wasm_perturbation_ase25.pdf",
+      "hash_rate_evaluated": null,
+      "execution_time_evaluated": true,
+      "evidence": "Section IV.D / Table III: 74 samples, Node 22.19.0, Liftoff baseline JIT, no-op imported functions because JS artifacts absent, 1000 warm-up calls plus median of 100 calls per exported function. This is execution-time overhead, not a demonstrated complete mining hash throughput/output-validity benchmark. Public experimental_results tree lists detector scores and heat maps.",
+      "current_role": "Priority 2: restore supported hashing host interfaces for cryptomining subset, then evaluate complete valid hashing; published seeds/transforms must be distinguished from our own generated variants."
+    },
+    {
+      "name": "MinerRay",
+      "source": "https://weihang-wang.github.io/papers/ASE2020-MinerRay.pdf",
+      "hash_rate_evaluated": null,
+      "evidence": "Section 6.4 / Table 5 evaluates detector graph construction and scanning time/memory. Public README describes crawled Wasm samples and detection results. No paired obfuscation hashing-throughput benchmark identified in reviewed main paper/README/public file inventory.",
+      "current_role": "Collected-code extension; check overlap with earlier mining papers and source/algorithm evidence before calling a binary newly evaluated."
+    },
+    {
+      "name": "MineSweeper",
+      "source": "https://martina.lindorfer.in/files/papers/minesweeper_ccs18.pdf",
+      "hash_rate_evaluated": true,
+      "evidence": "Section 6 / Table 10 reports Wasm vs asm.js hash rates on two CPUs and estimates throttling/profit impacts. This is not a systematic paired comparison of obfuscation methods over the whole released corpus.",
+      "current_role": "Previously evaluated reference with potential additional sample/method coverage; not an unevaluated dataset."
+    }
+  ],
+  "metrics": [
+    "hashes per second with actual sample timestamps",
+    "baseline-relative throughput where pairing is verified",
+    "verified outputs or pool share acceptance/rejection",
+    "static code structure, instructions and size already measured"
+  ],
+  "execution_conditions": [
+    "Do not execute collection websites or original mining HTML blindly; invoke only reviewed hashing functions in the isolated runtime.",
+    "Retain source algorithms and input bytes. A compatible public pool is required for claims of pool validity.",
+    "Local-only hash measurements require source-supported inputs and an independent correctness reference; never call them pool acceptance.",
+    "Compare within algorithm and implementation; absolute rates of different algorithms do not measure obfuscation overhead.",
+    "Retain raw, missing and failed results. No fabricated results or unsupported novelty claims.",
+    "No external attacks, scanning, unauthorized mining, donation traffic, secret keys or Windows protection changes."
+  ],
+  "app_goal_replacement": "create_goal rejected because the old goal is unfinished. New authorized objective saved to experiments/runtime-reference/cross-dataset-goal.txt; old goal not marked complete.",
+  "completion_status": "incomplete; do not replace full objective with these preliminary completed runs",
+  "novelty_audit": {
+    "date_jst": "2026-10-07",
+    "status": "Documented evaluation gaps within the reviewed primary sources; worldwide first-evaluation claim not established",
+    "primary_addition": "Paired, correctness-verified complete hashing throughput for published obfuscated miners, extending detection-focused datasets and stub-based runtime evaluations",
+    "requirements": [
+      "Verify dataset variants are not identical to already benchmarked binaries.",
+      "Separate Wasabi instrumentation overhead from obfuscation overhead.",
+      "Same algorithm/input/runtime/threads within pairs; repeat and report variation.",
+      "Without an original pair, report absolute hashing results but do not call a difference obfuscation overhead.",
+      "Do not infer absence of all earlier hashing runs from absence of a paper section."
+    ]
+  },
+  "latest_verified_execution_coverage": "verified-execution-coverage.json",
+  "latest_goal_file": "C:/Users/ettotto/.codex/attachments/09b935de-1166-418f-a72b-2c8746fbe327/pasted-text-1.txt"
+}

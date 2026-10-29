@@ -1,0 +1,284 @@
+{
+  "width": 2,
+  "inputs": [
+    "a",
+    "b"
+  ],
+  "max_tree_operations": 3,
+  "operations": [
+    "add",
+    "sub",
+    "xor",
+    "mul"
+  ],
+  "stats": {
+    "all_profiles": {
+      "attempts": 9892,
+      "levels": [
+        4,
+        19,
+        243,
+        3388
+      ],
+      "profiles": 3654,
+      "seconds": 0.1263512999867089
+    },
+    "frontier": {
+      "attempts": 7172,
+      "levels": [
+        4,
+        19,
+        158,
+        1871
+      ],
+      "profiles": 2052,
+      "seconds": 0.0777776000322774
+    },
+    "output_only": {
+      "attempts": 4644,
+      "levels": [
+        4,
+        19,
+        79,
+        286
+      ],
+      "profiles": 388,
+      "seconds": 0.04259909997927025
+    }
+  },
+  "coverage_checks": 3654,
+  "frontier_coverage_failures": [],
+  "output_only_lost_examples": [
+    {
+      "lost": [
+        "mul",
+        "a",
+        [
+          "add",
+          "a",
+          "one"
+        ]
+      ],
+      "cost": 2,
+      "retained": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "sub",
+        "a",
+        [
+          "mul",
+          "a",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "cost": 3,
+      "retained": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "a",
+          [
+            "sub",
+            "zero",
+            "one"
+          ]
+        ]
+      ],
+      "cost": 3,
+      "retained": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "mul",
+        "a",
+        [
+          "xor",
+          "a",
+          [
+            "sub",
+            "zero",
+            "one"
+          ]
+        ]
+      ],
+      "cost": 3,
+      "retained": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "zero",
+          [
+            "add",
+            "a",
+            "one"
+          ]
+        ]
+      ],
+      "cost": 3,
+      "retained": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "one",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "cost": 3,
+      "retained": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "mul",
+        "a",
+        [
+          "sub",
+          [
+            "sub",
+            "zero",
+            "a"
+          ],
+          "one"
+        ]
+      ],
+      "cost": 3,
+      "retained": [
+        "add",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ]
+    },
+    {
+      "lost": [
+        "mul",
+        "a",
+        [
+          "sub",
+          "a",
+          "one"
+        ]
+      ],
+      "cost": 2,
+      "retained": [
+        "sub",
+        "a",
+        [
+          "mul",
+          "a",
+          "a"
+        ]
+      ]
+    }
+  ],
+  "target_profile_not_context_closed": {
+    "P": [
+      "add",
+      [
+        "add",
+        "a",
+        "b"
+      ],
+      "c"
+    ],
+    "Q": [
+      "add",
+      "a",
+      [
+        "add",
+        "b",
+        "c"
+      ]
+    ],
+    "context": [
+      "add",
+      "HOLE",
+      [
+        "mul",
+        "c",
+        "c"
+      ]
+    ],
+    "target": "(a+b)*c*c mod 8",
+    "domain_size": 512,
+    "before": {
+      "P": false,
+      "Q": false
+    },
+    "after": {
+      "P": true,
+      "Q": false
+    }
+  }
+}

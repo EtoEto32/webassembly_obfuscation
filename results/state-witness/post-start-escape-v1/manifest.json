@@ -1,0 +1,392 @@
+{
+  "rows": [
+    {
+      "kind": "start-import",
+      "source": "start-import.wasm",
+      "scan": {
+        "counts": {
+          "data.drop": 1,
+          "memory.init": 1
+        },
+        "data": [
+          {
+            "length": 1,
+            "passive": true
+          }
+        ],
+        "elements": [
+          {
+            "kind": "declarative"
+          }
+        ],
+        "exports": [
+          {
+            "index": 0,
+            "kind": "Memory",
+            "name": "memory"
+          },
+          {
+            "index": 2,
+            "kind": "Func",
+            "name": "retire"
+          },
+          {
+            "index": 3,
+            "kind": "Func",
+            "name": "entry"
+          }
+        ],
+        "functions": [
+          {
+            "counts": {
+              "memory.init": 1
+            },
+            "directCallsPrefix": [],
+            "functionIndex": 1,
+            "operators": 5,
+            "sites": [
+              {
+                "offset": 100,
+                "operator": "memory.init",
+                "ordinal": 3,
+                "segment": 0
+              }
+            ]
+          },
+          {
+            "counts": {
+              "data.drop": 1
+            },
+            "directCallsPrefix": [],
+            "functionIndex": 2,
+            "operators": 2,
+            "sites": [
+              {
+                "offset": 107,
+                "operator": "data.drop",
+                "ordinal": 0,
+                "segment": 0
+              }
+            ]
+          }
+        ],
+        "imports": [
+          {
+            "module": "env",
+            "name": "capture",
+            "type": "Func(0)"
+          }
+        ],
+        "memories": [
+          {
+            "imported": false,
+            "initial": 1,
+            "shared": false
+          }
+        ],
+        "postInstantiation": {
+          "allLifetimeDifferencesIrrelevant": false,
+          "allSegmentReaders": {
+            "1": [
+              "data:0"
+            ]
+          },
+          "callsByFunction": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [
+              0
+            ]
+          },
+          "premise": "Completed instantiation, no retained active frames/continuations, only segment-lifetime differences. Exported functions and every literal function reference are conservative roots. Host obtains internal function references only through ordinary Wasm interfaces. No debugger/engine-private introspection. Time, resource-pressure/OOM effects are excluded; other internal nondeterministic choices are coupled.",
+          "reachableFunctions": [
+            1,
+            2,
+            3
+          ],
+          "reachableSegmentReaders": {
+            "1": [
+              "data:0"
+            ]
+          },
+          "roots": [
+            1,
+            2,
+            3
+          ]
+        },
+        "start": 4,
+        "status": "complete",
+        "validator": "wasmparser 0.227.1 all features; custom metadata not validated"
+      },
+      "exportOnlyMutantSaysSafe": true,
+      "results": [
+        {
+          "outcome": "return",
+          "beforeSha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+          "firstByte": 65
+        },
+        {
+          "outcome": "trap",
+          "beforeSha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+          "firstByte": 0
+        }
+      ]
+    },
+    {
+      "kind": "global",
+      "source": "global.wasm",
+      "scan": {
+        "counts": {
+          "data.drop": 1,
+          "memory.init": 1
+        },
+        "data": [
+          {
+            "length": 1,
+            "passive": true
+          }
+        ],
+        "elements": [],
+        "exports": [
+          {
+            "index": 0,
+            "kind": "Memory",
+            "name": "memory"
+          },
+          {
+            "index": 1,
+            "kind": "Func",
+            "name": "retire"
+          },
+          {
+            "index": 2,
+            "kind": "Func",
+            "name": "entry"
+          },
+          {
+            "index": 0,
+            "kind": "Global",
+            "name": "handle"
+          }
+        ],
+        "functions": [
+          {
+            "counts": {
+              "memory.init": 1
+            },
+            "directCallsPrefix": [],
+            "functionIndex": 0,
+            "operators": 5,
+            "sites": [
+              {
+                "offset": 85,
+                "operator": "memory.init",
+                "ordinal": 3,
+                "segment": 0
+              }
+            ]
+          },
+          {
+            "counts": {
+              "data.drop": 1
+            },
+            "directCallsPrefix": [],
+            "functionIndex": 1,
+            "operators": 2,
+            "sites": [
+              {
+                "offset": 92,
+                "operator": "data.drop",
+                "ordinal": 0,
+                "segment": 0
+              }
+            ]
+          }
+        ],
+        "imports": [],
+        "memories": [
+          {
+            "imported": false,
+            "initial": 1,
+            "shared": false
+          }
+        ],
+        "postInstantiation": {
+          "allLifetimeDifferencesIrrelevant": false,
+          "allSegmentReaders": {
+            "0": [
+              "data:0"
+            ]
+          },
+          "callsByFunction": {
+            "0": [],
+            "1": [],
+            "2": []
+          },
+          "premise": "Completed instantiation, no retained active frames/continuations, only segment-lifetime differences. Exported functions and every literal function reference are conservative roots. Host obtains internal function references only through ordinary Wasm interfaces. No debugger/engine-private introspection. Time, resource-pressure/OOM effects are excluded; other internal nondeterministic choices are coupled.",
+          "reachableFunctions": [
+            0,
+            1,
+            2
+          ],
+          "reachableSegmentReaders": {
+            "0": [
+              "data:0"
+            ]
+          },
+          "roots": [
+            0,
+            1,
+            2
+          ]
+        },
+        "start": null,
+        "status": "complete",
+        "validator": "wasmparser 0.227.1 all features; custom metadata not validated"
+      },
+      "exportOnlyMutantSaysSafe": true,
+      "results": [
+        {
+          "outcome": "return",
+          "beforeSha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+          "firstByte": 65
+        },
+        {
+          "outcome": "trap",
+          "beforeSha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+          "firstByte": 0
+        }
+      ]
+    },
+    {
+      "kind": "table",
+      "source": "table.wasm",
+      "scan": {
+        "counts": {
+          "data.drop": 1,
+          "memory.init": 1
+        },
+        "data": [
+          {
+            "length": 1,
+            "passive": true
+          }
+        ],
+        "elements": [],
+        "exports": [
+          {
+            "index": 0,
+            "kind": "Memory",
+            "name": "memory"
+          },
+          {
+            "index": 1,
+            "kind": "Func",
+            "name": "retire"
+          },
+          {
+            "index": 2,
+            "kind": "Func",
+            "name": "entry"
+          },
+          {
+            "index": 0,
+            "kind": "Table",
+            "name": "handle"
+          }
+        ],
+        "functions": [
+          {
+            "counts": {
+              "memory.init": 1
+            },
+            "directCallsPrefix": [],
+            "functionIndex": 0,
+            "operators": 5,
+            "sites": [
+              {
+                "offset": 88,
+                "operator": "memory.init",
+                "ordinal": 3,
+                "segment": 0
+              }
+            ]
+          },
+          {
+            "counts": {
+              "data.drop": 1
+            },
+            "directCallsPrefix": [],
+            "functionIndex": 1,
+            "operators": 2,
+            "sites": [
+              {
+                "offset": 95,
+                "operator": "data.drop",
+                "ordinal": 0,
+                "segment": 0
+              }
+            ]
+          }
+        ],
+        "imports": [],
+        "memories": [
+          {
+            "imported": false,
+            "initial": 1,
+            "shared": false
+          }
+        ],
+        "postInstantiation": {
+          "allLifetimeDifferencesIrrelevant": false,
+          "allSegmentReaders": {
+            "0": [
+              "data:0"
+            ]
+          },
+          "callsByFunction": {
+            "0": [],
+            "1": [],
+            "2": []
+          },
+          "premise": "Completed instantiation, no retained active frames/continuations, only segment-lifetime differences. Exported functions and every literal function reference are conservative roots. Host obtains internal function references only through ordinary Wasm interfaces. No debugger/engine-private introspection. Time, resource-pressure/OOM effects are excluded; other internal nondeterministic choices are coupled.",
+          "reachableFunctions": [
+            0,
+            1,
+            2
+          ],
+          "reachableSegmentReaders": {
+            "0": [
+              "data:0"
+            ]
+          },
+          "roots": [
+            0,
+            1,
+            2
+          ]
+        },
+        "start": null,
+        "status": "complete",
+        "validator": "wasmparser 0.227.1 all features; custom metadata not validated"
+      },
+      "exportOnlyMutantSaysSafe": true,
+      "results": [
+        {
+          "outcome": "return",
+          "beforeSha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+          "firstByte": 65
+        },
+        {
+          "outcome": "trap",
+          "beforeSha256": "de2f256064a0af797747c2b97505dc0b9f3df0de4f489eac731c23ae9ca9cc31",
+          "firstByte": 0
+        }
+      ]
+    }
+  ],
+  "pairsPerEngine": 3,
+  "executableSha256": "dd57e0cf3ec75591b2bcc27abd9ca24c78e3294c70328277af23b0cf1233e2ae"
+}

@@ -1,0 +1,257 @@
+{
+  "targets": [
+    {
+      "fixture": "and",
+      "mode": "plain",
+      "form": "raw",
+      "file": "and-plain.wasm",
+      "bytes": 56,
+      "n": 2
+    },
+    {
+      "fixture": "and",
+      "mode": "plain",
+      "form": "O3",
+      "file": "and-plain-O3.wasm",
+      "bytes": 56,
+      "n": 2
+    },
+    {
+      "fixture": "and",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "and-borrowed.wasm",
+      "bytes": 100,
+      "n": 2
+    },
+    {
+      "fixture": "and",
+      "mode": "recovered",
+      "form": "raw",
+      "file": "and-borrowed-recovered.wasm",
+      "bytes": 56,
+      "n": 2
+    },
+    {
+      "fixture": "and",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "and-borrowed-O3.wasm",
+      "bytes": 96,
+      "n": 2
+    },
+    {
+      "fixture": "and",
+      "mode": "recovered",
+      "form": "O3",
+      "file": "and-borrowed-O3-recovered.wasm",
+      "bytes": 56,
+      "n": 2
+    },
+    {
+      "fixture": "mul",
+      "mode": "plain",
+      "form": "raw",
+      "file": "mul-plain.wasm",
+      "bytes": 56,
+      "n": 2
+    },
+    {
+      "fixture": "mul",
+      "mode": "plain",
+      "form": "O3",
+      "file": "mul-plain-O3.wasm",
+      "bytes": 56,
+      "n": 2
+    },
+    {
+      "fixture": "mul",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "mul-borrowed.wasm",
+      "bytes": 100,
+      "n": 2
+    },
+    {
+      "fixture": "mul",
+      "mode": "recovered",
+      "form": "raw",
+      "file": "mul-borrowed-recovered.wasm",
+      "bytes": 56,
+      "n": 2
+    },
+    {
+      "fixture": "mul",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "mul-borrowed-O3.wasm",
+      "bytes": 96,
+      "n": 2
+    },
+    {
+      "fixture": "mul",
+      "mode": "recovered",
+      "form": "O3",
+      "file": "mul-borrowed-O3-recovered.wasm",
+      "bytes": 56,
+      "n": 2
+    },
+    {
+      "fixture": "div",
+      "mode": "plain",
+      "form": "raw",
+      "file": "div-plain.wasm",
+      "bytes": 60,
+      "n": 3
+    },
+    {
+      "fixture": "div",
+      "mode": "plain",
+      "form": "O3",
+      "file": "div-plain-O3.wasm",
+      "bytes": 60,
+      "n": 3
+    },
+    {
+      "fixture": "div",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "div-borrowed.wasm",
+      "bytes": 104,
+      "n": 3
+    },
+    {
+      "fixture": "div",
+      "mode": "recovered",
+      "form": "raw",
+      "file": "div-borrowed-recovered.wasm",
+      "bytes": 60,
+      "n": 3
+    },
+    {
+      "fixture": "div",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "div-borrowed-O3.wasm",
+      "bytes": 100,
+      "n": 3
+    },
+    {
+      "fixture": "div",
+      "mode": "recovered",
+      "form": "O3",
+      "file": "div-borrowed-O3-recovered.wasm",
+      "bytes": 60,
+      "n": 3
+    }
+  ],
+  "transforms": [
+    {
+      "fixture": "and",
+      "transform_ms": 38.8494,
+      "bytes": 100
+    },
+    {
+      "fixture": "mul",
+      "transform_ms": 38.208999999999996,
+      "bytes": 100
+    },
+    {
+      "fixture": "div",
+      "transform_ms": 37.95720000000002,
+      "bytes": 104
+    }
+  ],
+  "recoveries": [
+    {
+      "fixture": "and",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "and-borrowed.wasm",
+      "bytes": 56,
+      "n": 2,
+      "status": "recovered",
+      "reader_ms": 17.604499999999994,
+      "proof_ms": 0.07469999999998223,
+      "expression": "(i32.and (local.get 0) (local.get 1))",
+      "trap_points": 0
+    },
+    {
+      "fixture": "and",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "and-borrowed-O3.wasm",
+      "bytes": 56,
+      "n": 2,
+      "status": "recovered",
+      "reader_ms": 17.72570000000001,
+      "proof_ms": 0.05769999999999342,
+      "expression": "(i32.and (local.get 0) (local.get 1))",
+      "trap_points": 0
+    },
+    {
+      "fixture": "mul",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "mul-borrowed.wasm",
+      "bytes": 56,
+      "n": 2,
+      "status": "recovered",
+      "reader_ms": 17.335299999999997,
+      "proof_ms": 0.05969999999999587,
+      "expression": "(i32.mul (local.get 0) (local.get 1))",
+      "trap_points": 0
+    },
+    {
+      "fixture": "mul",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "mul-borrowed-O3.wasm",
+      "bytes": 56,
+      "n": 2,
+      "status": "recovered",
+      "reader_ms": 18.100999999999978,
+      "proof_ms": 0.0563000000000109,
+      "expression": "(i32.mul (local.get 0) (local.get 1))",
+      "trap_points": 0
+    },
+    {
+      "fixture": "div",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "div-borrowed.wasm",
+      "bytes": 60,
+      "n": 3,
+      "status": "recovered",
+      "reader_ms": 18.14059999999995,
+      "proof_ms": 0.07960000000007028,
+      "expression": "(i32.div_u (i32.mul (local.get 0) (local.get 1)) (local.get 2))",
+      "trap_points": 1
+    },
+    {
+      "fixture": "div",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "div-borrowed-O3.wasm",
+      "bytes": 60,
+      "n": 3,
+      "status": "recovered",
+      "reader_ms": 17.69619999999994,
+      "proof_ms": 0.06350000000010425,
+      "expression": "(i32.div_u (i32.mul (local.get 0) (local.get 1)) (local.get 2))",
+      "trap_points": 1
+    }
+  ],
+  "negative": [
+    {
+      "file": "div-broken.wasm",
+      "status": "trap_memory_changed",
+      "reader_ms": 18.691499999999973
+    },
+    {
+      "file": "div-broken-O3.wasm",
+      "status": "trap_memory_changed",
+      "reader_ms": 18.085300000000082
+    }
+  ]
+}

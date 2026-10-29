@@ -1,0 +1,2215 @@
+{
+  "main": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\loss-flag-v1",
+  "verified_main_pins": 284,
+  "processes": 36,
+  "batches": 252,
+  "short_batches": 0,
+  "max_rss_kib": [
+    36032,
+    36516
+  ],
+  "summaries": [
+    {
+      "plain": {
+        "median_ns": 0.5829572677612305,
+        "process_medians_ns": [
+          0.5502492189407349,
+          0.6505727767944336,
+          0.5829572677612305
+        ],
+        "batch_min_ns": 0.5255997180938721,
+        "batch_max_ns": 0.7668167352676392,
+        "bytes": 341
+      },
+      "eager": {
+        "median_ns": 6.883788108825684,
+        "process_medians_ns": [
+          6.883788108825684,
+          8.009958267211914,
+          6.855010986328125
+        ],
+        "batch_min_ns": 6.733298301696777,
+        "batch_max_ns": 8.942794799804688,
+        "bytes": 873
+      },
+      "basis": {
+        "median_ns": 4.0203094482421875,
+        "process_medians_ns": [
+          4.017448425292969,
+          4.245424270629883,
+          4.0203094482421875
+        ],
+        "batch_min_ns": 3.8584470748901367,
+        "batch_max_ns": 4.272723197937012,
+        "bytes": 815
+      },
+      "current": {
+        "median_ns": 4.096579551696777,
+        "process_medians_ns": [
+          4.096579551696777,
+          4.321646690368652,
+          4.091858863830566
+        ],
+        "batch_min_ns": 4.027915000915527,
+        "batch_max_ns": 5.2092790603637695,
+        "bytes": 948
+      },
+      "name": "swap16",
+      "current_over_basis": 1.0189712022013473,
+      "current_over_plain": 7.027238149768926
+    },
+    {
+      "plain": {
+        "median_ns": 0.6345689296722412,
+        "process_medians_ns": [
+          0.6516814231872559,
+          0.6345689296722412,
+          0.6256908178329468
+        ],
+        "batch_min_ns": 0.616919994354248,
+        "batch_max_ns": 0.7395565509796143,
+        "bytes": 569
+      },
+      "eager": {
+        "median_ns": 49.016380310058594,
+        "process_medians_ns": [
+          49.016380310058594,
+          49.31602478027344,
+          46.596717834472656
+        ],
+        "batch_min_ns": 46.22058868408203,
+        "batch_max_ns": 62.67127990722656,
+        "bytes": 3785
+      },
+      "basis": {
+        "median_ns": 15.012168884277344,
+        "process_medians_ns": [
+          15.418243408203125,
+          15.012168884277344,
+          14.815044403076172
+        ],
+        "batch_min_ns": 14.519596099853516,
+        "batch_max_ns": 16.122817993164062,
+        "bytes": 2639
+      },
+      "current": {
+        "median_ns": 11.365461349487305,
+        "process_medians_ns": [
+          13.230085372924805,
+          11.365461349487305,
+          10.046815872192383
+        ],
+        "batch_min_ns": 9.829235076904297,
+        "batch_max_ns": 15.048456192016602,
+        "bytes": 2788
+      },
+      "name": "cascade32",
+      "current_over_basis": 0.7570832327493108,
+      "current_over_plain": 17.910522904671108
+    },
+    {
+      "plain": {
+        "median_ns": 9.751749038696289,
+        "process_medians_ns": [
+          9.751749038696289,
+          9.701728820800781,
+          12.046384811401367
+        ],
+        "batch_min_ns": 9.626436233520508,
+        "batch_max_ns": 12.828683853149414,
+        "bytes": 465
+      },
+      "eager": {
+        "median_ns": 59.845733642578125,
+        "process_medians_ns": [
+          56.858253479003906,
+          59.845733642578125,
+          60.34088134765625
+        ],
+        "batch_min_ns": 56.08482360839844,
+        "batch_max_ns": 78.34930419921875,
+        "bytes": 3863
+      },
+      "basis": {
+        "median_ns": 24.383068084716797,
+        "process_medians_ns": [
+          23.808765411376953,
+          24.383068084716797,
+          24.951457977294922
+        ],
+        "batch_min_ns": 23.58245849609375,
+        "batch_max_ns": 30.646419525146484,
+        "bytes": 3271
+      },
+      "current": {
+        "median_ns": 18.529987335205078,
+        "process_medians_ns": [
+          17.56458282470703,
+          18.529987335205078,
+          18.633556365966797
+        ],
+        "batch_min_ns": 17.498016357421875,
+        "batch_max_ns": 20.346736907958984,
+        "bytes": 3498
+      },
+      "name": "overlap24",
+      "current_over_basis": 0.7599530654150778,
+      "current_over_plain": 1.9001706526363142
+    }
+  ],
+  "rows": [
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 4194304,
+          "ns": 17997400,
+          "ns_per_run": 4.290914535522461
+        },
+        {
+          "count": 4194304,
+          "ns": 16982200,
+          "ns_per_run": 4.048871994018555
+        },
+        {
+          "count": 4194304,
+          "ns": 17182300,
+          "ns_per_run": 4.096579551696777
+        },
+        {
+          "count": 4194304,
+          "ns": 17431200,
+          "ns_per_run": 4.155921936035156
+        },
+        {
+          "count": 4194304,
+          "ns": 17300900,
+          "ns_per_run": 4.124855995178223
+        },
+        {
+          "count": 4194304,
+          "ns": 17114100,
+          "ns_per_run": 4.080319404602051
+        },
+        {
+          "count": 4194304,
+          "ns": 17109100,
+          "ns_per_run": 4.079127311706543
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36108,
+      "sink": -649281170,
+      "file": "swap16.221001.current.O3.wasm",
+      "name": "swap16",
+      "mode": "current",
+      "repeat": 1,
+      "bytes": 948
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 524288,
+          "ns": 29758300,
+          "ns_per_run": 56.75945281982422
+        },
+        {
+          "count": 524288,
+          "ns": 29869600,
+          "ns_per_run": 56.97174072265625
+        },
+        {
+          "count": 524288,
+          "ns": 29810100,
+          "ns_per_run": 56.858253479003906
+        },
+        {
+          "count": 524288,
+          "ns": 29620800,
+          "ns_per_run": 56.4971923828125
+        },
+        {
+          "count": 524288,
+          "ns": 29404600,
+          "ns_per_run": 56.08482360839844
+        },
+        {
+          "count": 524288,
+          "ns": 30497100,
+          "ns_per_run": 58.168601989746094
+        },
+        {
+          "count": 524288,
+          "ns": 29834700,
+          "ns_per_run": 56.905174255371094
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36448,
+      "sink": 0,
+      "file": "overlap24.221001.eager.O3.wasm",
+      "name": "overlap24",
+      "mode": "eager",
+      "repeat": 2,
+      "bytes": 3863
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 18553800,
+          "ns_per_run": 17.69428253173828
+        },
+        {
+          "count": 1048576,
+          "ns": 18601000,
+          "ns_per_run": 17.739295959472656
+        },
+        {
+          "count": 1048576,
+          "ns": 18423400,
+          "ns_per_run": 17.569923400878906
+        },
+        {
+          "count": 1048576,
+          "ns": 18348000,
+          "ns_per_run": 17.498016357421875
+        },
+        {
+          "count": 1048576,
+          "ns": 18359200,
+          "ns_per_run": 17.508697509765625
+        },
+        {
+          "count": 1048576,
+          "ns": 18417800,
+          "ns_per_run": 17.56458282470703
+        },
+        {
+          "count": 1048576,
+          "ns": 18387100,
+          "ns_per_run": 17.53530502319336
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36440,
+      "sink": 2049812193,
+      "file": "overlap24.221001.current.O3.wasm",
+      "name": "overlap24",
+      "mode": "current",
+      "repeat": 1,
+      "bytes": 3498
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 262144,
+          "ns": 15688200,
+          "ns_per_run": 59.845733642578125
+        },
+        {
+          "count": 262144,
+          "ns": 15752200,
+          "ns_per_run": 60.089874267578125
+        },
+        {
+          "count": 262144,
+          "ns": 15644800,
+          "ns_per_run": 59.68017578125
+        },
+        {
+          "count": 262144,
+          "ns": 15708500,
+          "ns_per_run": 59.92317199707031
+        },
+        {
+          "count": 262144,
+          "ns": 15840800,
+          "ns_per_run": 60.4278564453125
+        },
+        {
+          "count": 262144,
+          "ns": 15647700,
+          "ns_per_run": 59.69123840332031
+        },
+        {
+          "count": 262144,
+          "ns": 15677400,
+          "ns_per_run": 59.804534912109375
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36384,
+      "sink": 2049812193,
+      "file": "overlap24.221001.eager.O3.wasm",
+      "name": "overlap24",
+      "mode": "eager",
+      "repeat": 0,
+      "bytes": 3863
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 26038100,
+          "ns_per_run": 24.831867218017578
+        },
+        {
+          "count": 1048576,
+          "ns": 25315700,
+          "ns_per_run": 24.142932891845703
+        },
+        {
+          "count": 1048576,
+          "ns": 25593600,
+          "ns_per_run": 24.407958984375
+        },
+        {
+          "count": 1048576,
+          "ns": 24965300,
+          "ns_per_run": 23.808765411376953
+        },
+        {
+          "count": 1048576,
+          "ns": 24728000,
+          "ns_per_run": 23.58245849609375
+        },
+        {
+          "count": 1048576,
+          "ns": 24834400,
+          "ns_per_run": 23.683929443359375
+        },
+        {
+          "count": 1048576,
+          "ns": 24837800,
+          "ns_per_run": 23.687171936035156
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36440,
+      "sink": 2049812193,
+      "file": "overlap24.221001.basis.O3.wasm",
+      "name": "overlap24",
+      "mode": "basis",
+      "repeat": 0,
+      "bytes": 3271
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 2097152,
+          "ns": 29190300,
+          "ns_per_run": 13.91901969909668
+        },
+        {
+          "count": 2097152,
+          "ns": 28797700,
+          "ns_per_run": 13.731813430786133
+        },
+        {
+          "count": 2097152,
+          "ns": 27786000,
+          "ns_per_run": 13.249397277832031
+        },
+        {
+          "count": 2097152,
+          "ns": 27639000,
+          "ns_per_run": 13.179302215576172
+        },
+        {
+          "count": 2097152,
+          "ns": 27626900,
+          "ns_per_run": 13.173532485961914
+        },
+        {
+          "count": 2097152,
+          "ns": 27608400,
+          "ns_per_run": 13.164710998535156
+        },
+        {
+          "count": 2097152,
+          "ns": 27745500,
+          "ns_per_run": 13.230085372924805
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36352,
+      "sink": 0,
+      "file": "cascade32.221001.current.O3.wasm",
+      "name": "cascade32",
+      "mode": "current",
+      "repeat": 0,
+      "bytes": 2788
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 19430100,
+          "ns_per_run": 18.529987335205078
+        },
+        {
+          "count": 1048576,
+          "ns": 19070200,
+          "ns_per_run": 18.18675994873047
+        },
+        {
+          "count": 1048576,
+          "ns": 19453200,
+          "ns_per_run": 18.552017211914062
+        },
+        {
+          "count": 1048576,
+          "ns": 21087300,
+          "ns_per_run": 20.110416412353516
+        },
+        {
+          "count": 1048576,
+          "ns": 18957200,
+          "ns_per_run": 18.078994750976562
+        },
+        {
+          "count": 1048576,
+          "ns": 19034300,
+          "ns_per_run": 18.152523040771484
+        },
+        {
+          "count": 1048576,
+          "ns": 21335100,
+          "ns_per_run": 20.346736907958984
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36464,
+      "sink": 2049812193,
+      "file": "overlap24.221001.current.O3.wasm",
+      "name": "overlap24",
+      "mode": "current",
+      "repeat": 0,
+      "bytes": 3498
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 4194304,
+          "ns": 17215100,
+          "ns_per_run": 4.104399681091309
+        },
+        {
+          "count": 4194304,
+          "ns": 17040400,
+          "ns_per_run": 4.062747955322266
+        },
+        {
+          "count": 4194304,
+          "ns": 17361700,
+          "ns_per_run": 4.139351844787598
+        },
+        {
+          "count": 4194304,
+          "ns": 16850400,
+          "ns_per_run": 4.017448425292969
+        },
+        {
+          "count": 4194304,
+          "ns": 16720300,
+          "ns_per_run": 3.9864301681518555
+        },
+        {
+          "count": 4194304,
+          "ns": 16183500,
+          "ns_per_run": 3.8584470748901367
+        },
+        {
+          "count": 4194304,
+          "ns": 16814800,
+          "ns_per_run": 4.008960723876953
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36348,
+      "sink": -649281170,
+      "file": "swap16.221001.basis.O3.wasm",
+      "name": "swap16",
+      "mode": "basis",
+      "repeat": 2,
+      "bytes": 815
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 524288,
+          "ns": 32857800,
+          "ns_per_run": 62.67127990722656
+        },
+        {
+          "count": 524288,
+          "ns": 28485700,
+          "ns_per_run": 54.33216094970703
+        },
+        {
+          "count": 524288,
+          "ns": 27766500,
+          "ns_per_run": 52.96039581298828
+        },
+        {
+          "count": 524288,
+          "ns": 25698700,
+          "ns_per_run": 49.016380310058594
+        },
+        {
+          "count": 524288,
+          "ns": 25297500,
+          "ns_per_run": 48.25115203857422
+        },
+        {
+          "count": 524288,
+          "ns": 25404600,
+          "ns_per_run": 48.45542907714844
+        },
+        {
+          "count": 524288,
+          "ns": 25622200,
+          "ns_per_run": 48.87046813964844
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36248,
+      "sink": 0,
+      "file": "cascade32.221001.eager.O3.wasm",
+      "name": "cascade32",
+      "mode": "eager",
+      "repeat": 1,
+      "bytes": 3785
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 2097152,
+          "ns": 21278300,
+          "ns_per_run": 10.146284103393555
+        },
+        {
+          "count": 2097152,
+          "ns": 20450900,
+          "ns_per_run": 9.751749038696289
+        },
+        {
+          "count": 2097152,
+          "ns": 20300200,
+          "ns_per_run": 9.679889678955078
+        },
+        {
+          "count": 2097152,
+          "ns": 25138000,
+          "ns_per_run": 11.986732482910156
+        },
+        {
+          "count": 2097152,
+          "ns": 22751800,
+          "ns_per_run": 10.84890365600586
+        },
+        {
+          "count": 2097152,
+          "ns": 20241700,
+          "ns_per_run": 9.651994705200195
+        },
+        {
+          "count": 2097152,
+          "ns": 20230900,
+          "ns_per_run": 9.646844863891602
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36136,
+      "sink": 0,
+      "file": "overlap24.0.plain.O3.wasm",
+      "name": "overlap24",
+      "mode": "plain",
+      "repeat": 1,
+      "bytes": 465
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 2097152,
+          "ns": 22633700,
+          "ns_per_run": 10.79258918762207
+        },
+        {
+          "count": 2097152,
+          "ns": 23980700,
+          "ns_per_run": 11.43488883972168
+        },
+        {
+          "count": 2097152,
+          "ns": 20188100,
+          "ns_per_run": 9.626436233520508
+        },
+        {
+          "count": 2097152,
+          "ns": 20191800,
+          "ns_per_run": 9.62820053100586
+        },
+        {
+          "count": 2097152,
+          "ns": 20290600,
+          "ns_per_run": 9.675312042236328
+        },
+        {
+          "count": 2097152,
+          "ns": 20346000,
+          "ns_per_run": 9.701728820800781
+        },
+        {
+          "count": 2097152,
+          "ns": 20426200,
+          "ns_per_run": 9.739971160888672
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36256,
+      "sink": 0,
+      "file": "overlap24.0.plain.O3.wasm",
+      "name": "overlap24",
+      "mode": "plain",
+      "repeat": 2,
+      "bytes": 465
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 33554432,
+          "ns": 21866800,
+          "ns_per_run": 0.6516814231872559
+        },
+        {
+          "count": 33554432,
+          "ns": 22004900,
+          "ns_per_run": 0.6557971239089966
+        },
+        {
+          "count": 33554432,
+          "ns": 24815400,
+          "ns_per_run": 0.7395565509796143
+        },
+        {
+          "count": 33554432,
+          "ns": 22449300,
+          "ns_per_run": 0.6690412759780884
+        },
+        {
+          "count": 33554432,
+          "ns": 21117100,
+          "ns_per_run": 0.6293386220932007
+        },
+        {
+          "count": 33554432,
+          "ns": 21115100,
+          "ns_per_run": 0.6292790174484253
+        },
+        {
+          "count": 33554432,
+          "ns": 21344700,
+          "ns_per_run": 0.6361216306686401
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36072,
+      "sink": 1637061093,
+      "file": "cascade32.0.plain.O3.wasm",
+      "name": "cascade32",
+      "mode": "plain",
+      "repeat": 1,
+      "bytes": 569
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 15903800,
+          "ns_per_run": 15.167045593261719
+        },
+        {
+          "count": 1048576,
+          "ns": 16120200,
+          "ns_per_run": 15.373420715332031
+        },
+        {
+          "count": 1048576,
+          "ns": 16686500,
+          "ns_per_run": 15.91348648071289
+        },
+        {
+          "count": 1048576,
+          "ns": 16906000,
+          "ns_per_run": 16.122817993164062
+        },
+        {
+          "count": 1048576,
+          "ns": 16167200,
+          "ns_per_run": 15.418243408203125
+        },
+        {
+          "count": 1048576,
+          "ns": 16307500,
+          "ns_per_run": 15.552043914794922
+        },
+        {
+          "count": 1048576,
+          "ns": 15802400,
+          "ns_per_run": 15.070343017578125
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36480,
+      "sink": 1637061093,
+      "file": "cascade32.221001.basis.O3.wasm",
+      "name": "cascade32",
+      "mode": "basis",
+      "repeat": 2,
+      "bytes": 2639
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 4194304,
+          "ns": 17645300,
+          "ns_per_run": 4.206967353820801
+        },
+        {
+          "count": 4194304,
+          "ns": 17921100,
+          "ns_per_run": 4.272723197937012
+        },
+        {
+          "count": 4194304,
+          "ns": 17729000,
+          "ns_per_run": 4.226922988891602
+        },
+        {
+          "count": 4194304,
+          "ns": 17869500,
+          "ns_per_run": 4.260420799255371
+        },
+        {
+          "count": 4194304,
+          "ns": 17907500,
+          "ns_per_run": 4.2694807052612305
+        },
+        {
+          "count": 4194304,
+          "ns": 17684800,
+          "ns_per_run": 4.2163848876953125
+        },
+        {
+          "count": 4194304,
+          "ns": 17806600,
+          "ns_per_run": 4.245424270629883
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36104,
+      "sink": -649281170,
+      "file": "swap16.221001.basis.O3.wasm",
+      "name": "swap16",
+      "mode": "basis",
+      "repeat": 0,
+      "bytes": 815
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 29182200,
+          "ns_per_run": 27.83031463623047
+        },
+        {
+          "count": 1048576,
+          "ns": 25347400,
+          "ns_per_run": 24.17316436767578
+        },
+        {
+          "count": 1048576,
+          "ns": 25486600,
+          "ns_per_run": 24.30591583251953
+        },
+        {
+          "count": 1048576,
+          "ns": 25585800,
+          "ns_per_run": 24.40052032470703
+        },
+        {
+          "count": 1048576,
+          "ns": 25558500,
+          "ns_per_run": 24.37448501586914
+        },
+        {
+          "count": 1048576,
+          "ns": 25567500,
+          "ns_per_run": 24.383068084716797
+        },
+        {
+          "count": 1048576,
+          "ns": 25637200,
+          "ns_per_run": 24.449539184570312
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36288,
+      "sink": 2049812193,
+      "file": "overlap24.221001.basis.O3.wasm",
+      "name": "overlap24",
+      "mode": "basis",
+      "repeat": 1,
+      "bytes": 3271
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 4194304,
+          "ns": 28486200,
+          "ns_per_run": 6.79163932800293
+        },
+        {
+          "count": 4194304,
+          "ns": 29099500,
+          "ns_per_run": 6.937861442565918
+        },
+        {
+          "count": 4194304,
+          "ns": 29209200,
+          "ns_per_run": 6.964015960693359
+        },
+        {
+          "count": 4194304,
+          "ns": 28844700,
+          "ns_per_run": 6.87711238861084
+        },
+        {
+          "count": 4194304,
+          "ns": 28796200,
+          "ns_per_run": 6.865549087524414
+        },
+        {
+          "count": 4194304,
+          "ns": 28872700,
+          "ns_per_run": 6.883788108825684
+        },
+        {
+          "count": 4194304,
+          "ns": 29478300,
+          "ns_per_run": 7.02817440032959
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36332,
+      "sink": -649281170,
+      "file": "swap16.221001.eager.O3.wasm",
+      "name": "swap16",
+      "mode": "eager",
+      "repeat": 2,
+      "bytes": 873
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 33554432,
+          "ns": 20700400,
+          "ns_per_run": 0.616919994354248
+        },
+        {
+          "count": 33554432,
+          "ns": 20713600,
+          "ns_per_run": 0.6173133850097656
+        },
+        {
+          "count": 33554432,
+          "ns": 21292600,
+          "ns_per_run": 0.6345689296722412
+        },
+        {
+          "count": 33554432,
+          "ns": 20932100,
+          "ns_per_run": 0.623825192451477
+        },
+        {
+          "count": 33554432,
+          "ns": 22287300,
+          "ns_per_run": 0.6642132997512817
+        },
+        {
+          "count": 33554432,
+          "ns": 21559900,
+          "ns_per_run": 0.6425350904464722
+        },
+        {
+          "count": 33554432,
+          "ns": 21830400,
+          "ns_per_run": 0.6505966186523438
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36340,
+      "sink": 1637061093,
+      "file": "cascade32.0.plain.O3.wasm",
+      "name": "cascade32",
+      "mode": "plain",
+      "repeat": 2,
+      "bytes": 569
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 2097152,
+          "ns": 25263100,
+          "ns_per_run": 12.046384811401367
+        },
+        {
+          "count": 2097152,
+          "ns": 25953900,
+          "ns_per_run": 12.375783920288086
+        },
+        {
+          "count": 2097152,
+          "ns": 26903700,
+          "ns_per_run": 12.828683853149414
+        },
+        {
+          "count": 2097152,
+          "ns": 25965700,
+          "ns_per_run": 12.381410598754883
+        },
+        {
+          "count": 2097152,
+          "ns": 24752700,
+          "ns_per_run": 11.803007125854492
+        },
+        {
+          "count": 2097152,
+          "ns": 23906900,
+          "ns_per_run": 11.399698257446289
+        },
+        {
+          "count": 2097152,
+          "ns": 24547500,
+          "ns_per_run": 11.705160140991211
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36200,
+      "sink": 0,
+      "file": "overlap24.0.plain.O3.wasm",
+      "name": "overlap24",
+      "mode": "plain",
+      "repeat": 0,
+      "bytes": 465
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 524288,
+          "ns": 26478700,
+          "ns_per_run": 50.504112243652344
+        },
+        {
+          "count": 524288,
+          "ns": 29146200,
+          "ns_per_run": 55.59196472167969
+        },
+        {
+          "count": 524288,
+          "ns": 25855800,
+          "ns_per_run": 49.31602478027344
+        },
+        {
+          "count": 524288,
+          "ns": 25372600,
+          "ns_per_run": 48.39439392089844
+        },
+        {
+          "count": 524288,
+          "ns": 25638100,
+          "ns_per_run": 48.900794982910156
+        },
+        {
+          "count": 524288,
+          "ns": 25458500,
+          "ns_per_run": 48.55823516845703
+        },
+        {
+          "count": 524288,
+          "ns": 30029600,
+          "ns_per_run": 57.27691650390625
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36336,
+      "sink": 0,
+      "file": "cascade32.221001.eager.O3.wasm",
+      "name": "cascade32",
+      "mode": "eager",
+      "repeat": 2,
+      "bytes": 3785
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 33554432,
+          "ns": 18463300,
+          "ns_per_run": 0.5502492189407349
+        },
+        {
+          "count": 33554432,
+          "ns": 18068800,
+          "ns_per_run": 0.5384922027587891
+        },
+        {
+          "count": 33554432,
+          "ns": 25730100,
+          "ns_per_run": 0.7668167352676392
+        },
+        {
+          "count": 33554432,
+          "ns": 19729200,
+          "ns_per_run": 0.5879759788513184
+        },
+        {
+          "count": 33554432,
+          "ns": 17636200,
+          "ns_per_run": 0.5255997180938721
+        },
+        {
+          "count": 33554432,
+          "ns": 17736200,
+          "ns_per_run": 0.5285799503326416
+        },
+        {
+          "count": 33554432,
+          "ns": 19402300,
+          "ns_per_run": 0.5782335996627808
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36308,
+      "sink": -649281170,
+      "file": "swap16.0.plain.O3.wasm",
+      "name": "swap16",
+      "mode": "plain",
+      "repeat": 2,
+      "bytes": 341
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 2097152,
+          "ns": 16832600,
+          "ns_per_run": 8.026409149169922
+        },
+        {
+          "count": 2097152,
+          "ns": 15629900,
+          "ns_per_run": 7.452917098999023
+        },
+        {
+          "count": 2097152,
+          "ns": 15220600,
+          "ns_per_run": 7.257747650146484
+        },
+        {
+          "count": 2097152,
+          "ns": 16798100,
+          "ns_per_run": 8.009958267211914
+        },
+        {
+          "count": 2097152,
+          "ns": 18385500,
+          "ns_per_run": 8.766889572143555
+        },
+        {
+          "count": 2097152,
+          "ns": 16413900,
+          "ns_per_run": 7.826757431030273
+        },
+        {
+          "count": 2097152,
+          "ns": 18754400,
+          "ns_per_run": 8.942794799804688
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36088,
+      "sink": 0,
+      "file": "swap16.221001.eager.O3.wasm",
+      "name": "swap16",
+      "mode": "eager",
+      "repeat": 1,
+      "bytes": 873
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 33554432,
+          "ns": 18803100,
+          "ns_per_run": 0.5603760480880737
+        },
+        {
+          "count": 33554432,
+          "ns": 21910600,
+          "ns_per_run": 0.6529867649078369
+        },
+        {
+          "count": 33554432,
+          "ns": 23676400,
+          "ns_per_run": 0.7056117057800293
+        },
+        {
+          "count": 33554432,
+          "ns": 23382000,
+          "ns_per_run": 0.6968379020690918
+        },
+        {
+          "count": 33554432,
+          "ns": 19354700,
+          "ns_per_run": 0.5768150091171265
+        },
+        {
+          "count": 33554432,
+          "ns": 18439000,
+          "ns_per_run": 0.5495250225067139
+        },
+        {
+          "count": 33554432,
+          "ns": 21829600,
+          "ns_per_run": 0.6505727767944336
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36264,
+      "sink": -649281170,
+      "file": "swap16.0.plain.O3.wasm",
+      "name": "swap16",
+      "mode": "plain",
+      "repeat": 1,
+      "bytes": 341
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 4194304,
+          "ns": 18040700,
+          "ns_per_run": 4.301238059997559
+        },
+        {
+          "count": 4194304,
+          "ns": 18084000,
+          "ns_per_run": 4.311561584472656
+        },
+        {
+          "count": 4194304,
+          "ns": 21849300,
+          "ns_per_run": 5.2092790603637695
+        },
+        {
+          "count": 4194304,
+          "ns": 20575400,
+          "ns_per_run": 4.905557632446289
+        },
+        {
+          "count": 4194304,
+          "ns": 18627800,
+          "ns_per_run": 4.441213607788086
+        },
+        {
+          "count": 4194304,
+          "ns": 17717900,
+          "ns_per_run": 4.224276542663574
+        },
+        {
+          "count": 4194304,
+          "ns": 18126300,
+          "ns_per_run": 4.321646690368652
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36032,
+      "sink": -649281170,
+      "file": "swap16.221001.current.O3.wasm",
+      "name": "swap16",
+      "mode": "current",
+      "repeat": 2,
+      "bytes": 948
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 33554432,
+          "ns": 20716000,
+          "ns_per_run": 0.6173849105834961
+        },
+        {
+          "count": 33554432,
+          "ns": 23082000,
+          "ns_per_run": 0.6878972053527832
+        },
+        {
+          "count": 33554432,
+          "ns": 20798000,
+          "ns_per_run": 0.6198287010192871
+        },
+        {
+          "count": 33554432,
+          "ns": 21086800,
+          "ns_per_run": 0.6284356117248535
+        },
+        {
+          "count": 33554432,
+          "ns": 20969300,
+          "ns_per_run": 0.6249338388442993
+        },
+        {
+          "count": 33554432,
+          "ns": 21227400,
+          "ns_per_run": 0.6326258182525635
+        },
+        {
+          "count": 33554432,
+          "ns": 20994700,
+          "ns_per_run": 0.6256908178329468
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36120,
+      "sink": 1637061093,
+      "file": "cascade32.0.plain.O3.wasm",
+      "name": "cascade32",
+      "mode": "plain",
+      "repeat": 0,
+      "bytes": 569
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 4194304,
+          "ns": 16862400,
+          "ns_per_run": 4.0203094482421875
+        },
+        {
+          "count": 4194304,
+          "ns": 16709000,
+          "ns_per_run": 3.983736038208008
+        },
+        {
+          "count": 4194304,
+          "ns": 17291500,
+          "ns_per_run": 4.122614860534668
+        },
+        {
+          "count": 4194304,
+          "ns": 16959600,
+          "ns_per_run": 4.043483734130859
+        },
+        {
+          "count": 4194304,
+          "ns": 16439900,
+          "ns_per_run": 3.9195775985717773
+        },
+        {
+          "count": 4194304,
+          "ns": 16847200,
+          "ns_per_run": 4.016685485839844
+        },
+        {
+          "count": 4194304,
+          "ns": 17000600,
+          "ns_per_run": 4.053258895874023
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36272,
+      "sink": -649281170,
+      "file": "swap16.221001.basis.O3.wasm",
+      "name": "swap16",
+      "mode": "basis",
+      "repeat": 1,
+      "bytes": 815
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 15814700,
+          "ns_per_run": 15.082073211669922
+        },
+        {
+          "count": 1048576,
+          "ns": 15556300,
+          "ns_per_run": 14.835643768310547
+        },
+        {
+          "count": 1048576,
+          "ns": 15633100,
+          "ns_per_run": 14.908885955810547
+        },
+        {
+          "count": 1048576,
+          "ns": 15529300,
+          "ns_per_run": 14.809894561767578
+        },
+        {
+          "count": 1048576,
+          "ns": 16006900,
+          "ns_per_run": 15.265369415283203
+        },
+        {
+          "count": 1048576,
+          "ns": 15741400,
+          "ns_per_run": 15.012168884277344
+        },
+        {
+          "count": 1048576,
+          "ns": 15760900,
+          "ns_per_run": 15.030765533447266
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36396,
+      "sink": 1637061093,
+      "file": "cascade32.221001.basis.O3.wasm",
+      "name": "cascade32",
+      "mode": "basis",
+      "repeat": 1,
+      "bytes": 2639
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 2097152,
+          "ns": 23835100,
+          "ns_per_run": 11.365461349487305
+        },
+        {
+          "count": 2097152,
+          "ns": 23730100,
+          "ns_per_run": 11.315393447875977
+        },
+        {
+          "count": 2097152,
+          "ns": 27888700,
+          "ns_per_run": 13.298368453979492
+        },
+        {
+          "count": 2097152,
+          "ns": 31558900,
+          "ns_per_run": 15.048456192016602
+        },
+        {
+          "count": 2097152,
+          "ns": 24238600,
+          "ns_per_run": 11.557865142822266
+        },
+        {
+          "count": 2097152,
+          "ns": 22388500,
+          "ns_per_run": 10.675668716430664
+        },
+        {
+          "count": 2097152,
+          "ns": 22537800,
+          "ns_per_run": 10.74686050415039
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36216,
+      "sink": 0,
+      "file": "cascade32.221001.current.O3.wasm",
+      "name": "cascade32",
+      "mode": "current",
+      "repeat": 1,
+      "bytes": 2788
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 19856600,
+          "ns_per_run": 18.936729431152344
+        },
+        {
+          "count": 1048576,
+          "ns": 20167700,
+          "ns_per_run": 19.233417510986328
+        },
+        {
+          "count": 1048576,
+          "ns": 19753700,
+          "ns_per_run": 18.83859634399414
+        },
+        {
+          "count": 1048576,
+          "ns": 19538700,
+          "ns_per_run": 18.633556365966797
+        },
+        {
+          "count": 1048576,
+          "ns": 19243300,
+          "ns_per_run": 18.35184097290039
+        },
+        {
+          "count": 1048576,
+          "ns": 18921100,
+          "ns_per_run": 18.044567108154297
+        },
+        {
+          "count": 1048576,
+          "ns": 19070500,
+          "ns_per_run": 18.18704605102539
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36404,
+      "sink": 2049812193,
+      "file": "overlap24.221001.current.O3.wasm",
+      "name": "overlap24",
+      "mode": "current",
+      "repeat": 2,
+      "bytes": 3498
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 33554432,
+          "ns": 19295400,
+          "ns_per_run": 0.5750477313995361
+        },
+        {
+          "count": 33554432,
+          "ns": 19837800,
+          "ns_per_run": 0.5912125110626221
+        },
+        {
+          "count": 33554432,
+          "ns": 21411600,
+          "ns_per_run": 0.638115406036377
+        },
+        {
+          "count": 33554432,
+          "ns": 19307600,
+          "ns_per_run": 0.575411319732666
+        },
+        {
+          "count": 33554432,
+          "ns": 20622700,
+          "ns_per_run": 0.6146043539047241
+        },
+        {
+          "count": 33554432,
+          "ns": 19560800,
+          "ns_per_run": 0.5829572677612305
+        },
+        {
+          "count": 33554432,
+          "ns": 19165800,
+          "ns_per_run": 0.5711853504180908
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36208,
+      "sink": -649281170,
+      "file": "swap16.0.plain.O3.wasm",
+      "name": "swap16",
+      "mode": "plain",
+      "repeat": 0,
+      "bytes": 341
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 524288,
+          "ns": 25188600,
+          "ns_per_run": 48.04344177246094
+        },
+        {
+          "count": 524288,
+          "ns": 24232900,
+          "ns_per_run": 46.22058868408203
+        },
+        {
+          "count": 524288,
+          "ns": 24328300,
+          "ns_per_run": 46.402549743652344
+        },
+        {
+          "count": 524288,
+          "ns": 24430100,
+          "ns_per_run": 46.596717834472656
+        },
+        {
+          "count": 524288,
+          "ns": 24965000,
+          "ns_per_run": 47.61695861816406
+        },
+        {
+          "count": 524288,
+          "ns": 24382300,
+          "ns_per_run": 46.50554656982422
+        },
+        {
+          "count": 524288,
+          "ns": 24701200,
+          "ns_per_run": 47.113800048828125
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36516,
+      "sink": 0,
+      "file": "cascade32.221001.eager.O3.wasm",
+      "name": "cascade32",
+      "mode": "eager",
+      "repeat": 0,
+      "bytes": 3785
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 15750300,
+          "ns_per_run": 15.02065658569336
+        },
+        {
+          "count": 1048576,
+          "ns": 15489700,
+          "ns_per_run": 14.77212905883789
+        },
+        {
+          "count": 1048576,
+          "ns": 15888000,
+          "ns_per_run": 15.1519775390625
+        },
+        {
+          "count": 1048576,
+          "ns": 15534700,
+          "ns_per_run": 14.815044403076172
+        },
+        {
+          "count": 1048576,
+          "ns": 15224900,
+          "ns_per_run": 14.519596099853516
+        },
+        {
+          "count": 1048576,
+          "ns": 15310000,
+          "ns_per_run": 14.600753784179688
+        },
+        {
+          "count": 1048576,
+          "ns": 16023900,
+          "ns_per_run": 15.28158187866211
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36348,
+      "sink": 1637061093,
+      "file": "cascade32.221001.basis.O3.wasm",
+      "name": "cascade32",
+      "mode": "basis",
+      "repeat": 0,
+      "bytes": 2639
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 4194304,
+          "ns": 16950300,
+          "ns_per_run": 4.041266441345215
+        },
+        {
+          "count": 4194304,
+          "ns": 17162500,
+          "ns_per_run": 4.091858863830566
+        },
+        {
+          "count": 4194304,
+          "ns": 16894300,
+          "ns_per_run": 4.027915000915527
+        },
+        {
+          "count": 4194304,
+          "ns": 17382600,
+          "ns_per_run": 4.14433479309082
+        },
+        {
+          "count": 4194304,
+          "ns": 17133400,
+          "ns_per_run": 4.084920883178711
+        },
+        {
+          "count": 4194304,
+          "ns": 17860800,
+          "ns_per_run": 4.2583465576171875
+        },
+        {
+          "count": 4194304,
+          "ns": 17751200,
+          "ns_per_run": 4.232215881347656
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36180,
+      "sink": -649281170,
+      "file": "swap16.221001.current.O3.wasm",
+      "name": "swap16",
+      "mode": "current",
+      "repeat": 0,
+      "bytes": 948
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 262144,
+          "ns": 15499200,
+          "ns_per_run": 59.124755859375
+        },
+        {
+          "count": 262144,
+          "ns": 15537400,
+          "ns_per_run": 59.270477294921875
+        },
+        {
+          "count": 262144,
+          "ns": 15818000,
+          "ns_per_run": 60.34088134765625
+        },
+        {
+          "count": 262144,
+          "ns": 15963800,
+          "ns_per_run": 60.897064208984375
+        },
+        {
+          "count": 262144,
+          "ns": 15747000,
+          "ns_per_run": 60.070037841796875
+        },
+        {
+          "count": 262144,
+          "ns": 15906200,
+          "ns_per_run": 60.677337646484375
+        },
+        {
+          "count": 262144,
+          "ns": 20538800,
+          "ns_per_run": 78.34930419921875
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36420,
+      "sink": 2049812193,
+      "file": "overlap24.221001.eager.O3.wasm",
+      "name": "overlap24",
+      "mode": "eager",
+      "repeat": 1,
+      "bytes": 3863
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 1048576,
+          "ns": 26865500,
+          "ns_per_run": 25.62093734741211
+        },
+        {
+          "count": 1048576,
+          "ns": 26163500,
+          "ns_per_run": 24.951457977294922
+        },
+        {
+          "count": 1048576,
+          "ns": 29912100,
+          "ns_per_run": 28.52640151977539
+        },
+        {
+          "count": 1048576,
+          "ns": 32135100,
+          "ns_per_run": 30.646419525146484
+        },
+        {
+          "count": 1048576,
+          "ns": 25224600,
+          "ns_per_run": 24.056053161621094
+        },
+        {
+          "count": 1048576,
+          "ns": 25333200,
+          "ns_per_run": 24.159622192382812
+        },
+        {
+          "count": 1048576,
+          "ns": 25241600,
+          "ns_per_run": 24.072265625
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36152,
+      "sink": 2049812193,
+      "file": "overlap24.221001.basis.O3.wasm",
+      "name": "overlap24",
+      "mode": "basis",
+      "repeat": 2,
+      "bytes": 3271
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 2097152,
+          "ns": 20777900,
+          "ns_per_run": 9.907674789428711
+        },
+        {
+          "count": 2097152,
+          "ns": 20613400,
+          "ns_per_run": 9.829235076904297
+        },
+        {
+          "count": 2097152,
+          "ns": 21362000,
+          "ns_per_run": 10.186195373535156
+        },
+        {
+          "count": 2097152,
+          "ns": 21069700,
+          "ns_per_run": 10.046815872192383
+        },
+        {
+          "count": 2097152,
+          "ns": 21056500,
+          "ns_per_run": 10.040521621704102
+        },
+        {
+          "count": 2097152,
+          "ns": 21101400,
+          "ns_per_run": 10.061931610107422
+        },
+        {
+          "count": 2097152,
+          "ns": 21496100,
+          "ns_per_run": 10.250139236450195
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36508,
+      "sink": 0,
+      "file": "cascade32.221001.current.O3.wasm",
+      "name": "cascade32",
+      "mode": "current",
+      "repeat": 2,
+      "bytes": 2788
+    },
+    {
+      "node": "v24.15.0",
+      "v8": "13.6.233.17-node.48",
+      "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+      "platform": "win32",
+      "arch": "x64",
+      "flags": [
+        "--no-liftoff",
+        "--no-wasm-lazy-compilation"
+      ],
+      "warmup": 32768,
+      "batches": [
+        {
+          "count": 4194304,
+          "ns": 28541600,
+          "ns_per_run": 6.804847717285156
+        },
+        {
+          "count": 4194304,
+          "ns": 28846200,
+          "ns_per_run": 6.877470016479492
+        },
+        {
+          "count": 4194304,
+          "ns": 28813400,
+          "ns_per_run": 6.869649887084961
+        },
+        {
+          "count": 4194304,
+          "ns": 28241500,
+          "ns_per_run": 6.733298301696777
+        },
+        {
+          "count": 4194304,
+          "ns": 28417800,
+          "ns_per_run": 6.775331497192383
+        },
+        {
+          "count": 4194304,
+          "ns": 28752000,
+          "ns_per_run": 6.855010986328125
+        },
+        {
+          "count": 4194304,
+          "ns": 30460800,
+          "ns_per_run": 7.262420654296875
+        }
+      ],
+      "memory_bytes": 65536,
+      "max_rss_kib": 36144,
+      "sink": -649281170,
+      "file": "swap16.221001.eager.O3.wasm",
+      "name": "swap16",
+      "mode": "eager",
+      "repeat": 0,
+      "bytes": 873
+    }
+  ],
+  "limitations": "Normal exits only; fixed copy structures; reused evolving state; no CPU affinity/frequency control. RSS is entire Node process, not only Wasm."
+}

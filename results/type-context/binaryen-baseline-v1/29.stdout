@@ -1,0 +1,58 @@
+Running with seed 29
+Built 20 types:
+(rec
+ (type $0 (shared (func (result (ref $1)))))
+ (type $1 (sub (shared (array i32))))
+ (type $2 (sub (shared (func (result (ref $0))))))
+)
+(rec
+ (type $3 (sub (array exnref)))
+ (type $4 (sub (shared (func (param v128) (result (ref $7))))))
+ (type $5 (sub (func)))
+ (type $6 (sub final $5 (func)))
+ (type $7 (sub (shared (func (param (ref null $2) i64) (result (ref null $4))))))
+)
+(rec
+ (type $8 (shared (func (param f32))))
+ (type $9 (sub $3 (array exnref)))
+ (type $10 (sub $7 (shared (func (param (ref null (shared func)) i64) (result (ref null $4))))))
+ (type $11 (shared (struct (field (ref $8)))))
+ (type $12 (sub final $10 (shared (func (param (ref null (shared func)) i64) (result (ref null (shared nofunc)))))))
+ (type $13 (cont $19))
+ (type $14 (shared (func (param (ref struct)) (result v128))))
+ (type $15 (sub $2 (shared (func (result (ref $0))))))
+ (type $16 (sub (cont $6)))
+ (type $17 (sub final $4 (shared (func (param v128) (result (ref $7))))))
+ (type $18 (sub (func (param v128))))
+ (type $19 (sub final $18 (func (param v128))))
+)
+
+Inhabitable types:
+
+Built 20 types:
+(rec
+ (type $0 (shared (func (result (ref $1)))))
+ (type $1 (sub (shared (array i32))))
+ (type $2 (sub (shared (func (result (ref $0))))))
+)
+(rec
+ (type $3 (sub (array exnref)))
+ (type $4 (sub (shared (func (param v128) (result (ref $7))))))
+ (type $5 (sub (func)))
+ (type $6 (sub final $5 (func)))
+ (type $7 (sub (shared (func (param (ref null $2) i64) (result (ref null $4))))))
+)
+(rec
+ (type $8 (shared (func (param f32))))
+ (type $9 (sub $3 (array exnref)))
+ (type $10 (sub $7 (shared (func (param (ref null (shared func)) i64) (result (ref null $4))))))
+ (type $11 (shared (struct (field (ref $8)))))
+ (type $12 (sub final $10 (shared (func (param (ref null (shared func)) i64) (result (ref null (shared nofunc)))))))
+ (type $13 (cont $19))
+ (type $14 (shared (func (param (ref struct)) (result v128))))
+ (type $15 (sub $2 (shared (func (result (ref $0))))))
+ (type $16 (sub (cont $6)))
+ (type $17 (sub final $4 (shared (func (param v128) (result (ref $7))))))
+ (type $18 (sub (func (param v128))))
+ (type $19 (sub final $18 (func (param v128))))
+)

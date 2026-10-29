@@ -1,0 +1,8 @@
+{
+  "status": "analysis_implementation_error",
+  "component": "n8-f0-deferred-o3.wasm",
+  "error": "IndexError: list index out of range in resource.drop args[0]",
+  "cause": "Binaryen O3 kept some resource handles on the operand stack. The initial symbolic interpreter only consumed folded call operands and omitted implicit stack operands.",
+  "resolution": "Add function arity lookup from actual core types and consume missing operands from the symbolic stack. Repeat the experiment in resource-trigger-v2.",
+  "security_evidence": false
+}

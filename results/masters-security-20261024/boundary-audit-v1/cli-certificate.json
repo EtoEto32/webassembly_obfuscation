@@ -1,0 +1,41 @@
+{
+  "schema": "restricted-snapshot-contract-v1",
+  "wasm_sha256": "a08844f0fc8c0316c8dcb63d3be0bd3e5dd514f94a6c1c8a4a839d3e12dd44f9",
+  "export": "callback",
+  "signature": "(i32,i32,i32)->()",
+  "memory_export": "memory",
+  "required_embedding": [
+    "nonshared memory",
+    "exclusive writer interval",
+    "trusted host",
+    "frozen read set and arguments"
+  ],
+  "analysis": {
+    "kind": "ranges",
+    "writes": [
+      {
+        "addr": [
+          "add",
+          [
+            "arg",
+            0
+          ],
+          [
+            "const",
+            4
+          ]
+        ],
+        "offset": 0,
+        "length": [
+          "const",
+          1
+        ]
+      }
+    ],
+    "visitedFunctions": [
+      1
+    ],
+    "ignoredFunctionImports": 1
+  },
+  "validation_and_analysis_ms": 28.21359999999998
+}

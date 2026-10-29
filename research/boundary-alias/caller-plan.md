@@ -1,0 +1,21 @@
+# 型付きcallerと複数戻り値：実装前の対照計画
+
+2026-10-27。前goal turnは実装・126binary校正・実生成器64seed・監査によるprogress。主テーマの新規性は未確立。今回はboundary oracleの利益を単純修正で説明できる範囲から切り分ける。
+
+## 固定する比較
+
+保存済みBinaryen133の64seed、各O0/O3を入力とする。生成物は変更しない。標準parserからfunction indexを経由してexportの引数・結果型を取得する。公開関数のJS identityとsignatureを対応付け、元harnessの呼出し順を維持する。
+
+2×2の比較：callerは従来の全引数null、又はi64へ0n・他数値へ0・参照へnullを渡す最小修正。観測は従来の単一値表示箇所、又は既知signatureのmulti-value返却配列の各slotも観測する。nullableでない参照の構築、型に合う参照poolの再利用、v128引数の橋渡しは追加しない。private funcref等の型を同定できない場合は元callerへfallbackし、その回数を報告する。
+
+戻り値slotの観測は、JSに返されたmulti-value配列だけを扱う。任意のexternref objectのproperty列挙やGC field観測はしない。追加slotと従来の表示が同じ参照を二重に数えないよう、返却配列自体はGC参照として数えない。
+
+## 測定
+
+2 engine、processごとにfresh instance。生成ではなく保存された同じbinaryを使用。型検証、metadata抽出失敗、process失敗、timeout、instantiation失敗、guest trap、JS境界TypeErrorを分離する。成功した既知export呼出し、GC参照event、共有の再登場、観測slot、変換前後の参照列を測る。入力が変わるcaller同士の結果を意味同値と要求しない。比較可能なのは同じcaller・observer設定のO0/O3である。
+
+校正はi64、multi-value同一/異参照、nonnull参照、v128、export alias、imported function export、scalar型変換、trap、call-exportでの再入を含める。数値ログのNaNやtrap文言を同一性列と混ぜない。タイミングは実験全体のprocess費用を記録し、追加処理単体と混同しない。
+
+## 新規性への反証
+
+型に応じた引数生成はWeaverのdual-type追跡等で既知。先行するRandoopは既存結果から引数を選び、call sequenceを実行しながら有用性を判定する。単に型付きpoolを足す案、coverageの低い関数を選ぶ案を別原理の新発明とはしない。今回の最小対照で改善が得られても、それだけでは新アルゴリズムの証拠にならない。残る研究課題を結果から判断する。

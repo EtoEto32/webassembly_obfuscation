@@ -1,0 +1,58 @@
+Running with seed 27
+Built 20 types:
+(rec
+ (type $0 (shared (descriptor $1) (struct (field (ref null $0)) (field (mut (ref null (shared func)))) (field v128) (field i32))))
+ (type $1 (shared (describes $0) (struct (field (mut (ref null $1))) (field (ref $0)))))
+ (type $2 (sub (func (param f64 v128 i32 (ref null $2) f32 f32))))
+ (type $3 (cont $2))
+)
+(rec
+ (type $4 (shared (array (mut (ref (shared func))))))
+ (type $5 (cont $2))
+ (type $6 (shared (func (param f32) (result f32))))
+ (type $7 (sub (descriptor $9) (struct (field (mut i16)) (field i32) (field f32))))
+ (type $8 (sub (func (param v128 v128 v128 (ref null $0)) (result (ref $0) (ref null $8)))))
+ (type $9 (sub (describes $7) (struct (field (mut i16)) (field i64) (field i8) (field (mut f32)))))
+)
+(rec
+ (type $10 (shared (array (mut i8))))
+ (type $11 (sub (shared (array i8))))
+ (type $12 (shared (descriptor $16) (struct (field (mut i8)) (field (mut i8)) (field v128))))
+ (type $13 (sub (array f32)))
+ (type $14 (sub (shared (func (param i32)))))
+ (type $15 (sub (shared (descriptor $18) (struct (field (mut i64)) (field (mut (ref null (shared func)))) (field (mut i16)) (field (mut f32))))))
+ (type $16 (shared (describes $12) (struct (field (mut f64)) (field v128) (field f32) (field (mut (ref $4))))))
+ (type $17 (sub $7 (descriptor $19) (struct (field (mut i16)) (field i32) (field f32) (field (mut i16)))))
+ (type $18 (sub (shared (describes $15) (struct))))
+ (type $19 (sub $9 (describes $17) (struct (field (mut i16)) (field i64) (field i8) (field (mut f32)))))
+)
+
+Inhabitable types:
+
+Built 20 types:
+(rec
+ (type $0 (shared (descriptor $1) (struct (field (ref null $0)) (field (mut (ref null (shared func)))) (field v128) (field i32))))
+ (type $1 (shared (describes $0) (struct (field (mut (ref null $1))) (field (ref null $0)))))
+ (type $2 (sub (func (param f64 v128 i32 (ref null $2) f32 f32))))
+ (type $3 (cont $2))
+)
+(rec
+ (type $4 (shared (array (mut (ref (shared func))))))
+ (type $5 (cont $2))
+ (type $6 (shared (func (param f32) (result f32))))
+ (type $7 (sub (descriptor $9) (struct (field (mut i16)) (field i32) (field f32))))
+ (type $8 (sub (func (param v128 v128 v128 (ref null $0)) (result (ref $0) (ref null $8)))))
+ (type $9 (sub (describes $7) (struct (field (mut i16)) (field i64) (field i8) (field (mut f32)))))
+)
+(rec
+ (type $10 (shared (array (mut i8))))
+ (type $11 (sub (shared (array i8))))
+ (type $12 (shared (descriptor $16) (struct (field (mut i8)) (field (mut i8)) (field v128))))
+ (type $13 (sub (array f32)))
+ (type $14 (sub (shared (func (param i32)))))
+ (type $15 (sub (shared (descriptor $18) (struct (field (mut i64)) (field (mut (ref null (shared func)))) (field (mut i16)) (field (mut f32))))))
+ (type $16 (shared (describes $12) (struct (field (mut f64)) (field v128) (field f32) (field (mut (ref $4))))))
+ (type $17 (sub $7 (descriptor $19) (struct (field (mut i16)) (field i32) (field f32) (field (mut i16)))))
+ (type $18 (sub (shared (describes $15) (struct))))
+ (type $19 (sub $9 (describes $17) (struct (field (mut i16)) (field i64) (field i8) (field (mut f32)))))
+)

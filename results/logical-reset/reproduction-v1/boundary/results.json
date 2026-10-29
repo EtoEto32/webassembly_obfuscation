@@ -1,0 +1,59 @@
+{
+  "rows": [
+    {
+      "case": "import",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "Closed core module only; imports/start/features unsupported"
+    },
+    {
+      "case": "start",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "Closed core module only; imports/start/features unsupported"
+    },
+    {
+      "case": "memory-export",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "Only numeric function exports; reserved prefix"
+    },
+    {
+      "case": "global-export",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "Only numeric function exports; reserved prefix"
+    },
+    {
+      "case": "unbounded",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "One bounded private memory32 required"
+    },
+    {
+      "case": "externref-table",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "Bounded funcref table only"
+    },
+    {
+      "case": "reference-signature",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "Numeric signatures only"
+    },
+    {
+      "case": "reference-global",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "Numeric constant global initializer only"
+    },
+    {
+      "case": "large-cap",
+      "validWasm": true,
+      "rejected": true,
+      "reason": "memory maximum <=256 pages"
+    }
+  ],
+  "rejected": 9
+}

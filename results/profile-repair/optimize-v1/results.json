@@ -1,0 +1,2272 @@
+{
+  "rows": [
+    {
+      "name": "single",
+      "modes": {
+        "original": {
+          "bytes": 56,
+          "optimizeValidateMs": 21.2397,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          }
+        },
+        "all": {
+          "bytes": 55,
+          "optimizeValidateMs": 14.802200000000044,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "slice": {
+          "bytes": 55,
+          "optimizeValidateMs": 14.147899999999991,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "independent": {
+          "bytes": 55,
+          "optimizeValidateMs": 15.112199999999964,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "aware": {
+          "bytes": 55,
+          "optimizeValidateMs": 14.25879999999996,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        }
+      }
+    },
+    {
+      "name": "duplicate_pair",
+      "modes": {
+        "original": {
+          "bytes": 61,
+          "optimizeValidateMs": 14.277300000000048,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "unsupported expression (local.tee 0 (i8x16.extract_lane_u 0 (i8x16.relaxed_swizzle (i8x16.splat (local.get 0)) (i8x16.splat (i32.or (i32.and (local.get 1) (i32.const 15)) (i32.const 16))))))"
+          }
+        },
+        "all": {
+          "bytes": 60,
+          "optimizeValidateMs": 19.128100000000092,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "unsupported expression (local.tee 0 (i8x16.extract_lane_u 0 (i8x16.swizzle (i8x16.splat (local.get 0)) (i8x16.splat (i32.or (i32.and (local.get 1) (i32.const 15)) (i32.const 16))))))"
+          }
+        },
+        "slice": {
+          "bytes": 60,
+          "optimizeValidateMs": 16.94810000000002,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "unsupported expression (local.tee 0 (i8x16.extract_lane_u 0 (i8x16.swizzle (i8x16.splat (local.get 0)) (i8x16.splat (i32.or (i32.and (local.get 1) (i32.const 15)) (i32.const 16))))))"
+          }
+        },
+        "independent": {
+          "bytes": 60,
+          "optimizeValidateMs": 14.2911,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "unsupported expression (local.tee 0 (i8x16.extract_lane_u 0 (i8x16.swizzle (i8x16.splat (local.get 0)) (i8x16.splat (i32.or (i32.and (local.get 1) (i32.const 15)) (i32.const 16))))))"
+          }
+        },
+        "aware": {
+          "bytes": 61,
+          "optimizeValidateMs": 14.735799999999966,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "unsupported expression (local.tee 0 (i8x16.extract_lane_u 0 (i8x16.relaxed_swizzle (i8x16.splat (local.get 0)) (i8x16.splat (i32.or (i32.and (local.get 1) (i32.const 15)) (i32.const 16))))))"
+          }
+        }
+      }
+    },
+    {
+      "name": "different_indices_pair",
+      "modes": {
+        "original": {
+          "bytes": 78,
+          "optimizeValidateMs": 14.11820000000008,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.491500000000102,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.367899999999878,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 76,
+          "optimizeValidateMs": 15.25489999999996,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 78,
+          "optimizeValidateMs": 14.760200000000001,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "pair_and",
+      "modes": {
+        "original": {
+          "bytes": 78,
+          "optimizeValidateMs": 14.39799999999991,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 76,
+          "optimizeValidateMs": 15.342900000000048,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.529400000000026,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 77,
+          "optimizeValidateMs": 14.169999999999794,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 77,
+          "optimizeValidateMs": 14.414099999999985,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "pair_or",
+      "modes": {
+        "original": {
+          "bytes": 78,
+          "optimizeValidateMs": 15.347699999999964,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.167700000000005,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.153799999999883,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.832000000000178,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.959999999999862,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "pair_equal_guard",
+      "modes": {
+        "original": {
+          "bytes": 78,
+          "optimizeValidateMs": 14.446099999999795,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.199999999999768,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.706399999999675,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 76,
+          "optimizeValidateMs": 15.427400000000091,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 78,
+          "optimizeValidateMs": 15.011599999999792,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "pair_disjoint_masks",
+      "modes": {
+        "original": {
+          "bytes": 84,
+          "optimizeValidateMs": 18.762100000000004,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 3,
+              "y": 0,
+              "choices": [
+                true,
+                true
+              ],
+              "actual": 3,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 82,
+          "optimizeValidateMs": 14.706499999999956,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 82,
+          "optimizeValidateMs": 14.346800000000215,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 82,
+          "optimizeValidateMs": 14.534100000000105,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 82,
+          "optimizeValidateMs": 14.369800000000321,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "pair_sum_low_bit",
+      "modes": {
+        "original": {
+          "bytes": 81,
+          "optimizeValidateMs": 14.750300000000216,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 79,
+          "optimizeValidateMs": 15.643499999999921,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 79,
+          "optimizeValidateMs": 14.071500000000015,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 79,
+          "optimizeValidateMs": 15.04030000000034,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 81,
+          "optimizeValidateMs": 15.078200000000042,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "dead_site",
+      "modes": {
+        "original": {
+          "bytes": 38,
+          "optimizeValidateMs": 14.631999999999756,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "all": {
+          "bytes": 38,
+          "optimizeValidateMs": 14.496100000000123,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "slice": {
+          "bytes": 38,
+          "optimizeValidateMs": 14.331499999999942,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "independent": {
+          "bytes": 38,
+          "optimizeValidateMs": 14.663199999999765,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "aware": {
+          "bytes": 38,
+          "optimizeValidateMs": 14.309200000000022,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        }
+      }
+    },
+    {
+      "name": "in_range",
+      "modes": {
+        "original": {
+          "bytes": 53,
+          "optimizeValidateMs": 14.53009999999999,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "all": {
+          "bytes": 52,
+          "optimizeValidateMs": 23.226599999999653,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "slice": {
+          "bytes": 52,
+          "optimizeValidateMs": 13.74899999999979,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "independent": {
+          "bytes": 53,
+          "optimizeValidateMs": 13.893299999999886,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "aware": {
+          "bytes": 53,
+          "optimizeValidateMs": 14.163599999999832,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        }
+      }
+    },
+    {
+      "name": "high_bit",
+      "modes": {
+        "original": {
+          "bytes": 54,
+          "optimizeValidateMs": 14.764900000000303,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "all": {
+          "bytes": 53,
+          "optimizeValidateMs": 14.345500000000122,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "slice": {
+          "bytes": 53,
+          "optimizeValidateMs": 14.142399999999888,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "independent": {
+          "bytes": 54,
+          "optimizeValidateMs": 14.581499999999359,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "aware": {
+          "bytes": 54,
+          "optimizeValidateMs": 14.887299999999826,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        }
+      }
+    },
+    {
+      "name": "unconstrained_index",
+      "modes": {
+        "original": {
+          "bytes": 50,
+          "optimizeValidateMs": 14.056100000000349,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 223,
+              "y": 16,
+              "choices": [
+                true
+              ],
+              "actual": 223,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 223,
+              "y": 16,
+              "choices": [
+                true
+              ],
+              "actual": 223,
+              "reference": 0
+            }
+          }
+        },
+        "all": {
+          "bytes": 49,
+          "optimizeValidateMs": 15.043600000000268,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "slice": {
+          "bytes": 49,
+          "optimizeValidateMs": 15.855500000000688,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "independent": {
+          "bytes": 49,
+          "optimizeValidateMs": 14.563400000000115,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        },
+        "aware": {
+          "bytes": 49,
+          "optimizeValidateMs": 14.331699999999614,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsat",
+            "witness": null
+          }
+        }
+      }
+    },
+    {
+      "name": "zero_data",
+      "modes": {
+        "original": {
+          "bytes": 64,
+          "optimizeValidateMs": 14.585900000000152,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "only splat/swizzle/extract lane 0 supported"
+          }
+        },
+        "all": {
+          "bytes": 63,
+          "optimizeValidateMs": 16.31360000000015,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "only splat/swizzle/extract lane 0 supported"
+          }
+        },
+        "slice": {
+          "bytes": 63,
+          "optimizeValidateMs": 14.474200000000437,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "only splat/swizzle/extract lane 0 supported"
+          }
+        },
+        "independent": {
+          "bytes": 64,
+          "optimizeValidateMs": 14.086599999999727,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "only splat/swizzle/extract lane 0 supported"
+          }
+        },
+        "aware": {
+          "bytes": 64,
+          "optimizeValidateMs": 14.606200000000236,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "only splat/swizzle/extract lane 0 supported"
+          }
+        }
+      }
+    },
+    {
+      "name": "cancel_plus_other",
+      "modes": {
+        "original": {
+          "bytes": 93,
+          "optimizeValidateMs": 14.559199999999883,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 3,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 0,
+              "y": 255,
+              "choices": [
+                true,
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 90,
+          "optimizeValidateMs": 15.04569999999994,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 3
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 90,
+          "optimizeValidateMs": 14.507599999999954,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 3
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 90,
+          "optimizeValidateMs": 14.724000000000181,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 3
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 92,
+          "optimizeValidateMs": 15.513499999999958,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "chain",
+      "modes": {
+        "original": {
+          "bytes": 70,
+          "optimizeValidateMs": 14.318300000000228,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 68,
+          "optimizeValidateMs": 14.778699999999922,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 68,
+          "optimizeValidateMs": 14.511899999999578,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 69,
+          "optimizeValidateMs": 14.796400000000709,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 69,
+          "optimizeValidateMs": 14.89969999999996,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "weighted_and",
+      "modes": {
+        "original": {
+          "bytes": 78,
+          "optimizeValidateMs": 15.854100000000315,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.327800000000224,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 76,
+          "optimizeValidateMs": 14.64040000000022,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 77,
+          "optimizeValidateMs": 13.708600000000182,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 77,
+          "optimizeValidateMs": 14.450000000000074,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "weighted_triple",
+      "modes": {
+        "original": {
+          "bytes": 83,
+          "optimizeValidateMs": 14.036700000000124,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true,
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 81,
+          "optimizeValidateMs": 14.950699999999983,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 81,
+          "optimizeValidateMs": 13.960700000000159,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 81,
+          "optimizeValidateMs": 14.945199999999659,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 2
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 82,
+          "optimizeValidateMs": 14.717300000000044,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 1,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "xor_3",
+      "modes": {
+        "original": {
+          "bytes": 94,
+          "optimizeValidateMs": 14.566599999999319,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 3,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true,
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 91,
+          "optimizeValidateMs": 14.362100000000488,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 3
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 91,
+          "optimizeValidateMs": 14.789899999999356,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 3
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 91,
+          "optimizeValidateMs": 15.024699999999669,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 3
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 93,
+          "optimizeValidateMs": 15.019399999999905,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 2,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "xor_4",
+      "modes": {
+        "original": {
+          "bytes": 111,
+          "optimizeValidateMs": 14.85210000000059,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 4,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 107,
+          "optimizeValidateMs": 14.659400000000211,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 4
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 107,
+          "optimizeValidateMs": 14.780200000000576,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 4
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 107,
+          "optimizeValidateMs": 14.223700000000505,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 4
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 111,
+          "optimizeValidateMs": 14.52999999999971,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 4,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "xor_5",
+      "modes": {
+        "original": {
+          "bytes": 128,
+          "optimizeValidateMs": 15.060400000000307,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 5,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 123,
+          "optimizeValidateMs": 14.749399999999468,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 5
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 123,
+          "optimizeValidateMs": 15.191300000000574,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 5
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 123,
+          "optimizeValidateMs": 15.324399999999905,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 5
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 127,
+          "optimizeValidateMs": 15.089000000000574,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 4,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "xor_6",
+      "modes": {
+        "original": {
+          "bytes": 145,
+          "optimizeValidateMs": 15.091100000000246,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 6,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 139,
+          "optimizeValidateMs": 15.360899999999234,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 6
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 139,
+          "optimizeValidateMs": 15.638400000000274,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 6
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 139,
+          "optimizeValidateMs": 15.509299999999726,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 6
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 145,
+          "optimizeValidateMs": 15.27920000000016,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 6,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "xor_8",
+      "modes": {
+        "original": {
+          "bytes": 169,
+          "optimizeValidateMs": 14.5230999999999,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 7,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 161,
+          "optimizeValidateMs": 15.134099999999151,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 161,
+          "optimizeValidateMs": 14.88379999999978,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 161,
+          "optimizeValidateMs": 15.301600000000803,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 169,
+          "optimizeValidateMs": 16.035099999999858,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 7,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "xor_12",
+      "modes": {
+        "original": {
+          "bytes": 191,
+          "optimizeValidateMs": 16.010899999999495,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 7,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 184,
+          "optimizeValidateMs": 15.342099999999803,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 184,
+          "optimizeValidateMs": 15.755199999999192,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 184,
+          "optimizeValidateMs": 15.486900000000858,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 191,
+          "optimizeValidateMs": 15.386699999998754,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 7,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "xor_15",
+      "modes": {
+        "original": {
+          "bytes": 204,
+          "optimizeValidateMs": 16.61559999999973,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 7,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "sat",
+            "witness": {
+              "x": 255,
+              "y": 0,
+              "choices": [
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true,
+                true
+              ],
+              "actual": 255,
+              "reference": 0
+            }
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 197,
+          "optimizeValidateMs": 16.210700000000244,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 197,
+          "optimizeValidateMs": 15.746599999999944,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 197,
+          "optimizeValidateMs": 16.47570000000087,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 213,
+          "optimizeValidateMs": 15.488200000000063,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 7,
+            "i8x16.swizzle": 1
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    },
+    {
+      "name": "xor_16",
+      "modes": {
+        "original": {
+          "bytes": 207,
+          "optimizeValidateMs": 15.779600000000116,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 7,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "all": {
+          "bytes": 200,
+          "optimizeValidateMs": 16.521099999998512,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "slice": {
+          "bytes": 200,
+          "optimizeValidateMs": 16.16570000000017,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "independent": {
+          "bytes": 200,
+          "optimizeValidateMs": 16.677800000000076,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 0,
+            "i8x16.swizzle": 7
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        },
+        "aware": {
+          "bytes": 207,
+          "optimizeValidateMs": 16.250299999999385,
+          "instructionCounts": {
+            "i8x16.relaxed_swizzle": 7,
+            "i8x16.swizzle": 0
+          },
+          "rawSymbolic": {
+            "status": "unsat",
+            "witness": null
+          },
+          "O3Symbolic": {
+            "status": "unsupported",
+            "reason": "two i32 parameters and i32 locals required"
+          }
+        }
+      }
+    }
+  ],
+  "valueChecks": 104500,
+  "limitations": "Symbolic verifier shares evaluator with synthesis; rereading catches rewrite mistakes but is not an independent formal proof. Unsupported optimized shapes are reported separately."
+}

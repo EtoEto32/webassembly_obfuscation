@@ -1,0 +1,414 @@
+[
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\workload-smoke-v1\\shared-lib.wasm",
+      "results\\gc-field-policy\\workload-smoke-v1\\shared-policy.json",
+      "results\\gc-field-policy\\workload-smoke-v1\\shared-client.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":3,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":0,\"type\":1},{\"action\":\"read\",\"field\":0,\"op\":\"struct.get\",\"operation\":1,\"type\":0},{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":2,\"type\":0}]}],\"totalSeconds\":0.0006157,\"validationSeconds\":0.0005453}\n",
+    "stderr": "",
+    "wallMs": 10.087700000000005
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\workload-smoke-v1\\accessor-lib.wasm",
+      "results\\gc-field-policy\\workload-smoke-v1\\accessor-policy.json",
+      "results\\gc-field-policy\\workload-smoke-v1\\accessor-client.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":0,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":true,\"mode\":\"deny-all-gc\",\"violations\":[]}],\"totalSeconds\":0.0006497,\"validationSeconds\":0.0005949}\n",
+    "stderr": "",
+    "wallMs": 8.487099999999998
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\workload-smoke-v1\\project-lib.wasm",
+      "results\\gc-field-policy\\workload-smoke-v1\\project-policy.json",
+      "results\\gc-field-policy\\workload-smoke-v1\\project-client.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":3,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":0,\"type\":3},{\"action\":\"read\",\"field\":0,\"op\":\"struct.get\",\"operation\":1,\"type\":2},{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":2,\"type\":2}]}],\"totalSeconds\":0.0006538,\"validationSeconds\":0.0005912}\n",
+    "stderr": "",
+    "wallMs": 8.610599999999996
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\workload-smoke-v1\\split-lib.wasm",
+      "results\\gc-field-policy\\workload-smoke-v1\\split-policy.json",
+      "results\\gc-field-policy\\workload-smoke-v1\\split-client.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":3,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":0,\"type\":3},{\"action\":\"read\",\"field\":0,\"op\":\"struct.get\",\"operation\":1,\"type\":2},{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":2,\"type\":2}]}],\"totalSeconds\":0.0006341,\"validationSeconds\":0.0005716}\n",
+    "stderr": "",
+    "wallMs": 8.900199999999996
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\shared-lib.wasm",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\shared-policy.json",
+      "results\\gc-field-policy\\workload-smoke-v1\\forbidden-read.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":3,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":false,\"mode\":\"local-index\",\"violations\":[{\"action\":\"read\",\"field\":2,\"op\":\"struct.get\",\"operation\":1,\"protectedType\":0,\"type\":0}]},{\"accepted\":false,\"mode\":\"canonical-exact\",\"violations\":[{\"action\":\"read\",\"field\":2,\"op\":\"struct.get\",\"operation\":1,\"protectedType\":0,\"type\":0}]},{\"accepted\":false,\"mode\":\"closure\",\"violations\":[{\"action\":\"read\",\"field\":2,\"op\":\"struct.get\",\"operation\":1,\"protectedType\":0,\"type\":0}]},{\"accepted\":false,\"mode\":\"deny-all-gc\",\"violations\":[{\"action\":\"read\",\"field\":0,\"op\":\"array.get\",\"operation\":0,\"type\":1},{\"action\":\"read\",\"field\":2,\"op\":\"struct.get\",\"operation\":1,\"type\":0},{\"action\":\"read\",\"field\":1,\"op\":\"struct.get\",\"operation\":2,\"type\":0}]}],\"totalSeconds\":0.0006231,\"validationSeconds\":0.000553}\n",
+    "stderr": "",
+    "wallMs": 8.7381
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":11.242999999999999,\"initMs\":0.08460000000000178,\"samples\":[0.0012000000000043087,0.0005999999999986017,0.001300000000000523,0.0006000000000057071,0.000499999999995282,0.0005999999999986017,0.0005999999999986017,0.0005000000000023874,0.0005000000000023874,0.0005999999999986017,0.0005000000000023874],\"checks\":[148196,148196,148196,148196,148196,148196,148196,148196,148196,148196,148196],\"peakBytes\":39182336,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 63.2857
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.94949999999999, \"initMs\": 0.11269999999999336, \"samples\": [0.043600000000004746, 0.043200000000021, 0.043300000000023875, 0.044399999999999995, 0.046600000000007746, 0.04379999999998274, 0.043199999999993244, 0.04329999999999612, 0.04309999999999037, 0.0438000000000105, 0.04300000000001525], \"checks\": [1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568], \"peakBytes\": 27648000, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 154.12130000000002
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.5564,\"initMs\":0.08809999999999718,\"samples\":[0.0011999999999972033,0.0005000000000023874,0.001300000000000523,0.000499999999995282,0.0005999999999986017,0.0005000000000023874,0.0005000000000023874,0.0005999999999986017,0.0006000000000057071,0.0005999999999986017,0.0005000000000023874],\"checks\":[148196,148196,148196,148196,148196,148196,148196,148196,148196,148196,148196],\"peakBytes\":39219200,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 61.5291
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.339300000000012, \"initMs\": 0.11430000000001161, \"samples\": [0.04789999999998962, 0.04750000000000587, 0.04799999999999249, 0.04799999999999249, 0.04879999999998774, 0.0488000000000155, 0.055400000000010996, 0.05030000000000312, 0.05159999999998499, 0.04899999999999349, 0.04830000000000112], \"checks\": [1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568], \"peakBytes\": 27848704, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 150.9697
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.683799999999996, \"initMs\": 0.13010000000002186, \"samples\": [0.051999999999996493, 0.04700000000001925, 0.05330000000000612, 0.04470000000000862, 0.04489999999998662, 0.049499999999980115, 0.048199999999998244, 0.05209999999999937, 0.044199999999994244, 0.044600000000005746, 0.044600000000005746], \"checks\": [148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196], \"peakBytes\": 28192768, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 152.63349999999997
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.454499999999994, \"initMs\": 0.12879999999998448, \"samples\": [0.2698999999999896, 0.05209999999999937, 0.047499999999978115, 0.04700000000001925, 0.047199999999997244, 0.04590000000001537, 0.046100000000021124, 0.053499999999984116, 0.048600000000009747, 0.04700000000001925, 0.04659999999997999], \"checks\": [1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568], \"peakBytes\": 28241920, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 150.99680000000004
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.856499999999997,\"initMs\":0.08559999999999945,\"samples\":[0.00560000000000116,0.0013999999999967372,0.0020000000000024443,0.001300000000000523,0.001300000000000523,0.0011999999999972033,0.001300000000000523,0.001300000000000523,0.001300000000000523,0.001300000000000523,0.0012000000000043087],\"checks\":[148196,148196,148196,148196,148196,148196,148196,148196,148196,148196,148196],\"peakBytes\":39337984,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 62.89180000000005
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.7208,\"initMs\":0.08590000000000231,\"samples\":[0.0012000000000043087,0.0007000000000019213,0.0012000000000043087,0.0005000000000023874,0.0005000000000023874,0.0005000000000023874,0.0005000000000023874,0.000499999999995282,0.0005000000000023874,0.000499999999995282,0.0005999999999986017],\"checks\":[148196,148196,148196,148196,148196,148196,148196,148196,148196,148196,148196],\"peakBytes\":39149568,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 63.46289999999999
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":11.27,\"initMs\":0.08579999999999899,\"samples\":[0.0053000000000054115,0.001300000000000523,0.002200000000001978,0.001300000000000523,0.001300000000000523,0.0012000000000043087,0.0011999999999972033,0.001300000000000523,0.001300000000000523,0.0012999999999934175,0.0011999999999972033],\"checks\":[148196,148196,148196,148196,148196,148196,148196,148196,148196,148196,148196],\"peakBytes\":39407616,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 61.84060000000002
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":11.245700000000003,\"initMs\":0.10040000000000049,\"samples\":[0.00829999999999842,0.007799999999996032,0.00840000000000174,0.007699999999999818,0.007600000000003604,0.007699999999999818,0.007699999999999818,0.007699999999999818,0.007699999999999818,0.0075999999999964984,0.007600000000003604],\"checks\":[1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568],\"peakBytes\":39100416,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 61.83120000000009
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":11.2028,\"initMs\":0.10020000000000095,\"samples\":[0.0020000000000024443,0.0013999999999967372,0.0020000000000024443,0.0012000000000043087,0.001300000000000523,0.0011999999999972033,0.0011999999999972033,0.0011999999999972033,0.0012000000000043087,0.001100000000000989,0.0011999999999972033],\"checks\":[148196,148196,148196,148196,148196,148196,148196,148196,148196,148196,148196],\"peakBytes\":39182336,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 62.23489999999998
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.448000000000015, \"initMs\": 0.1260999999999901, \"samples\": [0.24479999999998947, 0.04870000000001262, 0.04509999999999237, 0.045100000000020124, 0.05850000000001687, 0.048100000000023124, 0.047600000000008746, 0.04489999999998662, 0.044399999999999995, 0.045199999999995244, 0.04389999999998562], \"checks\": [148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196], \"peakBytes\": 28020736, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 151.51040000000003
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.865799999999998, \"initMs\": 0.11220000000000674, \"samples\": [0.042399999999997995, 0.042600000000003746, 0.04229999999999512, 0.042199999999992244, 0.04279999999998174, 0.042600000000003746, 0.04199999999998649, 0.04290000000001237, 0.04189999999998362, 0.04250000000000087, 0.05009999999999737], \"checks\": [148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196], \"peakBytes\": 28098560, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 151.1199000000001
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.337699999999995, \"initMs\": 0.15740000000000198, \"samples\": [0.2657000000000076, 0.04930000000000212, 0.045199999999995244, 0.045199999999995244, 0.045199999999995244, 0.045600000000006746, 0.045200000000023, 0.0448000000000115, 0.04409999999999137, 0.0448000000000115, 0.04450000000000287], \"checks\": [148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196], \"peakBytes\": 27815936, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 150.45989999999998
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.994899999999998,\"initMs\":0.08339999999999748,\"samples\":[0.0030000000000001137,0.002400000000001512,0.0031000000000034333,0.0024999999999977263,0.0022999999999981924,0.002300000000005298,0.0023999999999944066,0.002400000000001512,0.0027000000000043656,0.0022999999999981924,0.0022999999999981924],\"checks\":[1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568],\"peakBytes\":39272448,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 62.21199999999993
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.934600000000003,\"initMs\":0.08630000000000138,\"samples\":[0.002899999999996794,0.0022999999999981924,0.0030000000000001137,0.0022999999999981924,0.0022999999999981924,0.002400000000001512,0.002400000000001512,0.0023999999999944066,0.002400000000001512,0.002300000000005298,0.0022999999999981924],\"checks\":[1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568],\"peakBytes\":39206912,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 60.466699999999875
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.822999999999997,\"initMs\":0.08539999999999992,\"samples\":[0.0018999999999991246,0.001300000000000523,0.0020000000000024443,0.001300000000000523,0.001300000000000523,0.001300000000000523,0.001300000000000523,0.001300000000000523,0.001300000000000523,0.0012999999999934175,0.001300000000000523],\"checks\":[148196,148196,148196,148196,148196,148196,148196,148196,148196,148196,148196],\"peakBytes\":39170048,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 61.99939999999992
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.676700000000015, \"initMs\": 0.13840000000001074, \"samples\": [0.2526999999999946, 0.04969999999998587, 0.04689999999998862, 0.046199999999996244, 0.046199999999996244, 0.04600000000001825, 0.046400000000001995, 0.046400000000001995, 0.05359999999998699, 0.0478000000000145, 0.04600000000001825], \"checks\": [1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568], \"peakBytes\": 28377088, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 152.13469999999995
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.132599999999995, \"initMs\": 0.11479999999999824, \"samples\": [0.04370000000000762, 0.0438000000000105, 0.043499999999974115, 0.0438000000000105, 0.044399999999999995, 0.04370000000000762, 0.043399999999998995, 0.043600000000004746, 0.04299999999998749, 0.043600000000004746, 0.043600000000004746], \"checks\": [1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568], \"peakBytes\": 27238400, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 149.99989999999963
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.481499999999993, \"initMs\": 0.11219999999997898, \"samples\": [0.04390000000001337, 0.04350000000000187, 0.0428000000000095, 0.04329999999999612, 0.04409999999999137, 0.13730000000000686, 0.06470000000000087, 0.04529999999999812, 0.04489999999998662, 0.04479999999998374, 0.043199999999993244], \"checks\": [1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568], \"peakBytes\": 27607040, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 149.2386999999997
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.733699999999988, \"initMs\": 0.11709999999998111, \"samples\": [0.04899999999999349, 0.04550000000000387, 0.043399999999998995, 0.043699999999979866, 0.045199999999995244, 0.045400000000000995, 0.05410000000000137, 0.05009999999999737, 0.044100000000019124, 0.044399999999999995, 0.04400000000001625], \"checks\": [1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568], \"peakBytes\": 27250688, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 150.64440000000002
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.325899999999988, \"initMs\": 0.11329999999998286, \"samples\": [0.042399999999997995, 0.04170000000000562, 0.04090000000001037, 0.042199999999992244, 0.04229999999999512, 0.04129999999999412, 0.04149999999999987, 0.04149999999999987, 0.04109999999998837, 0.042199999999992244, 0.04149999999999987], \"checks\": [148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196], \"peakBytes\": 27942912, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 148.96279999999962
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.8479,\"initMs\":0.08299999999999841,\"samples\":[0.008300000000005525,0.0075999999999964984,0.008499999999997954,0.007899999999999352,0.007899999999999352,0.007799999999996032,0.007800000000003138,0.007899999999999352,0.007799999999996032,0.0077000000000069235,0.007800000000003138],\"checks\":[1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568],\"peakBytes\":39174144,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 60.223100000000414
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.658000000000003, \"initMs\": 0.11769999999999836, \"samples\": [0.042600000000003746, 0.04209999999998937, 0.04229999999999512, 0.04559999999997899, 0.051999999999996493, 0.05250000000001087, 0.04429999999999712, 0.04450000000000287, 0.04350000000000187, 0.045199999999995244, 0.05099999999999549], \"checks\": [148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196], \"peakBytes\": 27926528, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 151.91089999999986
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.749800000000004,\"initMs\":0.09740000000000038,\"samples\":[0.004399999999996851,0.0033999999999991815,0.004899999999999238,0.003900000000001569,0.003999999999997783,0.004100000000001103,0.0036000000000058208,0.0024999999999977263,0.0024999999999977263,0.0025000000000048317,0.0025000000000048317],\"checks\":[1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568],\"peakBytes\":39223296,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 61.27489999999991
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.699100000000001,\"initMs\":0.08250000000000313,\"samples\":[0.006999999999997897,0.0031999999999996476,0.0037999999999982492,0.0030000000000001137,0.0030000000000001137,0.003099999999996328,0.003099999999996328,0.003099999999996328,0.003099999999996328,0.0030000000000001137,0.0031000000000034333],\"checks\":[1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568],\"peakBytes\":39374848,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 60.95420000000029
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.874500000000001,\"initMs\":0.08160000000000167,\"samples\":[0.001100000000000989,0.0005999999999986017,0.001300000000000523,0.0005000000000023874,0.000499999999995282,0.0005000000000023874,0.000499999999995282,0.0005000000000023874,0.0005000000000023874,0.0005000000000023874,0.0005000000000023874],\"checks\":[148196,148196,148196,148196,148196,148196,148196,148196,148196,148196,148196],\"peakBytes\":39251968,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 59.8036000000004
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 14.322700000000008, \"initMs\": 0.11600000000000499, \"samples\": [0.044399999999999995, 0.04149999999999987, 0.041399999999996995, 0.041699999999977866, 0.041200000000019, 0.041600000000002746, 0.041199999999991244, 0.041200000000019, 0.04109999999998837, 0.04189999999998362, 0.04200000000001425], \"checks\": [148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196], \"peakBytes\": 27484160, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 151.2273999999998
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":11.100499999999997,\"initMs\":0.0823999999999998,\"samples\":[0.0030000000000001137,0.002400000000001512,0.0031000000000034333,0.0023999999999944066,0.002200000000001978,0.002300000000005298,0.0022999999999981924,0.002300000000005298,0.0022999999999981924,0.002400000000001512,0.0024999999999977263],\"checks\":[1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568],\"peakBytes\":39321600,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 60.455699999999894
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.182899999999984, \"initMs\": 0.11049999999998561, \"samples\": [0.06159999999999499, 0.05109999999999837, 0.05269999999998887, 0.05289999999999462, 0.04909999999999637, 0.048600000000009747, 0.04809999999999537, 0.04930000000000212, 0.0488000000000155, 0.049499999999980115, 0.05260000000001375], \"checks\": [1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568, 1185568], \"peakBytes\": 28352512, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 151.63600000000034
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.mjs",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":10.887300000000003,\"initMs\":0.08689999999999998,\"samples\":[0.007199999999997431,0.0030000000000001137,0.0037999999999982492,0.0031000000000034333,0.0030000000000001137,0.0030000000000001137,0.0029000000000038995,0.0030000000000001137,0.003099999999996328,0.003099999999996328,0.003500000000002501],\"checks\":[1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568,1185568],\"peakBytes\":39305216,\"privateAfter\":77123}\n",
+    "stderr": "",
+    "wallMs": 60.52689999999971
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\workload-bench.py",
+      "results\\gc-field-policy\\workload-smoke-v1\\job.json"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\": \"Wasmtime\", \"version\": \"Python package 50.0.1\", \"setupMs\": 13.945800000000009, \"initMs\": 0.12349999999999861, \"samples\": [0.04170000000000562, 0.04199999999998649, 0.041600000000002746, 0.04209999999998937, 0.0418000000000085, 0.04149999999999987, 0.04100000000001325, 0.04179999999998074, 0.041300000000021875, 0.0428000000000095, 0.04149999999999987], \"checks\": [148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196, 148196], \"peakBytes\": 27467776, \"privateAfter\": 77123}\n",
+    "stderr": "",
+    "wallMs": 150.66360000000012
+  }
+]

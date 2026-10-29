@@ -1,0 +1,16 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func
+[fuzz-exec] export func_12
+[fuzz-exec] note result: func_12 => object(null)
+[fuzz-exec] export func_12_invoker
+[fuzz-exec] export func_14_invoker
+exception thrown: RangeError: WebAssembly.Table.set(): invalid address 128 in funcref table of size 6
+[fuzz-exec] export func_16_invoker
+[LoggingExternalInterface logging 0]
+[LoggingExternalInterface logging 0]
+[LoggingExternalInterface logging 0]
+[LoggingExternalInterface logging 0]
+[fuzz-exec] export func_20
+exception thrown: RuntimeError: dereferencing a null pointer
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_12","known":true,"status":"returned","unsupported":[]},{"name":"func_12_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_14_invoker","known":true,"status":"range-error","unsupported":[],"error":"RangeError: WebAssembly.Table.set(): invalid address 128 in funcref table of size 6"},{"name":"func_16_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_20","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null}]}

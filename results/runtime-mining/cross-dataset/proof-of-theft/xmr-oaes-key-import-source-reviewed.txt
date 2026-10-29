@@ -1,0 +1,51 @@
+oaes_key_import_data( OAES_CTX * ctx,
+		const uint8_t * data, size_t data_len )
+{
+	oaes_ctx * _ctx = (oaes_ctx *) ctx;
+	OAES_RET _rc = OAES_RET_SUCCESS;
+	
+	if( NULL == _ctx )
+		return OAES_RET_ARG1;
+	
+	if( NULL == data )
+		return OAES_RET_ARG2;
+	
+	switch( data_len )
+	{
+		case 16:
+		case 24:
+		case 32:
+			break;
+		default:
+			return OAES_RET_ARG3;
+	}
+	
+	if( _ctx->key )
+		oaes_key_destroy( &(_ctx->key) );
+	
+	_ctx->key = (oaes_key *) calloc( sizeof( oaes_key ), 1 );
+	
+	if( NULL == _ctx->key )
+		return OAES_RET_MEM;
+	
+	_ctx->key->data_len = data_len;
+	_ctx->key->data = (uint8_t *)
+			calloc( data_len, sizeof( uint8_t ));
+	
+	if( NULL == _ctx->key->data )
+	{
+		oaes_key_destroy( &(_ctx->key) );
+		return OAES_RET_MEM;
+	}
+
+	memcpy( _ctx->key->data, data, data_len );
+	_rc = _rc || oaes_key_expand( ctx );
+	
+	if( _rc != OAES_RET_SUCCESS )
+	{
+		oaes_key_destroy( &(_ctx->key) );
+		return _rc;
+	}
+	
+	return OAES_RET_SUCCESS;
+}

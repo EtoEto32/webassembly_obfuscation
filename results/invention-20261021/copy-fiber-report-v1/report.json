@@ -1,0 +1,569 @@
+{
+  "status": "not adopted; novelty and useful protection advantage unestablished",
+  "primary": {
+    "compress": 2620,
+    "full_hash": 410,
+    "memory_cases": 160,
+    "mismatches": 0,
+    "corpus_sha256": "de9440215cd7d9faf8fb52c43d98cea790fa3a94a0446a593d801a5418ab6e35"
+  },
+  "recovery": {
+    "compress": 5240,
+    "full_hash": 820,
+    "mismatches": 0,
+    "corpus_sha256": "de9440215cd7d9faf8fb52c43d98cea790fa3a94a0446a593d801a5418ab6e35"
+  },
+  "all_semantic_fingerprints_equal": true,
+  "distinct_recovered_binary_hashes": 4,
+  "runtime_processes": 18,
+  "performance": [
+    {
+      "label": "plain-O3",
+      "median_ns": 254.96826171874991,
+      "min_ns": 250.2243041992186,
+      "max_ns": 257.55615234374994,
+      "core_bytes": 13552,
+      "linear_memory_bytes": 65536,
+      "median_max_rss_kib": 39648
+    },
+    {
+      "label": "linear-O3",
+      "median_ns": 4846.0205078125,
+      "min_ns": 4786.035156249993,
+      "max_ns": 4893.701171875001,
+      "core_bytes": 15418,
+      "linear_memory_bytes": 65536,
+      "median_max_rss_kib": 43536
+    },
+    {
+      "label": "fiber1-O3",
+      "median_ns": 5984.716796874997,
+      "min_ns": 5863.96484375,
+      "max_ns": 6069.970703125004,
+      "core_bytes": 16547,
+      "linear_memory_bytes": 65536,
+      "median_max_rss_kib": 44240
+    },
+    {
+      "label": "fiber2-O3",
+      "median_ns": 11400.87890625001,
+      "min_ns": 11301.074218750013,
+      "max_ns": 11581.738281250004,
+      "core_bytes": 20061,
+      "linear_memory_bytes": 65536,
+      "median_max_rss_kib": 44952
+    },
+    {
+      "label": "repair1-O3",
+      "median_ns": 6177.734375000001,
+      "min_ns": 6142.1875,
+      "max_ns": 6372.460937499991,
+      "core_bytes": 16987,
+      "linear_memory_bytes": 65536,
+      "median_max_rss_kib": 43920
+    },
+    {
+      "label": "recovered",
+      "median_ns": 182.48291015624994,
+      "min_ns": 177.1835327148436,
+      "max_ns": 182.89794921875006,
+      "core_bytes": 7603,
+      "linear_memory_bytes": 0,
+      "median_max_rss_kib": 39104
+    }
+  ],
+  "fiber1_over_plain": 23.472399099918608,
+  "fiber1_time_reduction_vs_repair": 0.03124407208346569,
+  "audit": {
+    "negative_controls": 4,
+    "rejections": 3,
+    "byte_reproduction": 10,
+    "engines": 6
+  },
+  "model_pairs": 4096,
+  "host": {
+    "platform": "Windows-10-10.0.26100-SP0",
+    "processor_identifier": "Intel64 Family 6 Model 167 Stepping 1, GenuineIntel",
+    "logical_cpus": 16
+  },
+  "audit_pins_verified": 54,
+  "pins": [
+    {
+      "file": ".tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "sha256": "4217d75f81cf33c4032d82b5d531120069af1a4b43eb7737977bdb2c99a8f4ba"
+    },
+    {
+      "file": ".tools\\wabt-1.0.42\\bin\\wasm-interp.exe",
+      "sha256": "3433086015d69cf50398500f4e122e55fd62097a3c95c0203e6294442f594399"
+    },
+    {
+      "file": ".tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "sha256": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3"
+    },
+    {
+      "file": ".tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "sha256": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873"
+    },
+    {
+      "file": ".tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "sha256": "d5d742cb997c15ecc050fa64296bb72f53d005235e8fac66b14f3549d8567e6d"
+    },
+    {
+      "file": "experiments\\sha256-research-baseline\\vendor\\LICENSE",
+      "sha256": "58dcf38be1438f739412b87eb70d64bf00e9976d529bb119f700d8b3167924f0"
+    },
+    {
+      "file": "experiments\\sha256-research-baseline\\vendor\\sha256.js",
+      "sha256": "2627dd4e42c86fca90a8aa7341558b912138eaff2260f3207f31941b32a81ab2"
+    },
+    {
+      "file": "research\\connectivity-elimination\\prototype.py",
+      "sha256": "df630e5c288e1043fa5e213b3419f6bbd8ab78efabcadc531011fff45d48d284"
+    },
+    {
+      "file": "research\\copy-fiber\\algorithm.md",
+      "sha256": "c5437e677f6e7c9f9824108d4068f81db2cf37ff8de0a9f2677c700e482b8428"
+    },
+    {
+      "file": "research\\copy-fiber\\analysis.md",
+      "sha256": "a5658fba04856d8b06864670bdf359073caf1771c3f490c0f77314e6cd1cb88f"
+    },
+    {
+      "file": "research\\copy-fiber\\attack.py",
+      "sha256": "f625cee888dda3b131321476fc0ef2267a7e0b5eb6adf15c4b57a4f3d9c0b343"
+    },
+    {
+      "file": "research\\copy-fiber\\audit.py",
+      "sha256": "3a6c18495c10c0693617c38968124657f3161c6d6c0cb357badc403174623ce5"
+    },
+    {
+      "file": "research\\copy-fiber\\bench.cjs",
+      "sha256": "26faa9b54be649b274123e7ee691662e002556a066cb425f61674c892c5b8e0f"
+    },
+    {
+      "file": "research\\copy-fiber\\check.cjs",
+      "sha256": "ae474ba68360070ad2f13f299ac8fb41e7aef74fbc60cad444b7d6a496f74a33"
+    },
+    {
+      "file": "research\\copy-fiber\\checkpoint.md",
+      "sha256": "a6529c213bcf737f5a04abb5e814f0e6d5d238cc74ebc00ef4783df9df452b70"
+    },
+    {
+      "file": "research\\copy-fiber\\performance.py",
+      "sha256": "fdeda807e457504407c55601e273fe0998d8977194b862ad14e1167d8d39f4a0"
+    },
+    {
+      "file": "research\\copy-fiber\\plan.md",
+      "sha256": "fa27221dd9f9a91f175acdd2c27030eb421753a580916930a5348fd562e13d77"
+    },
+    {
+      "file": "research\\copy-fiber\\prior-art.md",
+      "sha256": "26be12b7fa369319c25cb939bd9bd3acab36ab0c70e05c5be41c2268d2b73323"
+    },
+    {
+      "file": "research\\copy-fiber\\prototype.py",
+      "sha256": "b4900b28b82f92b1e42c53946c268881b2bf4e2f18d6d59a4bc9e6c4e9d63fb9"
+    },
+    {
+      "file": "research\\copy-fiber\\README.md",
+      "sha256": "8315df837a1c256b57ce111104260244c44c6430c6818b083e77ae5c3497d858"
+    },
+    {
+      "file": "research\\copy-fiber\\recover.py",
+      "sha256": "27311e70c65a4a04c35c597a625d9b467834638871c07ebca455fc3e23752981"
+    },
+    {
+      "file": "research\\copy-fiber\\report.py",
+      "sha256": "9951a429e5ae9f9cdb18b19cd542247e6582489df1402f48617d413296ae14f8"
+    },
+    {
+      "file": "research\\copy-fiber\\run.py",
+      "sha256": "c5397033c1af2b9f7cdf1623d2280534837a9b75fdbd4304d3a42e043541804c"
+    },
+    {
+      "file": "research\\isotope-swizzle\\prototype.py",
+      "sha256": "d1857d80faad957d6d3c23b324cae0deff950097236f0f93360b1a6d7113f161"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\audit.json",
+      "sha256": "32f44f21e44516e91860bc3051f3b246bde77898774ffb1f29b3fbe488de5124"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\fiber1-O3-interpreter.wasm",
+      "sha256": "e65c5bc110c52ff0d72e874acfa66f6ea26af46d018c417b3f87ac75c9b3859d"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\fiber1-O3-replay.wasm",
+      "sha256": "bad05cae7eb338acdcde8c72153af3126419bacd1c90a256e96e5df3343aa121"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\fiber1-raw-replay.wasm",
+      "sha256": "9ee6b4d269fe8eadd1d53a5c120ce221b2cc61d764b3264af10f1951b9063792"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\fiber2-O3-interpreter.wasm",
+      "sha256": "de4fe9ab2b67e9a59a9b4ee8c76dd7e1be7a034c543c4ad2cf12cd8b37680759"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\fiber2-O3-replay.wasm",
+      "sha256": "fcdc1599c399cd5a44ed34077223e8ed8d314e0f97a090fb6cd4bc0713718dff"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\fiber2-raw-replay.wasm",
+      "sha256": "661899975a4d02d0b34b21aa40818d0270b689c391de6dce28c2f8b42e6af687"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\inverse_order-O3.wasm",
+      "sha256": "5a637dcc34d8431cb5703b6f4807e13d0881884091b7eeb8c754de9f4de26410"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\inverse_order-raw.wasm",
+      "sha256": "d7ca68b30159621c13cc08c6fbeded512549579b016b0abb2c3805a6eadf599e"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\linear-O3-interpreter.wasm",
+      "sha256": "b9ded86cc3ebe398d1683d8128b71d2af89049340eee452251b4d62c400f8ad0"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\linear-O3-replay.wasm",
+      "sha256": "fd96fcc870442b11589c82d7efaaa8d61514f4639c946542d1bb68a3a079b54c"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\linear-raw-replay.wasm",
+      "sha256": "b34435eb2dc773c63d2caaba5d7b14f48f082e1d75a97bf87d66ca001eba0d13"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\memory_export.wasm",
+      "sha256": "131aa19358c52ed699d7eff7ba24b2edbd9cc01a805f5bdae34e08d5dc2dbb48"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\mutable_anchor.wasm",
+      "sha256": "15b3ae7ade768f2ae293b5310345cf555242303d692108515a26b7d22b62fbf6"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\nonzero_at_zero-O3.wasm",
+      "sha256": "d06f92298eabf7175c817aa645e0cd8478722398abc68e43efe57c633b3d1d2f"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\nonzero_at_zero-raw.wasm",
+      "sha256": "8a8db3d2f85434ba026ce13ef9f8d734693629eba753198892f2ac8e8b36bbc6"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\plain-O3-interpreter.wasm",
+      "sha256": "13c7be34dcd0b170d266bf13bde6648df45fe8462dcf05be7d60af66fb6054ff"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\plain-O3-replay.wasm",
+      "sha256": "17d7fed98693cd9d1e101ae2a48d1b18dec620863289c1897efc340e7627bced"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\plain-raw-replay.wasm",
+      "sha256": "d788ca08505376cf3764f33ac562d000a29d195177862f1f114fe39faf42e027"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\recovered-interpreter.wasm",
+      "sha256": "ff68da385c5845a9b2b7c18c812e72c7ed8d613230c57a84358a9506c7706e55"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\repair1-O3-interpreter.wasm",
+      "sha256": "327572ef4d75286cfd2b6a74946af47d8efed0726366592898e70b272ca82d18"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\repair1-O3-replay.wasm",
+      "sha256": "32466535fcce33d98f2b0c4b2320b7ccacd2c1c1cd741904b5783bd107ea76fa"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\repair1-raw-replay.wasm",
+      "sha256": "fdf4f9364878ff751cc52352c11f11ad9ba53833f0c9daca55afe1db0db3b878"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-audit-v3\\short_copy.wasm",
+      "sha256": "3a1733c6d8e982989ceb57783845795cf6063347a170604f58d7d4dcb83608ef"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\checks.json",
+      "sha256": "1b02afc98af8a5c7aba5cd8248c7d0e9a6ffdd082199b875e0ef4c99b4a5b4da"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\environment.json",
+      "sha256": "edb64622bbd1195da090ed8f474895334eb15f889bb02c74d4b898aa90e51675"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber1-O3-probe.wasm",
+      "sha256": "4a498d0d02f5d8a01ed3bb39791fa8bf21f0f742c4f62de0cdbe22972248bf44"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber1-O3.wasm",
+      "sha256": "bad05cae7eb338acdcde8c72153af3126419bacd1c90a256e96e5df3343aa121"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber1-raw-probe.wasm",
+      "sha256": "769b3df284c29dc76d84b52afb3ca7524235e72b208e29677c894df53f08f296"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber1-raw.wasm",
+      "sha256": "9ee6b4d269fe8eadd1d53a5c120ce221b2cc61d764b3264af10f1951b9063792"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber2-O3-probe.wasm",
+      "sha256": "13e0ca66c53affedc5895cf11769afbdced75cf3193586791032acb75833ca24"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber2-O3.wasm",
+      "sha256": "fcdc1599c399cd5a44ed34077223e8ed8d314e0f97a090fb6cd4bc0713718dff"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber2-raw-probe.wasm",
+      "sha256": "9f4277ed7e56c159fbba5cc977ffe21a945309348cc5fd6772dca2078839f7c1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\fiber2-raw.wasm",
+      "sha256": "661899975a4d02d0b34b21aa40818d0270b689c391de6dce28c2f8b42e6af687"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\linear-O3-probe.wasm",
+      "sha256": "c5ced612477d16d67beb477ce7b3a7d81a8068554f1749224c777d182d8b8e52"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\linear-O3.wasm",
+      "sha256": "fd96fcc870442b11589c82d7efaaa8d61514f4639c946542d1bb68a3a079b54c"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\linear-raw-probe.wasm",
+      "sha256": "626b9c959dfcf6aab4cd1ccad3ae60a2a0f3ffe45cf47ec08ea176be26ae1ff1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\linear-raw.wasm",
+      "sha256": "b34435eb2dc773c63d2caaba5d7b14f48f082e1d75a97bf87d66ca001eba0d13"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\plain-O3-probe.wasm",
+      "sha256": "b727236ff890ffd5e426c685c03abeb1216dadf101b75659efebe374f0bafecf"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\plain-O3.wasm",
+      "sha256": "17d7fed98693cd9d1e101ae2a48d1b18dec620863289c1897efc340e7627bced"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\plain-raw-probe.wasm",
+      "sha256": "131aa19358c52ed699d7eff7ba24b2edbd9cc01a805f5bdae34e08d5dc2dbb48"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\repair1-O3-probe.wasm",
+      "sha256": "2781c6849eed6b5ed1d0f38156cac76509c07e39fba74c219fedadf84e58c094"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\repair1-O3.wasm",
+      "sha256": "32466535fcce33d98f2b0c4b2320b7ccacd2c1c1cd741904b5783bd107ea76fa"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\repair1-raw-probe.wasm",
+      "sha256": "dd640fa775c9bf5c823c91a1735ae1f489550caa8d8afbebcab18c6f2bbb1735"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\repair1-raw.wasm",
+      "sha256": "fdf4f9364878ff751cc52352c11f11ad9ba53833f0c9daca55afe1db0db3b878"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\source.wasm",
+      "sha256": "d788ca08505376cf3764f33ac562d000a29d195177862f1f114fe39faf42e027"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-main-v1\\targets.json",
+      "sha256": "dba0f120aec758aea3a1c3ad4730d512671965bfcf6af38814abe694e3ee4b0d"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\checks.json",
+      "sha256": "5c944abd19854f933b678c3a4db87341ecacfd3dcf74ad2c62cdfa6c6bd9eb7a"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-O3-recovered-O3.wasm",
+      "sha256": "bbbe8e5d8519f23bcf816234f05defe3787e16bb0313538f603c361c71529928"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-O3-recovered.wasm",
+      "sha256": "388700a74343273a4602228664a144ba811b3b9bac017ea60fca5cd7ef0e6dd1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-raw-recovered-O3.wasm",
+      "sha256": "cf554b5e21ebf2088445401ee1d20154e3ab201f4ec64f51ca66d3a43bf55dd4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber1-raw-recovered.wasm",
+      "sha256": "12d97940ae64b5d4ce6fcb4b50b796b6661f4969d439bc184d07650faa45b871"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber2-O3-recovered-O3.wasm",
+      "sha256": "bbbe8e5d8519f23bcf816234f05defe3787e16bb0313538f603c361c71529928"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber2-O3-recovered.wasm",
+      "sha256": "388700a74343273a4602228664a144ba811b3b9bac017ea60fca5cd7ef0e6dd1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber2-raw-recovered-O3.wasm",
+      "sha256": "cf554b5e21ebf2088445401ee1d20154e3ab201f4ec64f51ca66d3a43bf55dd4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\fiber2-raw-recovered.wasm",
+      "sha256": "12d97940ae64b5d4ce6fcb4b50b796b6661f4969d439bc184d07650faa45b871"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\linear-O3-recovered-O3.wasm",
+      "sha256": "bbbe8e5d8519f23bcf816234f05defe3787e16bb0313538f603c361c71529928"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\linear-O3-recovered.wasm",
+      "sha256": "388700a74343273a4602228664a144ba811b3b9bac017ea60fca5cd7ef0e6dd1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\linear-raw-recovered-O3.wasm",
+      "sha256": "cf554b5e21ebf2088445401ee1d20154e3ab201f4ec64f51ca66d3a43bf55dd4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\linear-raw-recovered.wasm",
+      "sha256": "12d97940ae64b5d4ce6fcb4b50b796b6661f4969d439bc184d07650faa45b871"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\plain-O3-recovered-O3.wasm",
+      "sha256": "ea8770b2f93fb0b3763022073034e65cc2fb5f18b81257ec25154ab717b47cb2"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\plain-O3-recovered.wasm",
+      "sha256": "4d77ad612383d789505e80486b9339fee46c5fd211f8d69c0655f038ab7683d0"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\plain-raw-recovered-O3.wasm",
+      "sha256": "4f03ec0a206df390071aeb8e95689badf468a0899940bb007ce4a2f4c06f0d14"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\plain-raw-recovered.wasm",
+      "sha256": "305e3b1bb89682be5380d94d4e414be22843fb0ec032b30cf1e254e49ab05474"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\recovery.json",
+      "sha256": "96fed01019a02e1a5b070b162c121d10d125dc1d8835c8a1ff52dcf9c1a4f941"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\repair1-O3-recovered-O3.wasm",
+      "sha256": "bbbe8e5d8519f23bcf816234f05defe3787e16bb0313538f603c361c71529928"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\repair1-O3-recovered.wasm",
+      "sha256": "388700a74343273a4602228664a144ba811b3b9bac017ea60fca5cd7ef0e6dd1"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\repair1-raw-recovered-O3.wasm",
+      "sha256": "cf554b5e21ebf2088445401ee1d20154e3ab201f4ec64f51ca66d3a43bf55dd4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\repair1-raw-recovered.wasm",
+      "sha256": "12d97940ae64b5d4ce6fcb4b50b796b6661f4969d439bc184d07650faa45b871"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-recovery-v1\\targets.json",
+      "sha256": "b301f8564f23ee42f5b325658d8a02d7c3d0f4d49734ad4c11a1a6a1bafd9ce3"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\fiber1-O3-0.json",
+      "sha256": "c6de969e22725a86d56f1d866b749c9c41780b7fcaf3cf2346fdda06adf2b569"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\fiber1-O3-1.json",
+      "sha256": "0ff6e0e2e7a917baccd730248de1e5e65ff4c8a7b04177d58a7a15218585a505"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\fiber1-O3-2.json",
+      "sha256": "a73af2ddf20b78acfb0d87921df389fd3200aefd552e4e5f261d49185c138e04"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\fiber1-O3-bench.wasm",
+      "sha256": "79753aaea63a2ca1e928ccecffa96a06d436a3e0ff89610482367fb1419ce9a3"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\fiber2-O3-0.json",
+      "sha256": "d7d4b70645cab0bdf011206940a84e8d7b42b687ad43478d73d9eb4a425eddf7"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\fiber2-O3-1.json",
+      "sha256": "9b87870dd94986a3e15fbc86b2689be2b7bd5c19ee2019ddccf6b3b965e3d3bc"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\fiber2-O3-2.json",
+      "sha256": "1fe0bff1470e79ecbfca2a422588fb3f81d7b4aecce39b7fb0dff8876f4a971b"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\fiber2-O3-bench.wasm",
+      "sha256": "4ef8db3131e50fe5dc8438f80df0bea0401aad15a97e4915ef5629d3ad0f1abe"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\linear-O3-0.json",
+      "sha256": "2c374448f59f412c881b439a1e0f3b48f8268b5c947c2f5540cb1eac89b76c00"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\linear-O3-1.json",
+      "sha256": "aaea6086024e33f04fc72961f0248c624eb5b4bb57855db1429a495d80cc3121"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\linear-O3-2.json",
+      "sha256": "df4f235a14cb6a583404bd39efd7c7a39e2a482502a2870fce168783aa1c55f3"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\linear-O3-bench.wasm",
+      "sha256": "c419dcd9a66d394750beab7d1f676eb0227f66cff13879cdd248b3fb506a51c6"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\plain-O3-0.json",
+      "sha256": "12cd889da21b11c17d3f4faf18b8ef262945f16c5ba34e5dec1f853fa3d5e2d4"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\plain-O3-1.json",
+      "sha256": "4b127b04949dd35086f56e236c344c96c5c17a55568e7fd65a070c9b7acff465"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\plain-O3-2.json",
+      "sha256": "c43fba4f065491c01f48dbf44fb1d6ab76981957944395cf1b21dc9781330eeb"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\plain-O3-bench.wasm",
+      "sha256": "eec3ecd86ae40024a942cac1dbdd7e9f1513af1e2e972e24c215d38c1da64435"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\recovered-0.json",
+      "sha256": "337522d7f7c8250a9f98a387f0c9738c362e2690f2a1c80bec670493330369e7"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\recovered-1.json",
+      "sha256": "18411f48175751049f90227749b5e6b636beabc1bbc18253b504c1965e126c20"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\recovered-2.json",
+      "sha256": "c60dc92e6119a31b4febf2bc5f20ad08c16ca0b12adf72b39f441b7a2464cade"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\recovered-bench.wasm",
+      "sha256": "2dbb89353d8c058ea529982a2f649196d2f494b216da3fddd2d20e2648534e66"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\repair1-O3-0.json",
+      "sha256": "b7945649ceddc5b4aea37203c059e6349601549c42346ee04ecf0a51138a6cd2"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\repair1-O3-1.json",
+      "sha256": "3c73e8b095913174b8a49a64c14bf8cb6b39c412b3366d3db0dbb61622d53553"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\repair1-O3-2.json",
+      "sha256": "403c7889efd36d5ea06c49d2d28cee7faaf22ee09b005168a2a34df97a203580"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\repair1-O3-bench.wasm",
+      "sha256": "aab8815e1f2b19db9ed91337cd839ee8eb5de597212585c7652cdc9ed69247bd"
+    },
+    {
+      "file": "results\\invention-20261021\\copy-fiber-runtime-v1\\summary.json",
+      "sha256": "54c6ad6e27e28f80fd44f8abec2d7ca2545e0d146b339fc5bd6f3c464897dadc"
+    }
+  ],
+  "local_doc_links_checked": 13
+}

@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Users\ettotto\Documents\webassembly_obfuscation\experiments\settling-recovery\recover.py", line 168, in <module>
+    main()
+  File "C:\Users\ettotto\Documents\webassembly_obfuscation\experiments\settling-recovery\recover.py", line 153, in main
+    result, certificate = recognize(parser.parse_wat(disassembly))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ettotto\Documents\webassembly_obfuscation\experiments\settling-recovery\recover.py", line 137, in recognize
+    visit(dest)
+  File "C:\Users\ettotto\Documents\webassembly_obfuscation\experiments\settling-recovery\recover.py", line 131, in visit
+    t = nodes[dest]["cost"] + max([visit(d) if d in nodes else 0 for d in deps],default=0)
+                                   ^^^^^^^^
+  File "C:\Users\ettotto\Documents\webassembly_obfuscation\experiments\settling-recovery\recover.py", line 127, in visit
+    require(dest not in active, "cyclic recovered graph")
+  File "C:\Users\ettotto\Documents\webassembly_obfuscation\experiments\settling-recovery\recover.py", line 20, in require
+    raise ValueError(message)
+ValueError: cyclic recovered graph

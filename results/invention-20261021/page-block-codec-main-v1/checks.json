@@ -1,0 +1,410 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "seed": 211062,
+  "targets": 36,
+  "positiveTargets": 24,
+  "positiveCalls": 63856,
+  "positiveExpectedTraps": 24136,
+  "positiveMismatches": 0,
+  "negativeTargets": 12,
+  "negativeWithWitness": 8,
+  "rows": [
+    {
+      "file": "p0.plain.raw.wasm",
+      "negative": false,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.plain.O3.wasm",
+      "negative": false,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.lifted.raw.wasm",
+      "negative": false,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.lifted.O3.wasm",
+      "negative": false,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.byte.raw.wasm",
+      "negative": false,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.byte.O3.wasm",
+      "negative": false,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.block.raw.wasm",
+      "negative": false,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.block.O3.wasm",
+      "negative": false,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.bad-partial.raw.wasm",
+      "negative": true,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.bad-partial.O3.wasm",
+      "negative": true,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.bad-wrap.raw.wasm",
+      "negative": true,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p0.bad-wrap.O3.wasm",
+      "negative": true,
+      "calls": 2658,
+      "expectedTraps": 2658,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.plain.raw.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.plain.O3.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.lifted.raw.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.lifted.O3.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.byte.raw.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.byte.O3.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.block.raw.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.block.O3.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p1.bad-partial.raw.wasm",
+      "negative": true,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 2291,
+      "first": {
+        "name": "i32_st2",
+        "args": [
+          65535,
+          -1662678583
+        ],
+        "expected": {
+          "trap": true
+        },
+        "actual": {
+          "trap": true
+        },
+        "sameMemory": false
+      }
+    },
+    {
+      "file": "p1.bad-partial.O3.wasm",
+      "negative": true,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 2291,
+      "first": {
+        "name": "i32_st2",
+        "args": [
+          65535,
+          -1662678583
+        ],
+        "expected": {
+          "trap": true
+        },
+        "actual": {
+          "trap": true
+        },
+        "sameMemory": false
+      }
+    },
+    {
+      "file": "p1.bad-wrap.raw.wasm",
+      "negative": true,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 24,
+      "first": {
+        "name": "offset_store",
+        "args": [
+          4,
+          305419896
+        ],
+        "expected": {
+          "trap": true
+        },
+        "actual": {
+          "trap": false,
+          "value": null
+        },
+        "sameMemory": false
+      }
+    },
+    {
+      "file": "p1.bad-wrap.O3.wasm",
+      "negative": true,
+      "calls": 2662,
+      "expectedTraps": 201,
+      "mismatches": 24,
+      "first": {
+        "name": "offset_store",
+        "args": [
+          4,
+          305419896
+        ],
+        "expected": {
+          "trap": true
+        },
+        "actual": {
+          "trap": false,
+          "value": null
+        },
+        "sameMemory": false
+      }
+    },
+    {
+      "file": "p2.plain.raw.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p2.plain.O3.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p2.lifted.raw.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p2.lifted.O3.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p2.byte.raw.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p2.byte.O3.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p2.block.raw.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p2.block.O3.wasm",
+      "negative": false,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 0,
+      "first": null
+    },
+    {
+      "file": "p2.bad-partial.raw.wasm",
+      "negative": true,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 2277,
+      "first": {
+        "name": "i32_st2",
+        "args": [
+          131071,
+          712545760
+        ],
+        "expected": {
+          "trap": true
+        },
+        "actual": {
+          "trap": true
+        },
+        "sameMemory": false
+      }
+    },
+    {
+      "file": "p2.bad-partial.O3.wasm",
+      "negative": true,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 2277,
+      "first": {
+        "name": "i32_st2",
+        "args": [
+          131071,
+          712545760
+        ],
+        "expected": {
+          "trap": true
+        },
+        "actual": {
+          "trap": true
+        },
+        "sameMemory": false
+      }
+    },
+    {
+      "file": "p2.bad-wrap.raw.wasm",
+      "negative": true,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 24,
+      "first": {
+        "name": "offset_store",
+        "args": [
+          4,
+          305419896
+        ],
+        "expected": {
+          "trap": true
+        },
+        "actual": {
+          "trap": false,
+          "value": null
+        },
+        "sameMemory": false
+      }
+    },
+    {
+      "file": "p2.bad-wrap.O3.wasm",
+      "negative": true,
+      "calls": 2662,
+      "expectedTraps": 158,
+      "mismatches": 24,
+      "first": {
+        "name": "offset_store",
+        "args": [
+          4,
+          305419896
+        ],
+        "expected": {
+          "trap": true
+        },
+        "actual": {
+          "trap": false,
+          "value": null
+        },
+        "sameMemory": false
+      }
+    }
+  ]
+}

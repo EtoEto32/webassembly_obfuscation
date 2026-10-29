@@ -1,0 +1,306 @@
+{
+  "files": [
+    {
+      "binary": "mba-add.O2.wasm",
+      "input_sha256": "0c815b9da9c135414ffffd2d4d014af7d5a327eecde056f3274bba2d1d07b760",
+      "output_sha256": "3f93f85fe25b38c141e6980aff678cfee79eeb41f3182a6390360a0a206f54b4",
+      "bytes": 3271,
+      "rewrites": 1,
+      "changes": [
+        {
+          "input": "((v0^v1)+((v0&v1)<<1))",
+          "before": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.shl",
+              [
+                "i32.and",
+                [
+                  "local.get",
+                  "0"
+                ],
+                [
+                  "local.get",
+                  "1"
+                ]
+              ],
+              [
+                "i32.const",
+                "1"
+              ]
+            ]
+          ],
+          "after": [
+            "i32.add",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "binary": "mba-add.O3.wasm",
+      "input_sha256": "ef952444e9be1adf2edadd262a2721135e172af31b109a12f047807ad6b17994",
+      "output_sha256": "958a6e6cf5d0caaf53a0e715d0b62a364bae066c175a1cd21905d169470d186d",
+      "bytes": 7013,
+      "rewrites": 2,
+      "changes": [
+        {
+          "input": "((v0^v1)+((v0&v1)<<1))",
+          "before": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "9"
+              ]
+            ],
+            [
+              "i32.shl",
+              [
+                "i32.and",
+                [
+                  "local.get",
+                  "2"
+                ],
+                [
+                  "local.get",
+                  "9"
+                ]
+              ],
+              [
+                "i32.const",
+                "1"
+              ]
+            ]
+          ],
+          "after": [
+            "i32.add",
+            [
+              "local.get",
+              "2"
+            ],
+            [
+              "local.get",
+              "9"
+            ]
+          ]
+        },
+        {
+          "input": "((v0^v1)+((v0&v1)<<1))",
+          "before": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "7"
+              ]
+            ],
+            [
+              "i32.shl",
+              [
+                "i32.and",
+                [
+                  "local.get",
+                  "2"
+                ],
+                [
+                  "local.get",
+                  "7"
+                ]
+              ],
+              [
+                "i32.const",
+                "1"
+              ]
+            ]
+          ],
+          "after": [
+            "i32.add",
+            [
+              "local.get",
+              "2"
+            ],
+            [
+              "local.get",
+              "7"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "binary": "mba-add.raw.wasm",
+      "input_sha256": "edb844dd77706aedb5ae634c9b1e65b1b5e9604068f2575052631da17f2ef30e",
+      "output_sha256": "99abae00de7aaa6110ca98943833984afb614f52ec9b97527a2bbb22ee2ec0d7",
+      "bytes": 3299,
+      "rewrites": 2,
+      "changes": [
+        {
+          "input": "((v0^v1)+((v0&v1)<<1))",
+          "before": [
+            "i32.add",
+            [
+              "i32.xor",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.shl",
+              [
+                "i32.and",
+                [
+                  "local.get",
+                  "0"
+                ],
+                [
+                  "local.get",
+                  "1"
+                ]
+              ],
+              [
+                "i32.const",
+                "1"
+              ]
+            ]
+          ],
+          "after": [
+            "i32.add",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ]
+        },
+        {
+          "input": "(0+(v0<<2))",
+          "before": [
+            "i32.add",
+            [
+              "i32.const",
+              "0"
+            ],
+            [
+              "i32.shl",
+              [
+                "local.get",
+                "9"
+              ],
+              [
+                "i32.const",
+                "2"
+              ]
+            ]
+          ],
+          "after": [
+            "i32.mul",
+            [
+              "i32.const",
+              "4"
+            ],
+            [
+              "local.get",
+              "9"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "binary": "plain.O2.wasm",
+      "input_sha256": "bec2c076ba294eec746c2778fb256e17ead45f0f1fb58fbbc3bd74ecd31cb11e",
+      "output_sha256": "bec2c076ba294eec746c2778fb256e17ead45f0f1fb58fbbc3bd74ecd31cb11e",
+      "bytes": 3097,
+      "rewrites": 0,
+      "changes": []
+    },
+    {
+      "binary": "plain.O3.wasm",
+      "input_sha256": "1307d082c5b91539787183eb5db8606463fe262f883afc3be2a49c86cee6a6e9",
+      "output_sha256": "1307d082c5b91539787183eb5db8606463fe262f883afc3be2a49c86cee6a6e9",
+      "bytes": 4990,
+      "rewrites": 0,
+      "changes": []
+    },
+    {
+      "binary": "plain.raw.wasm",
+      "input_sha256": "a35c061ae6ae3e531ae7d77aedd6ad2c874660bb00db505475bf0afc6fff8e1f",
+      "output_sha256": "e03b6cbdcd894b4962b9ecb0bcfa25a749d1bb42a5641b9f9bce4c0b72b737d5",
+      "bytes": 3125,
+      "rewrites": 1,
+      "changes": [
+        {
+          "input": "(0+(v0<<2))",
+          "before": [
+            "i32.add",
+            [
+              "i32.const",
+              "0"
+            ],
+            [
+              "i32.shl",
+              [
+                "local.get",
+                "9"
+              ],
+              [
+                "i32.const",
+                "2"
+              ]
+            ]
+          ],
+          "after": [
+            "i32.mul",
+            [
+              "i32.const",
+              "4"
+            ],
+            [
+              "local.get",
+              "9"
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "script_sha256": "c57f2bc76f3d2ad25cdf687686d5ce8c220035aaefc246938179400857f66fab",
+  "plan_sha256": "cf7319d9e3c9c01cde5ac0db24534ec6051dcb10b3b789751ffc43458a51fee5"
+}

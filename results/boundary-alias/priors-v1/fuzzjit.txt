@@ -1,0 +1,1166 @@
+             FuzzJIT: Oracle-Enhanced Fuzzing
+             for JavaScript Engine JIT Compiler
+     Junjie Wang, College of Intelligence and Computing, Tianjin University;
+  Zhiyi Zhang, CodeSafe Team, Qi An Xin Group Corp.; Shuang Liu, College of
+Intelligence and Computing, Tianjin University; Xiaoning Du, Monash University;
+      Junjie Chen, College of Intelligence and Computing, Tianjin University
+     https://www.usenix.org/conference/usenixsecurity23/presentation/wang-junjie
+
+
+
+
+       This paper is included in the Proceedings of the
+             32nd USENIX Security Symposium.
+                    August 9–11, 2023 • Anaheim, CA, USA
+                                 978-1-939133-37-3
+
+
+
+
+                                         Open access to the Proceedings of the
+                                          32nd USENIX Security Symposium
+                                               is sponsored by USENIX.
+        FuzzJIT: Oracle-Enhanced Fuzzing for JavaScript Engine JIT Compiler
+
+                   Junjie Wang1* , Zhiyi Zhang2* , Shuang Liu1+ , Xiaoning Du3 , and Junjie Chen1
+                                  1 College of Intelligence and Computing, Tianjin University
+                                                2 CodeSafe Team, Qi An Xin Group Corp.
+                                                         3 Monash University
+
+
+
+
+                                                                           JavaScript                    Interpreter   Execution
+
+                                                                            Parser       Bytecode         Profiling
+                              Abstract                                                   Bytecode           JIT        Assembly
+                                                                             AST
+                                                                                         generator        compiler       code
+We present a novel fuzzing technique, FuzzJIT, for exposing
+JIT compiler bugs in JavaScript engines, based on our insight          Figure 1: The general workflow of JavaScript engines.
+that JIT compilers shall only speed up the execution but never
+change the execution result of JavaScript code. FuzzJIT can
+activate the JIT compiler for every test case and acutely cap-
+                                                                    a sufficient number of times. It comes to work on the fly,
+ture any execution discrepancy caused by JIT compilers. The
+                                                                    compiles the function into assembly code, and optimizes it to
+key to success is the design of an input wrapping template,
+                                                                    speed up the execution. Sometimes, the JIT compiler adopts
+which proactively activates the JIT compiler and makes the
+                                                                    a multi-tier design, where the compilation and optimization
+generated samples oracle-aware themselves and the oracle is
+                                                                    are promoted gradually, as with the increasing number of
+tested during execution spontaneously. We also design a set of
+                                                                    execution times.
+mutation strategies to emphasize program elements promising
+in revealing JIT compiler bugs. FuzzJIT drills to JIT compil-          The working mechanism of the JIT compiler, especially
+ers and at the same time retains the high efficiency of fuzzing.    the optimization component, is complicated. Hence, there
+We have implemented the design and applied the prototype            are unsurprisingly many errors in its implementation. Since
+to find new JIT compiler bugs in four mainstream JavaScript         JavaScript is a weak and dynamically typed language, a direct
+engines. In one month, ten, five, two, and 16 new bugs are ex-      compilation is not realistic as there are many points the type
+posed in JavaScriptCore, V8, SpiderMonkey, and ChakraCore,          of a variable is ambiguous. The JIT compiler does not pro-
+respectively, with three demonstrated exploitable.                  duce a complete compilation of JavaScript code, but sticks to
+                                                                    the variable types mostly observed historically according to
+                                                                    the runtime profiling information collected by the interpreter.
+1    Introduction                                                   For correctness, the compiled outcome has to be guarded by
+                                                                    type checks, and only be used on type compliance. Based on
+Due to the intrinsic complexity of executing Turing-complete        the compilation, the optimizer intends to reduce the number
+languages, JavaScript engines become a security weakness of         of instructions required to complete functionality. Commonly
+browsers and are revealed as containing a majority of browser       used optimizations include control flow graph simplification,
+vulnerabilities [39]. JavaScript engines are responsible for        common subexpression elimination, and dead code elimina-
+parsing, interpreting, compiling, and executing JavaScript          tion [10]. Usually, rigorous control and data flow analyses are
+code, and their basic workflow is shown in Figure 1. The            required to eliminate unnecessary codes and checks safely.
+parser and the bytecode generator work in the pipeline to trans-    The consequences become serious when some essential secu-
+form the JavaScript code into Abstract Syntax Tree (AST) and        rity checks are removed incorrectly.
+then the bytecode. The bytecode can be executed directly by            JIT compilers shall only speed up the execution; any
+the interpreter or compiled by the JIT compiler. The JIT com-       changes caused to the execution logic or execution results of
+piler is an opt-in module that can be activated when certain        JavaScript code manifest JIT compiler bugs. Like logic bugs,
+JavaScript code or function becomes hot, i.e., being invoked        many JIT compiler bugs do not lead to a program crash, thus
+    ∗ These authors contributed equally to this work.               they can be easily missed by fuzzers using crashes as the only
+    + Corresponding author, shuang.liu@tju.edu.cn                   oracle, yet these silent bugs still provide substantial exploita-
+
+
+
+USENIX Association                                                                      32nd USENIX Security Symposium             1865
+tion primitives. For example, the off-by-one bug [29] in the         compared with other baselines.
+V8 JIT compiler is exploited to execute code remotely without          To summarize, our main contributions include:
+triggering any crash. More details are discussed in Section 2.3.       • An understanding of common root causes of JIT bugs
+Besides enhancing the test oracle, to automatically uncover              by studying a large JIT bug corpus.
+JIT compiler bugs with fuzzing, we must generate test cases            • An advantageous test case wrapping technique to trigger
+that can pass both the syntax and semantic checking, get ex-             JIT compilation.
+ecuted, activate the JIT compiler, and intentionally reveal            • Test case generation strategies favoring program ele-
+bugs there. As far as we know, the only preliminary attempt              ments related to the root causes of JIT bugs.
+to fuzz the JIT compiler was from a researcher at Mozilla              • A novel technique to specifically detect both non-
+Security, who extended Jsfunfuzz [28], a generation based                crashing as well as crashing JIT compiler bugs for
+fuzzer guided by grammar rules, with a module to examine                 JavaScript engines.
+the printouts of a test case when executed with/without JIT            • A prototype implementation of our approach, FuzzJIT,
+activated in 2008 [27]. It was applied to fuzz Spidermonkey,             is made publicly accessible at https://github.com/S
+Mozilla’s JavaScript engine, whose JIT activation is designed            paceNaN/fuzzjit.
+to be controlled with a pre-defined parameter, and detected            • An evaluation of mainstream JavaScript engines, where
+13 JIT bugs at that time. However, it lacks a general JIT com-           FuzzJIT exposes 33 new bugs in JIT compilers and
+pilation triggering mechanism, and the coarse comparison                 shows better performance and bug-finding capability
+on program final states would make many bugs uncaught.                   than state-of-the-art fuzzers.
+Moreover, the randomly generated test cases are restricted to
+a limited search space defined by grammar rules and probabil-
+ity and fail to exercise the JIT compiler thoroughly. Recently,      2     Preliminary
+some advances have been made in generating syntactically
+and semantically valid samples, via applying mutations to the        2.1    JIT speculative compilation
+AST representation [1, 14, 17, 37], a type-enriched AST repre-       Traditional compilers trade compilation time for producing
+sentation [12, 23], or a new intermediate representation [9],        assembly code that executes fast at run time. For dynamically
+which supports semantic mutations over control flow and data         typed languages, such as JavaScript, high-performance compi-
+flow, while keeping the semantic validity. However, none of          lation technologies cannot be directly applied due to the lack
+these advances is specifically designed to test JIT compil-          of type information, which guides the compiler to emit assem-
+ers, leaving them thinly activated and tested for a long time.       bly code for instructions and allocate registers for inputs and
+Therefore, a systematically-designed effective fuzzing tool          outputs. In the performance war, browsers compete to develop
+specifically for testing JIT compilers is yet to devise.             faster JavaScript engines, and speculative compilation [25]
+   In this work, we propose FuzzJIT, a JIT compiler fuzzing          comes into play to make dynamic languages run faster.
+technique, which is enhanced by a more precise test oracle              Speculative compilers leverage the insights that, during
+that a piece of JavaScript code should produce consistent            a particular execution, if a statement is executed with its
+execution results before and after the JIT compilation, oth-         operands being certain types many times, it is highly likely
+erwise an error is brought by the JIT compiler. FuzzJIT is           that it will be executed with the same types more times in the
+featured to proactively activate the JIT compiler, purpose-          future. Hence, it is worth compiling the statement into a more
+fully generate promising inputs that may fail the JIT compiler,      efficient assembly code conditioned by the type information
+and acutely capture those hidden and non-crashing JIT com-           to speed up the execution. We also say that the assembly
+piler bugs along with crashing bugs. The key to success is           code is guarded by the speculation guard. Afterward, when
+the design of an input wrapping template, which makes the            the statement is executed again, the JavaScript engine will
+generated samples themselves JIT-compiler-activating and             locate the assembly code and check if the runtime type of
+oracle-aware, and more importantly, the oracle is tested dur-        the operands matches with the speculation guard, and execute
+ing execution spontaneously. Besides, we heuristically iden-         the assembly code in compliance. In case of a mismatch, the
+tify five types of error-prone program elements for the JIT          engine will roll back to the interpreter or a lower level JIT
+compiler to deal with, and emphasize incorporating them into         compiler for execution, also called a bailout. Intuitively, the
+the generated test cases. As a result, FuzzJIT is able to drill to   speculative compilation provides fast passes for frequently
+JIT compilers, unleash its power there, and, at the same time,       seen input types.
+retain the high efficiency of fuzzing. We evaluate FuzzJIT on           Generating compilation for types a statement more fre-
+four mainstream JavaScript engines, and compare it with four         quently executed tends to bring larger improvement on the
+state-of-the-art fuzzers. FuzzJIT stands out in detecting JIT        execution efficiency. To identify these types, when starting ex-
+compiler bugs, with ten, five, two, and 16 new bugs exposed          ecuting the JavaScript code, the interpreter is also responsible
+in JavaScriptCore, V8, SpiderMonkey, and ChakraCore, re-             for collecting the runtime profiling information of variables,
+spectively. It also maintains higher coverage and throughput         e.g., the shape of objects, the type of variables and their val-
+
+
+
+1866    32nd USENIX Security Symposium                                                                        USENIX Association
+ 1 function add (a , b){                1 add (a , b) :                         2.2    JIT optimization
+ 2     return a + b;                    2     if ( isInt32 (a) ) :
+ 3 }                                    3           if ( isInt32 (b)) :         Based on the speculative compilation, a number of optimiza-
+                                        4                 Int32Add(a,b) ;
+                                        5           else if (isNumber(b)):      tions [25] can be conducted to improve the execution effi-
+(a) A simple add operation of 6                           ConvertToDouble(a);   ciency further. Due to the implementation complexity, these
+                                        7                 DoubleAdd(a,b);
+two variables.                          8           else : Bailout              three optimizations – bounds-check elimination, redundancy
+                                        9     else if (isNumber(a)):            elimination, and common subexpression elimination – be-
+ 1 add (a , b) :                       10           if ( isInt32 (b)) :
+ 2     speculateGuard( isInt32 (a) ) ; 11                 ConvertToDouble(b);   come the principal epicenter of browser vulnerabilities today,
+ 3     speculateGuard( isInt32 (b)) ;  12                 DoubleAdd(a,b);       both in quantity and quality [10].
+ 4     Int32Add(a,b) ;                 13           else if (isNumber(b)):
+ 5                                     14                 DoubleAdd(a,b);       Bounds-check elimination. The JavaScript engine applies
+ 6 speculateGuard( condition ) :       15           else : Bailout
+                                                                                bounds checks for array indexing operations, during either
+ 7     if (! condition ) : Bailout     16      ...
+                                                                                interpretation or compilation. Bounds-check elimination aims
+                                                                                to identify and remove unnecessary ones. The key idea is to
+(b) The execution logic with (c) The execution logic with in-
+speculative compilation.     terpreter.
+                                                                                perform value range analysis [13] on integer variables indi-
+                                                                                cating indices or array lengths and determine their ranges.
+    Figure 2: The add operation and its execution logic.                        If the index is always within the bounds of the array size,
+                                                                                the checking can be safely removed to reduce the number of
+                                                                                instructions to execute. Bugs occur if the range of the index
+                                                                                is underestimated or the range of array size is overestimated.
+                                                                                Bounds checks could be wrongly eliminated due to such bugs,
+ues. Once a function or part of its function body is executed                   and lead to security threats. JIT compiler vulnerabilities un-
+sufficient times (according to the threshold set by the JIT                     der this category include CVE-2015-0817, CVE-2015-2712,
+compiler), the engine will start the JIT compilation and opti-                  CVE-2017-2547, CVE-2017-0234, CVE-2018-0769, and the
+mization for this function based on the frequently seen types                   String.lastIndexOf off-by-one bug [29].
+for type sensitive statements. It is worth noting that the pro-                 Redundancy elimination. Redundancy elimination is to re-
+filed value and type information is also indispensable during                   move duplicate security guards, e.g., type validation, on a
+the JIT optimization.                                                           particular control flow graph path and only keep the first one.
+                                                                                It is safe to do when the side effects of operations between
+   Now we demonstrate the speculative compilation with a
+                                                                                the kept guard and the removed guards are precisely cap-
+tiny example. Figure 2a shows a JavaScript add operation
+                                                                                tured, and manifested to be free. In other words, the variables
+of two variables, without any type indication. The logic by
+                                                                                in security guards are never modified by operations in be-
+the JavaScript engine to deal with the add operation with and
+                                                                                tween. Precise modeling of side effects is tricky to achieve,
+without speculative compilation is illustrated in Figure 2b and
+                                                                                for example, stealthy side effects can be deliberately caused
+Figure 2c, respectively. To ease presentation, we conceptually
+                                                                                during a function call. Bugs occur when an operation is as-
+name a fragment of bytecode implementing certain functional-
+                                                                                sumed to be side-effect-free but it is not. CVE-2018-4233
+ity as an operation, such as Int32Add and isInt32. Without
+                                                                                and CVE-2017-11802 are typical vulnerabilities caused by
+speculative compilation, the JavaScript interpreter has to con-
+                                                                                inappropriate redundancy elimination.
+sider different scenarios where a and b are of various runtime
+                                                                                Common subexpression elimination. Common subexpres-
+types, since the add operation is type sensitive. It might be an
+                                                                                sion elimination shares a similar spirit as redundancy elimina-
+integer addition, a double addition, a string concatenation, or
+                                                                                tion, but aims to avoid calculating the same expression more
+arbitrary user-defined effects as JavaScript allows rewriting
+                                                                                than once. It keeps just the first and replaces the rest with a
+an inherited function. As a result, the interpreter generates ex-
+                                                                                direct copy. Again, this is safe to do only when the operations
+pensive control flow logic to handle different cases, as shown
+                                                                                in between are side-effect-free on expression variables. Note
+in Figure 2c. However, if we observe that the operation is
+                                                                                that eliminating an expression also abandons its accompanied
+frequently executed with two integers during an execution, a
+                                                                                security checks, if any. CVE-2020-9802 and CVE-2020-9983
+shortcut to execute integer addition can be created. By trans-
+                                                                                are instances where incorrect common subexpression elimina-
+forming the code into the speculative compilation as shown
+                                                                                tion leads to the removal of essential integer overflow checks
+in Figure 2b, the number of instructions to execute is greatly
+                                                                                and further causes out-of-bound access.
+reduced. It starts by validating the variable types at runtime
+against the speculation guard. The speculateGuard oper-
+ation mainly contains a conditional jump to the interpreter                     2.3    Security implication
+or a lower level JIT compiler in case the condition does not
+hold. If a and b are indeed integers, a fast pass specialized                   JIT compiler bugs are more exploitable than bugs in the parser
+for integer addition is taken. Otherwise, the JavaScript engine                 and the interpreter. To make successful exploitation, an essen-
+discards the compiled code and bailouts.                                        tial step is to prepare the memory layout with desired contents
+
+
+
+USENIX Association                                                                                32nd USENIX Security Symposium         1867
+Table 1: The vulnerabilities exploited in the past three years                           1   function opt () {
+in Pwn2Own.                                                                              2       var maxLen = 268435440; // equals to String :: KMaxLength
+                                                                                         3       var s = "A". repeat (maxLen);
+                                                                                         4       var i = s . lastIndexOf ("") ;
+ Year        Safari             Chrome               Edge              Firefox           5        // Compiler: i=Range(−1, maxLen−1), Reality: i=Range(−1, maxLen)
+                         ⊗                   □                   □
+                                                                                         6       i += 1;
+ 2021 CVE-2021-30734 CVE-2021-21220 CVE-2021-21220      NA∇                              7        // Compiler: i=Range(0, maxLen), Reality : i=Range(0, maxLen+1)
+ 2020 CVE-2020-9850□      NA∇            NA∇            NA∇                              8       var buf = new Uint8Array(maxLen + 1);
+      CVE-2019-6216□                           ▲                                         9        return buf[ i ];
+ 2019                     NA ∇
+                                      Unknown      CVE-2019-9813□
+      CVE-2019-6217□                                                                    10        // Compiler: Bounds−check removed, Reality: Out−of−bounds access
+ ⊗
+   The bug is located in an add-on module, WebAssembly [40], of JavaScriptCore.
+                                                                                        11   }
+ ▲
+   Unknown means the demonstration is successful but the details of the bug are
+                                                                                        12   print (opt () ) ; // undefined
+   unknown to the authors of this paper.
+                                                                                        13   %OptimizeFunctionOnNextCall(opt);
+ □
+   The bug is located in the JIT compiler of the corresponding JavaScript engine.
+                                                                                        14   print (opt () ) ; // out−of−bounds access
+ ∇
+   NA means the target is not successfully exploited or no one challenges the target.
+                                                                                                    (a) The PoC causing the out-of-bounds access.
+                                                                                        1 case kStringIndexOf :
+                                                                                        2 case kStringLastIndexOf :
+                                                                                        3     return Range(−1.0, String :: KMaxLength - 1.0);
+
+
+                                                                                                    (b) The implementation root cause in typer.cc.
+
+                                                                                             Figure 4: The String.lastIndexOf off-by-one bug in V8.
+
+
+                                                                                        past three years of Pwn2Own. Among the eight successful
+                                                                                        demonstrations, six of them exploit five vulnerabilities in JIT
+                                                                                        compilers to obtain remote code execution permission. We
+Figure 3: The number of bugs discovered respectively in                                 also study the JavaScript engine bugs reported by Google
+parser/interpreter and in JIT compiler in recent years.                                 Project Zero [8] from 2016 to 2021 (following the identical
+                                                                                        setups as in [23]), and plot the number of bugs located in
+                                                                                        the parser/interpreter and the JIT compiler, respectively, in
+at proper addresses via memory allocation and deallocation.                             Figure 3. Obviously, more attention and efforts have been put
+Afterward, when there are any memory corruption errors,                                 into discovering the JIT compiler bugs in recent years, and
+e.g., buffer overflow or use-after-free, the prepared memory                            the number of them is around four times that of the parser/in-
+contents might be accidentally read or executed by another                              terpreter bugs during the past four years.
+process, whose execution will be affected or hijacked. When
+it comes to the exploitation of JavaScript engine bugs, craft-
+ing memory layout becomes more practical if the bugs are                                3     Motivation
+triggered after the JavaScript code has been put into execution
+(i.e., at the interpreting or JIT compilation stage). We can con-                       JIT compiler bugs can exist in the speculative compiler or the
+veniently create variable allocation/deallocation statements in                         optimizer. They tend to cause extremely subtle errors at the
+the JavaScript code and they get easily executed before reach-                          beginning and require the JIT compiler to be activated and
+ing the bug point. However, this is not possible for parser                             sometimes the fulfillment of pre-conditions on applying the
+bugs. On the other hand, interpreter bugs are also tricky to                            specific defective optimization. They often do not crash the
+exploit due to the intensive security checks on the validity of                         JavaScript engine and thus can be easily missed by fuzzers
+operations, such as boundary and type checking. However,                                using crash as the only oracle. However, neglecting these
+for the sake of execution efficiency, some of these checks will                         errors will leave JavaScript engines in danger, as they could
+be eliminated by the JIT optimizer, leaving it a security hole                          be exploited and even take control of the engines. In the next,
+and thus more exploitable.                                                              we show how a bounds-check elimination bug in V8 [29]
+   JIT compiler bugs are also popularly exploited to ob-                                can propagate into a more observable and threatening out-of-
+tain remote code execution in security competitions, such                               bounds access bug.
+as Pwn2Own1 and Tianfu Cup2 , and the wild. Table 1 lists all                              The PoC causing this bug is shown in Figure 4a. The func-
+vulnerabilities exploited to control browser targets during the                         tion opt is executed twice, one before the JIT compiler is
+                                                                                        activated and one after. The line of optimization interest is
+     1 Pwn2Own is a hacking contest held annually at the CanSecWest security
+                                                                                        line 9 where an indexing operation is on the array buf. For se-
+conference. Contestants are challenged to exploit widely-used software with
+previously unknown vulnerabilities.
+                                                                                        curity reasons, the JavaScript interpreter will check the bounds
+     2 Tianfu Cup international PWN contest is China’s “Pwn2Own”, where                 during interpretation. When the JIT compiler gets activated, it
+all teams are required to use original vulnerabilities to hack the given subject.       tests whether it is safe to skip the checking by calculating the
+
+
+
+1868      32nd USENIX Security Symposium                                                                                                   USENIX Association
+                                                 Figure 5: The workflow of FuzzJIT.
+
+
+range of i and comparing it with the size of buf. The value          agate and gradually bubble out as observable bugs or even
+range analysis follows the data flow of i and updates the            crash. In this example, to make this out-of-bounds access hap-
+ranges for each calculation operation modifying it. We high-         pen, the length of s and buf, the calling to the lastIndexOf,
+light the value range of i after each statement execution with       as well as its parameters, and the skew adjustment to i at
+code comments and report the true range and that calculated          line 6 must be presented exactly this way. Note that even
+by the JIT compiler.                                                 out-of-bounds accesses does not necessarily cause any crash.
+    We can see that i is initialized at line 4 by calling the        Hence, a more effective fuzzing approach to detecting JIT
+lastIndexOf(toSearch) of the String object. It returns               compiler bugs, particularly those not triggering crashes, is of
+the index of the last occurrence of the string toSearch, or          demanding need.
+-1 if not found. Here it searches for the empty string over
+s, which is the longest string permitted in JavaScript and           4     Approach
+filled with the character “A”. When searching for the empty
+string, it will match at the index of maxLen, since all strings in   To uncover JIT compiler bugs during fuzzing, three challenges
+JavaScript end up with an empty string by definition. It means,      have to be overcome when designing the approach: to guar-
+theoretically, the return value of any call to lastIndexOf           antee that the generated samples evoke the JIT compiler, to
+ranges from -1 to String::KMaxLength. However, the                   enlarge the possibility to reveal bugs there, and, once triggered,
+value range analysis in the JIT compiler has mistakenly              to capture the bugs precisely without missing non-crashing
+estimated the upper bound as String::KMaxLength-1, as                bugs and with low false alarms. Overall, we aim to enhance
+shown in Figure 4b. To exploit this bug, i is initialized to         the semantics of generated samples to be more relevant to JIT
+be String::KMaxLength such that it escapes from the com-             compilers and the sensitivity of fuzzing tools to JIT compiler
+piler’s expectation. After adding 1 at line 6, the estimated         errors. In the next, we first overview our approach and then
+range of i becomes [0, maxLen], and indexing an array of             present the mitigation to these three challenges in Section 4.2,
+length maxLen+1 with i is considered always safe. Hence, it          Section 4.3, and Section 4.4, respectively.
+becomes optimizable and the compiler removes the bounds-
+check. However, the actual value of i becomes maxLen+1
+after the addition and using it to index an array of maxLen+1        4.1    Overview
+incurs out-of-bound access.                                          FuzzJIT is the first systematically-designed fuzzing tool to
+   This bug motivates us from two aspects. First, being more         trigger JIT compilers, reveal and capture bugs there, and it
+exploitable, JIT compiler bugs are extraordinarily threatening,      is devised to fulfill all above mentioned desired properties.
+and detecting them before they get exploited in the wild is          The key to success is a test case template, containing three
+of significant importance. Second, JIT compiler bugs can be          major components – a JavaScript code snippet for general
+easily missed by current fuzzing approaches using crash as           testing purposes, a JIT compiler trigger, and an oracle-aware
+the only oracle. Just like the String.lastIndexOf off-by-            verifier based on execution consistency. With this template,
+one bug, they usually manifest as really subtle errors in the        we can automatically enclose any JavaScript test case with the
+beginning, and require a delicate design to make them prop-          trigger and its verifier and use it to test JIT compilers. A such
+
+
+
+USENIX Association                                                                      32nd USENIX Security Symposium           1869
+ 1   function deepEquals(r1 , r2){ {                                         Along with the typical fuzzing steps, it features the code
+ 2         if ( classOf (r1) !== classOf (r2) ) return false ;               wrapping stage following the mutation. FuzzJIT specializes
+ 3          ...
+ 4   }                                                                       the mutation module to favor elements of JIT compilation
+ 5   function opt(param) {                                                   interest, and the details are presented in Section 4.3. Then, the
+ 6         var v0 = [0, 1.0, −1, "a" , []];
+ 7         var v1 = new Float32Array(63895);                                 sample is wrapped with a carefully designed code template
+ 8          ...                                                              to trigger JIT compiler execution and capture non-crash JIT
+ 9         if (param){
+10               v0 = {x:0x1234, toString :v1};                              bugs, and at the same time, eliminate false positives caused
+11                ...                                                        by intrinsic randomness of the sample itself; the details are
+12         }
+13         v0[1] = v1;                                                       introduced in Section 4.2. Afterward, when executing the
+14          ...                                                              wrapped test case, the JIT compiler will be automatically
+15         return [v0, v1, ...];
+16   }                                                                       triggered and tested with the enhanced oracle. An alarm emits
+17   var precheck1 = opt( true ) ;                                           whenever there is a crash or an execution inconsistency. Last,
+18   for ( var i=0; i<5; i++) opt( false ) ;
+19   var precheck2 = opt( true ) ;                                           regardless of whether an alarm is triggered or not, samples
+20   if ( deepEquals( precheck1, precheck2 ) ){                              triggering new code coverage will be trimmed and saved into
+21         var r1 = opt( true ) ;
+22         for ( var i=0; i<N; i++){ // triggers JIT compiler                the corpus for the next round of fuzzing. The delicate design
+23               opt( false ) ;                                              of wrapping JIT compiler activation and oracle examination
+24         }
+25         var r2 = opt( true ) ;                                            to the JavaScript test case makes it a standalone module and
+26         if (! deepEquals(r1 , r2) ){                                      can be easily added to any basic host fuzzer.
+27               Crash() ;
+28         }
+29   }
+                                                                             4.2    Triggering JIT compiler
+Figure 6: A test generated with the input template of FuzzJIT.               The triggering condition of different JavaScript engines dif-
+                                                                             fers slightly. Here, we look into four mainstream JavaScript
+                                                                             engines, JavaScriptCore, V8, SpiderMonkey, and ChakraCore,
+generated test case is illustrated in Figure 6, where the initial            which are widely adopted by end users and apply JIT com-
+JavaScript test code includes lines 6 to 14 and apparently                   pilation intensively to pursue faster execution speed. Their
+will not evoke the JIT compiler when fed into the JavaScript                 architectures are shown in Figure 7. Each engine consists of
+engine directly. In the next, we explain how it is wrapped to                a parser, an interpreter, and one or more JIT compiler tiers.
+trigger the JIT compiler and accurately verify the execution                 When there are multiple tiers of JIT compilers, they will be ac-
+consistency based on the oracle itself.                                      tivated progressively as the code gets hotter and hotter. Each
+    To facilitate the multi-time invocations for JIT compiler                tier is associated with a specific execution count thresholding
+activation, we wrap the code snippet into a function, named                  the activation; latter tiers tend to have a higher threshold than
+opt3 , as shown in line 5. Its argument is specifically designed             former tiers and produce assembly code with deeper compi-
+to test the security guard verification mechanism and will be                lation and optimization. There are a bunch of optimization
+elaborated on in Section 4.3. Its return value is for detecting              methods in each tier and they will be optionally activated and
+non-crashing bugs and will be described later. The function                  interleaved based on the profiling information when the JIT
+is explicitly called for N times with a for loop structure at                tier gets triggered. Bugs can exist in any tier and a holistic
+lines 22 to 24 to trigger JIT compilation. Here N can be                     testing approach should be able to drill into each.
+customized to any value according to the activation threshold                    The activation thresholds for each JIT compiler tier in dif-
+of a particular JIT compiler.                                                ferent engines are usually configurable. It is worth mentioning
+    To facilitate the observation of the final state of the func-            that the thresholds cannot be set too small as some optimiza-
+tion after execution, opt returns an array of variables that are             tions require a least number of execution times to be wit-
+modified by the code. Later, a deep comparison is conducted                  nessed when making decisions. Too small thresholds may
+to check whether the final execution states reached before and               lead to false positives that cannot be reproduced under the
+after the JIT compilation are identical. We report finding a JIT             engine’s default settings; larger ones sacrifice more testing
+compiler bug on the sighting of a discrepancy. In the template,              efficiency. Next, we report the original threshold settings of
+opt is executed without the JIT compiler at line 21, and later               each engine, and how they are reconfigured, based on trial
+it is executed again at line 25 after the JIT compiler gets acti-            and error and some industry experience. The configurations
+vated and works to compile (and optimize) the assembly code                  work well in our experiments and cause no false positives.
+during lines 22 to 24. More details about the bug capturing                      In JavaScriptCore, there are three tiers of JIT compilers.
+design can be found in Section 4.4.                                          The baseline JIT compiler and the DFG (Data Flow Graph)
+    The overall workflow of FuzzJIT is presented in Figure 5.                JIT compiler get activated to compile and optimize a function
+                                                                             if it is called more than 6 and 66 times, respectively. The FTL
+     3 We consistently call the wrapper function opt throughout the paper.   (Faster Than Light) JIT compiler starts to compile if any func-
+
+
+
+1870       32nd USENIX Security Symposium                                                                              USENIX Association
+                  Parser   Interpreter                JIT Compiler
+                                                                               program elements and structures for fuzzing three of the most
+                           Low-Level      Baseline
+ JavaScriptCore   Parser   Interpreter      JIT        DFG JIT       FTL JIT   popular bug residences, i.e., bounds-check elimination, redun-
+                                                                               dancy elimination, and common subexpression elimination.
+            V8    Parser    Ignition     Turbofan                              We propose five heuristic mutation strategies regarding arrays,
+                                           JIT                                 objects, subexpressions, interesting numbers, and conditioned
+ SpiderMonkey     Parser   Interpreter   Compiler                              variable reassignments, as they are the major targets being
+    ChakraCore    Parser   Interpreter   Simple JIT     Full JIT
+                                                                               analyzed during these three types of eliminations.
+                                                                                  To confirm the association, especially for arrays, objects,
+    Figure 7: The architecture of four JavaScript engines.                     and interesting numbers, we conduct a small empirical study
+                                                                               on known JIT bugs and their exploits. We collected 164 dis-
+                                                                               tinct JIT compiler bugs along with their PoCs from the Google
+tion runs for more than ten milliseconds on a modern CPU.                      Project Zero bug report list [8] and a GitHub repository on
+We uniformly customize the thresholds as 10, 50, and 100 in-                   JavaScript engines CVEs [11], and manually analyzed the
+vocations to a function in our experiments. In SpiderMonkey,                   existence of these three types of elements. Two authors ana-
+the JIT compiler requires 1,000 times function invocations                     lyzed all 164 PoCs independently, discussed their discoveries
+to trigger, and we set it to 50. In ChakraCore, the Simple JIT                 and reached an agreement. Among the 164 bug PoCs, arrays
+and the Full JIT require, respectively, 25 and 20,000 times                    appear in 112 of them, objects appear in 115 of them, and 50
+iterations to trigger by default. We experimentally set them                   demand special numbers. It is worth mentioning that multiple
+as 10 and 100 times.                                                           factors might be required to trigger a bug.
+   When wrapping a test case to trigger the JIT compiler                          In the next, we elaborate on how the code generation strate-
+module with a single tier, the template in Figure 6 can be                     gies about each element are inspired and designed. Note that
+used directly. If there is more than one tier, the triggering                  the set of strategies could be extended to detect other JIT
+structure (similar to lines 21 to 28 in Figure 6) for each tier,               compiler bugs by analyzing their root causes.
+from former to latter, will be subsequently pipelined under                    Arrays. Bounds checks at array indexing operations get
+the true branch of the if statement at line 20. To ensure a                    wrongly eliminated if the index is mistakenly deemed al-
+JIT compiler tier is triggered with a 100% chance during                       ways within the array boundary. This happens when the
+fuzzing, the opt function will be called (more than) two times                 range of the index or the size of the array is estimated in-
+its threshold. That is to say, given a threshold of τ, the N at                correctly during range analysis. The range analysis is more
+line 22 in Figure 6 will be set to 2 ∗ τ.                                      likely to make mistakes in some corner cases, which could
+   The activation mechanism for the V8 Turbofan JIT com-                       be exercised by interesting numbers. The size of an array is
+piler differs from the other three. Instead of monitoring the                  affected by APIs conducting operations on it, thus it is impor-
+number of times a function gets invoked, it tries to pre-                      tant to model and propagate the effect of different APIs on the
+dict the benefits of optimizing a function by estimating the                   size range analysis. There are 12 typed arrays in JavaScript,
+amount of time spent executing its unoptimized version and                     including Int8Array, Uint8Array, Int16Array, etc. For each,
+guessing how many times it is to execute in the future [32].                   there are more than 24 APIs, such as Array.concat(),
+To facilitate testing, V8 provides a builtin native syntax                     Array.copy(), Array.reverse(), and some of them need
+to force the JIT compilation and optimization by calling                       complicated range calculations. For example, when analyz-
+%OptimizeFunctionOnNextCall on the function to com-                            ing the array concatenation operation, Array.concat(), the
+pile. Its maintenance team admits bugs found this way re-                      range addition should be performed correctly. Among the 164
+gardless of whether they can be reproduced under the original                  collected bugs, six including CVE-2014-3176, CVE-2016-
+activation setting. Hence, we set N to 1 when fuzzing V8 and                   1646, and CVE-2017-5030 are primarily caused by the incor-
+explicitly call %OptimizeFunctionOnNextCall(opt) right                         rect modeling of Array.concat().
+after the for loop at line 22.                                                 Objects. During redundancy elimination, a type check on a
+                                                                               variable will be removed when the variable type is deemed
+4.3     Revealing JIT compiler bugs                                            never changed since its last type check. However, modifica-
+                                                                               tions of variable types can be conducted in an extremely
+To make the fuzzing process more effective and expose more                     stealthy way, especially for JavaScript objects, which are
+bugs, we aim to generate test cases that can substantially                     the main contributor to type confusion bugs. The type of
+challenge the JIT compiler on its correctness of compilation                   JavaScript objects is decided by the number and types of
+and optimization. Necessary speculation guards are expected                    their properties. Adding, deleting, or altering the properties
+to be generated for sensitive operations correctly, and not                    of an object will change its type. JavaScript allows all object
+eliminated inappropriately during optimization. Depending                      properties to be altered, even the magical properties, such
+on the error types, targeted input mutation and generation                     as __proto__, constructor and prototype. Altering these
+strategies should be developed. Here we discuss bug-leading                    magical properties allows one to overwrite or pollute the pro-
+
+
+
+USENIX Association                                                                               32nd USENIX Security Symposium         1871
+totype of its base object. If the base object is also inherited    removed and opt is called with the alteration on (see line 25),
+by other objects, the pollution will be propagated through         the indexing operation over an object will cause a type confu-
+the prototype chain. With such stealthy means to modify ob-        sion bug. Otherwise, the type check fails and the JIT compiler
+ject types, the type verification algorithm can easily make        should bailout to the lower-level compiler or interpreter for
+mistakes.                                                          safer processing.
+Subexpressions. The existence of common subexpressions             Controlling syntax complexity. When generating the opt
+is a must for exercising common subexpression elimination          function body during mutation, we favor the generation
+optimization. However, this can hardly or only sparsely be         of variable declaration and assignment statements, and the
+achieved during random mutation. Here, we intentionally            JavaScript builtin API call statements associated with various
+make some subexpressions recurring in a test sample, and           data types. In particular, we increase the chance of generating
+try to make them complicated by mixing different operations,       arrays and their related builtin API calls, and generating ob-
+such as multiplication, division, power, root, and so on. By       jects and their type alteration operations. To make recurring
+interspersing these subexpressions at different locations of the   subexpressions, we maintain a pool of existing subexpres-
+program, we challenge the JIT compiler on analyzing the side-      sions and allow them to be inserted repeatedly during muta-
+effect of operations between any two common subexpressions.        tion. Also, we extract a set of interesting numbers from the
+If the valuation of the latter subexpression is altered under      164 collected PoCs and let the fuzzer choose from it rather
+the table and overlooked by the optimizer, it will be incor-       than generating random numbers when needed. For the con-
+rectly replaced with an obsolete value and cause inconsistent      ditioned variable reassignments, we insert an if statement
+execution results.                                                 conditioned on the parameter of opt, and randomly generate
+Interesting numbers. Interesting numbers are incredibly ef-        its body. To further improve the density of JIT bug revealing
+fective in testing corner cases where JIT compilers easily         elements, we disable the generation of complex statements
+make mistakes especially during range analysis and type            such as function declarations, class declarations, try/catch
+check. For example, 268,435,440, the upper bound of the            statements, switch/case statements. We also avoid generating
+size of a string, is used to trigger the bug in our motivation     loop structures inside the function body of opt, as it itself
+example [29]. 2.3023e-320 is a special float and it is found       is embedded in loops and too many loop structures also hin-
+to be mistakenly treated as a pointer to an object and trigger     der the execution efficiency during fuzzing. By keeping the
+type confusion bugs in CVE-2017-11802, CVE-2018-0840,              syntax simple and pure, we can also improve the semantic
+CVE-2018-8556, CVE-2018-0835, CVE-2018-0953, CVE-                  correctness rate of the generated test inputs.
+2018-8466, and CVE-2018-8542. Also, -5.3049894784e-
+314, which equals to 0x8000000280000002, is the con-
+                                                                   4.4    Capturing JIT compiler bugs
+stant JavascriptNativeFloatArray::MissingItem and
+is used to cause type confusion in CVE-2018-0953.                  By returning the final execution states of the opt function,
+Conditioned variable reassignments. To test whether JIT            we can observe its behavior from outside, and ensure that
+compilers generate type and bounds checks properly and cor-        any relevant code shall not be eliminated as dead code dur-
+rectly, never remove them incorrectly during optimization,         ing optimization. The testing capability of the code also gets
+and verify them correctly at runtime, we design a novel pro-       maximized because every statement counts during testing and
+gram semantics to alter the type and value of some variables       any tiny error in its execution will fire the alarm. Like typical
+conditionally. We turn off the alteration when triggering the      differential testing [24], we can execute a code fragment and
+JIT compiler and test whether a proper check can be gener-         its JIT-ed version, respectively, record their final states and
+ated, without seeing the runtime variable type and value at the    conduct a comparison. This way, their calling context is guar-
+alteration path during profiling, and survive the optimization     anteed to be identical and any discrepancy is due to the differ-
+if the variable is used in a sensitive operation. This design is   ence between the interpretation and JIT compilation/optimiza-
+illustrated in the template in Figure 6. The opt function takes    tion. However, this will end up with launching the JavaScript
+a parameter that controls whether the body of the if statement     engine twice, which is extremely time-consuming and causes
+at line 9 gets executed. Inside its body, some variables are       terrible lag to the fuzzing process.
+changed into different types and values. In this example, v0          Here we propose a novel idea to make a test case self-
+is changed from an array to an object. When triggering the         aware of the execution consistency by integrating these two
+JIT optimization, we carefully control the argument passed         executions into one single run and including the logic of
+to opt as false (see line 23), such that altered type of v0        comparison in itself. The test code (i.e., the opt function) is
+is never observed at runtime. There is an array indexing op-       firstly executed purely with the interpreter and then with the
+eration over v0 at line 13, for which a bounds check and a         JIT compiler on board (see lines 21 to 25 in Figure 6), and
+type check should be generated by the JIT compiler and not         their final states are further compared (see lines 26 to 28).
+removed during optimization, because the side effect of the        This design relies on the important fact that a JavaScript test
+if body can flow to line 13. If the type check is mistakenly       case is not only a program input to the JavaScript engine, but
+
+
+
+1872   32nd USENIX Security Symposium                                                                        USENIX Association
+     Table 2: The comparison rules of deepEquals().                      calculation, and its comparison rule with “===” incurs false
+                                                                         positives, i.e., unnecessary inconsistency, where two NaNs are
+  Type                       Comparison rule                             deemed unequal. Here we rectify it as equal. For object types,
+  undefined, null, bigint,   r1 === r2                                   we consider commonly used classes, and group them based on
+  symbol, boolean, string                                                whether they could be compared with the same rule. Classes
+  number                     if (r1 === 0) Object.is(r1, r2)             that mainly wrap a primitive types variable, e.g., Date and
+                             else if (isNaN(r1)) isNaN(r2)               String, can be compared based on their toString() val-
+                             else r1 === r2                              ues. Here, we convert a Number object to its corresponding
+  object (Number)            deepEquals(r1.valueOf(), r2.valueOf())      primitive type precisely with the valueOf() function and
+  object (Date, String,      classOf(r1) === classOf(r2)                 delegate the comparison to the rules for primitive numbers.
+  RegExp, Error, Boolean)    r1.toString() === r2.toString()             Otherwise, two objects are identical if they share the same list
+  object (Array, Map,        classOf(r1) === classOf(r2)                 of properties (returned by Object.keys()), and the value of
+  WeakMap, Set, WeakSet,     pros1 = Object.keys(r1).sort()              each property is deeply identical. To balance performance,
+  JSON, Object)              pros2 = Object.keys(r2).sort()              the deepEquals() function considers most of common errors
+                             pros1.length === pros2.length
+                             for( var i = 0; i < pros1.length; i++)      instead of going after capturing all possible inconsistencies.
+                                deepEquals(r1[pros1[i]], r2[pros2[i]])   Eliminate false positives. Executing the same function twice
+                                                                         in a single run does necessarily produce the same execution re-
+                                                                         sults, even on the same arguments, since their calling context
+also some code to be executed. By carefully designing the                can differ due to some execution side effects, e.g., changing a
+generation process of the wrapping code, the upgraded test               global variable which is used by the function as well. Other
+case can be executed successfully, as long as the opt function           factors that can lead to divergent execution results include
+is free of syntax and semantic errors.                                   generating random numbers (e.g., Math.random()), reading
+   Now, we explain how to examine if two final states, i.e., the         current time (e.g., Date.now()), and concurrency. Such in-
+two arrays, are identical. There are eight builtin data types in         consistency caused should not be counted when auditing the
+JavaScript, namely undefined, null, bigint, symbol, boolean,             correctness of the JIT compiler. We eliminate these annoying
+string, number, and object. Except for object, all others are            effects to avoid false positives. The concurrency feature can
+primitive types and we can check whether they are strictly               be disabled with command flags for various JavaScript en-
+equal with the “===” operator. For a variable of object type, it         gines. For other factors, we propose a two-pronged approach
+is a reference/pointer to an object, which is usually associated         to settle them efficiently and reliably. We create a blacklist of
+with a set of properties, in the form of key-value pairs, and            disturbing APIs and block their generation during mutation.
+a list of methods. Here, keys are of primitive types while               On the other hand, we conduct a pre-check on the existence
+values can be of any type, either primitive or non-primitive.            of these factors by consecutively executing the function a few
+To thoroughly compare two objects (see [22]) is costly. Given            times and see if there is any discrepancy in the final states
+that the comparison is included in the test case, complicated            (see lines 17 to 20 in Figure 6). Only test cases passing the
+calculations also slow down the fuzzing speed. Here, we                  pre-check will be forwarded to test the JIT compiler. The
+focus on comparing the key-value pairs, as they are the major            blacklist improves the success rate of obtaining a valid test
+characters to operate on in a program.                                   case and ensures fuzzing efficiency. To have a complete black-
+   The deepEquals() function (see line 1) compares two                   list is non-trivial, the pre-check is there to effectively cut off
+variables of any type deeply and recursively. Variables of               unqualified test cases. We also carefully control the execution
+different types are never identical. The inductive rules for             iterations to be small and avoid activating the JIT compiler.
+comparing variables of the same data types are illustrated in
+Table 2. Note that the rules are not code and all comparative            5   Evaluation
+statement means a comparison check has to be conducted.
+Two variables are identical if only every comparison encoun-             Testing subjects. We select four mainstream JavaScript en-
+tered during the recursive execution returns true. Rules for             gines, namely JavaScriptCore (JSC) in Safari, V8 in Chrome,
+primitive types are all base cases and require no recursive              SpiderMonkey (SM) in Firefox, and ChakraCore (CH) in
+call. Particularly, two special cases for the number type are            Edge (before March 2021, and currently in maintenance
+considered, where “===” fails to differentiate 0 and -0 and              mode), and use their latest build in December 2021 (when we
+deems any comparison involving NaN (Not-A-Number) as not                 started our experiments) as the testing subjects to evaluate our
+equal. Differentiating 0 and -0 matters in some mathematical             approach. These JavaScript engines all have large code bases,
+calculations, e.g., division and atan2, and several JIT com-             to which the JIT modules make substantial contributions. In
+piler bugs are caused by their misuse, which means it is an              Table 3, we list the total number of lines of code and func-
+informative inconsistency to capture; Object.is() is able                tions in each subject and those in its JIT modules, and we also
+to tell them apart. NaN indicates a failure in mathematical              display the percentage contributed by JIT modules. In terms
+
+
+
+USENIX Association                                                                          32nd USENIX Security Symposium           1873
+Table 3: The size information of the JavaScript engine subjects                     Table 4: The seed and timeout configurations of FuzzJIT and
+used in the evaluation.                                                             other baselines.
+
+      Subject       Browser        Modules         # Lines        # Functions         Baseline       Jsfunfuzz   Superion    DIE      Fuzzilli   FuzzJIT
+                                      JIT           57,237           6,357            #Seed             -          100        100        -          -
+       JSC           Safari          Total         255,068          67,861            Timeout          50s        500ms     1000ms    500ms      500ms
+                                   JIT ratio       22.43%           9.36%             Timeout rate   32.14%       2.45%      1.65%    0.66%      1.37%
+                                      JIT          219,043           21,379
+        V8          Chrome           Total         760,150          116,540
+                                   JIT ratio       28.91%           18.36%
+                                                                                    bedding almost all JavaScript elements and refreshing some
+                                      JIT           88,054           23,399
+       SM            Firefox         Total         528,049          172,863         features randomly under each runs. Its JIT-specific extension
+                                   JIT ratio       16.67%           13.53%          executes a test case twice, with or without the JIT activated,
+                                      JIT           61,805           5,375          and identifies a bug if the two printouts are different. Fuzzilli
+        CH⋆           Edge           Total         246,001          78,995
+                                   JIT ratio       25.12%           6.80%
+                                                                                    features with fine grained bytecode level mutation to achieve
+  ⋆
+      ChakraCore was the JavaScript engine for Edge browser before March 2021 and
+                                                                                    better control and data flow mutation.
+      is currently in maintenance mode.                                                In our comparison experiments, we use the implemen-
+                                                                                    tations of baselines provided by UniFuzz [18], which is a
+                                                                                    fuzzing approach evaluation benchmark and provides a col-
+of lines of code, the occupation of the implementation of JIT                       lection of docker for 37 well-known fuzzers, including Supe-
+modules in the four subjects ranges from 16.67% to 28.91%.                          rion, DIE, Jsfunfuzz, and Fuzzilli, to ease the evaluation of
+On average, the JIT modules account for almost a quarter                            different fuzzing approaches. The seed and timeout configura-
+of all source code lines, which indicates the complexity and                        tions used to execute FuzzJIT and the other four baselines are
+importance of JIT compilers. Exploring the JIT compilers and                        summarized in Table 4. Only Superion and DIE require initial
+finding bugs there is of significant demand. These JavaScript                       seeds. DIE’s initial seed corpus contains 100 JavaScript files
+engines all have gone through exhaustive manual auditing                            generated by its given script, and the same set of initial seeds
+and testing by their quality assurance teams and wild security                      are also used for Superion.
+researchers. Any new bugs detected by FuzzJIT are escapers                             Different tools offer different ways to get the branch
+from all earlier examinations, which demonstrate the effec-                         coverage of test samples. For Fuzzilli and FuzzJIT, the
+tiveness of our approach.                                                           branch coverage rate can be easily obtained through their
+Implementation and settings. We implement FuzzJIT based                             API. For Superion and DIE, the AFL-based fuzzers, the
+on Fuzzilli [9]. Fuzzilli is a coverage-guided fuzzer for                           branch coverage cannot be obtained directly. However, it
+JavaScript engines based on a custom intermediate language,                         can be calculated from the bitmap information read from
+FuzzIL, which can be mutated and translated to JavaScript.                          the fuzzing statistics. According to AFL technical white pa-
+Instead of mutating the AST, or other syntactic elements of                         per [42], the branch coverage rate equals (Bitmap density) ∗
+a program, FuzzIL facilitates convenient mutations on the                           (Bitmap size)/(Instrumentation count), where bitmap size
+control and data flow of a program. A FuzzIL program con-                           is configured as 222 in Superion and remains default 216 in
+tains a list of instructions, and can be lifted to a JavaScript                     DIE, the instrumentation count can be calculated by counting
+program for testing. Fuzzilli is reported to find 51 bugs in                        the “call __afl_maybe_log” instructions in the instrumented
+six JavaScript engines [9], and being popularly adapted to                          testing subjects, and the bitmap density can be read directly.
+build powerful JavaScript fuzzer by academia researchers and                        For Jsfunfuzz, since it is not a coverage-guided fuzzing tool,
+industry practitioners. We utilize its essential fuzzing harness,                   there is no provided API to extract the branch coverage infor-
+including code coverage feedback and execution result anal-                         mation. We attempted to calculate it with the help of AFL,
+ysis, and customize the input mutation module to generate                           however, due to the extreme large tests generated by Jsfun-
+our JIT bug revealing elements and add the new input wrap-                          fuzz, AFL crashes due to short of memory (on a machine with
+ping module (see Figure 5). Our evaluation environment is                           64GB RAM).
+a Ubuntu 20.04 system, running on an i9-10900K CPU with                                Timeout is the max time budget allowed to execute an
+64GB RAM.                                                                           individual test case. To avoid the fuzzing process getting stuck
+Baselines. We compare FuzzJIT with Jsfunfuzz [28], a                                on non-terminating executions, the timing out mechanism is
+JavaScript fuzzer with JIT-specific extension, and three state-                     widely used by fuzzing tools. In principle, a larger timeout is
+of-the-art general-purpose JavaScript engine fuzzers, i.e., Su-                     used by fuzzers generating larger inputs. In our experiments,
+perion [37], DIE [23], and Fuzzilli. Superion, DIE and Fuzzilli                     we set the timeout for different tools with the aim to control
+are mutation based fuzzing tools. Superion finds bugs by con-                       the timeout rate within 3%. Here, the timeout rate is a ratio
+ducting crossover on the AST sub-trees of two parent samples.                       of the number of executions observed in a period of time that
+DIE advances the crossover by restricting the types of sub-tree.                    cannot finish within the given timeout over the total number
+Jsfunfuzz generates a large test case (up to 229KB) by em-                          of executions. We meter the execution rate at the end of 24-
+
+
+
+1874         32nd USENIX Security Symposium                                                                                        USENIX Association
+hour fuzzing, and report the average value of 10 campaigns.           bugs, among them ten are in JavaScriptCore, five in V8, two
+For DIE, we keep its default configuration timeout, which is          in SpiderMonkey, and 16 in ChakraCore. The three bugs for
+1000ms. For Superion, Fuzzilli, and FuzzJIT, 500ms is set             which we created exploitation PoCs have been submitted to
+as the timeout limit. The timeout of Jsfunfuzz is set to 50s,         Chromium Bugzilla and Microsoft Security Response Center.
+which is one or two orders of magnitude larger than others’,          In comparison, Jsfunfuzz, Fuzzilli, DIE, and Superion find
+since its generated samples are super complex and requires a          zero, three, one, and one new bug, respectively, and all five
+long execution time. Even though, its timeout rate is as high         bugs are in ChakraCore. Since Fuzzilli, DIE, and Superion
+as 32.14%, and we did not set a larger timeout in order to            are general-purpose fuzzers, they can hardly activate the JIT
+balance the throughput.                                               module, let alone detect bugs there. Disabling the JIT trigger-
+Experiment design. We first evaluate the bug-finding capa-            ing of FuzzJIT also makes it find no bugs, and more details
+bility of FuzzJIT on all testing subjects, and report the bugs        will be discussed in the ablation study. Jsfunfuzz’s JIT acti-
+detected by FuzzJIT and other baselines, and whether they             vating mechanism only works on SpiderMonkey, and due to
+are bugs in JIT compilers. Then, to better understand the             the limited search space and low throughput (see discussion
+fuzzing effectiveness and efficiency of FuzzJIT, we measure           below), it also failed to spot any new bugs.
+two important metrics, namely code coverage of the generated             For any detected bug, we also report the number of days
+test cases and the throughput of FuzzJIT and other baselines.         (in the parentheses in columns 6 to 10) used to find it the first
+Branch coverage reflects the percentage of the branches exer-         time. On average, FuzzJIT needs only 3.09 days to uncover a
+cised by the tests samples over the total number of branches;         bug in the targets. Seven bugs are found on the first day, and
+a higher branch coverage implies a more thorough examina-             eight out of the 33 bugs are exposed by the second day. We
+tion. The execution throughput is measured by the number of           can also observe that all bugs detected by FuzzJIT are in the
+test cases executed in 24 hours; a larger throughput indicates        JIT compiler, while among the five bugs detected by other
+faster tests execution during fuzzing. High code coverage             baseline tools, only one detected by Fuzzilli is in the JIT com-
+and throughput are both desired properties of fuzzing tools to        piler. Here, we check the crash backtrace (tests captured with
+hunt more bugs. Second, to better understand the importance           inconsistency oracle are also forced to crash), and confirm the
+of each of the three modules in FuzzJIT – the JIT trigger-            bug location as the source code closest to the crash. FuzzJIT
+ing module, the JIT bug revealing module and the JIT bug              detects 12 non-crashing bugs and none is false positive. They
+capturing module, as well as the fine-grained importance of           were accurately captured thanks to the enhanced test oracle
+each mutation strategy in the JIT bug revealing module, to            and the pre-check mechanism. We also list the values of the
+the performance of FuzzJIT, we conduct an ablation study by           particular variable which incurs the discrepancy before and
+disabling one and only one of the modules or the mutation             after the JIT compilation in the fourth column.
+strategies and measure the number of bugs discovered and
+the final code coverage by these variants of FuzzJIT. Last, we         Compared with baselines, FuzzJIT exhibits excellent supe-
+case study the bug-triggering tests generated by FuzzJIT and           riority in detecting new JIT bugs in real-world JavaScript
+demonstrate the effectiveness of our JIT bug revealing input           engines within the one month fuzzing time window.
+mutation strategies.                                                  Coverage. For each tool and each testing subject, we mea-
+   When measuring and comparing the code coverage and                 sure the branch coverage reached after 24-hour fuzzing, and
+throughput, we execute the experiment for multiple cam-               count the number of tests executed to reflect the throughput.
+paigns and test the statistical significance of FuzzJIT achiev-       For each setting, 10 campaigns of fuzzing are conducted to
+ing better performance (i.e., higher coverage/throughput) than        mitigate the effect of randomness. We test the statistical sig-
+the baselines/variants with Vargha Delaney Â12 and Mann              nificance of our conclusions drawn from comparisons with U
+Whitney U test (U). Mann Whitney U test (U) tests whether a           and Â12 , and report the average value.
+list of observations is stochastically greater than the other list,      The results of branch coverage are presented in Table 6
+while Â12 measures the magnitude of the difference (effect           (columns 3 to 7). The row “Improvement” indicates the per-
+size). The performance difference is significant when the p-          centage of coverage improvement of FuzzJIT compared with
+value of U (pU ) is below 0.05. Â12 ≥ 0.71 indicates FuzzJIT         a baseline. The branch coverage information for Jsfunfuzz
+outperforms with a large effect size, and Â12 < 0.29 means           is missing. As a generation-based fuzzing tool without any
+that FuzzJIT underperforms with a large effect size.                  coverage guidance, Jsfunfuzz does not provide any API to
+                                                                      obtain the branch coverage, and we could not find any feasible
+5.1    Comparison experiment                                          way to meter its branch coverage, due to its extreme large
+                                                                      tests cases. On all subjects, FuzzJIT achieves higher coverage
+New bugs found. We run all five fuzzers on each testing tar-          than Superion, DIE and Fuzzilli. As a fuzzer specially for
+get for the same period (one month) and compare their ability         JIT, FuzzJIT also hits superior coverage, as the JIT compil-
+to find new bugs. The details of the detected bugs are shown          ers, concentrated by FuzzJIT, contribute largely to JavaScript
+in Table 5 (columns 4 to 10). FuzzJIT exposes 33 unique new           engines’ codebase, but are thinly explored by other baselines.
+
+
+
+USENIX Association                                                                      32nd USENIX Security Symposium           1875
+                         Table 5: Unique bugs detected during one month by FuzzJIT, baselines, and FuzzJIT variants.
+
+                                                                   Comparison with baselines                                    Ablation study
+SN Subject        ID         Output           Module
+                                                           FuzzJIT Jsfunfuzz Superion DIE Fuzzilli     -o      -j    -m        -m1      -m2       -m3       -m4       -m5
+1       JSC    233118⋆        crash             JIT         ✓(1)       -         -       -      -     ✓(1)     -    ✓(2)      ✓(1)      ✓(1)      ✓(2)     ✓(2)      ✓(2)
+2       JSC    232866⋆     -NaN/NaN             JIT         ✓(2)       -         -       -      -      -       -     -         -         -         -        -        ✓(2)
+                      ⋆
+3       JSC    232869          1/-1             JIT         ✓(4)       -         -       -      -      -       -     -         -         -         -        -         -
+4       JSC    228068⋆     True/False           JIT         ✓(2)       -         -       -      -      -       -    ✓(3)      ✓(2)      ✓(3)      ✓(4)     ✓(3)      ✓(3)
+5       JSC       -     -Infinity/Infinity      JIT         ✓(3)       -         -       -      -      -       -    ✓(4)      ✓(3)      ✓(4)      ✓(5)     ✓(3)      ✓(4)
+6       JSC       -           255/0             JIT         ✓(5)       -         -       -      -      -       -     -         -        ✓(5)       -       ✓(6)      ✓(6)
+7       JSC       -           crash             JIT         ✓(1)       -         -       -      -     ✓(1)     -    ✓(2)      ✓(2)      ✓(3)      ✓(1)     ✓(2)      ✓(4)
+                      ⋆
+8       JSC    233353 undefined/NaN             JIT         ✓(1)       -         -       -      -      -       -     -        ✓(2)      ✓(1)      ✓(1)     ✓(2)      ✓(2)
+                      ⋆
+9       JSC    239757 undefined/NaN             JIT         ✓(6)       -         -       -      -      -       -     -        ✓(6)      ✓(8)      ✓(7)     ✓(6)      ✓(5)
+10      JSC    239758⋆ -Infinity/Infinity       JIT         ✓(3)       -         -       -      -      -       -     -        ✓(3)      ✓(5)      ✓(4)     ✓(3)      ✓(5)
+11      V8      11977◦   True/False             JIT         ✓(4)       -         -       -      -      -       -     -        ✓(5)      ✓(6)       -       ✓(5)      ✓(4)
+12      V8     1224283• undefined/123           JIT         ✓(3)       -         -       -      -      -       -    ✓(3)      ✓(3)      ✓(4)      ✓(6)     ✓(4)      ✓(3)
+                     ◦
+13      V8      12471   14951/14955             JIT         ✓(3)       -         -       -      -      -       -    ✓(4)      ✓(4)      ✓(3)      ✓(4)     ✓(7)      ✓(4)
+14      V8     1276923•     crash               JIT         ✓(7)       -         -       -      -     ✓(7)     -     -        ✓(8)      ✓(7)      ✓(9)     ✓(8)      ✓(8)
+                     ◦
+15      V8      12495     opt()/11              JIT         ✓(7)       -         -       -      -      -       -     -         -         -         -        -         -
+16      SM     1747013÷     opt()/NaN           JIT         ✓(4)       -         -       -      -      -       -    ✓(4)      ✓(6)      ✓(6)      ✓(5)     ✓(7)      ✓(6)
+17      SM     1747777÷       crash             JIT         ✓(6)       -         -       -      -     ✓(7)     -    ✓(6)      ✓(7)      ✓(7)      ✓(6)     ✓(7)      ✓(5)
+18      CH      6762⊕         crash             JIT         ✓(1)       -         -       -      -     ✓(1)     -    ✓(2)      ✓(1)      ✓(2)      ✓(2)     ✓(3)      ✓(2)
+19      CH      6763⊕         crash             JIT         ✓(2)       -         -       -      -     ✓(3)     -     -         -        ✓(4)      ✓(2)     ✓(3)      ✓(2)
+20      CH      6764⊕         crash             JIT         ✓(1)       -         -       -      -     ✓(2)     -    ✓(2)      ✓(2)      ✓(1)      ✓(2)     ✓(1)      ✓(2)
+21      CH      6765⊕         crash             JIT         ✓(2)       -         -       -      -     ✓(3)     -    ✓(4)      ✓(3)      ✓(3)      ✓(3)     ✓(4)      ✓(3)
+22      CH      6766⊕         crash             JIT         ✓(2)       -         -       -      -     ✓(3)     -    ✓(2)      ✓(3)      ✓(4)      ✓(3)     ✓(2)      ✓(2)
+23      CH      6767⊕         crash             JIT         ✓(3)       -         -       -      -     ✓(5)     -    ✓(4)      ✓(4)      ✓(5)      ✓(4)     ✓(3)      ✓(4)
+24      CH      6770⊕         crash             JIT         ✓(2)       -         -       -      -     ✓(3)     -     -         -        ✓(3)      ✓(5)     ✓(5)      ✓(3)
+25      CH      6771⊕         crash             JIT         ✓(4)       -         -       -      -     ✓(4)     -    ✓(5)      ✓(4)      ✓(5)      ✓(5)     ✓(4)      ✓(4)
+26      CH      6772⊕         crash             JIT         ✓(1)       -         -       -      -     ✓(2)     -    ✓(2)      ✓(1)      ✓(2)      ✓(2)     ✓(2)      ✓(3)
+27      CH      6773⊕         crash             JIT         ✓(5)       -         -       -      -     ✓(6)     -     -         -        ✓(6)      ✓(7)     ✓(8)      ✓(8)
+28      CH      6774⊕         crash             JIT         ✓(2)       -         -       -      -     ✓(2)     -    ✓(3)      ✓(3)       -        ✓(3)     ✓(2)      ✓(4)
+29      CH      6775⊕         crash             JIT         ✓(3)       -         -       -      -     ✓(4)     -    ✓(4)      ✓(3)      ✓(5)      ✓(6)     ✓(3)      ✓(4)
+30      CH      6776⊕         crash             JIT         ✓(1)       -         -       -      -     ✓(2)     -    ✓(2)      ✓(3)      ✓(1)      ✓(2)     ✓(3)      ✓(1)
+31      CH      6777⊕         crash             JIT         ✓(5)       -         -       -      -     ✓(6)     -     -         -        ✓(7)      ✓(6)     ✓(7)      ✓(6)
+32      CH     059706⊙        crash             JIT         ✓(4)       -         -       -      -     ✓(5)     -    ✓(7)      ✓(7)      ✓(6)      ✓(6)     ✓(7)      ✓(4)
+33      CH      6783⊕       True/False          JIT         ✓(2)       -         -       -      -      -       -     -         -        ✓(2)      ✓(3)     ✓(3)      ✓(2)
+34      CH       6778⊕        crash          Interpreter      -        -       ✓(3)     -       -       -      -      -         -         -         -        -         -
+35      CH       6779⊕        crash          Interpreter      -        -        -      ✓(5)     -       -      -      -         -         -         -        -         -
+36      CH       6780⊕        crash              JIT          -        -        -       -      ✓(2)     -      -      -         -         -         -        -         -
+37      CH       6781⊕        crash          Interpreter      -        -        -       -      ✓(4)     -      -      -         -         -         -        -         -
+38      CH       6782⊕        crash          Interpreter      -        -        -       -      ✓(5)     -      -      -         -         -         -        -         -
+      Total #Bugs (Average #Days to discover a bug) 33(3.09)          0(-)      1(3)   1(5) 3(3.66) 19(3.52) 0(-) 19(3.42) 24(3.58) 29(4.10) 28(4.10) 30(4.16) 31(3.77)
+ ⋆
+     All bugs have been confirmed on the release versions. Bug ids listed above are assigned by Webkit Bugzilla [38](⋆), V8 Bugzilla [33](◦), Mozilla Bugzilla [20](÷), and
+     ChakraCore issues list [3](⊕), who are the ordinary maintainers for bugs in JavaScriptCore, V8, SpiderMonkey, and ChakraCore, respectively, and Chromium Bugzilla [6](•)
+     and Microsoft Security Response Center [19](⊙), who provide bug bounty for exploitable bugs.
+
+
+
+ FuzzJIT significantly outperforms Superion, DIE, and                                          generating complex elements and additional loop structures
+ Fuzzilli on coverage, with a large effect size.                                               inside the body of opt. We also observe that all tools mostly
+                                                                                               present different throughput on different subjects, which could
+Throughput. The results of throughput are reported in Ta-
+                                                                                               be due to the intrinsic different implementations of these en-
+ble 7. Overall, FuzzJIT executes the most tests in 24 hours on
+                                                                                               gines. To confirm the detailed reasons is challenging and out
+all subjects, while Jsfunfuzz executes the least. Jsfunfuzz gen-
+                                                                                               of our research scope.
+erates test cases incorporating massive JavaScript elements,
+whose size is large and can be up to 100 times of those by                                       FuzzJIT achieves the best throughput on all four subject
+FuzzJIT. Superion and DIE demonstrate similar throughput                                         JavaScript engines among all compared tools. Efficient test
+on all four subjects, and Fuzzilli executes a little bit slower                                  cases execution also brings a higher chance for FuzzJIT
+than them.                                                                                       to discover more bugs within the same time budget.
+   We are a bit surprised to find that FuzzJIT exhibits the best                               Semantic correctness rate.
+throughput among all tools. FuzzJIT wraps all generated test                                      Generating semantically correct test samples is essential
+cases with loop structures to trigger JIT compilers intention-                                 to fuzz the deep area of a program. The semantic correctness
+ally, which means the tests will execute for a longer time and                                 rate (SCR) is the percentage of semantically correct tests, i.e.,
+impede the fuzzing speed. However, FuzzJIT still achieves                                      those not raising any uncaught exceptions, among all samples
+an exceptionally good throughput. We reckon this is mainly                                     generated during a period of time. A higher SCR is also de-
+attributed to our code mutation strategies where we avoid                                      sirable for uncovering deeply-buried bugs. Here we compare
+
+
+
+1876         32nd USENIX Security Symposium                                                                                                         USENIX Association
+ Table 6: Branch coverage (10-campaign average) reached after 24-hour fuzzing by FuzzJIT, baselines, and FuzzJIT variants.
+
+                                      Comparison with baselines                                                      Ablation study
+ Subject         Metric
+                          FuzzJIT   Superion      DIE    Jsfunfuzz     Fuzzilli         -o         -j        -m        -m1        -m2       -m3       -m4       -m5
+               Average    21.90%     16.84%    21.17%              -   16.47%      21.80%     18.09%     19.90%     20.16%    21.11%     20.82%    21.08%    21.65%
+           Improvement          -    30.04%     3.48%              -   32.96%       0.45%     21.06%     10.05%      8.63%     3.74%      5.18%     3.88%     1.15%
+ JSC
+                   Â12         -       0.99      0.81             -      0.99        0.71       0.99       0.99       0.99      0.81       0.99      0.81      0.71
+                    pU          -      <0.01     <0.01             -     <0.01       <0.01      <0.01      <0.01      <0.01     <0.01      <0.01     <0.01     <0.01
+               Average    16.67%     12.65%    13.39%              -   13.82%      16.74%     15.08%     15.97%     16.41%    16.58%     16.01%    16.21%    16.19%
+           Improvement          -    31.77%    24.49%              -   20.62%       -0.41%    10.54%      4.38%      1.58%     0.54%      4.12%     2.83%     2.96%
+ V8
+                   Â12         -       0.99      0.99             -      0.99         0.29      0.99       0.99       0.71      0.71       0.99      0.99      0.99
+                    pU          -      <0.01     <0.01             -     <0.01        <0.01     <0.01      <0.01      <0.01     <0.01      <0.01     <0.01     <0.01
+               Average    17.97%     11.49%    12.41%              -   15.53%      17.89%     14.32%     16.07%     16.36%    16.42%     16.70%    16.17%    16.29%
+           Improvement          -    56.39%    44.80%              -   15.71%       0.44%     25.48%     11.82%      9.84%     9.43%      7.60%    11.13%    10.31%
+ SM
+                   Â12         -       0.99      0.99             -      0.99        0.71       0.99       0.99       0.99      0.99       0.99      0.99      0.99
+                    pU          -      <0.01     <0.01             -     <0.01       <0.01      <0.01      <0.01      <0.01     <0.01      <0.01     <0.01     <0.01
+               Average    22.70%     15.77%    20.11%              -   19.30%      21.93%     20.41%     19.62%     19.85%    21.65%     19.63%    20.93%    20.72%
+           Improvement          -    43.94%    12.87%              -   17.61%       3.61%     11.21%     15.69%     14.35%     4.84%     15.63%     8.45%     9.55%
+ CH
+                   Â12         -       0.99      0.99             -      0.99        0.99       0.99       0.99       0.99      0.99       0.99      0.99      0.99
+                    pU          -      <0.01     <0.01             -     <0.01       <0.01      <0.01      <0.01      <0.01     <0.01      <0.01     <0.01     <0.01
+
+
+Table 7: The total number of tests (10-campaign average) executed during 24-hour fuzzing by FuzzJIT, baselines, and FuzzJIT
+variants.
+
+                                       Comparison with baselines                                                      Ablation study
+ Subject         Metric
+                          FuzzJIT   Superion      DIE      Jsfunfuzz    Fuzzilli         -o         -j        -m        -m1       -m2       -m3       -m4       -m5
+               Average    1,312K     1,236K    1,245K           8K      1,069K      1,392K     1,498K    1,171K     1,174K     1,226K    1,174K    1,219K    1,166K
+           Improvement          -     6.14%     5.38%    16300.00%      22.73%      -5.74%    -12.41%    12.04%     11.75%      7.01%    11.75%     7.62%    12.52%
+ JSC
+                   Â12         -       0.99      0.99         0.99        0.99        0.01       0.01      0.99       0.99       0.99      0.99      0.99      0.99
+                    pU          -      <0.01     <0.01        <0.01       <0.01       <0.01      <0.01     <0.01      <0.01      <0.01     <0.01     <0.01     <0.01
+               Average    1,593K     1,218K    1,250K          15K        953K      2,419K     2,676K     2,184K    2,188K     2,213K    2,197K    2,191K    2,181K
+           Improvement          -    30.78%    27.44%    10520.00%      67.15%      -5.20%    -14.31%      4.99%     4.79%      3.61%     4.36%     4.65%     5.13%
+ V8
+                   Â12         -       0.99      0.99         0.99        0.99        0.01       0.01       0.99      0.99       0.81      0.81      0.99      0.99
+                    pU          -      <0.01     <0.01        <0.01       <0.01       <0.01      <0.01      <0.01     <0.01      <0.01     <0.01     <0.01     <0.01
+               Average    1,718K     1,255K    1,224K          12K      1,017K      1,775K     1,805K     1,633K    1,642K     1,643K    1,635K    1,646K    1,626K
+           Improvement          -    36.89%    40.35%    14216.66%      68.92%      -3.21%     -4.81%      5.20%     4.62%      4.56%     5.07%     4.37%     5.65%
+ SM
+                   Â12         -       0.99      0.99         0.99        0.99        0.19       0.01       0.99      0.99       0.99      0.99      0.99      0.99
+                    pU          -      <0.01     <0.01        <0.01       <0.01       <0.01      <0.01      <0.01     <0.01      <0.01     <0.01     <0.01     <0.01
+               Average    3,765K     3,048K    3,002K          18K      2,932K      3,897K     3,980K     3,437K    3,522K     3,509K    3,506K    3,544K    3,365K
+           Improvement          -    23.52%    25.41%    20816.66%      28.41%      -3.38%     -5.40%      9.54%     6.89%      7.29%     7.38%     6.23%    11.88%
+ CH
+                   Â12         -       0.99      0.99         0.99        0.99        0.19       0.01       0.99      0.99       0.99      0.99      0.99      0.99
+                    pU          -      <0.01     <0.01        <0.01       <0.01       <0.01      <0.01      <0.01     <0.01      <0.01     <0.01     <0.01     <0.01
+
+
+
+
+the SCR of FuzzJIT with other baselines. In a similar setting                         the merits inheriting from Fuzzilli, FuzzJIT generates test
+as metering the coverage and throughput in the comparison                             cases following a well-designed structural template, and also
+experiment, we execute each tool on each test subject for 24                          carefully controls the mutators to avoid generating complex
+hours, and use Fuzzilli to compute the number of all seman-                           elements when generating the body of opt, thus achieving an
+tically correct samples and total executions. The semantic                            even better SCR. Superion shows an average SCR of 38.13%,
+correctness rate is calculated as the number of semantically                          as its random cross-over mutation operations can easily break
+correct samples divides the total executions. The process are                         the semantic validity. DIE reveals an average SCR of 57.78%
+repeated for ten times, and we further take their average, and                        on the four targets. Its type-preserving mutation can keep
+report the values in Table 8. We also test the statistical signifi-                   better semantic validity of samples than Superion. Jsfunfuzz
+cance and effect size of FuzzJIT achieving a higher SCR than                          achieves a SCR of 45.24% on average. This low SCR is
+other tools with U and Â12 .                                                         caused by its generation approach. It first generates a sample,
+   Overall, FuzzJIT achieves the highest SCR on all test-                             then splits it into two halves and tries to compile each half,
+ing subjects among all the tools, and reaches an average of                           mostly aiming to find bugs in the compiler’s error-handling
+93.08%, which is around 46.76% higher than that of the sec-                           mechanisms.
+ond best tool – Fuzzilli. Fuzzilli demonstrates a good SCR,
+63.42% on average. This is mainly credited to its intermediate
+language which supports semantic mutations. In addition to
+
+
+
+USENIX Association                                                                                           32nd USENIX Security Symposium                    1877
+Table 8: The semantic correctness rate (10-campaign average)                       the detection and only the 19 crash bugs are captured. For
+of FuzzJIT and baselines.                                                          the five mutation strategies, their importance to the fuzzing
+                                                                                   effectiveness varies, where 2 to 9 fewer bugs are detected, and
+ Subject           Metric   FuzzJIT   Superion       DIE    Jsfunfuzz   Fuzzilli   the detected ones cost longer time to be detected.
+                 Average    90.33%     34.73%    59.21%      45.75%     62.80%
+             Improvement          -   160.09%    90.33%      97.44%     43.83%
+ JSC
+                     Â12         -       0.99      0.99        0.99       0.99
+                                                                                    All the designs and mutation strategies proposed in this
+                      pU          -      <0.01     <0.01       <0.01      <0.01     work are essential to the success of FuzzJIT.
+                 Average    97.04%     28.54%    57.80%      44.96%     64.34%
+             Improvement          -   240.01%    67.88%     115.83%     50.82%
+ V8
+                     Â12         -       0.99      0.99        0.99       0.99    Coverage. We execute the FuzzJIT variants on all four sub-
+                      pU          -      <0.01     <0.01       <0.01      <0.01
+                                                                                   jects for 24 hours and repeat for 10 campaigns. The aver-
+                 Average    93.28%     47.67%    60.07%      43.55%     64.13%     age branch coverage for each setting are reported in Table 6
+             Improvement          -    93.29%    55.28%      93.28%     45.45%
+ SM                                                                                (columns 8 to 15). Disabling the enhanced oracle makes
+                     Â12         -       0.99      0.99        0.99       0.99
+                      pU          -      <0.01     <0.01       <0.01      <0.01    marginal affect to the coverage. However, a significant re-
+                 Average    91.68%     41.59%    54.04%.     46.71%     62.42%     duction on converge is observed on all testing subjects when
+             Improvement          -   120.43%     69.65%     96.27%     46.87%
+ CH
+                     Â12         -       0.99       0.99       0.99       0.99
+                                                                                   disabling either the JIT triggering mechanism (-j) or the muta-
+                      pU          -      <0.01      <0.01      <0.01      <0.01    tion strategies (-o). In the worst case, the coverage of Spider-
+ Average (among subjects)   93.03%     38.13%    57.78%      45.24%     63.42%     Monkey drops by 25.48% without the JIT triggering mech-
+                                                                                   anism, and the coverage of ChakraCore drops by 15.69%
+                                                                                   without the mutation strategies. Moreover, the removal of
+ FuzzJIT produces samples with a higher SCR, such that                             any single mutation strategy leads to lower coverage, but the
+ the samples are not turned down before getting interpret-                         deduction is not as much as removing all of them. The reason
+ ed/compiled, drill deeper to JIT compilers, and improves                          is that the probabilities of generating other complex and/or
+ the fuzzing effectiveness.                                                        non-interesting elements increase when disabling any muta-
+                                                                                   tion strategy, which leads to lower throughput, less exercise
+                                                                                   on the branches, and fewer bugs detected.
+5.2        Ablation study
+                                                                                    Disabling either the JIT triggering mechanism or the mu-
+In this experiment, we create variants of FuzzJIT by disabling                      tation strategies, the code coverage drops significantly,
+one and only one of its three designs, namely, the JIT trig-                        while the removal of the enhanced oracle has marginal
+gering mechanism(j), the mutation strategies for JIT bug re-                        affect to the coverage.
+vealing (m), and the enhanced oracle for JIT bug capturing
+(o), or any one of the five mutation strategies, related to Ar-                    Throughput. Each variant is executed for 24 hours on every
+rays/Objects (m1), subexpressions (m2), interesting numbers                        testing subject, and we count the number of tests executed
+(m3), conditioned variable reassignments (m4), and the con-                        in total. The process is repeated for 10 times. We report the
+trol on syntax complexity (m5). We compare the performance                         10-campaign average in Table 7 and test the statistical sig-
+of these variants with the vanilla FuzzJIT on two metrics, in-                     nificance and effect size for FuzzJIT outperforming its vari-
+cluding the new bugs found, the coverage, and the throughput,                      ants with U and Â12 . When the enhanced oracle checking is
+and analyze the importance of each design feature and each                         disabled (-o), there are less instructions to execute and the
+mutation strategy.                                                                 throughput becomes better. We can observe that the variant
+New bugs found. We allocate the same time budget as in                             without the JIT triggering mechanism (-j) achieves higher
+the comparison experiment, and execute each variant for one                        throughput than FuzzJIT on all testing subjects. In that case,
+month to detect new bugs. The results are presented in Table 5                     the tests would not be wrapped into the loop structures, thus
+(columns 11 to 18). The minus mark in front of a design or                         becoming more efficient. Our mutation strategies prefer the
+mutation indicates that it is disabled. For example, -o means                      generation of simple JavaScript elements. When they are
+that the oracle enhancement is muted. Overall, disabling any                       muted, the probability of generating them will decline, and in
+of the designs or mutation strategies, FuzzJIT exposes fewer                       turn the probability of generating other complicated elements
+bugs and takes longer time to discover them. Also, they do not                     will increase. As a result, muting either only one or all of
+detect any new bugs that are missed by the vanilla FuzzJIT.                        the strategies, the throughput becomes lower than the vanilla
+Obviously, every design and mutation is crucial to the per-                        FuzzJIT.
+formance of FuzzJIT. There are two bugs, SN-3 and SN-15,
+which are not detected by any variant, and we must enable all                       Disabling either the JIT triggering mechanism or the en-
+the designs and mutations to discover them. When disabling                          hanced oracle, FuzzJIT hits a higher throughput. While
+the JIT triggering mechanism, zero bug is detected on all                           the throughput declines when one or all of the mutation
+subjects. Without the enhanced oracle, 14 bugs escape from                          strategies are muted.
+
+
+
+1878       32nd USENIX Security Symposium                                                                                   USENIX Association
+ 1   function opt () {                                             -1 to be 4,294,967,295 after the conversion, which is 232 -1.
+ 2     return parseInt ("−0");                                     Therefore, when opt is called again at line 7, the erroneous
+ 3   }
+ 4   let r1 = opt () ;                                             bytecode is executed, and the value with index 232 -1 in v0 is
+ 5   print (Object . is (r1 , −0)) ; // output : True              returned, which is 0. Again, FuzzJIT captures this bug with
+ 6   for ( let i = 0; i < 1000; i++) {
+ 7     opt () ;                                                    its enhanced test oracle.
+ 8   }                                                             Discussion. We find that PoCs triggering these two bugs are
+ 9   let r2 = opt () ;
+10   print (Object . is (r2 , −0)) ; // output : False             quite simple, but they are still missed by other fuzzers. This
+                                                                   is mainly due to the fact they use crash as the only test oracle.
+                                                                   Also, the interesting number -0 is crucial to trigger the first
+     Figure 8: JIT compiler Bug-228068 in JavaSciptCore.           bug, which also demonstrates the usefulness of our sample
+                                                                   mutation strategy. Due to the limited time budget, we have
+ 1   function opt () {                                             not found exploitation of these two bugs ourselves, however
+ 2     var v0 = new Int16Array(2**32);
+                                                                   it does not mean they cannot be exploited. Though creating
+ 3     return v0[−1];
+ 4   }                                                             exploitation is not within the scope of this research, we did
+ 5   print (opt () ) ; // output : undefined
+                                                                   exploit two of our bugs, with ids from Chromium Bugzilla and
+ 6   %OptimizeFunctionOnNextCall(opt);
+ 7   print (opt () ) ; // output : 0                               Microsoft Security Response Center, and do not disclose their
+                                                                   details here for security considerations. JIT compiler bugs
+                                                                   still have the potential to lead to more threatening security
+            Figure 9: JIT compiler Bug-1224283 in V8.
+                                                                   attacks, such as remote code execution, thus should also be
+                                                                   paid more attention from the community.
+5.3       Case study
+                                                                   6    Related works
+In this section, we case study two bugs detected by FuzzJIT,
+one in JavaScriptCore and one in bug V8, and both have been        Mutation based approaches. Mutation based approaches
+fixed in their latest build. The PoCs we present are simplified    produce new test cases from mutating existing test cases
+from the test case generated during fuzzing and are made to        at the intermediate representation level [4, 9], the AST
+fulfill the original JIT compiler activation threshold.            level [1, 12, 14, 17, 23, 37], the general grammar level [2, 31],
+Case study 1. Figure 8 is a simplified PoC triggering Bug-         the token level [30], and the byte level [42], which is sorted
+228068 in JavaScriptCore. The bug is caused by an error            from JavaScript engine pertinence to generality. Fuzzilli [9]
+in the JIT compilation where it generates the bytecode for         proposes a customized intermediate language named FuzzIL
+parseInt(“-0”). The bug does not cause any crashes and             and a set of mutators that can spontaneously ensure the syn-
+is hard to be detected by other fuzzers. The JavaScript API        tax and semantic correctness of generated test cases. Poly-
+parseInt() converts a string into an integer. Before the JIT       Glot [4] proposes a unified intermediate representation for
+compilation, “-0” is correctly converted to -0 at line 4. After    nine programming languages and tests the general fuzzing
+the JIT compiler is activated by the repetitive function invoca-   framework with 21 targets, including JavaScript and its en-
+tion through line 6-8, opt is compiled into bytecode by the        gines. Langfuzz [14] is the first to pursue AST level mutations
+JIT compiler and when it is called again, the bytecode con-        during fuzzing JavaScript engines. Following this line, Supe-
+verts “-0” to 0. FuzzJIT captures this inconsistency through       rion [37], Nautilus [1], DIE [23], CodeAlchemist [12], and
+the deep comparison rules.                                         Montage [17] advance the AST level mutations through in-
+Case study 2. Figure 9 shows a simplified PoC triggering           troducing code coverage feedback guidance, variable typing
+Bug-1224283 in V8. This bug is also caused by an error             system, and prevailing neural network language models. Here,
+during generating bytecode in the JIT compiler, and does not       DIE is applied to find crashing JIT bugs during evaluation,
+lead to any crash. According to the specification of JavaScript,   but its mutations are not specially designed for revealing JIT
+when reading from an array with an out-of-range index, e.g.,       bugs. The aim of DIE is to sufficiently unleash the poten-
+-1, it should return undefined. It is the case at line 5 before    tial of seeds, via largely retaining its structure and variable
+the JIT compiler is triggered. After being triggered through       types. It is highly dependent on the high-quality JIT bug PoC
+line 6, the JIT compiler starts to generate bytecode for the       seeds, and can quickly become ineffective if no new PoCs
+opt function. When dealing with the array indexing operation       are added. Gramatron [31] performs input mutation based
+at line 3, the JIT compiler finds that the size of v0 exceeds      on grammatical automaton and Grimoire [2] uses grammar-
+the range of the unsigned 32-bit integer type, which is 232 -      like combinations to synthesize new highly structured inputs
+1. It decides to convert 232 into an unsigned 64-bit integer.      without any pre-processing step. A recent work on mutat-
+The index is required to be of the same type as the array          ing JavaScript tokes [30] is surprisingly effective in finding
+size. Hence, the compiler converts the index -1 into an un-        new bugs in the parser, which are missed by byte-level and
+signed 64-bit integer, without checking its sign, thus making      grammar-level mutations.
+
+
+
+USENIX Association                                                                    32nd USENIX Security Symposium          1879
+Generation based approaches. Generation based approaches            in JavaScript engines. Based on a code wrapping template, we
+generate test cases based on grammar from scratch. Unlike           guarantee that all test cases trigger the JIT compiler module
+mutation based approaches, generation based approaches re-          and any unexpected execution discrepancy caused by the JIT
+quire intensive efforts from experts with thorough domain           compiler is captured to identify bugs. Also with the help of
+knowledge and rich experience to develop the generation rules.      a feat of bug-revealing elements, we successfully exposed
+They tend to generate high-quality samples which could pen-         33 JIT compiler bugs in four mainstream JavaScript engines.
+etrate deeply into the testing targets and sometimes find bugs      The wrapping template in FuzzJIT is extensible to incorporate
+really hard to be uncovered other way. Jsfunfuzz [28] gener-        other bug-revealing elements and detect JIT compiler bugs of
+ates JavaScript test cases from hard-coded grammar rules. It        more diverse types.
+also provides a feature to test the correctness and performance        Despite this, FuzzJIT just makes a quite initial exploration
+issues of the JIT compiler with differential testing. However,      on detecting JIT bugs in JavaScript engines with fuzzing,
+compared to FuzzJIT, it lacks a generic JIT triggering mech-        and a lot more efforts from the community are demanded to
+anism, mutations specifically-designed to reveal JIT bugs,          improve the correctness and security of JIT compilers. In the
+and a systematically-enhanced test oracle to capture the JIT        future, we are interested in investigating a wider range of types
+bugs. And the generation based design also limits its search        of JIT bugs, and designing suitable mutations and templates to
+space. Such inefficiencies make it fail to identify any new         effectively uncover them. Another very interesting direction is
+bugs in the comparison experiments. Domato [7] generates            to look into how sufficiently the generated JIT code is covered
+test cases from given grammar files with associated proba-          during fuzzing and whether its coverage can better guide the
+bilities. Skyfire [36] learns a probabilistic context-sensitive     detection of JIT bugs. A specific instrumentation mechanism
+grammar model from JavaScript corpus to generate new test           is desired to collect the coverage information of such code
+cases.                                                              generated at runtime.
+Differential testing. Differential testing comparatively tests
+software systems/applications implementing the same func-
+tionality, and is adopted to test JavaScript engines [22, 24, 41]   Acknowledgments
+and other software, such as the Java virtual machine [5], SS-
+L/TLS implementations [26, 34], HTTP protocol [16], Java            This work is partially sponsored by National Key R&D Pro-
+bytecode programs [21], quantum software stacks [35], and           gram of China (No.2019YFB2101700), National Natural Sci-
+CPU [15]. NEZHA [24] is a domain-independent differen-              ence Foundation of China (62102283, U1836214).
+tial testing framework that leverages evolutionary algorithms
+to guide the generation of samples to maximize the discrep-         References
+ancy between program paths taken during execution. Recent
+works [22, 41] on JavaScript engine differential testing have        [1] Cornelius Aschermann, Tommaso Frassetto, Thorsten
+focused on exposing conformance bugs, i.e., implementation               Holz, Patrick Jauernig, Ahmad-Reza Sadeghi, and
+deviations from the official specification. These approaches             Daniel Teuchert. Nautilus: Fishing for deep bugs with
+are commonly restricted by what oracles can be extracted                 grammars. In NDSS, 2019.
+from the specification, which is still quite challenging. Com-
+fort [41] looks into JavaScript built-ins, extracts expected         [2] Tim Blazytko, Matt Bishop, Cornelius Aschermann,
+output from the specification and compares it with the ac-               Justin Cappos, Moritz Schlögel, Nadia Korshun, Ali Ab-
+tual execution results. JEST [22] firstly generates the oracle           basi, Marco Schweighauser, Sebastian Schinzel, Sergej
+of program final states with a mechanized specification, and             Schumilo, et al. {GRIMOIRE}: Synthesizing structure
+embeds the original test input with assertions checking these            while fuzzing. In 28th {USENIX} Security Symposium
+states, and observes whether there is any assertion failure.             ({USENIX} Security 19), pages 1985–2002, 2019.
+The solution of JEST on checking oracle is not as efficient
+as FuzzJIT, as the same input has to be executed twice to            [3] ChakraCore. Chakracore issues list. https://github
+firstly generate the program final state with JIT compiler and           .com/chakra-core/ChakraCore/issues/.
+instrument the code with assertions accordingly. Efficiency is
+                                                                     [4] Yongheng Chen, Rui Zhong, Hong Hu, Hangfan Zhang,
+critical to finding bugs with fuzzing. We can see that none of
+                                                                         Yupeng Yang, Dinghao Wu, and Wenke Lee. One engine
+them is specialized in exposing JIT bugs, and conformance
+                                                                         to fuzz’em all: Generic language processor testing with
+bugs usually have a relatively weak security impact.
+                                                                         semantic validation. In Proceedings of the 42nd IEEE
+                                                                         Symposium on Security and Privacy (Oakland), 2021.
+7   Conclusion and future work
+                                                                     [5] Yuting Chen, Ting Su, Chengnian Sun, Zhendong Su,
+In this work, we propose an oracle-enhanced fuzzing tech-                and Jianjun Zhao. Coverage-directed differential testing
+nique to detect non-crashing and crashing JIT compiler bugs              of jvm implementations. In proceedings of the 37th
+
+
+
+1880    32nd USENIX Security Symposium                                                                        USENIX Association
+     ACM SIGPLAN Conference on Programming Language               [19] Microsoft. Microsoft security response center. https:
+     Design and Implementation, pages 85–99, 2016.                     //msrc.microsoft.com.
+ [6] Chromium. Chromium bugzilla. https://bugs.chr                [20] Mozilla. Mozilla bugzilla. https://bugzilla.mozil
+     omium.org/p/chromium/issues/list.                                 la.org/.
+ [7] Ivan Fratric. Domato: A dom fuzzer. https://github           [21] Yannic Noller, Corina S Păsăreanu, Marcel Böhme,
+     .com/googleprojectzero/domato.                                    Youcheng Sun, Hoang Lam Nguyen, and Lars Grunske.
+                                                                       Hydiff: Hybrid differential software analysis. In 2020
+ [8] Google. Project-zero issues. https://bugs.chromiu                 IEEE/ACM 42nd International Conference on Software
+     m.org/p/project-zero/issues/list.                                 Engineering (ICSE), pages 1273–1285. IEEE, 2020.
+ [9] Samuel Groß. Fuzzil: Coverage guided fuzzing for
+                                                                  [22] Jihyeok Park, Seungmin An, Dongjun Youn, Gyeong-
+     javascript engines. Master’s thesis, TU Braunschweig,
+                                                                       won Kim, and Sukyoung Ryu. Jest: N+ 1-version differ-
+     2018.
+                                                                       ential testing of both javascript engines and specification.
+[10] Samuel Groß. Attacking client-side jit compilers. In              In 2021 IEEE/ACM 43rd International Conference on
+     Blackhat USA, 2018.                                               Software Engineering (ICSE), pages 13–24. IEEE, 2021.
+
+[11] Choongwoo Han. A collection of javascript engine cves        [23] Soyeon Park, Wen Xu, Insu Yun, Daehee Jang, and
+     with pocs. https://github.com/tunz/js-vuln-db.                    Taesoo Kim. Fuzzing javascript engines with aspect-
+                                                                       preserving mutation. In 2020 IEEE Symposium on Se-
+[12] HyungSeok Han, DongHyeon Oh, and Sang Kil Cha.                    curity and Privacy (SP), pages 1629–1642. IEEE, 2020.
+     Codealchemist: Semantics-aware code generation to
+     find vulnerabilities in javascript engines. In NDSS, 2019.   [24] Theofilos Petsios, Adrian Tang, Salvatore Stolfo, An-
+                                                                       gelos D Keromytis, and Suman Jana. Nezha: Efficient
+[13] William H. Harrison. Compiler analysis of the value               domain-independent differential testing. In 2017 IEEE
+     ranges for variables. IEEE Transactions on software               Symposium on security and privacy (SP), pages 615–
+     engineering, pages 243–250, 1977.                                 632. IEEE, 2017.
+[14] Christian Holler, Kim Herzig, and Andreas Zeller.            [25] Filip Pizlo. Speculation in javascriptcore. https://we
+     Fuzzing with code fragments. In 21st {USENIX} Se-                 bkit.org/blog/10308/speculation-in-javascr
+     curity Symposium ({USENIX} Security 12), pages 445–               iptcore/.
+     458, 2012.
+                                                                  [26] Lili Quan, Qianyu Guo, Hongxu Chen, Xiaofei Xie, Xi-
+[15] Jaewon Hur, Suhwan Song, Dongup Kwon, Eunjin Baek,                aohong Li, Yang Liu, and Jing Hu. Sadt: syntax-aware
+     Jangwoo Kim, and Byoungyoung Lee. Difuzzrtl: Dif-                 differential testing of certificate validation in ssl/tls im-
+     ferential fuzz testing to find cpu bugs. In 2021 IEEE             plementations. In 2020 35th IEEE/ACM International
+     Symposium on Security and Privacy (SP), pages 1286–               Conference on Automated Software Engineering (ASE),
+     1303. IEEE, 2021.                                                 pages 524–535. IEEE, 2020.
+[16] Bahruz Jabiyev, Steven Sprecher, Kaan Onarlioglu, and        [27] Jesse Ruderman. Fuzzing tracemonkey. https://www.
+     Engin Kirda. T-reqs: Http request smuggling with differ-          squarefree.com/2008/12/23/fuzzing-tracemon
+     ential fuzzing. In Proceedings of the 2021 ACM SIGSAC             key/.
+     Conference on Computer and Communications Security,
+     pages 1805–1820, 2021.                                       [28] Jesse Ruderman. Introducing jsfunfuzz. https://www.
+                                                                       squarefree.com/2007/08/02/introducing-jsfu
+[17] Suyoung Lee, HyungSeok Han, Sang Kil Cha, and Sooel               nfuzz/, 2007.
+     Son. Montage: A neural network language model-
+     guided javascript engine fuzzer. In 29th {USENIX}            [29] Stephen Röttger. Issue 762874: Security: off by one in
+     Security Symposium ({USENIX} Security 20), pages                  turbofan range optimization for string.indexof. http
+     2613–2630, 2020.                                                  s://bugs.chromium.org/p/chromium/issues/de
+                                                                       tail?id=762874.
+[18] Yuwei Li, Shouling Ji, Yuan Chen, Sizhuang Liang,
+     Wei-Han Lee, Yueyao Chen, Chenyang Lyu, Chunming             [30] Christopher Salls, Chani Jindal, Jake Corina, Christo-
+     Wu, Raheem Beyah, Peng Cheng, Kangjie Lu, and Ting                pher Kruegel, and Giovanni Vigna. Token-level fuzzing.
+     Wang. UNIFUZZ: A holistic and pragmatic metrics-                  In Proceedings of the 14th ACM Conference on Se-
+     driven platform for evaluating fuzzers. In Proceedings            curity and Privacy in Wireless and Mobile Networks
+     of the 30th USENIX Security Symposium, 2021.                      (WiSec’21), 2021.
+
+
+
+USENIX Association                                                                  32nd USENIX Security Symposium            1881
+[31] Prashast Srivastava and Mathias Payer. Gramatron: Ef-         IEEE Symposium on Security and Privacy (SP), pages
+     fective grammar-aware fuzzing. Proceedings of the 30th        579–594. IEEE, 2017.
+     ACM SIGSOFT International Symposium on Software
+     Testing and Analysis (ISSTA 2021), 2021.                 [37] Junjie Wang, Bihuan Chen, Lei Wei, and Yang Liu.
+                                                                   Superion: Grammar-aware greybox fuzzing. In 2019
+[32] StackOverflow. After what exact number of execution           IEEE/ACM 41st International Conference on Software
+     function gets hot in v8? https://stackoverflow.               Engineering (ICSE), pages 724–735. IEEE, 2019.
+     com/questions/59809832/after-what-exact-nu
+     mber-of-execution-function-gets-hot-in-v8.               [38] Webkit. Webkit bugzilla. https://bugs.webkit.org.
+[33] V8. V8 bugzilla. https://bugs.chromium.org/p/            [39] Wikipedia. Browser security. https://en.wikipedia
+     v8/issues/list.                                               .org/wiki/Browser_security.
+[34] Andreas Walz and Axel Sikora. Maximizing and lever-
+     aging behavioral discrepancies in tls implementations    [40] Wikipedia. Webassembly. https://en.wikipedia.o
+     using response-guided differential fuzzing. In 2018           rg/wiki/WebAssembly.
+     International Carnahan Conference on Security Tech-
+                                                              [41] Guixin Ye, Zhanyong Tang, Shin Hwei Tan, Songfang
+     nology (ICCST), pages 1–5. IEEE, 2018.
+                                                                   Huang, Dingyi Fang, Xiaoyang Sun, Lizhong Bian,
+[35] Jiyuan Wang, Qian Zhang, Guoqing Harry Xu, and                Haibo Wang, and Zheng Wang. Automated confor-
+     Miryung Kim. Qdiff: Differential testing of quantum           mance testing for javascript engines via deep compiler
+     software stacks. In 2021 36nd IEEE/ACM International          fuzzing. In Proceedings of the 42nd ACM SIGPLAN
+     Conference on Automated Software Engineering (ASE),           International Conference on Programming Language
+     2021.                                                         Design and Implementation, pages 435–450, 2021.
+
+[36] Junjie Wang, Bihuan Chen, Lei Wei, and Yang Liu. Sky-    [42] Michal Zalewski. American fuzzy lop. https://lcam
+     fire: Data-driven seed generation for fuzzing. In 2017        tuf.coredump.cx/afl/.
+
+
+
+
+1882   32nd USENIX Security Symposium                                                               USENIX Association
+

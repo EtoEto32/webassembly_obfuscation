@@ -1,0 +1,9 @@
+# 測定手順の修正
+
+2026-10-21。初回240 processのraw batchを確認後、2回目の測定前に記録した。
+
+初回はwarmup100、9×500回。256 counterのplainで1batchは約15μsと短い。4096 plainではbatch前半が約330–370ns/update、後半約260–270ns/updateへ下がるprocessが複数あり、tier移行・warmup不足を含む可能性がある。表版の256条件にも同様の低下を観察した。原因を実際のJIT codeで特定したものではない。この状態で小幅な差を確定しない。
+
+全比較条件をwarmup20,000、9×50,000回、5 fresh processで再測定する。条件の選別・outlier除去はしない。順序seedを211002に固定。元の結果と当時のbenchmark/internalソースをruntime-v1に残す。2回目を主要測定とし、両結果を報告する。繰返し増加はこの未解決の測定懸念に対応するためである。
+
+計画の説明も訂正：固定されたbank Bに対してmerge+decayを反復するとAは有限回で固定点へ収束する。mergeのみ同様、大半は飽和後。どちらも各回load/storeするbranchless kernelだが、値が変化し続けるworkloadという説明は誤りだった。どちらも状態が収束したkernel費用であり、実アプリの入力分布やcache命中率の効果は測っていない。

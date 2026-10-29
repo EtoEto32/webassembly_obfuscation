@@ -1,0 +1,248 @@
+{
+  "mode": "random",
+  "seed": 20261018,
+  "inputSHA256": "2bebffd0237fe22c4f8b9bc75d97f1fbef04cc0430b61708c3c66fa69ff8912c",
+  "outputSHA256": "da77176839517de3fbc158cddf220c13036dd08c07bbb3356bb3208054e9fbfe",
+  "elapsed_seconds": 0.08747070000000001,
+  "regions": [
+    {
+      "source": [
+        "mul",
+        [
+          "add",
+          [
+            "add",
+            [
+              "mul",
+              "v0",
+              "v1"
+            ],
+            [
+              "mul",
+              "v2",
+              "v0"
+            ]
+          ],
+          [
+            "mul",
+            "v1",
+            "v2"
+          ]
+        ],
+        [
+          "add",
+          [
+            "add",
+            [
+              "mul",
+              "v0",
+              "v1"
+            ],
+            [
+              "mul",
+              "v2",
+              "v0"
+            ]
+          ],
+          [
+            "mul",
+            "v1",
+            "v2"
+          ]
+        ]
+      ],
+      "target": [
+        "add",
+        [
+          "add",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ],
+          [
+            "mul",
+            "v2",
+            "v0"
+          ]
+        ],
+        [
+          "mul",
+          "v1",
+          "v2"
+        ]
+      ],
+      "chosen": [
+        "add",
+        [
+          "mul",
+          [
+            "add",
+            [
+              "mul",
+              "v0",
+              "v1"
+            ],
+            [
+              "mul",
+              "v2",
+              "v0"
+            ]
+          ],
+          [
+            "add",
+            [
+              "mul",
+              "v0",
+              "v1"
+            ],
+            [
+              "add",
+              [
+                "mul",
+                "v2",
+                "v0"
+              ],
+              [
+                "mul",
+                "v1",
+                "v2"
+              ]
+            ]
+          ]
+        ],
+        [
+          "mul",
+          [
+            "mul",
+            "v1",
+            "v2"
+          ],
+          [
+            "add",
+            [
+              "add",
+              [
+                "mul",
+                "v0",
+                "v1"
+              ],
+              [
+                "mul",
+                "v2",
+                "v0"
+              ]
+            ],
+            [
+              "mul",
+              "v1",
+              "v2"
+            ]
+          ]
+        ]
+      ],
+      "search": {
+        "attempted": 112,
+        "retained": 96,
+        "cost_rejected": 2,
+        "budget_hit": true,
+        "depth": 3,
+        "limit": 96
+      },
+      "frontier_size": 4,
+      "source_cost": 11,
+      "chosen_cost": 17,
+      "recovery": {
+        "cost": 0,
+        "expression": [
+          "add",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ],
+          [
+            "add",
+            [
+              "mul",
+              "v2",
+              "v0"
+            ],
+            [
+              "mul",
+              "v1",
+              "v2"
+            ]
+          ]
+        ]
+      },
+      "certificate": [
+        [
+          [
+            "v0",
+            "v0",
+            "v1",
+            "v1"
+          ],
+          1
+        ],
+        [
+          [
+            "v0",
+            "v0",
+            "v1",
+            "v2"
+          ],
+          2
+        ],
+        [
+          [
+            "v0",
+            "v0",
+            "v2",
+            "v2"
+          ],
+          1
+        ],
+        [
+          [
+            "v0",
+            "v1",
+            "v1",
+            "v2"
+          ],
+          2
+        ],
+        [
+          [
+            "v0",
+            "v1",
+            "v2",
+            "v2"
+          ],
+          2
+        ],
+        [
+          [
+            "v1",
+            "v1",
+            "v2",
+            "v2"
+          ],
+          1
+        ]
+      ]
+    }
+  ],
+  "supported": "pure i32 add/sub/mul over local.get and i32.const; WABT folded text only",
+  "limitations": [
+    "Finite bounded rewrite pool, not complete synthesis.",
+    "Selection uses algebraic 2-operation recovery only; not a resilience verdict.",
+    "Debug/custom sections not guaranteed preserved.",
+    "No post-optimizer scoring in this CLI version."
+  ],
+  "sourceSHA256": {
+    "transform.py": "98905cb88d7e60fe345b1a5d989854bf80684119142d3073d6bbffda575a0a89",
+    "core.py": "750c89595c7c3cc2709b6b5ff4d4f1e6dfddacb708bd0ecdc4243c20993be031"
+  }
+}

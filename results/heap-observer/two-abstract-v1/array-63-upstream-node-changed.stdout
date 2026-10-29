@@ -1,0 +1,26 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func
+[fuzz-exec] note result: func => null
+[fuzz-exec] export func_10_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_12
+[fuzz-exec] note result: func_12 => object(object(object(null)))
+[fuzz-exec] export func_12_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_14_invoker
+exception thrown: RangeError: WebAssembly.Table.get(): invalid address 4294967185 in funcref table of size 3
+[fuzz-exec] export func_16
+[fuzz-exec] note result: func_16 => 2 -1
+[fuzz-exec] export func_16_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_18_invoker
+exception thrown: RangeError: WebAssembly.Table.get(): invalid address 4229955583 in funcref table of size 3
+[fuzz-exec] export func_20
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_21
+exception thrown: TypeError: Cannot convert null to a BigInt
+[fuzz-exec] export func_21_invoker
+[LoggingExternalInterface logging -87 -1]
+[fuzz-exec] export func_23
+exception thrown: TypeError: Cannot convert null to a BigInt

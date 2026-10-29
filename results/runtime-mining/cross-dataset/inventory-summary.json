@@ -1,0 +1,56 @@
+{
+  "scope": "Acquired public corpus; candidate inventory, not executed or confirmed miners",
+  "datasets": {
+    "deepminer": {
+      "occurrences": 1,
+      "unique_inputs": 1,
+      "named_hash_export_inputs": 1
+    },
+    "diversification2022": {
+      "occurrences": 1,
+      "unique_inputs": 1,
+      "named_hash_export_inputs": 1
+    },
+    "minerray": {
+      "occurrences": 5,
+      "unique_inputs": 5,
+      "named_hash_export_inputs": 5
+    },
+    "minesweeper": {
+      "occurrences": 34,
+      "unique_inputs": 34,
+      "named_hash_export_inputs": 13
+    },
+    "proof-of-theft": {
+      "occurrences": 227,
+      "unique_inputs": 135,
+      "named_hash_export_inputs": 4
+    },
+    "seismic": {
+      "occurrences": 3,
+      "unique_inputs": 3,
+      "named_hash_export_inputs": 0
+    },
+    "swamped": {
+      "occurrences": 50,
+      "unique_inputs": 46,
+      "named_hash_export_inputs": 20
+    },
+    "wasm-obf": {
+      "occurrences": 20462,
+      "unique_inputs": 15717,
+      "named_hash_export_inputs": 15716
+    }
+  },
+  "total_unique_candidates": 15907,
+  "measured_baseline": "results/runtime-mining/runs/cn-pico-normal-binaries-20261007-222952/summary.json",
+  "limitations": [
+    "General-purpose and malware-only corpora without mining provenance are not yet execution candidates.",
+    "Interfaces missing from the first 64KiB of cache require a separate full interface audit.",
+    "Named exports and source labels do not establish mining correctness or malicious use.",
+    "Directory entries are not necessarily final uninstrumented programs.",
+    "Algorithm/ABI and original/variant pairing must be verified before execution.",
+    "Missing public artifacts and invalid modules remain coverage gaps.",
+    "Cross-dataset coverage alone is not a novelty claim."
+  ]
+}

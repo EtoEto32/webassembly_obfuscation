@@ -1,0 +1,115 @@
+{
+  "status": "passed",
+  "byteIdenticalBinaries": 39,
+  "checks": {
+    "controls": {
+      "contracts": 256,
+      "runtimeComparisons": 1228,
+      "apiCalls": 2732,
+      "hostCalls": 1988,
+      "cellWrites": 896,
+      "preparationCalls": 2456,
+      "pureTagCalls": 1847
+    },
+    "check": {
+      "contracts": 256,
+      "unsat": 1164,
+      "unknown": 0
+    },
+    "ablation": {
+      "summary": {
+        "erase-import": {
+          "falseEqual": 90,
+          "falseDifferent": 0
+        },
+        "ignore-read": {
+          "falseEqual": 14,
+          "falseDifferent": 0
+        },
+        "ignore-write": {
+          "falseEqual": 34,
+          "falseDifferent": 0
+        },
+        "boundary-only": {
+          "falseEqual": 70,
+          "falseDifferent": 12
+        }
+      },
+      "contracts": 256,
+      "samples": 512
+    },
+    "finite": {
+      "contracts": 256,
+      "initialStores": 1024,
+      "equal": 674,
+      "different": 350,
+      "maxStates": 14,
+      "transitions": 13490
+    },
+    "generic": {
+      "contracts": 256,
+      "statuses": {
+        "same-condition": 256
+      }
+    },
+    "boundary": {
+      "refusals": 11,
+      "normalizations": 4,
+      "entryCalls": 8
+    },
+    "chain": {
+      "contracts": 8,
+      "apiCalls": 564,
+      "hostCalls": 548,
+      "preparationCalls": 16,
+      "pureTagCalls": 290
+    }
+  },
+  "sourceTree": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\import-bundle-replay-v1\\root",
+  "wabtRoot": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin",
+  "logs": [
+    {
+      "script": "guard-import-controls.py",
+      "code": 0,
+      "stdout": "{\"module\": \"memory-before\", \"contracts\": 16}\n{\"module\": \"memory-after\", \"contracts\": 32}\n{\"module\": \"memory-repair\", \"contracts\": 48}\n{\"module\": \"memory-zero\", \"contracts\": 64}\n{\"module\": \"memory-twice\", \"contracts\": 80}\n{\"module\": \"memory-unreachable\", \"contracts\": 96}\n{\"module\": \"memory-read-before-repair\", \"contracts\": 112}\n{\"module\": \"memory-read-after-repair\", \"contracts\": 128}\n{\"module\": \"table-before\", \"contracts\": 144}\n{\"module\": \"table-after\", \"contracts\": 160}\n{\"module\": \"table-repair\", \"contracts\": 176}\n{\"module\": \"table-zero\", \"contracts\": 192}\n{\"module\": \"table-twice\", \"contracts\": 208}\n{\"module\": \"table-unreachable\", \"contracts\": 224}\n{\"module\": \"table-read-before-repair\", \"contracts\": 240}\n{\"module\": \"table-read-after-repair\", \"contracts\": 256}\n{\"contracts\":256,\"runtimeComparisons\":1228,\"apiCalls\":2732,\"preparationCalls\":2456,\"hostCalls\":1988,\"cellWrites\":896,\"pureTagCalls\":1847,\"node\":\"v24.15.0\"}\n\n",
+      "stderr": ""
+    },
+    {
+      "script": "guard-import-check.py",
+      "code": 0,
+      "stdout": "{\"contracts\": 256, \"unsat\": 1164, \"unknown\": 0, \"z3\": \"4.13.3\"}\n",
+      "stderr": ""
+    },
+    {
+      "script": "guard-import-ablation.py",
+      "code": 0,
+      "stdout": "{\"summary\": {\"erase-import\": {\"falseEqual\": 90, \"falseDifferent\": 0}, \"ignore-read\": {\"falseEqual\": 14, \"falseDifferent\": 0}, \"ignore-write\": {\"falseEqual\": 34, \"falseDifferent\": 0}, \"boundary-only\": {\"falseEqual\": 70, \"falseDifferent\": 12}}, \"contracts\": 256, \"samples\": 512, \"scope\": \"Deliberately wrong models, not existing tools. Boundary-only moves possible host effects to API boundaries and erases host trace observations.\"}\n",
+      "stderr": ""
+    },
+    {
+      "script": "guard-import-finite.py",
+      "code": 0,
+      "stdout": "{\"contracts\": 256, \"initialStores\": 1024, \"equal\": 674, \"different\": 350, \"maxStates\": 14, \"transitions\": 13490, \"scope\": \"All common initial stores over constants plus two fresh values, concrete exhaustive finite BFS, shared parser. No fair performance comparison claimed.\"}\n",
+      "stderr": ""
+    },
+    {
+      "script": "guard-import-generic.py",
+      "code": 0,
+      "stdout": "{\"contracts\": 32}\n{\"contracts\": 64}\n{\"contracts\": 96}\n{\"contracts\": 128}\n{\"contracts\": 160}\n{\"contracts\": 192}\n{\"contracts\": 224}\n{\"contracts\": 256}\n{\"contracts\": 256, \"statuses\": {\"same-condition\": 256}, \"z3\": \"4.13.3\", \"scope\": \"Self-built generic SMT WP/QE baseline, not an author-tool reproduction. One pass timings are diagnostic only.\"}\n",
+      "stderr": ""
+    },
+    {
+      "script": "guard-import-boundary.py",
+      "code": 0,
+      "stdout": "{\"refusals\":11,\"normalizations\":4,\"entryCalls\":8,\"node\":\"v24.15.0\"}\n\n",
+      "stderr": ""
+    },
+    {
+      "script": "guard-import-chain.py",
+      "code": 0,
+      "stdout": "{\"length\": 1, \"latestGenericSeconds\": 0.019575600000000026}\n{\"length\": 8, \"latestGenericSeconds\": 0.11589590000000005}\n{\"length\": 32, \"latestGenericSeconds\": 0.9678179000000001}\n{\"length\": 96, \"latestGenericSeconds\": 7.2931403999999995}\n{\"contracts\":8,\"apiCalls\":564,\"hostCalls\":548,\"pureTagCalls\":290,\"preparationCalls\":16,\"node\":\"v24.15.0\"}\n\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Small import profile controls, finite and generic solvers; no external restorer or natural application reproduction."
+}

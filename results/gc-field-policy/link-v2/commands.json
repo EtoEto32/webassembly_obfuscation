@@ -1,0 +1,60 @@
+[
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\gc-field-policy-target\\release\\gc-field-policy.exe",
+      "results\\gc-field-policy\\workload-v2\\accessor-lib.wasm",
+      "results\\gc-field-policy\\workload-v2\\accessor-policy.json",
+      "results\\gc-field-policy\\workload-v2\\accessor-client.wasm"
+    ],
+    "code": 0,
+    "stdout": "{\"features\":\"WASM2 + GC + function-references + tail-call + extended-const\",\"obligations\":0,\"results\":[{\"accepted\":true,\"mode\":\"none\",\"violations\":[]},{\"accepted\":true,\"mode\":\"local-index\",\"violations\":[]},{\"accepted\":true,\"mode\":\"canonical-exact\",\"violations\":[]},{\"accepted\":true,\"mode\":\"closure\",\"violations\":[]},{\"accepted\":true,\"mode\":\"deny-all-gc\",\"violations\":[]}],\"totalSeconds\":0.0006383,\"validationSeconds\":0.0005844}\n",
+    "stderr": "",
+    "wallMs": 8.944599999999998
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-merge.exe",
+      "results\\gc-field-policy\\workload-v2\\accessor-lib.wasm",
+      "lib",
+      "results\\gc-field-policy\\workload-v2\\accessor-client.wasm",
+      "client",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "-o",
+      "results\\gc-field-policy\\link-v2\\accessor-merged.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 15.027800000000008
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "results\\gc-field-policy\\link-v2\\accessor-merged.wasm",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "-O3",
+      "-o",
+      "results\\gc-field-policy\\link-v2\\accessor-merged-o3.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 21.097900000000003
+  },
+  {
+    "args": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\gc-field-policy\\link-bench.mjs",
+      "results\\gc-field-policy\\link-v2\\accessor-merged-o3.wasm",
+      "8"
+    ],
+    "code": 0,
+    "stdout": "{\"engine\":\"Node\",\"version\":\"v24.15.0\",\"v8\":\"13.6.233.17-node.48\",\"setupMs\":0.46319999999999695,\"samples\":[0.5626000000000033,0.5718000000000032,0.5609000000000037,0.565100000000001,0.5848000000000013,0.5609999999999999,0.564700000000002,0.5711999999999975,0.5607999999999933,0.5609999999999999,0.5767999999999986],\"checks\":[563280160,563280160,563280160,563280160,563280160,563280160,563280160,563280160,563280160,563280160,563280160],\"privateAfter\":77123,\"peakBytes\":45199360}\n",
+    "stderr": "",
+    "wallMs": 69.94299999999998
+  }
+]

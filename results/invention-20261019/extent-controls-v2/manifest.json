@@ -1,0 +1,76 @@
+{
+  "cases": [
+    {
+      "name": "zero-address",
+      "args": [
+        4294967295,
+        0,
+        0,
+        305419896,
+        0
+      ],
+      "pages": 0,
+      "good": "zero-address.good.wasm",
+      "bad": "zero-address.bad.wasm"
+    },
+    {
+      "name": "partial-trap",
+      "args": [
+        65534,
+        0,
+        0,
+        305419896,
+        1
+      ],
+      "pages": 1,
+      "good": "partial-trap.good.wasm",
+      "bad": "partial-trap.bad.wasm"
+    },
+    {
+      "name": "offset-wrap",
+      "args": [
+        4294967295,
+        0,
+        0,
+        305419896,
+        1
+      ],
+      "pages": 1,
+      "good": "offset-wrap.good.wasm",
+      "bad": "offset-wrap.bad.wasm"
+    },
+    {
+      "name": "public-dummy",
+      "args": [
+        123,
+        0,
+        0,
+        305419896,
+        0
+      ],
+      "pages": 1,
+      "good": "public-dummy.good.wasm",
+      "bad": "public-dummy.bad.wasm"
+    }
+  ],
+  "normalizer": {
+    "before": "operand-order.before.wasm",
+    "after": "operand-order.after.wasm",
+    "stats": {
+      "bulk": 1,
+      "byte_fills": 0,
+      "identity_copies": 0,
+      "guarded_bulk": 1
+    }
+  },
+  "rejections": [
+    {
+      "name": "load",
+      "reason": "Not a supported total i32 expression: (i32.load (local.get 1))"
+    },
+    {
+      "name": "division",
+      "reason": "Not a supported total i32 expression: (i32.div_u (local.get 2) (local.get 3))"
+    }
+  ]
+}

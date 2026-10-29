@@ -1,0 +1,8 @@
+(module binary "\00\61\73\6d\01\00\00\00\01\07\01\60\02\7f\7f\01\7f\03\02\01\00\07\07\01\03\72\75\6e\00\00\0a\6d\01\6b\00\20\01\41\07\77\41\c4\e9\95\c3\04\6a\20\01\41\05\77\41\f1\bc\c3\07\6a\20\01\41\03\77\41\87\fc\e9\9a\05\6a\20\00\20\01\41\01\77\41\91\ba\b6\89\01\6a\6a\20\01\41\02\77\41\98\86\80\c9\04\6b\73\6c\20\01\41\04\77\41\f6\e5\ee\dc\06\6a\77\6a\20\01\41\06\77\41\9f\81\f3\c2\03\6b\73\6c\20\01\41\08\77\41\e9\a9\83\9c\05\6a\77\0b")
+(assert_return (invoke "run" (i32.const 0) (i32.const 0)) (i32.const 738193604))
+(assert_return (invoke "run" (i32.const 1) (i32.const 1)) (i32.const 2734557343))
+(assert_return (invoke "run" (i32.const -1) (i32.const -1)) (i32.const 3362610676))
+(assert_return (invoke "run" (i32.const 1073741824) (i32.const 1073741824)) (i32.const 3110138133))
+(assert_return (invoke "run" (i32.const 2147483647) (i32.const 2147483648)) (i32.const 1858310429))
+(assert_return (invoke "run" (i32.const 1431655765) (i32.const 2863311530)) (i32.const 3003939457))
+(assert_return (invoke "run" (i32.const 65535) (i32.const 65536)) (i32.const 1838254334))

@@ -1,0 +1,34 @@
+{
+  "accepted_conditions": 12,
+  "execution": {
+    "calls": 96,
+    "mismatches": 0
+  },
+  "rejections": [
+    {
+      "case": "memory",
+      "status": "rejected",
+      "reason": "Only types, one function and one export are supported"
+    },
+    {
+      "case": "trapping_division",
+      "status": "rejected",
+      "reason": "Unsupported formula: (i32.div_u (i32.const 1) (local.get 0))"
+    },
+    {
+      "case": "non_mask_constant",
+      "status": "rejected",
+      "reason": "Unsupported formula: (i32.const 1)"
+    },
+    {
+      "case": "call",
+      "status": "rejected",
+      "reason": "Expected exactly one exported function"
+    },
+    {
+      "case": "float",
+      "status": "rejected",
+      "reason": "Expected unnamed i32 parameters in WABT output"
+    }
+  ]
+}

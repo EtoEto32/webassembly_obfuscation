@@ -1,0 +1,134 @@
+{
+  "manifest_entries": 1246,
+  "wasmtime_validated": 256,
+  "reencoded_helpers": 73,
+  "type_section_original_prefixes": 73,
+  "golden_checks": [
+    {
+      "name": "scalar",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "scalar",
+      "engine": "spidermonkey",
+      "passed": true
+    },
+    {
+      "name": "packed",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "packed",
+      "engine": "spidermonkey",
+      "passed": true
+    },
+    {
+      "name": "array",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "array",
+      "engine": "spidermonkey",
+      "passed": true
+    },
+    {
+      "name": "deep",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "deep",
+      "engine": "spidermonkey",
+      "passed": true
+    },
+    {
+      "name": "alias",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "alias",
+      "engine": "spidermonkey",
+      "passed": true
+    },
+    {
+      "name": "cycle",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "cycle",
+      "engine": "spidermonkey",
+      "passed": true
+    },
+    {
+      "name": "recgroup",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "recgroup",
+      "engine": "spidermonkey",
+      "passed": true
+    },
+    {
+      "name": "subtype",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "subtype",
+      "engine": "spidermonkey",
+      "passed": true
+    },
+    {
+      "name": "nan-positive",
+      "engine": "node",
+      "passed": true
+    },
+    {
+      "name": "nan-positive",
+      "engine": "spidermonkey",
+      "passed": true
+    }
+  ],
+  "rejections": [
+    {
+      "name": "invalid",
+      "passed": true,
+      "reason": "unexpected end-of-file (at offset 0x0)",
+      "status": "rejected"
+    },
+    {
+      "name": "oversize",
+      "passed": true,
+      "reason": "input exceeds 1 MiB",
+      "status": "rejected"
+    },
+    {
+      "name": "v128",
+      "passed": true,
+      "reason": "v128 field unsupported in initial observer",
+      "status": "rejected"
+    },
+    {
+      "name": "exception",
+      "passed": true,
+      "reason": "exception/continuation reference unsupported",
+      "status": "rejected"
+    },
+    {
+      "name": "shared",
+      "passed": true,
+      "reason": "shared/descriptor type unsupported",
+      "status": "rejected"
+    }
+  ],
+  "unchanged_target_checks": 128,
+  "raw_replays": 256,
+  "baseline_comparisons": 256,
+  "errors": []
+}

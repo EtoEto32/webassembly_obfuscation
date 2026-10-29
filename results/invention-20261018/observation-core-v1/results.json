@@ -1,0 +1,647 @@
+{
+  "plan": {
+    "source": [
+      "mul",
+      [
+        "add",
+        [
+          "mul",
+          "x",
+          "y"
+        ],
+        [
+          "mul",
+          "z",
+          "x"
+        ]
+      ],
+      [
+        "add",
+        [
+          "mul",
+          "y",
+          "z"
+        ],
+        1
+      ]
+    ],
+    "candidate_limit": 96,
+    "rewrite_depth": 3,
+    "target_rule": "largest proper subtree cost>=2; lexicographic tie break",
+    "seed": 20261018,
+    "scope": "Exact i32 polynomial core; no binary transformation yet"
+  },
+  "stats": {
+    "attempted": 140,
+    "retained": 96,
+    "cost_rejected": 0,
+    "budget_hit": true,
+    "depth": 3,
+    "limit": 96
+  },
+  "target": [
+    "add",
+    [
+      "mul",
+      "x",
+      "y"
+    ],
+    [
+      "mul",
+      "z",
+      "x"
+    ]
+  ],
+  "frontier_size": 12,
+  "dominance_coverage": true,
+  "comparisons": 69888,
+  "mismatches": [],
+  "frontier": [
+    {
+      "tree": [
+        "mul",
+        [
+          "add",
+          [
+            "mul",
+            "x",
+            "y"
+          ],
+          [
+            "mul",
+            "z",
+            "x"
+          ]
+        ],
+        [
+          "add",
+          [
+            "mul",
+            "y",
+            "z"
+          ],
+          1
+        ]
+      ],
+      "cost": 6,
+      "recovery": {
+        "cost": 0,
+        "expression": [
+          "add",
+          [
+            "mul",
+            "x",
+            "y"
+          ],
+          [
+            "mul",
+            "z",
+            "x"
+          ]
+        ]
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          [
+            "mul",
+            "x",
+            "y"
+          ],
+          [
+            "add",
+            [
+              "mul",
+              "y",
+              "z"
+            ],
+            1
+          ]
+        ],
+        [
+          "mul",
+          [
+            "mul",
+            "z",
+            "x"
+          ],
+          [
+            "add",
+            [
+              "mul",
+              "y",
+              "z"
+            ],
+            1
+          ]
+        ]
+      ],
+      "cost": 9,
+      "recovery": {
+        "cost": 1,
+        "expression": [
+          "add",
+          [
+            "mul",
+            "x",
+            "y"
+          ],
+          [
+            "mul",
+            "z",
+            "x"
+          ]
+        ]
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          [
+            "add",
+            [
+              "mul",
+              "x",
+              "y"
+            ],
+            [
+              "mul",
+              "z",
+              "x"
+            ]
+          ],
+          [
+            "mul",
+            "y",
+            "z"
+          ]
+        ],
+        [
+          "mul",
+          [
+            "add",
+            [
+              "mul",
+              "x",
+              "y"
+            ],
+            [
+              "mul",
+              "z",
+              "x"
+            ]
+          ],
+          1
+        ]
+      ],
+      "cost": 10,
+      "recovery": {
+        "cost": 0,
+        "expression": [
+          "add",
+          [
+            "mul",
+            "x",
+            "y"
+          ],
+          [
+            "mul",
+            "z",
+            "x"
+          ]
+        ]
+      }
+    },
+    {
+      "tree": [
+        "mul",
+        [
+          "mul",
+          "x",
+          [
+            "add",
+            "y",
+            "z"
+          ]
+        ],
+        [
+          "add",
+          [
+            "mul",
+            "y",
+            "z"
+          ],
+          1
+        ]
+      ],
+      "cost": 5,
+      "recovery": {
+        "cost": 0,
+        "expression": [
+          "mul",
+          "x",
+          [
+            "add",
+            "y",
+            "z"
+          ]
+        ]
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          "x",
+          [
+            "mul",
+            "y",
+            [
+              "add",
+              [
+                "mul",
+                "y",
+                "z"
+              ],
+              1
+            ]
+          ]
+        ],
+        [
+          "mul",
+          [
+            "mul",
+            "z",
+            "x"
+          ],
+          [
+            "add",
+            [
+              "mul",
+              "y",
+              "z"
+            ],
+            1
+          ]
+        ]
+      ],
+      "cost": 9,
+      "recovery": {
+        "cost": null,
+        "status": "not_found_within_1_polynomial_operation"
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          [
+            "mul",
+            "x",
+            "y"
+          ],
+          [
+            "add",
+            [
+              "mul",
+              "y",
+              "z"
+            ],
+            1
+          ]
+        ],
+        [
+          "mul",
+          "z",
+          [
+            "mul",
+            "x",
+            [
+              "add",
+              [
+                "mul",
+                "y",
+                "z"
+              ],
+              1
+            ]
+          ]
+        ]
+      ],
+      "cost": 9,
+      "recovery": {
+        "cost": null,
+        "status": "not_found_within_1_polynomial_operation"
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          [
+            "mul",
+            [
+              "add",
+              [
+                "mul",
+                "x",
+                "y"
+              ],
+              [
+                "mul",
+                "z",
+                "x"
+              ]
+            ],
+            "y"
+          ],
+          "z"
+        ],
+        [
+          "mul",
+          [
+            "add",
+            [
+              "mul",
+              "x",
+              "y"
+            ],
+            [
+              "mul",
+              "z",
+              "x"
+            ]
+          ],
+          1
+        ]
+      ],
+      "cost": 10,
+      "recovery": {
+        "cost": 0,
+        "expression": [
+          "add",
+          [
+            "mul",
+            "x",
+            "y"
+          ],
+          [
+            "mul",
+            "z",
+            "x"
+          ]
+        ]
+      }
+    },
+    {
+      "tree": [
+        "mul",
+        "x",
+        [
+          "mul",
+          [
+            "add",
+            "y",
+            "z"
+          ],
+          [
+            "add",
+            [
+              "mul",
+              "y",
+              "z"
+            ],
+            1
+          ]
+        ]
+      ],
+      "cost": 5,
+      "recovery": {
+        "cost": 1,
+        "expression": [
+          "mul",
+          "x",
+          [
+            "add",
+            "y",
+            "z"
+          ]
+        ]
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          [
+            "mul",
+            "x",
+            [
+              "add",
+              "y",
+              "z"
+            ]
+          ],
+          [
+            "mul",
+            "y",
+            "z"
+          ]
+        ],
+        [
+          "mul",
+          [
+            "mul",
+            "x",
+            [
+              "add",
+              "y",
+              "z"
+            ]
+          ],
+          1
+        ]
+      ],
+      "cost": 8,
+      "recovery": {
+        "cost": 0,
+        "expression": [
+          "mul",
+          "x",
+          [
+            "add",
+            "y",
+            "z"
+          ]
+        ]
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          "y",
+          [
+            "mul",
+            "z",
+            [
+              "add",
+              [
+                "mul",
+                "x",
+                "y"
+              ],
+              [
+                "mul",
+                "z",
+                "x"
+              ]
+            ]
+          ]
+        ],
+        [
+          "mul",
+          1,
+          [
+            "add",
+            [
+              "mul",
+              "x",
+              "y"
+            ],
+            [
+              "mul",
+              "z",
+              "x"
+            ]
+          ]
+        ]
+      ],
+      "cost": 10,
+      "recovery": {
+        "cost": 0,
+        "expression": [
+          "add",
+          [
+            "mul",
+            "x",
+            "y"
+          ],
+          [
+            "mul",
+            "z",
+            "x"
+          ]
+        ]
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          [
+            "mul",
+            [
+              "add",
+              [
+                "mul",
+                "y",
+                "z"
+              ],
+              1
+            ],
+            "x"
+          ],
+          "y"
+        ],
+        [
+          "mul",
+          [
+            "add",
+            [
+              "mul",
+              "y",
+              "z"
+            ],
+            1
+          ],
+          [
+            "mul",
+            "z",
+            "x"
+          ]
+        ]
+      ],
+      "cost": 9,
+      "recovery": {
+        "cost": null,
+        "status": "not_found_within_1_polynomial_operation"
+      }
+    },
+    {
+      "tree": [
+        "add",
+        [
+          "mul",
+          [
+            "add",
+            [
+              "mul",
+              "y",
+              "z"
+            ],
+            1
+          ],
+          [
+            "mul",
+            "x",
+            "y"
+          ]
+        ],
+        [
+          "mul",
+          [
+            "mul",
+            [
+              "add",
+              [
+                "mul",
+                "y",
+                "z"
+              ],
+              1
+            ],
+            "z"
+          ],
+          "x"
+        ]
+      ],
+      "cost": 9,
+      "recovery": {
+        "cost": null,
+        "status": "not_found_within_1_polynomial_operation"
+      }
+    }
+  ],
+  "limitations": [
+    "One source expression; no Wasm execution or whole-program transformation.",
+    "Recovery limited to 0/1 add/sub/mul, not planned 2-op and adaptive suite.",
+    "Term rewriting and Pareto filtering are established general techniques.",
+    "No security or novelty conclusion from this component check."
+  ],
+  "sourceSHA256": {
+    "check_core.py": "42c3907065cd314f9e29487c3e83c51880746d924b83c27fa82ab79c048fdfb5",
+    "core.py": "2d9603187857b398ef7fb0d7f5005c8276a1e70853e33ff8ac5643b0a3c9bc10"
+  }
+}

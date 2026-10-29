@@ -1,0 +1,71 @@
+Proof-of-Theft: Dynamic Graph-based
+Fingerprinting of In-browser Cryptomining
+(Supplementary Materials)
+I. A PPENDIX
+II. P ROOF OF THEOREM 5
+Theorem II.1. Let H1, H2 ⊆ G be maximal isomorphic
+rooted subgraphs such that every pair of isomorphic vertices
+in H1 and H2 contains the same number of incoming edges
+in G. Then the roots v1 ∈ H1 and v2 ∈ H2 have the same
+probability of being visited in a random backward walk.
+To prove this theorem, we need the following short lemma.
+Lemma II.2. Every path of the longest length in a maximal
+rooted subgraph H ⊆ G contains the root vertex.
+Proof. Let P = {v1, v2, ..., vn} be an arbitrary path in H such
+that the root vertex v is not in P . Since v is the root, there
+exists a path P ′ from v to v1. Since H is acyclic, P ′ cannot
+intersect P , otherwise we can form a cycle. Therefore, we can
+form a new path by concatenating P ′ and P which is longer
+than P and contains v, proving the lemma.
+Proof of Theorem 5. We proceed by induction on the length
+N of the longest path in H1 and H2.
+Base: When N = 0, H1 and H2 are singleton graphs. Thus
+P (v1) = P (v2) = 1
+|V (G)|
+Induction: Since H1 and H2 are isomorphic, the sets
+C(v1) and C(v2), the children of the corresponding root ver-
+tices, are also isomorphic. Consider two isomorphic children
+c1 ∈ C(v1) and c2 ∈ C(v2). Each of these two vertices
+induce a maximal rooted subgraph H ′
+1 and H ′
+2 which are also
+isomorphic. Moreover, H ′
+1 and H ′
+2 are subgraphs of H1 and
+H2 which do not contain the roots v1 and v2, thus, the longest
+path in H ′
+1 and H ′
+2 is at most N − 1 by Theorem II.2. By the
+induction hypothesis, P (c1) = P (c2) for all isomorphic pair,
+c1 ∈ C(v1) and c2 ∈ C(v2). Finally, since we assume that
+every pair of isomorphic vertices in H1 and H2 contains the
+same number of incoming edges in G, |I(c1)| = |I(c2)| as
+well for such pairs. Therefore,
+P (v1) = 1
+|V (G)| +
+X
+c1∈C(v1)
+1
+|I(c1)| P (c1)
+= 1
+|V (G)| +
+X
+c2∈C(v2)
+1
+|I(c2)| P (c2)
+= P (v2)
+(1)
+III. U NSIMPLIFIED GRAPH EXAMPLES
+(a) btc
+ (b) eth
+ (c) zny
+(d) cn
+ (e) wmp
+ (f) xmr
+(g) boa
+ (h) bullet
+ (i) chocolatekeen
+(j) ffmpeg
+ (k) sandspiel
+ (l) sqlgui
+Fig. 1: (Example Original Graphs of Miners and Non-miners)

@@ -1,0 +1,258 @@
+{
+  "rows": [
+    {
+      "mode": "export",
+      "source": "export.wasm",
+      "output": "export-woven.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 4,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"value\"",
+            [
+              "func",
+              "2"
+            ]
+          ],
+          [
+            "export",
+            "\"_start\"",
+            [
+              "func",
+              "3"
+            ]
+          ]
+        ]
+      },
+      "code": 1,
+      "stderr": "Error: parsing input module\n\nCaused by:\n    unsupported: funcref in a function signature \u2014 pass an i32 table index instead (LLVM/Rust/Go toolchains already do this)\n",
+      "status": "transform-failure"
+    },
+    {
+      "mode": "getter",
+      "source": "getter.wasm",
+      "output": "getter-woven.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 4,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"value\"",
+            [
+              "func",
+              "2"
+            ]
+          ],
+          [
+            "export",
+            "\"_start\"",
+            [
+              "func",
+              "3"
+            ]
+          ]
+        ],
+        "identityProvider": "getter"
+      },
+      "code": 1,
+      "stderr": "Error: parsing input module\n\nCaused by:\n    unsupported: funcref in a function signature \u2014 pass an i32 table index instead (LLVM/Rust/Go toolchains already do this)\n",
+      "status": "transform-failure"
+    },
+    {
+      "mode": "host-export",
+      "source": "host-export.wasm",
+      "output": "host-export-woven.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 4,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"value\"",
+            [
+              "func",
+              "2"
+            ]
+          ],
+          [
+            "export",
+            "\"_start\"",
+            [
+              "func",
+              "3"
+            ]
+          ]
+        ],
+        "referenceAccess": "host-table",
+        "identityProvider": "export"
+      },
+      "code": 0,
+      "stderr": "",
+      "status": "valid"
+    },
+    {
+      "mode": "directory",
+      "source": "directory.wasm",
+      "output": "directory-woven.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 4,
+        "globals": [],
+        "segments": [
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"value\"",
+            [
+              "func",
+              "2"
+            ]
+          ],
+          [
+            "export",
+            "\"_start\"",
+            [
+              "func",
+              "3"
+            ]
+          ]
+        ],
+        "referenceAccess": "host-table",
+        "identityProvider": "directory"
+      },
+      "code": 0,
+      "stderr": "",
+      "status": "valid"
+    }
+  ],
+  "exeSha256": "3d85034130173fd6c2439ce9003de2b8b14034eb7462ccdfd090c30556dc3909"
+}

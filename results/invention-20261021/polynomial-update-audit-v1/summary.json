@@ -1,0 +1,75 @@
+{
+  "verified_pins": 4644,
+  "replay": 56,
+  "malformed_rejections": [
+    {
+      "case": "truncated",
+      "rejected": true,
+      "reason": "snapshot length"
+    },
+    {
+      "case": "bad_n",
+      "rejected": true,
+      "reason": "snapshot header"
+    }
+  ],
+  "runtime": [
+    {
+      "id": "n32-array-O3",
+      "process_medians_ns": [
+        8.72650146484375,
+        9.1278076171875,
+        9.294891357421875
+      ],
+      "median_ns": 9.1278076171875,
+      "peak_rss_kib": [
+        43984,
+        44072
+      ],
+      "min_batch_ms": 1.1226
+    },
+    {
+      "id": "n32-poly-O3",
+      "process_medians_ns": [
+        460.064697265625,
+        466.455078125,
+        483.60595703125
+      ],
+      "median_ns": 466.455078125,
+      "peak_rss_kib": [
+        43640,
+        43928
+      ],
+      "min_batch_ms": 7.4293
+    },
+    {
+      "id": "n8-array-O3",
+      "process_medians_ns": [
+        4.95147705078125,
+        5.055999755859375,
+        5.1544189453125
+      ],
+      "median_ns": 5.055999755859375,
+      "peak_rss_kib": [
+        44036,
+        44236
+      ],
+      "min_batch_ms": 0.6066
+    },
+    {
+      "id": "n8-poly-O3",
+      "process_medians_ns": [
+        153.47900390625,
+        154.06494140625,
+        148.7213134765625
+      ],
+      "median_ns": 153.47900390625,
+      "peak_rss_kib": [
+        43944,
+        44904
+      ],
+      "min_batch_ms": 4.737
+    }
+  ],
+  "note": "3 fresh processes x 9 batches; CPU affinity/frequency not fixed"
+}

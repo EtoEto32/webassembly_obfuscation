@@ -1,0 +1,11 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func
+exception thrown: RangeError: WebAssembly.Table.set(): invalid address 2147483648 in funcref table of size 8
+[fuzz-exec] export func_14_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_19
+[fuzz-exec] note result: func_19 => object(object(object(null)))
+[fuzz-exec] export func_19_invoker
+exception thrown: RuntimeError: unreachable
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"range-error","unsupported":[],"error":"RangeError: WebAssembly.Table.set(): invalid address 2147483648 in funcref table of size 8"},{"name":"func_14_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_19","known":true,"status":"returned","unsupported":[]},{"name":"func_19_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"multi","name":"func_19","slot":3}]}

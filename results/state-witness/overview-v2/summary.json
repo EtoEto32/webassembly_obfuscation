@@ -1,0 +1,185 @@
+{
+  "scope": "Current K evidence index. Counts have different units and overlapping source programs; no aggregate bug count.",
+  "direct": {
+    "contracts": 384,
+    "initialStoreChecks": 768,
+    "basicNegativeReplaysPerEngine": 248,
+    "extraTwoImportReplaysPerEngine": 32,
+    "longChainContracts": 16,
+    "longChainNegativeReplaysPerEngine": 12,
+    "longestGeneratedApiSequence": 97,
+    "distinctWasmHashesAcrossTheseThreeSources": 22
+  },
+  "timing": {
+    "methods": {
+      "direct": {
+        "witnessBatchMedianSeconds": 0.0224565000000001,
+        "preparationMedianSeconds": 2.6615762,
+        "estimatedPreparationPlusBatchSeconds": 2.6840327
+      },
+      "smt": {
+        "witnessBatchMedianSeconds": 0.8488409999999993,
+        "preparationMedianSeconds": 2.6499226,
+        "estimatedPreparationPlusBatchSeconds": 3.499857499999999
+      }
+    },
+    "witnessOnlySmtOverDirect": 37.79934540110861,
+    "estimatedPreparationPlusBatchRatio": 1.3039548661236502,
+    "notMeasuredEndToEnd": true,
+    "authorToolComparison": false
+  },
+  "worklist": {
+    "contracts": 400,
+    "sameConditions": 400,
+    "sharedWp": true
+  },
+  "independentEqualityBackend": {
+    "contracts": 404,
+    "sameAllStateConditions": 404,
+    "sharedFrontend": true,
+    "sharedEqualityBackend": false,
+    "authorImplementation": false,
+    "artificialChainKOverGenericRange": [
+      1.499999999999829,
+      3.7260485341562735
+    ],
+    "performanceProcesses": 12,
+    "performanceFailures": []
+  },
+  "ffmpegApplication": {
+    "status": "passed",
+    "completedCommands": 40,
+    "mainThreadExportCalls": 768,
+    "countedFfmpegEntries": 30,
+    "roundtripsPassed": 8,
+    "wrapperControls": {
+      "original": true,
+      "retained": true
+    },
+    "inputSensitivity": {
+      "audio-resample": 3,
+      "audio-lossless": 3,
+      "audio-roundtrip": 3,
+      "image-scale": 3
+    },
+    "naturalRestoreBug": false,
+    "actualBrowserTest": false,
+    "wasmRestoreExecuted": false
+  },
+  "wizer": {
+    "cliVersion": "wasmtime 50.0.0 (ebe5e8df1 2026-10-20)",
+    "accepted": 4,
+    "unsupported": 4,
+    "observationPairsPerEngine": 20,
+    "originalApiCallsPerEngine": 40,
+    "mismatchesPerEngine": 0,
+    "naturalBug": false
+  },
+  "artifact": {
+    "status": "passed",
+    "byteIdenticalFilesIncludingDuplicates": 79,
+    "sha256": "d06adf99f257c1eadd4b28677641e809e06941a58f1a1fc9359b54af4ee4bb68"
+  },
+  "ffmpegControl": {
+    "completedWorkers": 4,
+    "failures": [],
+    "originalApiCalls": 0,
+    "probeCalls": 29280,
+    "lifetimeDifferencesPerEngine": 7320,
+    "memoryBytesPerInstance": 1073741824,
+    "allMemoryHashesEqual": true,
+    "naturalRestoreBug": false,
+    "videoWorkloadExecuted": false
+  },
+  "coverage": {
+    "nowaset": {
+      "files": 220,
+      "uniqueHashes": 220,
+      "statuses": {
+        "complete": 202,
+        "validation-failure": 2,
+        "output-limit": 15,
+        "empty": 1
+      },
+      "completeWithAnyLifetimeInstruction": 0,
+      "completeWithDrop": 0,
+      "counts": {
+        "data.drop": 0,
+        "elem.drop": 0,
+        "memory.init": 0,
+        "table.init": 0
+      }
+    },
+    "r3": {
+      "files": 23,
+      "uniqueHashes": 23,
+      "statuses": {
+        "complete": 23
+      },
+      "completeWithAnyLifetimeInstruction": 10,
+      "completeWithDrop": 0,
+      "counts": {
+        "data.drop": 0,
+        "elem.drop": 0,
+        "memory.init": 1742,
+        "table.init": 0
+      }
+    }
+  },
+  "sourceResultSha256": {
+    "guard-import-direct-v1/manifest.json": "3fe6e1efba072a326e80bb9749cb766a0698ac4cd242dc74a1b4a6f8a90b68a8",
+    "guard-import-direct-pair-v1/manifest.json": "8abe608bbdcedaf0c9a7c6261d579539a50d3ce2b472bf6f2a11776b0e445a4b",
+    "guard-import-direct-chain-v2/results.json": "a5db7c7a4f06d93e205c7dc1b8ae77ce728413756f05b426bbe222f75d5458ad",
+    "guard-import-direct-cost-v1/results.json": "e695f3c6c0f598158afe6c8212ce6c32494eb74d8281e00349dad64acc86e872",
+    "guard-import-direct-cost-v1/direct-0.json": "d25dfd8887f22d9dec146f2bd7de82a46bad3300dce74570ec4b8c60246190b6",
+    "guard-import-direct-cost-v1/direct-1.json": "7fe13927b068a7b42adab87e6d151057d9e4137a0404c71c8d2f53efa324c8ad",
+    "guard-import-direct-cost-v1/direct-2.json": "8d84d0704cc21cbd3c5cf5adbaa85915e7fc2664259c3c3700d6c39b9d19fbce",
+    "guard-import-direct-cost-v1/smt-0.json": "2e6c91a3e4001c2a812447c3de82a4d7d6b8b09e6eda5aa4fea3a52167e3f51c",
+    "guard-import-direct-cost-v1/smt-1.json": "fe4456bb59a2e62a357b5664d06e75b6bc541f739681b0717f87eefc5da26ba4",
+    "guard-import-direct-cost-v1/smt-2.json": "49593a372e4929d927021503c95f17a586959b2632f1f53a2a2aa9b77b8a8603",
+    "guard-import-worklist-v1/results.json": "8f17685092c322b7827f0618c61746ef0570e1c7b6597fda8cbfc53c08492359",
+    "guard-import-worklist-may-v1/results.json": "19e6269cf6ce50081cac86eeaf5bf6d8c5998177e664d63228a6057d174cf7c0",
+    "guard-import-worklist-chain-v1/results.json": "ecac0d49a998da63516bb12f44799a6977b60815b3ab446b656a3afee053d81e",
+    "import-bundle-replay-v3/results.json": "4d60190278b2dc7eaf0b96d2bd68b9fe4914c9d8d165d7d8a40ff2cb16f8784b",
+    "post-start-live-v1/results.json": "c6ddef1ebb0e59abbc504fdba1bf9765f24196ac74a33a8eb372408781c7fd08",
+    "coverage-v1/results.json": "f130a18b7ac3881f199ba1dcff5ffd8c15b8482599d53527d2d0966e2c666f51",
+    "guard-herbrand-atomic-v1/results.json": "b417f768742a599d421d864b2c71fd4576bb05626713692055270bfbcf2b4e82",
+    "guard-herbrand-atomic-may-v1/results.json": "736fa886a089992a56107f8c879eed8b432d6845c38c7d01c51f216d3ff5ae67",
+    "guard-herbrand-atomic-chain-v1/results.json": "639d5e9aece43dfb8b8c3af39d65087a158e483b402d3b27179d6e376371d86a",
+    "guard-herbrand-atomic-pair-v1/results.json": "450728a900eb83ed564f68382f76873c9c536eaa7a16d193b6aa5f959f769332",
+    "guard-herbrand-cost-v1/results.json": "0940f9e73ceaae6f3d44b7296629cd29c183ac49546248a3b6e8e0832c6d076b",
+    "ffmpeg-workload-v1/summary.json": "4cee55de34e9b018d1defdff4a20417f946f7fcf19532bd133c8fa3fce9e2e17",
+    "wizer-comparison-v1/summary.json": "d43c2ceac867da0dc1b83a52be2c8b7ac9e60fd4c87f908302fbf5627a99a3a5"
+  },
+  "wasmSha256": {
+    "guard-import-direct-v1/memory-after.wasm": "a9b313918e40e683070cd82e960e0a1d4bfc9eaa9ce405e8666a5e0a0b8e10fb",
+    "guard-import-direct-v1/memory-before.wasm": "f4d5bbd9d66e64440a0f918de081c11f456e1d9a14ef773098e7369bf98e0364",
+    "guard-import-direct-v1/memory-read-after-repair.wasm": "08de813911c38a01f0541d5238bc5dd4138bd6d07a8b6074ede8ec1096637f7f",
+    "guard-import-direct-v1/memory-read-before-repair.wasm": "043402ea3447072b7ce5472687ea48d7060af63a8eb7b6c3b28f04bfaccb4acd",
+    "guard-import-direct-v1/memory-repair.wasm": "f074b9d13dcf3bcce0f90751e5808e20998963262d227822a8059dcb7988c893",
+    "guard-import-direct-v1/memory-twice.wasm": "556c9e4674394b917be71a74e2906b581bf8ac5dbc35aae34349b6066ed70e9e",
+    "guard-import-direct-v1/memory-unreachable.wasm": "348f83043dbdea5c29ce5d450d5943b22149ffb9b1fcb1fa2ae67a26ad0df105",
+    "guard-import-direct-v1/memory-zero.wasm": "627f46f864aa98edc290406c6850a7309993f5fa993699e59529f62b30072379",
+    "guard-import-direct-v1/table-after.wasm": "c28c261b2e88d6b4860a875197ac1eebf4d931861ec2f4a4377e17c0c0e29c32",
+    "guard-import-direct-v1/table-before.wasm": "25abe88d65bb3897ca399739f1c715cb7eae660298aeca65ef0595e9cfbd2813",
+    "guard-import-direct-v1/table-read-after-repair.wasm": "99b683293e74ce0e2ffefd233f60b75e435b9c6ce0767b5a4085ecb0c8e66bba",
+    "guard-import-direct-v1/table-read-before-repair.wasm": "f8f9de261ae63759370f53dd29bbd448ac6f1c105f953efe90253ad6d6e51895",
+    "guard-import-direct-v1/table-repair.wasm": "db598528acedb2a9326988fb6e7b347082b9ff1bfe29eb30047727bb5d03a885",
+    "guard-import-direct-v1/table-twice.wasm": "562eaeb93476233d4f627337062e780dc4a3396cca3c1cb076d75d6b6a34e8d0",
+    "guard-import-direct-v1/table-unreachable.wasm": "23be2b12ebf22def492ad3dd7b948b6784ea13a9793412238f958bbea467b40a",
+    "guard-import-direct-v1/table-zero.wasm": "d2c8c80b8b5837ec9c849a98ae07dc23fff73dffc74fc71bf60aa10f70cd380b",
+    "guard-import-direct-pair-v1/memory.wasm": "86b251c8c1b51d20aae3065bbb3e35c6018735fbc9788d372e6fc206dceee728",
+    "guard-import-direct-pair-v1/table.wasm": "7a38484fd526344d58642e341527c2c2f641a90549940efefc8be6bca595f034",
+    "guard-import-direct-chain-v2/chain-1.wasm": "4a1cb34e030ea1c331d34a75509e44586490d9bbd2eb848a1bf3434387ea5b2f",
+    "guard-import-direct-chain-v2/chain-32.wasm": "53eeb5ed4dd814245f82e997bd9b51b86d182fe90e6ae4c37c5e922741037eb6",
+    "guard-import-direct-chain-v2/chain-8.wasm": "2d263f50e969c2fc2d9050fbec2051d74b52ce5465b9eee7552197fee1ec9d11",
+    "guard-import-direct-chain-v2/chain-96.wasm": "38920e8d8669693f360c2c9e0a2aa70fded7dab7e977028c397bf822da9e1509"
+  },
+  "assessment": {
+    "newGeneralAlgorithmEstablished": false,
+    "naturalUseRequiringKEstablished": false,
+    "researchPrototypeAndControlledEvidenceAvailable": true,
+    "recommendAsNovelAlgorithmMainTopic": false,
+    "independentEmpiricalContributionEstablished": false
+  }
+}

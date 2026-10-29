@@ -1,0 +1,70 @@
+Running with seed 59
+Built 20 types:
+(rec
+ (type $0 (sub (func (param (ref $2) f64) (result v128))))
+ (type $1 (sub (shared (array (mut (ref null (shared struct)))))))
+ (type $2 (sub (cont $0)))
+)
+(rec
+ (type $3 (sub (descriptor $8) (struct (field (mut i64)) (field (mut (ref $8))))))
+ (type $4 (sub (shared (func (param f32 v128 v128 f32 f32) (result (ref $3))))))
+ (type $5 (sub (shared (func (param (ref $7) (ref $4) (ref (shared struct)) f64) (result i32 f64 i32 f64 (ref $5) v128)))))
+ (type $6 (sub (shared (func))))
+ (type $7 (func (param (ref array) (ref null $3) (ref $6) f32) (result f32)))
+ (type $8 (sub (describes $3) (struct (field (ref extern)) (field (mut (ref eq))) (field (mut (ref null $2))) (field (mut (ref $8))) (field (ref $1)))))
+ (type $9 (sub (shared (func (param eqref i64 (ref null $1)) (result v128)))))
+)
+(type $10 (shared (func (param i64) (result (ref null $7) (ref null $2) (ref $7) (ref null $1) i64 i32))))
+(rec
+ (type $11 (sub (struct)))
+ (type $12 (sub (func (param (ref null $0)))))
+)
+(rec
+ (type $13 (sub $1 (shared (array (mut (ref null (shared struct)))))))
+ (type $14 (shared (func (result f32))))
+)
+(rec
+ (type $15 (sub final $4 (shared (func (param f32 v128 v128 f32 f32) (result (ref $3))))))
+ (type $16 (sub final $12 (func (param funcref))))
+ (type $17 (sub final $11 (struct (field (mut i32)) (field i64) (field (mut (ref $13))) (field (mut (ref null $3))) (field f64))))
+)
+(rec
+ (type $18 (sub $9 (shared (func (param eqref i64 (ref null (shared any))) (result v128)))))
+ (type $19 (sub final $12 (func (param funcref))))
+)
+
+Inhabitable types:
+
+Built 20 types:
+(rec
+ (type $0 (sub (func (param (ref $2) f64) (result v128))))
+ (type $1 (sub (shared (array (mut (ref null (shared struct)))))))
+ (type $2 (sub (cont $0)))
+)
+(rec
+ (type $3 (sub (descriptor $8) (struct (field (mut i64)) (field (mut (ref $8))))))
+ (type $4 (sub (shared (func (param f32 v128 v128 f32 f32) (result (ref $3))))))
+ (type $5 (sub (shared (func (param (ref $7) (ref $4) (ref (shared struct)) f64) (result i32 f64 i32 f64 (ref $5) v128)))))
+ (type $6 (sub (shared (func))))
+ (type $7 (func (param (ref array) (ref null $3) (ref $6) f32) (result f32)))
+ (type $8 (sub (describes $3) (struct (field externref) (field (mut (ref eq))) (field (mut (ref null $2))) (field (mut (ref null $8))) (field (ref $1)))))
+ (type $9 (sub (shared (func (param eqref i64 (ref null $1)) (result v128)))))
+)
+(type $10 (shared (func (param i64) (result (ref null $7) (ref null $2) (ref $7) (ref null $1) i64 i32))))
+(rec
+ (type $11 (sub (struct)))
+ (type $12 (sub (func (param (ref null $0)))))
+)
+(rec
+ (type $13 (sub $1 (shared (array (mut (ref null (shared struct)))))))
+ (type $14 (shared (func (result f32))))
+)
+(rec
+ (type $15 (sub final $4 (shared (func (param f32 v128 v128 f32 f32) (result (ref $3))))))
+ (type $16 (sub final $12 (func (param funcref))))
+ (type $17 (sub final $11 (struct (field (mut i32)) (field i64) (field (mut (ref $13))) (field (mut (ref null $3))) (field f64))))
+)
+(rec
+ (type $18 (sub $9 (shared (func (param eqref i64 (ref null (shared any))) (result v128)))))
+ (type $19 (sub final $12 (func (param funcref))))
+)

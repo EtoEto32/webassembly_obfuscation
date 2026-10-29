@@ -1,0 +1,266 @@
+{
+  "checks": {
+    "local_targets": 10,
+    "local_inputs": 256,
+    "local_calls": 2560,
+    "local_state_checks": 1536,
+    "local_bytes_compared": 1711276032,
+    "hash_targets": 6,
+    "hash_inputs": 531,
+    "hash_calls": 3186,
+    "hash_state_checks": 3186,
+    "expected_traps": 24,
+    "mismatches": 0,
+    "unexpected_traps": 0,
+    "node": "v24.15.0",
+    "v8": "13.6.233.17-node.48"
+  },
+  "rows": [
+    {
+      "mode": "original",
+      "file": "original-O3.wasm",
+      "process_medians_ns": [
+        836590.625,
+        836909.375,
+        826375,
+        831871.875,
+        830365.625
+      ],
+      "median_ns": 831871.875,
+      "min_ns": 826375,
+      "max_ns": 836909.375,
+      "rss_kib_median": 40876,
+      "batch_counts": [
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "bytes": 29167,
+      "linear_memory_bytes": 1114112,
+      "prepare_ms": 81.02940000000002
+    },
+    {
+      "mode": "certified",
+      "file": "certified-O3.wasm",
+      "process_medians_ns": [
+        50352.34375,
+        50585.15625,
+        50292.578125,
+        49648.046875,
+        49448.828125
+      ],
+      "median_ns": 50292.578125,
+      "min_ns": 49448.828125,
+      "max_ns": 50585.15625,
+      "rss_kib_median": 40884,
+      "batch_counts": [
+        256,
+        256,
+        256,
+        256,
+        256
+      ],
+      "bytes": 29165,
+      "linear_memory_bytes": 1114112,
+      "prepare_ms": 184.4708
+    },
+    {
+      "mode": "recovered-state",
+      "file": "recovered-state-O3.wasm",
+      "process_medians_ns": [
+        256.8206787109375,
+        256.53228759765625,
+        254.26483154296875,
+        255.82275390625,
+        256.8695068359375
+      ],
+      "median_ns": 256.53228759765625,
+      "min_ns": 254.26483154296875,
+      "max_ns": 256.8695068359375,
+      "rss_kib_median": 39904,
+      "batch_counts": [
+        65536,
+        65536,
+        65536,
+        65536,
+        65536
+      ],
+      "bytes": 15445,
+      "linear_memory_bytes": 1114112,
+      "prepare_ms": 144.8233
+    },
+    {
+      "mode": "recovered-io",
+      "file": "recovered-io-O3.wasm",
+      "process_medians_ns": [
+        48.40278625488281,
+        47.10693359375,
+        48.03199768066406,
+        48.15940856933594,
+        48.1719970703125
+      ],
+      "median_ns": 48.15940856933594,
+      "min_ns": 47.10693359375,
+      "max_ns": 48.40278625488281,
+      "rss_kib_median": 40068,
+      "batch_counts": [
+        262144,
+        262144,
+        262144,
+        262144,
+        262144
+      ],
+      "bytes": 2446,
+      "linear_memory_bytes": 0,
+      "prepare_ms": 94.01439999999994
+    },
+    {
+      "mode": "plain",
+      "file": "plain-O3.wasm",
+      "process_medians_ns": [
+        1.0227441787719727,
+        1.022505760192871,
+        1.032567024230957,
+        1.0072708129882812,
+        1.0039567947387695
+      ],
+      "median_ns": 1.022505760192871,
+      "min_ns": 1.0039567947387695,
+      "max_ns": 1.032567024230957,
+      "rss_kib_median": 39852,
+      "batch_counts": [
+        4194304,
+        4194304,
+        4194304,
+        4194304,
+        4194304
+      ],
+      "bytes": 69,
+      "linear_memory_bytes": 0,
+      "prepare_ms": 35.044600000000095
+    }
+  ],
+  "replay": {
+    "artifacts": [
+      {
+        "opt": "raw",
+        "mode": "certified",
+        "sha256": "fe98ed2a3ce8482fba6096520f197b49ce05a036fd14b4a4d6dde676aedccba1",
+        "byte_identical": true
+      },
+      {
+        "opt": "raw",
+        "mode": "recovered-state",
+        "sha256": "429d09cd2f0b032db82036be0af65cc66b7dec10f436f378a35b1f149bbc1ca9",
+        "byte_identical": true
+      },
+      {
+        "opt": "raw",
+        "mode": "recovered-io",
+        "sha256": "caddea583f148b4edaf8220485137de36305b16da8ae43e0da4e928cbebe632d",
+        "byte_identical": true
+      },
+      {
+        "opt": "O3",
+        "mode": "certified",
+        "sha256": "aa576814b07e5eb5f6ae2b1e629aeda101da1a07189ac688b650bfe35e305636",
+        "byte_identical": true
+      },
+      {
+        "opt": "O3",
+        "mode": "recovered-state",
+        "sha256": "429d09cd2f0b032db82036be0af65cc66b7dec10f436f378a35b1f149bbc1ca9",
+        "byte_identical": true
+      },
+      {
+        "opt": "O3",
+        "mode": "recovered-io",
+        "sha256": "caddea583f148b4edaf8220485137de36305b16da8ae43e0da4e928cbebe632d",
+        "byte_identical": true
+      }
+    ],
+    "recovery": [
+      {
+        "opt": "raw",
+        "gates": 381,
+        "depth": 66,
+        "state_bound": 129,
+        "reader_ms": 50.6986,
+        "analysis_ms_median": 82.9953
+      },
+      {
+        "opt": "O3",
+        "gates": 381,
+        "depth": 66,
+        "state_bound": 129,
+        "reader_ms": 43.966299999999904,
+        "analysis_ms_median": 80.21260000000008
+      }
+    ]
+  },
+  "controls": [
+    {
+      "name": "odd-mixer",
+      "counterexample": {
+        "input": [
+          0,
+          0,
+          0
+        ],
+        "expected": 0,
+        "actual": 1945127192
+      }
+    },
+    {
+      "name": "one-iteration",
+      "counterexample": {
+        "input": [
+          0,
+          0,
+          0
+        ],
+        "expected": 0,
+        "actual": 15
+      }
+    },
+    {
+      "name": "original",
+      "expected_trap": true,
+      "memory_changed": false,
+      "before_first4": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "after_first4": [
+        90,
+        90,
+        90,
+        90
+      ]
+    },
+    {
+      "name": "write-before-trap",
+      "expected_trap": true,
+      "memory_changed": true,
+      "before_first4": [
+        90,
+        90,
+        90,
+        90
+      ],
+      "after_first4": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "original_over_certified": 16.540648859408616,
+  "original_over_recovered_state": 3242.757014293277,
+  "original_over_recovered_io": 17273.299230872813
+}

@@ -1,0 +1,1 @@
+Incomplete: the randomized model harness encoded odd-index terminal symbols as variable zero because of Python unary-minus/modulo precedence. That generated unsupported unit rules and triggered the lowdegree assertion. Fixed with explicit parentheses; no result claimed for v1.

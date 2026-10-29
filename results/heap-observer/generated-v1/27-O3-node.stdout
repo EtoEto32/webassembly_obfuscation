@@ -1,0 +1,13 @@
+[fuzz-exec] export func_10
+[fuzz-exec] note result: func_10 => object(object(object(null)))
+[fuzz-exec] export func_10_invoker
+[fuzz-exec] export func_12
+[LoggingExternalInterface logging -536870912 -1]
+[LoggingExternalInterface logging -4096]
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_13_invoker
+[LoggingExternalInterface logging 0]
+[LoggingExternalInterface logging 0]
+[fuzz-exec] export func_17_invoker
+[fuzz-exec] export func_19_invoker
+[heap-study] {"calls":[{"name":"func_10","known":true,"status":"returned","unsupported":[]},{"name":"func_10_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_12","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_13_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_17_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_17_invoker","known":true,"status":"returned","unsupported":[]}],"trace":[{"id":0,"channel":"multi","name":"func_10","slot":3}],"snapshots":[{"channel":"multi","slot":3,"snapshot":{"roots":[{"ref":0}],"objects":[{"id":0,"type":0,"kind":"array","fields":[],"length":0}],"truncations":0}}],"observation_errors":[],"events":1,"limit":128}

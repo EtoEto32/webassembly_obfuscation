@@ -1,0 +1,56 @@
+[
+  {
+    "rule": "integer-fold",
+    "operation": "sub",
+    "function": "$dlmalloc",
+    "input_lines": [
+      150699,
+      150700,
+      150701
+    ],
+    "before": [
+      "      i32.const 0",
+      "      i32.const 1090888",
+      "      i32.sub"
+    ],
+    "after": [
+      "      i32.const -1090888"
+    ]
+  },
+  {
+    "rule": "integer-fold",
+    "operation": "and",
+    "function": "$dlmalloc",
+    "input_lines": [
+      150701,
+      150702,
+      150703
+    ],
+    "before": [
+      "      i32.const -1090888",
+      "      i32.const 15",
+      "      i32.and"
+    ],
+    "after": [
+      "      i32.const 8"
+    ]
+  },
+  {
+    "rule": "integer-fold",
+    "operation": "and",
+    "function": "$dlmalloc",
+    "input_lines": [
+      150705,
+      150706,
+      150707
+    ],
+    "before": [
+      "      i32.const 1090888",
+      "      i32.const 15",
+      "      i32.and"
+    ],
+    "after": [
+      "      i32.const 8"
+    ]
+  }
+]

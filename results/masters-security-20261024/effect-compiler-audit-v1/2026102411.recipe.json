@@ -1,0 +1,78 @@
+{
+  "chain": [
+    {
+      "read": "$value.initial",
+      "as": "initial"
+    },
+    {
+      "for": "$value.copies",
+      "as": "item",
+      "body": [
+        {
+          "read": "$item.source-file",
+          "as": "local"
+        },
+        {
+          "write": "$item.target-file",
+          "from": "initial"
+        },
+        {
+          "write": "$item.target-file",
+          "from": "local"
+        }
+      ]
+    },
+    {
+      "ifSome": "$value.backup",
+      "as": "backup",
+      "body": [
+        {
+          "write": "$backup",
+          "from": "initial"
+        },
+        {
+          "write": "$backup",
+          "literal": ""
+        }
+      ]
+    }
+  ],
+  "matrix": [
+    {
+      "for": "$value",
+      "as": "row",
+      "body": [
+        {
+          "for": "$row",
+          "as": "item",
+          "body": [
+            {
+              "read": "$item.source-file",
+              "as": "data"
+            },
+            {
+              "write": "$item.target-file",
+              "from": "data"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "optional": [
+    {
+      "ifSome": "$value",
+      "as": "item",
+      "body": [
+        {
+          "read": "$item.source-file",
+          "as": "data"
+        },
+        {
+          "write": "$item.target-file",
+          "from": "data"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# H改良: byte更新と同期queue排他を分離する
+
+2026-10-24。干渉反例の後に固定した設計・実験計画。Hの第二設計として扱い、別の発明案数には数えない。
+
+仮説: 外部wait/notifyを排除できれば、検査cellへの通常のatomic書込みが継続しても、成功したwaitAsync登録を使って同じ分割を回復できる。loadと登録の間の値変更はnot-equalとなるので有限回だけ再試行し、上限超過は判定不能とする。登録後の値変更は登録済みwaiterを自動的に起こさない。
+
+同じ共有memoryを持つ全actorのうち、host側は信頼する。guest側には単一の共有memory importと数値引数のrunだけを持つ限定binaryを受け入れ、WABT validation後に命令の許可集合を検査し、wait/notifyとhost呼出し経路を拒否する。検査済みの同じbyte列だけをworkerへ渡す。これはmodule局所の性質であり、未登録の別workerがmemoryを保持していないことの証明ではない。全actorの管理責任はhostに残る。
+
+Wasmの書込みworkerを動かし、n=8/32/64、実体数k=1/2/4、登録試行上限1/64の18条件、各100回で実体分割・判定不能・書込み重なりを測る。workerは有限命令数かつwall deadlineで止め、最終値とworker自身の累積書込み数を照合する。残りのbyteは不変を確認する。単なるmicrobenchmarkの受理率を一般環境へ外挿しない。
+
+拒否対照には実際にvalidationを通るwait32/wait64/notify、到達不能なnotify、func import、memory exportを含める。失敗を成功に混ぜず保存する。先行性は標準DoWaitとopcode制限が強く、制限緩和が動くことだけでは進歩性を確立しない。
+
+v1の18条件後の追補: 同じcellが高速更新されると64再試行でも判定不能が大半だった。第三設計では、許可する4B store/RMWについて定数base+offsetの保守的な書込み範囲を求め、最初のpage内の4B整列した未書込み領域を選ぶ。動的addressはpage全域へ拡大し、候補なしとする。追加対照stableはこの位置を使用して再試行1で測る。これは通常の書込み範囲解析の利用であり、新しい解析原理とはしない。v2は3方式×9条件の2700回とし、v1と合算しない。

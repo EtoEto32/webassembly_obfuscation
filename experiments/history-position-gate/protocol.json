@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-12",
+  "source": "sha-joint-history-gate saved 9102 real-SHA boundary observations",
+  "variants": 4,
+  "seeds": [619734, 619735, 619736, 619737],
+  "anonymization": "24 history columns plus 22 random columns, zero and incrementing-counter columns; one fixed random column permutation per variant",
+  "training": "First five observations of empty input, same block, boundaries 24..28",
+  "model": "Infer a unique directed copy chain of length 24 from lag-one column equality across all four training transitions; ignore self-edges; do not use expected state or private permutation",
+  "evaluation": "Remaining 9097 observations, never used to infer order; validate ordered history and previous 8+16-word decoder against saved evidence",
+  "negative_controls": "All-zero training (ambiguous graph); duplicated history chain (two valid chains). Both must be rejected",
+  "budget": "20 minutes local work; 60 seconds process; four permutations only",
+  "limits": "Trace-level experiment, not a compiled transformation or blind extraction from a Wasm binary; known aligned boundaries and representation family"
+}

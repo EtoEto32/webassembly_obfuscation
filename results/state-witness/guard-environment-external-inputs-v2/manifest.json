@@ -1,0 +1,113 @@
+{
+  "rows": [
+    {
+      "name": "one",
+      "length": 1,
+      "repair": false,
+      "zeroLength": false,
+      "original": "one/original.wasm",
+      "cut": "one/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "binary": "one/migrate.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "binary": "one/weave.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "four",
+      "length": 4,
+      "repair": false,
+      "zeroLength": false,
+      "original": "four/original.wasm",
+      "cut": "four/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "binary": "four/migrate.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "binary": "four/weave.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "repair",
+      "length": 4,
+      "repair": true,
+      "zeroLength": false,
+      "original": "repair/original.wasm",
+      "cut": "repair/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "binary": "repair/migrate.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "binary": "repair/weave.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "zero",
+      "length": 4,
+      "repair": false,
+      "zeroLength": true,
+      "original": "zero/original.wasm",
+      "cut": "zero/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "binary": "zero/migrate.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "binary": "zero/weave.wasm",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "status": "valid"
+        }
+      ]
+    }
+  ],
+  "tailDrop": true,
+  "executableSha256": {
+    ".tools\\wasm-migrate-build\\target\\release\\wasm-migrate-target.exe": "e20b950270eb6e006f46e650d2a1403b8641b988c88b1c922f5ed8fa0f1f7305",
+    ".tools\\weave-build\\target\\release\\weave-probe.exe": "3d85034130173fd6c2439ce9003de2b8b14034eb7462ccdfd090c30556dc3909"
+  }
+}

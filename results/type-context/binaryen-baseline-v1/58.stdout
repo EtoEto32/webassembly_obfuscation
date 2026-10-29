@@ -1,0 +1,62 @@
+Running with seed 58
+Built 20 types:
+(rec
+ (type $0 (func (param f32 exnref (ref $2)) (result (ref null $7) (ref null $8) v128 (ref struct))))
+ (type $1 (sub (shared (array (mut (ref (shared i31)))))))
+ (type $2 (sub (shared (func (param v128 structref) (result v128)))))
+ (type $3 (sub (cont $0)))
+ (type $4 (shared (array f32)))
+ (type $5 (sub (shared (array (mut i16)))))
+ (type $6 (array (ref extern)))
+ (type $7 (sub (descriptor $8) (struct (field (mut (ref null $5))))))
+ (type $8 (sub (describes $7) (struct (field (ref extern)) (field (mut (ref null $1))) (field f64) (field i8))))
+)
+(type $9 (sub (shared (array (mut (ref $5))))))
+(rec
+ (type $10 (sub $3 (cont $0)))
+ (type $11 (sub $9 (shared (array (mut (ref $5))))))
+ (type $12 (sub (func (param eqref) (result (ref null $7)))))
+)
+(rec
+ (type $13 (sub (shared (array (ref null $11)))))
+ (type $14 (sub $11 (shared (array (mut (ref $5))))))
+)
+(type $15 (sub final $14 (shared (array (mut (ref $5))))))
+(rec
+ (type $16 (sub $13 (shared (array (ref $11)))))
+ (type $17 (sub $12 (func (param eqref) (result (ref $7)))))
+ (type $18 (sub final $10 (cont $0)))
+ (type $19 (sub final $3 (cont $0)))
+)
+
+Inhabitable types:
+
+Built 20 types:
+(rec
+ (type $0 (func (param f32 exnref (ref $2)) (result (ref null $7) (ref null $8) v128 (ref struct))))
+ (type $1 (sub (shared (array (mut (ref (shared i31)))))))
+ (type $2 (sub (shared (func (param v128 structref) (result v128)))))
+ (type $3 (sub (cont $0)))
+ (type $4 (shared (array f32)))
+ (type $5 (sub (shared (array (mut i16)))))
+ (type $6 (array externref))
+ (type $7 (sub (descriptor $8) (struct (field (mut (ref null $5))))))
+ (type $8 (sub (describes $7) (struct (field externref) (field (mut (ref null $1))) (field f64) (field i8))))
+)
+(type $9 (sub (shared (array (mut (ref $5))))))
+(rec
+ (type $10 (sub $3 (cont $0)))
+ (type $11 (sub $9 (shared (array (mut (ref $5))))))
+ (type $12 (sub (func (param eqref) (result (ref null $7)))))
+)
+(rec
+ (type $13 (sub (shared (array (ref null $11)))))
+ (type $14 (sub $11 (shared (array (mut (ref $5))))))
+)
+(type $15 (sub final $14 (shared (array (mut (ref $5))))))
+(rec
+ (type $16 (sub $13 (shared (array (ref $11)))))
+ (type $17 (sub $12 (func (param eqref) (result (ref $7)))))
+ (type $18 (sub final $10 (cont $0)))
+ (type $19 (sub final $3 (cont $0)))
+)

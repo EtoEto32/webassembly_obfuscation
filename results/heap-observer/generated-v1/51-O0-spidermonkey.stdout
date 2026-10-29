@@ -1,0 +1,18 @@
+[fuzz-exec] export global$_2
+[LoggingExternalInterface logging -72057594037927940]
+[fuzz-exec] export global$_5
+[LoggingExternalInterface logging null]
+[fuzz-exec] export global$_6
+[LoggingExternalInterface logging -69 -1]
+[fuzz-exec] export global$_7
+[LoggingExternalInterface logging null]
+[fuzz-exec] export global$_8
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_11
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export func_10
+[fuzz-exec] note result: func_10 => object(null)
+[fuzz-exec] export func_11_invoker
+[fuzz-exec] export func_14_invoker
+exception thrown: RuntimeError: dereferencing null pointer
+[heap-study] {"calls":[{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func_10","known":true,"status":"returned","unsupported":[]},{"name":"func_11_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_14_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null}],"snapshots":[{"channel":"printed","slot":null,"snapshot":{"roots":[{"ref":0}],"objects":[{"id":0,"type":7,"kind":"array","fields":[],"length":0}],"truncations":0}},{"channel":"printed","slot":null,"snapshot":{"roots":[{"ref":0}],"objects":[{"id":0,"type":0,"kind":"array","fields":[null,null,null,null,null,null,null,null],"length":75,"truncated":67}],"truncations":1}},{"channel":"printed","slot":null,"snapshot":{"roots":[{"ref":0}],"objects":[{"id":0,"type":4,"kind":"struct","fields":[{"ref":1},{"ref":2}]},{"id":1,"type":0,"kind":"array","fields":[{"ref":3},{"ref":3},{"ref":3},{"ref":3},{"ref":3},{"ref":3},{"ref":3},{"ref":3}],"length":92,"truncated":84},{"id":2,"type":4,"kind":"struct","fields":[{"ref":1},null]},{"id":3,"opaque":"unmatched-object"}],"truncations":1}}],"observation_errors":[],"events":3,"limit":128}

@@ -1,0 +1,12 @@
+{
+  "input_sha256": "99ccc845ff0675979d1f9a26ea37b17f83ed8368daa049c100fff733f7c6cb53",
+  "selected_modules": 124,
+  "successful_audits": 124,
+  "selection": "Every successful WasmMal module with a byte-identical function containing the reviewed increment motif.",
+  "motif": "global.get g; i64.const 1; i64.add; global.set g, g in 11..15",
+  "limits": [
+    "Does not search modules without an exact reference body.",
+    "Static instruction share, not runtime or size overhead.",
+    "Named getter/reset checks support interpretation but do not prove provenance or exclude other obfuscation."
+  ]
+}

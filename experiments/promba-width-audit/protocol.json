@@ -1,0 +1,9 @@
+{
+ "date":"2026-10-12",
+ "purpose":"Check whether the inspected constant-based normalization proof width can justify wider identities; do not treat analyzer mis-modeling as obfuscation strength.",
+ "source_commit":"1e0b45057fdd4ca4835162a444bdb809f514a2c3",
+ "candidate":"Let F(t)=product_{j=0..9}(t-j), g=x&1. Start from the valid rule F(g)+g=g and consider replacing shared g with unrestricted t.",
+ "checks":["verify saved source hashes and Git blobs","exhaustively verify generalized rule at selected width 8","find counterexample at 32 and 64","verify original constraint restricts t to 0 or 1"],
+ "limits":"No upstream binary execution, no claim the stock learner generates this rule, no author's attack reproduced, no new obfuscator.",
+ "budget":{"minutes":15,"command_seconds":60,"parameter_extensions":0}
+}

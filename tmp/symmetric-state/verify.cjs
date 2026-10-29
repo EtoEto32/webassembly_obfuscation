@@ -1,0 +1,10 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto');
+const dir=__dirname,mask=(1n<<32n)-1n;
+const manifest=JSON.parse(fs.readFileSync(path.join(dir,'manifest.json')));
+function elementary(xs){const e=Array(xs.length+1).fill(0n);e[0]=1n;for(const x of xs)for(let j=xs.length;j>0;j--)e[j]=(e[j]+x*e[j-1])&mask;return e.slice(1).map(Number);}
+function reference(args,n){let xs=args.slice(0,n).map(BigInt),u=BigInt(args[n]);for(let k=0;k<(args[n+1]&31);k++){const sum=xs.reduce((a,b)=>a+b,0n);const c=(sum&1n)?3n:5n;xs=xs.map(x=>(x*x+c*x+u)&mask);}return elementary(xs);}
+let seed=0x3719b021;function random(){seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;return seed>>>0;}
+function product(values,n){if(n===0)return [[]];return product(values,n-1).flatMap(a=>values.map(x=>[...a,x]));}
+(async()=>{const inputs={},rows=[],summary=[];for(const n of [2,3]){inputs[n]=[];for(const xs of product([0,1,2,0x7fffffff,0x80000000,0xffffffff],n))for(const u of [0,1,0xffffffff])for(const k of [0,1,2,3,15,31,32,0xffffffff])inputs[n].push([...xs,u,k]);for(let i=0;i<1024;i++)inputs[n].push([...Array.from({length:n+1},random),random()]);}
+for(const item of manifest){const bytes=fs.readFileSync(path.join(dir,item.file));if(crypto.createHash('sha256').update(bytes).digest('hex')!==item.sha256)throw Error('manifest mismatch');const {instance}=await WebAssembly.instantiate(bytes);let mismatches=0;for(const args of inputs[item.arity]){const actual=instance.exports.run(...args).map(x=>x>>>0),expected=reference(args,item.arity);const ok=actual.every((x,i)=>x===expected[i]);if(!ok)mismatches++;rows.push({file:item.file,input:args,actual,expected,ok});}summary.push({file:item.file,cases:inputs[item.arity].length,mismatches});}
+fs.writeFileSync(path.join(dir,'inputs.json'),JSON.stringify(inputs));fs.writeFileSync(path.join(dir,'observations.json'),JSON.stringify(rows));fs.writeFileSync(path.join(dir,'verification.json'),JSON.stringify({node:process.version,v8:process.versions.v8,seed:'0x3719b021',results:summary},null,2));console.log(JSON.stringify(summary));if(summary.some(r=>r.mismatches))process.exitCode=1;})();

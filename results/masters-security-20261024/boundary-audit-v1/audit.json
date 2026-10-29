@@ -1,0 +1,120 @@
+{
+  "pinsVerified": 42,
+  "wasmValidated": 14,
+  "summariesRecomputed": 14,
+  "regressions": [
+    {
+      "name": "recursive",
+      "summary": {
+        "kind": "full",
+        "reason": "recursive call summary unavailable"
+      }
+    },
+    {
+      "name": "indirect",
+      "summary": {
+        "kind": "full",
+        "reason": "unsupported instruction: call_indirect"
+      }
+    },
+    {
+      "name": "hidden-write-in-value",
+      "summary": {
+        "kind": "full",
+        "reason": "value/address outside restricted language"
+      }
+    },
+    {
+      "name": "local-address-mutation",
+      "summary": {
+        "kind": "full",
+        "reason": "unsupported instruction: local.set"
+      }
+    },
+    {
+      "name": "helper-argument-substitution",
+      "summary": {
+        "kind": "ranges",
+        "writes": [
+          {
+            "addr": [
+              "add",
+              [
+                "arg",
+                0
+              ],
+              [
+                "const",
+                3
+              ]
+            ],
+            "offset": 0,
+            "length": [
+              "const",
+              1
+            ]
+          }
+        ],
+        "visitedFunctions": [
+          0,
+          1
+        ],
+        "ignoredFunctionImports": 0
+      }
+    },
+    {
+      "name": "offset-no-wrap",
+      "summary": {
+        "kind": "ranges",
+        "writes": [
+          {
+            "addr": [
+              "arg",
+              0
+            ],
+            "offset": 7,
+            "length": [
+              "const",
+              4
+            ]
+          }
+        ],
+        "visitedFunctions": [
+          0
+        ],
+        "ignoredFunctionImports": 0
+      }
+    },
+    {
+      "name": "arithmetic-wrap",
+      "summary": {
+        "kind": "ranges",
+        "writes": [
+          {
+            "addr": [
+              "add",
+              [
+                "arg",
+                0
+              ],
+              [
+                "const",
+                7
+              ]
+            ],
+            "offset": 0,
+            "length": [
+              "const",
+              4
+            ]
+          }
+        ],
+        "visitedFunctions": [
+          0
+        ],
+        "ignoredFunctionImports": 0
+      }
+    }
+  ],
+  "directOnlyWouldMissHelperWrite": true
+}

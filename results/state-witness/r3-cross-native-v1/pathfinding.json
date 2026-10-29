@@ -1,0 +1,50 @@
+{
+  "name": "pathfinding",
+  "wasmtime": "50.0.1",
+  "rows": [
+    {
+      "kind": "original",
+      "status": "guest-trap",
+      "outcome": {
+        "trap": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:   0x1e8e - <unknown>!rust_oom\n    1:   0x42ba - <unknown>!<alloc_raw_vec_RawVec<T,_A>>_reserve_internal_hcf8ce9691628742e\n    2:   0x4ccd - <unknown>!write_str_hc5df348e0e265927\n    3:   0x35da - <unknown>!core_fmt_Formatter_pad_h2f1cf2c8d4750c22\n    4:   0x5a1e - <unknown>!<bool_as_core_fmt_Display>_fmt_hb388ff23e76d3dbe\n    5:   0x4bc4 - <unknown>!core_fmt_write_h5906b2212f8ebaed\n    6:   0x8970 - <unknown>!init_6\n    7:    0x2fe - <unknown>!r3_main\n\nCaused by:\n    wasm trap: wasm `unreachable` instruction executed\n",
+      "memoryBytes": 14155776,
+      "memorySha256": "31c504988c999cf53ffce14d504aba9f99804db5d7d167095381371f2bcc6795",
+      "inputSha256": "e09265195263f516736441c14e9298d7d337a9f473a9669113414b7eb943a1df",
+      "fuelUsed": null,
+      "executionSeconds": 0.049603399999999964,
+      "totalSeconds": 0.2038481
+    },
+    {
+      "kind": "normalized",
+      "status": "guest-trap",
+      "outcome": {
+        "trap": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:   0x1e8e - <unknown>!<wasm function 16>\n    1:   0x42ba - <unknown>!<wasm function 49>\n    2:   0x4ccd - <unknown>!<wasm function 57>\n    3:   0x35da - <unknown>!<wasm function 36>\n    4:   0x5a1e - <unknown>!<wasm function 70>\n    5:   0x4bc4 - <unknown>!<wasm function 56>\n    6:   0x8970 - <unknown>!<wasm function 106>\n    7:    0x2fe - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: wasm `unreachable` instruction executed\n",
+      "memoryBytes": 14155776,
+      "memorySha256": "31c504988c999cf53ffce14d504aba9f99804db5d7d167095381371f2bcc6795",
+      "inputSha256": "8e79da93beebc306e88bf014f8540360225df9bba4f4bcd493745d9930323856",
+      "fuelUsed": null,
+      "executionSeconds": 0.04908210000000002,
+      "totalSeconds": 0.20295710000000006
+    },
+    {
+      "kind": "observed",
+      "status": "guest-trap",
+      "outcome": {
+        "trap": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:   0x2a05 - <unknown>!<wasm function 16>\n    1:   0x4e31 - <unknown>!<wasm function 49>\n    2:   0x5844 - <unknown>!<wasm function 57>\n    3:   0x4151 - <unknown>!<wasm function 36>\n    4:   0x6595 - <unknown>!<wasm function 70>\n    5:   0x573b - <unknown>!<wasm function 56>\n    6:   0x94e7 - <unknown>!<wasm function 106>\n    7:    0xe75 - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: wasm `unreachable` instruction executed\n",
+      "memoryBytes": 14155776,
+      "memorySha256": "31c504988c999cf53ffce14d504aba9f99804db5d7d167095381371f2bcc6795",
+      "inputSha256": "c1e8c874de4ebfc767377e7ff3c321f330ccb2416b42dd25d0130a7847f17394",
+      "fuelUsed": null,
+      "executionSeconds": 0.04854000000000003,
+      "totalSeconds": 0.20448509999999998
+    }
+  ],
+  "status": "compared",
+  "scope": "API outcomes and exported memory only, within-engine byte comparison; fuel exhaustion not a completed execution."
+}

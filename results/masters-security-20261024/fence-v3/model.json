@@ -1,0 +1,126 @@
+{
+  "interface": "storage",
+  "world": "plugin",
+  "function": {
+    "name": "prepare",
+    "argument": "value",
+    "type": [
+      "ref",
+      "request"
+    ]
+  },
+  "types": {
+    "file": {
+      "kind": "resource"
+    },
+    "pair": {
+      "kind": "record",
+      "fields": [
+        [
+          "source",
+          [
+            "borrow",
+            [
+              "ref",
+              "file"
+            ]
+          ]
+        ],
+        [
+          "destination",
+          [
+            "borrow",
+            [
+              "ref",
+              "file"
+            ]
+          ]
+        ]
+      ]
+    },
+    "optional-write": {
+      "kind": "record",
+      "fields": [
+        [
+          "primary",
+          [
+            "borrow",
+            [
+              "ref",
+              "file"
+            ]
+          ]
+        ],
+        [
+          "backup",
+          [
+            "option",
+            [
+              "borrow",
+              [
+                "ref",
+                "file"
+              ]
+            ]
+          ]
+        ]
+      ]
+    },
+    "request": {
+      "kind": "variant",
+      "fields": [
+        [
+          "read",
+          [
+            "borrow",
+            [
+              "ref",
+              "file"
+            ]
+          ]
+        ],
+        [
+          "write",
+          [
+            "borrow",
+            [
+              "ref",
+              "file"
+            ]
+          ]
+        ],
+        [
+          "copy",
+          [
+            "ref",
+            "pair"
+          ]
+        ],
+        [
+          "batch",
+          [
+            "list",
+            [
+              "borrow",
+              [
+                "ref",
+                "file"
+              ]
+            ]
+          ]
+        ],
+        [
+          "optional",
+          [
+            "ref",
+            "optional-write"
+          ]
+        ],
+        [
+          "idle",
+          null
+        ]
+      ]
+    }
+  }
+}

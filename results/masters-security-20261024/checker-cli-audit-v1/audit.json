@@ -1,0 +1,146 @@
+{
+  "cases": 13,
+  "accepted": 1,
+  "rejected": 12,
+  "rows": [
+    {
+      "name": "valid",
+      "exit": 0,
+      "validation": "passed",
+      "verdict": {
+        "accepted": true,
+        "mode": "range-checked",
+        "missing": [],
+        "derived": {
+          "kind": "ranges",
+          "writes": [
+            {
+              "addr": [
+                "const",
+                0
+              ],
+              "offset": 1052672,
+              "length": [
+                "const",
+                1
+              ]
+            }
+          ],
+          "visitedFunctions": [
+            2
+          ],
+          "checker": "stack-bytes-v1"
+        }
+      }
+    },
+    {
+      "name": "root-list",
+      "exit": 2,
+      "validation": "not-run",
+      "verdict": {
+        "accepted": false,
+        "reason": "certificate JSON: certificate object required"
+      }
+    },
+    {
+      "name": "invalid-json",
+      "exit": 2,
+      "validation": "not-run",
+      "verdict": {
+        "accepted": false,
+        "reason": "certificate JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+      }
+    },
+    {
+      "name": "invalid-utf8",
+      "exit": 2,
+      "validation": "not-run",
+      "verdict": {
+        "accepted": false,
+        "reason": "certificate JSON: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte"
+      }
+    },
+    {
+      "name": "duplicate-key",
+      "exit": 2,
+      "validation": "not-run",
+      "verdict": {
+        "accepted": false,
+        "reason": "certificate JSON: duplicate JSON key"
+      }
+    },
+    {
+      "name": "non-finite",
+      "exit": 2,
+      "validation": "not-run",
+      "verdict": {
+        "accepted": false,
+        "reason": "certificate JSON: non-finite JSON constant"
+      }
+    },
+    {
+      "name": "oversize",
+      "exit": 2,
+      "validation": "not-run",
+      "verdict": {
+        "accepted": false,
+        "reason": "certificate JSON: certificate size bound"
+      }
+    },
+    {
+      "name": "deep-json",
+      "exit": 2,
+      "validation": "not-run",
+      "verdict": {
+        "accepted": false,
+        "reason": "certificate JSON: maximum recursion depth exceeded while decoding a JSON array from a unicode string"
+      }
+    },
+    {
+      "name": "analysis-list",
+      "exit": 2,
+      "validation": "passed",
+      "verdict": {
+        "accepted": false,
+        "reason": "analysis object required"
+      }
+    },
+    {
+      "name": "analysis-null",
+      "exit": 2,
+      "validation": "passed",
+      "verdict": {
+        "accepted": false,
+        "reason": "analysis object required"
+      }
+    },
+    {
+      "name": "wrong-hash",
+      "exit": 2,
+      "validation": "passed",
+      "verdict": {
+        "accepted": false,
+        "reason": "binary digest mismatch"
+      }
+    },
+    {
+      "name": "wrong-entry",
+      "exit": 2,
+      "validation": "not-run",
+      "verdict": {
+        "accepted": false,
+        "reason": "certificate schema or entry contract mismatch"
+      }
+    },
+    {
+      "name": "invalid-binary",
+      "exit": 2,
+      "validation": "failed",
+      "verdict": {
+        "accepted": false,
+        "reason": "standard binary validation failed",
+        "diagnostic": "{\"command\": [\"wasm-validate\", \"C:\\\\Users\\\\ettotto\\\\Documents\\\\webassembly_obfuscation\\\\results\\\\masters-security-20261024\\\\checker-cli-audit-v1\\\\effect-check-fyskbuds\\\\input.wasm\"], \"stdout\": \"\", \"stderr\": \"0000004: error: bad magic value\\n\"}"
+      }
+    }
+  ]
+}

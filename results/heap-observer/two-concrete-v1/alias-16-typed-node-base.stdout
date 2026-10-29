@@ -1,0 +1,26 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export global$
+[LoggingExternalInterface logging null]
+[fuzz-exec] export global$_3
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_5
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_6
+[LoggingExternalInterface logging null]
+[fuzz-exec] export func
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_10_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_13_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_16_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_19
+[fuzz-exec] note result: func_19 => object(null)
+[fuzz-exec] export func_19_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_21
+[LoggingExternalInterface logging 0]
+exception thrown: RuntimeError: dereferencing a null pointer
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_10_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_13_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_16_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_19","known":true,"status":"returned","unsupported":[]},{"name":"func_19_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_21","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null},{"id":3,"channel":"printed","name":null,"slot":null}]}

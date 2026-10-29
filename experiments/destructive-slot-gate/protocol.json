@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-12",
+  "decision": "Known dynamic SSA technique: limited rejection probe, not adopted new candidate",
+  "budget": "20 minutes; 4 schedules; 60 seconds per process; no Wasm expansion after failure",
+  "seeds": [619738, 619739, 619740, 619741],
+  "inputs": "9-word SHA-round arguments: all-zero, all-ones, 27 one-coordinate boundary cases, 256 seeded random cases",
+  "metric": "Exact output expression DAG reconstructed from slot instructions, with input correspondence and opcode meanings known",
+  "correctness": "Compare direct independent SHA round, generated reusable-slot execution and recovered SSA for every input",
+  "negative": "Overwrite output expression with input 0: at least one mismatch required per schedule",
+  "limitations": "Explicit opcode and slot trace supplied, no automatic handler recognition, no Wasm extraction, no full SHA, no novelty claim"
+}

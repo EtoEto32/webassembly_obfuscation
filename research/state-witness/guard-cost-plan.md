@@ -1,0 +1,11 @@
+# 条件合成の費用と状態数限界（測定前）
+
+2026-10-24。反例抽出の単発値で速度優位を主張せず、準備費用と反復利用を分ける。
+
+固定済みcopy-chainのmemory/table、長さ4/16/64/128を使用する。比較対象は、等式条件の評価、条件からの反例抽出、同じbulk効果を使う重複状態除去BFS、および完全に同じ初期storeへの結果をmemo化したBFSである。前二者だけ事前準備費用があるので必ず併記する。BFSは具体state一つを判定するもの、条件合成は全storeの式を得るものであり、出力能力は同一でない。
+
+入力分布は、末尾だけ異なる単一state、同じ肯定stateを32回、末尾5位置以内のBoolean割当て32件、32件の一様乱数storeとする。小さいfootprintや肯定stateでは同一値が重複するため、unique件数とmemo化比較を記録する。人工的なcopy-chainの性能を一般Wasmへ外挿しない。
+
+3つの独立Python processを逐次実行する。各processで2 warmup・7測定、手法の順序を固定seedでshuffle。解析対象binaryの読取り・WABT処理・model構築を解析時間から分ける。準備時間、batch時間、process peak RSS、準備時のPython追跡allocation peakを記録する。最後の値はnative allocationやengine memoryを含まず、RSSとも同一視しない。
+
+別に、影響しないsegmentを独立にdropするAPIを増やし、segment状態対が指数的に増える場合を測る。状態対上限を超えたら保留として記録する。既存の保守的def-use証明との比較で、記号条件合成が全ての入力で最善とは限らないことを検査する。

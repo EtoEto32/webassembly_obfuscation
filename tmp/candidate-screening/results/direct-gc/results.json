@@ -1,0 +1,224 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "script_sha256": "1fba72ae8b0625c31c1cf6a05473915b4ff2b825f0eb372b76429441ab17dc90",
+  "purpose": "Check type identity without assembler canonicalization; not a new obfuscator or resistance evaluation.",
+  "results": [
+    {
+      "name": "implicit-duplicate",
+      "groups": [
+        [
+          95,
+          1,
+          127,
+          0
+        ],
+        [
+          95,
+          1,
+          127,
+          0
+        ]
+      ],
+      "typeCount": 2,
+      "source": 0,
+      "target": 1,
+      "expected": 1,
+      "sha256": "dd1910ba50e0f00f7b4b948ea09e634603bf56e7359b7568024f7434bb82b88f",
+      "bytes": 50,
+      "valid": true,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "name": "different-field",
+      "groups": [
+        [
+          95,
+          1,
+          127,
+          0
+        ],
+        [
+          95,
+          1,
+          126,
+          0
+        ]
+      ],
+      "typeCount": 2,
+      "source": 0,
+      "target": 1,
+      "expected": 0,
+      "sha256": "40ab6e4c001379c71fc10394b0a2632508700d8f5e072d65a0f924f8d6a0fb28",
+      "bytes": 50,
+      "valid": true,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "name": "explicit-singletons",
+      "groups": [
+        [
+          78,
+          1,
+          95,
+          1,
+          127,
+          0
+        ],
+        [
+          78,
+          1,
+          95,
+          1,
+          127,
+          0
+        ]
+      ],
+      "typeCount": 2,
+      "source": 0,
+      "target": 1,
+      "expected": 1,
+      "sha256": "f45bc44f4d72dcbf47ab3746aeec81705d706bdc76c6c333816de7258db0061c",
+      "bytes": 54,
+      "valid": true,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "name": "same-pair-cross-index",
+      "groups": [
+        [
+          78,
+          2,
+          95,
+          1,
+          127,
+          0,
+          95,
+          1,
+          127,
+          0
+        ]
+      ],
+      "typeCount": 2,
+      "source": 0,
+      "target": 1,
+      "expected": 0,
+      "sha256": "b63519d2c0266e78dee67efb126a90cb9879d744b55a7c973ac93c8dfd7f5f78",
+      "bytes": 52,
+      "valid": true,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "name": "duplicate-pairs-same-index",
+      "groups": [
+        [
+          78,
+          2,
+          95,
+          1,
+          127,
+          0,
+          95,
+          1,
+          127,
+          0
+        ],
+        [
+          78,
+          2,
+          95,
+          1,
+          127,
+          0,
+          95,
+          1,
+          127,
+          0
+        ]
+      ],
+      "typeCount": 4,
+      "source": 0,
+      "target": 2,
+      "expected": 1,
+      "sha256": "6c5a64d1ede795f344ee8c2849f6f42bb25a21ef096a458e44e97db8e605cc59",
+      "bytes": 62,
+      "valid": true,
+      "actual": 1,
+      "passed": true
+    },
+    {
+      "name": "duplicate-pairs-cross-index",
+      "groups": [
+        [
+          78,
+          2,
+          95,
+          1,
+          127,
+          0,
+          95,
+          1,
+          127,
+          0
+        ],
+        [
+          78,
+          2,
+          95,
+          1,
+          127,
+          0,
+          95,
+          1,
+          127,
+          0
+        ]
+      ],
+      "typeCount": 4,
+      "source": 0,
+      "target": 3,
+      "expected": 0,
+      "sha256": "7000b2084589acd613089740f5609efed01cbc5323cc4d9ef988f315485a409d",
+      "bytes": 62,
+      "valid": true,
+      "actual": 0,
+      "passed": true
+    },
+    {
+      "name": "singleton-versus-pair",
+      "groups": [
+        [
+          95,
+          1,
+          127,
+          0
+        ],
+        [
+          78,
+          2,
+          95,
+          1,
+          127,
+          0,
+          95,
+          1,
+          127,
+          0
+        ]
+      ],
+      "typeCount": 3,
+      "source": 0,
+      "target": 1,
+      "expected": 0,
+      "sha256": "02c73accbe25fe3544cfa1db33e3ee8623df988df4d4eb7d0a415485ff6aae3f",
+      "bytes": 56,
+      "valid": true,
+      "actual": 0,
+      "passed": true
+    }
+  ]
+}

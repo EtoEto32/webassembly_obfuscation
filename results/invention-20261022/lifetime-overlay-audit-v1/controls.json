@@ -1,0 +1,86 @@
+{
+  "rejects": [
+    {
+      "name": "exported-memory",
+      "reason": "Need one function, private fixed memory1, one function export"
+    },
+    {
+      "name": "entry-read",
+      "reason": "Read before definite store: [(0, 4)]"
+    },
+    {
+      "name": "out-of-bounds",
+      "reason": "Potential bounds trap"
+    },
+    {
+      "name": "mixed-width-source",
+      "reason": "Read before definite store: [(0, 4)]"
+    },
+    {
+      "name": "dynamic-address",
+      "reason": "Dynamic address"
+    },
+    {
+      "name": "loop",
+      "reason": "Unsupported statement: (loop (nop))"
+    }
+  ],
+  "regressions": [
+    {
+      "name": "tee-order",
+      "source": "regression-tee-order.wasm",
+      "recovered": "regression-tee-order-recovered.wasm",
+      "loads": 0,
+      "stores": 0,
+      "phis": 0,
+      "new_locals": 0,
+      "reader_ms": 17.217599999999944,
+      "normalize_ms": 0.01039999999985497,
+      "compile_ms": 19.892699999999763,
+      "elapsed_ms": 37.12179999999998,
+      "remaining_memory_ops": 0
+    },
+    {
+      "name": "load-before-branch-store",
+      "source": "regression-load-before-branch-store.wasm",
+      "recovered": "regression-load-before-branch-store-recovered.wasm",
+      "loads": 3,
+      "stores": 3,
+      "phis": 1,
+      "new_locals": 4,
+      "reader_ms": 17.428100000000057,
+      "normalize_ms": 0.046400000000001995,
+      "compile_ms": 20.68940000000019,
+      "elapsed_ms": 38.165599999999685,
+      "remaining_memory_ops": 0
+    },
+    {
+      "name": "signed-load",
+      "source": "regression-signed-load.wasm",
+      "recovered": "regression-signed-load-recovered.wasm",
+      "loads": 1,
+      "stores": 1,
+      "phis": 0,
+      "new_locals": 1,
+      "reader_ms": 17.392899999999933,
+      "normalize_ms": 0.020699999999873597,
+      "compile_ms": 23.203899999999944,
+      "elapsed_ms": 40.618700000000004,
+      "remaining_memory_ops": 0
+    },
+    {
+      "name": "condition-write",
+      "source": "regression-condition-write.wasm",
+      "recovered": "regression-condition-write-recovered.wasm",
+      "loads": 0,
+      "stores": 0,
+      "phis": 0,
+      "new_locals": 0,
+      "reader_ms": 17.00170000000023,
+      "normalize_ms": 0.018799999999874473,
+      "compile_ms": 20.24780000000037,
+      "elapsed_ms": 37.26950000000029,
+      "remaining_memory_ops": 0
+    }
+  ]
+}

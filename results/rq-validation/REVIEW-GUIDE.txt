@@ -1,0 +1,54 @@
+追加実験・解析の結果（2026-10-07）
+
+対象
+予備調査35種類とはSHA-256が異なる28種類を追加した。
+8本の別プログラムの対照20ファイルと、WasmMal/SWAMPEDの探索8ファイル。
+選定シードは20261009。探索例の生成親は不明で、独立性は保証しない。
+共通ライブラリは異なるプログラムにも含まれるため、28件を独立な方式の標本とは扱わない。
+
+主要結果
+1. A-Starの更新列2756箇所を比較用命令列から除くと、通常版147関数すべてに一致。
+2. CreaturePackは8526箇所、756関数すべてに一致。両方で読み出し10関数とリセット1関数を確認。
+3. CreaturePackの関数400は数値の基数を選ぶ通常処理。分岐表だけでは平坦化とは判定できない。
+4. base64-cliの関数515では状態0→1の分岐を介して元の書き込みを行う。
+5. 同プログラムの関数6はcall708→table709経由のcall_indirect。table709はfunc708。
+6. random/sumrec/decimaltohexの名前変更版は全53/53/52関数の復号後の命令が一致。
+7. 上記3本のmemoryOB版では直接読み込みを補助関数化。XORのglobal1は0から変化しない。
+8. seqtk変換版関数43の処理経路は、ローカル変数を対応付けると通常版11と45の両方に一致。
+   同一番号の通常版43とは対応しない。一意の関数対応は未確定。
+9. needleman_wunsch関数57は状態初期化・分岐・更新・復帰を持つが、元の関数との対応は未確定。
+10. 探索8ファイルの確認箇所では平坦化を確定しなかった。通常処理という代替説明が残る。
+    ファイル全体に難読化が存在しないという意味ではない。
+
+証拠の参照
+experiments/rq-validation-selection.json: 選定枠、入力、所属資料、評価方針。
+results/rq-validation/review-ledger.json: V01～V21の判断、SHA、関数、位置、命令列、限界。
+results/rq-validation/dataset-mechanism-evidence.csv: データセット別の確認内容。
+results/rq-validation/instrumentation-removal-check.json: 計測更新列を除いた関数比較。
+results/rq-validation/fixed-index-failure-analysis.json: 予備例の固定global番号11～15だけでは新2例の更新を拾えないこと。
+results/cases/<SHA>/disassembly.txt: 元の逆アセンブル。メモリ変換版はcustom情報除去後の位置。
+
+再実行（作業ディレクトリから、Python 3と配置済みWABTを使用）
+python scripts/measure_rq_validation.py smoke
+python scripts/measure_rq_validation.py measure
+python scripts/verify_rq_validation.py
+python scripts/review_rq_validation.py
+python scripts/audit_rq_validation.py
+選定済みデータを変更しない。prepare_rq_validation.py selectは再選定を拒否する。
+update_rq_validation_paper.pyは今回の本文反映用であり、既に反映済みの本文には再適用しない。
+
+独立した人間のレビューに渡す確認点
+・V01/V02：計測更新列の意味と追加11関数の役割。命令一致はモジュール全体の意味同値ではない。
+・V03/V04：通常の基数選択と、挿入された状態分岐の違い。
+・V08～V10：補助関数の引数・アクセス幅・鍵0。共通ランタイムを独立の方式と数えない。
+・V11：table709の呼出し先と元のcall708。
+・V12：状態0/1の分岐先、保存された値、ローカル変数の対応、通常版候補11/45の曖昧さ。
+・V13：対応が未確定な構造を、完全な対照確認と混同していないこと。
+・V14～V21：通常処理という代替説明と未確認範囲。必要なら呼出し元・後続の値の利用を追う。
+これまでの確認者はCodexであり、独立した人間のレビューは未実施。
+
+論文
+paper/main.texを直接更新済み。2つのRQを維持し、追加実験と予備調査を区別した。
+入力・関数比較・引用参照・LaTeX環境の対応の検査は成功。
+組み込みコンパイラは「Unable to find standard directories for platform」で失敗した。
+PDFのレイアウトとコンパイル成功は未確認。代替PDFは作成していない。

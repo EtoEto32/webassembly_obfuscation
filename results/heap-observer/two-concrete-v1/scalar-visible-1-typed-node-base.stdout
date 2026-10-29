@@ -1,0 +1,13 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => 41
+[fuzz-exec] export global$
+[LoggingExternalInterface logging function]
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export ref_func_target_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_14_invoker
+exception thrown: RuntimeError: dereferencing a null pointer
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"ref_func_target_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_14_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null}]}

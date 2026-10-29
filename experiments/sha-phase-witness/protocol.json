@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-12",
+  "candidate": "Eliminate the round counter by deriving the next SHA update solely from its unchanged eight working words and current W word",
+  "scope": "First compression block, real 32-bit SHA-256 with standard IV/K, two constructed 64-byte messages",
+  "construction": "Reuse saved zero-state prefix at boundary 8; construct a prefix whose boundary-8 state is the inverse of zero under round 8 with W8=0; extend to zero at boundary9",
+  "metric": "Equal working state and equal next W, but different next working state at boundaries8 and9",
+  "execution": "Unchanged plain, raw instrumented, O2 instrumented; full digests compared with Python hashlib and Node crypto",
+  "budget": "One witness pair, three builds, 60 seconds per tool; no parameter search",
+  "limits": "No claim that complete machine states or digests collide. Does not rule out jointly encoded phase/data, schedule memory or other auxiliary information"
+}

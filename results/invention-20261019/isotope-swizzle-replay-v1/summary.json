@@ -1,0 +1,164 @@
+{
+  "targets": 30,
+  "table_targets": 12,
+  "recovered_tables": 24,
+  "checks": {
+    "cases": 7872,
+    "wasm_calls": 708480,
+    "mismatches": 0,
+    "unexpected_traps": 0,
+    "records": [
+      {
+        "file": "add-plain-s0-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-plain-s0-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-decode-s7-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-decode-s7-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-decode-s29-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-decode-s29-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-table-s7-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-table-s7-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-table-s29-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "add-table-s29-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-plain-s0-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-plain-s0-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-decode-s7-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-decode-s7-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-decode-s29-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-decode-s29-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-table-s7-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-table-s7-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-table-s29-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "xor-table-s29-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-plain-s0-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-plain-s0-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-decode-s7-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-decode-s7-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-decode-s29-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-decode-s29-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-table-s7-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-table-s7-O3.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-table-s29-raw.wasm",
+        "mismatches": 0
+      },
+      {
+        "file": "mixed-table-s29-O3.wasm",
+        "mismatches": 0
+      }
+    ]
+  },
+  "negative": [
+    {
+      "name": "not_latin",
+      "status": "rejected",
+      "reason": "not Latin rows"
+    },
+    {
+      "name": "C4xC4",
+      "status": "rejected",
+      "reason": "group outside C16/C2^4 profile"
+    },
+    {
+      "name": "nonassociative_trade",
+      "status": "rejected",
+      "reason": "nonassociative principal loop"
+    },
+    {
+      "name": "unproven_range",
+      "status": "rejected",
+      "reason": "table inputs not proven nibble range"
+    }
+  ],
+  "algebra": {
+    "random_tables": 192,
+    "exhaustive_pairs": 49152,
+    "groups": {
+      "add": "add",
+      "sub": "add",
+      "xor": "xor"
+    }
+  }
+}

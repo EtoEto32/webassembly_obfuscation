@@ -1,0 +1,154 @@
+{
+  "function": "$f113",
+  "scope": "Dispatcher presence, initialization payload, first condition only; remainder not reviewed.",
+  "reference_sha256": "32e175adb90c2ecd808dd292181bca3f4bfe8c5a3524682a706eca8787f822b8",
+  "transformed_sha256": "5b71189ec2843306cd65c5abbfe1fe6c36b57c19e5dd2b93429622edddb6ab61",
+  "state_offset": 16,
+  "state_pointer_offset": 12,
+  "reviewed_transitions": [
+    {
+      "state": 295792562,
+      "operation": "Initialize scratch data",
+      "next": -1569009996
+    },
+    {
+      "state": -1569009996,
+      "operation": "Signed scratch word < 45",
+      "next_if_true": 2118300141,
+      "next_if_false": -425016634
+    }
+  ],
+  "initialization_payload": {
+    "reference_lines": [
+      168,
+      406
+    ],
+    "transformed_lines": [
+      1036,
+      1274
+    ],
+    "instruction_text_lines": 239,
+    "alpha_renamed_matching_except_address_changes": true,
+    "changed_numeric_operands": [
+      {
+        "reference_line": 173,
+        "transformed_line": 1041,
+        "before": "i32.const 256",
+        "after": "i32.const 288"
+      },
+      {
+        "reference_line": 185,
+        "transformed_line": 1053,
+        "before": "i32.const 248",
+        "after": "i32.const 280"
+      },
+      {
+        "reference_line": 197,
+        "transformed_line": 1065,
+        "before": "i32.const 240",
+        "after": "i32.const 272"
+      },
+      {
+        "reference_line": 211,
+        "transformed_line": 1079,
+        "before": "i64.store offset=232",
+        "after": "i64.store offset=264"
+      },
+      {
+        "reference_line": 217,
+        "transformed_line": 1085,
+        "before": "i64.store offset=224",
+        "after": "i64.store offset=256"
+      },
+      {
+        "reference_line": 222,
+        "transformed_line": 1090,
+        "before": "i32.store offset=64",
+        "after": "i32.store offset=96"
+      },
+      {
+        "reference_line": 223,
+        "transformed_line": 1091,
+        "before": "i32.const 320",
+        "after": "i32.const 352"
+      },
+      {
+        "reference_line": 274,
+        "transformed_line": 1142,
+        "before": "i32.const 272",
+        "after": "i32.const 304"
+      },
+      {
+        "reference_line": 325,
+        "transformed_line": 1193,
+        "before": "i32.const 80",
+        "after": "i32.const 112"
+      },
+      {
+        "reference_line": 342,
+        "transformed_line": 1210,
+        "before": "i32.const 74",
+        "after": "i32.const 106"
+      },
+      {
+        "reference_line": 364,
+        "transformed_line": 1232,
+        "before": "i32.const 70",
+        "after": "i32.const 102"
+      },
+      {
+        "reference_line": 381,
+        "transformed_line": 1249,
+        "before": "i32.store8 offset=77",
+        "after": "i32.store8 offset=109"
+      },
+      {
+        "reference_line": 386,
+        "transformed_line": 1254,
+        "before": "i32.store8 offset=78",
+        "after": "i32.store8 offset=110"
+      },
+      {
+        "reference_line": 391,
+        "transformed_line": 1259,
+        "before": "i32.store offset=60",
+        "after": "i32.store offset=92"
+      },
+      {
+        "reference_line": 396,
+        "transformed_line": 1264,
+        "before": "i32.store offset=368",
+        "after": "i32.store offset=400"
+      },
+      {
+        "reference_line": 401,
+        "transformed_line": 1269,
+        "before": "i32.store offset=56",
+        "after": "i32.store offset=88"
+      },
+      {
+        "reference_line": 406,
+        "transformed_line": 1274,
+        "before": "i32.store8 offset=367",
+        "after": "i32.store8 offset=399"
+      }
+    ],
+    "interpretation": "Reviewed frame size increases 576 to 608; recorded scratch coordinates increase by 32. Opcode/local dataflow text agrees for this payload, not whole-function equivalence."
+  },
+  "reference_call_contexts": [
+    {
+      "line": 640,
+      "enclosing_constructs": [
+        {
+          "line": 476,
+          "construct": "block $B5"
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "All state meanings, complete graph and source function identity remain unconfirmed.",
+    "Single caller site is lexically in a block, not a structured loop; no dynamic path/frequency claim.",
+    "No hash execution, full alias/trap analysis or attribution of runtime difference."
+  ]
+}

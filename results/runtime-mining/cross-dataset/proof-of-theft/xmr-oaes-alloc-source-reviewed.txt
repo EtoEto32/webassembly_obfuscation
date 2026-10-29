@@ -1,0 +1,39 @@
+oaes_alloc(void)
+{
+	oaes_ctx * _ctx = (oaes_ctx *) calloc( sizeof( oaes_ctx ), 1 );
+	
+	if( NULL == _ctx )
+		return NULL;
+
+#ifdef OAES_HAVE_ISAAC
+	{
+	  ub4 _i = 0;
+		char _seed[RANDSIZ + 1];
+		
+		_ctx->rctx = (randctx *) calloc( sizeof( randctx ), 1 );
+
+		if( NULL == _ctx->rctx )
+		{
+			free( _ctx );
+			return NULL;
+		}
+
+		oaes_get_seed( _seed );
+		memset( _ctx->rctx->randrsl, 0, RANDSIZ );
+		memcpy( _ctx->rctx->randrsl, _seed, RANDSIZ );
+		randinit( _ctx->rctx, TRUE);
+	}
+#else
+		srand( oaes_get_seed() );
+#endif // OAES_HAVE_ISAAC
+
+	_ctx->key = NULL;
+	oaes_set_option( _ctx, OAES_OPTION_CBC, NULL );
+
+#ifdef OAES_DEBUG
+	_ctx->step_cb = NULL;
+	oaes_set_option( _ctx, OAES_OPTION_STEP_OFF, NULL );
+#endif // OAES_DEBUG
+
+	return (OAES_CTX *) _ctx;
+}

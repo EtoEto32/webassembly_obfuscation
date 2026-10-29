@@ -1,0 +1,2123 @@
+IACR Transactions on Cryptographic Hardware and Embedded Systems
+ISSN 2569-2925, Vol. 2023, No. 3, pp. 97–135. DOI:10.46586/tches.v2023.i3.97-135
+Cryptanalysis of ARX-based
+White-box Implementations∗
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko
+University of Luxembourg, Esch-sur-Alzette, Luxembourg
+firstname.lastname@uni.lu
+Abstract. At CRYPTO’22, Ranea, Vandersmissen, and Preneel proposed a new way
+to design white-box implementations of ARX-based ciphers using so-calledimplicit
+functions and quadratic-aﬃne encodings. They suggest the Speck block-cipher as an
+example target.
+In thiswork, we describepractical attacks onthe construction. Forthe implementation
+without one of the external encodings, we describe a simple algebraic key recovery
+attack. If both external encodings are used (the main scenario suggested by the
+authors), we propose optimization and inversion attacks, followed by our main result
+- a multiple-step round decomposition attack and a decomposition-based key recovery
+attack.
+Our attacks only use the white-box round functions as oracles and do not rely on
+their description. We implemented and veriﬁed experimentally attacks on white-box
+instances of Speck-32/64 and Speck-64/128. We conclude that a single ARX-round is
+too weak to be used as a white-box round.
+Keywords: White-box cryptography · Cryptanalysis · Algebraic attacks · Decom-
+position attacks
+1 Introduction
+Cryptanalysis of cryptographic primitives is usually done in theblack-box model, where an
+attacker can query some oracle to obtain plaintext/ciphertext pairs, but without having
+direct access to the internal computations done by the oracle (still knowing which primitive
+is implemented obviously). While this model is nice from a theoretical point of view, in
+practice, cryptographic algorithms are deployed in a more hostile environment, where
+an attacker has some access to the hardware/software implementing these cryptographic
+primitives. This can for example lead to the attacker being able to examine execution
+time, power consumption, etc. which lead toside-channel attacksor the so-calledgray-box
+attack model. However, one can go further and consider thewhite-box model, where the
+attacker actually has direct access and control to the (software) implementation of some
+cryptographic primitive, meaning that they can actually read and/or modify the code,
+make some partial executions, etc. This is a much stronger model, giving a lot of power to
+the attacker, but it remains relevant in contexts like DRM (Digital Rights Management)
+and mobile payments [AABM20,ABF+20].
+Starting with the works of Chow, Eisen, Johnson and van Oorschot [CEJv03,CEJvO03]
+in 2002 (also called “the CEJO framework”), several proposals were made to give a white-
+box implementation of cryptographic primitives, typically of the AES and DES block
+ciphers [LN05,XL09,BCH16,RP20]. However, all of these proposals to "white-box" AES
+∗The work was supported by the Luxembourg National Research Fund’s (FNR) and the German
+Research Foundation’s (DFG) joint project APLICA (C19/IS/13641232).
+Licensed under Creative Commons License CC-BY 4.0.
+Received: 2023-01-15 Accepted: 2023-03-15 Published: 2023-06-09
+98 Cryptanalysis of ARX-based White-box Implementations
+Table 1: Summary of attacks proposed in this paper. The branch size is denoted byn.
+Complexity is computed assuming encodings from [RVP22]. Target depends on round
+encodings: A for aﬃne encodings,Q for sparse quadratic-aﬃne encodings. Key recovery
+attacks were experimentally veriﬁed on instances withn = 16, 32. Optimization and
+inversion attacks were experimentally veriﬁed on aﬃne-encoded instances. Time does not
+include the cost to compute the queries (data), which typically requireat least O(n3) time
+(depends on the implementation).
+Attack Target Ref. Time Data Comment
+Algebraic key
+recovery
+A Sec.4 O(n3) O(n) No external encoding (any side)Q Sec.4 O(n6) O(n2)
+Round oracle
+optimization
+A Sec.5.5 O(n6) O(n2) Computes bilinear implicit
+function
+Q Sec.5.5 O(n9) O(n3) Computes quadratic-aﬃne
+implicit function
+Round oracle
+inversion
+A Sec.5.5 O(n6) O(n2) Requires existence of bilinear
+implicit function
+Q Sec.5.5 O(n6) O(n2) Heuristic, several bits have to be
+guessed
+Round
+decomposition
+A Sec.6 O(n4) O(n3)
+Total query time is at least
+O(n6), dominating the time
+complexity.
+Q Sec.7 O(n6) O(n2) Recovers quadratic encoding.
+Decomposition-
+based key
+recovery
+AQ Sec.8 O(n6) O(n3)
+Requires several consecutive
+decomposed rounds to recover
+the master key.
+ended up falling to practical attacks [BGEC04,MGH09], and thus the problem of providing
+a secure white-box implementation of AES remains open.
+Observing that proposals for an AES white-box failed, Ranea, Vandersmissen, and
+Preneel [VRP22,RVP22] looked at providing a white-box implementation of a totally
+diﬀerent structure, namely the Speck cipher, which is an ARX Feistel Network. In [VRP22],
+the authors ﬁrst protected the implementation using aﬃne self-equivalences of modular
+addition but showed that this approach is insecure. The consequent design in [RVP22]
+relies on the use of so-called implicit functions, which describe the graph of the function in
+an implicit way, allowing the computation of a function by solving of a linear system of
+equations. This allows to use aﬃne-quadratic self-equivalences of the modular addition
+in order to create quadratic encodings of the round inputs, which is a much stronger
+protection than aﬃne self-equivalences. They also insist on the necessity of usingexternal
+encodings, which are “simple” functions composed with the implementation, adding more
+security at the cost of altering the functionality. As their construction is rather diﬀerent
+that the earlier white-box AES proposals, previous white-box cryptanalysis techniques are
+rather hard if not impossible to apply to their scheme.
+Our contribution In this paper, we describe several attacks on their construction. Our
+attacks are summarized in Table 1. Proof-of-concept implementation is available at
+https://github.com/cryptolu/implicit_ARX_whitebox_cryptanalysis
+First, we consider the case when one of the external encodings is omitted. Although the
+authors or [RVP22] insist that external encodings are crucial, they also suggest that even
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 99
+without external encodings their implementations are less vulnerable than, for example,
+designs of [CEJv03,RP20]. Furthermore, it is important to evaluate whether the new design
+contributes towards security against generic attacks such as the diﬀerential computation
+analysis (DCA) [BHMT16] or the algebraic attack (also known as Linear Decoding Analysis,
+LDA) [GPRW20,BU18], which are only applicable in the “pure” white-box setting without
+external encodings. In this setting, we show a practical degree-2 algebraic key-recovery
+attack on the white-box implementation of Speck proposed in [RVP22]. To the best of our
+knowledge, this is the ﬁrst application of the algebraic attack to an ARX primitive.
+Then, we focus on the setting with both external encodings. Typical attacks in this
+setting focus on decomposing round functions and analyzing interactions between them in
+order to recover the key (for example, the BGE attack [BGEC04] on the original proposal
+in [CEJv03]). Here, we describe algebraic and diﬀerential tools for analyzing the modular
+addition, including an algorithm for aﬃne-equivalence of a quadratic Boolean function to
+a sum of a few monomials, black-box relation interpolation. We then show how algebraic
+relations of modular addition (described for example in [CD08]) can be used to optimize a
+white-box round oracle (eﬀectively stripping the obfuscation of its implicit function by
+high-degree graph automorphisms), or to invert it (at a certain cost). We move on to
+the main result of our work - practical decomposition and key recovery attacks. We start
+by developing a decomposition method for an aﬃne-encoded modular addition. We then
+show how a quadratic-aﬃne encoding can be decomposed and reduced to the aﬃne case.
+Finally, we show how to use round decompositions to perform full key recovery.
+Our attacks were implemented and veriﬁed in practice on white-box instances of
+Speck32-64 and Speck64-128 generated by the code provided by the authors of [RVP22].
+We remark that we only attack ARX-based white-box implementations, the implicit
+functions framework itself is still an interesting design tool (although our optimization
+and inversion techniques are quite generic and potentially threaten other round functions).
+Yet, it requires a round function with a simple quasilinear implicit function, a large set
+of quadratic-aﬃne self-equivalences and graph automorphisms. So far, there are no such
+known round function candidates other than an ARX round.
+2 Preliminaries and Notations
+We use the 0-based big-endian notation for words, namelyx = (xn−1,...,x 0), wherexn−1
+is the most signiﬁcant bit andx0 is the least signiﬁcant bit. Thei-th unit vectorei is such
+that it’si-indexed bit is equal to one and other bits are equal to zero (its dimension should
+be clear from the context). The inner product between twon-bit vectorsx,y is denoted
+by ⟨x,y ⟩ = ∑n−1
+i=0 xiyi.
+We focus on two-branch ARX-based implementations. We usen to denote the word
+size andN = 2n to denote the block size. The addition modulo2n is denoted by⊞, the
+addition in Fn
+2 (XOR) is denoted by⊕ or just +. We call the mapping
+S : (Fn
+2 )2 → (Fn
+2 )2 : (x,y ) ↦→ (x⊞y,y )
+a bijective modular addition (called “permuted addition” in [RVP22], which we ﬁnd
+ambiguous). A white-box round oracle or its modiﬁcation is denoted byO : FN
+2 → FN
+2 .
+The notation ∆O denotes a randomized mapFN
+2 → FN
+2 , mapping a given∆X ∈ FN
+2 to
+O(x) ⊕ O(x ⊕ ∆X) for a fresh randomx
+$
+← −FN
+2 .
+Each Boolean functionf : Fn
+2 → F2 can be expressed in the algebraic normal form
+(ANF): f(x) = ∑
+u∈Fn
+2
+λu(x), where λu ∈ F2 are the ANF coeﬃcients. The algebraic
+degree off is the maximum Hamming weight ofu with λu = 1. The algebraic degree of
+F : Fn
+2 → Fn
+2 is deﬁned to be the maximum algebraic degree amount its output coordinates.
+100 Cryptanalysis of ARX-based White-box Implementations
+3 Implicit Encodings of ARX Primitives
+LetEk =E(r)
+k ◦E(r−1)
+k ◦ · · · ◦E(1)
+k be an encryption function, where eachE(i)
+k represents the
+round function, depending on the keyk in some way. For better clarity, we will drop thek
+from the notation of the round functionsE(i). The main goal of white-box encryption is
+to provideencoded round functionsE
+(i)
+such that one cannot recover information about
+the key when only provided access to eachE
+(i)
+, while also preserving the property that
+E
+(r)
+◦E
+(r−1)
+◦ · · · ◦E
+(1)
+=Ek.
+In practice,external encodingsare necessary for security reasons, and thus the resulting
+white-box implementation would not be functionally equivalent toEk, but to an encoded
+version ofEk, i.e.
+E
+(r)
+◦E
+(r−1)
+◦ · · · ◦E
+(1)
+=Oext ◦Ek ◦Iext,
+where Oext and Iext are the external encodings, and depend on how the encoded round
+functions E
+(i)
+are built.
+In practice, these encoded round functionE
+(i)
+are built asO(i) ◦E(i) ◦I (i) where I (i)
+(resp. O(i)) is the input (resp. output) encoding, and a white-box proposal describes how
+to build these encodings, as well as how to implement the resulting encoded round function.
+So far, to satisfy the property that the resulting implementation must result in the original
+encryption function, encodings were built such thatI (i+1) =
+(
+O(i))−1
+, thus encodings in
+consecutive rounds cancel out and we only end up withI (1) and O(r) as the input and
+output external encodings, respectively. This ends up leading to the cancellation rule
+E
+(i+1)
+◦E
+(i)
+=O(i+1) ◦E(i+1) ◦E(i) ◦I (i)
+for two consecutive rounds. However, the authors of [RVP22] proposed a way to generate
+encoded round functions satisfying the cancellation rule over 3 rounds (and not over 2
+rounds):
+E
+(i+1)
+◦E
+(i)
+◦E
+(i−1)
+=O(i+1) ◦E(i+1) ◦E(i) ◦E(i−1) ◦I (i−1)
+Their method is described below.
+3.1 Description
+The proposal from [RVP22] mainly relies on the notion of self-equivalence to provide
+encoded round functions.
+Deﬁnition 1. For a functionF, we say that a pair of invertible functions(A,B ) is a
+self-equivalence ofF if we haveF =B ◦F ◦A. IfA andB are linear (resp. aﬃne), we say
+that (A,B ) is a linear (resp. aﬃne) self-equivalence. IfA is aﬃne andB is quadratic, we
+say that(A,B ) is an aﬃne-quadratic self-equivalence.
+In the context of white-box encryption for ARX ciphers, the authors focus on the
+bijective modular addition, i.e.F (x,y ) = S(x,y ) = (x⊞y,y ), which is at the core of
+many ARX ciphers, and provide a way to obtain aﬃne-quadratic self-equivalences for this
+function. By doing so, for a round functionE(i) =L(i) ◦S whereS is the bijective modular
+addition andL(i) is an cipher’s aﬃne mapping containing the round-key, they generate
+encoded round functions as follows.
+For each round functionE(i), one picks a random invertible aﬃne mappingC (i+1) as
+well as an aﬃne-quadratic self-equivalence(A(i),B (i)) of E(i), and the encodings for the
+round functionE(i) are deﬁned as
+(I (i),O (i)) =
+(
+A(i) ◦B(i−1) ◦ (C (i))−1,C (i+1)
+)
+.
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 101
+(C(i))−1 (B(i−1)) (A(i)) (E(i)) (C(i+1)) (C(i+1))−1 (B(i)) (A(i+1)) (E(i+1)) (C(i+2))
+Cancels out
+Aﬃne-quadratic self equivalence ofE(i)
+Figure 1: Cancellation of encodings for two consecutive rounds [RVP22]
+Q(i) (quadratic)
+C (i) (aﬃne)
+n n
+N
+N
+Figure 2: Internal structure of a single white-box ARX round with quadratic-aﬃne
+encodings in the framework of [RVP22]. The quadratic encodingQ(i) is composed as
+Q(i) =A(i) ◦L(i−1) ◦B(i−1) ◦ (C (i))−1, and the encodingC (i) is aﬃne.
+For external encodings,I (1) is built asA(1) ◦B(0) with A(1) deﬁned as above andB(0) a
+random invertible quadratic mapping1, andO(r) =C (r+1) withC (r+1) a random invertible
+aﬃne mapping. Especially, the input encoding of a round is quadratic, while the output
+encoding is aﬃne. Notice that these encodings do not satisfyI (i+1) =
+(
+O(i))−1
+, however
+they still allow to obtain an encoded encryption function, using the fact that
+E(i) =B(i) ◦
+(
+C (i+1)
+)−1
+◦C (i+1) ◦E(i) ◦A(i).
+Figure 1 illustrates how the encodings of 2 consecutive rounds cancel each others and
+Figure 2 depicts the structure of one white-box round, which is one of our main attack
+targets.
+Note that this gives the construction of the encoded round functions, but not their
+implementation. Indeed, one still needs an eﬃcient way to evaluate these encoded round
+functions, without exposing the key material “hidden” inside. To this end, the authors
+of [RVP22] used the concept ofimplicit functionsand quasilinear functions.
+Deﬁnition 2( [RVP22]). Let F be ann-bit function. A(2n,m )-bit functionP is called
+an implicit function ofF if it satisﬁes
+P (x,y ) = 0 ⇔y =F (x)
+1The authors of [RVP22] do not propose a method of sampling a random invertible quadratic mapping,
+and their implementation does not perform it as well.
+102 Cryptanalysis of ARX-based White-box Implementations
+Deﬁnition 3( [RVP22]). A (2n,m )-bit implicit functionP is quasilinear if for allx ∈ Fn
+2,
+the (n,m )-bit functiony ↦→P (x,y ) is aﬃne.
+Thus, to obtain an eﬃcient implementation of the encoded round functionE
+(i)
+, the
+authors of [RVP22] show a way to compute a quasilinear implicit function ofE
+(i)
+. Then,
+for a given input valuex, since the functiony ↦→P (x,y ) is aﬃne, one simply solve the
+resulting aﬃne systemP (x,y ) = 0 to compute the correspondingy =E
+(i)
+(x). We refer
+the reader to [RVP22] for more details on how these quasilinear implicit functions are
+computed.
+In Appendix A, we describe technical details on how we used the implementation
+of [RVP22] to generate instances of the Speck block cipher that we attacked.
+4 AlgebraicCryptanalysisofImplicitWhite-boxARXSchemes
+with only one External Encoding
+In [RVP22] in Section 4.2, the author made the conjecture that their implicit framework
+may be less vulnerable than previous constructions when the external encodings are trivial,
+with the following statement:
+While not the focus of this work, it is worth mentioning that this type of implicit
+implementations with trivial external encodings seems less vulnerable than
+CEJO or self-equivalences implementations with trivial external encodings.
+In this section, we will show that without external encodings (more speciﬁcally, without
+either the input or the output external encoding), we can easily recover the round keys,
+and thus deduce the master key. Note that this is similar to the algebraic attack of
+[BU18,GPRW20] against implementations protected by a linear masking scheme. We
+start by explaining in details how to attack this construction when theoutput external
+encoding is trivial (i.e. no output external encoding), and brieﬂy show how to do a similar
+attack when the input external encoding is trivial later. In essence, both attacks analyze
+intermediate states between rounds (which are protected by secret encodings) occurring
+in encryptions of random plaintexts. This bears similarity to gray-box-style diﬀerential
+computational analysis [BHMT16], with the diﬀerence that we perform algebraic analysis
+instead of correlation analysis.
+4.1 When the output external encoding is trivial
+Using the construction presented in the previous section, in general we end up with an
+encoded version of the encryption functionE, that isE =Oex ◦E ◦Iex where Oex and
+Iex are the external encodings. Considering the case where we have no output external
+encodings means that when generating the encodings, we want to enforce thatOex is the
+identity function. Taking a closer look at the encoded encryption function, we can observe
+that we get
+E =Oex ◦E ◦Iex =
+(
+C (r+1) ◦
+(
+B(r)
+)−1)
+◦E ◦
+(
+B(0) ◦
+(
+C (1)
+)−1)
+.
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 103
+Q(unknown)
+G(known)
+x
+y
+z
+k
+n n
+OracleO
+Figure 3: Structure of the function where we aim at recoveringk in the case with no
+output external encoding
+Thus we wantOex =
+(
+C (r+1) ◦
+(
+B(r))−1)
+=Id, and we can deduce that the last round
+function is of the form
+E
+(r)
+=C (r+1) ◦E(r) ◦A(r) ◦B(r−1) ◦
+(
+C (r)
+)−1
+=C (r+1) ◦
+(
+B(r)
+)−1
+◦B(r) ◦E(r) ◦A(r) ◦B(r−1) ◦
+(
+C (r)
+)−1
+=B(r) ◦E(r) ◦A(r) ◦B(r−1) ◦
+(
+C (r)
+)−1
+since C (r+1) ◦
+(
+B(r)
+)−1
+=Id
+=E(r) ◦B(r−1) ◦
+(
+C (r)
+)−1
+since B(r) ◦E(r) ◦A(r) =E(r)
+=E(r) ◦Q
+where Q is some quadratic function, unknown from the attacker. Moreover, since we are
+in the context of white-box cryptography, we can choose anyx and query the value of
+F(x) =E
+(r)
+(x) =
+(
+E(r) ◦Q
+)
+(x). Note thatE(r) still depends on some (unknown) round
+key, which we aim at recovering. Focusing on the case of white-box implementations of
+the Speck cipher, we can further write this function with the structure depicted in Figure
+3, whereG is an invertible function known by the attacker (in this speciﬁc case for Speck,
+only an XOR from the left branch to the right branch, and a bitwise rotation of the right
+branch), and we aim at recoveringk.
+Now assume that we are somehow able to recover the round key inE(r) (which we
+will show next), it turns out that recovering the round key of the previous roundE(r−1)
+leads to a very similar structure. Indeed, knowing the key used inE(r), we can now
+compute
+(
+E(r))−1
+(x) for anyx of our choosing. Moreover, using the cancellation between
+encodings, notice that
+E
+(r)
+◦E
+(r−1)
+=E(r) ◦E(r−1) ◦Q′
+for some quadratic function Q′. Since we know the key used in E(r), the function
+F ′ =E
+(r)
+◦E
+(r−1)
+can also be represented with the structure in Figure 3, and assuming we
+can recover the key inE(r−1), we can continue to go further and further until we recovered
+enough key information. Thus, our main focus will be to show how to recover the key
+from a functionF with the structure given in Figure 3.
+The general idea is that for a given inputx = (xN −1,...,x 1,x 0) (x0 being the LSB),
+we can write the vector
+˜x = (x0x1,x 0x2,...,x 0xN −1,x 1x2,...,x 0,x 1,...,x N −1, 1)
+104 Cryptanalysis of ARX-based White-box Implementations
+i.e. a vector of length L = N(N − 1)/2 +N + 1 containing all products between 2
+coordinates as well as all coordinates themselves (and the constant 1). Then, sinceQ is a
+degree 2 function,Q(x) can be computed as some (unknown) linear combinations of˜x, i.e.
+Q(x) =M ˜x for some unknown matrixM. Note that this matrixM is the same for any
+input x, since it essentially deﬁnes the ANF ofQ. Knowing this, recoveringk is a rather
+simple process. One ﬁrst generateL +ϵ inputs xi, compute their corresponding˜xi as well
+as yi =G−1(F(xi)) (since G is known). By guessing the ﬁrst (i.e. lowest signiﬁcant) bit
+k0 of k, we can then computezi
+1 (lowest signiﬁcant bit of the left half ofQ(xi)) usingyi
+through the modular addition. According to our previous observation, if this key guess is
+correct, then for everyi, we must havezi
+0 =M0˜xi for some 1 ×L matrix M0 (which is the
+ﬁrst row ofM), i.e.
+(
+z1
+0 z2
+0 z3
+0 · · · zL
+0
+)
+=M0.
+(
+˜x1 ˜x2 ˜x3 · · · ˜xL)
+.
+In other words, if the guess onk0 is correct, the vectorz0 = (z1
+0,z 2
+0,z 3
+0,...,z L
+0 ) must belong
+to the column space of the matrix˜X built with ˜xi as columns, which can be eﬃciently
+done by precomputing a parity-check matrix for this space when generating the inputs
+x. Once the value ofk0 is determined, we can then do a similar process, guessingk1 and
+using our knowledge ofk0 to computezi
+1 through modular substraction, and so on until
+we recoveredk.
+In practice, for some guesses onkj, both values could lead to the vectorzj to belong to
+the column space of ˜X. In this case, we just keep the resulting candidates and try each of
+them for the next guess. If one candidate forkjkj−1...k 0 leads tozj+1 not being in the
+column space of ˜X for both values ofkj+1, then this candidatekjkj−1...k 0 was actually
+incorrect and we can eliminate it. Thankfully, this behaves nicely for the modular addition,
+as after each guess ofkj, we are almost always left with only 2 candidates for the next
+guess.
+We thus apply this procedure toF = E(r) ◦Q, recovering (two) candidates for the
+round key used inE(r). Then for each of these candidates, we continue as described
+previously, now applying the procedure toF ′ =E(r) ◦E(r−1) ◦Q′ to recover candidates
+for the round key used inE(r−1). Again, in practice we get 2 candidates for the round key
+in E(r), but one of them gets eliminated when trying to recover the key inF ′. Thus we
+end up with 2 candidates for the round key ofE(r−1) (and now only one forE(r)), and we
+can keep going back further and further into the rounds until we recovered enough key
+material to recover the master key. For Speck speciﬁcally, at worst the master key is of
+length 4n, so we need to recover the round key for 4 consecutive rounds. Since we would
+end up with 2 candidates for the 4th round (starting from the end), we can apply this
+procedure for the 5 last rounds, thus uniquely recovering the value of the round keys used
+in the last 4 rounds, which allows us to determine the master key using the key-schedule.
+Note that this last step is the only time where we use the key-schedule, so technically,
+if one were to use independent round keys instead, we could continue up to the very ﬁrst
+round and thus obtain 2 candidates for the whole set of (independent) round keys, meaning
+that adding more rounds with independent round keys only increase the time complexity
+linearly with the number of rounds added.
+The complexity of recovering candidates for the round key of a single round can be
+determined as follow. We ﬁrst generateL+ϵ = O(n2) inputsx, compute the corresponding
+˜x and generate a parity-check matrixH for the resulting space, which requires aboutO(n6)
+operations. Note that this is only done once overall, even when recovering round keys on
+multiple rounds. Next we query the oracle to obtainy =G−1(F(x)), so O(n2) queries
+to the oracle and calls toG−1. Then for each guess ofkj, we computezj and check if it
+belongs to the column space of˜X using the parity check matrixH, i.e. computing the
+product H ×zj which takes O(n4) operations, which we thus need to do at leastn times
+(once for each bit of the keyk), for a total ofO(n5) operations in this step. Note that
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 105
+this assumes that we are only left with one candidate after each key guess. In practice,
+we are almost left with only 2 candidates after each guess, which only adds a constant
+factor. Thus overall, the complexity for one round is aboutO(n6) bit-operations (i.e.
+linear algebra with matrices and vectors inF2) and O(n2) calls to the oracle. From our
+experiments, the calls to the oracles are the dominant part of this algorithm, even using a
+pre-compiled shared C-library to make queries (which is much faster than using the native
+Python implementation given by the authors of [RVP22]). For example, for Speck32 (i.e.
+n = 16), to recover the round keys over the last 5 rounds (which allow to uniquely get the
+round keys of the last 4 rounds and thus recover the master key), our implementation in
+SageMath runs in about 79 seconds, but with 67 seconds spent in the oracle calls, thus
+only 12 seconds spent on actual computations.
+4.2 When the input external encoding is trivial
+We now consider the case where the input external encoding is trivial. Recall that our
+encoded cipher can be written as
+E =Oex ◦E ◦Iex =
+(
+C (r+1) ◦
+(
+B(r)
+)−1)
+◦E ◦
+(
+B(0) ◦
+(
+C (1)
+)−1)
+.
+Thus if the input external encodingIex is trivial, we haveB(0) ◦
+(
+C (1))−1
+=Id. Taking a
+closer look at the ﬁrst encoded round function, we can see that is has the following form
+E
+(1)
+=C (2) ◦E(1) ◦A(1) ◦B(0) ◦
+(
+C (1)
+)−1
+=C (2) ◦E(1) ◦A(1) since B(0) ◦
+(
+C (1)
+)−1
+=Id
+Moreover, note thatA(1) is part of some aﬃne-quadratic self-equivalence forE(1), meaning
+that the exists some quadratic functionB(1) such that
+B(1) ◦E(1) ◦A(1) =E(1).
+Thus we can write the following, remembering thatC (2) is some invertible aﬃne map:
+E
+(1)
+=C (2) ◦E(1) ◦A(1)
+⇔
+(
+C (2)
+)−1
+◦E
+(1)
+=E(1) ◦A(1)
+⇔ B(1) ◦
+(
+C (2)
+)−1
+◦E
+(1)
+=B(1) ◦E(1) ◦A(1)
+⇔ Q ◦E
+(1)
+=E(1)
+for some quadratic functionQ.
+Thus, as we can query the oracle for some inputx to gety =F(x) withF =E
+(1)
+for the
+ﬁrst round, we know that there is some quadratic functionQ such thatz =Q(y) =E(1)(x).
+The general framework of these queries is give in Figure 4.
+Thus the general idea of the previous attack in the case where there is no output
+external encoding can be used in a similar way. One would generate a set of inputsxi and
+compute the correspondingyi =F(xi) as well as their corresponding degree 2 vectors˜yi.
+Then we know that for the correct value ofk, we could computezi and have the relation
+zi =M ˜yi for some matrixM representing the ANF ofQ. However, if we naively use this
+approach as before, guessing bits ofk one by one, we would not ﬁlter any value fork as
+106 Cryptanalysis of ARX-based White-box Implementations
+G(known)
+Q(unknown)
+x
+y
+k
+n n
+z
+Oracle
+Figure 4: Structure of the function where we aim at recoveringk in the case with noinput
+external encoding
+there is no non-linear map between the addition of the key andz. Thus, we need to be a
+bit smarter, and actually consider a slightly more complicated case.
+Notice that if we consider the ﬁrst two (encoded) rounds instead of only the ﬁrst one,
+we actually end up with a very similar structure. Indeed, when the input external encoding
+is trivial, the ﬁrst two encoded rounds can be written as
+E
+(2)
+◦E
+(1)
+=
+
+C (3) ◦E(2) ◦A(2) ◦B(1) ◦
+(
+C (2)
+)−1
+◦
+
+C (2) ◦E(1) ◦A(1)
+
+=C (3) ◦E(2) ◦A(2) ◦B(1) ◦E(1) ◦A(1)
+=C (3) ◦E(2) ◦A(2) ◦E(1) since B(1) ◦E(1) ◦A(1) =E(1)
+Thus, using the facts thatC (3) is an invertible mapping and that we have some
+quadratic functionB(2) such that
+B(2) ◦E(2) ◦A(2) =E(2),
+we can write
+E
+(2)
+◦E
+(1)
+=C (3) ◦E(2) ◦A(2) ◦E(1)
+⇔
+(
+C (3)
+)−1
+◦E
+(2)
+◦E
+(1)
+=E(2) ◦A(2) ◦E(1)
+⇔ B(2) ◦
+(
+C (3)
+)−1
+◦E
+(2)
+◦E
+(1)
+=B(2) ◦E(2) ◦A(2) ◦E(1)
+⇔ Q ◦E
+(2)
+◦E
+(1)
+=E(2) ◦E(1)
+for some (unknown) quadratic functionQ.
+Now if we rewrite the structure of this function as before, we get what is depicted in
+Figure 5 (note that the key of the second round is just considered as part of the quadratic
+function Q).
+By doing so, we now have a non-linear operation (the modular addition) between the
+key addition andz, which allows us to ﬁlter out wrong key guesses in a similar way as
+before. More precisely, we ﬁrst aim at computing the LSBzi
+0 of zi for each inputxi
+according to some key guesses. Note that due to now having the right shift operation by
+α, computing this bit ofzi now requires to guess 2 bits ofk (bit 0 and bitα). As before,
+if this key guess is correct, then we know that there must be some matrixM0 such that
+(
+z1
+0 z2
+0 z3
+0 · · · zL
+0
+)
+=M0.
+(
+˜y1 ˜y2 ˜y3 · · · ˜yL)
+,
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 107
+G(known)
+Q(unknown)
+x
+y
+k
+n n
+≪β
+≫α
+z w
+Oracle
+Figure 5: Structure of the function where we aim at recoveringk in the case with no input
+external encoding when considering 2 consecutive rounds.
+i.e. the vectorz0 = (z1
+0,z 2
+0,z 3
+0,...,z L
+0 ) must belong to the column space of the matrix
+˜Y built with the ˜yi as columns, which we can again eﬃciently do by precomputing a
+parity-check matrix for this space when generating the˜yi. The whole process is then
+essentially the same as in the previous attack, except that we now guess bits ofk two by
+two (until there is some overlap between previously made guesses, if any). As before, it is
+worth noting that in practice, after having made thej-th guess (so guessingkj and kj+α),
+we are not always left with a single candidate. Unlike the previous case where we were
+left with only two guesses most of the time, here we are most of the time left with 16
+candidates (only 4 after the ﬁrst guess onk0 and kα obviously), which thankfully shrinks
+down to only 4 candidates for a given round key at the end of a given round (i.e. we get 4
+candidates for the round key of the ﬁrst round). Thankfully, when recovering the round
+key for the next round, only one among these 4 candidates allows us to get candidates
+for the next round key. For example, after the ﬁrst round we get 4 candidates for the
+value of the corresponding round keyk(1), but once we iterate the attack over the second
+round, we still end up with only 4 candidates overall for the round keys(k(1),k (2)), but
+among these 4 candidates, the value ofk(1) does not change (i.e. we recover the exact
+value of the round keyk(1)). Thus again, to recover enough key material to obtain the
+whole 4n bit master key, we only need to iterate the attack over 5 rounds, which in practice
+takes about 146 seconds total, including 72 seconds spent in the oracle calls. Note that
+the theoretical complexity of the attack is essentially the same as before, except that the
+constants hidden in the big-O notations are a bit larger due to needing to query one more
+round each time, and having to do a few more computations (both because we need to
+simulate 2 consecutive rounds as well as having more candidates left after each guess).
+5 Tools for Analyzing the Modular Addition
+In this section, we recall existing analyses of modular addition, and derive new tools which
+will be used in our decomposition attacks.
+5.1 Diﬀerential properties of modular addition
+Diﬀerential transitions through addition modulo2n and their probabilities were character-
+ized by Lipmaa and Moriai [LM01].
+108 Cryptanalysis of ARX-based White-box Implementations
+Lemma 1 ( [LM01, Lemma 3]). The probability of a diﬀerential transition(α,β ) → γ
+through modular addition is nonzero if and only if
+αi ⊕βi ⊕γi =
+{
+0 if ( i = 0) ,
+βi−1 if ( i ≥ 1) ∧ (αi−1 =βi−1 =γi−1) . (1)
+Theorem 1( [LM01, Algorithm 2]). If diﬀerential transition(α,β ) →γ through modular
+addition has nonzero probability, then the probability is equal to2−n+l+1, where
+l = | {i ∈ {0,...,n − 2} : αi =βi =γi} |. (2)
+5.2 Aﬃne equivalence of a Boolean function to a sum of quadratic
+independent monomials
+We consider the following problem.
+Problem 1. Letf : Fn
+2 → F2 be a quadratic Boolean function given by its ANF. Find a
+bijective linear mapA : Fn
+2 → Fn
+2 and an aﬃne mapα such that
+(f ◦A)(x) =x0x1 ⊕x2x3 ⊕... ⊕x2k−2x2k−1 ⊕α(x),
+for a nonnegative integerk, or show that suchA,α,k do not exist.
+For small values ofk, this problem can be solved eﬃciently usinglinear structures.
+Deﬁnition 4(Linear Structure). Letf : Fn
+2 → F2 be a Boolean function. A vectora ∈ Fn
+2
+is called a linear structure off if x ↦→f(x) +f(x +a) is constant.
+Linear structures of a Boolean function form a vector space. For a quadratic Boolean
+function, it can be computed as a kernel of the indicator matrix of the quadratic terms in
+the ANF (i.e., the matrixM such thatMi,j = 1 if and only if the ANF off(x) contains
+the monomialxixj).
+Let V be the vector space of linear structures of the functionf from Problem 1. Then,
+the orthogonal complement ofV, denotedV ⊥ is the vector space spanned the (aﬃne
+images) of the variables of the monomials, that is,
+V ⊥ = span ⟨A0,A 1,...,A 2k−1⟩.
+For smallk, recovering the correct basisA0,A 1,... of the vector spaceV ⊥ can be done by
+an exhaustive search, testing thatf + ⟨A0,x ⟩ · ⟨A1,x ⟩ +... is aﬃne. This is suﬃcient for
+the purpose of this work, as we shall only attack the problem withk = 1 and k = 2 (i.e.,
+the case of at most two quadratic monomials). The time complexity of this method (for
+ﬁxed k) is given by computing the space of linear structures and its complement, which
+can be done inO(n3).
+5.3 Equations describing the modular addition
+Courtois and Debraize [CD08] studied algebraic descriptions of modular addition (for
+analyzing the SNOW 2.0 cipher).
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 109
+Proposition 1( [CD08, Sect.3.1,3.2]). The n-bit additionz =x⊞y is fully described by
+the followingn equations:
+
+
+
+z0 =x0 +y0,
+z1 =x1 +y1 +x0y0,
+z2 =x2 +y2 +x1 +y1 +x1y1 +x1z1 +y1z1,
+...
+zi =xi +yi +xi−1 +yi−1 +xi−1yi−1 +xi−1zi−1 +yi−1zi−1,
+...
+zn−1 =xn−1 +yn−1 +xn−2 +yn−2 +xn−2yn−2 +xn−2zn−2 +yn−2zn−2.
+Furthermore, there are in total6n − 2 quadratic and 1 linear equations that can be derived
+from these basen equations.
+We slightly reformulate these relations in terms ofZ =S(X), simplifying the analysis.
+This comes at the cost of increasing the number of equations, which is insigniﬁcant for our
+attacks. The following proposition characterizes all bilinear input/output relations of the
+bijective modular additionS.
+Proposition 2. For 8 ≤n ≤ 64, there exist exactly(n2 + 7n + 6)/2 linearly independent
+Boolean polynomialsEi(X,Z ) in variablesX0,...,X N −1,Z 0,...,Z N −1 and of degree 1 in
+X and Z separately such thatEi(X,Z ) = 0 for alli and for allZ =S(X), i.e., for all
+X = (x,y ) and Z = (x⊞y,y ). These equations completely describeS.
+Proof. Experimental computation by interpolation (see Subsection 5.4). The quadratic
+explosion comes from the relationsyi˜yj =yj ˜yi fori<j , whereX = (x,y ),Z = (z, ˜y). The
+completeness follows from the completeness of relations from Proposition 1 and from the
+relations yi = ˜yi, both of which have to be included in the set of relations.
+Remark 1. Compared to the quadratic relations on triples(x,y,z =x⊞y), the bilinear
+relations onX,Z from the proposition are more redundant, due to the equality of the right
+halves ofX and Z (25% more monomials andO(n2) relations instead ofO(n)). However,
+this simpliﬁes analysis and presentation due to the simple equation form and does not
+noticeably aﬀect the complexities.
+5.4 Black-box relation interpolation (aﬃne encodings)
+In this section, we describe the powerful tool of black-box relation interpolation, which
+will be actively used in our attacks, and has many consequences for the white-box implicit
+framework in general. Although we describe it in the example of bijective modular addition,
+we only use the fact that it has a low-degree implicit function. We ﬁrst consider the case of
+aﬃne encodings, which itself is a step in our attack, and later we will consider an extension
+of this technique to quadratic-aﬃne encodings.
+Consider the bijective modular additionS composed with (unknown) aﬃne encodings
+A,B:
+˜S =B ◦S ◦A.
+Clearly, all input/output pairs(X,Z ) of ˜S satisfy the relations
+˜Ei(X,Z ) :=Ei(A(X),B −1(Z)) = 0
+for all the relationsEi ofS. It is easy to verify that all˜Ei are also bilinear. It follows that
+the number and the degrees of the relations do not change under aﬃne encodings.
+110 Cryptanalysis of ARX-based White-box Implementations
+Given black-box access to˜S, thevector spaceof these relations (i.e., some basis of it)
+can be reconstructed by generic interpolation. Let
+˜E(X,Z ) =
+N −1∑
+j=0
+N −1∑
+k=0
+λXZ
+j,k XjZk +
+N −1∑
+j=0
+λX
+j Xj +
+N −1∑
+k=0
+λZ
+kZk +λ0, (3)
+whereλ-variables denote them coeﬃcients,m =N 2 +2N +1. Let (X (t),Z (t)) be a random
+input/output pair of ˜S. The equation(3) applied to this pair, that is,˜E(X (t),Z (t)) = 0
+can be viewed as a linear equation on the unknownλ-coeﬃcients. A suﬃciently large
+amount of random samples can be used to construct a linear system of maximum rank
+(with overwhelming probability). Since the rank is upper-bounded by the numberm of
+monomials inX,Z (equal to the number of unknownλ-coeﬃcients), the amount ofm +ϵ
+samples (for some positive integerϵ) would result in system of a maximum possible rank
+with probability1 − 2−ϵ, under natural randomization assumptions.
+Remark 2. It is not strictly necessary to sample inputs uniformly at random. In particular,
+in the attack on quadratic encodings (Subsection 7.3), we will only use inputs with certain
+quadratic monomials equal to zero. While suchundersampling may not invalidate one of
+the right equations ˜E(X,Z ) = 0, it may (but not necessarily) introduce extra relations,
+which only hold on the sampled space, which require a special care to be detected and
+removed from the recovered vector space of relations.
+Time complexity The main step of the interpolation is solving the linear system inm
+variables and equations (time complexityO(m3) = O(n6)). The query complexity is equal
+to m +ϵ, and the queries in the implementation of [RVP22] are eﬀectively performed
+in total time O(mn3) = O(n6). Here we assume that the dominating step of implicit
+computations is the solution of the resulting linear system (which is true if the degree of
+the implicit function is not very high).
+5.5 Optimization and inversion attacks
+In this section, we describe direct applications and extensions of black-box relation
+interpolation.
+Inversion of addition with aﬃne encodingsThe interpolated space of bilinear relations
+{E(i)(X,Z ) = 0}i can be viewed as an implicit function for the˜S function (since these
+relations completelydescribe the function). Furthermore, it is quasilinear inboth directions,
+allowing eﬃcientinversion of the function. More precisely, the preimageX of a given
+outputZ = ˜S(X) can be computed by substituting the value ofZ into the equation system
+{E(i)(X,Z ) = 0}i, and solving the resulting linear system forX. This is the same as the
+principle of implicit white-box implementations [RVP22].
+Eﬀectively, the black-box interpolation and implicit inversion breaks the one-wayness
+property of the implicit white-box ARX implementations with aﬃne encodings. It also
+covers other functions with bilinear implicit functions, such as the ﬁnite ﬁeld inverse
+function used in the AES block cipher.
+Optimization of the white-box oracleThe interpolated system of bilinear equations can
+be also used to make the white-box round oracle more eﬃcient: even though the white-box
+implementation uses the same principle of implicit computation, the system ofX −Z
+relations there is much more heavier, due to high degree of polynomials inX (used to
+obfuscate the implicit representation), while in our case the degree inX is 1, leading to
+more eﬃcient computations.
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 111
+An optimized implementation of forward/inverse computation using an implicit bilinear
+function is described in Appendix B. For the reference, on a laptop with an Intel(R)
+Core(TM) i7-1185G7 3.00GHz CPU, one forward or inverse query after the precomputations
+takes respectively 10, 35, 100 microseconds for aﬃne-encoded bijective modular addition on
+word sizesn = 16, 32, 64. The precomputations excluding query timings take respectively
+2 seconds, 35 seconds, 7 minutes.
+Extension to quadratic-aﬃne encodings The interpolation method naturally generalizes
+to the case of quadratic-aﬃne encodings. Consider the set of bilinear relations˜E(X,Z ) = 0
+satisﬁed by the aﬃne-encoded bijective modular addition. Substituting X with the
+quadratic functionQ(W ) of the input in the quadratic-aﬃne case, we obtain the relations
+ˆE(W,Z ) = ˜E(Q(W),Z ) = 0, where ˜E is bilinear. It is suﬃcient to extend the original
+bilinear monomial basis by monomials of shape XiXjZk, in order to cover possible
+monomials of these new relationsˆEi. The time complexity thus grows toO(m3) = O(n9),
+whereas only O(n3) queries are needed.
+This method can be used tooptimize the oracle, simplifying the implicit function to
+a quadratic-aﬃne one. However, this method is not directly applicable inversion of the
+function, because it is not quasilinear in the input variableˆX. In general, we can not expect
+an eﬃcient solution, as it eﬀectively would perform inversion of a general quadratic map
+Q, which is a hard problem from the area of multivariate-quadratic (MQ) cryptography
+(see e.g. [KPG99]).
+In practice, the quadratic encoding used in the implementation of [RVP22] is very
+sparse. In fact, experimentally, interpolating the protected quadratic-aﬃne encoded in
+the bilinear basis forn = 16 still yielded a large number of equations (around 130 bilinear
+equations in the quadratic-aﬃne case compared to 187 bilinear equations in the aﬃne
+case). While these equations do not allow unique inversion, they determine the input
+up to 4-6 bits on average, which can be checked exhaustively using the original forward
+oracle. This technique thus allows quite straightforward inversion of the round oracle in
+the sparse-quadratic-aﬃne case (strongest setting proposed by [RVP22]), at least for the
+case ofn = 16 and for the hardcoded encoding shapes in the implementation of [RVP22].
+Its generalization for largern is yet unclear.
+6 Black-box Decomposition of an ARX Round with Aﬃne
+Encodings
+In this section, we describe a decomposition attack against a bijective modular addition
+with secretaﬃne encodings. The attack only requires a black-box access to the primitive,
+the implicit representation given in the white-box framework of [RVP22] is not required
+(other than to implement the oracle calls). In particular, this breaks the implicit ARX
+framework with aﬃne self-equivalences (with an extra key recovery step following the
+decomposition of two consecutive rounds, described in Section 8). Note that a sole
+inversion of the rounds can be done using interpolated relations (Subsection 5.4) without
+any decomposition required. Furthermore, it is worth to ﬁrst optimize the oracle using the
+optimization method from Subsection 5.5 and Appendix B, since oracle calls take a large
+fraction of the attack’s time. The attack then can be performed “oﬄine”, that is, without
+calls to the actual white-box oracle, which can in principle be unnecessarily slow.
+In the following, we consider the map˜S =B ◦S ◦A, which is the bijective modular
+addition with aﬃne encodingsA,B (see Figure 6).
+Iterative decomposition process The decomposition process consists of many iterations
+of ﬁnding parts of the outward aﬃne maps. The recovered parts can be abstracted away in
+112 Cryptanalysis of ARX-based White-box Implementations
+A (aﬃne)
+B (aﬃne)
+X
+Z
+n n
+N
+N
+Figure 6: Bijective modular addition ˜S =B ◦S ◦A with encodingsA,B : FN
+2 → FN
+2 .
+the following way. We useO : FN
+2 → FN
+2 to denote the oracle function in the current step.
+Initially, we start withO = ˜S implementing an aﬃne-encoded bijective modular addition.
+Assume that we found aﬃne “projection” mapsπX,πZ such that for allZ = O(X), we
+haveπX(X) and πZ(Z) agree onn least signiﬁcant bits. Then, we can set new target
+oracle
+O′ =πZ ◦ O ◦π−1
+X .
+It is such thatO′(x,z ) = (y,z ), i.e., it captures the property of the discovered projection
+maps. Now, it is suﬃcient to decomposeO′, which should be easier as it is more structured.
+Indeed, if O′ =B′ ◦S ◦A′, then the originalO can be decomposed as
+O =π−1
+Z ◦ O′ ◦πX = (π−1
+Z ◦B′) ◦S ◦ (A′ ◦πX).
+Note that the nesting decompositions does not result in a query slowdown, as we can
+always store a single layer of the accumulated projections maps, i.e., projection maps
+relative to the original oracle and not to the previous oracle.
+High-level overview of the attack The decomposition procedure consists of several
+stages.
+1. Location and alignment of then + 1 linear bits in the output and their subspace in
+the input (the full right branch of the addition and the least signiﬁcant bit of the
+left branch).
+2. Bit-by-bit triangularization of the aﬃne encodings using diﬀerential rank-based
+procedure, inspired by a similar approach from [DFLM18] applied to the ASA
+structure (aﬃne-encoded layer of S-boxes).
+3. Recovery of the outer triangular linear maps using diﬀerential properties of modular
+addition.
+4. Recovery of the three Feistel aﬃne maps (aﬃne maps in the two outer Feistel XORs of
+the right branch to the left branch, and an aﬃne map applied to the right summand),
+based on a bit-by-bit search of images of the maps under a ﬁxed right-hand side and
+combination of linearly independent images.
+5. Correction of the ﬁrst carry bit expression.
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 113
+Themainprocedurereturnsoneofthepossibledecompositions; anyotherdecomposition
+can be obtained by applying a certain aﬃne self-equivalence of the bijective modular
+addition. A symbolic expression of such self-equivalences allows to combine candidate
+decompositions of two consecutive rounds and align them to match the original cipher’s
+linear layer, yielding information about the involved subkey between the two rounds
+(conditioned on suﬃcient diﬀusion of the cipher’s linear map). This step will be described
+in Section 8.
+6.1 Locating linear bits
+Let z =x⊞y. The ﬁrst bit of modular addition is linear:z0 =x0 ⊕y0. In the bijective
+modular addition (x,y ) ↦→ (x⊞y,y ), the whole right branch is given in the output.
+Therefore, bijective modular addition hasn + 1 output bits which are linear functions of
+the input bits. It is also easy to verify that the othern − 1 output bits have degree at
+least 2 (more precisely, the output bitzi has degreei + 1 when i ≤n − 2 and degreen − 1
+when i =n − 1) . The secret aﬃne encodings only change the bases of the corresponding
+input and output aﬃne(n + 1)-dimensional subspaces.
+Identifying the linear outputs can be done easily by searching for linear relations on the
+graph of the function, that is, on the concatenated inputs and outputs. To cover possible
+constants addition in the aﬃne encodings, it is suﬃcient to add the 1 constant to each
+sample. The procedure is described in more details in Algorithm 1 and the resulting oracle
+structure after applying the projections is illustrated in Figure 7. Its complexity isO(n3)
+time and O(n) queries (here, queries dominate as one query cost is at leastO(n3) even
+after optimization).
+Algorithm 1Recovering input/output matching aﬃne subspaces
+Input: oracle O implementing bijective modular addition with aﬃne encodings
+Output: aﬃne mapsπx,πz such that O′ =πz ◦ O ◦π−1
+x is such thatO′(x||y) = (z||y) for
+all (x,y ) ∈ Fn−1
+2 × Fn+1
+2 , withz ∈ Fn−1
+2
+1: for i ∈ {0,...,N +ϵ − 1} do
+2: x(i) $
+← −FN
+2
+3: y(i) ← O(x(i))
+4: v(i) ← (x(i)||y(i)||1)
+5: end for
+6: V ← matrix with rows{v(i)}i
+7: B ← basis(kerV ) so that V ×B = 0
+8: (πx,πz,cy) ←BT, where πx,πz ∈ F(n+1)×N
+2 ,cy ∈ F(n+1)×1
+2
+9: return πx, π⊕(0n−1||cT
+y )
+6.2 Triangularization of the outer aﬃne maps (left branches)
+We will now use the method from [DFLM18] to partially recover the outer aﬃne maps on
+the left branch. The idea is to query a ﬁxed random input diﬀerence on the left branch
+and no diﬀerence on the right branch (possible due to the previous step), and to compute
+the dimension of the space of the observed output diﬀerences. This relies on the following
+diﬀerential property of modular addition.
+Proposition 3. Let ∆x = (... || 0k), ∆y = 0n. LetZ denote the set of all possible output
+diﬀerences ∆z of z =x⊞y. Then, rankZ ≤n −k. Furthermore, ifrankZ =n −k, then
+(∆x)k = (∆z)k = 1, i.e., ∆x and ∆z both have shape(... || 1 || 0k).
+114 Cryptanalysis of ARX-based White-box Implementations
+x y
+z y
+B1
+B2
+A1
+A2
+A3
+c1
+n − 1 n + 1
+n − 1
+n − 1
+n − 1
+Figure 7: Remaining oracle structure after applying the recovered projections. Here,
+A1,A 2,A 3,B 1,B 2 are unknown aﬃne maps,c1 is ﬁrst carry bit of the originaln-bit
+addition, expressible asc1(y) = ⟨α,y ⟩ · ⟨β,y ⟩ for someα,β ∈ Fn+1
+2 .
+Proof. Follows from the fact thatk-bit LSB zero diﬀerence in∆x, ∆y always leads tok-bit
+LSB zero diﬀerence in∆z; the ﬁrst active diﬀerence bit stays active.
+Remark 3. Note that the converse is not true in general: a non-full rank does not guarantee
+that thek-indexed bit is zero. Furthermore, for some sparse diﬀerences, reaching full rank
+requires an exponential number of samples (for example, consider the diﬀerence(0n−1 || 1),
+propagating to (1 || ... ) with probability2−(n−2)).
+This proposition guarantees that, on a input diﬀerence withk least signiﬁcant zero
+bits, a full-rank space of output diﬀerences implies that the input diﬀerence and all output
+diﬀerences have thek-indexed bit equal to 1. This provides information about the outer
+aﬃne mapB2 on the left branch. In particular, one set of diﬀerences is suﬃcient to recover
+the partial map from then −k most signiﬁcant bits to thek-indexed bit in the output. In
+the input, since the same diﬀerence was used, the obtained information is limited. However,
+now we can samplen +ϵ random input diﬀerences (withk zero least signiﬁcant bits on the
+left branch) and use the recovered linear map for the output diﬀerence to determine the
+k-indexed diﬀerence bit (since the ﬁrst (possibly) active bit is the same in the input and
+in the output diﬀerence). In fact, it is not necessary to sample random input diﬀerences,
+it is suﬃcient to query each of then − 1 −k unit diﬀerences.
+Note that at stepk, we only learn the linear projection of then − 1 −k active most
+signiﬁcant bits to the current least signiﬁcant bit (i.e., the one indexedn + 1 +k in the full
+input, or indexedk in the left(n − 1)-bit branch). The other bits of the projection are not
+learnt since they are set to zero in the samples’ diﬀerences. Thus, the outer linear maps on
+the left branch are recovered only up to a lower triangular matrix (see Figure 8). These
+unknown bits correspond to possible XORs from lower bits to upper bits. The missing
+parts are recovered in the next step.
+Complexity of this step isO(n4) time (solvingn − 2 linear systems) andO(n2) samples
+(assuming the rank saturates inO(n) samples on average).
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 115
+Algorithm 2Triangularization of the outer maps on the left branch
+Input: oracle O implementing bijective modular addition with partially recovered aﬃne
+encodings (Subsection 6.1)
+Output: aﬃne mapsπx,πz such that O′ =πz ◦ O ◦π−1
+x matches structure from Figure 8
+with lower triangularT1,T 2
+Complexity: O(n2) queries, O(n4) time
+1: O0 ← O
+2: for k ∈ {0,...,n − 2} do
+3: repeat
+4: ∆x
+$
+← −(∗n−1−k || 0n+1+k)
+5: Z ←
+{
+∆Ok(∆x)
+⏐⏐⏐ n +ϵ times
+}
+6: until rankZ =n − 1 −k
+7: solve Z ×α = (1,..., 1)T for α = (∗n−1−k || 0n+1+k)
+8: πz ← a linear map such that(πz(z))n+1+k = ⟨α,z ⟩, (πz(z))i =zi for i>n + 1 +k
+9: β ←
+(
+πz(∆Ok(ei))n+1+k | n + 1 +k ≤i< 2n
+)
+|| 0n+1+k
+10: πx ← a linear map such that(πx(x))n+1+k = ⟨β,x ⟩, (πx(x))i =xi fori>n + 1 +k
+11: Ok+1 ←πz ◦ O ◦π−1
+x
+12: end for
+13: return On−1
+x y
+z y
+T1
+T2
+A1
+A2
+A3
+c1
+n − 1 n + 1
+n − 1
+n − 1
+n − 1
+Figure 8: Remaining oracle structure after the triangularization of the outer maps on the
+left branches by Algorithm 2. Here,A1,A 2,A 3,T 1,T 2 are unknown aﬃne maps,T1 and
+T2 having linear part of a lower triangular shape,c1 is ﬁrst carry bit of the originaln-bit
+addition, expressible asc1(y) = ⟨α,y ⟩ · ⟨β,y ⟩ for someα,β ∈ Fn+1
+2 .
+116 Cryptanalysis of ARX-based White-box Implementations
+6.3 Recovery of the outer aﬃne maps (left branches)
+At this step, we will recover the triangular aﬃne maps on the left branch. The idea is to
+use diﬀerential properties of the modular addition.
+Proposition 4. Letz =x⊞y be ann-bit modular addition,n ≥ 3. Set
+∆y = 0, ∆x1 =e0 = (0, 0, 0,..., 0, 1), ∆x2 =e0 ⊕en−2 = (0, 1, 0,..., 0, 1).
+Then, the most probable transitions with input diﬀerences(∆x1, ∆y) and (∆x2, ∆y) re-
+spectively are described by
+Pr[(∆x1, ∆y)
+⊞
+− →∆z] =
+
+
+
+1/2, ∆z = (0,..., 0, 0, 1) = ∆x1,
+1/4, ∆z = (0,..., 0, 1, 1),
+≤ 1/4, otherwise...
+(4)
+Pr[(∆x2, ∆y)
+⊞
+− →∆z] =
+
+
+
+1/4, ∆z = (0, 1,..., 0, 1) = ∆x2,
+1/4, ∆z = (1, 1,..., 0, 1) = ∆x2,
+≤ 1/4, otherwise...
+(5)
+Proof. Follows from the Lipmaa-Moriai theorem by direct computation.
+Note that ∆x1 propagates to a diﬀerence with the largest probability 1/2, while∆x2
+propagates only with probabilities at most 1/4. Assume that we controln − 2 least
+signiﬁcant bits. Then, we can distinguish∆x1 and ∆x2 by sampling output diﬀerences
+and distinguishing the best probability 1/2 from 1/4 respectively.
+Diagonals recovery In the application to the lower triangular map recovery, we consider
+truncated modular addition, starting from bitk and ending at bitk +w − 1. Thus, the
+valuen in theorem is set to a smaller “window”w. The described technique allows to
+decide whether the current active least signiﬁcant bit is added to the more signiﬁcant bit
+w − 2 positions ahead, assuming such elementary XOR operations were already recovered
+for distances less thanw. In this way, we recover the lower triangular map diagonal-
+by-diagonal, starting from the one adjacent to the main diagonal containing the largest
+number of unknowns (after the main diagonal which has to be all-1). The procedure is
+described more formally in Algorithm 3. Its complexity isO(n3) time and queries. Again,
+queries dominate in practice with total timeO(n6).
+Bottom row recovery Note however that this method does not recover the linear map
+added to the most signiﬁcant bit (the bottom row of the lower triangular matrix). This is
+because it distinguishes(0, 0,... ) from (0, 1,... ), and thus requires the single 0-bit padding
+at the most signiﬁcant bit, while recovering the penultimate signiﬁcant bit.
+Recall that the most signiﬁcant bit is diﬀerentially linear, meaning that a single-bit
+diﬀerence to in this bit propagates with probability 1 to itself. Therefore,tα ◦S ◦tα =S,
+where tα : X ↦→ X ⊕ ⟨α,X ⟩ · eN −1 for someα ∈ FN
+2 ,αN −1 = 0, i.e., tα adds a linear
+function of the input to the most signiﬁcant bit. Therefore,S ◦tα =tα ◦S, and we can
+set the bottom row of the input matrixT1 arbitrarily, and recover only the bottom row of
+the output matrixT2. Here, we use the following diﬀerential property of a unit diﬀerence.
+Lemma 2. Let (∆ei, 0)
+⊞
+− →∆z be a diﬀerential transition through then-bit addition,
+i ≤n − 2. Then, (∆z)i+1 = 0 implies that ∆z =ei.
+We can use the lemma in the following way. If we observe a diﬀerential transition
+(∆ei, 0)
+⊞
+− →∆z with (∆z)i+1 = 0, then the most signiﬁcant bit of∆z will be equal to 1 if
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 117
+Algorithm 3Recovering outer lower triangular matrices
+Input: oracle O implementing bijective modular addition with partially recovered aﬃne
+encodings (Subsection 6.1, Subsection 6.2)
+Output: modiﬁed oracle O′ that matches the structure from Figure 8 withT1,T 2 being
+identity matrices with extra unknown coeﬃcients in the bottom rows only.
+1: O3 ← O
+2: for w ∈ {3,...,n − 1} do
+3: M1 ← identity (n − 1) × (n − 1) matrix
+4: M2 ← identity (n − 1) × (n − 1) matrix
+5: for i ∈ {0,...,n −w − 1} do
+6: ∆x1 ←e2n−w−i
+7: ∆x2 ←e2n−w−i ∨e2n−2−i
+8: D1 = {(∆Ow(∆x1))2n−w−i,...,2n−1−i | O (n) times} . w-bit diﬀerences
+9: D2 = {(∆Ow(∆x2))2n−w−i,...,2n−1−i | O (n) times} . w-bit diﬀerences
+10: if the most frequent diﬀerence∆Z ∈D1 occurred ≈ 50% times then
+11: (M1)n−2−i,n−w−i ← 0
+12: (M2)n−2−i,n−w−i ← (∆Z)w−2−i
+13: else ifthe most frequent diﬀerence∆Z ∈D2 occurred ≈ 50% times then
+14: (M1)n−2−i,n−w−i ← 1
+15: (M2)n−2−i,n−w−i ← (∆Z)w−2−i
+16: else
+17: retry thisi
+18: end if
+19: end for
+20: Ow+1 ← diag(M2,Idn−1) ◦ Ow ◦diag(M1,Idn−1)
+21: . diag(M,Idn−1) extends the matrixM to N ×N matrix by an identity matrix
+22: end for
+23: return O′ = On
+118 Cryptanalysis of ARX-based White-box Implementations
+x y
+z y
+A1
+A2
+A3
+c1
+n − 1 n + 1
+n − 1
+n − 1
+n − 1
+Figure 9:The structure of the oracle after recovering the outer linear maps on left branches
+completely. Here,A1,A 2,A 3 are unknown aﬃne maps,c1 is ﬁrst carry bit of the original
+n-bit addition, expressible asc1(y) = ⟨α,y ⟩ · ⟨β,y ⟩ for someα,β ∈ Fn+1
+2 .
+x
+z
+n − 1
+t1 =A1(y)
+t2 = (A2⊞c1)(y)
+t3 =A3(y)
+Figure 10: Structure of the oracle from Figure 9 with a ﬁxed right branchy.
+the two partial linear maps eﬀectively add thei-th bit to the most signiﬁcant bit. Since
+we can assume the input partial map to do nothing, we can eﬀectively learn one bit of the
+bottom row of the output map. Since the method requiresi ≤n − 4 for the (n − 1)-bit
+addition to be eﬀective, one bit of the bottom row can not be recovered in this way, namely,
+the one deﬁning the presence of the elementary operationxn−2 ← (xn−2 ⊕xn−3). This
+bit could be guessed, but in fact, its value can be set arbitrarily, aﬀecting only the Feistel
+maps recovered in the next subsections.
+The remaining structure implemented by the oracle is illustrated in Figure 9.
+6.4 Recovery of the Feistel aﬃne maps (right to left XOR and addi-
+tion)
+The Feistel aﬃne maps can be recovered in the following way. First, we randomly ﬁx the
+right branch valuey. We obtain a(n − 1)-bit mapping (⊕t3) ◦ (⊞t2) ◦ (⊕t1) on the left
+branch, wheret1,t 2,t 3 ∈ Fn−1
+2 are constants depending on the ﬁxedy (see Figure 10).
+The following proposition shows that there are exactly 8 solutions fort1,t 2,t 3 for such an
+oracle, given that the least signiﬁcant bit oft2 is 1 (which happens for 1/2 choices ofy).
+Proposition 5. Let n ≥ 2, t1,t 2,t 3 ∈ Fn
+2 with (t2)0 = 1. Then, all the maps (⊕t′
+3) ◦
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 119
+(⊞t′
+2) ◦ (⊕t′
+1) are equivalent to the map(⊕t3) ◦ (⊞t2) ◦ (⊕t1) with
+t′
+1 =t1 ⊕ a1 · (1, 0,..., 0) ⊕ a3 · (1,..., 1), (6)
+t′
+2 =t2 ⊕ (a1 ⊕a2) · (1, 0,..., 0) ⊕ a3 · (1,..., 1, 0), (7)
+t′
+3 =t3 ⊕ a2 · (1, 0,..., 0) ⊕ a3 · (1,..., 1), (8)
+(9)
+for anya1,a 2,a 3 ∈ F2. In particular, there are 8 equivalent triples, whenever the least
+signiﬁcant bit oft2 is 1.
+Proof. Since the MSB of the modular addition is diﬀerentially linear, it is trivial to see
+that the maps(⊕t′
+3) ◦ (⊞t′
+2) ◦ (⊕t′
+1) are all equivalent to the map(⊕t3) ◦ (⊞t2) ◦ (⊕t1) with
+t′
+1 =t1 ⊕ a1 · (1, 0,..., 0),
+t′
+2 =t2 ⊕ (a1 ⊕a2) · (1, 0,..., 0),
+t′
+3 =t3 ⊕ a2 · (1, 0,..., 0),
+for alla1,a 2 ∈ F2. Thus, we only need to focus on the case wherea1 =a2 = 0 and a3 = 1.
+For somex ∈ F2, denotez = ((⊕t3) ◦ (⊞t2) ◦ (⊕t1)) (x), i.e. we have
+z = [(x ⊕t1)⊞t2] ⊕t3 ⇔ (z ⊕t3) = (x ⊕t1)⊞t2.
+Using the fact that
+x ⊕ (1,..., 1) = ¬x =⊟x⊟ 1 and ¬(x ⊕y) =x ⊕ ¬y,
+we can deduce
+z ⊕ ¬t3 = ¬(z ⊕t3) =⊟(z ⊕t3)⊟ 1
+=⊟(x ⊕t1)⊟t2⊟ 1
+= ¬(x ⊕t1)⊞ 1⊞ ¬t2⊞ 1⊟ 1
+= (x ⊕ ¬t1)⊞ (¬t2⊞ 1)
+Since the LSB oft2 is 1, the LSB of¬t2 is 0 and thus
+(¬t2⊞ 1) = ¬t2 ⊕ 1 =t2 ⊕ (1,..., 1, 0).
+In the end, on one hand we havez = [(x ⊕t1)⊞t2] ⊕t3 , on the other
+z = [(x ⊕ ¬t1)⊞ (t2 ⊕ (1,..., 1, 0))] ⊕ ¬t3
+= [(x ⊕t1 ⊕ (1,..., 1))⊞ (t2 ⊕ (1,..., 1, 0))] ⊕ (t3 ⊕ (1,..., 1))
+= [(x ⊕t′
+1)⊞t′
+2] ⊕t′
+3
+Hence [(x ⊕t1)⊞t2] ⊕t3 = [(x ⊕t′
+1)⊞t′
+2] ⊕t′
+3 meaning that the two mappings are equal.
+Since the proposition works for anyn ≥ 2, it follows that there are 8 solutions for
+each of the least signiﬁcant truncations of the function. Therefore, the solutions can be
+eﬃciently recovered in a bit-by-bit search (modulo 2, modulo 4, modulo 8, ..., modulo
+2n−1). We observed experimentally that there are at most 8 solutions at any step. In case
+the number of solutions is more than 8 (at any intermediate step), we can choose another
+constant fory. The cost of this step isO(n2), assuming O(n) random samples (data) are
+suﬃcient to discard all false-positives. In principle, one can craft a guaranteed number
+of O(n) samples by ensuring all possible combinations of bits and carry bitslocally at
+the current guessing position. In practice, a slightly larger number of random samples is
+suﬃcient for the goal.
+120 Cryptanalysis of ARX-based White-box Implementations
+Combining solutions After collecting solution groups forn + 2 independent values of
+y (i.e., forming a basis for(n + 1)-dimensional aﬃne map), we can combine them into
+the candidates for the mapsA1, (A2⊞c1),A 3. Note that there are8n+1 candidates in
+total. However, we observed experimentally that almost any candidate leads to a correct
+decomposition with high probability. Therefore, we select one of the 8 solutions in each
+group arbitrarily, and obtain the mapsA1,A 3 and samples ofA2⊞c1, which deﬁne the
+map A2 up to addition/subtraction of 1 (depending on whetherc1(y) = 0 or c1(y) = 1,
+which we can not compute yet). We denote byB the aﬃne map that agrees withA2⊞c1
+on the used samples.
+Complexity of collecting and combining then + 2 solutions is O(n3) time and O(n2)
+data.
+6.5 Correction of the ﬁrst carry bit
+After removing the linear Feistel mapsA1,A 3 via projections, we are left with the map
+O : Fn−1
+2 × Fn+1
+2 → Fn−1
+2 × Fn+1
+2 : (x,y ) ↦→ (x⊞B(y)⊞c′(y),y )
+where B : Fn+1
+2 → Fn−1
+2 is an aﬃne map andc′(y) ∈ {− 1, 0, 1} is what we shall call a
+pseudocarry. We know that this mapping should be aﬃne-equivalent to
+(x,y ) ↦→ (x⊞yn+1...,2⊞y0y1,y ),
+where y0y1 is the usual carry function (recall thaty contains the two least signiﬁcant bits
+of both operands of the targetn-bit addition).
+If B is not full-rank, we can randomize it by choosing another solutions forA1, (A2⊞
+c1),A 3 in the previous step. Otherwise, we complete it arbitrarily to an invertible aﬃne
+map B′ : Fn+1
+2 → Fn+1
+2 . Then, using the projections
+πx : (x,y ) ↦→ (x,B ′(y)), (10)
+πy : (x,y ) ↦→ (x,B ′−1(y)), (11)
+we obtain a new oracleO′ =πy ◦ O ◦π−1
+x such that
+O′ : (x,y ) ↦→ (x⊞yn+1,...,2⊞c′(B−1(y))).
+The next step is to correct the pseudocarry sign. We observed that the preimages of
+−1 under c′ ◦B−1 are described by an aﬃne mapτ : Fn+1
+2 → F2, that is,τ(y) = 1 if and
+only ifc′(B−1(y)) = −1. Thus, we can correct the sign by adding the functionτ to the
+least signiﬁcant bit ofy (and cancelling it in the output). If such map happens to be
+non-invertible, we can re-randomize the state in the previous step. As a result, we obtain
+an oracle O′′ mapping
+(x,y ) ↦→ (x⊞yn+1,...,2⊞c′′(y),
+where c′′(y) ∈ {0, 1} is a quadratic map. Suchc′′ has to be extended aﬃne-equivalent to a
+quadratic monomial, i.e., have shapec′′(y) =α(y) ·β(y) ⊕γ(y). Using the linear structures
+method Subsection 5.2, we can ﬁnd aﬃne mapsα,β,γ decomposing c′′.
+Removing the aﬃne part Note thatα(y) ·β(y) matches the expected shapey0 ·y1, but
+the addition ofγ(y) breaks this structure. In order to removeγ, we use the following
+property of the addition.
+Proposition 6. Letz =x⊞y be ann-bit addition. Then, ¬z = ¬x⊞ ¬y⊞ 1.
+Proof. Follows from the “two’s complement”:¬z = −z − 1.
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 121
+Q (quadratic)
+A (aﬃne)
+X
+Z
+n n
+N
+N
+Figure 11: Bijective modular additionO =A ◦S ◦Q with quadratic input encodingQ
+and aﬃne output encodingA, Q : FN
+2 → FN
+2 .
+Note that bitwise complement¬ can be replaced by addition off(y) · (1,..., 1) to
+all inputs and outputs, wheref(y) is an arbitrary function ofy. This requires that
+y ⊕f(y) · (1,..., 1) is an invertible map. In a way, this applies the previous proposition
+selectively, only on inputs withf(y) = 1.
+Proposition 7. Consider the setting from the text above. Letσ(x,y ) be an aﬃne map
+such that
+σi(x,y ) =
+
+
+
+β(y), i = 0,
+y2+i−1 ⊕γ(y), 1 ≤i ≤n − 1,
+α(y) ⊕β(y), i =n,
+xi ⊕γ(y), n + 1<i<N.
+If it is invertible, then,σ ◦ O′′ ◦σ−1 implements (x,y ) ↦→ (x⊞y,y ) for x,y ∈ Fn
+2.
+Using this proposition, we can ﬁnally obtain the bijective modular addition, and the
+ﬁnal decomposition can be reconstructed by composing all the used projection maps.
+Similarly to previous steps, if the map is not invertible, we can randomize choices done in
+the previous steps and repeat.
+The total complexity of the ﬁrst carry bit correction is dominated by linear algebra and
+linear structure computation steps, takingO(n3) time, and O(n2) samples for veriﬁcations
+and ANF computations.
+Total decomposition complexity The ﬁnal complexity of decomposing an aﬃne-encoded
+bijective modular addition is dominated by the steps described in Subsection 6.2 and
+Subsection 6.3 (triangularization and recovery of triangle maps) due toO(n3) queries used
+in both. The former one has dominating pure computational time ofO(n4).
+7 Black-boxDecompositionofanARXRoundwith(Sparse)
+Quadratic-Aﬃne Encodings
+We now move on to the main cryptanalysis target - bijective modular addition with
+quadratic-aﬃne encodings as suggested by [RVP22]. Again, we are going to only use the
+122 Cryptanalysis of ARX-based White-box Implementations
+white-box round oracle, and ignore its implementation. Therefore, our attack is independent
+of graph automorphisms, which are used to obfuscate the implicit implementation of rounds.
+Observations on encodings generated by the method of [RVP22]The quadratic input
+encoding of the round can not be chosen arbitrarily (except the external input encoding). It
+has to come from an aﬃne-quadratic self-equivalence. More precisely, the quadratic input
+encoding is the quadratic part of the self-equivalence, pre-composed with a random aﬃne
+map, and followed by the cipher’s linear layer. Although the authors of [RVP22] found a
+large number of possible aﬃne-quadratic self-equivalences, the structure of quadratic parts
+of them is very restricted.
+Proposition 8. LetA,Q : FN
+2 → FN
+2 be an aﬃne-quadratic self-equivalence of bijective
+modular additionS and assumen ≥ 4. Then, there exist at leastn linearly independent
+linear combinations of outputs ofQ that have degree 1.
+Proof. We haveQ ◦S ◦A =S. Letz =x⊞y,Z =X⊞Y correspond respectively to inner
+and outer variables, such that(x,y ) =A(X,Y ) and (Z,Y ) =Q(z,y ). LetA2 be a part of
+A−1 such that
+(X0||Y ) =A2(x,y ) =A2(z⊟y,y ).
+Furthermore, letQ2 be a part ofQ such that
+(Z0||Y ) =Q2(z,y ).
+Recall that the LSBZ0 is equal toX0 ⊕Y0. Denote byB the aﬃne map(X0||Y ) ↦→ (Z0||Y ).
+We have
+B(A2(z⊟y,y )) = (Z0||Y ) =Q2(z,y ).
+That is, the partQ2(z,y ) of the quadratic encodingQ can be computed by an aﬃne map
+applied to (z⊟y,y ). Note thatz⊟y has exactly one quadratic output bit. It follows
+that Q2 has at most 1 quadratic output bit, and the othern bits are linear (note thatQ2
+outputs n + 1 bits).
+This proposition proves that thereall aﬃne-quadratic self-equivalences of bijective
+modular addition have at leastn linear outputs, meaning that only at most half of the
+output of Q can be quadratic (up to aﬃne equivalence). In practice, we studied the
+encodings generated by the method of [RVP22] (which are chosen in a very restricted
+shape). We observed that the outputs ofQ haveat most 3 independent quadratic functions.
+Furthermore, up to aﬃne equivalence, these functions consist of only 1 or 2 quadratic
+monomials (i.e., we count a function⟨α,x ⟩ · ⟨β,x ⟩ as one monomial). While the variability
+ofQ is very high, as claimed by the authors, this is only due to the variability of the linear
+combinations in the involved monomials. We conclude that the quadratic self-equivalences
+of bijective modular addition have very sparse quadratic part and set to exploit this
+weakness. Note that already the decomposition of the aﬃne-aﬃne encoded bijective
+modular addition is a nontrivial task (as can be seen from Section 6), and adding just
+a few (unknown) quadratic monomials signiﬁcantly adds up to the complexity of the
+decomposition process.
+High-level overview of the attack The procedure consists of several steps. The main
+high-level idea is to catch the unknown quadratic monomials among the quadratic outputs
+of the bijective modular addition (which appear due to the cipher’s linear map mixing the
+outputs ofQ to the right branch, which is present among linear combinations of output
+bits), and use algebraic relations from Subsection 5.4 to recoverQ. The overall plan is
+thus as follows.
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 123
+1. Locate quadratic output bits (up to addition of linear output bits), by using the
+zero-sum property over 3-dimensional spaces.
+2. Decompose each possible linear combination of quadratic output bits into a quadratic
+monomial or a sum of two monomials (up to addition of linear terms), when possible.
+3. Using inputs to the recovered monomials as the basis for the quadratic terms in
+the quadratic input encoding (this is an assumption based on the used shape of
+encodings), perform black-box interpolation of aﬃne-encoded bijective modular
+addition on a subset of samples not triggering any quadratic monomials.
+4. A composition of the encryption oracle with the system-based inversion results
+in the output of the quadratic encoding (because the system captures the aﬃne-
+encoded addition only). Thus, the quadratic encoding can be easily evaluated and
+reconstructed.
+5. The quadraticencoding can be inverted by computing aGröbner basis inlexicographic
+monomial order. (In general, inversion of quadratic maps is a hard problem, so
+we can’t hope for a generic robust solution.) Due to sparseness, the Gröbner basis
+method works very well in practice. Note that the inverse of the quadratic encoding
+does not have to be quadratic, it can have much higher degree.
+6. As a result, we can invert the quadratic encoding on any input, and pass it to
+the original oracle, eﬀectively stripping the quadratic encoding, and leaving the
+aﬃne-encoded bijective modular addition, which can be decomposed as described in
+Section 6.
+7.1 Locating quadratic output bits
+The ﬁrst step is to recover the linear combinations of output bits that are quadratic
+functions of the input bits. This can be done eﬃciently using the fact that any quadratic
+function sums to zero over any 3-dimensional aﬃne subspace. To exploit it, let us compute
+multiple such sums over random 3-dimensional subspaces of the oracle function. Each such
+sum is anN-bit vector and the zero-sum linear combinations of these vectors form the
+vector space of output bits that have degree at most 2. Since we can recover the linear bits
+using the method from Subsection 6.1, we are interested in output bits of degree precisely
+2. To ﬁlter out the output linear bits, we can simply remove them from the output. In this
+way, we can not lose a possible quadratic output, since adding a linear function can not
+change the degree of a quadratic function. The procedure is summarised in Algorithm 4.
+Its time complexity isO(n3) and data complexity isO(n).
+Algorithm 4Recovering output quadratic bits
+Input: oracle O implementing bijective modular addition with quadratic-aﬃne encodings,
+with output linear bits removed
+Output: linear mapπq : FN
+2 → Ft
+2 such thatπq ◦ O has all its output linear combinations
+having degree 2
+1: for i ∈ {0,...,N +ϵ = 1} do
+2: X
+$
+← −random 3-dimensional aﬃne subspace ofFN
+2
+3: v(i) ← ⨁
+x∈X O(x)
+4: end for
+5: V ← matrix with rows{v(i)}i
+6: B ← basis(kerV ) so that V ×B = 0
+7: return πq :x ↦→B ×x
+124 Cryptanalysis of ARX-based White-box Implementations
+7.2 Decomposition of quadratic outputs into 1 or 2 quadratic mono-
+mials
+The ANFs of the recovered quadratic bits can be recovered inO(N 2) queries and time
+by using the fact that the coeﬃcientλi,j of the monomialxixj in a Boolean functionf
+is given byf(ei ⊕ej) ⊕f(ei) ⊕f(ej) ⊕f(0). Alternatively, the same amount of random
+queries can be used (e.g., from a common data pool shared between steps), with a generic
+linear algebraic interpolation step costingO(N 6) time.
+After the ﬁrst step, based on experimental data, we obtain 2-4 quadratic output bits
+(i.e., πq ◦ O is a quadratic mapFN
+2 → Ft
+2 with 2 ≤t ≤ 4), independently of the word size
+n. Compared on the previous observation thatQ has at most 3 independent quadratic
+outputs, we may obtain an extra quadratic output which is the second least signiﬁcant bit
+z1 =x1 +y1 +x0y0. The second step consists in ﬁnding aﬃne equivalent representation of
+the mapπq ◦ O consisting of quadratic functions with 1 or 2 quadratic monomials each.
+That is, we search for aﬃne mapsB,A such that each output bit ofB ◦πq ◦ O ◦A contains
+at most 2 quadratic monomials. Note that the restriction to 2 monomials is artiﬁcial
+(based on the currently observed encodings) and a potentially new encoding with a few
+more monomials can still be attacked with the same method.
+The motivation for this step comes from experimental observation of used quadratic
+encodings in the implementation of [RVP22], which only have a few distinct quadratic
+monomials (up to aﬃne equivalence). The goal is thus to catch these quadratic monomials
+in the output bits of the oracle. This is in particular possible due to the cipher’s linear layer
+mixing these quadratic monomials into the linear right branch of the modular addition,
+which in turn leaks the monomials in the output of the oracle.
+The step’s goal can be straightforwardly achieved by enumerating all linear combinations
+(at most 15 ift ≤ 4) ofπq ◦ O and attempting to apply the monomial decomposition
+method based on linear structures from Subsection 5.2. Then, we choose an arbitrary
+linearly independent subset of the successfully decomposed linear combinations which
+deﬁnes the output linear mapB described above; the input linear mapA maps the space of
+linear combinations of input bits involved in the quadratic monomials to single input bits.
+For example, if monomials(x1 +x2 +x5)(x3 +x4), (x3 +x4,x 7), (x1 +x2 +x5 +x7,x 8)
+are chosen, we map(x1 +x2 +x5), (x3 +x4), (x7), (x8) to four distinct input bits (we use
+the fact thatx1 +x2 +x5 +x7 is expressible as a sum of new bits).
+The time complexity of this step is dominated by computing the2t − 1 linear structure
+spaces, which is done inO(2tn3) time (here, enumeration of candidates of 2 monomials
+among 4 linear functions takes an extra but constant time factor). The ANF computation
+requires O(n2) queries.
+7.3 Algebraic recovery of a sparse quadratic encoding
+The next goal is to recover the quadratic encoding, more precisely, its quadratic part.
+Since the monomials themselves were recovered in the previous step, it is only missing to
+know where each monomial is added.
+We recall the setting of Subsection 5.4. LetZ = (B ◦S)(X) for some aﬃne mapB.
+Then, X and Z satisfy a set of bilinear relations
+˜E(X,Z ) =
+N −1∑
+j=0
+N −1∑
+k=0
+λXZ
+j,k XjZk +
+N −1∑
+j=0
+λX
+j Xj +
+N −1∑
+k=0
+λZ
+kZk +λ0. (12)
+Now, letX =Q(W ), whereQ is the quadratic bijective encoding, so thatZ = O(W ) =
+(B ◦S ◦Q)(W ). We assume thatQ can be expressed asQ(W ) =W +q(W ) up to a linear
+map applied toW, whereq is a purely quadratic function, i.e., all its output bits contain
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 125
+only quadratic monomials, with the ANFs
+qj(W ) =
+∑
+(a<b)∈I 2
+αj
+a,bWaWb.
+where I is the set of indexes of input bits involved in the quadratic monomials of the
+output quadratic bits (recovered in the previous step).
+Remark 4. While this assumption does not often hold directly, Q may be partially
+“randomized” by composing the oracle with a random constant addition, which leads to
+generationofnewlineartermsfromquadraticones(forexample, (W0+1)W1 =W0W1+W1).
+We found this suﬃcient for our attacks. Alternatively, we could add a few extra linear
+terms/variables to the hypothesized expression ofQ to ensure invertability of the linear
+part with high probability.
+Substituting X byQ(W ) into Equation 12 gives new relationsˆE on W,Z:
+ˆE(X,Z ) = ˜E(Q(W ),Z ) = ˜E(W +q(W ),Z ) (13)
+=
+N −1∑
+j=0
+N −1∑
+k=0
+λXZ
+j,k (Wj +qj(W ))Zk +
+N −1∑
+j=0
+λX
+j (Wj +qj(W )) +
+N −1∑
+k=0
+λZ
+kZk +λ0 (14)
+=
+∑
+(a<b)∈I 2
+N −1∑
+k=0
+ˆλWWZ
+a,b,k WaWbZk +
+∑
+(a<b)∈I 2
+ˆλWW
+a,b WaWb (15)
++
+N −1∑
+j=0
+N −1∑
+k=0
+λXZ
+j,k WjZk +
+N −1∑
+j=0
+λX
+j Wj +
+N −1∑
+k=0
+λZ
+kZk +λ0. (16)
+The new coeﬃcients ˆλWWZ
+a,b,k , ˆλWW
+a,b of monomials WaWbZk,WaWb are functions of the
+coeﬃcients λXZ
+j,k ,λX
+j and the coeﬃcientsαj
+a,b of the coordinate functionsqj of q:
+ˆλWWZ
+a,b,k =
+N −1∑
+j=0
+λXZ
+j,k ·αj
+a,b, ˆλWW
+a,b =
+N −1∑
+j=0
+λX
+j ·αj
+a,b. (17)
+Essentially, the monomial basis for the relations is expanded by the termsWaWbZk
+and WaWb, the number of which isO(|I|2N), which can be much less compared toN 3
+from the general quadratic encoding case. Experimentally, the size ofI is at most 7 for
+the quadratic encodings used in [RVP22].
+These relations can be directly interpolated in a black-box way as described in Sub-
+section 5.4. Note that black-box interpolation only recovers the full vector space of all
+relations, so that we can only obtain linear combinations of all relations. It is easy to see
+that any linear combination of relations˜E(i) still follows the same structure.
+However, another problem is thatother relations may appear, not following the structure
+described above. They may appear due to expanded monomial basis and presence of the
+quadratic encoding interacting with the modular addition. There can be at most
+(|I|
+2
+)
+extra such relations (21 if|I| ≤ 7), depending on the quadratic encoding used, in the
+implementation of [RVP22].
+We resolve this problem in the following way.
+1. First, we interpolate relations in the bilinear basis(1,W,Z,WZ ), but using only
+samples satisfyingWaWb = 0 for all pairs(a,b ) ∈I 2. On these samples, we have
+˜E(W,Z ) = ˆE(W,Z ) since the terms quadratic inW are equal to zero. As a result,
+we directly obtain some relations of the bijective modular addition without the
+quadratic part of the quadratic encoding, plus possibly a few extra relations (in the
+126 Cryptanalysis of ARX-based White-box Implementations
+same basis). Note that the relations are all linearly mixed together as we can only
+interpolate the vector space that they span. The time and data complexities of this
+step are respectivelyO(n6) and O(n2).
+2. Second, weaimtoremovetheextrarelationsfromthesystem, inordertoobtainapure
+system of relations of the bijective modular addition (up to aﬃne encodings). The
+idea is to choose random input/output pairs(W (t),Z (t)), for which the interpolation-
+based inversion fails to determine a unique preimage (if this does not happen, it
+must be that we invert the bijective modular addition, leading to recovery ofQ).
+Furthermore, we require that all inputsW (t) share the bits indexed byI. Then, the
+“good” relations can be ﬁxed by replacingW (t) withW (t) +q(W (t)), which is a linear
+function on the coeﬃcientsαj
+a,b since W (t) is known. Among the “bad” relations,
+on the other hand, there must exist at least one that is not satisﬁed by the correct
+solution (otherwise, the inversion must have succeeded). We introduce an “error”
+variableϵ(i) per each relation ˆE(i) in the system, leading to linear equations of the
+form
+ˆE(i)
+(
+W (t) +q(W (t)),Z (t)
+)
++ϵ(i) = 0,
+which are equations on the coeﬃcients ofq and all error variablesϵ(i) (since W,Z
+are known). By solving this linear system with a suﬃcient number of samples, we
+ﬁnd which relations are erroneous on this input/output set. Then, we can add one
+of the erroneous relations to all other erroneous relations to cancel the error (i.e.,
+canceling the original mixed-in erroneous relations). This step removes one unwanted
+relation from the system. After repeating this step a suﬃcient number of times (i.e.,
+the number of extra relations), we obtain a clear system of relations for the aﬃnely
+encoded bijective modular additionB ◦S.
+Assuming constant number of erroneous relations, the time complexity isO(n6)
+(solving the linear system of sizeO(n2) relations), while the data complexity is
+negligible.
+3. Finally, we can use the system to invert the bijective modular addition part from
+the oracle (using its bilinearity, as in Subsection 5.5), which allows to compute
+X =Q(W ) as X = ((B ◦S)−1 ◦ O)(W) = ((B ◦S)−1 ◦ (B ◦S ◦Q))(W ) = Q(W ).
+Then, we can obtain the ANF ofQ in O(n2) such queries (each costsO(n3)) using
+standard methods. This costsO(n5) time in total for this step.
+We remark that the system of linear equations from step may have more than 1 solution
+due to possible quadratic-aﬃne self-equivalences of the addition. In practice, we observe 2
+possible solutions per added equation, which produces a small amount of candidates to
+test.
+7.4 Inversion of quadratic encoding
+In general, the problem of inverting a function given by quadratic polynomials is considered
+to be hard. In particular, multivariate quadratic (MQ) cryptography relies on hardness of
+this problem (a prominent example is the unbalanced oil and vinegar scheme [KPG99]).
+If a white-box implementation uses a generic quadratic function as an external input
+encoding, it can not be easily inverted. Thus, a white-box designer in principle may use
+an MQ public-key encryption scheme as an external encoding and it won’t be breakable or
+invertible. This would be of course not a white-box achievement. This discussion can be
+seen as an argument against external encodings being a reasonable assumption.
+From the general hardness it follows that we have to use a particular shape of the
+quadratic function if we want to invert it. The case of quadratic encodings from [RVP22]
+is very sparse (only a few distinct quadratic monomials are used. In most cases, an inverse
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 127
+function can be computed by hands. Yet, due to several diﬀerent shapes of the encoding,
+automating the ad-hoc process is not a straightforward and clean solution. To that end, we
+resort to use a generic algebraic method based on Gröbner basis (for detailed description,
+we refer e.g. to [CLO10]). It performs very well on sparse encodings, removing the need
+of manual work, and at the same time, this approach is the best known way to approach
+inversion of a generic quadratic encoding. Thus, it covers both the sparse encodings used
+in the white-box implementation that we attack and potential dense encodings in the case
+described in the previous paragraph.
+The ﬁrst method is to encode the inversion problem for each target outputy =Q(x),
+where Q is the quadratic function. This is done by considering the ideal
+I = ⟨y0 −Q0(x), ..., y N −1 −QN −1(x)⟩ (18)
+of the polynomial ringF2[x0,...,x N −1] (the target outputy is a known constant). The
+goal is to compute the associated variety (i.e., the solution set), which can be done through
+Gröbner basis computations. IfQ is bijective (as should be in the white-box setting), the
+variety should contains the only solution corresponding toy =Q(x).
+The second method is to compute the polynomial representation of the inverse function
+Q−1 (here, we allow the polynomial ofyi to also use variablesyj for allj > i). The
+advantage is that it requires to compute a Gröbner basis only once for a given functionQ,
+and inversion of a given output is done simply by evaluating the computed polynomials.
+The disadvantage of the method is that the polynomial representation ofQ−1 may be not
+compact, especiallyinthecaseofdense Q. Toachievethegoal, weuseanideal I ′ ofthesame
+shape as the idealI from (18), but over the polynomial ringF2[x0,...,x N −1,y 0,...,y N −1].
+That is, we considerx to be a vector of variables. Then, we compute the Gröbner basis
+of this ideal in lexicographic order (usingx0 > ... > xN −1 > y0 > ...yN −1). If Q is
+invertible, this results in the sequence of polynomials
+xN −1 −fN −1(y0,...,y N −1), (19)
+xN −2 −fN −2(xN −1,y 0,...,y N −1), (20)
+... (21)
+x0 −f0(x1,...,x N −1,y 0,...,y N −1), (22)
+yielding the desired polynomialsfi to computex =Q−1(y).
+When attacking the implementation of [RVP22], we used the second method which
+showed to be very eﬃcient for the sparse quadratic encodings used. It takes negligible time
+compared to other steps of the attack and requires no manual work. We conclude that
+the time complexity of the black-box decomposition attack is dominated by the algebraic
+recovery of the quadratic encodingQ, which requiresO(n6) time and O(n2) queries.
+This concludes the decomposition and inversion attack on the implicit ARX-based white-
+box scheme of [RVP22]. In the next section, we show how to use the obtained decomposition
+and inversion method to fully recover (most of) round subkeys and, ultimately, the master
+key of the underlying Speck cipher.
+8 CombiningRoundDecompositionsforFullKeyRecovery
+in the case of Speck Cipher
+In this section, we describe how to chain several consecutive round decompositions and
+extract the round subkeys in-between, allowing full master key recovery in the case of
+white-box Speck cipher implementation. More precisely, for a Speck version withW master
+key words, it is suﬃcient to chainW + 1 consecutive round decompositions to obtain at
+128 Cryptanalysis of ARX-based White-box Implementations
+most 22W master key candidates. An extra decomposed round can be used to narrow down
+this small set of candidates to the unique correct one. This attack relies on properties of
+the Speck linear layer, sparsity of aﬃne self-equivalences of bijective modular addition, and
+the key schedule of Speck. This method is an extension of the technique from [VRP22] to
+include quadratic self-equivalences.
+Remark 5. In practice, two consecutive round decompositions narrow down possible
+encodings to only a few candidates, which allow to decompose all consequent rounds in a
+much simpler way, since one side of encoding is given from the previous round.
+The initial setting for this section is as follows. We are given a chain of maps
+F (1),F (2),...,F (r), each being either a bijective modular addition, an aﬃne map, or
+a quadratic map, such thatF (r) ◦... ◦F (1) is aﬃne-equivalent to anr′-round Speck:
+F (r) ◦... ◦F (1) =C ′ ◦E(r′) ◦... ◦E(1) ◦C
+for some aﬃne bijectionsC,C ′ : FN
+2 → FN
+2 . We also require that the quadratic maps arise
+from aﬃne-quadratic self-equivalences as in the implicit white-box proposal.
+The procedure consists of two steps:
+1. Eliminating quadratic self-equivalence maps by using the aﬃne-encoded addition
+inversion technique based on interpolation (Subsection 5.4).
+2. Finding symbolically aﬃne self-equivalences of bijective modular addition layers
+which resolve the intermediate linear maps into the Speck linear layer.
+8.1 Eliminating quadratic self-equivalences
+By combining all aﬃne maps with quadratic maps, we obtain a sequence of alternating
+bijective modular additionS and quadratic mapsQ(i) (note that hereQ’s are diﬀerent
+than those from the previous section, as they include an aﬃne map from the previous
+round):
+S ◦Q(r) ◦S ◦... ◦S ◦Q(1).
+The quadratic maps have structureQ(i) = A(i+1) ◦L ◦B(i), whereA(i+1) is the aﬃne
+part of self-equivalence from the next modular addition,B(i) is the quadratic part of
+self-equivalence from the previous modular addition,L is the cipher’s linear layer2 (see
+Section 3 and Figure 1). We have
+Q(i) ◦S =A(i+1) ◦L ◦B(i) ◦S =A(i+1) ◦L ◦S ◦A(i).
+In other words, the functionQ(i) ◦S is aﬃne-equivalent toS. Note that we have two-sided
+aﬃne equivalence becauseA(i+1) is unknown, as we recover these maps up to a composition
+with canceling aﬃne encodings. Yet, we can run the aﬃne-equivalence attack from Section 6
+on Q(i) ◦S to recoverA(i+1) ◦L and A(i), up to aﬃne self-equivalences ofS. Eﬀectively,
+this approach allows to propagate the quadratic parts of aﬃne-quadratic self-equivalences
+through the addition into aﬃne maps.
+Remark 6. This step can be performed already after detaching the quadratic encoding
+by the attack from Section 7, and attaching it to the previous round with its quadratic
+encoding also detached. This means that there is no need to perform the aﬃne-encoding
+decomposition of the remaining part of the current round separately, but instead it should
+be done when composed together with the next round’s input quadratic encoding. Thus,
+we only need one call to the attack from Section 6 per round.
+2Note that here we deﬁne self-equivalences with respect to the bijective modular addition, and not to
+to the full round function.
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 129
+The complexity of this step is dominated by the decomposition of aﬃne-encoded
+bijective modular addition (Section 6), which isO(n4) time and O(n3) queries. Note
+that the bilinear relations are already obtained during the process of quadratic encoding
+recovery (Subsection 7.3), therefore, the precomputation step is not needed and we can do
+optimized queries “oﬄine” (without calling the actual white-box oracle anymore), so that
+the optimal eﬀective time complexity ofO(n6) is reached.
+8.2 Aligning aﬃne-self equivalences to match the cipher’s linear layer
+After eliminating quadratic maps, we are left with alternating bijective modular additions
+and aﬃne maps. This problem was already solved in [VRP22] using Gröbner basis. Here
+we propose an alternative technique based solely on linear algebra.
+We know that the aﬃne maps should be equal to the cipher’s linear layer and
+key/constant additions. However, the aﬃne maps are recovered up to aﬃne self-equivalences
+of the surrounding additions. Thus, we need to solve the following equation (considering
+only the linear part):
+L =U ◦C ◦V, (23)
+where U is the unknown input linear part of an aﬃne self-equivalence ofS, V is the
+unknown output linear part of (another) aﬃne self-equivalence ofS, C is a known linear
+map, L is the (known) cipher’s linear map. By rewriting it as
+L ◦V −1 −U ◦C = 0 (24)
+we get a linear equation on entries of the matrices ofV −1 and U. However, the solution is
+not unique: from(23) it is clear that for every bijectiveV there exists a satisfying matrixU.
+Therefore, we need to add constraints ofU,V being linear parts of aﬃne self-equivalences
+of bijective modular addition. This can be done by enforcing the shape of the matrix of
+the linear part of an aﬃne self-equivalence, established in [RVP22], which we parameterize
+in more details, based on experiments using our decomposition attack:
+U =
+
+)))))))))))))))))
+1
+t1 1
+...
+1
+t2 c · · · c t 3 t4 c · · · c t 5
+a1 b2
+a2 b3 1
+... ... ...
+an−1 bn−1 1
+an d · · · d t 6 bn d · · · d t 7
+(
+(
+,
+where the rulers divide theN ×N matrix into fourn ×n matrices. In addition,V and
+V −1 have the same shape.
+Putting these parameterized matrices into(24), we get a linear system on the undeter-
+mined entries, which experimentally always has a unique solution.
+After the linear layer between the two additions is modiﬁed using recoveredU,V maps
+into the cipher’s linear layer, the linear parts of self-equivalences are ﬁxed, and we are left
+with the constant parts. First, we recover all possible input/output constant additions
+that make the current oracles into precise bijective modular addition. This can be done
+eﬃciently in a bit-by-bit manner. Note that the round key in Speck is XORed right after
+the addition, so we extract the subkey as the output constant of the addition.
+130 Cryptanalysis of ARX-based White-box Implementations
+The recovered constants are deﬁned up to additions in the most signiﬁcant bits.
+Furthermore, a speciﬁc of our decomposition technique (ignored possible XORs from bit
+n − 2 ton − 1 in the ﬁrst step) makes the(n − 2)-nd bit of the addition undetermined. As
+a result, we recover the subkey excluding 2 most signiﬁcant bits, which are negligible to
+search even for 4 rounds at once. Four consecutive round keys allow to easily undo the key
+schedule and recover the master key.
+9 Experimental Evaluation
+We implemented the full key recovery attack on an implicit white-box implementation
+of Speck32/64 and Speck64/128, generated using strongest parameters we could compile
+(aﬃne-quadratic self-equivalences, degree-4 graph automorphisms, see Appendix A). All
+experiments were done on an Intel(R) Core(TM) i7-1185G7 3.00GHz CPU on a laptop
+(single core or parallel round decompositions distributed across cores). We remark that
+the implementation is a proof-of-concept and many optimizations are possible. The
+implementation is available at
+https://github.com/cryptolu/implicit_ARX_whitebox_cryptanalysis
+For Speck32/64 (n = 16), one white-box round call takes about 6 milliseconds. For
+comparison, an aﬃne-encoded optimized oracle takes 15-20 microseconds (available after
+removing the quadratic encoding and interpolation). In about 30 minutes, we successfully
+decomposed all 20 rounds of a white-box instance (which we did to ensure that all rounds
+are susceptible to our methods). We skipped the ﬁrst round as it (in principle) may have
+full MQ-like quadratic external encoding, it is unnecessary for key recovery. On average,
+each round decomposition takes 1.5 minutes. The unique master key candidate matches
+all the intermediate subkey candidates (taking into account the Speck’s key schedule).
+For Speck64/128 (n = 32), one white-box round call takes about 320 milliseconds.
+For comparison, an aﬃne-encoded optimized oracle requires 45-50 microseconds. One
+decomposition attempt takes about 40-60 minutes (repeated attempts are needed when
+certain matrices occurring in the process are non-invertible, although only a part of the
+process is repeated). We decomposed the ﬁrst 10 rounds (skipping the very ﬁrst one with
+a possible external encoding), and recovered the unique master key candidate matching all
+the subkeys.
+10 Conclusions
+We would like to draw several conclusions from our work.
+Algebraic attacks without one external encoding As current designs in the implicit
+function framework do not oﬀer new kinds of encodings, they do not oﬀer new protections
+against gray-box-like attacks in the pure white-box setting (without external encodings).
+In particular, quadratic encodings are defeated by a quadratic algebraic attack.
+Implicit function framework Our generic interpolation-based optimization attack mini-
+mizes the degrees of the implicit functions describing a round function. Although the cost
+may be high (e.g.,O(n9) in the quadratic-aﬃne encodings case), it is polynomial in the
+size of descriptions of the function (unless compression methods would be discovered in
+the future). This attack questions/limits the utility of obfuscation techniques for implicit
+functions (such as graph automorphisms). We remark that the implicit function framework
+itself remains a very interesting tool for implementing round functions and embedding
+encodings at a small cost, yet it currently lacks ﬁtting primitives. We hope for more future
+work in this direction.
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 131
+Implicit bilinear inversion Our inversion attack shows that round functions with bilinear
+implicit functions can not be used with aﬃne encodings, and even quadratic-aﬃne encodings
+require special care. Of course, the attack only targets the non-invertibility security goal
+(not claimed by [RVP22] but worth studying in general).
+ARX-based round function Our main decomposition attacks show that an ARX round
+with single modular addition has many weaknesses. As mentioned above, it has a bilinear
+implicit function. Its quadratic self-equivalences (at least, the ones discovered by [RVP22])
+are extremely sparse (only a few distinct monomials, up to aﬃne equivalence).
+Possible countermeasures As our attacks rely on the isolation and black-box access to
+each round (as is common in white-box attacks in the presence of external encodings).
+Code obfuscation can potentially prevent the attack by deterring a human reverse-engineer.
+An alternative direction is searching for cubic or denser quadratic self-equivalences of the
+bijective modular addition.
+Acknowledgements
+The work was supported by the Luxembourg National Research Fund’s (FNR) and the
+German Research Foundation’s (DFG) joint project APLICA (C19/IS/13641232).
+A Generating Instances of White-box Speck
+The authors of [RVP22] provided a Python/Sagemath [Sag22] implementation to generate
+instances of the Speck block cipher with their white-box construction, more speciﬁcally
+they provide direct support for Speck32/64, Speck64/128 and Speck128/256. Their
+implementation allows one to generate white-box instances of the Speck block cipher with
+diﬀerent parameters, and thus we will quickly describe the most relevant ones as well as
+which ones we used, keeping in mind that our attacks are targeted to the most generic
+cases in their framework.
+The ﬁrst set of parameters allows to set several parts of the encodings as trivial, namely
+the aﬃne part of the encodings, the quadratic part, the aﬃne-quadratic equivalences used
+and the external encodings. As our goal is to provide generic attacks on their framework,
+the choice here is rather simple. The aﬃne part and quadratic part of the encodings,
+as well as the aﬃne-quadratic self equivalence relations, are all chosen as non-trivial.
+External encodings will be disabled (i.e. set to trivial) only in Section 4, and enabled (i.e.
+non-trivial) in the rest of the paper.
+The second set of parameters inﬂuences the concrete white-box implementation, more
+speciﬁcally how the implicit functions are generated. At some point in the generation,
+graph automorphisms are needed (we refer the reader to the original paper for their role),
+which can be set to trivial with one parameter. It is a bit unclear how this inﬂuence the
+resulting instance, but to provide the most generic instances, we kept these as non-trivial.
+Note that it does seem to severely slow down the time needed to generate the white-box
+instance. A second parameter allows one to use so-called "redundant perturbations" in
+the instance based on the work of [BCD06]. The authors do not provide details about
+how this functionality works, however from our understanding, they only aﬀect the actual
+implementation (i.e. resulting code) and not the resulting encoded round function. This
+means that assuming every other parameters are the same (i.e. same key, same encodings,
+same aﬃne-quadratic equivalences etc.) for one instanceE without these perturbations,
+and one other instanceE
+′
+with these perturbations, we should always haveE(x) =E
+′
+(x),
+132 Cryptanalysis of ARX-based White-box Implementations
+as the perturbations seems to only inﬂuencehow the encoded round function are evaluated
+on a given input, not the actual result3. As such, we chose to disable these perturbations.
+Finally, as stated in the previous section, encoded round function are implemented
+as implicit functions, which, in the author’s implementation, can be of degree 2, 3 or
+4 depending on some parameters. From the authors (Section 6, bottom of page 24
+in [RVP22]), an implicit function of degree 2 implies that no quadratic encodings are used,
+only aﬃne encodings and aﬃne self-equivalences. As we aim at attacking the generic case
+where the encodings are quadratic, this is not something we want so we do not allow degree
+2 implicit functions. When the degree of implicit functions is set to either 3 or 4, quadratic
+encodings and aﬃne-quadratic self-equivalences are used, however as stated by the authors,
+degree 3 implicit functions implies to choose carefully which quadratic functions are used,
+and as such might not be as generic as we would like. An additional parameters allows to
+enforce thatevery implicit function (i.e. encoded round function) is of the chosen degree.
+However, when we tried to enforceevery implicit function to be of degree 4 (as it should be
+the most generic case), the generation of white-box instances failed and we were not able
+to ﬁx their code to make it work. As such, for every instance we generated, we enforced
+the degree to be at least 3 and at most 4, which results in some encoded rounds to be of
+degree 3 and others to be of degree 4. As we will see in later sections, we were able to
+recover the round key of every round (both degree 3 and 4) without having to consider
+this degree, so we do not expect this to have any inﬂuence on our attacks.
+Finally, a small implementation detail for our attacks. The authors’ tool allows to
+generate instances and either use them directly in Python/Sagemath, or export them
+to some C code. While all our attacks are implemented in Python/Sagemath, using the
+direct Sagemath evaluation of encoded rounds turned out to be extremely slow. Thus our
+solution was to export the generated instance into C code, and then compile this C code
+into a shared library, which we can use from Python/Sagemath using thectypes Python
+library. This proved to be a huge improvement for running our attacks, as a very large
+part of the time complexity (in practice) is due to the rather slow calls to the oracle (even
+with this shared library).
+B OptimizedImplementationofImplicitBilinearFunctions
+Let a functionF (X) =Z be given implicitly by
+P : FN
+2 × FN
+2 → Fm
+2 : (X,Z ) ↦→
+∑
+i,j
+λXZ
+i,j XiZj ⊕
+∑
+i
+λX
+i Xi ⊕
+∑
+i
+λZ
+i Zi ⊕λ,
+where eachλ-coeﬃcient belongs toFm
+2 . It can be rewritten as
+P (X,Z ) =
+N −1∑
+i=0
+Xi · (
+N −1∑
+j=0
+λXZ
+i,j Zj ⊕λX
+i ) ⊕
+∑
+i
+λZ
+i Zi ⊕λ (25)
+=
+N −1∑
+i=0
+Xi ·A(i) × (Z0,...,Z N −1, 1)T ⊕B × (Z0,...,Z N −1, 1)T, (26)
+=
+(N −1∑
+i=0
+Xi ·A(i) ⊕B
+(
+× (Z0,...,Z N −1, 1)T. (27)
+where A(i),B are m × (N + 1)-bit matrices. Therefore, the solution ofP for Z can be
+computed as following:
+3Checking the source code of their tool, it even seems that these perturbations can result in a failure to
+evaluate an encoded round function
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 133
+1. Compute the matrix sumC(X) = ∑N −1
+i=0 Xi ·A(i) ⊕B.
+2. Findtherightkernelof C, whichshouldconsistoftheonlynonzerovector (Z0,...,Z N −1, 1)
+with Z =F(X).
+In practice, the matrix sum can be done faster by precomputing and storingw-block
+sums
+T (Xkw,...,kw +w−1) =
+kw+w−1∑
+i=kw
+Xi ·A(i),
+reducing N matrix additions toN/w at the cost of storing2wN/w matrices. Rows of
+the matrices stored as CPU words, allowing eﬃcient Gaussian elimination to recover the
+kernel, which is the dominant step of the procedure.
+This method is equivalently eﬃcient for computing the inverse ofF using the same
+implicit function (with swapped roles of variables).
+Implemented in C, this method executes 1 query for aﬃne-encoded bijective modular
+addition withn = 16 in 20 microseconds on average on a laptop with an Intel(R) Core(TM)
+i7-1185G7 3.00GHz CPU.
+References
+[AABM20] Estuardo Alpirez Bock, Alessandro Amadori, Chris Brzuska, and Wil Michiels.
+On the security goals of white-box cryptography.IACR TCHES, 2020(2):327–
+357, 2020. https://tches.iacr.org/index.php/TCHES/article/view/
+8554. 97
+[ABF+20] Estuardo Alpirez Bock, Chris Brzuska, Marc Fischlin, Christian Janson, and
+Wil Michiels. Security reductions for white-box key-storage in mobile payments.
+In Shiho Moriai and Huaxiong Wang, editors,ASIACRYPT 2020, Part I,
+volume 12491 ofLNCS, pages 221–252. Springer, Heidelberg, December 2020.
+97
+[BCD06] Julien Bringer, Hervé Chabanne, and Emmanuelle Dottax. White box cryp-
+tography: Another attempt. IACR Cryptol. ePrint Arch., page 468, 2006.
+131
+[BCH16] Chung Hun Baek, Jung Hee Cheon, and Hyunsook Hong. White-box aes
+implementationrevisited. Journal of Communications and Networks, 18(3):273–
+287, 2016. 97
+[BGEC04] Olivier Billet, Henri Gilbert, and Charaf Ech-Chatbi. Cryptanalysis of a white
+box AES implementation. In Helena Handschuh and Anwar Hasan, editors,
+SAC 2004, volume 3357 ofLNCS, pages 227–240. Springer, Heidelberg, August
+2004. 98, 99
+[BHMT16] Joppe W. Bos, Charles Hubain, Wil Michiels, and Philippe Teuwen. Diﬀerential
+computationanalysis: Hidingyourwhite-boxdesignsisnotenough. InBenedikt
+Gierlichs and Axel Y. Poschmann, editors,CHES 2016, volume 9813 ofLNCS,
+pages 215–236. Springer, Heidelberg, August 2016. 99, 102
+[BU18] Alex Biryukov and Aleksei Udovenko. Attacks and countermeasures for
+white-box designs. In Thomas Peyrin and Steven Galbraith, editors,ASI-
+ACRYPT 2018, Part II, volume 11273 ofLNCS, pages 373–402. Springer,
+Heidelberg, December 2018. 99, 102
+134 Cryptanalysis of ARX-based White-box Implementations
+[CD08] Nicolas Courtois and Blandine Debraize. Algebraic description and simultane-
+ous linear approximations of addition in Snow 2.0. In Liqun Chen, Mark Der-
+mot Ryan, and Guilin Wang, editors,ICICS 08, volume 5308 ofLNCS, pages
+328–344. Springer, Heidelberg, October 2008. 99, 108, 109
+[CEJv03] Stanley Chow, Philip A. Eisen, Harold Johnson, and Paul C. van Oorschot.
+White-box cryptography and an AES implementation. In Kaisa Nyberg and
+Howard M. Heys, editors,SAC 2002, volume 2595 ofLNCS, pages 250–270.
+Springer, Heidelberg, August 2003. 97, 99
+[CEJvO03] Stanley Chow, Phil Eisen, Harold Johnson, and Paul C. van Oorschot. A white-
+box des implementation for drm applications. In Joan Feigenbaum, editor,
+Digital Rights Management, pages 1–15, Berlin, Heidelberg, 2003. Springer
+Berlin Heidelberg. 97
+[CLO10] DavidA.Cox, JohnLittle, andDonalO’Shea. Ideals, Varieties, and Algorithms:
+An Introduction to Computational Algebraic Geometry and Commutative Alge-
+bra. Springer Publishing Company, Incorporated, 3rd edition, 2010. 127
+[DFLM18] Patrick Derbez, Pierre-Alain Fouque, Baptiste Lambin, and Brice Minaud.
+On recovering aﬃne encodings in white-box implementations. IACR
+TCHES, 2018(3):121–149, 2018. https://tches.iacr.org/index.php/
+TCHES/article/view/7271. 112, 113
+[GPRW20] Louis Goubin, Pascal Paillier, Matthieu Rivain, and Junwei Wang. How
+to reveal the secrets of an obscure white-box implementation.Journal of
+Cryptographic Engineering, 10(1):49–66, April 2020. 99, 102
+[KPG99] Aviad Kipnis, Jacques Patarin, and Louis Goubin. Unbalanced Oil and Vinegar
+signature schemes. In Jacques Stern, editor,EUROCRYPT’99, volume 1592
+of LNCS, pages 206–222. Springer, Heidelberg, May 1999. 111, 126
+[LM01] Helger Lipmaa and Shiho Moriai. Eﬃcient algorithms for computing diﬀerential
+properties of addition. InFSE, volume 2355 ofLNCS, pages 336–350. Springer,
+2001. 107, 108
+[LN05] H.E. Link and W.D. Neumann. Clarifying obfuscation: improving the security
+of white-box des. In International Conference on Information Technology:
+Coding and Computing (ITCC’05) - Volume II, volume 1, pages 679–684 Vol.
+1, 2005. 97
+[MGH09] Wil Michiels, Paul Gorissen, and Henk D. L. Hollmann. Cryptanalysis of a
+generic class of white-box implementations. In Roberto Maria Avanzi, Liam
+Keliher, and Francesco Sica, editors,SAC 2008, volume 5381 ofLNCS, pages
+414–428. Springer, Heidelberg, August 2009. 98
+[RP20] Adrián Ranea and Bart Preneel. On self-equivalence encodings in white-box
+implementations. In Orr Dunkelman, Michael J. Jacobson Jr., and Colin
+O’Flynn, editors,SAC 2020, volume 12804 ofLNCS, pages 639–669. Springer,
+Heidelberg, October 2020. 97, 99
+[RVP22] Adrián Ranea, Joachim Vandersmissen, and Bart Preneel. Implicit white-box
+implementations: White-boxing ARX ciphers. InCRYPTO (1), volume 13507
+of Lecture Notes in Computer Science, pages 33–63. Springer, 2022. 98, 99,
+100, 101, 102, 105, 110, 111, 121, 122, 124, 125, 126, 127, 129, 131, 132
+Alex Biryukov, Baptiste Lambin and Aleksei Udovenko 135
+[Sag22] The Sage Developers. SageMath, the Sage Mathematics Software System
+(Version 9.7, Release Date: 2022-09-19), 2022. https://www.sagemath.org.
+131
+[VRP22] Joachim Vandersmissen, Adrián Ranea, and Bart Preneel. A white-box speck
+implementation using self-equivalence encodings. InACNS, volume 13269 of
+Lecture Notes in Computer Science, pages 771–791. Springer, 2022. 98, 128,
+129
+[XL09] Yaying Xiao and Xuejia Lai. A secure implementation of white-box aes. In
+2009 2nd International Conference on Computer Science and its Applications,
+pages 1–6, 2009. 97

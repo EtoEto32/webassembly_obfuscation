@@ -1,0 +1,11 @@
+# 公開checkpoint実装に対する追加検査の事前条件
+
+2026-10-24。Kの自作mutant検出だけでは研究上の価値が弱いため、Tintoほかの公開wasm-migrateを固定commit `e28a37cd2c00f0f5026bbc79651a50cbea6172dd` でローカル比較する。原論文の評価を再現したと主張せず、小さな意味保存の境界を調べる。
+
+原Rust source 188ファイル、3,346,705 bytesをGit blob SHA-1とSHA-256で照合した。最小workspaceとCLI driverのみ独自に作る。公開libraryがprivateなmoduleの関数をimportしていてbuildできない点は、公開性とdocumentation lintの修正に限定して記録する。変換アルゴリズムの本体は変更しない。build不能を解析耐性や安全性の差に数えない。
+
+仮説：fresh instanceへmemory/global stateを復元する経路で、既にdropされたnative passive segmentの状態が戻らない場合、復元後の元APIにおけるinitの成功/trapが変わる。ただし、先に「無中断」「変換したが移行しない」「実際にcheckpointで停止してfreshへ復元する」の3条件を分ける。無中断の変換自体がvalidationに失敗する場合や論文の対応外である場合は、その事実を別に報告する。
+
+入力は自作の無害なnumeric計算と数byteのpassive data。最初のdefined関数にcheckpointを挿入し、同一engineのfresh instanceへ公開評価driverと同じ形でmemoryを復元する。外部ネットワーク移行、WASI、OSのファイルアクセスはguestに与えない。先行する正常caseを通過しなければsegment差をそのシステムの復元bugと断定しない。
+
+元の公開ABIでの結果差を主にし、Kのprobeは補助的に状態差の場所を説明する。K full profileが未対応の追加imports/memoryについては、契約を曖昧に広げずadapterまたはsegment限定observerとして明示する。未確認の公開実装の欠陥を報告・送信しない。

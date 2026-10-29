@@ -1,0 +1,9 @@
+# Weaveを正常対照にする追加実験
+
+2026-10-24。wasm-migrateの反例だけを示して検査器を有利に見せないため、先行するWeaveの寿命再現も実際に検査する。commit `55e36b5f5d5b31d14f1521c3a4327c248ddeba19`、変換libraryと公開JS adapterを使う。sourceの改変なし、local CLIだけ追加。poll period 1 / shadow stack 1 pageとする。
+
+元の4種類のdata対照へ有限loopを追加し、Weaveのentry/back-edge pollで実際に中断する。checkpoint位置の種類が異なるため、wasm-migrateと同一の位置や性能条件と呼ばない。Kなし・あり、無中断・復元を比較する。到達しなかった中断要求と自然trapは別に集計する。
+
+重要な観測条件：Weaveは全export関数をwrapperへ置換し、wrapperはresume metadataを更新する。そのため**Kのsource上の非破壊性を、Weave変換後の物理状態全体へ自動的に拡張しない**。checkpointを先に保存し、probeしたinstanceは以後resumeしない。復元先も、観測専用の複製と再開専用の複製を分ける。公開adapterのrestore後、segment限定probeが参照するdrop flagはmemoryに入っているが、table/globalのrehydration前の完全state同値は今回の観測対象にしない。
+
+期待仮説は、Weaveの既存drop-gatingが働き、全到達点で元API結果とsegment分類が保存されることである。失敗した場合は先にadapter・probeによるmetadata破壊・契約違反を調べ、元APIの無改変対照を優先する。

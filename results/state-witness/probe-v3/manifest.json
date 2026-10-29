@@ -1,0 +1,6085 @@
+{
+  "rows": [
+    {
+      "name": "case-0-0",
+      "source": "case-0-0-source.wasm",
+      "full": "case-0-0-full.wasm",
+      "optimized": "case-0-0-full-O3.wasm",
+      "numeric": "case-0-0-numeric.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 38,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ]
+        ],
+        "sourceSha256": "cfdfc1814bc6f0a5b13a17b28312687e17689b6ef7a72d9b080f9753ae8d65dd",
+        "outputSha256": "8aadbf4110b130e3e0858ee3c55a6b75143d413d2334d39dcd092bb706890c9d",
+        "sourceBytes": 840,
+        "outputBytes": 1793,
+        "transformSeconds": 0.04379279999999999
+      },
+      "numericManifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 38,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ]
+        ],
+        "sourceSha256": "cfdfc1814bc6f0a5b13a17b28312687e17689b6ef7a72d9b080f9753ae8d65dd",
+        "outputSha256": "4a6db3b6be15c01ecea67981c2e3f5d7258ffcceb869ee6814390678e7721ffb",
+        "sourceBytes": 840,
+        "outputBytes": 1161,
+        "transformSeconds": 0.0399447
+      },
+      "J": {
+        "full": "case-0-0-J-full.wasm",
+        "plain": "case-0-0-J-plain.wasm",
+        "no-bounds": "case-0-0-J-no-bounds.wasm",
+        "no-drop": "case-0-0-J-no-drop.wasm"
+      }
+    },
+    {
+      "name": "case-0-1",
+      "source": "case-0-1-source.wasm",
+      "full": "case-0-1-full.wasm",
+      "optimized": "case-0-1-full-O3.wasm",
+      "numeric": "case-0-1-numeric.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 40,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          },
+          {
+            "index": 1,
+            "type": "i64",
+            "result": "i64"
+          },
+          {
+            "index": 2,
+            "type": "f32",
+            "result": "i32"
+          },
+          {
+            "index": 3,
+            "type": "f64",
+            "result": "i64"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_3",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 4,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_4",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ],
+          [
+            "export",
+            "\"drop_extra\"",
+            [
+              "func",
+              "38"
+            ]
+          ],
+          [
+            "export",
+            "\"float_write\"",
+            [
+              "func",
+              "39"
+            ]
+          ]
+        ],
+        "sourceSha256": "9cf75fe968ddd99b82c65dd2cf69086f94cc70c6a9ed56f00c910a9519bb00f8",
+        "outputSha256": "327932d33910398fe6c275c6fa7d2020a087e17c2b18714b7c4d9add8c75fd2b",
+        "sourceBytes": 949,
+        "outputBytes": 2179,
+        "transformSeconds": 0.041530999999999985
+      },
+      "numericManifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 40,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          },
+          {
+            "index": 1,
+            "type": "i64",
+            "result": "i64"
+          },
+          {
+            "index": 2,
+            "type": "f32",
+            "result": "i32"
+          },
+          {
+            "index": 3,
+            "type": "f64",
+            "result": "i64"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_3",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 4,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_4",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ],
+          [
+            "export",
+            "\"drop_extra\"",
+            [
+              "func",
+              "38"
+            ]
+          ],
+          [
+            "export",
+            "\"float_write\"",
+            [
+              "func",
+              "39"
+            ]
+          ]
+        ],
+        "sourceSha256": "9cf75fe968ddd99b82c65dd2cf69086f94cc70c6a9ed56f00c910a9519bb00f8",
+        "outputSha256": "7f06e50b921ef3f1452f40f5fe2c810686fb4a85852ca60c30b77fbeef328e91",
+        "sourceBytes": 949,
+        "outputBytes": 1454,
+        "transformSeconds": 0.03962560000000004
+      },
+      "J": {
+        "full": "case-0-1-J-full.wasm",
+        "plain": "case-0-1-J-plain.wasm",
+        "no-bounds": "case-0-1-J-no-bounds.wasm",
+        "no-drop": "case-0-1-J-no-drop.wasm"
+      }
+    },
+    {
+      "name": "case-1-0",
+      "source": "case-1-0-source.wasm",
+      "full": "case-1-0-full.wasm",
+      "optimized": "case-1-0-full-O3.wasm",
+      "numeric": "case-1-0-numeric.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 38,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ]
+        ],
+        "sourceSha256": "a3e39af543d16cf851e4e6d21225bb88d61b55ac242518e8ffea050809a659bd",
+        "outputSha256": "5d62357778fc50e604e66a66e7611fe58ba652d3868930d1e21c107004f2f342",
+        "sourceBytes": 846,
+        "outputBytes": 1799,
+        "transformSeconds": 0.0422806
+      },
+      "numericManifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 38,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ]
+        ],
+        "sourceSha256": "a3e39af543d16cf851e4e6d21225bb88d61b55ac242518e8ffea050809a659bd",
+        "outputSha256": "f91e278907ff34f0c68d4b37ce1eab9886c6d6d1bdae2f05635f623a0573e4a5",
+        "sourceBytes": 846,
+        "outputBytes": 1167,
+        "transformSeconds": 0.03979530000000009
+      },
+      "J": {
+        "full": "case-1-0-J-full.wasm",
+        "plain": "case-1-0-J-plain.wasm",
+        "no-bounds": "case-1-0-J-no-bounds.wasm",
+        "no-drop": "case-1-0-J-no-drop.wasm"
+      }
+    },
+    {
+      "name": "case-1-1",
+      "source": "case-1-1-source.wasm",
+      "full": "case-1-1-full.wasm",
+      "optimized": "case-1-1-full-O3.wasm",
+      "numeric": "case-1-1-numeric.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 40,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          },
+          {
+            "index": 1,
+            "type": "i64",
+            "result": "i64"
+          },
+          {
+            "index": 2,
+            "type": "f32",
+            "result": "i32"
+          },
+          {
+            "index": 3,
+            "type": "f64",
+            "result": "i64"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_3",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 4,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_4",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ],
+          [
+            "export",
+            "\"drop_extra\"",
+            [
+              "func",
+              "38"
+            ]
+          ],
+          [
+            "export",
+            "\"float_write\"",
+            [
+              "func",
+              "39"
+            ]
+          ]
+        ],
+        "sourceSha256": "ec4b900ed44c37874fc50b376a945efa5c06a9717b0d61b7269f2bb75df540dd",
+        "outputSha256": "b7280851f76a86a85ef1f59d1ed1b7f90b494e620276716489684b047427068a",
+        "sourceBytes": 955,
+        "outputBytes": 2185,
+        "transformSeconds": 0.040575599999999934
+      },
+      "numericManifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 40,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          },
+          {
+            "index": 1,
+            "type": "i64",
+            "result": "i64"
+          },
+          {
+            "index": 2,
+            "type": "f32",
+            "result": "i32"
+          },
+          {
+            "index": 3,
+            "type": "f64",
+            "result": "i64"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_3",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 4,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_4",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ],
+          [
+            "export",
+            "\"drop_extra\"",
+            [
+              "func",
+              "38"
+            ]
+          ],
+          [
+            "export",
+            "\"float_write\"",
+            [
+              "func",
+              "39"
+            ]
+          ]
+        ],
+        "sourceSha256": "ec4b900ed44c37874fc50b376a945efa5c06a9717b0d61b7269f2bb75df540dd",
+        "outputSha256": "894dedb4f75d3e760254f0ed49fabae65114367f28ea9eae6e3e9282b0782f65",
+        "sourceBytes": 955,
+        "outputBytes": 1460,
+        "transformSeconds": 0.038780100000000095
+      },
+      "J": {
+        "full": "case-1-1-J-full.wasm",
+        "plain": "case-1-1-J-plain.wasm",
+        "no-bounds": "case-1-1-J-no-bounds.wasm",
+        "no-drop": "case-1-1-J-no-drop.wasm"
+      }
+    },
+    {
+      "name": "case-2-0",
+      "source": "case-2-0-source.wasm",
+      "full": "case-2-0-full.wasm",
+      "optimized": "case-2-0-full-O3.wasm",
+      "numeric": "case-2-0-numeric.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 38,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ]
+        ],
+        "sourceSha256": "0ff59228178fa21f95743871886387bf52bc9a364edcad6d5133a75c1728fb4c",
+        "outputSha256": "9aabae4aac458694f7cc7a784cfb96721411c72478dc226c8548c5ed2bc51866",
+        "sourceBytes": 848,
+        "outputBytes": 1801,
+        "transformSeconds": 0.043852299999999955
+      },
+      "numericManifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 38,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ]
+        ],
+        "sourceSha256": "0ff59228178fa21f95743871886387bf52bc9a364edcad6d5133a75c1728fb4c",
+        "outputSha256": "5e1fc9fd244f3491f2186cdf1027d1070a4ae90695dde61be35f42cbc6e1268d",
+        "sourceBytes": 848,
+        "outputBytes": 1169,
+        "transformSeconds": 0.040943699999999916
+      },
+      "J": {
+        "full": "case-2-0-J-full.wasm",
+        "plain": "case-2-0-J-plain.wasm",
+        "no-bounds": "case-2-0-J-no-bounds.wasm",
+        "no-drop": "case-2-0-J-no-drop.wasm"
+      }
+    },
+    {
+      "name": "case-2-1",
+      "source": "case-2-1-source.wasm",
+      "full": "case-2-1-full.wasm",
+      "optimized": "case-2-1-full-O3.wasm",
+      "numeric": "case-2-1-numeric.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 40,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          },
+          {
+            "index": 1,
+            "type": "i64",
+            "result": "i64"
+          },
+          {
+            "index": 2,
+            "type": "f32",
+            "result": "i32"
+          },
+          {
+            "index": 3,
+            "type": "f64",
+            "result": "i64"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_3",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 4,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_4",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ],
+          [
+            "export",
+            "\"drop_extra\"",
+            [
+              "func",
+              "38"
+            ]
+          ],
+          [
+            "export",
+            "\"float_write\"",
+            [
+              "func",
+              "39"
+            ]
+          ]
+        ],
+        "sourceSha256": "2c02e31fdbe1ccbe3ea3069c13a3b97a0e9275d59d041dec0087f8797b2b5840",
+        "outputSha256": "07063fe87b406ba3cf9ecc5810f02c7db7628aec070dec0c76ca1ec45839642d",
+        "sourceBytes": 957,
+        "outputBytes": 2187,
+        "transformSeconds": 0.04099679999999983
+      },
+      "numericManifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 40,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          },
+          {
+            "index": 1,
+            "type": "i64",
+            "result": "i64"
+          },
+          {
+            "index": 2,
+            "type": "f32",
+            "result": "i32"
+          },
+          {
+            "index": 3,
+            "type": "f64",
+            "result": "i64"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_3",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 4,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_4",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ],
+          [
+            "export",
+            "\"drop_extra\"",
+            [
+              "func",
+              "38"
+            ]
+          ],
+          [
+            "export",
+            "\"float_write\"",
+            [
+              "func",
+              "39"
+            ]
+          ]
+        ],
+        "sourceSha256": "2c02e31fdbe1ccbe3ea3069c13a3b97a0e9275d59d041dec0087f8797b2b5840",
+        "outputSha256": "2e916d32ddaf0c09a453d86e5846c50655c11c9adda1df6d46e9587475ff870c",
+        "sourceBytes": 957,
+        "outputBytes": 1462,
+        "transformSeconds": 0.03942789999999996
+      },
+      "J": {
+        "full": "case-2-1-J-full.wasm",
+        "plain": "case-2-1-J-plain.wasm",
+        "no-bounds": "case-2-1-J-no-bounds.wasm",
+        "no-drop": "case-2-1-J-no-drop.wasm"
+      }
+    },
+    {
+      "name": "case-3-0",
+      "source": "case-3-0-source.wasm",
+      "full": "case-3-0-full.wasm",
+      "optimized": "case-3-0-full-O3.wasm",
+      "numeric": "case-3-0-numeric.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 38,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ]
+        ],
+        "sourceSha256": "0e6d8b89cf580bde768264ed6a8fc2558139be6fe84870443b65b201902bd5c9",
+        "outputSha256": "22bd1d800bab8f71875b03ed386671c749400def3bf1c60373f868806024cea6",
+        "sourceBytes": 848,
+        "outputBytes": 1801,
+        "transformSeconds": 0.04023470000000007
+      },
+      "numericManifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 38,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ]
+        ],
+        "sourceSha256": "0e6d8b89cf580bde768264ed6a8fc2558139be6fe84870443b65b201902bd5c9",
+        "outputSha256": "e490a2e2f6a13f3301879ba7fcd9d5d05daa46a1606591be7b74eb25ba0347e2",
+        "sourceBytes": 848,
+        "outputBytes": 1169,
+        "transformSeconds": 0.0389212000000001
+      },
+      "J": {
+        "full": "case-3-0-J-full.wasm",
+        "plain": "case-3-0-J-plain.wasm",
+        "no-bounds": "case-3-0-J-no-bounds.wasm",
+        "no-drop": "case-3-0-J-no-drop.wasm"
+      }
+    },
+    {
+      "name": "case-3-1",
+      "source": "case-3-1-source.wasm",
+      "full": "case-3-1-full.wasm",
+      "optimized": "case-3-1-full-O3.wasm",
+      "numeric": "case-3-1-numeric.wasm",
+      "manifest": {
+        "profile": "full",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 40,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          },
+          {
+            "index": 1,
+            "type": "i64",
+            "result": "i64"
+          },
+          {
+            "index": 2,
+            "type": "f32",
+            "result": "i32"
+          },
+          {
+            "index": 3,
+            "type": "f64",
+            "result": "i64"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_3",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 4,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_4",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ],
+          [
+            "export",
+            "\"drop_extra\"",
+            [
+              "func",
+              "38"
+            ]
+          ],
+          [
+            "export",
+            "\"float_write\"",
+            [
+              "func",
+              "39"
+            ]
+          ]
+        ],
+        "sourceSha256": "1668b1486237c15500002de744519388209390cf0e1066fbb308b2d45a3145f6",
+        "outputSha256": "9736b2f0d9793f3a69f880513b6273b7a17e32ce72c818e50d8dde11e5d1ff30",
+        "sourceBytes": 957,
+        "outputBytes": 2187,
+        "transformSeconds": 0.04545010000000005
+      },
+      "numericManifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": true,
+        "tableCount": 1,
+        "functions": 40,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          },
+          {
+            "index": 1,
+            "type": "i64",
+            "result": "i64"
+          },
+          {
+            "index": 2,
+            "type": "f32",
+            "result": "i32"
+          },
+          {
+            "index": 3,
+            "type": "f64",
+            "result": "i64"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 6,
+            "probe": "__sw_data_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 15,
+            "probe": "__sw_data_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "data",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_data_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "data",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 4,
+            "probe": "__sw_data_3",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 0,
+            "mode": "active",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_0",
+            "initialLive": false,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 1,
+            "mode": "passive",
+            "bytesOrEntries": 3,
+            "probe": "__sw_elem_1",
+            "initialLive": true,
+            "observable": true
+          },
+          {
+            "kind": "elem",
+            "index": 2,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_2",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 3,
+            "mode": "passive",
+            "bytesOrEntries": 0,
+            "probe": "__sw_elem_3",
+            "initialLive": false,
+            "observable": false
+          },
+          {
+            "kind": "elem",
+            "index": 4,
+            "mode": "passive",
+            "bytesOrEntries": 2,
+            "probe": "__sw_elem_4",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"size\"",
+            [
+              "func",
+              "4"
+            ]
+          ],
+          [
+            "export",
+            "\"grow\"",
+            [
+              "func",
+              "5"
+            ]
+          ],
+          [
+            "export",
+            "\"get\"",
+            [
+              "func",
+              "6"
+            ]
+          ],
+          [
+            "export",
+            "\"put\"",
+            [
+              "func",
+              "7"
+            ]
+          ],
+          [
+            "export",
+            "\"get8\"",
+            [
+              "func",
+              "8"
+            ]
+          ],
+          [
+            "export",
+            "\"put8\"",
+            [
+              "func",
+              "9"
+            ]
+          ],
+          [
+            "export",
+            "\"put64\"",
+            [
+              "func",
+              "10"
+            ]
+          ],
+          [
+            "export",
+            "\"get64\"",
+            [
+              "func",
+              "11"
+            ]
+          ],
+          [
+            "export",
+            "\"putf32\"",
+            [
+              "func",
+              "12"
+            ]
+          ],
+          [
+            "export",
+            "\"getf32\"",
+            [
+              "func",
+              "13"
+            ]
+          ],
+          [
+            "export",
+            "\"putf64\"",
+            [
+              "func",
+              "14"
+            ]
+          ],
+          [
+            "export",
+            "\"offset\"",
+            [
+              "func",
+              "15"
+            ]
+          ],
+          [
+            "export",
+            "\"side\"",
+            [
+              "func",
+              "16"
+            ]
+          ],
+          [
+            "export",
+            "\"copy\"",
+            [
+              "func",
+              "17"
+            ]
+          ],
+          [
+            "export",
+            "\"fill\"",
+            [
+              "func",
+              "18"
+            ]
+          ],
+          [
+            "export",
+            "\"init\"",
+            [
+              "func",
+              "19"
+            ]
+          ],
+          [
+            "export",
+            "\"initactive\"",
+            [
+              "func",
+              "20"
+            ]
+          ],
+          [
+            "export",
+            "\"ddrop\"",
+            [
+              "func",
+              "21"
+            ]
+          ],
+          [
+            "export",
+            "\"tsize\"",
+            [
+              "func",
+              "22"
+            ]
+          ],
+          [
+            "export",
+            "\"tgrow\"",
+            [
+              "func",
+              "23"
+            ]
+          ],
+          [
+            "export",
+            "\"tset\"",
+            [
+              "func",
+              "24"
+            ]
+          ],
+          [
+            "export",
+            "\"tnull\"",
+            [
+              "func",
+              "25"
+            ]
+          ],
+          [
+            "export",
+            "\"tget\"",
+            [
+              "func",
+              "26"
+            ]
+          ],
+          [
+            "export",
+            "\"tcopy\"",
+            [
+              "func",
+              "27"
+            ]
+          ],
+          [
+            "export",
+            "\"tfill\"",
+            [
+              "func",
+              "28"
+            ]
+          ],
+          [
+            "export",
+            "\"tinit\"",
+            [
+              "func",
+              "29"
+            ]
+          ],
+          [
+            "export",
+            "\"tactive\"",
+            [
+              "func",
+              "30"
+            ]
+          ],
+          [
+            "export",
+            "\"tdeclare\"",
+            [
+              "func",
+              "31"
+            ]
+          ],
+          [
+            "export",
+            "\"edrop\"",
+            [
+              "func",
+              "32"
+            ]
+          ],
+          [
+            "export",
+            "\"call\"",
+            [
+              "func",
+              "33"
+            ]
+          ],
+          [
+            "export",
+            "\"gget\"",
+            [
+              "func",
+              "34"
+            ]
+          ],
+          [
+            "export",
+            "\"gput\"",
+            [
+              "func",
+              "35"
+            ]
+          ],
+          [
+            "export",
+            "\"fault\"",
+            [
+              "func",
+              "36"
+            ]
+          ],
+          [
+            "export",
+            "\"work\"",
+            [
+              "func",
+              "37"
+            ]
+          ],
+          [
+            "export",
+            "\"drop_extra\"",
+            [
+              "func",
+              "38"
+            ]
+          ],
+          [
+            "export",
+            "\"float_write\"",
+            [
+              "func",
+              "39"
+            ]
+          ]
+        ],
+        "sourceSha256": "1668b1486237c15500002de744519388209390cf0e1066fbb308b2d45a3145f6",
+        "outputSha256": "fd8acbbc06a92ea4a15e873f81e53b891678031359e39b7eebf2f616a82b7e7a",
+        "sourceBytes": 957,
+        "outputBytes": 1462,
+        "transformSeconds": 0.03889100000000001
+      },
+      "J": {
+        "full": "case-3-1-J-full.wasm",
+        "plain": "case-3-1-J-plain.wasm",
+        "no-bounds": "case-3-1-J-no-bounds.wasm",
+        "no-drop": "case-3-1-J-no-drop.wasm"
+      }
+    }
+  ],
+  "generationSeconds": 2.3880678
+}

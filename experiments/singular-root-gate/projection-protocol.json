@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-12",
+  "purpose": "Check the exact boundary of the previous unique-internal-root rejection when only decoded output must be unique; not a new obfuscation claim",
+  "input": "classifications.json from the existing mod4 bilinear-system enumeration",
+  "input_sha256": "9133494c1e2806c4170e454555be46c5823897290aa2caf6b205b648252b8cce",
+  "decoders": ["x", "x+y", "x+y*y"],
+  "test": "For each nonempty root set, compare global singleton decoded image with local inclusion ker J_F(z) subset ker J_D(z) at every root",
+  "expected_invariant": "Global uniqueness implies local inclusion; local inclusion is not presumed sufficient",
+  "controls": ["F=(x,0), D=x has four roots and one decoded output", "F=(x+y-1,xy), D=x has nonsingular roots with different outputs"],
+  "budget": {"systems": 65536, "decoders": 3, "seconds_per_command": 60, "parameter_extensions": 0},
+  "followup": "Do not reject all redundant-state methods by root count; do not accept a local derivative check as full correctness or novelty"
+}

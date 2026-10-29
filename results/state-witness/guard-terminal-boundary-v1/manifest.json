@@ -1,0 +1,78 @@
+{
+  "rejectedProfile": "globals excluded",
+  "prepared": "global-phase-prepared.wasm",
+  "wasmtimeApiCalls": 8,
+  "traces": [
+    {
+      "sequence": [
+        "arm"
+      ],
+      "trace": [
+        {
+          "api": "arm",
+          "outcomes": [
+            [
+              "return",
+              null
+            ],
+            [
+              "return",
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sequence": [
+        "probe"
+      ],
+      "trace": [
+        {
+          "api": "probe",
+          "outcomes": [
+            [
+              "trap"
+            ],
+            [
+              "trap"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "sequence": [
+        "arm",
+        "probe"
+      ],
+      "trace": [
+        {
+          "api": "arm",
+          "outcomes": [
+            [
+              "return",
+              null
+            ],
+            [
+              "return",
+              null
+            ]
+          ]
+        },
+        {
+          "api": "probe",
+          "outcomes": [
+            [
+              "trap"
+            ],
+            [
+              "return",
+              42
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

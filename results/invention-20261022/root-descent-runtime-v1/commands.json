@@ -1,0 +1,686 @@
+[
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.plain.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.011471900000000007
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.plain.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (i32.mul\n      (local.tee 0\n        (i32.add\n          (local.get 0)\n          (local.get 1)))\n      (i32.xor\n        (local.get 0)\n        (local.get 2))))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009678999999999993
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.plain.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.plain.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010113299999999992
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.plain.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010309600000000002
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.constant.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009355100000000005
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.constant.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 5\n      (i32.const 34))\n    (local.set 6\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.sub\n          (i32.mul\n            (i32.xor\n              (local.get 2)\n              (local.get 3))\n            (i32.const 3))\n          (i32.mul\n            (local.get 4)\n            (i32.const 3)))\n        (local.get 4))\n      (local.set 5\n        (i32.add\n          (local.get 5)\n          (i32.sub\n            (i32.mul\n              (i32.mul\n                (local.get 3)\n                (local.get 4))\n              (i32.const 3))\n            (i32.mul\n              (local.get 5)\n              (i32.const 3)))))\n      (local.set 3\n        (i32.add\n          (local.get 3)\n          (i32.sub\n            (i32.mul\n              (i32.add\n                (local.get 0)\n                (local.get 1))\n              (i32.const 3))\n            (i32.mul\n              (local.get 3)\n              (i32.const 3)))))\n      (local.set 4)\n      (br_if 0 (;@1;)\n        (local.tee 6\n          (i32.sub\n            (local.get 6)\n            (i32.const 1)))))\n    (local.get 5))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009563600000000005
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.constant.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.constant.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010272599999999993
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.constant.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009236899999999992
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.congruent.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009838799999999981
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.congruent.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 6\n      (i32.const 34))\n    (local.set 8\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.add\n          (i32.add\n            (local.get 4)\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.add\n                    (local.get 0)\n                    (local.get 1)))\n                (local.tee 3\n                  (i32.xor\n                    (local.get 5)\n                    (i32.const -1034240563))))\n              (i32.mul\n                (local.get 3)\n                (local.get 5))))\n          (i32.sub\n            (i32.mul\n              (local.tee 3\n                (i32.or\n                  (i32.xor\n                    (local.get 4)\n                    (i32.const 1212581944))\n                  (i32.const 1)))\n              (local.tee 9\n                (i32.xor\n                  (local.get 2)\n                  (local.get 5))))\n            (i32.mul\n              (local.get 3)\n              (local.get 4))))\n        (i32.sub\n          (i32.mul\n            (local.tee 10\n              (i32.mul\n                (local.get 4)\n                (local.get 5)))\n            (local.tee 3\n              (i32.shl\n                (i32.xor\n                  (local.get 6)\n                  (i32.const -835562845))\n                (i32.const 1))))\n          (i32.mul\n            (local.get 3)\n            (local.get 6))))\n      (local.set 3\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 6)\n              (i32.sub\n                (i32.mul\n                  (local.tee 3\n                    (i32.xor\n                      (local.get 5)\n                      (i32.const 1620195198)))\n                  (local.get 7))\n                (i32.mul\n                  (local.get 3)\n                  (local.get 5))))\n            (i32.sub\n              (i32.mul\n                (local.get 9)\n                (local.tee 3\n                  (i32.xor\n                    (local.get 4)\n                    (i32.const -427949591))))\n              (i32.mul\n                (local.get 3)\n                (local.get 4))))\n          (i32.sub\n            (i32.mul\n              (local.tee 3\n                (i32.or\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const 1818872916))\n                  (i32.const 1)))\n              (local.get 10))\n            (i32.mul\n              (local.get 3)\n              (local.get 6)))))\n      (local.set 5\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 5)\n              (i32.sub\n                (i32.mul\n                  (local.get 7)\n                  (local.tee 7\n                    (i32.or\n                      (i32.xor\n                        (local.get 5)\n                        (i32.const 606290972))\n                      (i32.const 1))))\n                (i32.mul\n                  (local.get 5)\n                  (local.get 7))))\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.shl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const -1441853817))\n                    (i32.const 1)))\n                (local.get 9))\n              (i32.mul\n                (local.get 4)\n                (local.get 7))))\n          (i32.sub\n            (i32.mul\n              (local.tee 4\n                (i32.shl\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const 804968690))\n                  (i32.const 1)))\n              (local.get 10))\n            (i32.mul\n              (local.get 4)\n              (local.get 6)))))\n      (local.set 4)\n      (local.set 6\n        (local.get 3))\n      (br_if 0 (;@1;)\n        (local.tee 8\n          (i32.sub\n            (local.get 8)\n            (i32.const 1)))))\n    (local.get 6))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009551199999999982
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.congruent.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.congruent.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010598699999999989
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.congruent.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010778500000000024
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.rotated.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009340900000000013
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.rotated.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 6\n      (i32.const 34))\n    (local.set 8\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.add\n          (i32.add\n            (local.get 4)\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.add\n                    (local.get 0)\n                    (local.get 1)))\n                (local.tee 3\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 5)\n                      (i32.const -1034240563))\n                    (i32.const 7))))\n              (i32.mul\n                (local.get 3)\n                (local.get 5))))\n          (i32.sub\n            (i32.mul\n              (local.tee 3\n                (i32.or\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const 1212581944))\n                    (i32.const 10))\n                  (i32.const 1)))\n              (local.tee 9\n                (i32.xor\n                  (local.get 2)\n                  (local.get 5))))\n            (i32.mul\n              (local.get 3)\n              (local.get 4))))\n        (i32.sub\n          (i32.mul\n            (local.tee 10\n              (i32.mul\n                (local.get 4)\n                (local.get 5)))\n            (local.tee 3\n              (i32.shl\n                (i32.rotl\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const -835562845))\n                  (i32.const 13))\n                (i32.const 1))))\n          (i32.mul\n            (local.get 3)\n            (local.get 6))))\n      (local.set 3\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 6)\n              (i32.sub\n                (i32.mul\n                  (local.tee 3\n                    (i32.rotl\n                      (i32.xor\n                        (local.get 5)\n                        (i32.const 1620195198))\n                      (i32.const 12)))\n                  (local.get 7))\n                (i32.mul\n                  (local.get 3)\n                  (local.get 5))))\n            (i32.sub\n              (i32.mul\n                (local.tee 3\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const -427949591))\n                    (i32.const 15)))\n                (local.get 9))\n              (i32.mul\n                (local.get 3)\n                (local.get 4))))\n          (i32.sub\n            (i32.mul\n              (local.tee 3\n                (i32.or\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 6)\n                      (i32.const 1818872916))\n                    (i32.const 18))\n                  (i32.const 1)))\n              (local.get 10))\n            (i32.mul\n              (local.get 3)\n              (local.get 6)))))\n      (local.set 5\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 5)\n              (i32.sub\n                (i32.mul\n                  (local.get 7)\n                  (local.tee 7\n                    (i32.or\n                      (i32.rotl\n                        (i32.xor\n                          (local.get 5)\n                          (i32.const 606290972))\n                        (i32.const 2))\n                      (i32.const 1))))\n                (i32.mul\n                  (local.get 5)\n                  (local.get 7))))\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.shl\n                    (i32.rotl\n                      (i32.xor\n                        (local.get 4)\n                        (i32.const -1441853817))\n                      (i32.const 5))\n                    (i32.const 1)))\n                (local.get 9))\n              (i32.mul\n                (local.get 4)\n                (local.get 7))))\n          (i32.sub\n            (i32.mul\n              (local.tee 4\n                (i32.shl\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 6)\n                      (i32.const 804968690))\n                    (i32.const 8))\n                  (i32.const 1)))\n              (local.get 10))\n            (i32.mul\n              (local.get 4)\n              (local.get 6)))))\n      (local.set 4)\n      (local.set 6\n        (local.get 3))\n      (br_if 0 (;@1;)\n        (local.tee 8\n          (i32.sub\n            (local.get 8)\n            (i32.const 1)))))\n    (local.get 6))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.01002249999999999
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.rotated.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.rotated.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.01042949999999998
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.rotated.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009749000000000008
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\arith.rotated.O3.recovered.wasm",
+      "-O3",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.recovered.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.014866600000000008
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.recovered.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009546200000000005
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.recovered.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (i32.mul\n      (local.tee 0\n        (i32.add\n          (local.get 0)\n          (local.get 1)))\n      (i32.xor\n        (local.get 0)\n        (local.get 2))))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009675599999999951
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.recovered.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.recovered.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010344399999999976
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\arith.recovered.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009573200000000004
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.plain.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.00935530000000001
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.plain.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (i32.xor\n      (i32.add\n        (i32.and\n          (local.get 0)\n          (local.get 1))\n        (local.get 2))\n      (local.get 1)))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009805500000000023
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.plain.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.plain.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.01018800000000003
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.plain.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009460599999999986
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.constant.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009817299999999973
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.constant.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 5\n      (i32.const 34))\n    (local.set 6\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.sub\n          (i32.mul\n            (i32.add\n              (local.get 2)\n              (local.get 3))\n            (i32.const 3))\n          (i32.mul\n            (local.get 4)\n            (i32.const 3)))\n        (local.get 4))\n      (local.set 5\n        (i32.add\n          (local.get 5)\n          (i32.sub\n            (i32.mul\n              (i32.xor\n                (local.get 1)\n                (local.get 4))\n              (i32.const 3))\n            (i32.mul\n              (local.get 5)\n              (i32.const 3)))))\n      (local.set 3\n        (i32.add\n          (local.get 3)\n          (i32.sub\n            (i32.mul\n              (i32.and\n                (local.get 0)\n                (local.get 1))\n              (i32.const 3))\n            (i32.mul\n              (local.get 3)\n              (i32.const 3)))))\n      (local.set 4)\n      (br_if 0 (;@1;)\n        (local.tee 6\n          (i32.sub\n            (local.get 6)\n            (i32.const 1)))))\n    (local.get 5))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009854799999999997
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.constant.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.constant.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010920800000000008
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.constant.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009537999999999991
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.congruent.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.00964710000000002
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.congruent.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 6\n      (i32.const 34))\n    (local.set 8\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.add\n          (i32.add\n            (local.get 4)\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.and\n                    (local.get 0)\n                    (local.get 1)))\n                (local.tee 3\n                  (i32.xor\n                    (local.get 5)\n                    (i32.const -1034240563))))\n              (i32.mul\n                (local.get 3)\n                (local.get 5))))\n          (i32.sub\n            (i32.mul\n              (local.tee 9\n                (i32.add\n                  (local.get 2)\n                  (local.get 5)))\n              (local.tee 3\n                (i32.or\n                  (i32.xor\n                    (local.get 4)\n                    (i32.const 1212581944))\n                  (i32.const 1))))\n            (i32.mul\n              (local.get 3)\n              (local.get 4))))\n        (i32.sub\n          (i32.mul\n            (local.tee 10\n              (i32.xor\n                (local.get 1)\n                (local.get 4)))\n            (local.tee 3\n              (i32.shl\n                (i32.xor\n                  (local.get 6)\n                  (i32.const -835562845))\n                (i32.const 1))))\n          (i32.mul\n            (local.get 3)\n            (local.get 6))))\n      (local.set 3\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 6)\n              (i32.sub\n                (i32.mul\n                  (local.tee 3\n                    (i32.xor\n                      (local.get 5)\n                      (i32.const 1620195198)))\n                  (local.get 7))\n                (i32.mul\n                  (local.get 3)\n                  (local.get 5))))\n            (i32.sub\n              (i32.mul\n                (local.tee 3\n                  (i32.xor\n                    (local.get 4)\n                    (i32.const -427949591)))\n                (local.get 9))\n              (i32.mul\n                (local.get 3)\n                (local.get 4))))\n          (i32.sub\n            (i32.mul\n              (local.get 10)\n              (local.tee 3\n                (i32.or\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const 1818872916))\n                  (i32.const 1))))\n            (i32.mul\n              (local.get 3)\n              (local.get 6)))))\n      (local.set 5\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 5)\n              (i32.sub\n                (i32.mul\n                  (local.get 7)\n                  (local.tee 7\n                    (i32.or\n                      (i32.xor\n                        (local.get 5)\n                        (i32.const 606290972))\n                      (i32.const 1))))\n                (i32.mul\n                  (local.get 5)\n                  (local.get 7))))\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.shl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const -1441853817))\n                    (i32.const 1)))\n                (local.get 9))\n              (i32.mul\n                (local.get 4)\n                (local.get 7))))\n          (i32.sub\n            (i32.mul\n              (local.tee 4\n                (i32.shl\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const 804968690))\n                  (i32.const 1)))\n              (local.get 10))\n            (i32.mul\n              (local.get 4)\n              (local.get 6)))))\n      (local.set 4)\n      (local.set 6\n        (local.get 3))\n      (br_if 0 (;@1;)\n        (local.tee 8\n          (i32.sub\n            (local.get 8)\n            (i32.const 1)))))\n    (local.get 6))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.010067099999999995
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.congruent.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.congruent.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010795300000000008
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.congruent.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.00931120000000002
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.rotated.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009604899999999972
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.rotated.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 6\n      (i32.const 34))\n    (local.set 8\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.add\n          (i32.add\n            (local.get 4)\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.and\n                    (local.get 0)\n                    (local.get 1)))\n                (local.tee 3\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 5)\n                      (i32.const -1034240563))\n                    (i32.const 7))))\n              (i32.mul\n                (local.get 3)\n                (local.get 5))))\n          (i32.sub\n            (i32.mul\n              (local.tee 9\n                (i32.add\n                  (local.get 2)\n                  (local.get 5)))\n              (local.tee 3\n                (i32.or\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const 1212581944))\n                    (i32.const 10))\n                  (i32.const 1))))\n            (i32.mul\n              (local.get 3)\n              (local.get 4))))\n        (i32.sub\n          (i32.mul\n            (local.tee 10\n              (i32.xor\n                (local.get 1)\n                (local.get 4)))\n            (local.tee 3\n              (i32.shl\n                (i32.rotl\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const -835562845))\n                  (i32.const 13))\n                (i32.const 1))))\n          (i32.mul\n            (local.get 3)\n            (local.get 6))))\n      (local.set 3\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 6)\n              (i32.sub\n                (i32.mul\n                  (local.tee 3\n                    (i32.rotl\n                      (i32.xor\n                        (local.get 5)\n                        (i32.const 1620195198))\n                      (i32.const 12)))\n                  (local.get 7))\n                (i32.mul\n                  (local.get 3)\n                  (local.get 5))))\n            (i32.sub\n              (i32.mul\n                (local.tee 3\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const -427949591))\n                    (i32.const 15)))\n                (local.get 9))\n              (i32.mul\n                (local.get 3)\n                (local.get 4))))\n          (i32.sub\n            (i32.mul\n              (local.get 10)\n              (local.tee 3\n                (i32.or\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 6)\n                      (i32.const 1818872916))\n                    (i32.const 18))\n                  (i32.const 1))))\n            (i32.mul\n              (local.get 3)\n              (local.get 6)))))\n      (local.set 5\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 5)\n              (i32.sub\n                (i32.mul\n                  (local.get 7)\n                  (local.tee 7\n                    (i32.or\n                      (i32.rotl\n                        (i32.xor\n                          (local.get 5)\n                          (i32.const 606290972))\n                        (i32.const 2))\n                      (i32.const 1))))\n                (i32.mul\n                  (local.get 5)\n                  (local.get 7))))\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.shl\n                    (i32.rotl\n                      (i32.xor\n                        (local.get 4)\n                        (i32.const -1441853817))\n                      (i32.const 5))\n                    (i32.const 1)))\n                (local.get 9))\n              (i32.mul\n                (local.get 4)\n                (local.get 7))))\n          (i32.sub\n            (i32.mul\n              (local.tee 4\n                (i32.shl\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 6)\n                      (i32.const 804968690))\n                    (i32.const 8))\n                  (i32.const 1)))\n              (local.get 10))\n            (i32.mul\n              (local.get 4)\n              (local.get 6)))))\n      (local.set 4)\n      (local.set 6\n        (local.get 3))\n      (br_if 0 (;@1;)\n        (local.tee 8\n          (i32.sub\n            (local.get 8)\n            (i32.const 1)))))\n    (local.get 6))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009759799999999985
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.rotated.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.rotated.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010556300000000018
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.rotated.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010412100000000035
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\blend.rotated.O3.recovered.wasm",
+      "-O3",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.recovered.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.01489689999999999
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.recovered.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.00949180000000005
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.recovered.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (i32.xor\n      (i32.add\n        (i32.and\n          (local.get 0)\n          (local.get 1))\n        (local.get 2))\n      (local.get 1)))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009952799999999984
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.recovered.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.recovered.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010182199999999919
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\blend.recovered.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009405900000000078
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.plain.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010338599999999976
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.plain.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (i32.or\n      (i32.add\n        (i32.mul\n          (local.get 0)\n          (local.get 1))\n        (local.get 1))\n      (local.get 2)))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009469300000000014
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.plain.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.plain.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.011061699999999952
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.plain.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009823100000000085
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.constant.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.00926349999999998
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.constant.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 5\n      (i32.const 34))\n    (local.set 6\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.sub\n          (i32.mul\n            (i32.add\n              (local.get 1)\n              (local.get 3))\n            (i32.const 3))\n          (i32.mul\n            (local.get 4)\n            (i32.const 3)))\n        (local.get 4))\n      (local.set 5\n        (i32.add\n          (local.get 5)\n          (i32.sub\n            (i32.mul\n              (i32.or\n                (local.get 2)\n                (local.get 4))\n              (i32.const 3))\n            (i32.mul\n              (local.get 5)\n              (i32.const 3)))))\n      (local.set 3\n        (i32.add\n          (local.get 3)\n          (i32.sub\n            (i32.mul\n              (i32.mul\n                (local.get 0)\n                (local.get 1))\n              (i32.const 3))\n            (i32.mul\n              (local.get 3)\n              (i32.const 3)))))\n      (local.set 4)\n      (br_if 0 (;@1;)\n        (local.tee 6\n          (i32.sub\n            (local.get 6)\n            (i32.const 1)))))\n    (local.get 5))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009614400000000023
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.constant.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.constant.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010309299999999966
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.constant.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009631100000000004
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.congruent.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009398400000000029
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.congruent.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 6\n      (i32.const 34))\n    (local.set 8\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.add\n          (i32.add\n            (local.get 4)\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.mul\n                    (local.get 0)\n                    (local.get 1)))\n                (local.tee 3\n                  (i32.xor\n                    (local.get 5)\n                    (i32.const -1034240563))))\n              (i32.mul\n                (local.get 3)\n                (local.get 5))))\n          (i32.sub\n            (i32.mul\n              (local.tee 9\n                (i32.add\n                  (local.get 1)\n                  (local.get 5)))\n              (local.tee 3\n                (i32.or\n                  (i32.xor\n                    (local.get 4)\n                    (i32.const 1212581944))\n                  (i32.const 1))))\n            (i32.mul\n              (local.get 3)\n              (local.get 4))))\n        (i32.sub\n          (i32.mul\n            (local.tee 10\n              (i32.or\n                (local.get 2)\n                (local.get 4)))\n            (local.tee 3\n              (i32.shl\n                (i32.xor\n                  (local.get 6)\n                  (i32.const -835562845))\n                (i32.const 1))))\n          (i32.mul\n            (local.get 3)\n            (local.get 6))))\n      (local.set 3\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 6)\n              (i32.sub\n                (i32.mul\n                  (local.tee 3\n                    (i32.xor\n                      (local.get 5)\n                      (i32.const 1620195198)))\n                  (local.get 7))\n                (i32.mul\n                  (local.get 3)\n                  (local.get 5))))\n            (i32.sub\n              (i32.mul\n                (local.tee 3\n                  (i32.xor\n                    (local.get 4)\n                    (i32.const -427949591)))\n                (local.get 9))\n              (i32.mul\n                (local.get 3)\n                (local.get 4))))\n          (i32.sub\n            (i32.mul\n              (local.get 10)\n              (local.tee 3\n                (i32.or\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const 1818872916))\n                  (i32.const 1))))\n            (i32.mul\n              (local.get 3)\n              (local.get 6)))))\n      (local.set 5\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 5)\n              (i32.sub\n                (i32.mul\n                  (local.get 7)\n                  (local.tee 7\n                    (i32.or\n                      (i32.xor\n                        (local.get 5)\n                        (i32.const 606290972))\n                      (i32.const 1))))\n                (i32.mul\n                  (local.get 5)\n                  (local.get 7))))\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.shl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const -1441853817))\n                    (i32.const 1)))\n                (local.get 9))\n              (i32.mul\n                (local.get 4)\n                (local.get 7))))\n          (i32.sub\n            (i32.mul\n              (local.tee 4\n                (i32.shl\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const 804968690))\n                  (i32.const 1)))\n              (local.get 10))\n            (i32.mul\n              (local.get 4)\n              (local.get 6)))))\n      (local.set 4)\n      (local.set 6\n        (local.get 3))\n      (br_if 0 (;@1;)\n        (local.tee 8\n          (i32.sub\n            (local.get 8)\n            (i32.const 1)))))\n    (local.get 6))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009507500000000002
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.congruent.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.congruent.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.01005339999999999
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.congruent.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009343400000000002
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.rotated.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009830299999999959
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.rotated.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (local i32 i32 i32 i32 i32 i32 i32 i32 i32)\n    (local.set 4\n      (i32.const 17))\n    (local.set 6\n      (i32.const 34))\n    (local.set 8\n      (i32.const 96))\n    (loop  ;; label = @1\n      (i32.add\n        (i32.add\n          (i32.add\n            (local.get 4)\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.mul\n                    (local.get 0)\n                    (local.get 1)))\n                (local.tee 3\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 5)\n                      (i32.const -1034240563))\n                    (i32.const 7))))\n              (i32.mul\n                (local.get 3)\n                (local.get 5))))\n          (i32.sub\n            (i32.mul\n              (local.tee 9\n                (i32.add\n                  (local.get 1)\n                  (local.get 5)))\n              (local.tee 3\n                (i32.or\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const 1212581944))\n                    (i32.const 10))\n                  (i32.const 1))))\n            (i32.mul\n              (local.get 3)\n              (local.get 4))))\n        (i32.sub\n          (i32.mul\n            (local.tee 10\n              (i32.or\n                (local.get 2)\n                (local.get 4)))\n            (local.tee 3\n              (i32.shl\n                (i32.rotl\n                  (i32.xor\n                    (local.get 6)\n                    (i32.const -835562845))\n                  (i32.const 13))\n                (i32.const 1))))\n          (i32.mul\n            (local.get 3)\n            (local.get 6))))\n      (local.set 3\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 6)\n              (i32.sub\n                (i32.mul\n                  (local.tee 3\n                    (i32.rotl\n                      (i32.xor\n                        (local.get 5)\n                        (i32.const 1620195198))\n                      (i32.const 12)))\n                  (local.get 7))\n                (i32.mul\n                  (local.get 3)\n                  (local.get 5))))\n            (i32.sub\n              (i32.mul\n                (local.tee 3\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 4)\n                      (i32.const -427949591))\n                    (i32.const 15)))\n                (local.get 9))\n              (i32.mul\n                (local.get 3)\n                (local.get 4))))\n          (i32.sub\n            (i32.mul\n              (local.get 10)\n              (local.tee 3\n                (i32.or\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 6)\n                      (i32.const 1818872916))\n                    (i32.const 18))\n                  (i32.const 1))))\n            (i32.mul\n              (local.get 3)\n              (local.get 6)))))\n      (local.set 5\n        (i32.add\n          (i32.add\n            (i32.add\n              (local.get 5)\n              (i32.sub\n                (i32.mul\n                  (local.get 7)\n                  (local.tee 7\n                    (i32.or\n                      (i32.rotl\n                        (i32.xor\n                          (local.get 5)\n                          (i32.const 606290972))\n                        (i32.const 2))\n                      (i32.const 1))))\n                (i32.mul\n                  (local.get 5)\n                  (local.get 7))))\n            (i32.sub\n              (i32.mul\n                (local.tee 7\n                  (i32.shl\n                    (i32.rotl\n                      (i32.xor\n                        (local.get 4)\n                        (i32.const -1441853817))\n                      (i32.const 5))\n                    (i32.const 1)))\n                (local.get 9))\n              (i32.mul\n                (local.get 4)\n                (local.get 7))))\n          (i32.sub\n            (i32.mul\n              (local.tee 4\n                (i32.shl\n                  (i32.rotl\n                    (i32.xor\n                      (local.get 6)\n                      (i32.const 804968690))\n                    (i32.const 8))\n                  (i32.const 1)))\n              (local.get 10))\n            (i32.mul\n              (local.get 4)\n              (local.get 6)))))\n      (local.set 4)\n      (local.set 6\n        (local.get 3))\n      (br_if 0 (;@1;)\n        (local.tee 8\n          (i32.sub\n            (local.get 8)\n            (i32.const 1)))))\n    (local.get 6))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009630300000000092
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.rotated.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.rotated.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.010098700000000016
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.rotated.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.00992599999999999
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-v2\\product.rotated.O3.recovered.wasm",
+      "-O3",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.recovered.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.014769399999999933
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.recovered.O3.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009110900000000033
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.recovered.O3.wasm",
+      "--fold-exprs"
+    ],
+    "exit": 0,
+    "stdout": "(module\n  (type (;0;) (func (param i32 i32 i32) (result i32)))\n  (func (;0;) (type 0) (param i32 i32 i32) (result i32)\n    (i32.or\n      (i32.add\n        (i32.mul\n          (local.get 0)\n          (local.get 1))\n        (local.get 1))\n      (local.get 2)))\n  (export \"run\" (func 0)))\n",
+    "stderr": "",
+    "seconds": 0.009821999999999997
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.recovered.bench.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.recovered.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.01026310000000008
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261022\\root-descent-runtime-v1\\product.recovered.bench.wasm"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": "",
+    "seconds": 0.009028299999999989
+  }
+]

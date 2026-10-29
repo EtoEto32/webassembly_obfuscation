@@ -1,0 +1,11 @@
+# 公開復元器へのhost書込み診断：事前計画
+
+2026-10-24。閉じたAPIの条件が公開memoryへの書込みで壊れる例を、固定済みのwasm-migrate / Weaveにも適用する。新しい製品不具合を無理に増やすのではなく、既知のsegment復元差の影響が観測契約で変わるかを調べる。
+
+元moduleは1pageの公開memoryを持ち、非空passive data Aと同じbytesをactive segmentで初期配置する。entry `retire` はAをdropして終了する。診断API `mask` はAをinitした後、別segmentへの常に範囲外のinitでtrapする。Bの寿命には依存しないため、復元器が両方のpassive segmentを復活させる場合でも共通trapになる。
+
+stop0（drop前）とstop1（drop後）の復元を分け、各snapshotから別々に、(1) host書込みなし、(2) Aと重なる1byteを両側へ0としてからmask、を実行する。Aは1byte/4byteの二つ。同じ4byte例で、maskの先頭でAを書き直すrepair対照と、init長0の対照も作る。これらは手書きfixtureであり4独立bugではない。
+
+元binaryと中断点を追加したbinaryと各変換binaryの無移行結果を先に比較する。復元直後の元guest memory prefix（1page）の一致と、診断後の公開差を分ける。Weaveのprivate suffixはguest memoryの観測に混ぜない。診断は1回で終了するためWeaveのtrap終端driverを迂回しない。migrateの非entry API呼出しは実験adapterであり、作者によるサポート契約は未確認。
+
+Nodeで両復元器を実行し、migrate側をWasmtimeでも照合する。WeaveのJS driver全体をWasmtimeで再実装したとはしない。binary validation、未到達、変換失敗、元API不一致を分けて記録する。作者確認済み脆弱性との主張や外部への報告はしない。

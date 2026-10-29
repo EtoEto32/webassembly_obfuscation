@@ -1,0 +1,113 @@
+{
+  "status": "conditional",
+  "guard": [
+    [
+      [
+        "c",
+        65
+      ],
+      [
+        "m",
+        0
+      ]
+    ]
+  ],
+  "contract": "public",
+  "observedResources": [],
+  "iterations": 3,
+  "states": [
+    {
+      "left": [
+        false,
+        false
+      ],
+      "right": [
+        true,
+        false
+      ],
+      "guard": [
+        [
+          [
+            "c",
+            65
+          ],
+          [
+            "l",
+            0
+          ]
+        ],
+        [
+          [
+            "c",
+            65
+          ],
+          [
+            "r",
+            0
+          ]
+        ]
+      ]
+    },
+    {
+      "left": [
+        false,
+        false
+      ],
+      "right": [
+        false,
+        false
+      ],
+      "guard": [
+        [
+          [
+            "l",
+            0
+          ],
+          [
+            "r",
+            0
+          ]
+        ]
+      ]
+    }
+  ],
+  "cells": [
+    0
+  ],
+  "resources": {
+    "0": {
+      "kind": "memory",
+      "length": 65536
+    }
+  },
+  "functions": 2,
+  "protocol": "reenter",
+  "method": "relational-fixed-point",
+  "witness": {
+    "calls": [
+      {
+        "name": "mask",
+        "args": []
+      },
+      {
+        "name": "read",
+        "args": [
+          0
+        ]
+      }
+    ],
+    "shortestLength": 2
+  },
+  "concreteStoreEvaluation": "different",
+  "sourceSha256": "d12e113746060016d8890cc37f544c37c02bedaf86e6b020eef0edc73014305d",
+  "premises": {
+    "commonInitialMemoryAndTables": true,
+    "fixedMinimumCapacities": true,
+    "externalStateMutation": false,
+    "tableObservation": "original-function-index correspondence, not arbitrary function equivalence",
+    "scope": "restricted constant bulk APIs plus constant returns and byte read; not all WebAssembly"
+  },
+  "footprint": [
+    0
+  ]
+}

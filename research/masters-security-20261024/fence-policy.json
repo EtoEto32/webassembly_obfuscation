@@ -1,0 +1,14 @@
+{
+  "interface": "storage",
+  "function": "prepare",
+  "argument": "value",
+  "permissions": {
+    "value/@read": "read",
+    "value/@write": "write",
+    "value/@copy/source": "read",
+    "value/@copy/destination": "write",
+    "value/@batch/*": "write",
+    "value/@optional/primary": "write",
+    "value/@optional/backup/?": "write"
+  }
+}

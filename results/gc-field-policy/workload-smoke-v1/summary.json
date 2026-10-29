@@ -1,0 +1,744 @@
+{
+  "processes": 32,
+  "warmups": 12,
+  "samples": 11,
+  "seed": 261026,
+  "platform": "Windows-10-10.0.26100-SP0",
+  "python": "3.9.0 (tags/v3.9.0:9cf6752, Oct  5 2020, 15:34:40) [MSC v.1927 64 bit (AMD64)]",
+  "smoke": true,
+  "pairs": [
+    {
+      "mode": "shared",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\shared-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\shared-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\shared-policy.json",
+      "allowedImports": [
+        "refresh",
+        "view"
+      ],
+      "libraryBytes": 373,
+      "consumerBytes": 372,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 3,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": false,
+            "mode": "deny-all-gc",
+            "violations": [
+              {
+                "action": "read",
+                "field": 0,
+                "op": "array.get",
+                "operation": 0,
+                "type": 1
+              },
+              {
+                "action": "read",
+                "field": 0,
+                "op": "struct.get",
+                "operation": 1,
+                "type": 0
+              },
+              {
+                "action": "read",
+                "field": 1,
+                "op": "struct.get",
+                "operation": 2,
+                "type": 0
+              }
+            ]
+          }
+        ],
+        "totalSeconds": 0.0006157,
+        "validationSeconds": 0.0005453
+      },
+      "checkerWallMs": 10.087700000000005
+    },
+    {
+      "mode": "accessor",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\accessor-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\accessor-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\accessor-policy.json",
+      "allowedImports": [
+        "refresh",
+        "x",
+        "y"
+      ],
+      "libraryBytes": 394,
+      "consumerBytes": 358,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 0,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "deny-all-gc",
+            "violations": []
+          }
+        ],
+        "totalSeconds": 0.0006497,
+        "validationSeconds": 0.0005949
+      },
+      "checkerWallMs": 8.487099999999998
+    },
+    {
+      "mode": "project",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\project-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\project-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\project-policy.json",
+      "allowedImports": [
+        "refresh",
+        "view"
+      ],
+      "libraryBytes": 458,
+      "consumerBytes": 372,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 3,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": false,
+            "mode": "deny-all-gc",
+            "violations": [
+              {
+                "action": "read",
+                "field": 0,
+                "op": "array.get",
+                "operation": 0,
+                "type": 3
+              },
+              {
+                "action": "read",
+                "field": 0,
+                "op": "struct.get",
+                "operation": 1,
+                "type": 2
+              },
+              {
+                "action": "read",
+                "field": 1,
+                "op": "struct.get",
+                "operation": 2,
+                "type": 2
+              }
+            ]
+          }
+        ],
+        "totalSeconds": 0.0006538,
+        "validationSeconds": 0.0005912
+      },
+      "checkerWallMs": 8.610599999999996
+    },
+    {
+      "mode": "split",
+      "library": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\split-lib.wasm",
+      "consumer": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\split-client.wasm",
+      "policy": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\gc-field-policy\\workload-smoke-v1\\split-policy.json",
+      "allowedImports": [
+        "refresh",
+        "view"
+      ],
+      "libraryBytes": 387,
+      "consumerBytes": 372,
+      "checker": {
+        "features": "WASM2 + GC + function-references + tail-call + extended-const",
+        "obligations": 3,
+        "results": [
+          {
+            "accepted": true,
+            "mode": "none",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "local-index",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "canonical-exact",
+            "violations": []
+          },
+          {
+            "accepted": true,
+            "mode": "closure",
+            "violations": []
+          },
+          {
+            "accepted": false,
+            "mode": "deny-all-gc",
+            "violations": [
+              {
+                "action": "read",
+                "field": 0,
+                "op": "array.get",
+                "operation": 0,
+                "type": 3
+              },
+              {
+                "action": "read",
+                "field": 0,
+                "op": "struct.get",
+                "operation": 1,
+                "type": 2
+              },
+              {
+                "action": "read",
+                "field": 1,
+                "op": "struct.get",
+                "operation": 2,
+                "type": 2
+              }
+            ]
+          }
+        ],
+        "totalSeconds": 0.0006341,
+        "validationSeconds": 0.0005716
+      },
+      "checkerWallMs": 8.900199999999996
+    }
+  ],
+  "rows": [
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0005999999999986017,
+      "processMedians": [
+        0.0005999999999986017
+      ],
+      "pooledIqrMs": 9.999999999976694e-05,
+      "medianSetupMs": 11.242999999999999,
+      "medianInitMs": 0.08460000000000178,
+      "peakBytes": 39182336
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04149999999999987,
+      "processMedians": [
+        0.04149999999999987
+      ],
+      "pooledIqrMs": 0.0005999999999617422,
+      "medianSetupMs": 14.322700000000008,
+      "medianInitMs": 0.11600000000000499,
+      "peakBytes": 27484160
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 1,
+      "stride": 257,
+      "engine": "Node",
+      "medianMs": 0.0005000000000023874,
+      "processMedians": [
+        0.0005000000000023874
+      ],
+      "pooledIqrMs": 4.9999999998107114e-05,
+      "medianSetupMs": 10.874500000000001,
+      "medianInitMs": 0.08160000000000167,
+      "peakBytes": 39251968
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 1,
+      "stride": 257,
+      "engine": "Wasmtime",
+      "medianMs": 0.04170000000000562,
+      "processMedians": [
+        0.04170000000000562
+      ],
+      "pooledIqrMs": 0.0003999999999976245,
+      "medianSetupMs": 13.945800000000009,
+      "medianInitMs": 0.12349999999999861,
+      "peakBytes": 27467776
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0023999999999944066,
+      "processMedians": [
+        0.0023999999999944066
+      ],
+      "pooledIqrMs": 0.00014999999999787406,
+      "medianSetupMs": 11.100499999999997,
+      "medianInitMs": 0.0823999999999998,
+      "peakBytes": 39321600
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04409999999999137,
+      "processMedians": [
+        0.04409999999999137
+      ],
+      "pooledIqrMs": 0.0016999999999933735,
+      "medianSetupMs": 13.481499999999993,
+      "medianInitMs": 0.11219999999997898,
+      "peakBytes": 27607040
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 8,
+      "stride": 257,
+      "engine": "Node",
+      "medianMs": 0.002400000000001512,
+      "processMedians": [
+        0.002400000000001512
+      ],
+      "pooledIqrMs": 0.0002999999999993008,
+      "medianSetupMs": 10.994899999999998,
+      "medianInitMs": 0.08339999999999748,
+      "peakBytes": 39272448
+    },
+    {
+      "mode": "shared",
+      "n": 128,
+      "passes": 8,
+      "stride": 257,
+      "engine": "Wasmtime",
+      "medianMs": 0.043600000000004746,
+      "processMedians": [
+        0.043600000000004746
+      ],
+      "pooledIqrMs": 0.00020000000001962892,
+      "medianSetupMs": 13.132599999999995,
+      "medianInitMs": 0.11479999999999824,
+      "peakBytes": 27238400
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0012000000000043087,
+      "processMedians": [
+        0.0012000000000043087
+      ],
+      "pooledIqrMs": 0.00015000000000142677,
+      "medianSetupMs": 11.2028,
+      "medianInitMs": 0.10020000000000095,
+      "peakBytes": 39182336
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04450000000000287,
+      "processMedians": [
+        0.04450000000000287
+      ],
+      "pooledIqrMs": 0.005249999999984434,
+      "medianSetupMs": 13.658000000000003,
+      "medianInitMs": 0.11769999999999836,
+      "peakBytes": 27926528
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 1,
+      "stride": 257,
+      "engine": "Node",
+      "medianMs": 0.001300000000000523,
+      "processMedians": [
+        0.001300000000000523
+      ],
+      "pooledIqrMs": 0.0,
+      "medianSetupMs": 10.822999999999997,
+      "medianInitMs": 0.08539999999999992,
+      "peakBytes": 39170048
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 1,
+      "stride": 257,
+      "engine": "Wasmtime",
+      "medianMs": 0.04250000000000087,
+      "processMedians": [
+        0.04250000000000087
+      ],
+      "pooledIqrMs": 0.00044999999999906226,
+      "medianSetupMs": 13.865799999999998,
+      "medianInitMs": 0.11220000000000674,
+      "peakBytes": 28098560
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.007800000000003138,
+      "processMedians": [
+        0.007800000000003138
+      ],
+      "pooledIqrMs": 0.00010000000000331966,
+      "medianSetupMs": 10.8479,
+      "medianInitMs": 0.08299999999999841,
+      "peakBytes": 39174144
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04879999999998774,
+      "processMedians": [
+        0.04879999999998774
+      ],
+      "pooledIqrMs": 0.0016500000000058135,
+      "medianSetupMs": 13.339300000000012,
+      "medianInitMs": 0.11430000000001161,
+      "peakBytes": 27848704
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 8,
+      "stride": 257,
+      "engine": "Node",
+      "medianMs": 0.007699999999999818,
+      "processMedians": [
+        0.007699999999999818
+      ],
+      "pooledIqrMs": 9.999999999621423e-05,
+      "medianSetupMs": 11.245700000000003,
+      "medianInitMs": 0.10040000000000049,
+      "peakBytes": 39100416
+    },
+    {
+      "mode": "accessor",
+      "n": 128,
+      "passes": 8,
+      "stride": 257,
+      "engine": "Wasmtime",
+      "medianMs": 0.049499999999980115,
+      "processMedians": [
+        0.049499999999980115
+      ],
+      "pooledIqrMs": 0.0036999999999953737,
+      "medianSetupMs": 13.182899999999984,
+      "medianInitMs": 0.11049999999998561,
+      "peakBytes": 28352512
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.001300000000000523,
+      "processMedians": [
+        0.001300000000000523
+      ],
+      "pooledIqrMs": 4.9999999998107114e-05,
+      "medianSetupMs": 10.856499999999997,
+      "medianInitMs": 0.08559999999999945,
+      "peakBytes": 39337984
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.045199999999995244,
+      "processMedians": [
+        0.045199999999995244
+      ],
+      "pooledIqrMs": 0.0006000000000033756,
+      "medianSetupMs": 13.337699999999995,
+      "medianInitMs": 0.15740000000000198,
+      "peakBytes": 27815936
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 1,
+      "stride": 257,
+      "engine": "Node",
+      "medianMs": 0.001300000000000523,
+      "processMedians": [
+        0.001300000000000523
+      ],
+      "pooledIqrMs": 5.000000000165983e-05,
+      "medianSetupMs": 11.27,
+      "medianInitMs": 0.08579999999999899,
+      "peakBytes": 39407616
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 1,
+      "stride": 257,
+      "engine": "Wasmtime",
+      "medianMs": 0.045199999999995244,
+      "processMedians": [
+        0.045199999999995244
+      ],
+      "pooledIqrMs": 0.0034000000000283803,
+      "medianSetupMs": 13.448000000000015,
+      "medianInitMs": 0.1260999999999901,
+      "peakBytes": 28020736
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.003099999999996328,
+      "processMedians": [
+        0.003099999999996328
+      ],
+      "pooledIqrMs": 0.00030000000000285354,
+      "medianSetupMs": 10.887300000000003,
+      "medianInitMs": 0.08689999999999998,
+      "peakBytes": 39305216
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.047199999999997244,
+      "processMedians": [
+        0.047199999999997244
+      ],
+      "pooledIqrMs": 0.003550000000004938,
+      "medianSetupMs": 13.454499999999994,
+      "medianInitMs": 0.12879999999998448,
+      "peakBytes": 28241920
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 8,
+      "stride": 257,
+      "engine": "Node",
+      "medianMs": 0.003099999999996328,
+      "processMedians": [
+        0.003099999999996328
+      ],
+      "pooledIqrMs": 0.00010000000000331966,
+      "medianSetupMs": 10.699100000000001,
+      "medianInitMs": 0.08250000000000313,
+      "peakBytes": 39374848
+    },
+    {
+      "mode": "project",
+      "n": 128,
+      "passes": 8,
+      "stride": 257,
+      "engine": "Wasmtime",
+      "medianMs": 0.046400000000001995,
+      "processMedians": [
+        0.046400000000001995
+      ],
+      "pooledIqrMs": 0.002550000000003938,
+      "medianSetupMs": 13.676700000000015,
+      "medianInitMs": 0.13840000000001074,
+      "peakBytes": 28377088
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0005000000000023874,
+      "processMedians": [
+        0.0005000000000023874
+      ],
+      "pooledIqrMs": 0.00014999999999787406,
+      "medianSetupMs": 10.7208,
+      "medianInitMs": 0.08590000000000231,
+      "peakBytes": 39149568
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 1,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.04700000000001925,
+      "processMedians": [
+        0.04700000000001925
+      ],
+      "pooledIqrMs": 0.0060999999999811205,
+      "medianSetupMs": 13.683799999999996,
+      "medianInitMs": 0.13010000000002186,
+      "peakBytes": 28192768
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 1,
+      "stride": 257,
+      "engine": "Node",
+      "medianMs": 0.0005999999999986017,
+      "processMedians": [
+        0.0005999999999986017
+      ],
+      "pooledIqrMs": 9.999999999976694e-05,
+      "medianSetupMs": 10.5564,
+      "medianInitMs": 0.08809999999999718,
+      "peakBytes": 39219200
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 1,
+      "stride": 257,
+      "engine": "Wasmtime",
+      "medianMs": 0.04149999999999987,
+      "processMedians": [
+        0.04149999999999987
+      ],
+      "pooledIqrMs": 0.000799999999995249,
+      "medianSetupMs": 13.325899999999988,
+      "medianInitMs": 0.11329999999998286,
+      "peakBytes": 27942912
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Node",
+      "medianMs": 0.0036000000000058208,
+      "processMedians": [
+        0.0036000000000058208
+      ],
+      "pooledIqrMs": 0.0015499999999946112,
+      "medianSetupMs": 10.749800000000004,
+      "medianInitMs": 0.09740000000000038,
+      "peakBytes": 39223296
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 8,
+      "stride": 1,
+      "engine": "Wasmtime",
+      "medianMs": 0.043300000000023875,
+      "processMedians": [
+        0.043300000000023875
+      ],
+      "pooledIqrMs": 0.0005999999999894978,
+      "medianSetupMs": 13.94949999999999,
+      "medianInitMs": 0.11269999999999336,
+      "peakBytes": 27648000
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 8,
+      "stride": 257,
+      "engine": "Node",
+      "medianMs": 0.0023999999999944066,
+      "processMedians": [
+        0.0023999999999944066
+      ],
+      "pooledIqrMs": 0.00010000000000331966,
+      "medianSetupMs": 10.934600000000003,
+      "medianInitMs": 0.08630000000000138,
+      "peakBytes": 39206912
+    },
+    {
+      "mode": "split",
+      "n": 128,
+      "passes": 8,
+      "stride": 257,
+      "engine": "Wasmtime",
+      "medianMs": 0.045199999999995244,
+      "processMedians": [
+        0.045199999999995244
+      ],
+      "pooledIqrMs": 0.003199999999980996,
+      "medianSetupMs": 13.733699999999988,
+      "medianInitMs": 0.11709999999998111,
+      "peakBytes": 27250688
+    }
+  ]
+}

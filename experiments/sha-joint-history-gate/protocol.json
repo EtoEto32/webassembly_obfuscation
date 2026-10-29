@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-12",
+  "candidate": "Replace working state plus rolling schedule after round 23 by 24 A-history words, reconstruct four required schedule terms inside the next-A recurrence",
+  "inputs": "Existing baseline: empty, abc, long-known; length cases 0,1,31,32,55,56,63,64,65,127,128,129,255,256; boundary 511,512,513; first 16 random cases of length at most 1024",
+  "correctness": "Full padded, chained SHA-256 equals stored baseline digest and Python hashlib",
+  "recovery": "At each boundary i=24..64 recover all eight working words and last sixteen W words from history and public index/constants only",
+  "negative_control": "Flip one bit of reconstructed W24 in every block; require at least one final digest mismatch",
+  "budget": "20 minutes design and gate, 60 seconds execution; no Wasm lowering if explicit decoder defeats the proposed mechanism",
+  "novelty": "Unconfirmed; compare known SHA recurrences and explicit state encoding, do not claim that eliminating schedule storage alone is a new principle"
+}

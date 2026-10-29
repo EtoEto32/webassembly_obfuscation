@@ -1,0 +1,57 @@
+{
+  "inputs": [
+    {
+      "source": "046dc081-roundtrip",
+      "path": "results/runtime-mining/cross-dataset/swamped/046dc081-roundtrip.wasm",
+      "sha256": "046dc081076d9cea6831967619b862cc80fa8c2381346406ec639c899cda640f"
+    },
+    {
+      "source": "046dc081-nop10",
+      "path": "results/runtime-mining/cross-dataset/swamped/046dc081-nop10.wasm",
+      "sha256": "8b415acfe6cc0226c68321276acead78c2587f34259ff439dfaf310f5703f9e1"
+    },
+    {
+      "source": "046dc081-constsplit10",
+      "path": "results/runtime-mining/cross-dataset/swamped/046dc081-constsplit10.wasm",
+      "sha256": "924fed98766c285c276fdc9a52b18d88b38c7b338d4e35b891e70a6f77883805"
+    },
+    {
+      "source": "xmr-substitution",
+      "path": "results\\countermeasures\\transfer\\xmr-substitution-roundtrip.wasm",
+      "sha256": "eda4cec6258325a3fcbc595192b4da78156224258678ba0dbf33629d72342fb5"
+    },
+    {
+      "source": "A-Star-instrumentation-control",
+      "path": "data\\objects\\fb224d20ddae539463c104eb4daee8830c09d174a0f66589e855c8260c9fbbc8.bin",
+      "sha256": "fb224d20ddae539463c104eb4daee8830c09d174a0f66589e855c8260c9fbbc8"
+    },
+    {
+      "source": "CreaturePack-ordinary-control",
+      "path": "data\\objects\\2ce4304145f5f47e2a944ca537099a0afa4934561052c58162ba231e2d45381a.bin",
+      "sha256": "2ce4304145f5f47e2a944ca537099a0afa4934561052c58162ba231e2d45381a"
+    }
+  ],
+  "methods": [
+    "roundtrip",
+    "both",
+    "binaryen-local",
+    "binaryen-O2"
+  ],
+  "warmup_rounds": 1,
+  "measured_rounds": 6,
+  "scope": "Input read, disassembly/rewrite/assembly or optimizer CLI, then output validation. SHA and log serialization are outside timing. Python process reused, tool subprocess startup included; compare implemented pipelines, not algorithm-only cost.",
+  "normalizer_sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9",
+  "tools": {
+    "wasm2wat": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873",
+    "wat2wasm": "d5d742cb997c15ecc050fa64296bb72f53d005235e8fac66b14f3549d8567e6d",
+    "validate": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3",
+    "binaryen": "4217d75f81cf33c4032d82b5d531120069af1a4b43eb7737977bdb2c99a8f4ba"
+  },
+  "versions": {
+    "wabt": "1.0.42",
+    "binaryen": "wasm-opt version 133 (version_133)"
+  },
+  "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "target_wasm_executed": false
+}

@@ -1,0 +1,2615 @@
+{
+  "rows": [
+    {
+      "name": "clear-traps-full-reenter",
+      "source": "clear-traps.wasm",
+      "proof": {
+        "status": "impossible",
+        "guard": null,
+        "contract": "full",
+        "observedResources": [
+          0
+        ],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": {
+        "calls": [
+          {
+            "name": "clear",
+            "args": []
+          },
+          {
+            "name": "mask",
+            "args": []
+          }
+        ],
+        "shortestLength": 2
+      },
+      "traces": [
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": 2,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-traps-full-terminal",
+      "source": "clear-traps.wasm",
+      "proof": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "full",
+        "observedResources": [
+          0
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-traps-public-reenter",
+      "source": "clear-traps.wasm",
+      "proof": {
+        "status": "impossible",
+        "guard": null,
+        "contract": "public",
+        "observedResources": [
+          0
+        ],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": {
+        "calls": [
+          {
+            "name": "clear",
+            "args": []
+          },
+          {
+            "name": "mask",
+            "args": []
+          }
+        ],
+        "shortestLength": 2
+      },
+      "traces": [
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": 2,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-traps-public-terminal",
+      "source": "clear-traps.wasm",
+      "proof": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "public",
+        "observedResources": [
+          0
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-traps-returns-reenter",
+      "source": "clear-traps.wasm",
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "returns",
+        "observedResources": [],
+        "iterations": 1,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": []
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": []
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-traps-returns-terminal",
+      "source": "clear-traps.wasm",
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "returns",
+        "observedResources": [],
+        "iterations": 1,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": []
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": []
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-returns-full-reenter",
+      "source": "clear-returns.wasm",
+      "proof": {
+        "status": "impossible",
+        "guard": null,
+        "contract": "full",
+        "observedResources": [
+          0
+        ],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": {
+        "calls": [
+          {
+            "name": "clear",
+            "args": []
+          },
+          {
+            "name": "mask",
+            "args": []
+          }
+        ],
+        "shortestLength": 2
+      },
+      "traces": [
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": 2,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "return",
+                  null
+                ],
+                [
+                  "return",
+                  null
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-returns-full-terminal",
+      "source": "clear-returns.wasm",
+      "proof": {
+        "status": "impossible",
+        "guard": null,
+        "contract": "full",
+        "observedResources": [
+          0
+        ],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": {
+        "calls": [
+          {
+            "name": "clear",
+            "args": []
+          },
+          {
+            "name": "mask",
+            "args": []
+          }
+        ],
+        "shortestLength": 2
+      },
+      "traces": [
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": 2,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "return",
+                  null
+                ],
+                [
+                  "return",
+                  null
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-returns-public-reenter",
+      "source": "clear-returns.wasm",
+      "proof": {
+        "status": "impossible",
+        "guard": null,
+        "contract": "public",
+        "observedResources": [
+          0
+        ],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": {
+        "calls": [
+          {
+            "name": "clear",
+            "args": []
+          },
+          {
+            "name": "mask",
+            "args": []
+          }
+        ],
+        "shortestLength": 2
+      },
+      "traces": [
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": 2,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "return",
+                  null
+                ],
+                [
+                  "return",
+                  null
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-returns-public-terminal",
+      "source": "clear-returns.wasm",
+      "proof": {
+        "status": "impossible",
+        "guard": null,
+        "contract": "public",
+        "observedResources": [
+          0
+        ],
+        "iterations": 3,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": null
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": {
+        "calls": [
+          {
+            "name": "clear",
+            "args": []
+          },
+          {
+            "name": "mask",
+            "args": []
+          }
+        ],
+        "shortestLength": 2
+      },
+      "traces": [
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": 2,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "return",
+                  null
+                ],
+                [
+                  "return",
+                  null
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-returns-returns-reenter",
+      "source": "clear-returns.wasm",
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "returns",
+        "observedResources": [],
+        "iterations": 1,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": []
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": []
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "return",
+                  null
+                ],
+                [
+                  "return",
+                  null
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "return",
+                  null
+                ],
+                [
+                  "return",
+                  null
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-returns-returns-terminal",
+      "source": "clear-returns.wasm",
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "returns",
+        "observedResources": [],
+        "iterations": 1,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": []
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": []
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "return",
+                  null
+                ],
+                [
+                  "return",
+                  null
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "return",
+                  null
+                ],
+                [
+                  "return",
+                  null
+                ]
+              ],
+              "firstBytes": [
+                0,
+                0
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                0,
+                65
+              ],
+              "memoryEqual": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-preserves-full-reenter",
+      "source": "clear-preserves.wasm",
+      "proof": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "full",
+        "observedResources": [
+          0
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-preserves-full-terminal",
+      "source": "clear-preserves.wasm",
+      "proof": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "full",
+        "observedResources": [
+          0
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-preserves-public-reenter",
+      "source": "clear-preserves.wasm",
+      "proof": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "public",
+        "observedResources": [
+          0
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-preserves-public-terminal",
+      "source": "clear-preserves.wasm",
+      "proof": {
+        "status": "conditional",
+        "guard": [
+          [
+            [
+              "c",
+              65
+            ],
+            [
+              "m",
+              0
+            ]
+          ]
+        ],
+        "contract": "public",
+        "observedResources": [
+          0
+        ],
+        "iterations": 2,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "l",
+                  0
+                ]
+              ],
+              [
+                [
+                  "c",
+                  65
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": [
+              [
+                [
+                  "l",
+                  0
+                ],
+                [
+                  "r",
+                  0
+                ]
+              ]
+            ]
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-preserves-returns-reenter",
+      "source": "clear-preserves.wasm",
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "returns",
+        "observedResources": [],
+        "iterations": 1,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": []
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": []
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "reenter"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            },
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "clear-preserves-returns-terminal",
+      "source": "clear-preserves.wasm",
+      "proof": {
+        "status": "unconditional",
+        "guard": [],
+        "contract": "returns",
+        "observedResources": [],
+        "iterations": 1,
+        "states": [
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              true,
+              false,
+              false
+            ],
+            "guard": []
+          },
+          {
+            "left": [
+              false,
+              false,
+              false
+            ],
+            "right": [
+              false,
+              false,
+              false
+            ],
+            "guard": []
+          }
+        ],
+        "cells": [
+          0
+        ],
+        "resources": {
+          "0": {
+            "kind": "memory",
+            "length": 65536
+          }
+        },
+        "functions": 4,
+        "protocol": "terminal"
+      },
+      "witness": null,
+      "traces": [
+        {
+          "sequence": [
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "mask",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        },
+        {
+          "sequence": [
+            "clear",
+            "mask"
+          ],
+          "difference": null,
+          "trace": [
+            {
+              "api": "clear",
+              "outcomes": [
+                [
+                  "trap"
+                ],
+                [
+                  "trap"
+                ]
+              ],
+              "firstBytes": [
+                65,
+                65
+              ],
+              "memoryEqual": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "wasmtimeApiCalls": 108,
+  "preparationApiCalls": 84,
+  "scope": "Hand-reduced mechanism from mixed-15; not claimed to be a formally minimized program. Original exports only; both initial states reached by original prefixes."
+}

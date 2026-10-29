@@ -1,0 +1,337 @@
+{
+  "z3": "4.13.3",
+  "conditions": 18,
+  "rows": [
+    {
+      "wasm": "mix.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "xor",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "x",
+          7
+        ]
+      ]
+    },
+    {
+      "wasm": "mix-alias.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "xor",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "x",
+          7
+        ]
+      ]
+    },
+    {
+      "wasm": "mix-plain-O2.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "xor",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "x",
+          7
+        ]
+      ]
+    },
+    {
+      "wasm": "mix-alias-O2.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "xor",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "x",
+          7
+        ]
+      ]
+    },
+    {
+      "wasm": "mix-plain-O3.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "xor",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "x",
+          7
+        ]
+      ]
+    },
+    {
+      "wasm": "mix-alias-O3.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "xor",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "x",
+          7
+        ]
+      ]
+    },
+    {
+      "wasm": "carry.wasm",
+      "result": "unsat",
+      "expression": [
+        "xor",
+        [
+          "add",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "y",
+          13
+        ]
+      ]
+    },
+    {
+      "wasm": "carry-alias.wasm",
+      "result": "unsat",
+      "expression": [
+        "xor",
+        [
+          "add",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "y",
+          13
+        ]
+      ]
+    },
+    {
+      "wasm": "carry-plain-O2.wasm",
+      "result": "unsat",
+      "expression": [
+        "xor",
+        [
+          "add",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "y",
+          13
+        ]
+      ]
+    },
+    {
+      "wasm": "carry-alias-O2.wasm",
+      "result": "unsat",
+      "expression": [
+        "xor",
+        [
+          "add",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "y",
+          13
+        ]
+      ]
+    },
+    {
+      "wasm": "carry-plain-O3.wasm",
+      "result": "unsat",
+      "expression": [
+        "xor",
+        [
+          "add",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "y",
+          13
+        ]
+      ]
+    },
+    {
+      "wasm": "carry-alias-O3.wasm",
+      "result": "unsat",
+      "expression": [
+        "xor",
+        [
+          "add",
+          "x",
+          "y"
+        ],
+        [
+          "rot",
+          "y",
+          13
+        ]
+      ]
+    },
+    {
+      "wasm": "mask.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "and",
+          "x",
+          [
+            "rot",
+            "y",
+            3
+          ]
+        ],
+        [
+          "xor",
+          "y",
+          1831565813
+        ]
+      ]
+    },
+    {
+      "wasm": "mask-alias.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "and",
+          "x",
+          [
+            "rot",
+            "y",
+            3
+          ]
+        ],
+        [
+          "xor",
+          "y",
+          1831565813
+        ]
+      ]
+    },
+    {
+      "wasm": "mask-plain-O2.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "and",
+          "x",
+          [
+            "rot",
+            "y",
+            3
+          ]
+        ],
+        [
+          "xor",
+          "y",
+          1831565813
+        ]
+      ]
+    },
+    {
+      "wasm": "mask-alias-O2.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "and",
+          "x",
+          [
+            "rot",
+            "y",
+            3
+          ]
+        ],
+        [
+          "xor",
+          "y",
+          1831565813
+        ]
+      ]
+    },
+    {
+      "wasm": "mask-plain-O3.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "and",
+          "x",
+          [
+            "rot",
+            "y",
+            3
+          ]
+        ],
+        [
+          "xor",
+          "y",
+          1831565813
+        ]
+      ]
+    },
+    {
+      "wasm": "mask-alias-O3.wasm",
+      "result": "unsat",
+      "expression": [
+        "add",
+        [
+          "and",
+          "x",
+          [
+            "rot",
+            "y",
+            3
+          ]
+        ],
+        [
+          "xor",
+          "y",
+          1831565813
+        ]
+      ]
+    }
+  ],
+  "scope": "Learned formula vs original supported pure i32 expression for all input bitvectors. Does not prove GC compiler correctness."
+}

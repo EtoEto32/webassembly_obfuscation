@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-12",
+  "candidate": "Injective E: Z/(2^w) -> G with E(x+y mod 2^w)=E(x)E(y)",
+  "status_before_run": "Known exponent representation and known Pohlig-Hellman recovery; dismissal regression only, not a novel obfuscator",
+  "primary": "Recover all supplied encoded values from public modulus, generator and width only",
+  "inputs": "width8: all 256 values and 65536 addition pairs; width32: eight boundary values crossed and 256 random pairs",
+  "seed": 87123,
+  "limits": {"cycle_minutes": 20, "attack_seconds": 20, "memory": "host default", "parameter_search": 0},
+  "controls": ["smaller generator order loses the high bit", "odd order breaks modular wrap", "zero is rejected as an invalid group value"],
+  "decision": "Reject at the principle gate; no Wasm/SHA expansion or comparative cost benchmark"
+}

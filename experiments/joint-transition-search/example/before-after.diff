@@ -1,0 +1,11 @@
+--- before.py
++++ after.py
+@@ -6,7 +6,7 @@
+ def step(label, state):
+     a, b = state & M, state >> W
+     if label == 0:
+-        a = (a + b) & M
++        a = (a - b) & M
+     elif label == 1:
+         a ^= rol(b)
+         b = (b + 1) & M

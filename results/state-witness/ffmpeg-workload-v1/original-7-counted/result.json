@@ -1,0 +1,194 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "wasm": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-ffmpeg-0.12.10-v1\\core-mt\\ffmpeg-core.wasm",
+  "wasmSha256": "be2c97605366b78f3f13e21b52e81a55a79e1f29c133b03a68ec187b1a2ec41a",
+  "adapter": "unchanged browser-worker glue on Node worker_threads adapter",
+  "seed": 7,
+  "mode": "counted",
+  "sources": {
+    "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\state-witness\\ffmpeg-workload.cjs": "c49e366fc8cfa3bcefaf4ccff0a9ffa6b9d342ef80cf0f78138acecd9c8f8fcb",
+    "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\state-witness\\ffmpeg-worker-adapter.cjs": "869084dd46e1ab54f67bc52f801a1930bfef3084f191e593594a17f1fabdfd3a",
+    "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-ffmpeg-glue-v2\\ffmpeg-core.js": "62f5f5f468a37861da12c4581c321bb5ca8ba2f7b776377e08dd2ab72de293f9",
+    "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-ffmpeg-glue-v2\\ffmpeg-core.worker.js": "97322a227c5f3d5ccfd0d0825890a6deeba137106a09b633ca75cadf49ddd2cb"
+  },
+  "start": "2026-10-25T13:52:46.508Z",
+  "commands": [
+    {
+      "name": "audio-resample",
+      "args": [
+        "-i",
+        "input.wav",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "resampled.pcm"
+      ],
+      "code": 0,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 20,
+        "Ma": 1,
+        "Va": 16
+      },
+      "output": {
+        "name": "resampled.pcm",
+        "bytes": 8000,
+        "sha256": "c758a8fe078be5629835028354becaa82ceb3104cbe7a2a500117f986ac93dbc"
+      }
+    },
+    {
+      "name": "audio-lossless",
+      "args": [
+        "-i",
+        "input.wav",
+        "-c:a",
+        "flac",
+        "-threads",
+        "1",
+        "encoded.flac"
+      ],
+      "code": 0,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 16,
+        "Ma": 1
+      },
+      "output": {
+        "name": "encoded.flac",
+        "bytes": 11829,
+        "sha256": "913839b96dd06781bb4e79571d588bf08b0252c22dc0167e1714f76099059456"
+      }
+    },
+    {
+      "name": "audio-roundtrip",
+      "args": [
+        "-i",
+        "encoded.flac",
+        "-f",
+        "s16le",
+        "-c:a",
+        "pcm_s16le",
+        "roundtrip.pcm"
+      ],
+      "code": 0,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 16,
+        "Ma": 1,
+        "Va": 16
+      },
+      "output": {
+        "name": "roundtrip.pcm",
+        "bytes": 4000,
+        "sha256": "7e93e4912e39807768aff48abb1177c6c1e54d0438e821db51eca31d4fc27cd9"
+      }
+    },
+    {
+      "name": "image-scale",
+      "args": [
+        "-i",
+        "input.ppm",
+        "-vf",
+        "scale=8:8",
+        "-frames:v",
+        "1",
+        "-threads",
+        "1",
+        "-f",
+        "rawvideo",
+        "-pix_fmt",
+        "rgb24",
+        "scaled.rgb"
+      ],
+      "code": 0,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 22,
+        "Ma": 1
+      },
+      "output": {
+        "name": "scaled.rgb",
+        "bytes": 192,
+        "sha256": "2bdc54aadf69964c04726f93c76aa8fa5d8e0e6eb27eb8487c5c23de4cf53069"
+      }
+    },
+    {
+      "name": "invalid-input",
+      "args": [
+        "-i",
+        "missing.wav",
+        "-f",
+        "s16le",
+        "invalid.pcm"
+      ],
+      "code": 1,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "missing.wav: No such file or directory"
+        },
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 14,
+        "Ma": 1
+      }
+    }
+  ],
+  "mainThreadExportCalls": {
+    "Ga": 1,
+    "Ra": 1,
+    "Oa": 1,
+    "Ha": 88,
+    "Ma": 5,
+    "Va": 32
+  },
+  "mainThreadExportThrows": {
+    "Ma:RuntimeError:Aborted(). Build with -sASSERTIONS for more info.": 5
+  },
+  "errors": [],
+  "initialized": true,
+  "workersCreated": 32,
+  "inputs": {
+    "wav": {
+      "bytes": 4044,
+      "sha256": "b3790532a6ea8b255fafc6dd1558b6b50c3aada0e9cd1c0cf27b7de613744515"
+    },
+    "ppm": {
+      "bytes": 781,
+      "sha256": "7db7d2f14323a9cd9ff40ca7c11c9603c24c767654ae09d47f02b5f1d61bc269"
+    }
+  },
+  "roundtripMatchesOriginalPcm": true,
+  "status": "passed",
+  "end": "2026-10-25T13:52:46.747Z"
+}

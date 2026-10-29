@@ -1,0 +1,1765 @@
+{
+  "wasmtime": "50.0.1",
+  "summary": {
+    "pairs": 67,
+    "counts": {
+      "closed-original-api-model": 41,
+      "api-witness": 14,
+      "unsupported": 12
+    },
+    "uniquePairs": 61,
+    "uniqueCounts": {
+      "closed-original-api-model": 41,
+      "api-witness": 14,
+      "unsupported": 6
+    }
+  },
+  "rows": [
+    {
+      "source": "memory_init/suite.0.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          },
+          {
+            "node": 0,
+            "api": "load8_u",
+            "kind": "all-i32-readonly-self-loop"
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.0.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          },
+          {
+            "node": 0,
+            "api": "load8_u",
+            "kind": "all-i32-readonly-self-loop"
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.1.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "memory",
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.1.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 2,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          },
+          {
+            "node": 0,
+            "api": "load8_u",
+            "kind": "all-i32-readonly-self-loop"
+          },
+          {
+            "node": 1,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          },
+          {
+            "node": 1,
+            "api": "load8_u",
+            "kind": "all-i32-readonly-self-loop"
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.2.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 2,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          },
+          {
+            "node": 0,
+            "api": "load8_u",
+            "kind": "all-i32-readonly-self-loop"
+          },
+          {
+            "node": 1,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          },
+          {
+            "node": 1,
+            "api": "load8_u",
+            "kind": "all-i32-readonly-self-loop"
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.2.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "memory",
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.7.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "memory",
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.16.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "memory",
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.17.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.18.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.19.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.20.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.21.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.22.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.23.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.24.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.25.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "memory_init/suite.89.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "memory_init/suite.90.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "memory_init/suite.91.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "memory_init/suite.92.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "memory_init/suite.93.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "memory_init/suite.94.wasm",
+      "segment": {
+        "kind": "data",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "table_init/suite.12.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.12.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.13.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments",
+              "table"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.13.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 2,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          },
+          {
+            "node": 1,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.15.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.15.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.21.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.21.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.22.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.22.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.23.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.23.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.24.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.24.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.25.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.25.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.26.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.26.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.27.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.27.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.28.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.28.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.29.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.29.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.30.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.30.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.31.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.31.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.32.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.32.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.33.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.33.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.34.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.34.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.35.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "api-witness",
+        "witness": [
+          "test"
+        ],
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.35.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "changed": {
+              "value": null
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.36.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 1
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.36.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 3
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "changed": {
+              "trap": true
+            },
+            "stateDifferences": [
+              "segments"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "source": "table_init/suite.100.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "table_init/suite.101.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "table_init/suite.102.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "table_init/suite.103.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "table_init/suite.104.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    },
+    {
+      "source": "table_init/suite.105.wasm",
+      "segment": {
+        "kind": "elem",
+        "index": 0
+      },
+      "matchesNode": true,
+      "result": {
+        "status": "unsupported",
+        "reason": "signature/body outside exact finite-action profile"
+      }
+    }
+  ],
+  "scope": "Finite-profile models only; table identity via statically checked unique constant-return functions."
+}

@@ -1,0 +1,294 @@
+{
+  "created_utc": "2026-10-05T18:27:59.236561+00:00",
+  "input": "results/sensitivity/wasmmal-module-audit.csv",
+  "input_sha256": "99ccc845ff0675979d1f9a26ea37b17f83ed8368daa049c100fff733f7c6cb53",
+  "successful_malware_sha256": 7510,
+  "random_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ],
+  "assignment_rules": {
+    "lex_first": "Smallest best-score reference SHA.",
+    "lex_last": "Largest best-score reference SHA.",
+    "ambiguous_singleton": "Nonanchors with multiple best scores remain singleton groups.",
+    "random": "Uniform draw from each best-score tie set; anchors retain own identity."
+  },
+  "anchor_rule": "Exact reference seeds retain their own identity under every rule.",
+  "random_order": "Python random.Random(seed), rows in ascending SHA order; same choices at every threshold.",
+  "eligible": [
+    {
+      "threshold": 0.8,
+      "eligible_members_including_anchors": 6860,
+      "ambiguous_nonanchor_members": 2428,
+      "most_common_tie_sets": [
+        {
+          "references": [
+            "59955b4c538d0b45961e19b70c4ab7a101968561a353186045bde628c0d72dbb",
+            "5bc5334382f650c8a7cc38d651b86db06eb755b64662eaef42c6040cf879f0ce",
+            "65debcbe8c6e64a04c9c3b75794b77644526a514d89a09f037f2cf53f2aa2f98",
+            "68ca7c0e99a5df6d36e52008df1b20c108d1821f28a40c349c1516900bc30322",
+            "6b8c789921d0ca5531295477c7703d2f5ec619a8bbb51db41928b5c4f1c3f6e4",
+            "a27b45ef89b961b8c8ff78b6ab580ce0d866647c3ae03c4ab0f37ba15c433f8f",
+            "a74a7cb854cd33442d8ef481d341b4a0632b88d8def1d22852adb10de8f7cbf3",
+            "c1be4071ccc59e468803cb9b9eae25ec3aaff24f1d37ee0b81ba9126f8334572",
+            "f0b244090f9e4a9f599a68f42d7a89e003026202324cf86c6cd4a46ad8c98da8"
+          ],
+          "members": 1125
+        },
+        {
+          "references": [
+            "000415b2639c960e039299fde2a52e7e9c692c212c1fa6ca4701eec637ff6a30",
+            "3f5961a80d3aa7cb06520fd8e89558170936a1a4a3fe16e9fc84c379518c0759",
+            "c54acc165bf9955d70acb7271e56c929ee047bede78b1b1b0d3f9dc8abbdb788"
+          ],
+          "members": 342
+        },
+        {
+          "references": [
+            "089dd3123f4322e38e3130b3c051b00f66b52070a5634242f4310a4c64709eac",
+            "577639241b84b4955139e568c6fbf61b3edc258d0a7e09a5efaf11331e1244bc"
+          ],
+          "members": 244
+        },
+        {
+          "references": [
+            "489ba8af128c140a08486626912a6bc8c3dc7810f31f738bdd06fa21307485b5",
+            "8ebf4e44c47b6b61d313bd2580bd788a1daa029541fe210cccfa13d1bb66cc89"
+          ],
+          "members": 242
+        },
+        {
+          "references": [
+            "c9085853c232aef6470e6ae03aab94605f89e881ac5bde14c470f5abefda4d00",
+            "e02a79889f1ed50ff7af47ccd95097434c04ff2d5512ef600cd6bcbfa0f52bda"
+          ],
+          "members": 240
+        }
+      ]
+    },
+    {
+      "threshold": 0.9,
+      "eligible_members_including_anchors": 6284,
+      "ambiguous_nonanchor_members": 2148,
+      "most_common_tie_sets": [
+        {
+          "references": [
+            "59955b4c538d0b45961e19b70c4ab7a101968561a353186045bde628c0d72dbb",
+            "5bc5334382f650c8a7cc38d651b86db06eb755b64662eaef42c6040cf879f0ce",
+            "65debcbe8c6e64a04c9c3b75794b77644526a514d89a09f037f2cf53f2aa2f98",
+            "68ca7c0e99a5df6d36e52008df1b20c108d1821f28a40c349c1516900bc30322",
+            "6b8c789921d0ca5531295477c7703d2f5ec619a8bbb51db41928b5c4f1c3f6e4",
+            "a27b45ef89b961b8c8ff78b6ab580ce0d866647c3ae03c4ab0f37ba15c433f8f",
+            "a74a7cb854cd33442d8ef481d341b4a0632b88d8def1d22852adb10de8f7cbf3",
+            "c1be4071ccc59e468803cb9b9eae25ec3aaff24f1d37ee0b81ba9126f8334572",
+            "f0b244090f9e4a9f599a68f42d7a89e003026202324cf86c6cd4a46ad8c98da8"
+          ],
+          "members": 1017
+        },
+        {
+          "references": [
+            "000415b2639c960e039299fde2a52e7e9c692c212c1fa6ca4701eec637ff6a30",
+            "3f5961a80d3aa7cb06520fd8e89558170936a1a4a3fe16e9fc84c379518c0759",
+            "c54acc165bf9955d70acb7271e56c929ee047bede78b1b1b0d3f9dc8abbdb788"
+          ],
+          "members": 288
+        },
+        {
+          "references": [
+            "489ba8af128c140a08486626912a6bc8c3dc7810f31f738bdd06fa21307485b5",
+            "8ebf4e44c47b6b61d313bd2580bd788a1daa029541fe210cccfa13d1bb66cc89"
+          ],
+          "members": 232
+        },
+        {
+          "references": [
+            "089dd3123f4322e38e3130b3c051b00f66b52070a5634242f4310a4c64709eac",
+            "577639241b84b4955139e568c6fbf61b3edc258d0a7e09a5efaf11331e1244bc"
+          ],
+          "members": 216
+        },
+        {
+          "references": [
+            "0d99646229ea6010fa510333161653955eadb11acdb51c6cc886d1108e2fc626",
+            "bc2b3cf327655f03a63e6fefb67120a868549ddc34b1766a95895702b20bc3ab",
+            "f702aa92f383622849e99d7f70c77e0142bcf0b2cd6c03ed078efa1fac6bd275"
+          ],
+          "members": 205
+        }
+      ]
+    },
+    {
+      "threshold": 0.95,
+      "eligible_members_including_anchors": 5457,
+      "ambiguous_nonanchor_members": 1818,
+      "most_common_tie_sets": [
+        {
+          "references": [
+            "59955b4c538d0b45961e19b70c4ab7a101968561a353186045bde628c0d72dbb",
+            "5bc5334382f650c8a7cc38d651b86db06eb755b64662eaef42c6040cf879f0ce",
+            "65debcbe8c6e64a04c9c3b75794b77644526a514d89a09f037f2cf53f2aa2f98",
+            "68ca7c0e99a5df6d36e52008df1b20c108d1821f28a40c349c1516900bc30322",
+            "6b8c789921d0ca5531295477c7703d2f5ec619a8bbb51db41928b5c4f1c3f6e4",
+            "a27b45ef89b961b8c8ff78b6ab580ce0d866647c3ae03c4ab0f37ba15c433f8f",
+            "a74a7cb854cd33442d8ef481d341b4a0632b88d8def1d22852adb10de8f7cbf3",
+            "c1be4071ccc59e468803cb9b9eae25ec3aaff24f1d37ee0b81ba9126f8334572",
+            "f0b244090f9e4a9f599a68f42d7a89e003026202324cf86c6cd4a46ad8c98da8"
+          ],
+          "members": 882
+        },
+        {
+          "references": [
+            "000415b2639c960e039299fde2a52e7e9c692c212c1fa6ca4701eec637ff6a30",
+            "3f5961a80d3aa7cb06520fd8e89558170936a1a4a3fe16e9fc84c379518c0759",
+            "c54acc165bf9955d70acb7271e56c929ee047bede78b1b1b0d3f9dc8abbdb788"
+          ],
+          "members": 231
+        },
+        {
+          "references": [
+            "489ba8af128c140a08486626912a6bc8c3dc7810f31f738bdd06fa21307485b5",
+            "8ebf4e44c47b6b61d313bd2580bd788a1daa029541fe210cccfa13d1bb66cc89"
+          ],
+          "members": 196
+        },
+        {
+          "references": [
+            "089dd3123f4322e38e3130b3c051b00f66b52070a5634242f4310a4c64709eac",
+            "577639241b84b4955139e568c6fbf61b3edc258d0a7e09a5efaf11331e1244bc"
+          ],
+          "members": 178
+        },
+        {
+          "references": [
+            "0d99646229ea6010fa510333161653955eadb11acdb51c6cc886d1108e2fc626",
+            "bc2b3cf327655f03a63e6fefb67120a868549ddc34b1766a95895702b20bc3ab",
+            "f702aa92f383622849e99d7f70c77e0142bcf0b2cd6c03ed078efa1fac6bd275"
+          ],
+          "members": 171
+        }
+      ]
+    },
+    {
+      "threshold": 0.99,
+      "eligible_members_including_anchors": 4148,
+      "ambiguous_nonanchor_members": 1376,
+      "most_common_tie_sets": [
+        {
+          "references": [
+            "59955b4c538d0b45961e19b70c4ab7a101968561a353186045bde628c0d72dbb",
+            "5bc5334382f650c8a7cc38d651b86db06eb755b64662eaef42c6040cf879f0ce",
+            "65debcbe8c6e64a04c9c3b75794b77644526a514d89a09f037f2cf53f2aa2f98",
+            "68ca7c0e99a5df6d36e52008df1b20c108d1821f28a40c349c1516900bc30322",
+            "6b8c789921d0ca5531295477c7703d2f5ec619a8bbb51db41928b5c4f1c3f6e4",
+            "a27b45ef89b961b8c8ff78b6ab580ce0d866647c3ae03c4ab0f37ba15c433f8f",
+            "a74a7cb854cd33442d8ef481d341b4a0632b88d8def1d22852adb10de8f7cbf3",
+            "c1be4071ccc59e468803cb9b9eae25ec3aaff24f1d37ee0b81ba9126f8334572",
+            "f0b244090f9e4a9f599a68f42d7a89e003026202324cf86c6cd4a46ad8c98da8"
+          ],
+          "members": 720
+        },
+        {
+          "references": [
+            "000415b2639c960e039299fde2a52e7e9c692c212c1fa6ca4701eec637ff6a30",
+            "3f5961a80d3aa7cb06520fd8e89558170936a1a4a3fe16e9fc84c379518c0759",
+            "c54acc165bf9955d70acb7271e56c929ee047bede78b1b1b0d3f9dc8abbdb788"
+          ],
+          "members": 165
+        },
+        {
+          "references": [
+            "489ba8af128c140a08486626912a6bc8c3dc7810f31f738bdd06fa21307485b5",
+            "8ebf4e44c47b6b61d313bd2580bd788a1daa029541fe210cccfa13d1bb66cc89"
+          ],
+          "members": 156
+        },
+        {
+          "references": [
+            "089dd3123f4322e38e3130b3c051b00f66b52070a5634242f4310a4c64709eac",
+            "577639241b84b4955139e568c6fbf61b3edc258d0a7e09a5efaf11331e1244bc"
+          ],
+          "members": 142
+        },
+        {
+          "references": [
+            "0d99646229ea6010fa510333161653955eadb11acdb51c6cc886d1108e2fc626",
+            "bc2b3cf327655f03a63e6fefb67120a868549ddc34b1766a95895702b20bc3ab",
+            "f702aa92f383622849e99d7f70c77e0142bcf0b2cd6c03ed078efa1fac6bd275"
+          ],
+          "members": 105
+        }
+      ]
+    },
+    {
+      "threshold": 1.0,
+      "eligible_members_including_anchors": 1422,
+      "ambiguous_nonanchor_members": 483,
+      "most_common_tie_sets": [
+        {
+          "references": [
+            "59955b4c538d0b45961e19b70c4ab7a101968561a353186045bde628c0d72dbb",
+            "5bc5334382f650c8a7cc38d651b86db06eb755b64662eaef42c6040cf879f0ce",
+            "65debcbe8c6e64a04c9c3b75794b77644526a514d89a09f037f2cf53f2aa2f98",
+            "68ca7c0e99a5df6d36e52008df1b20c108d1821f28a40c349c1516900bc30322",
+            "6b8c789921d0ca5531295477c7703d2f5ec619a8bbb51db41928b5c4f1c3f6e4",
+            "a27b45ef89b961b8c8ff78b6ab580ce0d866647c3ae03c4ab0f37ba15c433f8f",
+            "a74a7cb854cd33442d8ef481d341b4a0632b88d8def1d22852adb10de8f7cbf3",
+            "c1be4071ccc59e468803cb9b9eae25ec3aaff24f1d37ee0b81ba9126f8334572",
+            "f0b244090f9e4a9f599a68f42d7a89e003026202324cf86c6cd4a46ad8c98da8"
+          ],
+          "members": 216
+        },
+        {
+          "references": [
+            "000415b2639c960e039299fde2a52e7e9c692c212c1fa6ca4701eec637ff6a30",
+            "3f5961a80d3aa7cb06520fd8e89558170936a1a4a3fe16e9fc84c379518c0759",
+            "c54acc165bf9955d70acb7271e56c929ee047bede78b1b1b0d3f9dc8abbdb788"
+          ],
+          "members": 72
+        },
+        {
+          "references": [
+            "0d99646229ea6010fa510333161653955eadb11acdb51c6cc886d1108e2fc626",
+            "bc2b3cf327655f03a63e6fefb67120a868549ddc34b1766a95895702b20bc3ab",
+            "f702aa92f383622849e99d7f70c77e0142bcf0b2cd6c03ed078efa1fac6bd275"
+          ],
+          "members": 51
+        },
+        {
+          "references": [
+            "c9085853c232aef6470e6ae03aab94605f89e881ac5bde14c470f5abefda4d00",
+            "e02a79889f1ed50ff7af47ccd95097434c04ff2d5512ef600cd6bcbfa0f52bda"
+          ],
+          "members": 48
+        },
+        {
+          "references": [
+            "089dd3123f4322e38e3130b3c051b00f66b52070a5634242f4310a4c64709eac",
+            "577639241b84b4955139e568c6fbf61b3edc258d0a7e09a5efaf11331e1244bc"
+          ],
+          "members": 48
+        }
+      ]
+    }
+  ],
+  "baseline_reproduction": "all six previous baseline rows reproduced within 1e-12",
+  "interpretation": "Sensitivity of descriptive equal-group means to arbitrary tie resolution; random ranges are neither confidence intervals nor worst-case bounds."
+}

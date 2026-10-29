@@ -1,0 +1,199 @@
+{
+  "controls": 28,
+  "rows": [
+    {
+      "name": "single",
+      "expected": 1,
+      "actual": {
+        "i8x16.relaxed_swizzle": 1
+      }
+    },
+    {
+      "name": "duplicate_pair",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "different_indices_pair",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "pair_and",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "pair_or",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "pair_equal_guard",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "pair_disjoint_masks",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "pair_sum_low_bit",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "dead_site",
+      "expected": 1,
+      "actual": {
+        "i8x16.relaxed_swizzle": 1
+      }
+    },
+    {
+      "name": "in_range",
+      "expected": 1,
+      "actual": {
+        "i8x16.relaxed_swizzle": 1
+      }
+    },
+    {
+      "name": "high_bit",
+      "expected": 1,
+      "actual": {
+        "i8x16.relaxed_swizzle": 1
+      }
+    },
+    {
+      "name": "unconstrained_index",
+      "expected": 1,
+      "actual": {
+        "i8x16.relaxed_swizzle": 1
+      }
+    },
+    {
+      "name": "zero_data",
+      "expected": 1,
+      "actual": {
+        "i8x16.relaxed_swizzle": 1
+      }
+    },
+    {
+      "name": "cancel_plus_other",
+      "expected": 3,
+      "actual": {
+        "i8x16.relaxed_swizzle": 3
+      }
+    },
+    {
+      "name": "chain",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "weighted_and",
+      "expected": 2,
+      "actual": {
+        "i8x16.relaxed_swizzle": 2
+      }
+    },
+    {
+      "name": "weighted_triple",
+      "expected": 3,
+      "actual": {
+        "i8x16.relaxed_swizzle": 3
+      }
+    },
+    {
+      "name": "xor_3",
+      "expected": 3,
+      "actual": {
+        "i8x16.relaxed_swizzle": 3
+      }
+    },
+    {
+      "name": "xor_4",
+      "expected": 4,
+      "actual": {
+        "i8x16.relaxed_swizzle": 4
+      }
+    },
+    {
+      "name": "xor_5",
+      "expected": 5,
+      "actual": {
+        "i8x16.relaxed_swizzle": 5
+      }
+    },
+    {
+      "name": "xor_6",
+      "expected": 6,
+      "actual": {
+        "i8x16.relaxed_swizzle": 6
+      }
+    },
+    {
+      "name": "xor_8",
+      "expected": 8,
+      "actual": {
+        "i8x16.relaxed_swizzle": 8
+      }
+    },
+    {
+      "name": "xor_12",
+      "expected": 12,
+      "actual": {
+        "i8x16.relaxed_swizzle": 12
+      }
+    },
+    {
+      "name": "xor_15",
+      "expected": 15,
+      "actual": {
+        "i8x16.relaxed_swizzle": 15
+      }
+    },
+    {
+      "name": "xor_16",
+      "expected": 16,
+      "actual": {
+        "i8x16.relaxed_swizzle": 16
+      }
+    },
+    {
+      "name": "overlong",
+      "expected": 1,
+      "actual": {
+        "i8x16.relaxed_swizzle": 1
+      }
+    },
+    {
+      "name": "custom-only",
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "name": "immediate-false-positive",
+      "expected": 0,
+      "prefilter": 1,
+      "actual": 0
+    }
+  ],
+  "limitation": "Prefix scan is only a necessary-condition filter. Positive findings require standard disassembly."
+}

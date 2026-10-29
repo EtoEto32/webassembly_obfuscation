@@ -1,0 +1,30 @@
+# O: 部分公開レコード処理の比較計画
+
+2026-10-26。以下を実行前に固定する。主目的は既知の代替方式を含めた反証であり、速度差だけを新規性と扱わない。
+
+## ワークロードと比較対象
+
+信頼するproducerがpublic整数x/yとprivate整数pを持つGC recordの配列を用意し、untrusted consumerがpublic値の条件付き集計を行う。データは固定式で作る人工データ。実際の第三者アプリや独立した複数アプリとは数えない。各runの前にproducerが1要素の公開値を更新するため、コピー方式も現在値を反映する必要がある。
+
+1. `shared`: 全recordを共有し、Oのread/write/create policyでprivate field、公開fieldへのwrite、record/配列のforgeを拒否。consumerは公開fieldを直接読む。
+2. `accessor`: producerが公開fieldだけを返すWasm関数をexportし、record参照を渡さない。JSを経由しないWasm-to-Wasm呼出しで比較する。
+3. `project`: 元のrecord layoutを保持し、runごとにpublicだけのGC record配列へ複製して渡す。複製時間をrun時間に含める。
+4. `split`: producerをpublic record配列とprivate整数配列へ変更して最初から分離し、public配列だけを共有する。単純で強い対照。producer layout変更を許す条件を明記する。
+
+public値は不変fieldとして新しいrecordへ置換する。公開arrayはmutableだが、sharedではwriteを禁止する。split/projectではconsumerによる公開配列の変更からprivate値の機密性は影響を受けないが、同じread-only契約を比較する場合はarray write/createもOで拒否する。したがって速度比較の意味はprivate値を直接渡す必要性とデータ表現の違いであり、全安全性を無条件で同一視しない。
+
+配列長128/4096/65536、連続scanとpermuted index scanの2パターン。1回または8回のpassでコピー費用の償却を調べる。reference実装はPython整数演算で独立に期待checksumを算出する。signed i32返値へ正規化する。private値が異なるproducerでもpublic結果が同じことを別途検査するが、一般的noninterference証明とはしない。
+
+## 測定
+
+NodeとWasmtimeの2engine。各条件3fresh process、各process 12warmup/11計測を基本とする。process順をseed固定でshuffle。run境界で任意GCを強制しない。setup/initial dataset構築時間、run時間、binary bytes、whole-process peak RSS、checker内部時間と外部process往復時間を分ける。memoryはGC object使用量の精密測定ではない。
+
+runtimeの直接比較は全modeのchecksum一致を必須とする。policy checkはconsumerの禁止操作variantを拒否することも実際に確認する。検査時間は入力の大きさが小さいため一般的scalabilityとはしない。
+
+## v1後の強い対照の追加（v2測定前）
+
+v1は288 processを完走したが、projectは公開値が1件だけ更新されても毎回全件をコピーしていた。これは十分強い対照ではない。`cached-project`を追加し、元のFull record配列を保持したまま公開viewを初期化時に作り、producerの更新時に変更された1件だけを同期する。既知のincremental view maintenanceであり新提案とはしない。元producerのrecord layoutを変更しない条件でも使える。公開fieldの全書込み箇所を管理できることが追加の前提。更新追跡できない一般producerまで同様に適用できるとはしない。5 modeの比較へ拡張する。
+
+## 判断基準
+
+sharedがaccessor/projectに勝ってもsplitと同程度なら、既存producer layoutを維持する限定条件の利点に留まる。全modeに優越するとはしない。JVMのfield access resolutionとPCCに対し原理的な差が出なければ、独創的アルゴリズムとして主題へ昇格させない。実験結果に応じて次の候補へ進む。

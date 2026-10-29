@@ -1,0 +1,2190 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "correctCalls": 11704,
+  "budgetCalls": 72336,
+  "pairComparisons": 54252,
+  "summaryUnderestimates": 0,
+  "rejected": [
+    {
+      "case": "secret_marker",
+      "reason": "only constant public marker import is supported"
+    },
+    {
+      "case": "different_word",
+      "reason": "branch public event words differ"
+    },
+    {
+      "case": "trap",
+      "reason": "unsupported expression: (i32.div_u (i32.const 1) (local.get 0))"
+    },
+    {
+      "case": "loop",
+      "reason": "unsupported expression: (loop (br 0))"
+    },
+    {
+      "case": "memory",
+      "reason": "unsupported module section"
+    }
+  ],
+  "rows": [
+    {
+      "name": "swap",
+      "envelope": [
+        104,
+        113
+      ],
+      "delta": [
+        104,
+        9
+      ],
+      "segment": [
+        104,
+        97
+      ],
+      "wholeTotal": 113,
+      "segmentTotal": 201,
+      "maxBudget": 203,
+      "stats": {
+        "manual": {
+          "leakBudgets": 0,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 100,
+          "firstLeak": null
+        },
+        "dynamic": {
+          "leakBudgets": 188,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 188,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "dynamic-O3": {
+          "leakBudgets": 188,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 188,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late": {
+          "leakBudgets": 188,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 188,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late-O3": {
+          "leakBudgets": 188,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 188,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "whole": {
+          "leakBudgets": 0,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 91,
+          "firstLeak": null
+        },
+        "whole-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 91,
+          "firstLeak": null
+        },
+        "segment": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 100,
+          "firstLeak": null
+        },
+        "segment-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 100,
+          "firstLeak": null
+        },
+        "frontier": {
+          "leakBudgets": 0,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 100,
+          "firstLeak": null
+        },
+        "frontier-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 91,
+          "publicEventsAcrossBudgets": 100,
+          "firstLeak": null
+        }
+      }
+    },
+    {
+      "name": "three",
+      "envelope": [
+        168,
+        178,
+        187
+      ],
+      "delta": [
+        168,
+        10,
+        9
+      ],
+      "segment": [
+        168,
+        10,
+        161
+      ],
+      "wholeTotal": 187,
+      "segmentTotal": 339,
+      "maxBudget": 341,
+      "stats": {
+        "manual": {
+          "leakBudgets": 0,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 338,
+          "firstLeak": null
+        },
+        "dynamic": {
+          "leakBudgets": 326,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 642,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "dynamic-O3": {
+          "leakBudgets": 326,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 642,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late": {
+          "leakBudgets": 326,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 642,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late-O3": {
+          "leakBudgets": 326,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 642,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "whole": {
+          "leakBudgets": 0,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 310,
+          "firstLeak": null
+        },
+        "whole-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 310,
+          "firstLeak": null
+        },
+        "segment": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 338,
+          "firstLeak": null
+        },
+        "segment-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 338,
+          "firstLeak": null
+        },
+        "frontier": {
+          "leakBudgets": 0,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 338,
+          "firstLeak": null
+        },
+        "frontier-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 155,
+          "publicEventsAcrossBudgets": 338,
+          "firstLeak": null
+        }
+      }
+    },
+    {
+      "name": "equal",
+      "envelope": [
+        40,
+        73
+      ],
+      "delta": [
+        40,
+        33
+      ],
+      "segment": [
+        40,
+        33
+      ],
+      "wholeTotal": 73,
+      "segmentTotal": 73,
+      "maxBudget": 75,
+      "stats": {
+        "manual": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        },
+        "dynamic": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        },
+        "dynamic-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        },
+        "late": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        },
+        "late-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        },
+        "whole": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 3,
+          "firstLeak": null
+        },
+        "whole-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 3,
+          "firstLeak": null
+        },
+        "segment": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        },
+        "segment-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        },
+        "frontier": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        },
+        "frontier-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 36,
+          "firstLeak": null
+        }
+      }
+    },
+    {
+      "name": "noevent",
+      "envelope": [
+        119
+      ],
+      "delta": [
+        119
+      ],
+      "segment": [
+        119
+      ],
+      "wholeTotal": 119,
+      "segmentTotal": 119,
+      "maxBudget": 121,
+      "stats": {
+        "manual": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "dynamic": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "dynamic-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "late": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "late-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "whole": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "whole-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "segment": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "segment-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "frontier": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        },
+        "frontier-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 0,
+          "firstLeak": null
+        }
+      }
+    },
+    {
+      "name": "asymmetric",
+      "envelope": [
+        44,
+        109
+      ],
+      "delta": [
+        44,
+        65
+      ],
+      "segment": [
+        44,
+        65
+      ],
+      "wholeTotal": 109,
+      "segmentTotal": 109,
+      "maxBudget": 111,
+      "stats": {
+        "manual": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 68,
+          "firstLeak": null
+        },
+        "dynamic": {
+          "leakBudgets": 96,
+          "completedBudgets": 31,
+          "publicEventsAcrossBudgets": 96,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "dynamic-O3": {
+          "leakBudgets": 96,
+          "completedBudgets": 31,
+          "publicEventsAcrossBudgets": 96,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late": {
+          "leakBudgets": 96,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 96,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late-O3": {
+          "leakBudgets": 96,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 96,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "whole": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 3,
+          "firstLeak": null
+        },
+        "whole-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 3,
+          "firstLeak": null
+        },
+        "segment": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 68,
+          "firstLeak": null
+        },
+        "segment-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 68,
+          "firstLeak": null
+        },
+        "frontier": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 68,
+          "firstLeak": null
+        },
+        "frontier-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 68,
+          "firstLeak": null
+        }
+      }
+    },
+    {
+      "name": "nested",
+      "envelope": [
+        92,
+        110,
+        119
+      ],
+      "delta": [
+        92,
+        18,
+        9
+      ],
+      "segment": [
+        92,
+        82,
+        81
+      ],
+      "wholeTotal": 119,
+      "segmentTotal": 255,
+      "maxBudget": 257,
+      "stats": {
+        "manual": {
+          "leakBudgets": 0,
+          "completedBudgets": 139,
+          "publicEventsAcrossBudgets": 314,
+          "firstLeak": null
+        },
+        "dynamic": {
+          "leakBudgets": 242,
+          "completedBudgets": 143,
+          "publicEventsAcrossBudgets": 466,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "dynamic-O3": {
+          "leakBudgets": 242,
+          "completedBudgets": 143,
+          "publicEventsAcrossBudgets": 466,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late": {
+          "leakBudgets": 242,
+          "completedBudgets": 139,
+          "publicEventsAcrossBudgets": 466,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late-O3": {
+          "leakBudgets": 242,
+          "completedBudgets": 139,
+          "publicEventsAcrossBudgets": 466,
+          "firstLeak": {
+            "budget": 16,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    16,
+                    0
+                  ],
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    16,
+                    0
+                  ]
+                ],
+                "spent": 16,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "whole": {
+          "leakBudgets": 0,
+          "completedBudgets": 139,
+          "publicEventsAcrossBudgets": 278,
+          "firstLeak": null
+        },
+        "whole-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 139,
+          "publicEventsAcrossBudgets": 278,
+          "firstLeak": null
+        },
+        "segment": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 250,
+          "firstLeak": null
+        },
+        "segment-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 250,
+          "firstLeak": null
+        },
+        "frontier": {
+          "leakBudgets": 0,
+          "completedBudgets": 139,
+          "publicEventsAcrossBudgets": 314,
+          "firstLeak": null
+        },
+        "frontier-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 139,
+          "publicEventsAcrossBudgets": 314,
+          "firstLeak": null
+        }
+      }
+    },
+    {
+      "name": "many",
+      "envelope": [
+        168,
+        186,
+        204,
+        222,
+        240,
+        258,
+        276,
+        294,
+        312,
+        330,
+        348,
+        366,
+        383
+      ],
+      "delta": [
+        168,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        17
+      ],
+      "segment": [
+        168,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        18,
+        161
+      ],
+      "wholeTotal": 383,
+      "segmentTotal": 527,
+      "maxBudget": 529,
+      "stats": {
+        "manual": {
+          "leakBudgets": 0,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": null
+        },
+        "dynamic": {
+          "leakBudgets": 506,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": {
+            "budget": 24,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    24,
+                    0
+                  ],
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    24,
+                    0
+                  ],
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "dynamic-O3": {
+          "leakBudgets": 506,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": {
+            "budget": 24,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    24,
+                    0
+                  ],
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    24,
+                    0
+                  ],
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late": {
+          "leakBudgets": 506,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": {
+            "budget": 24,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    24,
+                    0
+                  ],
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    24,
+                    0
+                  ],
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "late-O3": {
+          "leakBudgets": 506,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": {
+            "budget": 24,
+            "records": [
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    24,
+                    0
+                  ],
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [],
+                "trace": [
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              },
+              {
+                "status": "budget",
+                "value": null,
+                "events": [
+                  100
+                ],
+                "trace": [
+                  [
+                    "mark",
+                    100,
+                    24,
+                    0
+                  ],
+                  [
+                    "stop",
+                    24,
+                    0
+                  ]
+                ],
+                "spent": 24,
+                "budget": 0
+              }
+            ]
+          }
+        },
+        "whole": {
+          "leakBudgets": 0,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 1764,
+          "firstLeak": null
+        },
+        "whole-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 1764,
+          "firstLeak": null
+        },
+        "segment": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": null
+        },
+        "segment-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 3,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": null
+        },
+        "frontier": {
+          "leakBudgets": 0,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": null
+        },
+        "frontier-O3": {
+          "leakBudgets": 0,
+          "completedBudgets": 147,
+          "publicEventsAcrossBudgets": 3156,
+          "firstLeak": null
+        }
+      }
+    }
+  ]
+}

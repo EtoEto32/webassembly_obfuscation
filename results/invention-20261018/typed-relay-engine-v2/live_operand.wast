@@ -1,0 +1,5 @@
+(module (type $op (func (param i32 i32) (result i32)))
+            (func $add (type $op) (param i32 i32) (result i32) (i32.add (local.get 0) (local.get 1)))
+            (func $relay (param i32 i32 (ref $op)) (result i32)
+              (return_call_ref $op (local.get 0) (local.get 1) (local.get 2)))(func (export "run") (result i32) (i32.add (i32.const 99) (call $relay (i32.const 7) (i32.const 11) (ref.func $add)))) (elem declare func $add))
+(assert_return (invoke "run") (i32.const 117))

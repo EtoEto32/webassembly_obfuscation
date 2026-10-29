@@ -1,0 +1,377 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "rows": [
+    {
+      "name": "retained",
+      "kind": "plain",
+      "status": "executed",
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 99,
+      "continuous": {
+        "value": null
+      },
+      "continuousValue": 99,
+      "continuousStats": {
+        "polls": 3,
+        "restores": 1
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "sourceValue": 5,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": null,
+          "matches": true
+        },
+        {
+          "stopAt": 1,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1
+          },
+          "sourceValue": 12,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": null,
+          "matches": true
+        },
+        {
+          "stopAt": 2,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 3,
+            "restores": 1
+          },
+          "sourceValue": 12,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": null,
+          "matches": true
+        }
+      ]
+    },
+    {
+      "name": "retained",
+      "kind": "observed",
+      "status": "executed",
+      "expected": {
+        "value": null
+      },
+      "expectedValue": 99,
+      "continuous": {
+        "value": null
+      },
+      "continuousValue": 99,
+      "continuousStats": {
+        "polls": 3,
+        "restores": 1
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "sourceValue": 5,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": {
+            "source": {
+              "value": null
+            },
+            "resumed": {
+              "value": null
+            }
+          },
+          "matches": true
+        },
+        {
+          "stopAt": 1,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1
+          },
+          "sourceValue": 12,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": {
+            "source": {
+              "value": null
+            },
+            "resumed": {
+              "value": null
+            }
+          },
+          "matches": true
+        },
+        {
+          "stopAt": 2,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 3,
+            "restores": 1
+          },
+          "sourceValue": 12,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": {
+            "source": {
+              "value": null
+            },
+            "resumed": {
+              "value": null
+            }
+          },
+          "matches": true
+        }
+      ]
+    },
+    {
+      "name": "dropped",
+      "kind": "plain",
+      "status": "executed",
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 12,
+      "continuous": {
+        "trap": true
+      },
+      "continuousValue": 12,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "sourceValue": 5,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": null,
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1
+          },
+          "sourceValue": 12,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": null,
+          "matches": false
+        },
+        {
+          "stopAt": 2,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1
+          },
+          "sourceValue": 12,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": null,
+          "matches": false
+        }
+      ]
+    },
+    {
+      "name": "dropped",
+      "kind": "observed",
+      "status": "executed",
+      "expected": {
+        "trap": true
+      },
+      "expectedValue": 12,
+      "continuous": {
+        "trap": true
+      },
+      "continuousValue": 12,
+      "continuousStats": {
+        "polls": 2,
+        "restores": 1
+      },
+      "scenarios": [
+        {
+          "stopAt": 0,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "sourceValue": 5,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "trap": true
+            }
+          },
+          "matches": false
+        },
+        {
+          "stopAt": 1,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1
+          },
+          "sourceValue": 12,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "value": null
+            }
+          },
+          "matches": false
+        },
+        {
+          "stopAt": 2,
+          "firstOutcome": {
+            "trap": true
+          },
+          "firstStats": {
+            "polls": 2,
+            "restores": 1
+          },
+          "sourceValue": 12,
+          "secondOutcome": {
+            "value": null
+          },
+          "secondStats": {
+            "polls": 1,
+            "restores": 1
+          },
+          "resumedValue": 99,
+          "probe": {
+            "source": {
+              "trap": true
+            },
+            "resumed": {
+              "value": null
+            }
+          },
+          "matches": false
+        }
+      ]
+    }
+  ],
+  "note": "Local host adapter; not a reproduction of the complete published evaluation. Inspect continuous control before interpreting migration differences."
+}

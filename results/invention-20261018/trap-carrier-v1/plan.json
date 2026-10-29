@@ -1,0 +1,10 @@
+{
+  "hypothesis": "A trap-sensitive unused load preserves an opaque arithmetic carrier under O2/O3, but its protection must survive an adaptive parity proof.",
+  "seed": 1508012459,
+  "randomInputs": 4096,
+  "warmup": 2000,
+  "trials": 9,
+  "callsPerTrial": 20000,
+  "scope": "MVP integer functions, one unshared memory32; no imports; finite regression, not equivalence proof",
+  "success": "Retaining a load alone is not success. If parity recognition removes the carrier with preserved behavior, reject this mechanism as protection."
+}

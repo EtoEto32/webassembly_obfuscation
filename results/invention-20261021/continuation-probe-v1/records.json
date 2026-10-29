@@ -1,0 +1,77 @@
+[
+  {
+    "name": "assemble",
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\continuation-routing\\probe.wat",
+      "--all-features",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\continuation-probe-v1\\probe.wasm"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "name": "node []",
+    "command": [
+      "node",
+      "-e",
+      "const fs=require('fs');const m=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(process.argv[1])));for(const x of [0,1,-1,2147483647,-2147483648]){const y=m.exports.run(x),e=(Math.imul(x,3)+1)|0;if(y!==e)throw Error('mismatch');}console.log('5 passed');",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\continuation-probe-v1\\probe.wasm"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "[eval]:1\nconst fs=require('fs');const m=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(process.argv[1])));for(const x of [0,1,-1,2147483647,-2147483648]){const y=m.exports.run(x),e=(Math.imul(x,3)+1)|0;if(y!==e)throw Error('mismatch');}console.log('5 passed');\n                                                        ^\n\nCompileError: WebAssembly.Module(): core stack switching not enabled (enable with --experimental-wasm-wasmfx) @+16\n    at [eval]:1:57\n    at runScriptInThisContext (node:internal/vm:219:10)\n    at node:internal/process/execution:451:12\n    at [eval]-wrapper:6:24\n    at runScriptInContext (node:internal/process/execution:449:60)\n    at evalFunction (node:internal/process/execution:283:30)\n    at evalTypeScript (node:internal/process/execution:295:3)\n    at node:internal/main/eval_string:71:3\n\nNode.js v24.15.0\n"
+  },
+  {
+    "name": "node ['--experimental-wasm-stack-switching']",
+    "command": [
+      "node",
+      "--experimental-wasm-stack-switching",
+      "-e",
+      "const fs=require('fs');const m=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(process.argv[1])));for(const x of [0,1,-1,2147483647,-2147483648]){const y=m.exports.run(x),e=(Math.imul(x,3)+1)|0;if(y!==e)throw Error('mismatch');}console.log('5 passed');",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\continuation-probe-v1\\probe.wasm"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "[eval]:1\nconst fs=require('fs');const m=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(process.argv[1])));for(const x of [0,1,-1,2147483647,-2147483648]){const y=m.exports.run(x),e=(Math.imul(x,3)+1)|0;if(y!==e)throw Error('mismatch');}console.log('5 passed');\n                                                        ^\n\nCompileError: WebAssembly.Module(): core stack switching not enabled (enable with --experimental-wasm-wasmfx) @+16\n    at [eval]:1:57\n    at runScriptInThisContext (node:internal/vm:219:10)\n    at node:internal/process/execution:451:12\n    at [eval]-wrapper:6:24\n    at runScriptInContext (node:internal/process/execution:449:60)\n    at evalFunction (node:internal/process/execution:283:30)\n    at evalTypeScript (node:internal/process/execution:295:3)\n    at node:internal/main/eval_string:71:3\n\nNode.js v24.15.0\n"
+  },
+  {
+    "name": "node ['--experimental-wasm-wasmfx']",
+    "command": [
+      "node",
+      "--experimental-wasm-wasmfx",
+      "-e",
+      "const fs=require('fs');const m=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(process.argv[1])));for(const x of [0,1,-1,2147483647,-2147483648]){const y=m.exports.run(x),e=(Math.imul(x,3)+1)|0;if(y!==e)throw Error('mismatch');}console.log('5 passed');",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\continuation-probe-v1\\probe.wasm"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "[eval]:1\nconst fs=require('fs');const m=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(process.argv[1])));for(const x of [0,1,-1,2147483647,-2147483648]){const y=m.exports.run(x),e=(Math.imul(x,3)+1)|0;if(y!==e)throw Error('mismatch');}console.log('5 passed');\n                                                        ^\n\nCompileError: WebAssembly.Module(): Compiling function #0 failed: Invalid opcode 0xe2 @+57\n    at [eval]:1:57\n    at runScriptInThisContext (node:internal/vm:219:10)\n    at node:internal/process/execution:451:12\n    at [eval]-wrapper:6:24\n    at runScriptInContext (node:internal/process/execution:449:60)\n    at evalFunction (node:internal/process/execution:283:30)\n    at evalTypeScript (node:internal/process/execution:295:3)\n    at node:internal/main/eval_string:71:3\n\nNode.js v24.15.0\n"
+  },
+  {
+    "name": "node ['--experimental-wasm-wasmfx', '--experimental-wasm-stack-switching']",
+    "command": [
+      "node",
+      "--experimental-wasm-wasmfx",
+      "--experimental-wasm-stack-switching",
+      "-e",
+      "const fs=require('fs');const m=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(process.argv[1])));for(const x of [0,1,-1,2147483647,-2147483648]){const y=m.exports.run(x),e=(Math.imul(x,3)+1)|0;if(y!==e)throw Error('mismatch');}console.log('5 passed');",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\continuation-probe-v1\\probe.wasm"
+    ],
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "[eval]:1\nconst fs=require('fs');const m=new WebAssembly.Instance(new WebAssembly.Module(fs.readFileSync(process.argv[1])));for(const x of [0,1,-1,2147483647,-2147483648]){const y=m.exports.run(x),e=(Math.imul(x,3)+1)|0;if(y!==e)throw Error('mismatch');}console.log('5 passed');\n                                                        ^\n\nCompileError: WebAssembly.Module(): Compiling function #0 failed: Invalid opcode 0xe2 @+57\n    at [eval]:1:57\n    at runScriptInThisContext (node:internal/vm:219:10)\n    at node:internal/process/execution:451:12\n    at [eval]-wrapper:6:24\n    at runScriptInContext (node:internal/process/execution:449:60)\n    at evalFunction (node:internal/process/execution:283:30)\n    at evalTypeScript (node:internal/process/execution:295:3)\n    at node:internal/main/eval_string:71:3\n\nNode.js v24.15.0\n"
+  },
+  {
+    "name": "binaryen-execution",
+    "command": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-shell.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\invention-20261021\\continuation-probe-v1\\probe.wast"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "0 BUILDING MODULE [line: 1]\n1 CHECKING [line: 19]\n2 CHECKING [line: 20]\n3 CHECKING [line: 21]\n4 CHECKING [line: 22]\n5 CHECKING [line: 23]\nall checks passed.\n"
+  }
+]

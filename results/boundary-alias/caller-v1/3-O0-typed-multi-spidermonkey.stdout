@@ -1,0 +1,8 @@
+[fuzz-exec] export func
+[fuzz-exec] export func_invoker
+exception thrown: RuntimeError: unreachable executed
+[fuzz-exec] export func_13
+exception thrown: RuntimeError: dereferencing null pointer
+[fuzz-exec] export func_13_invoker
+exception thrown: RuntimeError: unreachable executed
+[caller-study] {"caller":"typed","observer":"multi","calls":[{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable executed"},{"name":"func_13","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing null pointer"},{"name":"func_13_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable executed"}],"events":0,"distinct":0,"trace":[],"multi_slots":0}

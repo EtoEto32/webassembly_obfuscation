@@ -1,0 +1,306 @@
+{
+  "targets": 32,
+  "inputs": 1040,
+  "calls": 33280,
+  "positive_targets": 24,
+  "records": [
+    {
+      "file": "identity-plain-raw.wasm",
+      "kernel": "identity",
+      "mode": "plain",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "identity-plain-O3.wasm",
+      "kernel": "identity",
+      "mode": "plain",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "identity-decoder-raw.wasm",
+      "kernel": "identity",
+      "mode": "decoder",
+      "inputs": 1040,
+      "wrong_results": 518,
+      "watchdog_traps": 522,
+      "example": {
+        "input": 0,
+        "expected": 0,
+        "trap": "RuntimeError: unreachable"
+      }
+    },
+    {
+      "file": "identity-decoder-O3.wasm",
+      "kernel": "identity",
+      "mode": "decoder",
+      "inputs": 1040,
+      "wrong_results": 518,
+      "watchdog_traps": 522,
+      "example": {
+        "input": 0,
+        "expected": 0,
+        "trap": "RuntimeError: unreachable"
+      }
+    },
+    {
+      "file": "identity-lift-raw.wasm",
+      "kernel": "identity",
+      "mode": "lift",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "identity-lift-raw-recovered.wasm",
+      "kernel": "identity",
+      "mode": "recovered",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "identity-lift-O3.wasm",
+      "kernel": "identity",
+      "mode": "lift",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "identity-lift-O3-recovered.wasm",
+      "kernel": "identity",
+      "mode": "recovered",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "affine-plain-raw.wasm",
+      "kernel": "affine",
+      "mode": "plain",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "affine-plain-O3.wasm",
+      "kernel": "affine",
+      "mode": "plain",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "affine-decoder-raw.wasm",
+      "kernel": "affine",
+      "mode": "decoder",
+      "inputs": 1040,
+      "wrong_results": 518,
+      "watchdog_traps": 522,
+      "example": {
+        "input": 0,
+        "expected": 5,
+        "trap": "RuntimeError: unreachable"
+      }
+    },
+    {
+      "file": "affine-decoder-O3.wasm",
+      "kernel": "affine",
+      "mode": "decoder",
+      "inputs": 1040,
+      "wrong_results": 518,
+      "watchdog_traps": 522,
+      "example": {
+        "input": 0,
+        "expected": 5,
+        "trap": "RuntimeError: unreachable"
+      }
+    },
+    {
+      "file": "affine-lift-raw.wasm",
+      "kernel": "affine",
+      "mode": "lift",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "affine-lift-raw-recovered.wasm",
+      "kernel": "affine",
+      "mode": "recovered",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "affine-lift-O3.wasm",
+      "kernel": "affine",
+      "mode": "lift",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "affine-lift-O3-recovered.wasm",
+      "kernel": "affine",
+      "mode": "recovered",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain3-plain-raw.wasm",
+      "kernel": "chain3",
+      "mode": "plain",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain3-plain-O3.wasm",
+      "kernel": "chain3",
+      "mode": "plain",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain3-decoder-raw.wasm",
+      "kernel": "chain3",
+      "mode": "decoder",
+      "inputs": 1040,
+      "wrong_results": 616,
+      "watchdog_traps": 424,
+      "example": {
+        "input": 0,
+        "expected": 2118850703,
+        "trap": "RuntimeError: unreachable"
+      }
+    },
+    {
+      "file": "chain3-decoder-O3.wasm",
+      "kernel": "chain3",
+      "mode": "decoder",
+      "inputs": 1040,
+      "wrong_results": 616,
+      "watchdog_traps": 424,
+      "example": {
+        "input": 0,
+        "expected": 2118850703,
+        "trap": "RuntimeError: unreachable"
+      }
+    },
+    {
+      "file": "chain3-lift-raw.wasm",
+      "kernel": "chain3",
+      "mode": "lift",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain3-lift-raw-recovered.wasm",
+      "kernel": "chain3",
+      "mode": "recovered",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain3-lift-O3.wasm",
+      "kernel": "chain3",
+      "mode": "lift",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain3-lift-O3-recovered.wasm",
+      "kernel": "chain3",
+      "mode": "recovered",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain7-plain-raw.wasm",
+      "kernel": "chain7",
+      "mode": "plain",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain7-plain-O3.wasm",
+      "kernel": "chain7",
+      "mode": "plain",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain7-decoder-raw.wasm",
+      "kernel": "chain7",
+      "mode": "decoder",
+      "inputs": 1040,
+      "wrong_results": 611,
+      "watchdog_traps": 429,
+      "example": {
+        "input": 0,
+        "expected": 2471981703,
+        "trap": "RuntimeError: unreachable"
+      }
+    },
+    {
+      "file": "chain7-decoder-O3.wasm",
+      "kernel": "chain7",
+      "mode": "decoder",
+      "inputs": 1040,
+      "wrong_results": 611,
+      "watchdog_traps": 429,
+      "example": {
+        "input": 0,
+        "expected": 2471981703,
+        "trap": "RuntimeError: unreachable"
+      }
+    },
+    {
+      "file": "chain7-lift-raw.wasm",
+      "kernel": "chain7",
+      "mode": "lift",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain7-lift-raw-recovered.wasm",
+      "kernel": "chain7",
+      "mode": "recovered",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain7-lift-O3.wasm",
+      "kernel": "chain7",
+      "mode": "lift",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    },
+    {
+      "file": "chain7-lift-O3-recovered.wasm",
+      "kernel": "chain7",
+      "mode": "recovered",
+      "inputs": 1040,
+      "wrong_results": 0,
+      "watchdog_traps": 0
+    }
+  ],
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48"
+}

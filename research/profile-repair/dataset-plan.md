@@ -1,0 +1,7 @@
+# 第三者binaryへの適用可能性の確認
+
+2026-10-24。80生成例でも変更数の改善は意図的に相関を作った系列に限られた。第三者コードで対象命令が使われるかを調べる。
+
+最初の対象はICSE2026 NodeWasmStudyの公式artifact。public GitHubのcommit/tree metadataを固定し、raw .wasmの件数とsizeを確認してから、総量を制限して読取り専用で取得する。パッケージscriptやDockerを実行しない。wasm-objdump等で命令の出現だけを調べ、対象がない場合もそのまま報告する。全510packageの実行追試や、実サービスの安全性評価とは扱わない。新しいRelaxed SIMD利用を代表するdatasetかという時期的限界にも注意する。
+
+対象が少なければ、別に公開されているSIMD libraryのsourceで合法入力の制限を調べる。ただし特定のAPIやアプリに対して攻撃を試す作業へは広げない。

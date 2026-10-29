@@ -1,0 +1,58 @@
+[
+  {
+    "file": "omit-repair.wasm",
+    "name": "omit-repair",
+    "d": 1,
+    "s": 0,
+    "n": 31,
+    "expectedTrap": false,
+    "actualTrap": false,
+    "firstMismatch": {
+      "offset": 1,
+      "expected": 5,
+      "actual": 0
+    }
+  },
+  {
+    "file": "repair-before-copy.wasm",
+    "name": "repair-before-copy",
+    "d": 1,
+    "s": 0,
+    "n": 31,
+    "expectedTrap": false,
+    "actualTrap": false,
+    "firstMismatch": {
+      "offset": 1,
+      "expected": 5,
+      "actual": 0
+    }
+  },
+  {
+    "file": "forward-only.wasm",
+    "name": "forward-only",
+    "d": 1,
+    "s": 0,
+    "n": 31,
+    "expectedTrap": false,
+    "actualTrap": false,
+    "firstMismatch": {
+      "offset": 2,
+      "expected": 4,
+      "actual": 5
+    }
+  },
+  {
+    "file": "omit-upfront-bounds.wasm",
+    "name": "omit-upfront-bounds",
+    "d": 0,
+    "s": 65535,
+    "n": 2,
+    "expectedTrap": true,
+    "actualTrap": true,
+    "firstMismatch": {
+      "offset": 0,
+      "expected": 5,
+      "actual": 107
+    }
+  }
+]

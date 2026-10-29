@@ -1,0 +1,56 @@
+def fixture(name,pages,maximum,table,declarative=False):
+    active='(data (i32.const 3) "seed\\00\\ff")' if pages else '(data (i32.const 0) "")'
+    elems='(elem (i32.const 0) func $a $b)' if table>=2 else '(elem (i32.const 0) func)'
+    return {'name':name,'wat':f'''(module
+      (type $unary (func (param i32) (result i32)))
+      (memory {pages} {maximum}) (table {table} 16 funcref)
+      (global $g (mut i32) (i32.const 17))
+      (func $a (param i32) (result i32) (i32.add (local.get 0) (i32.const 1)))
+      (func $b (param i32) (result i32) (i32.xor (local.get 0) (i32.const 324508639)))
+      (func $c (param i32) (result i32) unreachable)
+      (func $effect (param i32) (result i32) (global.set $g (local.get 0)) (local.get 0))
+      {active} (data "passive\\00\\01\\ffbytes")
+      {elems} (elem func $b $a $c) {('(elem declare func $c)' if declarative else '(elem func)')}
+      (func (export "size") (result i32) memory.size)
+      (func (export "grow") (param i32) (result i32) (memory.grow (local.get 0)))
+      (func (export "get") (param i32) (result i32) (i32.load (local.get 0)))
+      (func (export "put") (param i32 i32) (i32.store (local.get 0) (local.get 1)))
+      (func (export "get8") (param i32) (result i32) (i32.load8_u (local.get 0)))
+      (func (export "put8") (param i32 i32) (i32.store8 (local.get 0) (local.get 1)))
+      (func (export "put64") (param i32 i32) (i64.store (local.get 0) (i64.extend_i32_s (local.get 1))))
+      (func (export "get64") (param i32) (result i32) (i32.wrap_i64 (i64.load (local.get 0))))
+      (func (export "putf32") (param i32 i32) (f32.store (local.get 0) (f32.reinterpret_i32 (local.get 1))))
+      (func (export "getf32") (param i32) (result i32) (i32.reinterpret_f32 (f32.load (local.get 0))))
+      (func (export "putf64") (param i32 i32) (f64.store (local.get 0) (f64.convert_i32_s (local.get 1))))
+      (func (export "offset") (param i32) (result i32) (i32.load offset=4294967280 (local.get 0)))
+      (func (export "side") (param i32 i32) (i32.store (local.get 0) (call $effect (local.get 1))))
+      (func (export "copy") (param i32 i32 i32) (memory.copy (local.get 0) (local.get 1) (local.get 2)))
+      (func (export "fill") (param i32 i32 i32) (memory.fill (local.get 0) (local.get 1) (local.get 2)))
+      (func (export "init") (param i32 i32 i32) (memory.init 1 (local.get 0) (local.get 1) (local.get 2)))
+      (func (export "initactive") (param i32 i32 i32) (memory.init 0 (local.get 0) (local.get 1) (local.get 2)))
+      (func (export "ddrop") data.drop 1)
+      (func (export "tsize") (result i32) table.size 0)
+      (func (export "tgrow") (param i32) (result i32) (table.grow 0 (ref.func $b) (local.get 0)))
+      (func (export "tset") (param i32) (table.set 0 (local.get 0) (ref.func $c)))
+      (func (export "tnull") (param i32) (table.set 0 (local.get 0) (ref.null func)))
+      (func (export "tget") (param i32) (result i32) (ref.is_null (table.get 0 (local.get 0))))
+      (func (export "tcopy") (param i32 i32 i32) (table.copy 0 0 (local.get 0) (local.get 1) (local.get 2)))
+      (func (export "tfill") (param i32 i32) (table.fill 0 (local.get 0) (ref.func $a) (local.get 1)))
+      (func (export "tinit") (param i32 i32 i32) (table.init 1 (local.get 0) (local.get 1) (local.get 2)))
+      (func (export "tactive") (param i32 i32 i32) (table.init 0 (local.get 0) (local.get 1) (local.get 2)))
+      (func (export "tdeclare") (param i32 i32 i32) (table.init 2 (local.get 0) (local.get 1) (local.get 2)))
+      (func (export "edrop") elem.drop 1)
+      (func (export "call") (param i32 i32) (result i32) (call_indirect (type $unary) (local.get 0) (local.get 1)))
+      (func (export "gget") (result i32) global.get $g)
+      (func (export "gput") (param i32) (global.set $g (local.get 0)))
+      (func (export "fault") (global.set $g (i32.const 99)) (i32.store8 (i32.const 0) (i32.const 123)) unreachable)
+      (func (export "work") (param $n i32) (result i32) (local $i i32) (local $s i32)
+        (block $done (loop $next
+          (br_if $done (i32.ge_u (local.get $i) (local.get $n)))
+          (local.set $s (i32.add (local.get $s) (i32.load8_u (local.get $i))))
+          (i32.store8 (local.get $i) (i32.xor (local.get $s) (local.get $i)))
+          (local.set $i (i32.add (local.get $i) (i32.const 1))) (br $next)))
+        (local.get $s)))'''}
+
+def fixtures():
+    return [fixture('empty',0,4,0),fixture('small',1,4,2),fixture('medium',4,8,4),fixture('declarative',1,4,2,True)]

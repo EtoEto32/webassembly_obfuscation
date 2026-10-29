@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/work/experiments/runtime-reference/collect_reference.py", line 101, in <module>
+    main()
+  File "/work/experiments/runtime-reference/collect_reference.py", line 76, in main
+    result = collect(read_counter, destination)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/experiments/runtime-reference/collect_reference.py", line 26, in collect
+    raw = read_counter()
+          ^^^^^^^^^^^^^^
+  File "/work/experiments/runtime-reference/collect_reference.py", line 70, in read_counter
+    raise RuntimeError('Local mining runtime terminated: ' + states[0].text)
+RuntimeError: Local mining runtime terminated: failed

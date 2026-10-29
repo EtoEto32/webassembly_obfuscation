@@ -1,0 +1,105 @@
+{
+  "scope": "WasmBench filtered v1.0, Wasmizer Figshare v2, WasmMal label CSVs, two MinerRay site CSVs, Industry2025 downloaded archive, and the complete downloaded MineSweeper crawled-site archive; not a claim about every metadata source on the Web",
+  "wasmbench": {
+    "metadata_path": "data/extracted/wasmbench-filtered/filtered.pretty.json",
+    "metadata_sha256": "969980577e7ce3f24dd3c378b2c429e79cbe145084b9ad1d93288f4548d4e57a",
+    "module_records": 8461,
+    "source_file_records": 13340,
+    "acquired_sha_covered": 8460,
+    "acquired_sha_uncovered": 0,
+    "source_file_field_counts": {
+      "absolute_path": 13340,
+      "filename": 13340,
+      "collection_method": 13340,
+      "repository": 9183,
+      "sibling_extensions": 13340,
+      "stars": 9183,
+      "package": 1489,
+      "seed_list": 2286,
+      "wasm_detection": 2286,
+      "domain": 2547,
+      "extension": 29
+    },
+    "potential_date_field_names": [],
+    "same_parsed_content_as_git_metadata": false,
+    "interpretation": "No per-source observation date field found"
+  },
+  "wasmizer": {
+    "metadata_audit_path": "results/provenance/wasmizer-metadata-summary.json",
+    "metadata_audit_sha256": "931573c02f7a780221d4ddca8771dcc0f7d3d4f45cdf78a1ba66e13c56915be4",
+    "records": 8915,
+    "individual_observation_dates_available": 0,
+    "collection_interval": "2022-12 per author artifact README",
+    "interpretation": "Collection interval is not a per-binary field observation or first appearance date"
+  },
+  "wasmmal": {
+    "label_csvs": [
+      {
+        "source_path": "Data_NewSplit/train.csv",
+        "rows_without_header": 12018,
+        "schema": "filename, integer author label; no header",
+        "sha256": "cdaa16225016c3fc5cb42051ac1f13882044f266393b89dbf89ad47675b9ce87",
+        "observation_date_column": false
+      },
+      {
+        "source_path": "Data_NewSplit/test.csv",
+        "rows_without_header": 3006,
+        "schema": "filename, integer author label; no header",
+        "sha256": "6d77f790332927ad932a3c1e80f3f63dbee371f80f483c33e7766b9ec052aa81",
+        "observation_date_column": false
+      }
+    ],
+    "interpretation": "Label/split files provide no individual observation dates or verified mutation-parent dates"
+  },
+  "minerray": {
+    "site_csvs": [
+      {
+        "metadata_path": "data/catalog/minerray/supporting/Data/HashingSiteResultSamples.csv",
+        "sha256": "d4d90c14bbdf7aa68b31230b0ffcab10bbdbaeb5af0ba65886382e3a3b8d22a8",
+        "data_rows": 29,
+        "columns": [
+          "AlexaRank",
+          "Website",
+          "HashStepTwo",
+          "HashStepThree",
+          "HashStepFour",
+          "InformedUsers",
+          "MinerPoolAddress",
+          "NetworkProtocol",
+          "SignatureFunctionName",
+          "SignatureConstants",
+          "PageFound"
+        ],
+        "interpretation": "Site-level context; no observation-date or binary-SHA column in inspected header"
+      },
+      {
+        "metadata_path": "data/catalog/minerray/supporting/Data/sites.csv",
+        "sha256": "4bf1ae2fad2751cc5e4d6d2603e772252e2a5d0f9d5e9b22bd578895fc9829fd",
+        "data_rows": 901,
+        "columns": [
+          "SourceName",
+          "Service"
+        ],
+        "interpretation": "Site-level context; no observation-date or binary-SHA column in inspected header"
+      }
+    ],
+    "interpretation": "Named site samples are not hash-linked per-binary temporal measurements"
+  },
+  "industry2025": {
+    "inventory_path": "data/catalog/industry2025-validwasm-archive/inventory.json",
+    "inventory_sha256": "856f9d7b08cc5b07851da0eaaebd7739b152c643dd6466ae0da4287bfa325263",
+    "archive_regular_members": 4606,
+    "all_members_are_wasm": true,
+    "interpretation": "Downloaded archive has binaries only; external urlscan/archive observations were not reconstructed and ZIP/7z modification times are not used as field observation dates"
+  },
+  "minesweeper": {
+    "audit_path": "results/provenance/minesweeper-crawled-summary.json",
+    "audit_sha256": "d18936f068b3603359f391c34287a3861a9c004fc3906799bfa1ec2d10355f8a",
+    "crawl_interval": "2018-03-12/2018-03-19",
+    "drive_by_mining_websites": 1735,
+    "archive_core_wasm_occurrences": 4429,
+    "archive_unique_core_wasm_sha256": 36,
+    "interpretation": "Paper-supported corpus observation interval; no per-SHA first-seen date and no second comparable interval in this artifact"
+  },
+  "conclusion": "MineSweeper supports one corpus-level March 2018 observation interval. The inspected metadata still cannot support an individual-binary temporal obfuscation trend or a cross-period trend. Publication/download dates are not used as attack dates."
+}

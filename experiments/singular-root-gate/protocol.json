@@ -1,0 +1,10 @@
+{
+ "date":"2026-10-12",
+ "question":"Can a polynomial system over Z/(2^w), w>=2, have a unique root while its Jacobian at that root has deficient column rank modulo 2?",
+ "scope":"All word tuples are legal outputs; fixed external inputs; polynomial operations only; not arbitrary bit-vector instructions",
+ "finite_check":"All ordered pairs of bilinear polynomials c0+c1*x+c2*y+c3*x*y over Z/4 (65536 systems), all 16 possible roots",
+ "wide_check":"256 quadratic two-equation systems with a planted i32 root, seed271009; enumerate all four top-bit perturbations",
+ "controls":["w=1 square has a unique singular root","word rotation is not covered by the polynomial Taylor identity"],
+ "limits":{"cycle_minutes":20,"command_seconds":60,"parameter_extensions":0},
+ "decision":"If rank deficiency forces another legal output, reject singular-Jacobian repair under this scope; do not infer source-code recovery from root evaluation"
+}

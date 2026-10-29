@@ -1,0 +1,72 @@
+{
+  "function": "$f86",
+  "mechanism": "State-dispatched pointer validation, optional field cleanup, context release, and result return.",
+  "reference_excerpt_sha256": "c87ae0959d339ce8dba699c9f081c31fe0a881ff9150571f27b34b57dfec427b",
+  "flattened_excerpt_sha256": "19b6ed2219933b6a13fdd87ab267e001ed17959d3df1c11537ce8fec8151790b",
+  "state_offset": 12,
+  "state_pointer_offset": 8,
+  "result_offset": 28,
+  "manually_reviewed_transitions": [
+    {
+      "state": 1290003362,
+      "operation": "Check argument pointer p0 == 0",
+      "next_if_true": -1759823793,
+      "next_if_false": 704486594
+    },
+    {
+      "state": -1759823793,
+      "operation": "Set result to 2",
+      "next": 593021969
+    },
+    {
+      "state": 704486594,
+      "operation": "Check context pointer *p0 == 0",
+      "next_if_true": -316282812,
+      "next_if_false": 833403
+    },
+    {
+      "state": -316282812,
+      "operation": "Set result to 0",
+      "next": 593021969
+    },
+    {
+      "state": 833403,
+      "operation": "Check first context field **p0 != 0",
+      "next_if_true": 1912538748,
+      "next_if_false": -2066247667
+    },
+    {
+      "state": 1912538748,
+      "operation": "Call f78 with *p0",
+      "next": -2066247667
+    },
+    {
+      "state": -2066247667,
+      "operation": "Call f217 with *p0; clear *p0; set result 0",
+      "next": 593021969
+    },
+    {
+      "state": 593021969,
+      "operation": "Restore entry stack pointer; return result"
+    }
+  ],
+  "source_correspondence": {
+    "path": "supp-materials/artifact/samples/xmr-wasm/src/crypto/oaes_lib.c",
+    "line": 934,
+    "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-oaes-free-source-reviewed.txt",
+    "excerpt_sha256": "f0cf488c2cb367f4014bdaf77c3c9d771309c1ccd49a26d3b53687f85f385309",
+    "interpretation": "Null guards, optional key cleanup, context free/clear and return codes correspond to distributed oaes_free source. No debug-symbol or historical build identity proof."
+  },
+  "reference_call_contexts": [
+    {
+      "line": 23815,
+      "enclosing_constructs": []
+    }
+  ],
+  "interpretation": "The sole lexical f111 call occurs after its structured loops; this helper is not a demonstrated per-iteration hot-loop operation.",
+  "limitations": [
+    "Graph records manual static review, not dynamic execution or complete machine-checked equivalence.",
+    "Callees/data/conditional compilation and historical source-to-binary identity remain incompletely mapped.",
+    "No new hashing, dynamic frequency measurement, or causal allocation of runtime overhead."
+  ]
+}

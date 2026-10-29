@@ -1,0 +1,63 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+  "platform": "win32",
+  "arch": "x64",
+  "flags": [
+    "--no-liftoff",
+    "--no-wasm-lazy-compilation"
+  ],
+  "warmup": 32768,
+  "batches": [
+    {
+      "count": 8388608,
+      "ns": 19722400,
+      "ns_per_run": 2.351093292236328
+    },
+    {
+      "count": 8388608,
+      "ns": 20404000,
+      "ns_per_run": 2.4323463439941406
+    },
+    {
+      "count": 8388608,
+      "ns": 23272900,
+      "ns_per_run": 2.774345874786377
+    },
+    {
+      "count": 8388608,
+      "ns": 19867000,
+      "ns_per_run": 2.368330955505371
+    },
+    {
+      "count": 8388608,
+      "ns": 19207900,
+      "ns_per_run": 2.289760112762451
+    },
+    {
+      "count": 8388608,
+      "ns": 18998200,
+      "ns_per_run": 2.2647619247436523
+    },
+    {
+      "count": 8388608,
+      "ns": 18828400,
+      "ns_per_run": 2.2445201873779297
+    }
+  ],
+  "memory_bytes": 65536,
+  "max_rss_kib": 36292,
+  "sink": 0,
+  "verification": {
+    "count": 7,
+    "observed": 3109262543,
+    "expected": 3109262543
+  },
+  "harness": "separate-module-import-varying-safe-fail",
+  "file": "swap16.0.plain.O3.wasm",
+  "name": "swap16",
+  "mode": "plain",
+  "repeat": 2,
+  "bytes": 341
+}

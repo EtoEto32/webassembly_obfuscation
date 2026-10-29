@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-12",
+  "purpose": "Negative control for treating functional matching as evidence of target-specific deobfuscation",
+  "budget": "one execution, existing 531 messages, no new benchmark generation",
+  "attacker_knowledge": "Public standard SHA-256 function and message bytes; no target binary, target trace, source mapping, or expected digest passed to attack function",
+  "attack": "Return node:crypto SHA-256 of message without reading the protected program",
+  "verifier": "Compare returned digest against saved expected digest; verify input bundle hash first",
+  "expected_implication": "If all match, functional agreement alone does not distinguish this target-ignoring control from target-specific recovery",
+  "limits": "Not a Wasm ABI replacement or internal-location recovery; no attack-time, resistance, or novelty claim"
+}

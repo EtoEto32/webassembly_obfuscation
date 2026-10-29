@@ -1,0 +1,5 @@
+(module (type (func (param i32 i32 i32) (result i32))) (func (type 0) (param i32 i32 i32) (result i32) (local i32 i32 i32) (local.set 4 (i32.xor (local.get 2) (i32.const 19088743))) (loop (if (i32.gt_u (local.get 1) (local.get 3)) (then (local.set 2 (i32.add (local.tee 5 (i32.load8_u (i32.add (local.get 0) (local.get 3)))) (i32.rotl (local.get 2) (i32.const 7)))) (if (i32.and (local.get 5) (i32.const 1)) (then (i32.store8 (i32.add (local.get 0) (local.get 3)) (i32.xor (local.get 2) (local.get 5))))) (local.set 4 (i32.xor (local.get 4) (i32.mul (local.get 2) (i32.const 17)))) (local.set 3 (i32.add (local.get 3) (i32.const 1))) (br 1)))) (i32.xor (local.get 2) (local.get 4))) (memory 1 1) (export "memory" (memory 0)) (export "run" (func 0)))
+(assert_return (invoke "run" (i32.const 0) (i32.const 0) (i32.const 1)) (i32.const 19088743))
+(assert_return (invoke "run" (i32.const 0) (i32.const 16) (i32.const 1)) (i32.const 187125610))
+(assert_return (invoke "run" (i32.const 65535) (i32.const 1) (i32.const -1)) (i32.const 4275878536))
+(assert_trap (invoke "run" (i32.const 65535) (i32.const 2) (i32.const 1)) "out of bounds memory access")

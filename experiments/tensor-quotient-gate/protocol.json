@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-12",
+  "purpose": "One bounded repair attempt of the rejected tensor design, not a novel-method claim",
+  "rule": "Multiply each two-word encoded input and gate output by a public input/state-dependent odd scalar; decode final row modulo 2",
+  "hypothesis": "Large concrete support alone might defeat earlier two-state propagation; test static modulo-2 quotient before further implementation",
+  "attacker": "Public IR and scaling rule only; no internal bases, gate types, private files, test outputs or sampled traces",
+  "primary": "Complete equivalent Boolean DAG reconstruction after modulo-2 projection",
+  "reuse": "All six public tensor DAGs and their saved input sets; unchanged existing recover.py used on projected IR",
+  "nonces": [0, 1, 2147483647, 4294967295],
+  "controls": ["unscaled source IR", "one-hot positive control", "even scaling can destroy semantics", "same-parity input columns must not be reported recovered"],
+  "limits": {"repair_variants": 1, "source_dags": 6, "attack_seconds_each": 30, "memory": "host default, no enforced cap", "total_cycle_minutes": 45},
+  "budget_minutes": {"reuse": 5, "literature": 5, "design": 5, "implementation_verification_attack": 20, "report": 10, "sha_if_early_gate_fails": 0},
+  "decision": "Reject repair if equivalent Boolean circuit is recovered; no Wasm/SHA expansion or additional scale-function tuning"
+}

@@ -1,0 +1,58 @@
+{
+  "before": {
+    "add_one": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      0
+    ],
+    "xor_one": [
+      1,
+      0,
+      3,
+      2,
+      5,
+      4,
+      7,
+      6
+    ]
+  },
+  "after": {
+    "U": [
+      3,
+      2,
+      7,
+      6,
+      1,
+      0,
+      4,
+      5
+    ],
+    "add_counts": [
+      4,
+      1,
+      4,
+      2,
+      4,
+      3,
+      4,
+      2
+    ],
+    "xor_counts": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ]
+  },
+  "pseudocode": "z=x; repeat counts[operation][x] times: z=U[z]; return z",
+  "scope": "Generated finite lookup representation, not a Wasm transform; the count tables carry operation-specific semantics"
+}

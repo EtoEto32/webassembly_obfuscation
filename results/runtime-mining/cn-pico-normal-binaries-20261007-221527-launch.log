@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/work/experiments/runtime-reference/run_mining.py", line 175, in <module>
+    main()
+  File "/work/experiments/runtime-reference/run_mining.py", line 82, in main
+    config, row, module, proxy = configuration(args.pool_config, args.sha256, args.threads)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/work/experiments/runtime-reference/run_mining.py", line 52, in configuration
+    if hashlib.sha256(module.read_bytes()).hexdigest() != digest:
+                      ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/pathlib.py", line 1052, in read_bytes
+    return f.read()
+           ^^^^^^^^
+OSError: [Errno 12] Cannot allocate memory

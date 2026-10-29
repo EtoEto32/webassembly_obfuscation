@@ -1,0 +1,1202 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "summary": {
+    "scenarios": 18,
+    "certified": 14,
+    "witnessed": 2,
+    "defUseUnresolved": 2,
+    "unresolved": 0,
+    "closedModels": 16,
+    "closureWitnesses": 2,
+    "checkedSuffixes": 5676
+  },
+  "rows": [
+    {
+      "id": 0,
+      "source": "memory_init/suite.3.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "data",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "unproved",
+        "reason": "read before definite drop: ('data', 1) via [0]",
+        "roots": [
+          0,
+          1
+        ],
+        "checkedRoots": []
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "restored": {
+              "trap": true
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          },
+          {
+            "node": 0,
+            "api": "load8_u",
+            "kind": "all-i32-readonly-self-loop"
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            0
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            1
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            7
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            65535
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            65536
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            -1
+          ]
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 2801,
+      "witness": null,
+      "stateFile": "case-0-stop-1.json"
+    },
+    {
+      "id": 0,
+      "source": "memory_init/suite.3.wasm",
+      "stopAt": 2,
+      "differing": [
+        [
+          "data",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "unproved",
+        "reason": "read before definite drop: ('data', 1) via [0]",
+        "roots": [
+          0,
+          1
+        ],
+        "checkedRoots": []
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "restored": {
+              "trap": true
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          },
+          {
+            "node": 0,
+            "api": "load8_u",
+            "kind": "all-i32-readonly-self-loop"
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            0
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            1
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            7
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            65535
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            65536
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            -1
+          ]
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 2801,
+      "witness": null,
+      "stateFile": "case-0-stop-2.json"
+    },
+    {
+      "id": 1,
+      "source": "memory_init/suite.3.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "data",
+          1
+        ],
+        [
+          "data",
+          3
+        ]
+      ],
+      "certificate": {
+        "status": "unproved",
+        "reason": "read before definite drop: ('data', 1) via [0]",
+        "roots": [
+          0,
+          1
+        ],
+        "checkedRoots": []
+      },
+      "finiteClosure": {
+        "status": "witness",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": false,
+            "guestStateMatches": false
+          }
+        ],
+        "witness": [
+          {
+            "name": "test",
+            "args": []
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            0
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            1
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            7
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            65535
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            65536
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            -1
+          ]
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 2,
+      "witness": {
+        "suffix": [
+          {
+            "name": "test",
+            "args": []
+          }
+        ],
+        "baseline": [
+          {
+            "trap": true
+          }
+        ],
+        "restored": [
+          {
+            "value": null
+          }
+        ],
+        "guestStateMatches": [
+          false
+        ]
+      },
+      "stateFile": "case-1-stop-1.json"
+    },
+    {
+      "id": 1,
+      "source": "memory_init/suite.3.wasm",
+      "stopAt": 2,
+      "differing": [
+        [
+          "data",
+          1
+        ],
+        [
+          "data",
+          3
+        ]
+      ],
+      "certificate": {
+        "status": "unproved",
+        "reason": "read before definite drop: ('data', 1) via [0]",
+        "roots": [
+          0,
+          1
+        ],
+        "checkedRoots": []
+      },
+      "finiteClosure": {
+        "status": "witness",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": false,
+            "guestStateMatches": false
+          }
+        ],
+        "witness": [
+          {
+            "name": "test",
+            "args": []
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            0
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            1
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            7
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            65535
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            65536
+          ]
+        },
+        {
+          "name": "load8_u",
+          "args": [
+            -1
+          ]
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 2,
+      "witness": {
+        "suffix": [
+          {
+            "name": "test",
+            "args": []
+          }
+        ],
+        "baseline": [
+          {
+            "trap": true
+          }
+        ],
+        "restored": [
+          {
+            "value": null
+          }
+        ],
+        "guestStateMatches": [
+          false
+        ]
+      },
+      "stateFile": "case-1-stop-2.json"
+    },
+    {
+      "id": 3,
+      "source": "memory_init/suite.6.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "data",
+          0
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          },
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-3-stop-1.json"
+    },
+    {
+      "id": 5,
+      "source": "memory_init/suite.9.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "data",
+          0
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-5-stop-1.json"
+    },
+    {
+      "id": 5,
+      "source": "memory_init/suite.9.wasm",
+      "stopAt": 2,
+      "differing": [
+        [
+          "data",
+          0
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-5-stop-2.json"
+    },
+    {
+      "id": 7,
+      "source": "memory_init/suite.11.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "data",
+          0
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-7-stop-1.json"
+    },
+    {
+      "id": 7,
+      "source": "memory_init/suite.11.wasm",
+      "stopAt": 2,
+      "differing": [
+        [
+          "data",
+          0
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-7-stop-2.json"
+    },
+    {
+      "id": 8,
+      "source": "memory_init/suite.12.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "data",
+          0
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "restored": {
+              "trap": true
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-8-stop-1.json"
+    },
+    {
+      "id": 8,
+      "source": "memory_init/suite.12.wasm",
+      "stopAt": 2,
+      "differing": [
+        [
+          "data",
+          0
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          0
+        ],
+        "checkedRoots": [
+          0
+        ],
+        "events": [
+          {
+            "function": 0,
+            "op": "data.drop",
+            "segment": 0
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "restored": {
+              "trap": true
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-8-stop-2.json"
+    },
+    {
+      "id": 11,
+      "source": "table_init/suite.14.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "elem",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          10
+        ],
+        "checkedRoots": [
+          10
+        ],
+        "events": [
+          {
+            "function": 10,
+            "op": "elem.drop",
+            "segment": 1
+          },
+          {
+            "function": 10,
+            "op": "elem.drop",
+            "segment": 1
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-11-stop-1.json"
+    },
+    {
+      "id": 13,
+      "source": "table_init/suite.17.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "elem",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          10
+        ],
+        "checkedRoots": [
+          10
+        ],
+        "events": [
+          {
+            "function": 10,
+            "op": "elem.drop",
+            "segment": 1
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-13-stop-1.json"
+    },
+    {
+      "id": 13,
+      "source": "table_init/suite.17.wasm",
+      "stopAt": 2,
+      "differing": [
+        [
+          "elem",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          10
+        ],
+        "checkedRoots": [
+          10
+        ],
+        "events": [
+          {
+            "function": 10,
+            "op": "elem.drop",
+            "segment": 1
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-13-stop-2.json"
+    },
+    {
+      "id": 15,
+      "source": "table_init/suite.19.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "elem",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          10
+        ],
+        "checkedRoots": [
+          10
+        ],
+        "events": [
+          {
+            "function": 10,
+            "op": "elem.drop",
+            "segment": 1
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-15-stop-1.json"
+    },
+    {
+      "id": 15,
+      "source": "table_init/suite.19.wasm",
+      "stopAt": 2,
+      "differing": [
+        [
+          "elem",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          10
+        ],
+        "checkedRoots": [
+          10
+        ],
+        "events": [
+          {
+            "function": 10,
+            "op": "elem.drop",
+            "segment": 1
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "value": null
+            },
+            "restored": {
+              "value": null
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-15-stop-2.json"
+    },
+    {
+      "id": 16,
+      "source": "table_init/suite.20.wasm",
+      "stopAt": 1,
+      "differing": [
+        [
+          "elem",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          10
+        ],
+        "checkedRoots": [
+          10
+        ],
+        "events": [
+          {
+            "function": 10,
+            "op": "elem.drop",
+            "segment": 1
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "restored": {
+              "trap": true
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-16-stop-1.json"
+    },
+    {
+      "id": 16,
+      "source": "table_init/suite.20.wasm",
+      "stopAt": 2,
+      "differing": [
+        [
+          "elem",
+          1
+        ]
+      ],
+      "certificate": {
+        "status": "certified-no-segment-effect",
+        "roots": [
+          10
+        ],
+        "checkedRoots": [
+          10
+        ],
+        "events": [
+          {
+            "function": 10,
+            "op": "elem.drop",
+            "segment": 1
+          }
+        ]
+      },
+      "finiteClosure": {
+        "status": "closed-original-api-model",
+        "nodes": 1,
+        "edges": [
+          {
+            "node": 0,
+            "api": "test",
+            "baseline": {
+              "trap": true
+            },
+            "restored": {
+              "trap": true
+            },
+            "outcomeMatches": true,
+            "guestStateMatches": true
+          }
+        ]
+      },
+      "alphabet": [
+        {
+          "name": "test",
+          "args": []
+        }
+      ],
+      "depthLimit": 4,
+      "checked": 5,
+      "witness": null,
+      "stateFile": "case-16-stop-2.json"
+    }
+  ]
+}

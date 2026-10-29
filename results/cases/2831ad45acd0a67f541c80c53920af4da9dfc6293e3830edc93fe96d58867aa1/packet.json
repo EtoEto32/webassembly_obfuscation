@@ -1,0 +1,283 @@
+{
+  "sha256": "2831ad45acd0a67f541c80c53920af4da9dfc6293e3830edc93fe96d58867aa1",
+  "analyzer_version": "2.0.0",
+  "status": "ok",
+  "bytes": 258645,
+  "defined_functions": 278,
+  "instruction_count": 103152,
+  "name_section": false,
+  "data_section_entropy": 6.355803341182362,
+  "code_section_entropy": 5.781912471503053,
+  "br_table_in_loop_count": 88,
+  "max_br_table_targets": 235,
+  "data_ascii_strings_preview": [
+    ".fastqz",
+    ".txtgz",
+    ".txt.gz",
+    ".fsq.gz",
+    ".fq.gz",
+    ".fsa.gz",
+    ".fa.gz",
+    ".fastaz",
+    "--pretty",
+    "Match value should not be less than mismatch penalty",
+    "insufficient memory",
+    "out of memory",
+    "need dictionary",
+    "--substitution_matrix",
+    "-+   0X0x",
+    "-0X+0X 0X-0x+0x 0x",
+    "Too many columns on row",
+    "--context",
+    "Line too short",
+    "internal error: inflate stream corrupt",
+    "internal error: deflate stream corrupt",
+    "request does not fit in an int",
+    "Invalid --gapopen argument ('%s') must be an int",
+    "Invalid --mismatch argument ('%s') must be an int",
+    "Invalid --match argument ('%s') must be an int",
+    "Invalid --gapextend argument ('%s') must be an int",
+    "invalid literal/lengths set",
+    "invalid code lengths set",
+    "unknown header flags set",
+    "invalid distances set",
+    "--match --mismatch must both be set or neither set",
+    "invalid bit length repeat",
+    "--files option takes 2 arguments",
+    "--maxhits",
+    "Numbers (0-9) and dashes (-) do not make good separators",
+    "--substitution_pairs",
+    "out of room to push characters",
+    "--nogaps",
+    "too many length or distance symbols",
+    "invalid stored block lengths"
+  ],
+  "imports": [
+    {
+      "module": "env",
+      "name": "strbuf_new",
+      "kind": 0,
+      "type_index": 1
+    },
+    {
+      "module": "env",
+      "name": "string_is_all_whitespace",
+      "kind": 0,
+      "type_index": 1
+    },
+    {
+      "module": "env",
+      "name": "strbuf_chomp",
+      "kind": 0,
+      "type_index": 1
+    },
+    {
+      "module": "env",
+      "name": "strbuf_reset_gzreadline",
+      "kind": 0,
+      "type_index": 0
+    },
+    {
+      "module": "env",
+      "name": "exit",
+      "kind": 0,
+      "type_index": 3
+    },
+    {
+      "module": "env",
+      "name": "string_next_nonwhitespace",
+      "kind": 0,
+      "type_index": 1
+    },
+    {
+      "module": "env",
+      "name": "__assert_fail",
+      "kind": 0,
+      "type_index": 7
+    },
+    {
+      "module": "env",
+      "name": "__syscall_fcntl64",
+      "kind": 0,
+      "type_index": 2
+    },
+    {
+      "module": "env",
+      "name": "__syscall_ioctl",
+      "kind": 0,
+      "type_index": 2
+    },
+    {
+      "module": "wasi_snapshot_preview1",
+      "name": "fd_close",
+      "kind": 0,
+      "type_index": 1
+    },
+    {
+      "module": "wasi_snapshot_preview1",
+      "name": "fd_read",
+      "kind": 0,
+      "type_index": 6
+    },
+    {
+      "module": "wasi_snapshot_preview1",
+      "name": "fd_write",
+      "kind": 0,
+      "type_index": 6
+    },
+    {
+      "module": "env",
+      "name": "emscripten_memcpy_big",
+      "kind": 0,
+      "type_index": 8
+    },
+    {
+      "module": "env",
+      "name": "__syscall_openat",
+      "kind": 0,
+      "type_index": 6
+    },
+    {
+      "module": "env",
+      "name": "emscripten_resize_heap",
+      "kind": 0,
+      "type_index": 1
+    },
+    {
+      "module": "wasi_snapshot_preview1",
+      "name": "fd_seek",
+      "kind": 0,
+      "type_index": 10
+    }
+  ],
+  "exports": [
+    {
+      "name": "memory",
+      "kind": 2,
+      "index": 0
+    },
+    {
+      "name": "__wasm_call_ctors",
+      "kind": 0,
+      "index": 16
+    },
+    {
+      "name": "free",
+      "kind": 0,
+      "index": 270
+    },
+    {
+      "name": "fflush",
+      "kind": 0,
+      "index": 175
+    },
+    {
+      "name": "malloc",
+      "kind": 0,
+      "index": 269
+    },
+    {
+      "name": "main",
+      "kind": 0,
+      "index": 53
+    },
+    {
+      "name": "__indirect_function_table",
+      "kind": 1,
+      "index": 0
+    },
+    {
+      "name": "__errno_location",
+      "kind": 0,
+      "index": 160
+    },
+    {
+      "name": "emscripten_stack_init",
+      "kind": 0,
+      "index": 281
+    },
+    {
+      "name": "emscripten_stack_get_free",
+      "kind": 0,
+      "index": 282
+    },
+    {
+      "name": "emscripten_stack_get_base",
+      "kind": 0,
+      "index": 283
+    },
+    {
+      "name": "emscripten_stack_get_end",
+      "kind": 0,
+      "index": 284
+    },
+    {
+      "name": "stackSave",
+      "kind": 0,
+      "index": 285
+    },
+    {
+      "name": "stackRestore",
+      "kind": 0,
+      "index": 286
+    },
+    {
+      "name": "stackAlloc",
+      "kind": 0,
+      "index": 287
+    },
+    {
+      "name": "emscripten_stack_get_current",
+      "kind": 0,
+      "index": 288
+    },
+    {
+      "name": "dynCall_jiji",
+      "kind": 0,
+      "index": 292
+    }
+  ],
+  "selection": {
+    "sha256": "2831ad45acd0a67f541c80c53920af4da9dfc6293e3830edc93fe96d58867aa1",
+    "stratum": "cryptic_utilities/tigress/flatten",
+    "program_unit": "needleman_wunsch",
+    "selected_path": "binaries/needleman_wunsch/tigress/flatten/needleman_wunsch.wasm",
+    "memberships": [
+      {
+        "dataset": "wasm-obf",
+        "artifact": "wasm-obf-release-binaries",
+        "path": "binaries/needleman_wunsch/tigress/flatten/needleman_wunsch.wasm",
+        "archive_url": "https://github.com/HakonHarnes/wasm-obf/releases/tag/v1.0",
+        "archive_sha256": null,
+        "bytes": 258645,
+        "sha256": "2831ad45acd0a67f541c80c53920af4da9dfc6293e3830edc93fe96d58867aa1",
+        "wasm_magic": true,
+        "object": "data/objects/2831ad45acd0a67f541c80c53920af4da9dfc6293e3830edc93fe96d58867aa1.bin",
+        "acquisition_status": "stored_verified",
+        "hash_evidence": "computed_from_archive_member",
+        "archive_part_sha256": [
+          "057c26053ba2390f71af21429f717d4de5b7f0e660d820d7032e0d5685583bc2",
+          "ba84449d6420b598d5a53da28f0364d05525b6293bb09b6f9ab1158216751762",
+          "f5dd5ca7c50d0b1f712b3d9bea535487e3cd96904838e1357b7d7622e5012d2b",
+          "d06ee48e417434c10ac6f9b4c307cce0a9d66c8b0f8be4bab89e28138c13a5b7"
+        ],
+        "release_variant": "binaries"
+      },
+      {
+        "dataset": "wasm-obf-controls",
+        "path": "binaries/needleman_wunsch/tigress/flatten/needleman_wunsch.wasm",
+        "object": "data/raw/binaries/needleman_wunsch/tigress/flatten/needleman_wunsch.wasm",
+        "sha256": "2831ad45acd0a67f541c80c53920af4da9dfc6293e3830edc93fe96d58867aa1",
+        "acquisition_status": "stored_verified"
+      }
+    ]
+  },
+  "packet_status": "unreviewed_navigation_aid",
+  "indexed_br_table_sites": 108,
+  "selected_function_indices": [
+    44,
+    48
+  ],
+  "disassembly_input": "original",
+  "offset_scope": "original binary"
+}

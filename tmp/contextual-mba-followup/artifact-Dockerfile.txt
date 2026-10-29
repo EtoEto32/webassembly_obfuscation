@@ -1,0 +1,87 @@
+FROM ocaml/opam:ubuntu-20.04-opam
+
+ARG PROMBA_DEPS_PROMBA=https://github.com/astean1001/ProMBA.git
+ARG PROMBA_DEPS_DUET=https://github.com/astean1001/duet.git
+ARG PROMBA_DEPS_SIMBAS=https://github.com/astean1001/simba_synth.git
+ARG PROMBA_DEPS_EUSOLVER=https://github.com/astean1001/eusolver.git
+ARG PROMBA_DEPS_SIMBA=https://github.com/astean1001/SiMBA.git
+ARG PROMBA_DEPS_MBASOLVER=https://github.com/astean1001/MBA-Solver.git
+ARG PROMBA_DEPS_OMELET=https://github.com/pslhy/Omelet.git
+ARG PROMBA_DEPS_GAMBA=https://github.com/astean1001/GAMBA.git
+ARG PROMBA_DEPS_SYNTIA=https://github.com/RUB-SysSec/syntia.git
+
+USER root
+
+RUN apt-get update && apt-get install -y \
+    python3 python3-pip python2.7 git curl build-essential patch \
+    libgmp-dev libopenblas-dev gfortran pkg-config bc && \
+    ( ln -sf /usr/bin/python2.7 /usr/local/bin/python2 || true ) && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN pip3 install --no-cache-dir --upgrade pip && \
+    pip3 install --no-cache-dir \
+        numpy==1.23.0 sympy "z3-solver==4.12.2.0" rich matplotlib==3.7.5 plotext==5.3.2
+
+RUN mkdir -p /experiment && chown -R opam /experiment && chown -R opam /usr/local/bin
+
+USER opam
+
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/home/opam/.cargo/bin:${PATH}"
+
+WORKDIR /experiment
+
+RUN git clone "${PROMBA_DEPS_DUET}" duet && \
+    /bin/bash -c "cd duet && ./build && eval \$(opam config env) && make"
+RUN git clone "${PROMBA_DEPS_SIMBAS}" simba_synth && \
+    /bin/bash -c "cd simba_synth && ./first_build.sh"
+
+RUN sudo apt-get update && sudo apt-get install -y --no-install-recommends cmake && \
+    git clone "${PROMBA_DEPS_EUSOLVER}" eusolver && cd /experiment && \
+    curl -Ls https://micro.mamba.pm/api/micromamba/linux-64/latest | tar -xj bin/micromamba && \
+    ./bin/micromamba create -y -p /experiment/py36 -c conda-forge python=3.6 && \
+    /experiment/py36/bin/pip install --no-cache-dir "pyparsing<3" "z3-solver==4.8.17.0" && \
+    cd /experiment/eusolver/thirdparty/libeusolver && rm -rf build && mkdir build && cd build && \
+    cmake -DPYTHON_EXECUTABLE=/experiment/py36/bin/python .. && make -j"$(nproc)" && \
+    printf '#!/bin/bash\nPYTHONPATH=/experiment/eusolver/thirdparty/libeusolver/build:$PYTHONPATH /experiment/py36/bin/python src/benchmarks.py "$@"\n' \
+      > /experiment/eusolver/eusolver && chmod +x /experiment/eusolver/eusolver && \
+    /experiment/py36/bin/python -c "import sys; sys.path.insert(0,'/experiment/eusolver/thirdparty/libeusolver/build'); import eusolver, pyparsing, z3; print('EUSolver py3.6 deps OK')"
+
+RUN git clone "${PROMBA_DEPS_OMELET}" Omelet && \
+    /bin/bash -c "cd Omelet && cargo build --release"
+
+RUN git clone "${PROMBA_DEPS_GAMBA}" GAMBA  || echo "GAMBA clone failed -- adjust PROMBA_DEPS_GAMBA"
+RUN git clone "${PROMBA_DEPS_SYNTIA}" syntia || echo "Syntia clone failed -- adjust PROMBA_DEPS_SYNTIA"
+
+RUN curl -sS https://bootstrap.pypa.io/pip/2.7/get-pip.py -o /tmp/get-pip2.py && \
+    sudo python2 /tmp/get-pip2.py && \
+    sudo python2 -m pip install "z3-solver==4.8.17.0" \
+    || echo "WARN: Syntia python2 z3 failed to install; Syntia baseline may not run"
+
+RUN opam switch create promba 4.05.0 && \
+    eval $(opam env --switch=promba) && \
+    (opam repository add archive git+https://github.com/ocaml/opam-repository-archive --yes || \
+     opam repository add archive https://github.com/ocaml/opam-repository-archive.git --yes) && \
+    opam update --yes && \
+    opam install --yes dune z3 batteries cil yojson lacaml integers bitvec
+
+RUN git clone "${PROMBA_DEPS_PROMBA}" /experiment/ProMBA || echo "ProMBA clone failed -- adjust PROMBA_DEPS_PROMBA"
+RUN git clone "${PROMBA_DEPS_SIMBA}" /experiment/ProMBA/SiMBA && \
+    git clone "${PROMBA_DEPS_MBASOLVER}" /experiment/ProMBA/MBA-Solver 
+RUN cd /experiment/ProMBA && \
+    chmod +x build.sh omelet_runner simbad simbas.sh synth.sh duet.sh eusolver.sh \
+             mbasolver_linear mbasolver_poly run_test && \
+    bash build.sh
+
+COPY --chown=opam rcr/ /experiment/ProMBA/rcr/
+COPY --chown=opam outputs/ /experiment/ProMBA/rcr/outputs/
+
+ENV LD_LIBRARY_PATH=/home/opam/.opam/promba/lib/z3:/home/opam/.opam/default/lib/z3:${LD_LIBRARY_PATH}
+ENV PROMBA_DIR=/experiment/ProMBA
+ENV PROMBA_EXE=/experiment/ProMBA/promba.exe
+ENV GAMBA_DIR=/experiment/GAMBA
+ENV SYNTIA_DIR=/experiment/syntia
+ENV MBASOLVER_DIR=/experiment/ProMBA/MBA-Solver
+
+WORKDIR /experiment/ProMBA/rcr
+CMD ["python3", "rcr.py", "--help"]

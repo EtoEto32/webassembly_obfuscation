@@ -1,0 +1,1033 @@
+[
+  {
+    "name": "prefix-div",
+    "ops": [
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "x"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "b"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "v",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "o",
+        "args": [
+          "r",
+          "y"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "partial-alias",
+    "ops": [
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "x"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "y"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "a",
+          1
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "v",
+          "d"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p2",
+        "args": [
+          "a",
+          2
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p2",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "forwarded-divisor",
+    "ops": [
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "x"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "b"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "y",
+          "v"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "a"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "first-fault",
+    "ops": [
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "x",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "b"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q2",
+        "args": [
+          "v",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q2"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "a"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "forwarded-address",
+    "ops": [
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "x"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "p",
+        "args": [
+          "b"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "y"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "v",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "a"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "generated-0",
+    "ops": [
+      {
+        "op": "mul",
+        "out": "s",
+        "args": [
+          "x",
+          1082515953
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "s"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "b",
+          0
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "w",
+        "args": [
+          "v",
+          "y"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "w",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "mul",
+        "out": "r2",
+        "args": [
+          "r",
+          "q"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "r3",
+        "args": [
+          "r2",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "r3"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "generated-1",
+    "ops": [
+      {
+        "op": "mul",
+        "out": "s",
+        "args": [
+          "x",
+          1808550445
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "s"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "b",
+          1
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "w",
+        "args": [
+          "v",
+          "y"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "w",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "mul",
+        "out": "r2",
+        "args": [
+          "r",
+          "q"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "r3",
+        "args": [
+          "r2",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "r3"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "generated-2",
+    "ops": [
+      {
+        "op": "mul",
+        "out": "s",
+        "args": [
+          "x",
+          -1279338903
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "s"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "b",
+          2
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "w",
+        "args": [
+          "v",
+          "y"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "w",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "mul",
+        "out": "r2",
+        "args": [
+          "r",
+          "q"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "r3",
+        "args": [
+          "r2",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "r3"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "generated-3",
+    "ops": [
+      {
+        "op": "mul",
+        "out": "s",
+        "args": [
+          "x",
+          1192212721
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "s"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "b",
+          3
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "w",
+        "args": [
+          "v",
+          "y"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "w",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "mul",
+        "out": "r2",
+        "args": [
+          "r",
+          "q"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "r3",
+        "args": [
+          "r2",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "r3"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "generated-4",
+    "ops": [
+      {
+        "op": "mul",
+        "out": "s",
+        "args": [
+          "x",
+          -1305878567
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "s"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "b",
+          0
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "w",
+        "args": [
+          "v",
+          "y"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "w",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "mul",
+        "out": "r2",
+        "args": [
+          "r",
+          "q"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "r3",
+        "args": [
+          "r2",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "r3"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "generated-5",
+    "ops": [
+      {
+        "op": "mul",
+        "out": "s",
+        "args": [
+          "x",
+          -1283072719
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "s"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "b",
+          1
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "w",
+        "args": [
+          "v",
+          "y"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "w",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "mul",
+        "out": "r2",
+        "args": [
+          "r",
+          "q"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "r3",
+        "args": [
+          "r2",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "r3"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "generated-6",
+    "ops": [
+      {
+        "op": "mul",
+        "out": "s",
+        "args": [
+          "x",
+          207158529
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "s"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "b",
+          2
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "w",
+        "args": [
+          "v",
+          "y"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "w",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "mul",
+        "out": "r2",
+        "args": [
+          "r",
+          "q"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "r3",
+        "args": [
+          "r2",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "r3"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  },
+  {
+    "name": "generated-7",
+    "ops": [
+      {
+        "op": "mul",
+        "out": "s",
+        "args": [
+          "x",
+          1826769757
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "a",
+          "s"
+        ]
+      },
+      {
+        "op": "add",
+        "out": "p",
+        "args": [
+          "b",
+          3
+        ]
+      },
+      {
+        "op": "load",
+        "out": "v",
+        "args": [
+          "p"
+        ]
+      },
+      {
+        "op": "xor",
+        "out": "w",
+        "args": [
+          "v",
+          "y"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "q",
+        "args": [
+          "w",
+          "d"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "b",
+          "q"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "r",
+        "args": [
+          "a"
+        ]
+      },
+      {
+        "op": "mul",
+        "out": "r2",
+        "args": [
+          "r",
+          "q"
+        ]
+      },
+      {
+        "op": "div",
+        "out": "r3",
+        "args": [
+          "r2",
+          "e"
+        ]
+      },
+      {
+        "op": "store",
+        "args": [
+          "p",
+          "r3"
+        ]
+      },
+      {
+        "op": "load",
+        "out": "o",
+        "args": [
+          "b"
+        ]
+      }
+    ],
+    "result": "o"
+  }
+]

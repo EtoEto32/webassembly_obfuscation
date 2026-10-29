@@ -1,0 +1,54 @@
+{
+  "input_hashes": {
+    "results\\provenance\\cryptic-bytes-parent-evidence.json": "6c96b785f635afcaa918492a07bf54110bcacd776b2d0a1be7e049abfcaf41db",
+    "results\\corpus\\module-features.csv": "e98f93e0d142d87196342cebcb54b2292460b11ff74e7afffc8683994342f390"
+  },
+  "selected": 20460,
+  "analyzed": 20460,
+  "excluded": [],
+  "programs": [
+    "cn-0",
+    "cn-1",
+    "cn-2",
+    "cn-half",
+    "cn-lite-0",
+    "cn-lite-1",
+    "cn-lite-2",
+    "cn-pico-trtl",
+    "cn-r",
+    "cn-rwz"
+  ],
+  "methods": [
+    "llvm/bcfobf",
+    "llvm/cffobf",
+    "llvm/constenc",
+    "llvm/funcwra",
+    "llvm/indibran",
+    "llvm/splitobf",
+    "llvm/strcry",
+    "llvm/subobf",
+    "tigress/antialiasanalysis",
+    "tigress/antitaintanalysis",
+    "tigress/encodearithmetic",
+    "tigress/encodeliterals",
+    "tigress/flatten",
+    "tigress/randomfuns",
+    "tigress/split",
+    "tigress/virtualize",
+    "unobfuscated",
+    "wasm-mutate/iteration-series"
+  ],
+  "tests": [
+    "20 identity baselines have zero deltas",
+    "all paired size/instruction ratios reproduce existing pair table"
+  ],
+  "aggregation": "median within each source program and method; across-program min, linear Q1, median, linear Q3, max",
+  "limits": [
+    "ten author-program labels are related CryptoNight variants, not ten independent malware families",
+    "methods are declared settings, not independently confirmed per-file mechanisms",
+    "wasm-mutate is an iteration series with mixed mutations, not a single isolated technique",
+    "zero denominators are undefined ratios; deltas retained",
+    "load/store totals count opcodes, not accessed bytes or dynamic frequencies",
+    "no runtime or detector evaluation"
+  ]
+}

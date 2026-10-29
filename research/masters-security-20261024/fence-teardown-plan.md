@@ -1,0 +1,13 @@
+# A: trap時のinstance所有資源の後始末（測定前の計画）
+
+2026-10-24。Component呼出しでtrapしただけでは、host側の独立したticket・資源予約が自動で解放されるとは仮定しない。現在のcomponent-fence-v2はbad-tag/list超過で論理参照が2件残る。新しい認可原理という主張でなく、実装の寿命条件を閉じる追試とする。
+
+一つのComponent instanceに一つのhost ledgerを割り当てる。通常のresource.drop、要求cancel、instance.shutdownを区別する。shutdownは同じJS thread上で受付と直列化し、未受付ticketを消費して予約を返し、hostが所有する全resourceを失効させる。再度のshutdownは無作用。外部に共有されるバックエンドの破棄はしない。
+
+既存Componentからrequest内部関数を名付け、prepare後にtrapするexportを追加した派生binaryを作る。raw/optとも別instanceで、正常終了・明示cancel・bad-tag・大きすぎるlist・open途中失敗・prepare後trap・未受付のまま放棄・drop後pending・duplicate dropを検査する。バックエンドには試験出力ディレクトリ内の新規ファイル3個だけを使う。例外後にguestのreleaseを呼ぶ必要がないcleanupにする。
+
+独立oracle: shutdown後liveTickets=0、logicalPins=0、後続admitはfalseでファイル変更なし、新規open/prepareは拒否、全FDをhost ownerが閉じた後のreadSyncはEBADF。OS FDの閉鎖と論理参照ゼロを別々に数える。二つのinstanceの一方のshutdownが他方の許可を奪わないことを確認する。
+
+追加の境界: slot/permission世代がJS safe integer上限に達したら再利用・更新を拒否し、古い世代へ丸めない。shutdownはその状態でも失効できる。これらはテスト用のhost内部状態注入であり、guestが内部状態を書けるという攻撃モデルではない。
+
+非対象: concurrent worker、WASI runtime全体、クラッシュしたprocessのOS回収、他instanceと共有するFD、完了前の非同期I/O解放。同期trusted executorだけを許す契約は維持する。

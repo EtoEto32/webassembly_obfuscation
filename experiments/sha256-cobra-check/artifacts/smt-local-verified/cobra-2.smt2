@@ -1,0 +1,5 @@
+(set-logic QF_BV)
+(declare-fun v0 () (_ BitVec 32))
+(declare-fun v1 () (_ BitVec 32))
+(assert (not (= (bvadd (bvadd v0 #x00000400) v1) (bvadd (bvadd v0 v1) #x00000400))))
+(check-sat)

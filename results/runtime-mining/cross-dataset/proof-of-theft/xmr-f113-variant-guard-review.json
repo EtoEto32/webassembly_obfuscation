@@ -1,0 +1,56 @@
+{
+  "function": "$f113",
+  "guard": "p3 (variant) >= 4, signed comparison; false exits block B5 before sole direct call.",
+  "reference_call_line": 640,
+  "reference_guard_lines": [
+    457,
+    479
+  ],
+  "reference_and_flattened_prefix_alpha_equivalent_lines": [
+    3,
+    640
+  ],
+  "measured_input_first_bytes": [
+    3,
+    1,
+    1
+  ],
+  "wrapper_rule": "First byte < 7 selects variant 0; otherwise first byte minus 6.",
+  "benchmark_script_sha256": "7820ed4579ea78946f006b0a1d71c9bf4f9e709d953267ba3dc0facbdc2be2af",
+  "source_excerpts": [
+    {
+      "path": "supp-materials/artifact/samples/xmr-wasm/src/main.cpp",
+      "line_range": [
+        58,
+        69
+      ],
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-f113-variant-source-main.cpp.txt",
+      "sha256": "7423869504671468a3808a775be772b463c1fa5fb353de7e415eedb8841f0d3f"
+    },
+    {
+      "path": "supp-materials/artifact/samples/xmr-wasm/src/crypto/slow-hash.c",
+      "line_range": [
+        281,
+        299
+      ],
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-f113-variant-source-slow-hash.c.txt",
+      "sha256": "d4176ee323ae1ca89d3c07776df4ebe3e7adb2c30b997510fd8352cb8abbbbf7"
+    },
+    {
+      "path": "supp-materials/artifact/samples/xmr-wasm/src/crypto/variant4_random_math.h",
+      "line_range": [
+        179,
+        227
+      ],
+      "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-f113-variant-source-variant4_random_math.h.txt",
+      "sha256": "36cf3bd888a914d1941679ba4236114adba52f47f878c5c790a9219765b3df3f"
+    }
+  ],
+  "source_correspondence": "f113 signature(pointer,height), seed byte 0xda and generated-operation loop agree with v4_random_math_init; source/binary historical identity is not proven.",
+  "interpretation": "The reviewed direct caller does not enter f113 for the recorded v0 inputs. Its confirmed flattening entry cannot directly explain the measured v0 execution-time decrease.",
+  "limitations": [
+    "No dynamic instrumentation or comprehensive indirect-call reachability proof.",
+    "Unused code may still affect compilation, memory/layout and file-level static metrics; those indirect effects were not measured.",
+    "No new hashing; result concerns the stored runner input rule and reviewed call site."
+  ]
+}

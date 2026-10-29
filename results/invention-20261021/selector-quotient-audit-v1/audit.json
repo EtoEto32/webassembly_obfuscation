@@ -1,0 +1,632 @@
+{
+  "scope": "32 byte-identical rebuilds and saved evidence consistency; no new independent test inputs or timing experiment",
+  "positive_calls": 24960,
+  "negative_calls": 8320,
+  "negative_wrong_results": 4526,
+  "diagnostic_watchdog_traps": 3794,
+  "model_configurations": 9734,
+  "model_value_checks": 103592,
+  "wabt_calls": 96,
+  "replay": [
+    {
+      "file": "identity-plain-raw.wasm",
+      "sha256": "d5f432860ff796fdbaf28b3c5d645cdfc94278dbeedfb82e4359cc9da63ff2db"
+    },
+    {
+      "file": "identity-plain-O3.wasm",
+      "sha256": "80011a28330846321bc01e9531317ec744945a96f7ecda10b55047011c233383"
+    },
+    {
+      "file": "identity-decoder-raw.wasm",
+      "sha256": "6af7ca701bd0683af11fff6b182cd4d61ec83dc4f55e13469bfbffb0a2ff04be"
+    },
+    {
+      "file": "identity-decoder-O3.wasm",
+      "sha256": "99a2f793745e99e2c0b352a8a7a7e074ecb525b980c967c24372baf1d589c08a"
+    },
+    {
+      "file": "identity-lift-raw.wasm",
+      "sha256": "0bea120dc136723d24a8117f4d0a2b35307b3aebd741d965d47b47d2ba6a7ae6"
+    },
+    {
+      "file": "identity-lift-raw-recovered.wasm",
+      "sha256": "d5f432860ff796fdbaf28b3c5d645cdfc94278dbeedfb82e4359cc9da63ff2db"
+    },
+    {
+      "file": "identity-lift-O3.wasm",
+      "sha256": "b5c9b9054c4f91b46610c9a4f5c1e82d62d3a5e1cccce5172a80be1a54a16a07"
+    },
+    {
+      "file": "identity-lift-O3-recovered.wasm",
+      "sha256": "d5f432860ff796fdbaf28b3c5d645cdfc94278dbeedfb82e4359cc9da63ff2db"
+    },
+    {
+      "file": "affine-plain-raw.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "affine-plain-O3.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "affine-decoder-raw.wasm",
+      "sha256": "6af7ca701bd0683af11fff6b182cd4d61ec83dc4f55e13469bfbffb0a2ff04be"
+    },
+    {
+      "file": "affine-decoder-O3.wasm",
+      "sha256": "99a2f793745e99e2c0b352a8a7a7e074ecb525b980c967c24372baf1d589c08a"
+    },
+    {
+      "file": "affine-lift-raw.wasm",
+      "sha256": "64d3f23fdf5a35078d622b097e505d93123591299966e2a44737c5f996046c11"
+    },
+    {
+      "file": "affine-lift-raw-recovered.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "affine-lift-O3.wasm",
+      "sha256": "8998377494898b2c9838f4c9072680735223ef4a2f35d2c9bad8efe613f7121f"
+    },
+    {
+      "file": "affine-lift-O3-recovered.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "chain3-plain-raw.wasm",
+      "sha256": "193bad7704c4a4fffd617d88884f78d61526deebf206744b5a689bcac23207fb"
+    },
+    {
+      "file": "chain3-plain-O3.wasm",
+      "sha256": "61bd1d79d541410eb7df7e64a99d122a715dec2d0c87db71b6ec1261fd11d267"
+    },
+    {
+      "file": "chain3-decoder-raw.wasm",
+      "sha256": "48fffa9d746444582bb6ab4710322ad6c402a5744d72208f91a4d82107317387"
+    },
+    {
+      "file": "chain3-decoder-O3.wasm",
+      "sha256": "1b97501480bb2d5576f9e229a43d0d9c80d58efd2616efed86e3758c352a005b"
+    },
+    {
+      "file": "chain3-lift-raw.wasm",
+      "sha256": "04789ed7bedf80a1f4a7e9d359c826f8be58488c511cb01dc98d38f94e17c0c3"
+    },
+    {
+      "file": "chain3-lift-raw-recovered.wasm",
+      "sha256": "61bd1d79d541410eb7df7e64a99d122a715dec2d0c87db71b6ec1261fd11d267"
+    },
+    {
+      "file": "chain3-lift-O3.wasm",
+      "sha256": "684810aad680e3892075e6647d4e91d08089468cc29bb1ca0bcac5ca62f0dfdc"
+    },
+    {
+      "file": "chain3-lift-O3-recovered.wasm",
+      "sha256": "61bd1d79d541410eb7df7e64a99d122a715dec2d0c87db71b6ec1261fd11d267"
+    },
+    {
+      "file": "chain7-plain-raw.wasm",
+      "sha256": "2788dfc22de2cf471500b89eb1c7ca0ab388a4ec118207bb72db2a30501ddf12"
+    },
+    {
+      "file": "chain7-plain-O3.wasm",
+      "sha256": "5139d5c182191d3beb056bc318e6ae2a6897a5050dfc7c34213cd6e8e74a9c4c"
+    },
+    {
+      "file": "chain7-decoder-raw.wasm",
+      "sha256": "1d800a027c7aa21e777db665c10ea5e034fe370e27a9f82b08c5e5611c4e0d02"
+    },
+    {
+      "file": "chain7-decoder-O3.wasm",
+      "sha256": "203b03aa2d20b5f2b2fa979ebc7b5c32a4bbd445bd92c384aeffa6ec90604978"
+    },
+    {
+      "file": "chain7-lift-raw.wasm",
+      "sha256": "ad4126bf95a50f3757e4fc0d45158c4c8864a9eb9cac44ca6aa6784193366a02"
+    },
+    {
+      "file": "chain7-lift-raw-recovered.wasm",
+      "sha256": "64c5dd6d8fdddbbb10910e14981e57325e59685852a18f329d70937e3fa94646"
+    },
+    {
+      "file": "chain7-lift-O3.wasm",
+      "sha256": "1ead9470acc39d5844d40950efb567788a80a2d5ad3ac598d7eeeb78bc7d9d6f"
+    },
+    {
+      "file": "chain7-lift-O3-recovered.wasm",
+      "sha256": "64c5dd6d8fdddbbb10910e14981e57325e59685852a18f329d70937e3fa94646"
+    }
+  ],
+  "sources": [
+    {
+      "file": "research\\selector-quotient\\analysis.md",
+      "sha256": "1179c25c1491d7b46de66d6e5adc65eff68817d27e9f641d3dfe1c97e21fd986"
+    },
+    {
+      "file": "research\\selector-quotient\\plan.md",
+      "sha256": "dd3cf5782ba5c209e76cd62ca726d0b71ef524aa906479d4b5e6db9e9cdf7093"
+    },
+    {
+      "file": "research\\selector-quotient\\prior-art.md",
+      "sha256": "8ef7f9e737139317465ee8c2a9633770d118a9e431b518fb816accb594318c13"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "sha256": "8efdf171d34b78ec501977efd8c31d858ab29bed6238002fee2b8a64efe8c353"
+    },
+    {
+      "file": "research\\selector-quotient\\audit.py",
+      "sha256": "d874dd80909ec1d24def921c58088f27f9726b3aac0540473269b5c6a111b893"
+    },
+    {
+      "file": "research\\selector-quotient\\prototype.py",
+      "sha256": "c44c9efeadf922263a78d5fe340145a14aaca580401a2cc5ecaccdc04ac74a89"
+    },
+    {
+      "file": "research\\selector-quotient\\run.py",
+      "sha256": "3864ce752d3bddb3325a6a4fc5c404ee33ea168392af5585f0d711baea58403a"
+    },
+    {
+      "file": "research\\selector-quotient\\check.cjs",
+      "sha256": "9cdc93f589b3cde2e2cb05f5eb02055258470cdace50f479f4d0622c3c71463e"
+    },
+    {
+      "file": "research\\isotope-swizzle\\prototype.py",
+      "sha256": "d1857d80faad957d6d3c23b324cae0deff950097236f0f93360b1a6d7113f161"
+    },
+    {
+      "file": "research\\connectivity-elimination\\prototype.py",
+      "sha256": "df630e5c288e1043fa5e213b3419f6bbd8ab78efabcadc531011fff45d48d284"
+    }
+  ],
+  "tools": [
+    {
+      "file": ".tools\\wabt-1.0.42\\bin\\wat2wasm.exe",
+      "sha256": "d5d742cb997c15ecc050fa64296bb72f53d005235e8fac66b14f3549d8567e6d"
+    },
+    {
+      "file": ".tools\\wabt-1.0.42\\bin\\wasm2wat.exe",
+      "sha256": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873"
+    },
+    {
+      "file": ".tools\\wabt-1.0.42\\bin\\wasm-validate.exe",
+      "sha256": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3"
+    },
+    {
+      "file": ".tools\\wabt-1.0.42\\bin\\wasm-interp.exe",
+      "sha256": "3433086015d69cf50398500f4e122e55fd62097a3c95c0203e6294442f594399"
+    },
+    {
+      "file": ".tools\\binaryen-version_133\\bin\\wasm-opt.exe",
+      "sha256": "4217d75f81cf33c4032d82b5d531120069af1a4b43eb7737977bdb2c99a8f4ba"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-decoder-O3.wasm",
+      "sha256": "99a2f793745e99e2c0b352a8a7a7e074ecb525b980c967c24372baf1d589c08a"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-decoder-raw.wasm",
+      "sha256": "6af7ca701bd0683af11fff6b182cd4d61ec83dc4f55e13469bfbffb0a2ff04be"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-lift-O3-recovered.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-lift-O3.wasm",
+      "sha256": "8998377494898b2c9838f4c9072680735223ef4a2f35d2c9bad8efe613f7121f"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-lift-raw-recovered.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-lift-raw.wasm",
+      "sha256": "64d3f23fdf5a35078d622b097e505d93123591299966e2a44737c5f996046c11"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-plain-O3.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-plain-raw.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\affine-source.wasm",
+      "sha256": "3db0b4fb8932c91c4bcef329a338f16d742492ab78befdde4c7b8442f0437093"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-decoder-O3.wasm",
+      "sha256": "1b97501480bb2d5576f9e229a43d0d9c80d58efd2616efed86e3758c352a005b"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-decoder-raw.wasm",
+      "sha256": "48fffa9d746444582bb6ab4710322ad6c402a5744d72208f91a4d82107317387"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-lift-O3-recovered.wasm",
+      "sha256": "61bd1d79d541410eb7df7e64a99d122a715dec2d0c87db71b6ec1261fd11d267"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-lift-O3.wasm",
+      "sha256": "684810aad680e3892075e6647d4e91d08089468cc29bb1ca0bcac5ca62f0dfdc"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-lift-raw-recovered.wasm",
+      "sha256": "61bd1d79d541410eb7df7e64a99d122a715dec2d0c87db71b6ec1261fd11d267"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-lift-raw.wasm",
+      "sha256": "04789ed7bedf80a1f4a7e9d359c826f8be58488c511cb01dc98d38f94e17c0c3"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-plain-O3.wasm",
+      "sha256": "61bd1d79d541410eb7df7e64a99d122a715dec2d0c87db71b6ec1261fd11d267"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-plain-raw.wasm",
+      "sha256": "193bad7704c4a4fffd617d88884f78d61526deebf206744b5a689bcac23207fb"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain3-source.wasm",
+      "sha256": "193bad7704c4a4fffd617d88884f78d61526deebf206744b5a689bcac23207fb"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-decoder-O3.wasm",
+      "sha256": "203b03aa2d20b5f2b2fa979ebc7b5c32a4bbd445bd92c384aeffa6ec90604978"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-decoder-raw.wasm",
+      "sha256": "1d800a027c7aa21e777db665c10ea5e034fe370e27a9f82b08c5e5611c4e0d02"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-lift-O3-recovered.wasm",
+      "sha256": "64c5dd6d8fdddbbb10910e14981e57325e59685852a18f329d70937e3fa94646"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-lift-O3.wasm",
+      "sha256": "1ead9470acc39d5844d40950efb567788a80a2d5ad3ac598d7eeeb78bc7d9d6f"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-lift-raw-recovered.wasm",
+      "sha256": "64c5dd6d8fdddbbb10910e14981e57325e59685852a18f329d70937e3fa94646"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-lift-raw.wasm",
+      "sha256": "ad4126bf95a50f3757e4fc0d45158c4c8864a9eb9cac44ca6aa6784193366a02"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-plain-O3.wasm",
+      "sha256": "5139d5c182191d3beb056bc318e6ae2a6897a5050dfc7c34213cd6e8e74a9c4c"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-plain-raw.wasm",
+      "sha256": "2788dfc22de2cf471500b89eb1c7ca0ab388a4ec118207bb72db2a30501ddf12"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\chain7-source.wasm",
+      "sha256": "2788dfc22de2cf471500b89eb1c7ca0ab388a4ec118207bb72db2a30501ddf12"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\checks.json",
+      "sha256": "220468c3c17ae460d0d3ebdf6fda09f43ae8c247fe55ad9f3d7bf7deeb7d4a0e"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\environment.json",
+      "sha256": "e07ab476fcbb154a96047e219f90e87a10c52041d40394c07d24c55aa8ad333c"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\fixtures.json",
+      "sha256": "6810d8eef319874a3f213ab8d8a568ede82f6b61c49d600d0ac9623d90926e44"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-decoder-O3.wasm",
+      "sha256": "99a2f793745e99e2c0b352a8a7a7e074ecb525b980c967c24372baf1d589c08a"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-decoder-raw.wasm",
+      "sha256": "6af7ca701bd0683af11fff6b182cd4d61ec83dc4f55e13469bfbffb0a2ff04be"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-lift-O3-recovered.wasm",
+      "sha256": "d5f432860ff796fdbaf28b3c5d645cdfc94278dbeedfb82e4359cc9da63ff2db"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-lift-O3.wasm",
+      "sha256": "b5c9b9054c4f91b46610c9a4f5c1e82d62d3a5e1cccce5172a80be1a54a16a07"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-lift-raw-recovered.wasm",
+      "sha256": "d5f432860ff796fdbaf28b3c5d645cdfc94278dbeedfb82e4359cc9da63ff2db"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-lift-raw.wasm",
+      "sha256": "0bea120dc136723d24a8117f4d0a2b35307b3aebd741d965d47b47d2ba6a7ae6"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-plain-O3.wasm",
+      "sha256": "80011a28330846321bc01e9531317ec744945a96f7ecda10b55047011c233383"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-plain-raw.wasm",
+      "sha256": "d5f432860ff796fdbaf28b3c5d645cdfc94278dbeedfb82e4359cc9da63ff2db"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\identity-source.wasm",
+      "sha256": "d5f432860ff796fdbaf28b3c5d645cdfc94278dbeedfb82e4359cc9da63ff2db"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\inputs.json",
+      "sha256": "07c53d143e088a2846a0f7d10534cff6d87763ad78d6ee3984c230e3b457dd4d"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-lift-O3-recovered.log",
+      "sha256": "2aa6da5b000cb404af2952abec113922b96ca2042e2ed6bbb6a021aa5ce7bb6d"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-lift-O3-recovered.wasm",
+      "sha256": "2d178dbc3579a0270378843ea749c7a1ac0e7323a8a7f194b8859769fadf0e25"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-lift-O3.log",
+      "sha256": "2aa6da5b000cb404af2952abec113922b96ca2042e2ed6bbb6a021aa5ce7bb6d"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-lift-O3.wasm",
+      "sha256": "86ce869f5adc1031517df11c3a52f7cc3d8c5b205d28130ab3a9d6eb7f2aa7cd"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-lift-raw-recovered.log",
+      "sha256": "2aa6da5b000cb404af2952abec113922b96ca2042e2ed6bbb6a021aa5ce7bb6d"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-lift-raw-recovered.wasm",
+      "sha256": "2d178dbc3579a0270378843ea749c7a1ac0e7323a8a7f194b8859769fadf0e25"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-lift-raw.log",
+      "sha256": "2aa6da5b000cb404af2952abec113922b96ca2042e2ed6bbb6a021aa5ce7bb6d"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-lift-raw.wasm",
+      "sha256": "7cf3cfc770d31c37307af7cad417a66fe78cfdbf466d8fcbf8f4e6991dff1e3e"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-plain-O3.log",
+      "sha256": "2aa6da5b000cb404af2952abec113922b96ca2042e2ed6bbb6a021aa5ce7bb6d"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-plain-O3.wasm",
+      "sha256": "2d178dbc3579a0270378843ea749c7a1ac0e7323a8a7f194b8859769fadf0e25"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-plain-raw.log",
+      "sha256": "2aa6da5b000cb404af2952abec113922b96ca2042e2ed6bbb6a021aa5ce7bb6d"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-affine-plain-raw.wasm",
+      "sha256": "2d178dbc3579a0270378843ea749c7a1ac0e7323a8a7f194b8859769fadf0e25"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-lift-O3-recovered.log",
+      "sha256": "94cb55ce54dcfc7eb2cd66c51e765a926117cda8f4c8edbce36385f12660f354"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-lift-O3-recovered.wasm",
+      "sha256": "1b6dbc5ea275025bf6e3ee503e96a9d1a67b6265178295608591e543f88420f3"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-lift-O3.log",
+      "sha256": "94cb55ce54dcfc7eb2cd66c51e765a926117cda8f4c8edbce36385f12660f354"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-lift-O3.wasm",
+      "sha256": "a7dd138c6810a50aba3ba87231d615b7eea05e8eac9e6089c6f906b58454cda4"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-lift-raw-recovered.log",
+      "sha256": "94cb55ce54dcfc7eb2cd66c51e765a926117cda8f4c8edbce36385f12660f354"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-lift-raw-recovered.wasm",
+      "sha256": "1b6dbc5ea275025bf6e3ee503e96a9d1a67b6265178295608591e543f88420f3"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-lift-raw.log",
+      "sha256": "94cb55ce54dcfc7eb2cd66c51e765a926117cda8f4c8edbce36385f12660f354"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-lift-raw.wasm",
+      "sha256": "8bca444bd5d7563b43b8e3654fc5194c94bb6f4d64350d38629bbab7be3595f6"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-plain-O3.log",
+      "sha256": "94cb55ce54dcfc7eb2cd66c51e765a926117cda8f4c8edbce36385f12660f354"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-plain-O3.wasm",
+      "sha256": "1b6dbc5ea275025bf6e3ee503e96a9d1a67b6265178295608591e543f88420f3"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-plain-raw.log",
+      "sha256": "94cb55ce54dcfc7eb2cd66c51e765a926117cda8f4c8edbce36385f12660f354"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain3-plain-raw.wasm",
+      "sha256": "873238bbef93a9b4e555acf63cfc3482d3c7642e770ad2d58d4a903f1b8a8aa4"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-lift-O3-recovered.log",
+      "sha256": "084a1327b7faf045a082e9e18c2771fa9df00dd30057ee9e9a1f7fe631e975f7"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-lift-O3-recovered.wasm",
+      "sha256": "2ff0a812dd7de6dd9b6d56325f8e2b54fcbbad79d4b72eb0d3e82da848c32aef"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-lift-O3.log",
+      "sha256": "084a1327b7faf045a082e9e18c2771fa9df00dd30057ee9e9a1f7fe631e975f7"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-lift-O3.wasm",
+      "sha256": "87e1bbb8612580c8fab3f0c5204322da0b51e8c92272b0259b2ae7668cd3c3b2"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-lift-raw-recovered.log",
+      "sha256": "084a1327b7faf045a082e9e18c2771fa9df00dd30057ee9e9a1f7fe631e975f7"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-lift-raw-recovered.wasm",
+      "sha256": "2ff0a812dd7de6dd9b6d56325f8e2b54fcbbad79d4b72eb0d3e82da848c32aef"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-lift-raw.log",
+      "sha256": "084a1327b7faf045a082e9e18c2771fa9df00dd30057ee9e9a1f7fe631e975f7"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-lift-raw.wasm",
+      "sha256": "a5092756c242194fee61f25ba82f0d193cf7911d13ffcf2b9b2b128e70eb18fd"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-plain-O3.log",
+      "sha256": "084a1327b7faf045a082e9e18c2771fa9df00dd30057ee9e9a1f7fe631e975f7"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-plain-O3.wasm",
+      "sha256": "d57b3faf51a3996aea7f60f9265fcd00086b16c69db55a96eb8ed7661c5ff925"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-plain-raw.log",
+      "sha256": "084a1327b7faf045a082e9e18c2771fa9df00dd30057ee9e9a1f7fe631e975f7"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-chain7-plain-raw.wasm",
+      "sha256": "6ec14cd2b79e8b57c46f91106ad30b9883a375cf7608a996677bbc54fda10ac9"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-lift-O3-recovered.log",
+      "sha256": "3132dd89a9203b9fe5de3afa7302c5f596edefb76d2bd2c0c79e5d983ed60e4f"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-lift-O3-recovered.wasm",
+      "sha256": "10c451e5fb05c5c87fb4570f7c6abd6df5193715df4f484a2d2d18d80f2e0542"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-lift-O3.log",
+      "sha256": "3132dd89a9203b9fe5de3afa7302c5f596edefb76d2bd2c0c79e5d983ed60e4f"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-lift-O3.wasm",
+      "sha256": "728f770976d93e88e327dfd29f69cb244ce8f4d6412b4fe54c9f07980d39b58d"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-lift-raw-recovered.log",
+      "sha256": "3132dd89a9203b9fe5de3afa7302c5f596edefb76d2bd2c0c79e5d983ed60e4f"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-lift-raw-recovered.wasm",
+      "sha256": "10c451e5fb05c5c87fb4570f7c6abd6df5193715df4f484a2d2d18d80f2e0542"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-lift-raw.log",
+      "sha256": "3132dd89a9203b9fe5de3afa7302c5f596edefb76d2bd2c0c79e5d983ed60e4f"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-lift-raw.wasm",
+      "sha256": "2bf326f9b898e4d346aefdaf636515ecc5fa9128848d395bfae1b25615a4598c"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-plain-O3.log",
+      "sha256": "3132dd89a9203b9fe5de3afa7302c5f596edefb76d2bd2c0c79e5d983ed60e4f"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-plain-O3.wasm",
+      "sha256": "2f76219294e4e44effaa4e7c16d96f72392058c25e3e7e007ba61c6860d0df63"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-plain-raw.log",
+      "sha256": "3132dd89a9203b9fe5de3afa7302c5f596edefb76d2bd2c0c79e5d983ed60e4f"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interp-identity-plain-raw.wasm",
+      "sha256": "10c451e5fb05c5c87fb4570f7c6abd6df5193715df4f484a2d2d18d80f2e0542"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\interpreter.json",
+      "sha256": "734e3e78f8bd15ee69b4433c764aded75f45bce3a02040dc2e2ce2e9ecc2c906"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\manifest.json",
+      "sha256": "4c06392721ef8201666b12c0f71f100c2cab46291f83ac322dfae00d36ab700a"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\recovery.json",
+      "sha256": "208f1d25f580d422982999f5c537da753e08cdd1ee36de0c41e17832d8a2f203"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\selector-model.json",
+      "sha256": "622138c4b08de82649464432a4899817837df7f21ed8312c1ce831043cfbe869"
+    },
+    {
+      "file": "results\\invention-20261021\\selector-quotient-v1\\sources.json",
+      "sha256": "2d59535d1c1442a756cc6678701d9fa62c72b4d606db04c5cc5881cfbfe527e1"
+    }
+  ],
+  "local_links": [
+    {
+      "file": "research\\selector-quotient\\analysis.md",
+      "target": "../../experiments/sha256-fixedpoint/independent-decision.md"
+    },
+    {
+      "file": "research\\selector-quotient\\prior-art.md",
+      "target": "../../tmp/semantic-fusion-audit/README.md"
+    },
+    {
+      "file": "research\\selector-quotient\\prior-art.md",
+      "target": "../patent/joint-relations.md"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "plan.md"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "prior-art.md"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "analysis.md"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "prototype.py"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "run.py"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "check.cjs"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "audit.py"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "../../results/invention-20261021/selector-quotient-v1"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "../../results/invention-20261021/selector-quotient-audit-v1/audit.json"
+    },
+    {
+      "file": "research\\selector-quotient\\README.md",
+      "target": "../../experiments/sha256-fixedpoint/independent-decision.md"
+    }
+  ]
+}

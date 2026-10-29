@@ -1,0 +1,25 @@
+{
+  "correct": {
+    "states": 11,
+    "outcomes": [
+      24
+    ],
+    "counterexample": null
+  },
+  "early_ready": {
+    "states": 22,
+    "outcomes": [
+      0,
+      24
+    ],
+    "counterexample": [
+      "worker0: claim node0, compute 8",
+      "worker0: publish ready node0",
+      "worker1: claim node1, compute 0",
+      "worker0: store value node0=8",
+      "worker1: publish ready node1",
+      "worker1: store value node1=0"
+    ]
+  },
+  "scope": "two-operation two-worker SC model, not full Wasm model checking"
+}

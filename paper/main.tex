@@ -1,0 +1,416 @@
+% !TeX program = platex
+% Encoding: UTF-8
+\PassOptionsToPackage{dvipdfmx}{color}
+\documentclass[submit,techrep]{ipsj}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+\usepackage{array}
+% Compact float spacing; retain the template body font and margins.
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 2pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
+\setlength{\dblfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\dbltextfloatsep}{10pt plus 2pt minus 2pt}
+\setcounter{year}{2026}
+\providecommand{\newblock}{\hskip .11em plus .33em minus .07em}
+% DOI metadata are retained in references.bib but omitted by the local style.
+\urlstyle{same}
+\renewcommand{\GAIYOU}{\textbf{\gtfamily 概要：}}
+% Keep the added keywords and background table within the eight-page limit.
+% Body font size and page margins follow the IPSJ template.
+\shubetutitlesep=3mm
+\Jtitlejauthorsep=3mm
+\Jauthorjreceivesep=0mm
+\Jreceivejabstsep=0mm
+\Jkeywordetitle=4mm
+\Jetitleeauthor=2mm
+\Jeauthorereceivesep=0mm
+\Jereceiveeabstsep=0mm
+\JEhonbunsep=4mm
+% Keep reference text at the template's small size; tighten line/item spacing.
+\let\paperbibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \par\paperbibliography{#1}%
+  \setlength{\baselineskip}{13\h}%
+  \setlength{\itemsep}{0pt}}
+\begin{document}
+\title{WebAssemblyクリプトジャッキングマルウェアにおける\\難読化技術の評価}
+\etitle{Evaluation of Obfuscation Techniques in WebAssembly Cryptojacking Malware}
+\affiliate{KIT}{金沢工業大学大学院\\Graduate School, Kanazawa Institute of Technology}
+\author{貝沼英亮}{EISUKE KAINUMA}{KIT}[c6600873@st.kanazawa-it.ac.jp]
+\author{向井宏明}{HIROAKI MUKAI}{KIT}[mukai.hiroaki@neptune.kanazawa-it.ac.jp]
+\begin{abstract}
+WebAssembly（Wasm）は，Webブラウザ上で高速な処理を実現する技術である．一方で，その処理性能を悪用し，利用者の同意なく端末の計算資源を用いて暗号資産をマイニングする「クリプトジャッキング」が問題となっている．また，コードの構造を複雑化する難読化によって，その検知が困難になることが指摘されている．本研究では，難読化されたコードを解析・検知に適した形式へ変換するコード正規化モジュールの開発に向けて，難読化がコード構造および実行性能に与える影響を調査する．具体的には，公開されているWasmクリプトジャッキングのバイナリデータを対象に，静的解析によって命令列やコード構造の変化を分析するとともに，難読化前後における計算結果の正当性やハッシュ計算速度などを評価する．その結果，命令数やファイルサイズの変化が，必ずしも実行性能の変化と対応しないことを確認した．これらの結果を踏まえ，コード正規化モジュールの開発に向けた課題を検討する．
+\par\smallskip
+\noindent\textbf{\gtfamily キーワード：}WebAssembly，クリプトジャッキング，難読化，静的解析，実行性能
+\end{abstract}
+\begin{eabstract}
+WebAssembly (Wasm) enables high-performance computation in web browsers. However, cryptojacking, which exploits this performance to mine cryptocurrency using a device's computing resources without the user's consent, has become a concern. Obfuscation, which makes code structure more complex, has also been reported to hinder detection. Toward developing a code normalization module that transforms obfuscated code into a form suitable for analysis and detection, we investigate the effects of obfuscation on code structure and execution performance. We use publicly available Wasm cryptojacking binaries to analyze changes in instruction sequences and code structure through static analysis and evaluate the correctness of computation results and hashing speed before and after obfuscation. The results confirm that changes in instruction counts and file sizes do not necessarily correspond to changes in execution performance. Based on these findings, we discuss challenges in developing the code normalization module.
+\end{eabstract}
+\maketitle
+
+\section{はじめに}
+WebAssembly（以下Wasm）は，C/C++などからコンパイルできるバイナリ形式である．ブラウザなどの実行環境で命令と型を検証し，機械語にコンパイルして実行する\cite{webassembly}．表\ref{tab:wasm-js-performance}に，JavaScriptの書き方を制限して高速化したasm.jsとの速度比較を示す．2019年にXeon E5-1650 v3・Ubuntu 16.04で各5回測ったSPEC CPUの結果である\cite{jangda2019}．
+\begin{table}[ht]
+\centering\small
+\caption{asm.jsに対するWasmの速度比（幾何平均）\cite{jangda2019}}
+\label{tab:wasm-js-performance}
+\begin{tabular}{lcc}
+\hline
+ブラウザ & Chrome 74.0 & Firefox 66.0 \\
+\hline
+速度比 & 1.54倍 & 1.39倍 \\
+\hline
+\end{tabular}
+\end{table}
+
+Wasmは，ハッシュ計算を繰り返す暗号資産のマイニングにも使われる．利用者の同意なく端末の計算資源をマイニングに使う攻撃が，クリプトジャッキングである．図\ref{fig:cryptojacking-flow}にブラウザ上での攻撃の一例を示す．利用者がWebページを開くと，JavaScriptがWasmを読み込み，マイニングプールとの通信を仲介する．マイニングプールは計算タスクを配分し，送られた結果を確認するサーバである．ブラウザ内のWasmがハッシュ計算を行い，受理された結果に応じて攻撃者が報酬を得る\cite{cabrera2023}．
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/cryptojacking-flow-ja.png}
+\caption{ブラウザ上のクリプトジャッキングの流れ}
+\label{fig:cryptojacking-flow}
+\end{figure*}
+
+難読化は，計算内容を保ちながらコードを読み取りにくくする技術である．知的財産の保護に使われる一方，マルウェアの検知回避にも用いられる\cite{harnes2024}．Wasmについても，難読化後のマイニングプログラムが検知を回避する研究結果が報告されている\cite{cabrera2023,harnes2024}．
+
+難読化でコードの見た目が変わると，既知のマイニングコードとの共通部分を見つけにくくなる．そこで，不要な命令を除き，定数の計算式を簡単にして，比較しやすい形にそろえるコード正規化モジュールを検討する．既知のマイニング処理を特定し，マルウェアの解析・検知を支援することが目的である．
+
+関連する公開データセットには，Webから収集されたWasmバイナリと，研究者が難読化を加えたバイナリが含まれる\cite{konoth2018,harnes2024,kim2025}．対象は，これらに収録されたCryptoNight系列のマイニングコードとする．CryptoNightは暗号資産のマイニングに用いられるハッシュ計算アルゴリズムである．これらを用い，難読化がハッシュ計算の正しさと性能に与える影響，および解析のためにコードを整理できる範囲を評価する．研究課題（RQ）は次の2点である．
+\begin{description}
+\item[RQ1] 複数のマイニングプログラムを比較し，難読化がハッシュ計算の正しさと計算速度に与える影響の傾向を調べる．また，命令数・ファイルサイズ・機械語コードのサイズと，速度の変化との関係を調べる．
+\item[RQ2] コード正規化モジュールと，高速化やコードサイズの削減を目的とする既存の最適化ツールは，難読化後の関数が元のどの関数に当たるかを調べる照合に，どこまで役立つか．複雑な難読化にはどのような課題が残るか．
+\end{description}
+
+評価から，命令数の削減量が同じでも，対象関数の実行頻度によって速度変化が異なることを確認した．また，nop除去と定数畳み込みの併用により，照合対象644関数中536関数を一意に特定できたが，制御フロー平坦化・命令置換後のXOR関数4件は特定できなかった．これらを基に，性能への影響と既知関数の特定の両面から，コード正規化モジュールの課題を整理する．
+
+\section{関連研究と本研究の位置付け}
+難読化による速度変化は，既に先行研究で調べられている．Cryptic Bytesデータセットを構築した研究は，ソースコード，LLVMの中間表現，Wasmの各段階で難読化を加え，検知への影響，100秒間のハッシュ計算速度，機械語コードのサイズを評価している\cite{harnes2024}．WebAssembly diversification for malware evasionは，難読化前の6件と難読化後の120件を約1000秒間測定し，マイニングプールで計算結果を検証している\cite{cabrera2023}．MineSweeperもWasmとasm.jsの速度差やCPU利用率を扱う\cite{konoth2018}．
+
+SWAMPEDデータセットを用いた研究は，JavaScriptとWasmの実行環境であるV8を使い，実行時間を測定している\cite{kim2025}．コンパイラには，コンパイル時間の短いLiftoffを使う．ただし，Wasmが外部に呼び出す関数は，何も処理しない関数に置き換えている．これに対し，今回の実験ではJavaScript側に必要な処理を用意し，計算されたハッシュ値全体を検証する．Proof-of-Theftデータセットにも速度測定用プログラムがあるが，本文・補足資料では，ハッシュ値の照合と速度の繰り返し測定を組み合わせた評価は確認できなかった\cite{sermchaiwong2026}．
+
+先行研究が扱った難読化前後の速度差に対し，RQ1では関数の実行回数を測り，一部の難読化を手動で除去して速度変化との関係を調べる．RQ2では，nop除去と定数畳み込みを既存の最適化と比較し，既知の関数を特定できる範囲を調べる．性能分析と関数照合を組み合わせ，解析・検知を支援する正規化の要件を検討する点が特徴である．新しい難読化方式や正規化規則は提案しない．
+
+\section{対象と分析方法}
+使用するデータセットは3種類である．Cryptic Bytesデータセット\cite{harnes2024}ではCryptoNight系列の10プログラムのコード構造を比較する．実行と関数照合には，Proof-of-Theftデータセット\cite{sermchaiwong2026}のxmr-wasm・webminerpoolhashcnと，SWAMPEDデータセット\cite{kim2025}のマイニング用プログラム1種類を使う．「3プログラム」はこの3種類を指し，難読化などで作るWasmファイルの数とは区別する．表\ref{tab:datasets}に実験別の内訳と目的を示す．
+\begin{table*}[t]
+\centering\small
+\caption{各実験で使うWasmファイルの内訳と目的}
+\label{tab:datasets}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.41\textwidth}>{\raggedright\arraybackslash}p{0.28\textwidth}}
+\hline
+実験 & ファイルの内訳 & 評価の目的 \\
+\hline
+コード構造の比較 & Cryptic Bytesデータセット：最適化なし10,230＋あり10,230＝20,460（重複を含む） & 手法・最適化条件による構造の違い \\
+取得ファイル等の動作・速度確認 & xmr-wasm 5＋webminerpoolhashcn 5＋SWAMPEDのプログラム3＝13 & 取得したコードの動作・速度の確認 \\
+条件をそろえた性能比較 & 比較元3＋nop挿入版3＋定数分割版3＝9（3プログラムに同じ条件で難読化） & ハッシュ値の維持と難読化による速度変化 \\
+XOR関数の復元比較 & xmr-wasmの制御フロー平坦化版1＋XOR関数の手動復元版3＝4 & 関数の実行頻度と速度変化の関係 \\
+コード正規化の評価 & 条件をそろえた9＋取得したxmr-wasmの制御フロー平坦化版1・命令置換版1＝11 & 計算結果の維持と既知関数の特定 \\
+\hline
+\end{tabular}
+\end{table*}
+
+定数分割は固定値を計算式に，命令置換は命令を同じ計算を行う別の命令列に置き換える．次に実行する処理を数値で管理し，処理の順序を追いにくくする難読化を制御フロー平坦化と呼ぶ．
+
+変更前のファイルを「比較元」，難読化を加えたり一部を取り除いたりしたファイルを「変換版」と呼ぶ．比較元も，取得前から難読化されている可能性がある．
+
+xmr-wasmはMoneroのマイニング用プログラムである\cite{sermchaiwong2026}．ハッシュ計算には8バイト・16バイト単位のXOR（排他的論理和）を行う補助関数があり，それぞれ8バイトXOR関数，16バイトXOR関数と呼ぶ．
+
+\subsection{コード構造の比較とハッシュ値・速度の確認}
+Cryptic Bytesデータセットの対象10プログラムは，CryptoNight v0・v1・v2やその派生方式の実装である．最適化なし版・あり版は各10,230ファイルで，それぞれ比較元10，LLVMとTigressによる難読化版160，wasm-mutateによる変換系列10,060からなる．計20,460ファイルには同一内容の重複も含まれる．難読化前後を対応付け，手法と最適化条件によるコード構造の違いを比較する．
+
+ハッシュ値と速度の確認には，表\ref{tab:datasets}の13ファイルを使う．Proof-of-Theftデータセットからは，2プログラムそれぞれについて，比較元と制御フロー平坦化・命令置換・基本ブロック分割・偽の制御フローの4設定を取得した（各5ファイル，計10）．SWAMPEDデータセットから取得した比較元1ファイルにnop挿入版と定数分割版を追加し，残り3ファイルとした．取得した11ファイルと追加作成した2ファイルを含む比較であり，作成条件は統一していない．
+
+Proof-of-TheftデータセットにはWasabiで実行状況の記録用命令を加えたファイルもあり，その命令はハッシュ計算や難読化のコードと区別した．
+
+解析ツールWABT 1.0.42で各ファイルの命令や型がWasmの規格に合うかを確認し，Wasmのテキスト形式であるWATに変換した．静的解析により，命令数，関数，分岐表，関数呼び出し，ファイル全体と各セクションのサイズを比較した．命令数はコードに書かれた個数であり，同じ命令が繰り返し実行される回数ではない．取得元や設定，比較元との対応も記録した．
+
+ハッシュ計算の正しさは，マイニングソフトウェアXMRig v6.18.0が公開するCryptoNight v0のテストデータ5件と，その正しいハッシュ値で確認した\cite{xmrigvectors}．xmr-wasmでは，対応する3件を用いた．マイニングでは，計算に与えるデータ中の調整用の値（ノンス，nonce）を変え，ハッシュ値がしきい値（target）以下になる組合せを探す．xmr-wasmの検証では，しきい値を最大値に設定し，計算中にノンスが変わらないことを確かめて，同じ入力に対するハッシュ値を比較した．webminerpoolhashcnのCryptoNight派生方式cn-picoの評価には，マイニングプールに受理された計算結果の保存記録13件も用いた．
+
+13ファイルの速度は，測定前にプログラムを動かすウォームアップを行い，各3回測った．webminerpoolhashcnは1秒間のウォームアップ後に5秒間，他は3秒間のウォームアップ後に30秒以上測定した．3.3節のコンパイラを固定した実験とは分けて集計する．実験は，外部通信やマイニングプールへの送信を行わないローカル環境で実施した．
+
+\subsection{比較用ファイルの作成と入力条件の確認}
+\label{sec:followup-method}
+条件をそろえるため，3.1節の3プログラムの比較元に，同じ設定でnop挿入と定数分割を別々に加える．比較元3ファイルと新たな難読化版6ファイルの計9ファイルで，ハッシュ値・速度・関数照合を比べる．3.1節の13ファイルから選ぶのではなく，難読化版を作り直す．
+
+難読化にはSWAMPEDの変換プログラムを用いた\cite{kim2025}．一つはnop命令の挿入である．もう一つは，定数を同じ値になる2つの整数の加算に置き換える「定数の分割」（Constant Value Splitting）である．例えば16を$10+6$に置き換える．浮動小数点演算の丸め誤差を避けるため，浮動小数点定数を含む関数は定数分割の対象外とした．
+
+各手法で，関数ごとに変換可能な箇所の約10\%（候補があれば最低1箇所）を選んだ．再現できるよう乱数の初期値を固定した．元のWasmファイルをWATに変換し，SWAMPEDの処理を適用した後，WABTでWasmファイルに戻した．比較元もWATからWasmに戻す同じ手順で処理した．したがって，そろえたのはWasm上の変換条件であり，元のC/C++を同じ条件でコンパイルし直した比較ではない．
+
+ハッシュ値は，XMRigのテストデータと，ノンスを変えた追加データで確認した．追加データには公開された正解がない．そこで，別の配布元のwebminerpoolhashcnをXMRigの正解で検証し，追加データの比較用の値を求めた．比較に使う値を「照合用ハッシュ値」と呼ぶ．ただし，3プログラムにはCryptoNightと暗号処理ライブラリOpenAESに由来する共通コードがあるため，別の配布元との一致だけでは正しさを証明できない．
+
+計算に与えるデータの長さや順序，末尾に残る値を変え，ハッシュ関数がメモリのどこまで読むかも調べた．結果を第\ref{sec:input-results}節に示す．以降の実験では，関数が実際に読み込む範囲のデータをそろえる．
+
+\subsection{コンパイラ別の速度測定}
+Wasmの命令数が増えても，コンパイル時に不要な命令が除かれれば，速度への影響は小さくなる可能性がある．この最適化の影響を調べるため，V8の2種類のコンパイラを分けて測定する．Liftoffはコンパイル時間の短さを，TurboFanは実行速度を重視する\cite{v8liftoff}．それぞれで同じファイルを実行し，難読化前後の速度比を求める．測定中はコンパイラを固定し，Wasmのコンパイルが始まらないことを実行ログで確認した．JavaScript側の実行時コンパイル（JIT）は確認対象外である．
+
+3プログラムでCryptoNight v0のハッシュ計算を繰り返す．3.1節のwebminerpoolhashcnの速度測定はcn-picoという別の計算方式を使うため，両者の速度は直接比較しない．ブラウザを使わずJavaScriptを実行できるNode.jsに組み込まれたV8を用いる．表\ref{tab:runtime-environment}に実行環境を示す．Windows内のLinux実行環境（コンテナ）でCPUの割り当てを1個に制限したが，他の処理が同じ物理CPUを使う可能性は残る．
+\begin{table}[t]
+\centering\small
+\caption{性能測定の実行環境}
+\label{tab:runtime-environment}
+\begin{tabular}{lp{0.30\textwidth}}
+\hline
+項目 & 設定 \\
+\hline
+CPU & Intel Core i9-11900K \\
+実行環境 & Windows上のLinuxコンテナ \\
+Node.js & 18.20.4 \\
+V8 & 10.2.154.26-node.37 \\
+CPU割り当て & 1 CPU（コンテナ内のCPU 0） \\
+並列実行数 & 1 \\
+メモリ上限 & 1 GiB \\
+外部通信 & 無効 \\
+\hline
+\end{tabular}
+\end{table}
+
+速度測定には，第\ref{sec:followup-method}節の9ファイルと，XOR関数の復元比較の4ファイルを使う（表\ref{tab:datasets}）．各プログラムの比較元とnop挿入版・定数分割版を比べ，さらにxmr-wasmの制御フロー平坦化版と，8バイトXORのみ・16バイトXORのみ・両方の復元版を比べる．計13ファイルだが，3.1節とは内訳が異なる．
+
+1回の測定では，プログラムを新たに起動し，5秒以上ウォームアップした後，30秒以上ハッシュ計算を測る．ハッシュ計算用の領域の初期化・解放とJavaScriptからの呼び出し時間を含め，実行環境の準備時間は除く．
+
+測定中の速度変動を確認するため，変換版の前後に比較元を測る．nop挿入と定数分割の比較では，「比較元，nop挿入版，比較元，定数分割版，比較元」の5回を1巡とする．XOR関数の比較では，3種類の復元版の間と前後に比較元を測るため，1巡は7回となる．各コンパイラで6巡を測り，変換版ごとに6回の測定値を得る．6巡は2巡ずつ3回に分け，プログラム・変換・コンパイラの測定順を入れ替えた．
+
+表\ref{tab:measurement-counts}に測定回数を示す．3プログラムの難読化前後の比較が180回，XOR関数の復元前後の比較が84回である．比較元を連続して測り，測定値の揺れを確認する8回を加え，合計272回となる．
+\begin{table}[t]
+\centering\small
+\caption{性能測定272回の内訳}
+\label{tab:measurement-counts}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.20\textwidth}cr}
+\hline
+測定内容 & 回数の計算 & 合計 \\
+\hline
+3プログラムの難読化前後 & $5\times3\times2\times6$ & 180 \\
+XOR関数の復元前後 & $7\times2\times6$ & 84 \\
+比較元の連続測定 & -- & 8 \\
+\hline
+合計 & & 272 \\
+\hline
+\end{tabular}
+\end{table}
+
+計算速度$H$は，1秒当たりに完了したハッシュ計算数（H/s）であり，計算回数を測定時間で割って求める．変換版の速度$H_V$を比べる基準速度$\widehat H_B$は，前後の比較元の測定値から次式で推定する．
+\begin{equation}
+\widehat H_B=H_1+\frac{t_V-t_1}{t_2-t_1}(H_2-H_1)
+\label{eq:baseline-interpolation}
+\end{equation}
+$H_1,H_2$は前後に測った比較元の速度，$t_1,t_2,t_V$は比較元2回と変換版の各測定区間の中央時刻である．式\ref{eq:baseline-interpolation}で前後の速度を直線で結び，変換版を測った時点の基準速度を推定する．その基準に対する速度比$r$を，
+\begin{equation}
+r=\frac{H_V}{\widehat H_B}
+\label{eq:speed-ratio}
+\end{equation}
+で求める．$r=1$は同じ速度，$r>1$は変換版が高速，$r<1$は低速を表す．6回の速度比は幾何平均でまとめた．一時的な負荷の影響は補間だけでは除けないため，比較元同士の変動も確認し，遅い測定値も除外しなかった．
+
+図\ref{fig:followup-speed}の誤差棒は，測定値のばらつきから求めた速度比の推定範囲（95\%信頼区間）を参考値として示す．2巡ずつの速度比を対数にして平均し，得られた3つの平均値からt分布（自由度2）を使って計算した．各比較で個別に求めた区間であり，全比較をまとめた95\%の信頼水準は保証しない．測定回数が少なく，統計上の前提も十分に確認できないため，区間だけで速度差や同等性は判定しない．
+
+\subsection{実行回数の計測と関数別の比較}
+命令数が増えた関数でも，ハッシュ計算中に使われるとは限らない．速度変化との関係を調べるため，XOR関数が実際に何回呼ばれるかを測る．対象は，Proof-of-Theftデータセットのxmr-wasmの比較元，制御フロー平坦化版，命令置換版の計3ファイルである．
+
+制御フロー平坦化された関数は，次の処理を選ぶ値の更新と，共通の選択処理に戻る命令を手掛かりに選定した．分岐表や間接呼び出しは通常の暗号処理にも使われるため，その有無だけでは判断しない．比較元との対応は，関数の番号やラベルに加え，命令列と処理内容から確認した．
+
+各ファイルに，関数の先頭と呼び出し箇所で回数を数えるコードを別々に加えた．XMRigのCryptoNight v0の対応する3件で，二つの数え方が一致することを確認した．
+
+続いて，同じ制御フロー平坦化版から，8バイトXORのみ，16バイトXORのみ，両方を手動で元に戻した3ファイルを作成した．他のコードと，関数の引数・戻り値の型は変えなかった．XMRigのテストデータでハッシュ値の一致を確認し，回数を数えるコードを除いて3.3節の方法で復元前後の速度を比べた．
+
+\section{難読化による計算への影響（RQ1）}
+コード構造とハッシュ計算への影響を分け，条件をそろえた速度測定の結果とともに示す．
+\subsection{コード構造とハッシュ値・速度の評価}
+\subsubsection{結果}
+\noindent\textbf{コード構造の比較．}
+Cryptic Bytesデータセットの20,460ファイルを比較した．最適化なし版では，難読化前を1とした命令数比の中央値は，難読化ツールTigressによる算術式の書き換え（encodearithmetic）が2.515，LLVMを用いた命令の置き換え（subobf）が1.461，制御フロー平坦化はLLVMが1.098，Tigressが1.394だった．増加量は手法と最適化条件によって異なった．
+
+\noindent\textbf{ハッシュ値・計算速度の評価．}
+3.1節の13ファイルでは，対応するXMRigのテストデータでハッシュ値が照合用ハッシュ値と一致した．表\ref{tab:xmr-runtime}にxmr-wasmの計算速度と命令数を示す．比較元に対する速度比は，制御フロー平坦化版が0.678，命令置換版が0.738だった．
+\begin{table}[t]
+\centering\small
+\caption{xmr-wasmの計算速度と命令数}
+\label{tab:xmr-runtime}
+\setlength{\tabcolsep}{2.8pt}
+\begin{tabular}{lrrr}
+\hline
+難読化の設定 & \shortstack{計算速度の\\中央値（H/s）} & \shortstack{最小値～最大値\\（H/s）} & \shortstack{命令数\\の比} \\
+\hline
+比較元 & 9.11 & 8.50--9.34 & 1.000 \\
+制御フロー平坦化 & 6.18 & 5.86--6.22 & 1.166 \\
+\shortstack[l]{基本ブロック\\分割（設定名）} & 8.59 & 8.46--9.01 & 1.033 \\
+命令置換（設定名） & 6.72 & 6.61--6.82 & 1.655 \\
+\shortstack[l]{偽の制御フロー\\（最適化：\texttt{-O2}）} & 23.08 & 22.69--24.05 & 0.413 \\
+\hline
+\end{tabular}
+\end{table}
+SWAMPEDデータセットを基に3.1節で用意した3ファイルを各3回測ると，nop挿入版・定数分割版の命令数比は1.097・1.034，速度の中央値の比は0.960・0.973だった．各回では比較元より速い場合と遅い場合があり，比較元自体も27.09～32.73 H/sで変動した．
+
+\subsubsection{考察}
+\noindent\textbf{コード構造の比較．}
+命令数の増加量は，難読化手法や最適化条件に左右され，難読化の有無だけでは決まらない．ただし，Cryptic Bytesデータセットでの構造比較と13ファイルの実行性能の評価は対象が異なるため，両者を同じファイルの結果として結び付けることはできない．
+
+\noindent\textbf{ハッシュ値・計算速度の評価．}
+試したテストデータではハッシュ値は保たれた．表\ref{tab:xmr-runtime}では，命令数が多い命令置換版より制御フロー平坦化版が遅く，命令数だけでは速度低下を説明できない．偽の制御フロー版は速かったが，作成時に高速化などを指示する\texttt{-O2}設定\cite{emscriptenOptimization}を使っている．実行時のLiftoff・TurboFanの指定とは異なり，作成条件も未統一のため，難読化と最適化の影響は分けられない．SWAMPEDデータセットのプログラムでも測定値が変動した．次節では，小さな差を難読化の効果と誤認しないよう，変換条件とコンパイラをそろえる．
+
+\subsection{条件をそろえたハッシュ値・速度の評価}
+\subsubsection{結果}
+\noindent\textbf{ハッシュ値の確認．}
+3.2節の9ファイルで，ハッシュ値が正しいかを確認した．実行方法は，毎回状態を初期化する方法と，状態を保ってデータを順・逆順に与える方法の3通りとした．XMRigのテストデータは2プログラムで各5件，xmr-wasmで3件を使い，各3種類のファイルを3通りの方法で実行した．ハッシュ値の照合は計117回（$(5+5+3)\times3\times3$）すべてで一致した．さらに，ノンスを変えた8件を9ファイルで同様に試した216回（$8\times9\times3$）も一致し，合計333回で一致した．
+
+\label{sec:input-results}
+\noindent\textbf{読み込むデータの範囲．}
+ハッシュ関数が実際に読む範囲を調べると，SWAMPEDデータセットのプログラムは，入力長の引数を別の用途に使い，先頭76バイトを読んでいた．長さの指定を変えた27条件と，実行履歴や末尾のデータを変えた81条件で，76バイトが同じならハッシュ値は一致した．1バイトだけ書き込んで長さ1を指定しても，残り75バイトにある以前のデータまで計算に使われた．webminerpoolhashcnでも，実際に読むデータをそろえた14種類でハッシュ値が一致した．さらに，計算に与えるデータを短くした12条件でも確認した．
+
+\noindent\textbf{関数の実行回数と復元前後の速度．}
+XMRigの対応するテストデータ3件で，xmr-wasmの比較元・制御フロー平坦化版・命令置換版の関数の実行回数を調べた．表\ref{tab:xor-restoration}にその回数と，制御フロー平坦化版から各XOR関数を復元したときの速度比を示す．LFはLiftoff，TFはTurboFan，速度比は復元前に対する6回の比の幾何平均である．
+\begin{table}[t]
+\centering\small
+\caption{XOR関数の実行回数と復元による速度変化}
+\label{tab:xor-restoration}
+\setlength{\tabcolsep}{2pt}
+\begin{tabular}{lrrrr}
+\hline
+復元対象 & \shortstack{1ハッシュ当たり\\の呼び出し回数} & \shortstack{削減\\命令数} & \shortstack{LF\\速度比} & \shortstack{TF\\速度比} \\
+\hline
+8バイトXOR & 0 & 91 & 0.9922 & 1.0148 \\
+16バイトXOR & 1,179,648 & 91 & 1.4692 & 1.3857 \\
+\hline
+\end{tabular}
+\end{table}
+
+16バイトXOR関数の復元では，命令数は約0.05\%，機械語コードのサイズは約0.06～0.07\%減った．6回の速度比はLFで1.3819～1.5327，TFで1.3227～1.4690だった．両方のXOR関数を復元した場合の速度比は，それぞれ1.4426，1.3450だった．各復元版は，他の関数と引数・戻り値の型を保ち，XMRigのテストデータ3件でハッシュ値が一致した．なお，命令数が増えた箇所には，測定中に使われない別のアルゴリズムの処理も含まれた．
+
+\label{sec:followup-performance}
+\noindent\textbf{コンパイラ別の速度比較．}
+表\ref{tab:followup-performance}に難読化前後の命令数・機械語コードのサイズ・速度の比を，図\ref{fig:followup-speed}にコンパイラ別の速度変化を示す．nop挿入版・定数分割版は作成前の比較元と，XOR関数の復元版は復元前の制御フロー平坦化版と比べる．速度比は1を超えると高速，1未満なら低速を表す．機械語コードのサイズはV8の記録値（codesize）の合計であり，Wasmファイルのサイズとは異なる．速度比は6回の幾何平均で示す．図の点は各回の値，ひし形は幾何平均，誤差棒は比較ごとの95\%信頼区間（参考値）である．異なるプログラムの速度そのものは比較しない．
+\begin{table*}[t]
+\centering\small
+\caption{変更前に対する命令数・コードサイズ・速度の比}
+\label{tab:followup-performance}
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{llrrrrr}
+\hline
+対象プログラム & 変換 & \shortstack{ファイル内の\\命令数の比} & \shortstack{LFコード\\サイズ比} & \shortstack{TFコード\\サイズ比} & LF速度比 & TF速度比 \\
+\hline
+\shortstack[l]{SWAMPEDデータセット\\のプログラム} & nop & 1.0973 & 1.0016 & 1.0000 & 0.9837 & 1.0035 \\
+ & 定数の分割 & 1.0341 & 1.0486 & 1.0009 & 0.9077 & 1.0121 \\
+xmr-wasm & nop & 1.0977 & 1.0007 & 1.0000 & 0.9988 & 0.9859 \\
+ & 定数の分割 & 1.0136 & 1.0123 & 1.0001 & 1.0014 & 0.9897 \\
+webminerpoolhashcn & nop & 1.0914 & 1.0031 & 1.0000 & 0.9908 & 1.0228 \\
+ & 定数の分割 & 1.0162 & 1.0126 & 1.0018 & 1.0019 & 1.0202 \\
+\hline
+\end{tabular}
+\end{table*}
+nop挿入でWasmの命令数は約9～10\%，ファイルサイズは約3.7～4.2\%増えた．一方，機械語コードのサイズはLiftoffで約0.07～0.31\%増え，TurboFanでは変化しなかった．SWAMPEDデータセットのプログラムで定数を分割すると，Liftoffの速度比は6回とも1未満（0.8511～0.9554）で，幾何平均は0.9077だった．TurboFanでは0.9273～1.0743となり，機械語コードのサイズ比も，Liftoffの1.0486に対し1.0009だった．比較元同士の速度比にも0.8438～1.2029の変動があった．
+
+\subsubsection{考察}
+\noindent\textbf{ハッシュ値と読み出し範囲．}
+試したデータでは難読化後もハッシュ値が一致した．ただし，短いデータを与えた場合も含め，任意の長さのデータで正しく計算できることを示した結果ではない．読み出し範囲が異なれば，ハッシュ値の違いを難読化の影響とは判断できない．長さの引数だけでなく，実際に読まれるデータと初期状態をそろえる必要がある．
+
+\noindent\textbf{実行される関数と速度．}
+表\ref{tab:xor-restoration}の対比は，同じ91命令の削減でも，実行頻度によって速度変化が異なることを示す．頻繁に呼ばれる16バイトXOR関数の復元では高速化したが，呼ばれなかった8バイトXOR関数では同じ改善はなかった．命令数に加え，どの処理が何回実行されるかの確認が必要である．別々に戻した場合の改善分を足しても，両方を戻した場合の改善量にはならなかった．
+
+\noindent\textbf{コンパイラによる違い．}
+表\ref{tab:followup-performance}では，Wasmの命令数が増えても，TurboFanの機械語コードのサイズはほとんど変わらなかった．図\ref{fig:followup-speed}でも定数分割による速度低下は3プログラムに共通せず，実行時の最適化の違いを考慮する必要がある．コードサイズが同じでも機械語が同じとは限らず，追加したnop命令が除かれたかは未確認である．比較元自体も変動するため，数\%の差だけで効果を断定しない．
+
+\subsection{RQ1のまとめ}
+試したデータではハッシュ値が保たれたが，3プログラムに共通する速度低下はなかった．命令数・ファイルサイズ・機械語コードのサイズの増減だけでは，速度への影響を判断できない．実行される関数とその回数，コンパイラの条件を踏まえた評価が必要である．
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/confirmatory-speed-ratios-ja.png}
+\caption{難読化の追加と一部除去による速度変化}
+\label{fig:followup-speed}
+\end{figure*}
+\section{コード正規化モジュールの評価（RQ2）}
+\subsection{解析・検知を支援するコード正規化}
+RQ1では，コード量だけでは実行性能への影響を判断できなかった．解析・検知の支援には，コードを減らせるかに加え，既知の処理を見つけやすくなるかを確かめる必要がある．そこで，nop除去と定数畳み込みを行うコード正規化モジュールを試作し，関数照合への効果を評価する．
+
+定数畳み込みは，連続する整数定数の加減乗算・ビット演算に限り，32・64ビット整数のオーバーフローも，Wasmの規則に従って扱う．メモリ読み出し，関数呼び出し，分岐を含む式は変更しない．比較元のファイルや変換位置の記録は使わず，対象コードだけから書き換え箇所を決める．
+
+正規化の効果は，難読化後の関数から，比較元の関数を特定できるかで評価する．既存の最適化との比較には，Wasm最適化ツールBinaryen 133を使う．不要コード除去（vacuum）と定数計算（precompute）の併用，および最適化設定O2・O3を試す．O3はO2より積極的に最適化する設定である．
+
+\subsection{対象ファイルと評価手順}
+\label{sec:followup-normalization}
+正規化の評価には，第\ref{sec:followup-method}節の比較元3ファイルと追加した難読化版6ファイルに，取得したxmr-wasmの制御フロー平坦化版・命令置換版を加えた計11ファイルを使う．XOR関数の手動復元版は含めない．図\ref{fig:normalization-workflow}のように，両方に同じ正規化を施し，定数の表し方やnopの有無による違いを取り除いて関数を照合する．
+\begin{figure}[t]
+\centering\small
+\textbf{双方にnop除去と定数畳み込みを適用}\\[4pt]
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{ccc}
+正規化前（命令列の例） & & 正規化後 \\[3pt]
+\fbox{\parbox[c]{0.23\textwidth}{\textbf{比較元}\\\texttt{i32.const 16}}}
+& $\rightarrow$ & \fbox{\texttt{i32.const 16}} \\[5pt]
+\fbox{\parbox[c]{0.23\textwidth}{\textbf{難読化版}\\\texttt{i32.const 10}\\\texttt{i32.const 6}\\\texttt{i32.add  nop}}}
+& $\rightarrow$ & \fbox{\texttt{i32.const 16}}
+\end{tabular}\\[4pt]
+$\Downarrow$\\
+\textbf{正規化後の関数全体を照合}
+\caption{同じ正規化を施して関数を照合する仕組み}
+\label{fig:normalization-workflow}
+\end{figure}
+
+11ファイルのそれぞれに，nop除去，定数畳み込み，両者の併用，Binaryenの不要コード除去と定数計算の併用，O2，O3を個別に試す．処理を加えない場合も含めた計7条件で，命令・型とハッシュ値を確認する．O3は先行研究との比較用だが，Binaryenのバージョンが異なるため完全な再現ではない．
+
+照合対象は，追加で難読化した6ファイルの640関数と，取得した2ファイルのXOR関数4件，計644関数である．XOR関数は元との対応を確認済みである．比較元と難読化版に同じ処理を施し，比較元3ファイルの全関数から，命令・ローカル変数の宣言・定数などが一致する関数を探す．関数名や関数・呼び出し先の番号は難読化で変わり得るため，照合には使わない．型も番号ではなく内容で比べる．元の関数名は，照合結果が正しいかの確認だけに使う．
+
+正しい関数1件だけが候補なら「正解のみ」，正解を含む複数件なら「複数候補」，候補がなければ「一致なし」とする．最適化後の関数が元のどの関数に当たるか確認できない場合は「対応不明」とする．
+
+\subsection{結果}
+\noindent\textbf{処理後のファイル．}
+11ファイルを，未処理を含む7条件で評価したため，結果は計77通りとなった．異なる条件でも同じファイルになる場合があり，内容の重複を除くと42ファイルだった．全ファイルがWABTによる命令・型の検証に合格し，外部から呼ぶ関数の引数・戻り値の型やメモリの条件も保たれた．
+
+\noindent\textbf{ハッシュ値の確認．}
+状態を毎回初期化する場合と，状態を保ってデータを順・逆順に与える場合を試した．1ファイルに1件のデータを与えてハッシュ値を照合する操作を1回と数え，2,793回すべてで照合用ハッシュ値と一致した．再実行分は含めない．試したデータと実行条件では，計算結果が保たれた．
+
+\noindent\textbf{関数照合．}
+表\ref{tab:followup-matching}に，644関数を7条件で照合した結果（計4,508回）を示す．nop除去と定数畳み込みを併用すると，追加で難読化した640関数のうち536関数で，対応する比較元の関数を1件に絞れた．取得した難読化済みのXOR関数4件は，どの処理でも一致しなかった．全644関数に対しては83.2\%を1件に絞れた．これは既知のnop挿入・定数分割に対する関数照合の結果であり，未知の難読化にも対応できることを示すものではない．また，マルウェアの検知率とは異なる．誤った関数だけが候補に残る例はなかった．
+\begin{table}[t]
+\centering\small
+\caption{難読化の種類別に見た関数照合結果}
+\label{tab:followup-matching}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{lrrrr}
+\hline
+\multicolumn{5}{l}{追加したnop挿入・定数分割（640関数）} \\
+処理 & 正解のみ & 複数候補 & 一致なし & 対応不明 \\
+\hline
+未処理 & 27 & 22 & 591 & 0 \\
+nop除去 & 295 & 71 & 274 & 0 \\
+定数畳み込み & 268 & 55 & 317 & 0 \\
+\shortstack[l]{nop除去と\\定数畳み込み} & 536 & 104 & 0 & 0 \\
+\shortstack[l]{Binaryen\\不要コード除去\\＋定数計算} & 294 & 68 & 278 & 0 \\
+Binaryen O2 & 274 & 18 & 61 & 287 \\
+Binaryen O3 & 249 & 22 & 69 & 300 \\
+\hline
+\multicolumn{5}{l}{取得した制御フロー平坦化・命令置換（XOR関数4件）} \\
+全7通り & 0 & 0 & 4 & 0 \\
+\hline
+\end{tabular}
+\end{table}
+
+O2・O3では，それぞれ287・300関数で元との対応を追えなかった．関数そのものが削除・統合されたのか，対応の確認に失敗したのかは，完全には区別できなかった．正規化後の速度は未測定である．
+
+\subsection{コード正規化モジュールの効果と課題}
+表\ref{tab:followup-matching}では，nop除去と定数畳み込みの併用が，単独処理や試したBinaryenの設定より多くの関数を一意に特定した．ただし104関数では候補が複数残った．呼び出し先の番号を照合に使わないことが一因と考えられ，関数間の呼び出し関係で候補を絞ることが課題である．
+
+既存の最適化では，関数の削除・統合やインライン展開により，元の関数を追いにくくなる場合があった．命令列を比べる今回の照合では，計算内容が同じでも，関数の分け方や命令の並びが変わると一致しない場合がある．
+
+制御フロー平坦化・命令置換の自動解除は未実装で，これらを施したXOR関数は特定できなかった．未評価のプログラムでも照合できるか，解析時間や検知性能を改善できるかの検証が必要である．
+
+\section{限界と再現性}
+\noindent\textbf{結果を一般化できる範囲．}
+3プログラムのハッシュ値・性能・関数照合の結果は，構造比較に使ったCryptic Bytesデータセット全体には当てはめられない．対象はCryptoNight系列，PC・Node.jsは各1種類で，元のC/C++からWasmを作る条件も未統一である．同一内容のファイルや共通コードを含むため，ファイル数は独立したプログラムの数を表さない．
+
+\noindent\textbf{評価できていないこと．}
+ハッシュ値の一致は試したデータと初期状態での確認にとどまり，計算結果以外にメモリなどへ与える影響も含め，動作全体が同じとは証明していない．Wasmのコンパイル記録から，JavaScriptの実行時コンパイルやコード配置の影響は分からない．また，関数の実行回数は処理時間の割合を示さない．XOR関数の手動復元と自動正規化の効果は区別する．実際の攻撃での難読化の普及率も未評価である．解析・検知への課題は5.4節に述べた．
+
+\noindent\textbf{再現性のための記録．}
+ファイルのSHA-256値，変換条件，測定順序，コンパイル記録，実行ログ，集計コードを保存した．予備測定72回のうち，TurboFanも使われた24回は，Liftoffのみで測った結果の集計から除外した．
+
+\section{まとめ}
+解析・検知の支援に向け，難読化の性能への影響（RQ1）と，正規化による既知関数の特定（RQ2）を評価した．RQ1では，試したデータでハッシュ値は保たれたが，同じ命令数の削減でも，対象関数の実行頻度によって速度変化が異なった．RQ2では，nop除去と定数畳み込みの併用で644関数中536関数を一意に特定できた一方，複雑な難読化を施したXOR関数4件は特定できなかった．
+
+この二つの結果から，コード正規化は，計算結果を保つことを確認した上で，コード量や速度の変化と，既知の処理を特定できるかを分けて評価する必要がある．手動復元による高速化は，自動正規化の効果を示すものではない．今後は複雑な難読化の解除と関数照合を改善し，未評価のプログラムで解析時間や検知性能への効果を確かめる．
+\par
+
+\bibliographystyle{ipsjunsrt-nodoi}
+\bibliography{references}
+\end{document}

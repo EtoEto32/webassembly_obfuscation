@@ -1,0 +1,8 @@
+{
+  "read": [{"read":"$value","as":"data"}],
+  "write": [{"write":"$value","literal":"admitted-payload\n"}],
+  "copy": [{"read":"$value.source","as":"data"},{"write":"$value.destination","from":"data"}],
+  "batch": [{"for":"$value","as":"item","body":[{"write":"$item","literal":"admitted-payload\n"}]}],
+  "optional": [{"write":"$value.primary","literal":"admitted-payload\n"},{"ifSome":"$value.backup","as":"backup","body":[{"write":"$backup","literal":"admitted-payload\n"}]}],
+  "idle": []
+}

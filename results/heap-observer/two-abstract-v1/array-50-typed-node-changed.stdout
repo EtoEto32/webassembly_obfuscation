@@ -1,0 +1,17 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_9
+exception thrown: RuntimeError: illegal cast
+[fuzz-exec] export func_10
+[fuzz-exec] note result: func_10 => -16287
+[fuzz-exec] export func_10_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_12
+[fuzz-exec] note result: func_12 => 0
+[fuzz-exec] export func_14_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_16
+[fuzz-exec] note result: func_16 => -84
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_9","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: illegal cast"},{"name":"func_10","known":true,"status":"returned","unsupported":[]},{"name":"func_10_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_12","known":true,"status":"returned","unsupported":[]},{"name":"func_14_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_16","known":true,"status":"returned","unsupported":[]}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null}]}

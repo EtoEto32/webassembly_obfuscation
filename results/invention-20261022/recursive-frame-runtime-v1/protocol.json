@@ -1,0 +1,18 @@
+{
+  "repetitions": 3,
+  "warmup_calls": 16384,
+  "batches": 9,
+  "target_batch_ms": 10,
+  "max_batch_calls": 1048576,
+  "depths": [
+    8,
+    31
+  ],
+  "flags": [
+    "--no-liftoff",
+    "--no-wasm-lazy-compilation"
+  ],
+  "affinity": "uncontrolled",
+  "frequency": "uncontrolled",
+  "notes": "Common Wasm input-update/checksum loop appended after O3; recovered core also receives O3. No further wrapper optimization. Node maxRSS includes runtime and JIT, not isolated Wasm stack."
+}

@@ -1,0 +1,1346 @@
+PAGE 1
+Obfuscation by Partial Evaluation of Distorted Interpreters
+Roberto Giacobazzi
+University of Verona
+roberto.giacobazzi@univr.it
+Neil D. Jones
+DIKU, University of Copenhagen
+neil@diku.dk
+Isabella Mastroeni
+University of Verona
+isabella.mastroeni@univr.it
+Abstract
+How to construct a generalprogram obfuscator? We present a novel
+approach to automatically generating obfuscated code P′ from any
+program P whose source code is given. Start with a (program-
+executing) interpreter interp for the language in which P is writ-
+ten. Then “distort” interp so it is still correct, but its specializa-
+tion P′ w.r.t. P is transformed code that is equivalent to the original
+program, but harder to understand or analyze. Potency of the ob-
+fuscator is proved with respect to a general model of the attacker,
+modeled as an approximate (abstract) interpreter. A systematic ap-
+proach to distortion is to make program P obscure by transform-
+ing it to P′ on which (abstract) interpretation is incomplete. Inter-
+preter distortion can be done by making residual in the specializa-
+tion process sufﬁciently many interpreter operations to defeat an
+attacker in extracting sensible information from transformed code.
+Our method is applied to: code ﬂattening, data-type obfuscation,
+and opaque predicate insertion. The technique is language inde-
+pendent and can be exploited for designing obfuscating compilers.
+Categories and Subject Descriptors I.2.2 [Automatic Program-
+ming]: Program Synthesis; F.3.2 [ Semantics of Programming Lan-
+guages]: Partial Evaluation, Program Analysis
+General Terms Languages, theory
+Keywords Obfuscation, semantics, partial evaluation, program
+transformation, program interpretation, abstract interpretation.
+1. Introduction
+Code obfuscation is increasing its relevance in security, providing
+an effective way for facing the problem of both source code pro-
+tection and binary protection. This contributes to comprehensive
+digital asset protection, with relevance to applications in DRM sys-
+tems, IPP systems, tamper resistant applications, watermarking and
+ﬁngerprinting (see [7] for a comprehensive survey on the literature),
+and white-box cryptography [5].
+1.1 The problem
+The idea of code obfuscation is simple and relies upon making se-
+curity inseparable from code: a program, or parts of it, are trans-
+formed in order to make them hard to understand or analyze [8].
+This may provide room for hiding cryptographic keys or sensible
+information concerning algorithmic design, making a direct attack
+Permission to make digital or hard copies of all or part of this work for personal or
+classroom use is granted without fee provided that copies are not made or distributed
+for proﬁt or commercial advantage and that copies bear this notice and the full citation
+on the ﬁrst page. To copy otherwise, to republish, to post on servers or to redistribute
+to lists, requires prior speciﬁc permission and/or a fee.
+PEPM’12, January 23–24, 2012, Philadelphia, PA, USA.
+Copyright c⃝ 2012 ACM 978-1-4503-1118-2/12/01. . . $10.00
+to software in an untrusted environment harder, in asecurity by ob-
+scurity approach. Results on the impossibility of perfect and uni-
+versal obfuscation, such as [2], did not dishearten researchers in
+developing methods and algorithms for hiding sensitive informa-
+tion in programs. By analogy with Rice’s theorem (a great chal-
+lenge for the development of automatic program analysis and veri-
+ﬁcation tools), the impossibility of perfect obfuscation against ma-
+licious host attacks is a major challenge for developing concrete
+techniques that are sufﬁciently robust that an attacker is in trouble
+for an unacceptable amount of time in trying to defeat them. In dig-
+ital contexts, hiding information means both hiding as in making
+imperceptible, as in watermarking, and obscuring as in making in-
+comprehensible, as in obfuscation [30]. In programming languages,
+both aspects have deep semantic aspects: on one hand modiﬁed
+code should behave consistently with its source version yet hiding
+secret information, on the other hand, analysis of the modiﬁed pro-
+gram should not reveal its secrets to untrusted users. Both require-
+ments depend on the notion of analysis, which depends on the rela-
+tive precision of the observer. In this context, software diversity [6]
+plays a fundamental role in conjunction with code obfuscation, pro-
+viding different immunity to hide vulnerabilities and enforcing that
+each instance must be attacked separately, dramatically increasing
+the effort required for hackers to develop automated attack tools
+[7]. Successful obfuscation should therefore implement meaning-
+ful diversity, and be able to generate diversiﬁed obfuscated code
+quickly enough for comparative evaluation.
+1.2 The idea
+We apply interpreter specialization to automatically generating ob-
+fuscated programs. An attacker (human or automatic) can only ob-
+serve program execution at some ﬁxed level of detail, e.g., in a
+program proﬁler, in a debugger, by static analysis, by program slic-
+ing, by program monitoring, or by code decompilation. In all these
+cases, the attacker extracts approximate properties of code under at-
+tack. We formalize the attack model as an abstract interpretation of
+the concrete semantics of the program. Our idea is then to transform
+original program P into an obfuscated program P′ by specializing a
+distorted (but still correct) interpreter as in [23, 24]. The aim is to
+obfuscate P either by making its observation hard and imprecise, or
+by making hidden information imperceptible.
+The attacker. The model of attack is an approximate interpreter,
+formalized as an abstract interpretation. This general model in-
+cludes relevant attack methods and tools such as: static and dy-
+namic analysis [11], debugging [3], slicing [28], and approaches
+to information disclosure and reverse engineering by monitoring
+[13]. Obfuscation means here making the attacker unable to discern
+properties of code. In terms of abstract interpretation, this means
+that an abstract interpretion is incomplete. Completeness [12, 22]
+expresses precisely the accuracy of the approximate semantics in
+modeling program behavior. This corresponds to the possibility of
+replacing, with no loss of precision, concrete computations with
+PAGE 2
+approximate ones. The lack of completeness of the attacker corre-
+sponds here to its poor understanding of the obscured program’s
+semantics – the key for understanding the meaning of its code.
+The defender. We make code protection by program transforma-
+tion. Let P be the simple statement,C : x = a∗b, multiplying a and
+b, and storing the result in x, as considered in [18]. An automated
+program sign analysis approximating values in the simple domain
+of signs is clearly able to catch, with no loss of precision, the in-
+tended behaviour of C with respect to sign, as the sign abstraction
+O ={+, 0,−}, is complete for integer multiplication. However, if
+we obtain obfuscated program P′ by replacing C with O(C ):
+x = 0; if b≤ 0 then{a =−a; b =−b};
+while b̸= 0{x = a + x; b = b− 1}
+the sign analysis is now unable to extract any information concern-
+ing the computed sign, because the rule of signs is incomplete for
+integer addition. O(C ) is therefore an obfuscation of P for the at-
+tack performed by sign analysis. O(C ) can be obtained by modi-
+fying a self-interpreter interp in order to force abstract interpre-
+tation to deal with operations that induce incompleteness in the at-
+tacker. Suppose the distorted interpreter interp+ recursively im-
+plements multiplication by a sequence of additions in the obvious
+way (as above). This yields, by specialization as in [24], a modiﬁed
+program P′ := JspecK(interp+, P) which is precisely O(C ).
+1.3 Our contribution
+Three conﬂicts make program obfuscation a subtle problem.
+1. The ﬁrst concerns a general principle in programming: good
+programs are well-structured and have concise invariants. This
+is a key to understanding a program, and adapting it to new
+purposes. Good structure and short invariants are necessity in
+order to develop, debug and perfect a program P in the ﬁrst
+place. However, instead an obfuscated program should not be
+well-structured and easy to understand.
+2. A conﬂict more speciﬁc to our approach concerns performance
+of the obfuscated program: in [24], Section 6.4, a specializer
+is called “optimal” with respect to interp if, for all pro-
+grams P and data d, one has for P′ = JspecK(interp, P):
+time P′(d) ≤ time P(d). This asserts that specialization has
+removed all interpretational overhead from an interpreted exe-
+cution JinterpK(P, d). Typically, optimal specialization yields
+a P′ that is equivalent to P up to variable renaming, which isnot
+acceptable as an obfuscation.
+3. In contrast to cryptography, the current state of the art does
+not provide provably secure obfuscation schemata. This makes
+essential in any successful code protection strategy the ability
+to diversify code in conjunction with obfuscation, generating
+a large amount, at a sufﬁciently high rate, of different obfus-
+cated versions of the source program. Automated code genera-
+tion tools typically generate code that can be easily reverse en-
+gineered, making the diversiﬁcation useless and the protection
+strategy vulnerable.
+This paper’s main contribution is in providing a comprehensive
+theory of systematically obscuring program analysis. The main
+idea is to re-program an interpreter interp so its specialization
+will obfuscate a program relatively to a given attacker. This can
+be achieved, given an attack speciﬁed by an abstract interpretation,
+by transforming the language structures and operations into new
+ones that defeat the considered analysis by making it incomplete.
+This approach to obfuscation resolves both conﬂicts 1 and 2 above
+by transforming an arbitrary program P into an equivalent P′ in
+which program structure and invariants are hard to see (in code
+or in data). In particular, about efﬁciency, program P′ may be
+less than “optimal”, but it will still be acceptable if time P′(d)≤
+c· time P(d) for a reasonably small constant factor c that may
+depend on P, but which is independent of input data d. Moreover,
+by relating obscurity with interpretation, it provides an effective
+solution for 3, shifting the problem of generating diversiﬁed code to
+the problem of diversifying the interpreter. Standard results in code
+generation by interpreter specialization are a help in this direction.
+All this is achieved by formally specifying both attack and
+defense strategies as complementary aspects of interpretation: the
+attack is an abstract interpreter designed for extracting properties
+of code behavior, while the defense is a program transformation
+that forces the attacker to follow a distorted interpretation of the
+transformed code, the one that increases uncertainty by maximizing
+the loss of precision in the abstract interpretation, thereby making
+the resulting program obscure.
+2. Background
+2.1 Basic notions
+If P is a set,℘(P) is the powerset of P. f◦ g
+def
+= fg
+def
+=λz. f (g(z)).
+id
+def
+=λx. x. A poset P with ordering relation≤ is denoted⟨P,≤⟩,
+while⟨P,≤,∨,∧,⊤,⊥⟩ denotes a complete lattice P, with order-
+ing≤, lub∨, glb∧, top and bottom element⊤ and⊥ respectively.
+Often,≤P will be used to denote the underlying ordering of a poset
+P, and∨P,∧P,⊤P and⊥P denote the basic operations and ele-
+ments if P is a complete lattice. Functions on ordered sets P1 and
+P2 are point-wise ordered by ⊑, and function f : P1−→P2 is
+additive (continuous) if f preserves lub’s of all subsets (chains) of
+P1, empty-set included. Given a function on sets f : P1−→P2, its
+additive lift is a function f : ℘(P1)−→℘(P2) such that f (X ) ={
+f (x)
+⏐⏐ x∈ X }
+. Additive and co-additive functionsf admit re-
+spectively right and left adjoints: f + def
+=λx. ⋁{
+y
+⏐⏐ f (y)≤ x }
+and f− def
+=λx. ⋀{
+y
+⏐⏐ x≤ f (y) }
+. For continuous and addi-
+tive functions on a complete lattice P, the least ﬁx-point (closure)
+greater or equal to x∈ P is denoted lfpx f .
+2.2 Small-step and whole-program semantics
+Small-step semantics: for abstract interpretation, one needs a
+ﬁne-grain small-step semantics containing program points or sim-
+ilar syntactic information to which abstract values can be bound.
+Consider a simple imperative language L:
+C ::= skip| x := e| C 0; C 1| while B do C endw|
+if B then C 0 else C 1 ﬁ| output x| input x
+A notational convenience: write case e of v1 : C 1;... ; vn : C n
+to stand for a chain of if− then− else on mutually exclusive
+values (the vi are the possible values that e can take, and Ci is
+the corresponding program fragment to execute). In Table 1 we
+omit the formal semantics of input x which corresponds to a
+dynamic assignment to x, and of output x which corresponds to
+the visualization of the output result. We consider a quite standard
+operational semantics of the language. Let PL be a set of programs
+in the language L, V ar(P) the set of all the variables in P, and
+PLP be a set of program lines of P ∈ PL containing a special
+notationϵ for the empty program line, V be the set of values, and
+M
+def
+= V ar(P)−→V be a set of possible program memories. When
+a statement st belongs to a program P we write st ∈ P, then we
+deﬁne the auxiliary functions StmP : PLP → PL be such that
+StmP(l) = c if c is the statement in P at program line l (denoted
+l.c) and PcP = StmP
+−1 : PL→ PLP with the simple extension to
+blocks of instructions PcP(st; C ) = PcP(st) where st∈ P. Then,
+letσ∈ M, we deﬁne the semantics of L in Table 1, where x are
+variables, , e are expressions, B are boolean expressions, J·K is the
+PAGE 3
+⟨σ, skip⟩⇓⟨ σ, skip⟩ (Fix-point)
+JeK(σ) = n∈ V
+⟨σ, x := e⟩⇓⟨ σ[x↦→ n], skip⟩
+⟨σ, st⟩⇓ σ′
+⟨σ, st; C 1⟩⇓⟨ σ′, C 1⟩
+JB Kσ = true
+⟨σ, if B then C 0 else C 1 ﬁ⟩⇓⟨ σ, C 0⟩
+JB Kσ = false
+⟨σ, if B then C 0 else C 1 ﬁ⟩⇓⟨ σ, C 1⟩
+JB Kσ = true
+⟨σ, while B do C endw⟩⇓⟨ σ, C ; while B do C endw⟩
+JB Kσ = false
+⟨σ, while B do C endw⟩⇓⟨ σ, skip⟩
+Table 1. Small-step operational semantics of L
+evaluation of expressions, and where we write⟨σ, C⟩⇓⟨ σ′, C′⟩ for
+the execution of C in the memoryσ. We can formally characterize
+the small-step operational semantics of programs. LetD = M×PL
+be the set of states, containing the actual memory and the code to
+execute, and⟨σ, C⟩∈ D. fL : D−→℘(D) is such that:
+fL(⟨σ, C⟩) =
+{
+⟨σ′, C′⟩
+⏐⏐ ⟨σ, C⟩⇓⟨ σ′, C′⟩ }
+It is worth noting that for deterministic programs, like L, this
+set contains only one state. We abuse notation by denoting as
+fL also its trivial additive lift on ℘(D). We deﬁne the small-step
+program semantics as the ﬁx-point of the transfer function fL: let
+S∈ ℘(D) then JPK(S)
+def
+= lfpS fL∈ ℘(D). In the following, when
+we consider the semantics of a programP starting from any possible
+initial memory state of P we simply write JPK denoting the set{
+lfp⟨σ, P⟩ fL
+⏐⏐ σ∈ M }
+.
+Whole-program semantics: We use notations as in [24] to de-
+scribe the net effect of program execution, partial evaluation, pro-
+gram running times, etc. Let D be a data set of ﬁrst-order value,
+including any program text and any pair of values. The whole-
+program semantic function of program P is a partial function JPK :
+D−→D∪{⊥} . It transforms a program’s input values into its ﬁnal
+output (if any). If P terminates then JPK(d) is in D, and JPK(d) =⊥
+if P fails to terminate on d. Function JPK : D−→D∪{⊥} can be
+obtained from the small-step semantics by ﬁx-point closure.
+We also assume given a measure of program run time (this
+might be proportional to the size of a computation tree deduc-
+ing JPK(d) = e). The time taken to compute JPK(d) is written
+time P(d)∈ N∪{∞} ; it equals∞ iff P fails to terminate on d.
+2.3 Self-interpreters and program specialization
+In the following, inputs may be combined in pairs, so(d, e) is in D
+if both d and e are in D. Program interp is a self-interpreter if for
+all programs P and data d∈ D we have JPK(d) = JinterpK(P, d).
+By = we mean equality of partial values over D∪{⊥} .
+A partial evaluator (or program specializer) is a program spec
+such that for every program P with “static” input s∈ D and “dy-
+namic” input d∈ D, JPK(s, d) = JJspecK(P, s)K(d). A specializer
+executes P in two stages: ﬁrst, P is specialized to its ﬁrst input s,
+yielding a “residual program” Ps = JspecK(P, s). Second, pro-
+gram Ps is run on P’s dynamic input d.
+A trivial specializerspec is easy to build by “freezing” the static
+input s (Kleene’s s-m-n Theorem of the 1930s did specialization in
+this way.) The practical goal, however, is thatspec should make Ps
+as efﬁcient as possible, by performing many ofP’s computations —
+ideally, all of those that depend on s alone. A number of practical
+program specializers exist. Published partial evaluation systems
+include Tempo, Ecce, Logen, Unmix, Similix and PGG [10, 25, 26,
+32, 33]. We used Unmix in our experiments.
+2.4 Program transformation by interpreter specialization
+Suppose P′ := JspecK(interp, P) is the result of specializing a
+self-interpreter to program P. It is immediate that JPK = JP′K, by
+simple equational reasoning: for any d∈ D, we have
+JPK(d) = JinterpK(P, d) def’n of self-interpreter
+= JJspecK(interp, P)K(d) deﬁnition of specializer
+= JP′K(d) deﬁnition ofP′
+Therefore functionλP.JspecK(interp, P) is a semantics-preserving
+program transformer [23]. However, even though P and P′ are se-
+mantically equivalent, they may besyntactically quite different (far
+more different than just by renaming). Examples in [23] show why
+1. program P′ inherits the programming style of interp; but
+2. program P′ inherits the algorithm of program P;.
+The reason for Point 1 is that program P′ is specialized code
+taken from the interpreter interp: P′ consists of the operations of
+interp that depend on its dynamic input d (and not only on P, else
+they would have been “specialized away”). A general-purpose pro-
+gram transformercan thus be built by programming self-interpreter
+interp in a style appropriate to the desired transformation.
+The reason for Point 2 is that even though program P′ may be
+a disguised form of P, a correct interpreter interp must faithfully
+execute the operations that P speciﬁes. In usual practice, the spe-
+cialized program P′ will perform the same computations in the
+same order as those performed by P. One does not expect an in-
+terpreter to devise new computational approaches.
+3. A top-down view of program obfuscation
+The point of program obfuscation is to transform a program P, or
+parts of a program, into a new program P′ that is computationally
+equivalent, but such that P′ is hard to adapt or analyze. Criteria for
+good obfuscation are:
+1. (Semantics) Preservation: JP′K = JPK is necessary.
+2. Automation: P′ is obtained from P without hand work.
+3. Potency: P is hard to obtain from P′. The goal is that, even
+though P′ can be executed, it should be hard to adapt, exploit,
+or analyze by automatic and manual methods.
+4. Efﬁciency: program P′ should not be too much slower or larger
+than P. It is acceptable, however, forinterp to be slow, as long
+as P′ is satisfactorily efﬁcient and hard to understand.
+To satisfy these criteria, we designinterp so that in generalP′ will
+be harder to abstractly interpret than P is; and P′ will be satisfac-
+torily efﬁcient. We prove that many useful program obfuscations
+can be obtained by interpreter specialization, achieving (1) and (2)
+straight from correctness of the self-interpreter and the specializer.
+PAGE 4
+We exemplify this in the case of code ﬂattening . The idea is
+simple: in conventional program analysis, without knowledge of
+the branch targets and the execution order of the code blocks, every
+block is potentially the immediate predecessor of every other block,
+making the overall control-ﬂow obscure. Code ﬂattening is the ba-
+sic principle behind relevant obfuscation strategies, most devoted
+to make hard the reverse engineering of ﬂattening, such as obfus-
+cation by unintelligible (NP-hard) dispatcher design in [4] and ob-
+fuscation of the dispatcher by enlarging its search space with spuri-
+ous aliases in [34]. We begin with simple self-interpreter interp,
+and then modify interp into an equivalent interpflat whose spe-
+cialization will, for any P, yield P′ := JspecK(interpflat, P)
+with non-evident (hidden) control ﬂow. The general idea is to re-
+program interp so its specialization will “scramble” or “distort”
+the control-ﬂow and/or data-ﬂow of its input program P, without
+changing its whole-program semantics.
+EXAMPLE 3.1. Flattening: consider the program P on the left. A
+ﬂattened equivalent program (on the right) has an explicit program
+counter pc and only one loop, regardless of P.
+1.input x ;
+2.y := 2;
+3.while x > 0 do
+4.y := y + 2;
+5.x := x− 1
+endw
+6.output y;
+7.end
+1.input x ; 2.pc := 2;
+3.while pc< 6 do
+4.case pc of
+2 : 5.y := 2; 6.pc := 3;
+3 : 7.if x > 0 then 8.pc := 4 else 9.pc := 6 ﬁ;
+4 : 10.y := y + 2; 11.pc := 5;
+5 : 12.x := x− 1; 13.pc := 3;
+endw
+14.output y
+15.end
+Experimental context: We did the following and other experi-
+ments using the Unmix specializer (suitable since its input lan-
+guage SCHEME is good for program representations). Bothinterp
+and spec are general SCHEME programs. However, their input and
+output P and P′ are tail-recursive programs, in a SCHEME subset
+isomorphic to the imperative language L from Section 2.2.
+Structure of the simple self-interpreter. interp is a SCHEME
+implementation of the following. Assume input programP has vari-
+ables in, out, x1,..., xn. The overall structure of the interpreter is
+traditional, with a “dispatch on syntax” loop: ﬁnd the form of the
+current P instruction at pc (program counter), and then execute it.
+The memory of program P is held in interp variable store.
+input P, d; Program to be interpreted, and its data
+pc := 2; store := [in↦→ d, out↦→ 0, x1↦→ 0,... ];
+while pc< length(P) do
+instruction := lookup(P, pc); Find the pc-th instruction
+case instruction of Dispatch on syntax
+skip : pc := pc + 1;
+x := e : store := store[x↦→ eval (e, store)]; pc := pc + 1;
+... endw ;
+output store[out];
+eval (e, store) = case e of Function to evaluate expressions
+constant : e
+variable : store(e)
+e1 + e2 : eval (e1, store) + eval (e2, store)
+e1− e2 : eval (e1, store)− eval (e2, store)
+e1∗ e2 : eval (e1, store)∗ eval (e2, store)
+...
+end
+Specialization of the simple self-interpreter: This gives a resid-
+ual (specialized) program P′ = JspecK(interp, P) that is essen-
+tially identical to P (up to variable renaming), as follows:
+• interp variable P is classiﬁed as “static”, and variable d is
+classiﬁed as “dynamic”.
+• interp variables e, pc and instruction are classiﬁed as “static”,
+since given any P they can only assume ﬁnitely many values.
+• interp function eval is completely unfolded and so does not
+appear in P′, since all recursive calls decrease the static valuee.
+• The simple self-interpreter’s while loop is completely unfolded
+by Unmix, so the only remaining control transfers correspond
+to those present in program P.
+• interp variable store is a function with static domain but
+dynamic range. Unmix does “arity raising”, splitting store into
+one residual program variable for each of P’s variables.
+Specialization of the “ﬂattening” interpreter: A small change to
+interp gives the residual program P′ = JspecK(interpflat, P)
+as in Example 3.1. The essential trick here is to recode interp so
+that the specializer will classify variablepc as dynamic.1 Since pc is
+dynamic, the while loop in interpflat will no longer be unfolded
+by Unmix, and so comes to appear in the specialized program P′.
+This accounts for the form ofP′ in Example 3.1. The transformation
+P↦→ P′ = JspecK(interpflat, P) will ﬂatten any L program; i.e.,
+it is in no way speciﬁc to this example input programP.
+4. The potency of obfuscation
+The design of potent obfuscations requires a precise model of at-
+tacker. We consider the potency of a program-transforming obfus-
+cation to be its ability to make imprecise an approximate semantics,
+viz. an abstract interpreter, following the idea introduced in [18].
+4.1 Abstract interpretation
+For simplicity we consider Galois connection based abstract inter-
+pretations [11, 12]. An abstraction on a domainD, partially ordered
+by≤D, is any functionρ : D−→D such that x≤D ρ(x), meaning
+thatρ(x) contains less information than x,ρ is monotone, mean-
+ing that it respects the relative precision of objects, andρ(ρ(x)) =
+ρ(x) meaning that the loss of information made by abstraction is
+performed all-at-once. Abstractions and abstract domains can in
+this way be isomorphically represented as upper closure operators
+on a concrete domain D, i.e., elements in uco(D) [12]. Closure
+operators in uco(D) are uniquely determined by the set of their ﬁx-
+points ρ(D). X ⊆ C is the set of ﬁx-points of ρ∈ uco(D) iff
+X is a Moore-family of D, i.e., X = M(X )
+def
+={∧S| S ⊆ X},
+∧∅ =⊤∈ M(X ). If D is a complete lattice then ⟨uco(D),⊑⟩
+is also a complete lattice ⟨uco(D),⊑,⊔,⊓,λ x.⊤, id⟩, where for
+anyρ,η ∈ uco(D),{ρi}i∈I ⊆ uco(D) and x ∈ D: ρ⊑ η iff
+η(D)⊆ ρ(D); (⊓i∈Iρi)(x) = ∧i∈Iρi(x); and (⊔i∈Iρi)(x) =
+x ⇔ ∀i ∈ I. ρi(x) = x. In the following we will ﬁnd conve-
+nient to identify closure operatorsρ equivalently either as functions
+(abstractions) or as setsρ(D) (abstract domains).
+Soundness. Soundness means that abstract computation includes
+all possible concrete computations: the semantic approximation
+is from above [12]. Let f : D
+c
+−→D be a continuous predicate
+transformer (also called transfer function ), ρ,η ∈ uco(D), and
+f♯ :η(D)
+m
+−→ρ(D). Then f♯ is a sound abstraction of f from
+η to ρ if ρ◦ f≤ f♯◦η. The best correct approximation of f is
+f bca def
+=ρ◦ f◦η. It is known [12] that f♯ is sound iff f bca⊑ f♯;
+implying ρ(lfp(f ))≤ lfp(f bca)≤ lfp(f♯). Suppose JPK is speci-
+ﬁed as ﬁx-point of (a combination of) predicate-transformers FP :
+D
+c
+−→D, and ρ,η ∈ uco(D). Deﬁne JPK(ρ,η) to be the abstract
+1 Technically, pc is made dynamic using the Unmix generalize annota-
+tion. Some modest reprogramming is also needed: interp is extended to
+have both dynamic and static copies of pc, so specialization will generate
+P′ code such as case... pc = 5 : x := x− 1; pc := 3 in Example 3.1.
+PAGE 5
+semantics associated with F bca
+P , so JPK(ρ,η) is the best correct ab-
+stract interpretation of P inρ andη. In this case soundness means
+ρ(JPK)≤ JPK(ρ,η).
+Completeness. Completeness means that no loss of precision is
+added by computing with approximate objects [12, 22], namely
+ρ(JPK) = JPK(ρ,η). Following [21] we distinguish between back-
+ward (B) and forward (F ) completeness. Backward complete-
+ness holds when ρ◦ f = f♯◦η, meaning that no loss of precision
+is accumulated by approximating the input arguments of a concrete
+transfer function. Forward completeness holds whenf◦η =ρ◦ f♯,
+meaning that no loss of precision is accumulated by approximat-
+ing the result of computations on abstract objects. The key point
+in this construction is that there exists an either B or F -complete
+abstract function f♯ forρ,η ∈ uco(C ) iff the best correct approx-
+imationρ◦ f◦η of f is respectively either B or F -complete, i.e.,
+ρ◦ f = ρ◦ f◦η or f◦η = ρ◦ f◦η [22]. This means that both
+F and B completeness are properties of the abstraction in relation
+with concrete predicate transformers. It is known [22] that, if f is
+additive:ρ◦ f =ρ◦ f◦η if and only if f +◦ρ =η◦ f +◦ρ.
+Program properties. It is known that any abstraction on a con-
+crete domain D, i.e., a pair of closures ρ,η ∈ uco(D), induces a
+corresponding partition on programs in PL:
+P≡ρ,η Q ⇐⇒ JPK(ρ,η) = JQK(ρ,η)
+It is clear (e.g., see [12]) that the equivalence induced by the
+concrete semantics is a reﬁnement of any partition induced by a
+sound abstract interpretation and that, by reﬁning abstractions, e.g.,
+by completeness [22], we obtain reﬁned partitions of programs. In
+the following we identify the closures ρ and η with the property
+on programs corresponding to the above partition, and callρ andη
+respectively output and input program properties.
+4.2 Example: attack model foiled by Flattening
+In this section, we show that the control ﬂow ﬂattening-based ob-
+fuscation can be modeled as a problem of making incomplete an ab-
+stract interpreter. The attacker is an abstract interpreter extracting
+the control ﬂow graph, which is obtained by considering two ab-
+straction steps: in input we lose the control ﬂow when the program
+counter is dynamic, namely when it is controlled in the program it-
+self, in output we lose the memory and the history of computations
+(traversed branches).
+Graph semantics. Consider the set of graphs deﬁned as follows:
+G = ⟨Nodes(G), Arcs(G)⟩ ∈ G, where Nodes(G) ⊆ PLP and
+Arcs(G) ⊆ PLP× PLP. In order to characterize the history of
+computation, we deﬁne the function determining the sequence of
+program lines executed: NextP : M× PLP→ PLP.
+NextP(σ, l) = l′ iff
+fL(⟨σ, StmP(l)⟩) =⟨σ′, C⟩∧ PcP(C ) = l′
+Let us deﬁne the auxiliary function:Next♯
+P : PLP→℘(PLP):
+Next♯
+P(l) =
+
+
+
+{PcP(C ), l +|C| + 1}
+if StmP(l) = while B do C endw
+{PcP(C 1), PcP(C 2)}
+if StmP(l) = if B then C 1 else C 2 ﬁ{
+NextP(l,σ )
+⏐⏐ σ∈ M }
+otherwise
+Note that, Next♯
+P can be deﬁned as abstract interpretation of
+NextP, where we abstract on the evaluation of the guard of while
+and if. Let us deﬁne the graph semantics of a programP:
+• States: DG = M×((N∪{ϵ})×N)×G. A state is⟨σ,⟨l1, l2⟩, G⟩
+whereσ∈ M is the memory before the execution ofl2, l1 is the
+program line of the last executed statement, and G represents
+the execution graph until the execution of l1 (l1 included).
+• Transfer functions: gL : DG−→ DG:
+gL
+def
+=λ⟨σ,⟨l1, l2⟩, G⟩. ⟨σ′,⟨l2, NextP(σ, l2)⟩, G ⊎ {l1, l2}⟩:
+where σ′ = fL(⟨σ, StmP(l2)⟩)|M and⟨σ, C⟩|M = σ,⊎ de-
+notes the union of graphs, i.e., G1⊎ G2 = G where we have
+Nodes(G)
+def
+= Nodes(G1)∪Nodes(G2) and Arcs(G)
+def
+= Arcs(G1)∪
+Arcs(G2), and{l1, l2} is a simpliﬁed notation for the graph G′
+such that Nodes(G′) ={l1, l2} and Arcs(G′) ={⟨l1, l2⟩}. We
+abuse notation denoting by gL also its additive lift on℘(DG).
+In graph semantics ⟨l1, l2⟩ ∈ Arcs(G) iff l2 ∈ Next♯
+P(l1).
+For any program P ∈ PL, its generic initial state is sP =
+⟨σ,⟨ϵ, 1⟩,⟨∅, ∅⟩⟩ ∈DG, where ⟨ϵ, 1⟩ is the initial point of the
+program corresponding to program line 1. We can deﬁne the graph
+semantics in ﬁx-point form: JPKG(sP)
+def
+= lfpsP gL∈ ℘(DG). Also
+in this case, when we consider the semantics of a program P start-
+ing from any possible initial state of P we simply write JPKG
+to denote the set {lfpsP gL|σ∈ M}. In the following we de-
+note by ⊑G the standard subgraph relation, i.e., G1 ⊑G G2 iff
+Nodes(G1)⊆ Nodes(G2) and Arcs(G1)⊆ Arcs(G2). For simplic-
+ity we abuse notation by using the same relation between states,
+i.e.,⟨σ1,⟨l′
+1, l′′
+1⟩, G1⟩⊑ G⟨σ2,⟨l′
+2, l′′
+2⟩, G2⟩ iff G1⊑G G2. The next
+result proves that gL is increasing.
+PROPOSITION 4.1. Let s∈ DG.∀n∈ N. g n
+L(s)⊑G g n+1
+L (s).
+EXAMPLE 4.2. Consider the program in Example 3.1. In this case
+the small-step semantics when x = 1 is:
+⟨(x, y),⟨ϵ, 1⟩,⟨∅, ∅⟩⟩−→⟨ (1, y),⟨1, 2⟩, G1⟩
+−→⟨(1, 2),⟨2, 3⟩, G2⟩−→⟨ (1, 2),⟨3, 4⟩, G3⟩
+−→⟨(1, 4),⟨4, 5⟩, G4⟩−→⟨ (0, 4),⟨5, 3⟩, G5⟩
+−→⟨(0, 4),⟨3, 6⟩, G6⟩−→⟨ (0, 4),⟨6, 7⟩, G7⟩
+The ﬁnal graph G7 is:
+2: y:=2;1: input x; 4: while x> 0 do 7: output y
+5: y:=y+2;
+6: x:=x-1; endw
+Note that, if the input forx is 0, then the guard of thewhile becomes
+false and therefore the semantics and the ﬁnal graph is:
+2: y:=2;1: input x; 4: while x> 0 do 7: output y
+Abstracting the program control structure. Flattening means to
+lose the control structure of a program only when it controls the
+program counter. In other words, an observer is unable to under-
+stand which is the next statement of each program point. We ob-
+served that this can be achieved by considering the program counter
+(pc) as a program variable, which is determined dynamically in-
+stead of statically. In this way, the control ﬂow constructed corre-
+sponds to the real execution (branch) when the control statement
+guard concerns only program variables, but it loses the branch in-
+formation when among the controlled variables there is the pro-
+gram counter. The next function is a recursive map that skips the
+evaluation of the guards concerning the program counter. The re-
+cursive function F decides when to skip the evaluation of the guard,
+while B takes both the branches of a control structure ignoring the
+evaluation of the corresponding guard. We need a recursive appli-
+cation since we may have nested control structures to check. Let
+PAGE 6
+⟨σ,⟨l1, l2⟩, G⟩∈ DG:
+F(⟨σ,⟨l1, l2⟩, G⟩)
+def
+=
+
+
+F◦ B(⟨σ,⟨l1, l2⟩, G⟩) if StmP(l2)∈{ if B, while B}∧
+pc∈ V ar(B )
+⟨σ,⟨l1, l2⟩, G⟩ otherwise
+B(⟨σ,⟨l1, l2⟩, G⟩) =
+{
+⟨σ,⟨l2, l⟩, G⊎{ l1, l2}⟩
+⏐⏐⏐ l∈ Next♯
+P(l2)
+}
+Let us denote by F also its ﬁx-point closure.
+PROPOSITION 4.3. F∈ uco(℘(DG)).
+EXAMPLE 4.4. Consider the ﬂattened program of Example 3.1. A
+recursive deﬁnition of F is needed because we have to apply B to
+a case statement on pc, nested in a while also controlling pc:
+F◦ B(⟨(1, 2),⟨2, 3⟩, G2⟩)
+= F({⟨(1, 2),⟨3, 4⟩, G′
+3⟩,⟨(1, 2),⟨3, 14⟩, G′′
+3⟩})
+={F◦ B(⟨(1, 2),⟨3, 4⟩, G′
+3⟩),⟨(1, 2),⟨3, 14⟩, G′′
+3⟩}
+=
+{
+F(
+{
+⟨(1, 2),⟨4, i⟩, Gi⟩
+⏐⏐ i∈{ 5, 7, 10, 12} }
+),
+⟨(1, 2),⟨3, 14⟩, G′′
+3⟩
+}
+=
+{ {
+⟨(1, 2),⟨4, i⟩, Gi⟩
+⏐⏐ i∈{ 5, 7, 10, 12} }
+,
+⟨(1, 2),⟨3, 14⟩, G′′
+3⟩
+}
+Note that, F(⟨(1, 2),⟨4, 7⟩, G7⟩) =⟨(1, 2),⟨4, 7⟩, G7⟩ because the
+statement at program line 7 is an if, whose guard does not concern
+the program counter. The resulting control ﬂow-graph is:
+2: pc:=2;
+1: input x;
+4: while pc< 6 do
+14: output y
+5: y:=2;
+6: pc:=3;
+7: if x>0 then
+8: pc:=4; 9: pc:=6;
+10: y:=y+2;
+11: pc:=5;
+12: x:=x-1;
+13: pc:=3;
+Note that the circled part will select a branch depending on the
+value of x, namely it will correspond to the real computation.
+Abstracting the memory. We deﬁne the output abstraction losing
+the memory and the branch computational history. Let S⊆ DG.
+C(S)
+def
+=
+{
+⟨M,⟨l1, l2⟩,
+⨄
+i
+Gi⟩
+⏐⏐∀σ∈ M.∃i.⟨σ,⟨l1, l2⟩, Gi⟩∈ S
+}
+This function abstracts the memory and the program structure
+component-wise, keeping no relational information among them.
+Note that, this function is trivially an abstraction on DG.
+PROPOSITION 4.5. C∈ uco(℘(DG)).
+Flattening as incompleteness. At this point the abstract seman-
+tics losing the control structure on the program counter can be
+speciﬁed as an abstract interpretation: JPKF = lfp (g F
+L)|G where
+g F
+L
+def
+= C◦ gL◦ F. The next result justiﬁes the construction of the
+distorted interpreter interpflat in Section 3: Flattening the con-
+trol structure of a program corresponds precisely to dynamically
+interpreting the program counter, which is equivalent to making in-
+complete the abstract interpreter that collects the CFG and does
+not evaluate guards concerning the program counter.
+THEOREM 4.6. C(JPKG) =G JPKF iff P has no dynamic pc.
+5. Incompleteness driven obfuscation
+Letρ,η ∈ uco(℘(D)) be properties of program execution states,
+and let O : P−→P be a program transformation such that
+(1): JPK = JO(P)K. Assume that (ρ,η ) is B-complete for JPK,
+i.e.,
+(2):ρ(JPK) = JPK(ρ,η) def
+=
+{
+lfp⟨σ, P⟩ρ◦ fL◦η
+⏐⏐ σ∈ M }
+. Then
+O obfuscates P for the property (ρ,η ) if
+(3): JPK(ρ,η) ⊏ JO(P)K(ρ,η).
+THEOREM 5.1 ([18]). For anyJ·K : P−→℘(D),ρ,η∈ uco(℘(D)),
+transformation O : P−→P , and P program P we have:
+JPK(ρ,η) ⊏ JO(P)K(ρ,η) iff ρ(JO(P)K) ⊏ JO(P)K(ρ,η).
+The intuition here is simple: obfuscating a program means making
+an observer (the attacker) unable to observe some aspects of the
+computation, thereby lessening its ability to distinguish programs
+by observing what and how they compute. The observable property
+(ρ,η ) here is ﬁxed and cannot be distorted, therefore we can only
+act by distorting the program’s syntax so that a loss of precision
+is induced in the abstract interpretation of the distorted program.
+We now prove that such a distorted program can be systematically
+obtained by specializing a distorted interpreter, in such a way that
+the residual program makes an abstract interpretation incomplete.
+5.1 Universal distortion: obfuscator generation
+THEOREM 5.2. Suppose int is any correct self-interpreter for
+language L. Then JPK = JO(P)K holds for O(P)
+def
+= JspecK(int, P).
+An obfuscator can therefore be generated by the following steps:
+• Consider a B-complete property (ρ,η ) on the semantics of pro-
+gram P, whereρ/η are the observable output/input properties;
+• Isolate a set of programs, here called incomplete structures
+Π =
+{
+P∈ PL
+⏐⏐ ρ(JPK)̸= JPK(ρ,η) }
+• Design a correct self-interpreter ˜Int such that O(P)∈ Π for
+some L-programs P.
+Now (1) holds by Theorem 5.2, and (2) since(ρ,η ) is B-complete.
+(3) will hold if ˜Int can be devised such that O(P)∈ Π for some
+L-programs P. In practice this can be straightforwardly achieved
+by modifying a “vanilla” self-interpreter int. We have already
+seen one special case of universal distortion, namely Example
+3.1. For this ﬂattening example, ˜Int uses a dynamic variable pc,
+representing a program counter. Since pc is dynamic it appears in
+the specialized programs O(P); so the incomplete structures in Π
+are one-loop programs with control statements incorporating pc.
+The following example (more directly following the recipe
+above) does a workaround inint so that its specialised code avoids
+the operator∗ on which sign analysis is B-complete.
+EXAMPLE 5.3. Consider the simple case of sign analysis speciﬁed
+by the abstraction ρs ∈ uco(℘(Z)): ρs = {∅, 0, 0+, 0−, Z}
+where 0+ and 0− represent respectively the set of all non negative
+and non positive integers. A distorted interpreter can be obtained
+by replacing in the interpreter for the language of call-by-value
+recursion equation systems the evaluation of integer multiplication
+by calling a function to multiply by repeated addition.
+eval (e, env ) = case e of
+e1∗ e2 : m(eval (e1, env ), eval (e2, env ))
+...
+end
+m(a, b) = if b < 0 then mm(−a,−b, 0) else mm(a, b, 0) ﬁ
+mm(a, b, z ) = if b = 0 then z else mm(a, b− 1, z + a) ﬁ
+PAGE 7
+Specialization of this distorted interpreter will yield only special-
+ized programs written in the following simple functional program-
+ming language L+ with n∈ Z:
+Program ::= Equation,...,Equation
+Equation ::= FuncName(Varlist) = Exp
+Varlist ::= Var,...,Var
+Exp ::= n | Var | if Exp then Exp else Exp
+| FuncName(Arglist)
+| Exp+Exp | Exp-Exp | Exp<Exp | Exp=Exp
+Arglist ::= Exp,...,Exp
+This grammar generates only programs without ∗. These are in-
+complete with respect to the abstract interpretation J K(ρs,ρs) ob-
+tained by abstracting with the rule of signs the language of call-by-
+value recursion equation systems. The interpreter operates on an
+environment deﬁned as a function env mapping variables into Z.
+The corresponding abstract environment maps variables intoρs.
+If given as static input programP : 2mult(x, y) = y∗ x + x∗ y
+and as dynamic input x and y, the Unmix specializer will return
+(modulo some syntactic sugar) the following obfuscated program:
+2mult(x, y) = m(y, x ) + m(x, y)
+m(a, b) = if b < 0 then mm(−a,−b, 0) else mm(a, b, 0) ﬁ
+mm(a, b, z ) = if b = 0 then z else mm(a, b− 1, z + a) ﬁ
+In this case, JPK(ρs,ρs)(x, y)̸= Z iff x = 0 or y = 0, making the
+abstract interpreter of the transformed programs unable to extract
+the sign of the result of the computation.
+5.2 Local distortion
+In this section we explore weaker conditions for the existence of a
+distorted interpreter. The idea is to act locally, to restricted portions
+of the source program, making them obscure with respect to a ﬁxed
+abstraction, yet inducing obscurity in the resulting program. This is
+indeed a common practice in code obfuscation, where obfuscation
+is restricted to speciﬁc code portions, e.g., those holding secrets
+relevant for the whole program structure. Let us consider a program
+P, and consider a set of its variables, {xi}i∈[1,n]. If P[x] denotes
+the presence of a variable x in P, its β-reduction obtained by
+substituting x with a value d ∈ V in P is denoted P[d]. For each
+i, let Pi be the program fragment of P that computes the value of xi
+during the execution of the program P. Hence we use the notation
+P[P1...Pn] for representing these elements in P and we denote by
+P[x1...xn] (P[xi] for short) the program P where all the program
+fragments Pi are substituted by skip. This can be achieved for
+instance by a slicing algorithm [31, 35] that extracts Pi out of
+P by slicing P with respect to some of its (local) variables xi. If
+we consider a family{Qi}i∈[1,n] to substitute to the several Pi we
+denote the resulting program as P[Q1...Qn] (P[Qi] for short).
+The effect of replacing code in programs can only be under-
+stood by the notion of dependency [1]. We model the effect of sub-
+stituting program fragments with equivalent incomplete structures
+by abstract non-interference [19]. Abstract non-interference (ANI)
+is a natural weakening of non-interference (and therefore of depen-
+dency) by abstract interpretation, providing a model where interfer-
+ing objects are properties of code instead of actual computed val-
+ues. We want to characterize the dependency between the compu-
+tation of the values of the different variables xi and the observable
+semantics of the program P. For this reason we deﬁne the follow-
+ing notion of stability, which speciﬁes that a program P is stable
+w.r.t. the variables xi, when any change of its abstract (computed)
+values does not change the observable semantics of the program.
+First of all, consider as observable semantics what the attacker can
+see, namely the abstract semantics computed by abstract interpre-
+tation JPK(ρ,ρ), with D = M = Var−→V and where we abuse
+notation by denotingρ the natural lift extension to states of a value
+abstractionρ∈ uco(V). Consider a variablex in P[x]. Its values are
+approximated inρ when evaluated in J·K(ρ,ρ).
+DEFINITION 5.4. The program P[x] ∈ P is ρ-stable w.r.t. the
+variable x if for any d, z, y∈ V:
+ρ(z)̸=ρ(y) ⇒ JP[ρ(z)]K(ρ,ρ)(d)= JP[ρ(y)]K(ρ,ρ)(d)
+Instability is given by negation:
+∃z, y, d∈ V.ρ (z)̸=ρ(y)∧ JP[ρ(z)]K(ρ,ρ)(d)̸= JP[ρ(y)]K(ρ,ρ)(d)
+namely, there exist values for x that causes a variation in the
+output observation. The notion of stability corresponds to a slight
+weakening of a form of abstract non-interference, considering d as
+public, z and y as secret, but observing the whole output (and not
+only the public part). In particular, since we have a condition on
+an abstraction of the secret data, this corresponds to the so called
+declassiﬁed non-interference via blocking [20], supposing that the
+desired property is stability requires that no variations of the secret
+propertyρ have to ﬂow in the output observation. In our case the
+desired property is its negation, namely instability. In this case we
+aim that a variation of the secret property ρ induces a variation in
+the observable output. The notion of ﬂow-irredundancy introduced
+in ANI [19] provides a stronger property than instability, avoiding
+existential quantiﬁcation, which is problematic here.
+DEFINITION 5.5. A propertyρ is said to be ﬂow-irredundant wrt.
+a function f if∀z, y∈ V :
+ρ(z)̸=ρ(y).∃d∈ V. f (ρ(z), d)̸= f (ρ(y), d).
+Considering as f the abstract interpretation of P, we can observe
+that ﬂow-irredundancy is strictly stronger than instability due to
+the initial universal quantiﬁers.
+5.3 Modeling ﬂow-irredundancy
+Let us provide a set of rules for approximating the ﬂow-irredundancy
+property of a program.
+DEFINITION 5.6. Let x, y be variables and P a program:
+• y
+ρ
+→P[y] x (simply denoted y
+ρ
+→P x) iff
+∀v1, v2∈ρ.∃σ∈ D. JP[v1]K(ρ,ρ)σ̸=x JP[v2]K(ρ,ρ)σ
+where̸=x means that the result is compared only on x;
+• y
+ρ
+⇝ e[y] (simply denoted y
+ρ
+⇝ e), for an expression e, iff
+∀v1, v2∈ρ.∃σ∈ D. Je[v1]K(ρ,ρ)σ̸= Je[v2]K(ρ,ρ)σ;
+• y
+ρ
+⇝ P[y] (denoted y
+ρ
+⇝ P) iff∃x∈ V ar(P) such that y
+ρ
+→P x.
+The set of all the variables modiﬁed by a program fragment is:
+MOD(P)
+def
+=
+{
+x∈ V ar(P)
+⏐⏐ ∃σ∈ D. JPKσ̸=x σ }
+the set MOD(P)(ρ,ρ) is analogously deﬁned, but instead of standard
+semantics we use an abstract one. Let us deﬁne the following rules:
+y
+ρ
+→P x
+y
+ρ
+⇝ P
+∀x∈ V ar(P)
+y
+ρ
+⇝ e
+y
+ρ
+→x := e x
+y
+ρ
+⇝ C1,∃x∈ MOD(ρ,ρ)(C1). y
+ρ
+→C1 x, x
+ρ
+⇝ C2
+y
+ρ
+⇝ C1; C 2
+y
+ρ
+→C1 x, x /∈ MOD(ρ,ρ)(C2)
+y
+ρ
+→C 1 ; C2 x
+y
+ρ
+→C2 x
+y
+ρ
+→C1 ; C 2 x
+y
+ρ
+⇝ C
+y
+ρ
+⇝while B do C endw
+y
+ρ
+⇝ B, x∈ MOD(ρ,ρ)(C)
+y
+ρ
+→while B do C endw x
+PAGE 8
+THEOREM 5.7. The system of rules above is sound wrt. Deﬁni-
+tion 5.6. Moreover x
+ρ
+⇝ P iffρ is ﬂow-irredundant wrt. JP K(ρ,ρ)
+and therefore this implies P[x] is notρ-stable wrt. the variable x.
+Consider the program P[Pi], where Pi are the program frag-
+ments to obfuscate, each of them computing values stored in vari-
+ables xi ∈ V ar(P). Suppose it is unstable, namely there exists
+ρ(zi)̸= ρ(yi) that imply different observations. Hence, we con-
+sider a family of program fragmentsQi (distortions of Pi) such that:
+(i) JPi K = JQi K (required by obfuscation); (ii) ρ(JPi K) = JPi K(ρ,ρ)
+(we suppose the original program was complete, for this reason we
+need obfuscation); (iii) ρ(JQi K)̸= JQi K(ρ,ρ) guaranteeing that the
+distorted program makes the observer lose precision. Hence, there
+exists two values of ρ, i.e., JPi K(ρ,ρ) and JQi K(ρ,ρ) that induce in-
+stability, i.e., suppose Qi are built in such a way that the abstract
+semantics of Qi correspond to the values inducing instability.
+PROPOSITION 5.8. Letρ∈ uco(V) and P[Pi] be a complete pro-
+gram for (ρ,ρ ), i.e., ρ(JPK) = JPK(ρ,ρ) and ρ-unstable. Consider
+Pi and Qi deﬁned as above, satisfying the conditions (i), (ii), and
+(iii). Then the distorted program P[Qi] is incomplete for (ρ,ρ ).
+The next theorem gives a sufﬁcient condition for systematically
+deriving obfuscated code by specializing interpreters. The idea is
+that, for an unstable program P, the specialized code has to leave
+as residual the code for which the attacker is incomplete. This en-
+sures that specialized code keeps incompleteness, becoming there-
+fore obfuscated. Instability ensures that the resulting specialized
+interpreter includes incomplete structures as residual in the trans-
+formed program, making the resulting program obscure.
+THEOREM 5.9. Let P∈ P be an unstable program for given ab-
+stractions. Then there exists an interpreter ˜Int such that O(P) =
+JspecK(˜Int, P) is an obfuscation in the sense of Theorem 5.1.
+The next section shows how the distorted interpreter could be
+designed for the case of opaque predicate insertion [9, 14, 15] and
+data-type reﬁnement obfuscation [17]. In both cases the obfuscated
+code can be generated systematically by modifying an interpreter
+making incomplete structures residual in specialized code.
+5.4 Opaque predicates
+Opacity is an obfuscation technique based on the idea of confus-
+ing the control structure of a program by inserting predicates that
+are always true (or false) independently of the memory [9]. This
+means that the attacker deceived by opacity is exactly the one ob-
+serving only the control structure of programs. In order to show
+that opacity is making incomplete an abstract interpreter, we char-
+acterize the construction of the control-ﬂow graph (the attack) as
+an abstract interpretation and prove that a program contains opaque
+predicates if and only if this abstract interpretation is incomplete.
+The input abstraction ignores the evaluation of any control state-
+ment guard, considering always both the branches of computation;
+and the output abstraction ignores the memory (unnecessary when
+looking at the control structure of programs) and merges the col-
+lected histories of computations obtained. Note that, the ﬁrst ab-
+straction is indeed similar to the functionF deﬁned for ﬂattening in
+Section 4.2, with the only difference that the branch information is
+always lost, and for this reason also this abstraction is speciﬁed in
+terms of B deﬁned in Section 4.2, while the output abstraction is a
+further abstraction of the function C deﬁned in Section 4.2.
+Abstracting control predicates. The abstract interpretation here
+loses the evaluation of guarded commands such as if and while.
+The next function is a recursive map that skips the evaluation of
+the guards. The recursive function Bf decides when to skip the
+evaluation of the guard, while B (deﬁned in Section 4.2) considers
+all the possible program lines that are reachable from the executed
+one, independently from the memory. Nested control structures
+require a recursive deﬁnition of abstraction:
+Bf (⟨σ,⟨l1, l2⟩, G⟩) ={
+Bf◦ B(⟨σ,⟨l1, l2⟩, G⟩) if StmP(l2)∈{ if, while}
+⟨σ,⟨l1, l2⟩, G⟩ otherwise
+We abuse notation by denotingBf also its additive lift and by using
+the notation: Bf (⟨σ,⟨l1, l2⟩, G⟩) = lfp⟨σ, ⟨l1, l2 ⟩, G⟩Bf .
+PROPOSITION 5.10. Bf∈ uco(℘(D)).
+Constructing CFG. We build the control-ﬂow graph of an imper-
+ative program as the ﬁx-point abstraction of the concrete semantics:
+JPKCFG = lfp (g CFG
+L )|G where g CFG
+L
+def
+= C◦ gL◦ Bf .
+Opacity by incompleteness. Opaque predicates [7] are predicates
+whose values are known a priori, i.e. statically, and are independent
+from the state in which the predicate is evaluated.
+DEFINITION 5.11 ( S-opaque predicate). A predicateB is S-opaque
+iff∀σ∈ M. JB Kσ = true or∀σ∈ M. JB Kσ = false.
+In contrast with static opaque predicates, dynamic opaque predi-
+cates are predicates whose truth values depend on a dynamic prop-
+erty of the environment in which the predicate is evaluated. There-
+fore opacity depends on the property that the environment in which
+the predicates are evaluated will yield an always true or always false
+value (e.g, see opaque predicates from pointer-aliasing [7, 9]).
+DEFINITION 5.12 ( D-opaque predicate).
+Let st ∈ {if B then C 1 else C 2, while B do C}, P = P′; st,
+S′ = JP′KS, S⊆ D and S′ =⟨M,⟨l1, l2⟩, G⟩ with M⊆ M. B is
+D-opaque w.r.t. S if∀s∈ S′. JB Ks = true (denoted DS
+T -opaque)
+or∀s∈ S′. JB Ks = false (denoted DS
+F -opaque).
+A predicate B is D-opaque iff∀S⊆ D. B is either DS
+T -opaque or
+DS
+F -opaque.
+For instance the predicate x 2≥ 0 is always true and it is a S-
+opaque predicate. Instead, in n :=|n| + 2;if n > 1 then C..., the
+predicate n > 1 is not S-opaque, but it is D-opaque. With program
+n :=|n| + 2;while n > 1 do n := n− 1;
+the predicate is no moreD-opaque, since there exists an iteration of
+the while, making the predicate false. Indeed, in presence of loops,
+only guards of a non terminating while can be S/D-opaque.
+EXAMPLE 5.13. Consider Π = if B then C 1 else C 2 ﬁ (lΠ the
+initial program line ofΠ, l1 the program line of C 1, l2 the program
+line of C 2, and le the exit point).G is s.t. Nodes(G) ={lΠ, l1, l2, le}
+(for simplicity we omit the edges). Consider C◦ gL◦ Bf (Π): if
+B is not opaque C◦ gL(Π) generates G′ such that Nodes(G′) =
+{lΠ, l1, l2}, while if B is (statically) opaque (for instance always
+true) we obtain a graph G′′ such that Nodes(G′′) ={lΠ, l1}. Note
+that in both cases we have incompleteness ( G̸= G′ and G̸= G′′),
+but while the difference between G and G′ is only le, that will be
+added by gL in the ﬁx-point computation, the difference between
+G and G′′ is in the presence of l2 that the ﬁx-point computation
+of gL cannot add, being B always true. Suppose B is D-opaque
+w.r.t. some set of memories MB ⊆ M, then for any P1 such that
+there exists M ⊆ M s.t. JP1K(M ) ̸⊆ MB, we have that when
+computing P1; Π, B is no more opaque, and therefore we lose the
+incompleteness property on P1; Π, at least for Π.
+LEMMA 5.14. Let S =⟨M,⟨l1, l2⟩, G⟩⊆ D with M⊆ M.
+1.∀n∈ N. (C◦ gL)n(S)⊑G (g CFG
+L )n(S)
+2.∀n∈ N. C◦ g n
+L(S)⊑G (g CFG
+L )n(S)
+PAGE 9
+The next theorem characterizes static and dynamic opacity in
+terms of completeness of abstract interpretation.
+THEOREM 5.15. Let P∈ P.
+1. JPKC
+G =G JPKCFG iff P doesn’t contain S-opaque predicates;
+2. C(JPKG) =G JPKCFG iff P doesn’t contain D-opaque predicates.
+Because in general C(JPKG)⊑G JPKC
+G, as expected, the absence
+of S-opacity implies the absence of D-opacity. Moreover the latter
+can only be ensured by enforcing completeness relatively to a con-
+crete enough semantics that dynamically executes the programs,
+such as JPKG, while in the static case completeness is related with a
+more abstract semantics that loses the memory associated with each
+state, making all predicates equivalently evaluated to an unknown
+(including either true or false) value.
+COROLLARY 5.16. If O : P → P is a program transformation
+adding only S-opaque predicates to a program P (not containing
+opaque predicates), then C(JO(P)KG) = JO(P)KC
+G.
+These results tell us that, while for S-opacity we can easily de-
+sign a distorted interpreter that simply selects and inserts, in the
+interpretation loop, predicates from a database of S-opaque pred-
+icates, this is not in general possible for D-opacity. The intuition
+beyond this negative result is thatD-opacity depends on the seman-
+tics of the program containing the predicate, i.e., it is the semantics
+(viz., the computed environment) of the previous statements that
+makes the predicate D-opaque. While instead S-opacity is a prop-
+erty independent on the surrounding code.
+5.5 Data-type obfuscation
+Let us consider the obfuscation techniques based on the encod-
+ing of data [17]. In this case obfuscation is achieved by data-
+reﬁnement, namely by exploiting the complexity of more complex
+data-structures or values in such a way that actual computations
+can be viewed as abstractions of the reﬁned (obfuscated) ones. The
+idea consists in choosing a pair of statements cα and cγ such that
+cγ; cα≡ skip. This means that both cα and cγ are statements of
+the form: cα≡ x := G(x) and cγ ≡ x := F(x), for some func-
+tion F and G. A program transformation O(P)
+def
+= cγ;τx(P); cα is
+data-type obfuscation for data-typex if O(P)≡ P, whereτx adjusts
+the data-type computation for x on the reﬁned type (see [17]). It is
+known that data-type obfuscation can be modeled as adjoint func-
+tions (Galois connections), where cγ represents the program con-
+cretizing , viz. reﬁning, the datumx and cα represents the program
+abstracting the reﬁned datum x back to the original data-type. As
+proved in [18], this is precisely modeled as a pair of adjoint func-
+tions: α : V−→Vℜ and γ : Vℜ−→V relating the standard data-
+type V for x with its reﬁned versionVℜ.
+EXAMPLE 5.17. Consider P = x := x + 2;, cα≡ x := x/2 and
+cγ≡ x := 2x, then we have τx(P) = x := 2(x/2 + 2), namely
+x := x + 4, therefore: O(P)≡ x := 2x; x := x + 4; x := x/2.
+Consider, for instance a more complex program:
+P = x := 1; s := 0; while x < 15 do s := s+x; x := x+1; endw
+Then we have
+τx(P) =
+[
+x := 2; s := 0;
+while x < 30 do s := s + x/2; x := x + 2; endw
+α,γ, V, and Vℜ are here the most obvious ones.
+THEOREM 5.18. Let ρ ∈ uco(V). If x
+ρ
+⇝ P[x] then for any
+pair of adjoint functions (α,γ ) such that γα ⊑ ρ and program
+reﬁnementτx mapping programs into incomplete structures of L
+forρ:ρ(JP[O(Q)]K ⊏ JP[O(Q)]K(ρ,ρ).
+Data-type obfuscation can be easily implemented by specializing
+an interpreter, straight from Theorem 5.9.
+EXAMPLE 5.19. A very simple data obfuscation can be generated
+as specialization of the simple self-interpreter of Example 3.1. In
+this case, it is not control, but data that are obfuscated. The tech-
+nique is similar to that of Drapeet al [16, 27], but automated by in-
+terpreter specialization. In this example the simple self-interpreter
+of Example 3.1, is modiﬁed so that all values in the store are ob-
+fuscated by the simple trick of adding 1. Mutual inverse functions
+obf (x) and dob(x) respectively obfuscate or invert the obfusca-
+tion. Input values are obfuscated in the initial store, and output
+values are de-obfuscated in the program’s ﬁnal store. Expression
+evaluation obfuscates constants. Also, it ﬁrst de-obfuscates subex-
+pression values, then applies the desired operation (here + or−),
+and then obfuscates the result.
+input P, d; Program to be interpreted, and its data
+pc := 2; store := [in↦→ obf (d), out↦→ obf (0), x1↦→ obf (0),... ];
+while pc< length(P) do
+instruction := lookup(P, pc);
+case instruction of Dispatch on syntax
+skip : pc := pc + 1;
+x := e : store := store[x↦→ eval (e, store)]; pc := pc + 1;
+... endw ;
+output dob(store[out]);
+obf (x ) = x + 1; dob(x ) = x− 1 Obfuscation/de-obfuscation
+eval (e, store) = case e of
+constant : obf (e) Obfuscate constants
+variable : store(e)
+e1 + e2 : obf (dob(eval (e1, store)) + dob(eval (e2, store)))
+e1− e2 : obf (dob(eval (e1, store))− dob(eval (e2, store)))
+...
+end
+The program in Example 3.1 is automatically transformed into an
+equivalent program with obfuscated expressions and data:
+1.input x ;
+1.5.x := x + 1;
+2.y := 2 + 1;
+3.while x− 1> 0 + 1− 1 do
+4.y := ((y− 1) + (2 + 1− 1)) + 1;
+5.x := (x− (1 + 1− 1)) + 1 endw
+6.output y− 1;
+7.end
+A wide variety of data obfuscations can be performed by modi-
+fying the interpreter interp. For example, variables could be rep-
+resented in pairs: (x, y) could be uniquely and decipherably be
+represented by (x + y, x− y). Realizing this in practice involves
+changing the interp code when variables are fetched (expression
+x) and stored ( x := e). While this would make P′ run somewhat
+slower than P, it would be only by a constant factor and not asymp-
+totically slower. On the other hand, familiar abstract interpretations
+such as live variables, constant propagation, available expressions,
+etc. would be substantially hindered by such a representation.
+6. Discussion
+The most related papers are [18] and [29]. In [18] the authors in-
+troduced the idea of information hiding by making an abstract in-
+terpretation incomplete. The corresponding transformations were
+ad hoc due to the fact that the basic code transformers (which ex-
+ist under restrictive hypothesis) were not semantics preserving. In
+[29] the authors introduced the notion ofobfuscated interpretation,
+for hiding functionality of a given program. The idea is to reduce
+the problem of catching the hidden functionality to the problem
+of knowing the way the obfuscated interpreter implements instruc-
+PAGE 10
+tions. This is an instance of our approach, where the attacker is an
+abstract interpreter that is blind to context-dependent semantics.
+Real-world attacks typically use combined attack strategies,
+each one employing a ﬁxed number of analysis tools and meth-
+ods. We believe that these can be formalized as the combination
+of abstract interpreters which can be defeated by specializing cor-
+responding distorted interpreters. In principle, the combination of
+these distorted interpreters may lead to a potentially robust obfus-
+cation against an arbitrary combination of attacks. Future work
+concerns the development and combination of protection mecha-
+nisms based on specialization of distorted interpreters for execution
+ﬂow integrity, function boundary concealment, and defense against
+code decompilation and program tracing. The modularity of our ap-
+proach has here several advantages. For instance, Futamura projec-
+tions (e.g., [24]) are as follow for distorted interpreters interp+:
+1. P′ := [ [ spec] ](interp+, P) Transform program
+2. comp := [ [ spec] ](spec, interp+) Generate transformer
+3. cogen := [ [ spec] ](spec, spec) Transformer generator
+The obfuscating transformations we have seen are clearly instances
+of the 1st projection. An obfuscating compiler has been gener-
+ated by the 2nd projection using U NMIX . For example, if P is
+interpflat, then comp is a stand-alone “ﬂattening” obfuscator .
+Immediate consequences are other better ways to transform and to
+produce a transformer: P′ = [[comp]](P) (transform by compiler)
+and comp = [[ cogen]](interp+) (generate transformer). Future
+developments will involve gaining a deeper understanding in ex-
+pected slowdowns, namely the relations between: (a) time P′(d)
+and time P(d), exemplifying the slowdown imposed by the ﬂatten-
+ing obfuscation; (b) time spec(interpflat, P) and length(P), ex-
+emplifying the amount of time required to do the ﬂattening ob-
+fuscation by general specialization; (c) time comp(P) and length(P),
+exemplifying the amount of time required to do the ﬂattening ob-
+fuscation by running the UNMIX -generated program obfuscator.
+References
+[1] M. Abadi, A. Banerjee, N. Heintze, and J. Riecke. A core calculus of
+dependency. In 26th ACM POPL ’99, pp. 147–160. 1999.
+[2] B. Barak, O. Goldreich, R. Impagliazzo, S. Rudich, A. Sahai, S. P.
+Vadhan, and K. Yang. On the (im)possibility of obfuscating programs.
+In CRYPTO ’01, LNCS 2139, pp. 1–18. 2001.
+[3] F. Bourdoncle. Abstract debugging of higher-order imperative lan-
+guages. In ACM PLDI ’93, pp. 46–55, 1993.
+[4] S. Chow, Y . Gu, H. Johnson, and V . A. Zakharov. An approach to the
+obfuscation of control-ﬂow of sequential computer programs. In ISC
+’01, LNCS 2200, pp. 144–155. 2001.
+[5] S. Chow, P. A. Eisen, H. Johnson, and P. C. van Oorschot. A white-box
+des implementation for drm applications. In Digital Rights Manage-
+ment Workshop, LNCS 2696, pp. 1–15. 2003.
+[6] F. B. Cohen. Operating system protection through program evolution.
+Computers & Security, 12(6):565–584, 1993.
+[7] C. Collberg and J. Nagra. Surreptitious Software: Obfuscation, Wa-
+termarking, and Tamperprooﬁng for Software Protection . Addison-
+Wesley Professional, 2009. ISBN 0321549252.
+[8] C. Collberg and C. Thomborson. Watermarking, tamper-prooﬁng, and
+obduscation-tools for software protection. IEEE Trans. Software Eng.,
+pp. 735–746, 2002.
+[9] C. Collberg, C. D. Thomborson, and D. Low. Manufactoring cheap,
+resilient, and stealthy opaque constructs. In 25st ACM POPL ’98, pp.
+184–196. 1998.
+[10] C. Consel, J. Lawall, and A.-F. L. Meur. A tour of Tempo: a program
+specializer for the C language. Science of Computer Programming, 52
+(17(1)):47–92, 2004.
+[11] P. Cousot and R. Cousot. Abstract interpretation: A uniﬁed lattice
+model for static analysis of programs by construction or approxima-
+tion of ﬁxpoints. In 4th ACM POPL ’77, pp. 238–252. 1977.
+[12] P. Cousot and R. Cousot. Systematic design of program analysis
+frameworks. In 6th ACM POPL ’79, pp. 269–282. 1979.
+[13] P. Cousot and R. Cousot. Systematic design of program transformation
+frameworks by abstract interpretation. In 29th ACM POPL ’02 , pp.
+178–190. 2002.
+[14] M. Dalla Preda and R. Giacobazzi. Semantic-based code obfuscation
+by abstract interpretation. J. of Comp. Security, 17(6):855–908, 2009.
+[15] M. Dalla Preda, M. Madou, K. D. Bosschere, and R. Giacobazzi.
+Opaque predicates detection by abstract interpretation. In 11th
+AMAST ’06, LNCS 4019, pp. 81–95. 2006.
+[16] S. Drape. Obfuscation of Abstract Data-Types. PhD thesis, University
+of Oxford, 2004.
+[17] S. Drape, C. Thomborson, and A. Majumdar. Specifying imperative
+data obfuscations. In ISC’07, LNCS 4779, pp. 299–314. 2007.
+[18] R. Giacobazzi. Hiding information in completeness holes - new
+perspectives in code obfuscation and watermarking. In 6th IEEE
+SEFM’08, pp. 7–20. 2008.
+[19] R. Giacobazzi and I. Mastroeni. Abstract non-interference: Param-
+eterizing non-interference by abstract interpretation. In 31st ACM
+POPL ’04, pp. 186–197. 2004.
+[20] R. Giacobazzi and I. Mastroeni. Adjoining classiﬁed and unclassi-
+ﬁed information by abstract interpretation. J. of Computer Security.,
+18(5):751-797. 2010.
+[21] R. Giacobazzi and E. Quintarelli. Incompleteness, counterexamples
+and reﬁnements in abstract model-checking. In 8th SAS’01, LNCS
+2126, pp. 356–373. 2001.
+[22] R. Giacobazzi, F. Ranzato, and F. Scozzari. Making abstract interpre-
+tation complete. J. of the ACM, 47(2):361–416, March 2000.
+[23] N. D. Jones. Transformation by interpreter specialisation. Science of
+Computer Programming, 52(17(1)):307–339, 2004.
+[24] N. D. Jones, C. K. Gomard, and P. Sestoft. Partial evaluation and
+automatic program generation. Prentice-Hall, Inc., 1993.
+[25] J. Jørgensen. Similix: A self-applicable partial evaluator for scheme.
+In Partial Evaluation, LNCS 1706, pp. 83–107. 1998.
+[26] M. Leuschel. Advanced logic program specialisation. In Partial
+Evaluation - Practice and Theory, DIKU 1998 Int. Summer School ,
+pp. 271–292. 1999. ISBN 3-540-66710-5.
+[27] A. Majumdar, S. J. Drape, and C. D. Thomborson. Slicing obfusca-
+tions: design, correctness, and evaluation. In DRM ’07, pp. 70–81.
+ACM, 2007.
+[28] I. Mastroeni and D. Zanardini. Data dependencies and program slic-
+ing: From syntax to abstract semantics. In ACM PEPM’08, pp. 125 –
+134. 2008.
+[29] A. Monden, A. Monsifrot, and C. D. Thomborson. A framework for
+obfuscated interpretation. In ACSW Frontiers, AISW2004, pp. 7–16,
+2004.
+[30] F. A. P. Petitcolas, R. J. Anderson, and M. G. Kuhn. Information hiding
+– A survey. Proc. of the IEEE, 87(7):1062–1078, 1999.
+[31] T. Reps and W. Yang. The semantics of program slicing and program
+integration. In Colloq. on Current Issues in Programming Languages,
+LNCS 352, pp. 360–374. 1989.
+[32] S. Romanenko. Unmix, a specializer for a subset of Scheme:
+http://code.google.com/p/unmix/ . Keldysh Institute,
+Moscow, 1993-2009.
+[33] P. Thiemann. Aspects of the PGG system: Specialization for standard
+scheme. In Partial Evaluation - Practice and Theory, DIKU 1998 Int.
+Summer School, pp. 412–432. Springer, 1999. ISBN 3-540-66710-5.
+[34] C. Wang, J. Davidson, J. Hill, and J. Knight. Protection of software-
+based survivability mechanisms. In IEEE International Conference of
+Dependable Systems and Networks, pp. 193–202, 2001.
+[35] M. Ward and H. Zedan. Slicing as a program transformation. ACM
+Trans. Program. Lang. Syst., 29(2), 2007.

@@ -1,0 +1,352 @@
+{
+  "rows": [
+    {
+      "name": "reachable-01-expose",
+      "length": 1,
+      "repair": false,
+      "sequence": [
+        "mask",
+        "publish"
+      ],
+      "original": "reachable-01-expose/original.wasm",
+      "adapted": "reachable-01-expose/adapted.wasm",
+      "cut": "reachable-01-expose/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-01-expose/migrate.wasm",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-01-expose/weave.wasm",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "reachable-01-repair",
+      "length": 1,
+      "repair": true,
+      "sequence": [
+        "mask",
+        "publish"
+      ],
+      "original": "reachable-01-repair/original.wasm",
+      "adapted": "reachable-01-repair/adapted.wasm",
+      "cut": "reachable-01-repair/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-01-repair/migrate.wasm",
+          "status": "invalid-output",
+          "error": "{\"tool\": \"wasm-validate\", \"args\": [\"results\\\\state-witness\\\\guard-external-inputs-v1\\\\reachable-01-repair\\\\migrate.wasm\"], \"stderr\": \"results/state-witness/guard-external-inputs-v1/reachable-01-repair/migrate.wasm:00001aa: error: function 0 is not declared in any elem sections\\n\"}"
+        },
+        {
+          "backend": "weave",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-01-repair/weave.wasm",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "reachable-04-expose",
+      "length": 4,
+      "repair": false,
+      "sequence": [
+        "mask",
+        "copy",
+        "copy",
+        "copy",
+        "publish"
+      ],
+      "original": "reachable-04-expose/original.wasm",
+      "adapted": "reachable-04-expose/adapted.wasm",
+      "cut": "reachable-04-expose/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-04-expose/migrate.wasm",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-04-expose/weave.wasm",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "reachable-04-repair",
+      "length": 4,
+      "repair": true,
+      "sequence": [
+        "mask",
+        "copy",
+        "copy",
+        "copy",
+        "publish"
+      ],
+      "original": "reachable-04-repair/original.wasm",
+      "adapted": "reachable-04-repair/adapted.wasm",
+      "cut": "reachable-04-repair/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-04-repair/migrate.wasm",
+          "status": "invalid-output",
+          "error": "{\"tool\": \"wasm-validate\", \"args\": [\"results\\\\state-witness\\\\guard-external-inputs-v1\\\\reachable-04-repair\\\\migrate.wasm\"], \"stderr\": \"results/state-witness/guard-external-inputs-v1/reachable-04-repair/migrate.wasm:00001ad: error: function 0 is not declared in any elem sections\\n\"}"
+        },
+        {
+          "backend": "weave",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-04-repair/weave.wasm",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "reachable-16-expose",
+      "length": 16,
+      "repair": false,
+      "sequence": [
+        "mask",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "publish"
+      ],
+      "original": "reachable-16-expose/original.wasm",
+      "adapted": "reachable-16-expose/adapted.wasm",
+      "cut": "reachable-16-expose/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-16-expose/migrate.wasm",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-16-expose/weave.wasm",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "reachable-16-repair",
+      "length": 16,
+      "repair": true,
+      "sequence": [
+        "mask",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "publish"
+      ],
+      "original": "reachable-16-repair/original.wasm",
+      "adapted": "reachable-16-repair/adapted.wasm",
+      "cut": "reachable-16-repair/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-16-repair/migrate.wasm",
+          "status": "invalid-output",
+          "error": "{\"tool\": \"wasm-validate\", \"args\": [\"results\\\\state-witness\\\\guard-external-inputs-v1\\\\reachable-16-repair\\\\migrate.wasm\"], \"stderr\": \"results/state-witness/guard-external-inputs-v1/reachable-16-repair/migrate.wasm:00001b9: error: function 0 is not declared in any elem sections\\n\"}"
+        },
+        {
+          "backend": "weave",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-16-repair/weave.wasm",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "reachable-32-expose",
+      "length": 32,
+      "repair": false,
+      "sequence": [
+        "mask",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "publish"
+      ],
+      "original": "reachable-32-expose/original.wasm",
+      "adapted": "reachable-32-expose/adapted.wasm",
+      "cut": "reachable-32-expose/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-32-expose/migrate.wasm",
+          "status": "valid"
+        },
+        {
+          "backend": "weave",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-32-expose/weave.wasm",
+          "status": "valid"
+        }
+      ]
+    },
+    {
+      "name": "reachable-32-repair",
+      "length": 32,
+      "repair": true,
+      "sequence": [
+        "mask",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "copy",
+        "publish"
+      ],
+      "original": "reachable-32-repair/original.wasm",
+      "adapted": "reachable-32-repair/adapted.wasm",
+      "cut": "reachable-32-repair/cut.wasm",
+      "variants": [
+        {
+          "backend": "migrate",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-32-repair/migrate.wasm",
+          "status": "invalid-output",
+          "error": "{\"tool\": \"wasm-validate\", \"args\": [\"results\\\\state-witness\\\\guard-external-inputs-v1\\\\reachable-32-repair\\\\migrate.wasm\"], \"stderr\": \"results/state-witness/guard-external-inputs-v1/reachable-32-repair/migrate.wasm:00001c9: error: function 0 is not declared in any elem sections\\n\"}"
+        },
+        {
+          "backend": "weave",
+          "code": 0,
+          "stdout": "",
+          "stderr": "",
+          "binary": "reachable-32-repair/weave.wasm",
+          "status": "valid"
+        }
+      ]
+    }
+  ],
+  "source": "results\\state-witness\\guard-contract-reachable-v1",
+  "sourceManifestSha256": "b68ae49a711a0d42560f4e3fddc64ea106c2c6332dd04a06f6c34ce1c5948ebe",
+  "executableSha256": {
+    ".tools\\wasm-migrate-build\\target\\release\\wasm-migrate-target.exe": "e20b950270eb6e006f46e650d2a1403b8641b988c88b1c922f5ed8fa0f1f7305",
+    ".tools\\weave-build\\target\\release\\weave-probe.exe": "3d85034130173fd6c2439ce9003de2b8b14034eb7462ccdfd090c30556dc3909"
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "wasm": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-ffmpeg-0.12.10-v1\\core-mt\\ffmpeg-core.wasm",
+  "wasmSha256": "be2c97605366b78f3f13e21b52e81a55a79e1f29c133b03a68ec187b1a2ec41a",
+  "adapter": "unchanged browser-worker glue on Node worker_threads adapter",
+  "start": "2026-10-25T13:51:09.571Z",
+  "commands": [
+    {
+      "name": "audio-resample",
+      "args": [
+        "-i",
+        "input.wav",
+        "-ar",
+        "16000",
+        "-ac",
+        "1",
+        "-c:a",
+        "pcm_s16le",
+        "-f",
+        "s16le",
+        "resampled.pcm"
+      ],
+      "code": 0,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 20,
+        "Ma": 1,
+        "Va": 16
+      },
+      "output": {
+        "name": "resampled.pcm",
+        "bytes": 8000,
+        "sha256": "e7c76442ab76579d1b7e6d41efa61b96116851362cdb92e3fbab8cdc9d8a1a9c"
+      }
+    },
+    {
+      "name": "audio-lossless",
+      "args": [
+        "-i",
+        "input.wav",
+        "-c:a",
+        "flac",
+        "-threads",
+        "1",
+        "encoded.flac"
+      ],
+      "code": 0,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 16,
+        "Ma": 1
+      },
+      "output": {
+        "name": "encoded.flac",
+        "bytes": 11831,
+        "sha256": "cea6c8dbd2b6fdd9a995c9f594e0494e2a6319c5b08365696222a00b5027c2f5"
+      }
+    },
+    {
+      "name": "audio-roundtrip",
+      "args": [
+        "-i",
+        "encoded.flac",
+        "-f",
+        "s16le",
+        "-c:a",
+        "pcm_s16le",
+        "roundtrip.pcm"
+      ],
+      "code": 0,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 16,
+        "Ma": 1,
+        "Va": 16
+      },
+      "output": {
+        "name": "roundtrip.pcm",
+        "bytes": 4000,
+        "sha256": "9fb2e6af33a64f5c6115e947fd17d344700ce20119460b6a9bf633f37f31e2cb"
+      }
+    },
+    {
+      "name": "image-scale",
+      "args": [
+        "-i",
+        "input.ppm",
+        "-vf",
+        "scale=8:8",
+        "-frames:v",
+        "1",
+        "-threads",
+        "1",
+        "-f",
+        "rawvideo",
+        "-pix_fmt",
+        "rgb24",
+        "scaled.rgb"
+      ],
+      "code": 0,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 22,
+        "Ma": 1
+      },
+      "output": {
+        "name": "scaled.rgb",
+        "bytes": 192,
+        "sha256": "3b125ae5e09bb03a086775982c3d734c534779a389498338fee6969e1ebab061"
+      }
+    },
+    {
+      "name": "invalid-input",
+      "args": [
+        "-i",
+        "missing.wav",
+        "-f",
+        "s16le",
+        "invalid.pcm"
+      ],
+      "code": 1,
+      "logs": [
+        {
+          "type": "stderr",
+          "message": "missing.wav: No such file or directory"
+        },
+        {
+          "type": "stderr",
+          "message": "Aborted()"
+        }
+      ],
+      "exports": {
+        "Ha": 14,
+        "Ma": 1
+      }
+    }
+  ],
+  "mainThreadExportCalls": {
+    "Ga": 1,
+    "Ra": 1,
+    "Oa": 1,
+    "Ha": 88,
+    "Ma": 5,
+    "Va": 32
+  },
+  "errors": [],
+  "initialized": true,
+  "workersCreated": 32,
+  "inputs": {
+    "wav": {
+      "bytes": 4044,
+      "sha256": "66599863b27cad597f9b7d6164fb007a0304df0dd889b602ae8d3198f2f7521d"
+    },
+    "ppm": {
+      "bytes": 781,
+      "sha256": "4730dcf2bfe508c0c696626f7a1b59c85ffa9dfbf0e0badf6145489835fcb3c8"
+    }
+  },
+  "roundtripMatchesOriginalPcm": true,
+  "status": "passed",
+  "end": "2026-10-25T13:51:09.832Z"
+}

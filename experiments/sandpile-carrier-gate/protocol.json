@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-12",
+  "candidate": "Replace modular addition by componentwise addition and legal stabilization on a two-vertex cyclic dissipative graph",
+  "widths": [4, 8, 16, 32],
+  "seed": 619733,
+  "scales_per_width": "1 and two seeded random odd scales; duplicates retained",
+  "inputs": "all pairs at width 4; Cartesian product of seven distinct boundaries plus 1024 random pairs at each other width",
+  "observer": "Knows signed toppling vectors and modulus, sees both chip counts, gets one known E(1); does not get encoding scale or target input",
+  "primary_rejection_test": "Recover encoded operands and encoded sum by a linear invariant, on every tested case; derive identity for all inputs",
+  "negative_control": "Perturb recovered first coefficient by one; require a failing reachable value per encoding",
+  "budget": "20 minutes local design and check; script 60 seconds; at most 128 bulk topplings per stabilization",
+  "stop_rule": "If known sandpile arithmetic and linear invariant recovery explain this construction, reject before Wasm or full SHA implementation"
+}

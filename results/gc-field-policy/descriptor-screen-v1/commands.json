@@ -1,0 +1,82 @@
+[
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v1\\library.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v1\\library.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 19.1683
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v1\\original.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v1\\original.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 13.193099999999985
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v1\\different-brand.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v1\\different-brand.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 12.45170000000001
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v1\\fresh-descriptor.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v1\\fresh-descriptor.wasm"
+    ],
+    "code": 0,
+    "stdout": "",
+    "stderr": "",
+    "wallMs": 12.395500000000004
+  },
+  {
+    "args": [
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\binaryen-version_133\\bin\\wasm-as.exe",
+      "results\\gc-field-policy\\descriptor-screen-v1\\copied-descriptor.wat",
+      "--mvp-features",
+      "--enable-reference-types",
+      "--enable-gc",
+      "--enable-custom-descriptors",
+      "-o",
+      "results\\gc-field-policy\\descriptor-screen-v1\\copied-descriptor.wasm"
+    ],
+    "code": 1,
+    "stdout": "",
+    "stderr": "[wasm-validator error in function 0] struct.new descriptor operand should have proper type, on \n(struct.new_desc $T\n (i32.const 77)\n (ref.get_desc $T\n  (ref.cast (ref $T)\n   (call $get-a)\n  )\n )\n)\nFatal: Error: input module is not valid.\n\n",
+    "wallMs": 12.245400000000018
+  }
+]

@@ -1,0 +1,13 @@
+[package]
+name = "gc-witness-smith-driver"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+zero = ["wasm-smith/gc-witness-zero-seed"]
+
+[dependencies]
+wasm-smith = { path = "../../../.tools/gc-witness-smith-patched", features = ["wasmparser"] }
+wasmparser = "=0.262.0"
+arbitrary = "=1.4.2"
+serde_json = "=1.0.142"

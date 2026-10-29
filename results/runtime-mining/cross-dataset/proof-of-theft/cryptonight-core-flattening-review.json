@@ -1,0 +1,261 @@
+{
+  "date": "2026-10-08",
+  "function": "$f10 (partial-ABI hash candidate)",
+  "fragments": [
+    {
+      "file": "cryptonight-410426ab2346-f10.wat.txt",
+      "sha256": "c2acbf4c764b708f1b68d8c51d9aef3949368874650c390b8ba6463b9718ff27",
+      "reviewed_fragment_lines": [
+        585,
+        741
+      ],
+      "fragment_instruction_text_lines": 157,
+      "direct_calls": [
+        "$f11",
+        "$f24",
+        "$f12",
+        "$f11",
+        "$f13",
+        "$f14"
+      ],
+      "reference_stack_offsets_to_variant": {
+        "2097576": 2097592,
+        "2097584": 2097600
+      }
+    },
+    {
+      "file": "cryptonight-b11438f04601-f10.wat.txt",
+      "sha256": "2480649842959724a1d0158d0d68a054a6ee19a7d87170d5c9ec76f6ce43bd8e",
+      "reviewed_fragment_lines": [
+        972,
+        1128
+      ],
+      "fragment_instruction_text_lines": 157,
+      "direct_calls": [
+        "$f11",
+        "$f24",
+        "$f12",
+        "$f11",
+        "$f13",
+        "$f14"
+      ],
+      "reference_stack_offsets_to_variant": null
+    }
+  ],
+  "counter_fragment_symbolic_events": {
+    "reference_initialization": [
+      [
+        "store",
+        [
+          "stack_base"
+        ],
+        2097596,
+        0
+      ]
+    ],
+    "variant_initialization": [
+      [
+        "store",
+        [
+          "stack_base"
+        ],
+        2097596,
+        0
+      ],
+      [
+        "store",
+        [
+          "load",
+          [
+            "stack_base"
+          ],
+          8
+        ],
+        0,
+        -1465685751
+      ],
+      [
+        "br",
+        "$B1"
+      ]
+    ],
+    "reference_condition": [
+      [
+        "br_if",
+        "$B6",
+        [
+          "i32.eqz",
+          [
+            "i32.and",
+            [
+              "i32.lt_u",
+              [
+                "load",
+                [
+                  "stack_base"
+                ],
+                2097596
+              ],
+              524288
+            ],
+            1
+          ]
+        ]
+      ]
+    ],
+    "variant_condition": [
+      [
+        "store",
+        [
+          "load",
+          [
+            "stack_base"
+          ],
+          8
+        ],
+        0,
+        [
+          "select",
+          [
+            "i32.and",
+            [
+              "i32.lt_u",
+              [
+                "load",
+                [
+                  "stack_base"
+                ],
+                2097596
+              ],
+              524288
+            ],
+            1
+          ],
+          -1434013805,
+          -739629170
+        ]
+      ],
+      [
+        "br",
+        "$B1"
+      ]
+    ],
+    "reference_increment": [
+      [
+        "store",
+        [
+          "stack_base"
+        ],
+        2097596,
+        [
+          "i32.add",
+          [
+            "load",
+            [
+              "stack_base"
+            ],
+            2097596
+          ],
+          1
+        ]
+      ],
+      [
+        "br",
+        "$L7"
+      ]
+    ],
+    "variant_increment": [
+      [
+        "store",
+        [
+          "stack_base"
+        ],
+        2097596,
+        [
+          "i32.add",
+          [
+            "load",
+            [
+              "stack_base"
+            ],
+            2097596
+          ],
+          1
+        ]
+      ],
+      [
+        "store",
+        [
+          "load",
+          [
+            "stack_base"
+          ],
+          8
+        ],
+        0,
+        -1465685751
+      ],
+      [
+        "br",
+        "$B1"
+      ]
+    ]
+  },
+  "counter_review_scope": "Straight-line fragments only: common zero initialization, unsigned bound and increment by one; variant writes dispatcher states instead of the reference loop branches. Memory/callee side effects between fragments and whole-loop equivalence remain unverified.",
+  "mechanism": {
+    "state_slot": "stack base + 12",
+    "state_pointer_slot": "stack base + 8",
+    "initial_state": 1819809018,
+    "common_dispatch_loop": "$L0",
+    "common_case_exit": "$B1",
+    "lexical_block_bounds": {
+      "$L0": [
+        206,
+        1617
+      ],
+      "$B1": [
+        216,
+        1615
+      ],
+      "$B11": [
+        226,
+        1138
+      ],
+      "$B12": [
+        227,
+        969
+      ],
+      "$B13": [
+        228,
+        933
+      ]
+    },
+    "reviewed_subgraph": [
+      {
+        "state": -1465685751,
+        "role": "unsigned counter < 524288",
+        "true_state": -1434013805,
+        "false_state": -739629170
+      },
+      {
+        "state": -1434013805,
+        "role": "core fragment with six direct calls",
+        "next_state": -1408174823
+      },
+      {
+        "state": -1408174823,
+        "role": "counter increment by one",
+        "next_state": -1465685751
+      }
+    ]
+  },
+  "fragment_match": "157 instruction-text lines match under consistent local renaming and observed +16 stack-slot displacement; referenced local types and direct callee identifiers match.",
+  "implication": "State dispatch replaces part of a high-iteration loop inside the hash candidate, rather than merely its outer main wrapper. Actual execution and timing effect remain unmeasured.",
+  "limitations": [
+    "Only a bounded loop subgraph and payload fragment were reviewed; other dispatcher states and full-body equivalence unverified.",
+    "Full cryptographic callee semantics and historical source/binary correspondence are not proven by unchanged call identifiers.",
+    "Static counter bound does not establish dynamic execution count, coverage, successful hash output or causal overhead.",
+    "The candidate is not part of the already measured 13-module runtime comparison."
+  ],
+  "executed_hashes": 0
+}

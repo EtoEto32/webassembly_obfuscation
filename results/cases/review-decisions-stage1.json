@@ -1,0 +1,392 @@
+{
+  "review_date_jst": "2026-10-06",
+  "reviewer": "Codex individual static inspection; no independent human review yet",
+  "selection_file": "experiments/review-selection-stage1.json",
+  "scope": "Reviewed sites and interfaces only; no module-wide proof of absence of obfuscation; no malicious behavior executed",
+  "reviews": [
+    {
+      "sha256": "8c1f5a768e6f6913f5f3e639b9bbf46d90bd2be98c02eebec1ba8f44f8c94103",
+      "verdict": "candidate",
+      "functions": [
+        48,
+        55
+      ],
+      "offsets": [
+        "0x00cf75",
+        "0x00f8bc",
+        "0x00f97e",
+        "0x0187c1",
+        "0x0188c3"
+      ],
+      "findings": [
+        "func[48] has 141 br_table instructions. At 0xf8bc and 0xf97e, dispatch selectors are signed bytes loaded from constant addresses 11266 and 11274. Arithmetic branches update local 2 using multiplication or addition and converge via br. This is data-directed arithmetic dispatch, not merely a high branch count.",
+        "func[55] tests byte value 37 (%), advances a pointer, and dispatches on signed character values minus 37 or 65. Character/format parsing is a plausible explanation for its large tables.",
+        "Exports k/l/m/n and missing name section show opaque naming but do not identify an obfuscator or intent."
+      ],
+      "alternative_explanations": "Data-directed arithmetic may implement the mining algorithm itself or an interpreter; format parsing can explain library branch tables. No matching original or transformation history has yet established obfuscation.",
+      "follow_up": "Inspect the data-directed arithmetic routine and compare a documented source implementation before claiming virtualization or control-flow flattening."
+    },
+    {
+      "sha256": "23b65971ea3acdd776ef83ada9ab80ebd915ef49d82d6f7da4e11298cb9270be",
+      "verdict": "unknown",
+      "functions": [
+        37,
+        64
+      ],
+      "offsets": [
+        "0x0090fb",
+        "0x00ff4d",
+        "0x01005a",
+        "0x01014f"
+      ],
+      "findings": [
+        "func[37] reinterprets f64 bits as i64, shifts right by 52 and masks with 2047 before br_table at 0x90fb. The selector is the floating-point exponent field.",
+        "That table has 2049 label entries, but only three distinct depths: 2047 entries are depth 2, one is depth 0 and one depth 1. Table length is not the number of distinct control destinations.",
+        "func[64] dispatches on bytes after testing % and on signed character values minus 65/91. These sites support a character-parser explanation rather than evidence of a central obfuscation dispatcher."
+      ],
+      "alternative_explanations": "Floating-point special-case handling and format parsing explain the reviewed sites. No conclusion about every other function is made."
+    },
+    {
+      "sha256": "c1be4071ccc59e468803cb9b9eae25ec3aaff24f1d37ee0b81ba9126f8334572",
+      "verdict": "candidate",
+      "functions": [
+        29
+      ],
+      "offsets": [
+        "0x005bfe",
+        "0x006051",
+        "0x0060a9"
+      ],
+      "findings": [
+        "Reviewed loop dispatch sign-extends an 8-bit value; another table uses a selector minus ASCII 65. The surrounding code updates a pointer and stores through memory. Character parsing is an alternative to flattening.",
+        "Export prefix _JtsgOXcVkUs_ is opaque. The entire code-section payload exactly equals that of 65debcbe8c6e64a04c9c3b75794b77644526a514d89a09f037f2cf53f2aa2f98, whose corresponding export prefix is _bBcDYnZGHoa_. Data sections also differ.",
+        "The matching code payload SHA-256 is a3b1e6387953b49c5538f2cb0471fc68ab982cc3165130590aefc59180d91e7c. This establishes code identity, not common malware family or a known parent."
+      ],
+      "alternative_explanations": "Naming may be identifier substitution or a build-specific naming scheme; intention and generator are unverified. Different whole-file hashes overstate code diversity in this pair."
+    },
+    {
+      "sha256": "65debcbe8c6e64a04c9c3b75794b77644526a514d89a09f037f2cf53f2aa2f98",
+      "verdict": "candidate",
+      "functions": [
+        29
+      ],
+      "offsets": [
+        "0x005bfe",
+        "0x006051",
+        "0x0060a9"
+      ],
+      "findings": [
+        "Individually inspected the same three character-dependent branch sites as in c1be4071ccc59e468803cb9b9eae25ec3aaff24f1d37ee0b81ba9126f8334572. Code-section bytes match exactly, despite different module hashes.",
+        "Exports use _bBcDYnZGHoa_create/destroy/hash where the paired module uses _JtsgOXcVkUs_create/destroy/hash. Both lack name sections. Data payload hashes differ; this is not claimed to be an exports-only change."
+      ],
+      "alternative_explanations": "Opaque export naming is confirmed as a property; malicious obfuscation intent and shared generation origin remain unproven."
+    },
+    {
+      "sha256": "aafff58765c917b0900726ecca11c715c38c3c25b1be9e0af130e0f5b170c14e",
+      "verdict": "unknown",
+      "confirmed_non_obfuscation_structure": "instruction-count instrumentation",
+      "functions": [
+        40,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87
+      ],
+      "offsets": [
+        "0x009bd8",
+        "0x009be7",
+        "0x009c00",
+        "0x009c2d",
+        "0x015765",
+        "0x0157ce"
+      ],
+      "findings": [
+        "Getters return low/high parts of globals 11..15; reset function sets those five globals to zero. Counter update sequences global.get N; i64.const 1; i64.add; global.set N occur throughout the code.",
+        "Observed exact four-instruction update sequences: global 11:1573, 12:302, 13:1077, 14:523, 15:576. Total 4051 sequences / 16204 instructions, out of 47033 decoded static instructions. This is a static code-composition count, not execution frequency or measured runtime overhead.",
+        "The same module is present at SEISMIC CoinHive/64-bit/cryptonight_obfuscated.wasm. The pinned inline_counter64.py explicitly inserts increments for globals 11..15 for add/and/shl/shr_u/xor, consistent with the observed code.",
+        "The two reviewed br_table sites use rotated arithmetic selectors and forward blocks, with no enclosing loop. The export prefix thginotpyrc is cryptonight reversed, an identifier-hiding candidate; counter presence does not prove that the module has no other obfuscation."
+      ],
+      "source_evidence": "https://github.com/wenhao1006/SEISMIC/blob/87f52c92eddadb2b786669f3a79582161f1c5c18/CoinHive/64-bit/inline_counter64.py",
+      "alternative_explanations": "Instrumentation is an evidenced explanation for much of the added instruction count. Neither this file's malicious deployment nor the complete transformation chain is independently established."
+    },
+    {
+      "sha256": "5071322db0c748406dee289da6128fb93237a98b31f5d25ba62e4294e49bee4d",
+      "verdict": "unknown",
+      "functions": [
+        31
+      ],
+      "offsets": [
+        "0x004ecb",
+        "0x004f0a"
+      ],
+      "findings": [
+        "func[31] adds -224 to parameter 0 and combines right-shift 5 with left-shift 27 before forward branch tables. Cases return an error code or initialize/copy memory. These two tables are not enclosed by a loop.",
+        "Meaningful exports include _setJob, _mLoop, _mResult and _fromHex. High data entropy 7.918 and absence of a name section do not establish encrypted strings or control-flow flattening."
+      ],
+      "alternative_explanations": "Ordinary case selection and cryptographic constants remain plausible. No module-wide absence claim."
+    },
+    {
+      "sha256": "7cf3ef5027f4dd5e8919f35b1e05ccc19887910127576aa25bd4ff4eacff9def",
+      "verdict": "candidate",
+      "functions": [
+        40
+      ],
+      "offsets": [
+        "0x005057",
+        "0x005096"
+      ],
+      "findings": [
+        "The inspected tables use the parameter-derived add -224 / shifts 5 and 27 selector, then forward blocks and memory initialization. No loop encloses these sites.",
+        "Exports include _dryptonight_create/destroy/hash, a near-name variant of cryptonight. The naming is a candidate concealment feature; the binary alone does not prove deliberate renaming or identify a transformer."
+      ],
+      "alternative_explanations": "Ordinary build naming and cryptographic switch logic have not been excluded."
+    },
+    {
+      "sha256": "046dc081076d9cea6831967619b862cc80fa8c2381346406ec639c899cda640f",
+      "verdict": "unknown",
+      "functions": [
+        32,
+        33
+      ],
+      "offsets": [
+        "0x00c385",
+        "0x00ccc4"
+      ],
+      "findings": [
+        "Rechecked the two branch-table sites after this previously purposeful case was independently selected by the fixed random seed. Both lie outside loops and use memory-derived selectors.",
+        "Name information and _cryptonight_hash_variant_0/1/2 exports remain. The high-entropy data and branch tables alone do not establish a specific obfuscation technique."
+      ],
+      "alternative_explanations": "Algorithmic case selection and cryptographic tables are plausible; preserve the earlier review.md for fuller evidence."
+    },
+    {
+      "sha256": "22a8da398015d3e5442be1f0d4e373d1c4f2fd47bd0781cba5813c14259e806f",
+      "verdict": "candidate",
+      "functions": [
+        29,
+        40,
+        71
+      ],
+      "offsets": [
+        "0x005bfe",
+        "0x006051"
+      ],
+      "findings": [
+        "The reviewed function 29 reads successive signed bytes and tests ASCII 37 (%), then dispatches on character values. This supports a parsing explanation for these branch tables.",
+        "Compared all 59 function bodies with independently sampled 4ab6ed5e: 57 are byte-identical; data payloads match. In function 40 this module applies i64.xor 0 and i64.sub 0 to a shift-count value. Both operations are algebraic identities. Function 71 differs too; saved unified differences provide the exact instructions.",
+        "Opaque export prefix _XOuJTMJpKnE_ is a naming candidate. Exact whole-file nonmatching to reference seeds does not establish an individual generation parent."
+      ],
+      "alternative_explanations": "Neutral operations are confirmed locally. The specific generator, intention, and parent of this file are unverified; paired modules are not asserted to be behaviorally identical."
+    },
+    {
+      "sha256": "039242599b2e13be2382fe3659763ca1055027c5beda251ae56b3b2682925411",
+      "verdict": "unknown",
+      "functions": [
+        32,
+        33
+      ],
+      "offsets": [
+        "0x00bfb7",
+        "0x00c8f6"
+      ],
+      "findings": [
+        "Function 32 dispatches on (memory value >> 8) & 3; function 33 dispatches on a rotated arithmetic selector and copies memory in forward cases. Neither table is inside a loop.",
+        "Meaningful _cryptonight_create/destroy/hash exports remain. Data entropy 7.909 matches other inspected mining-related cases, but this does not demonstrate encrypted strings."
+      ],
+      "alternative_explanations": "Algorithmic case dispatch and cryptographic tables remain plausible. No module-wide absence or malware deployment claim."
+    },
+    {
+      "sha256": "4ab6ed5e0cff47586fb586a91b180c8c6eaef4002e33dc2bb27bf8235673c00e",
+      "verdict": "candidate",
+      "functions": [
+        29,
+        40,
+        71
+      ],
+      "offsets": [
+        "0x005bfe",
+        "0x006051"
+      ],
+      "findings": [
+        "Individually inspected function 29 character-based dispatch, including a pointer advance, signed-byte load and test against ASCII 37.",
+        "Comparison with 22a8da39 establishes 57/59 identical function bodies and an equal data payload. In function 71 this module pushes constant 745275909 and drops it, and evaluates local 2 AND local 2. The former is unused stack work and the latter is an identity.",
+        "Function 40 lacks the xor-zero/subtract-zero sequence present in the paired file. Pairwise differences are saved; neither file is designated as the original."
+      ],
+      "alternative_explanations": "Redundant computation is established as structure. Compiler output or research mutation, rather than malicious intent, may explain it; the author describes corpus-level generation but provides no verified per-file lineage here."
+    },
+    {
+      "sha256": "2eb0e7c2b2d544243ba7992e4969396bb782056493f26cb480818c8718a73928",
+      "verdict": "unknown",
+      "functions": [
+        38,
+        39
+      ],
+      "offsets": [
+        "0x002710"
+      ],
+      "findings": [
+        "Function 38 selects calls to _genstep1 through _genstep9 using parameter 0 minus 1. The branches exit forward and do not form a central looping dispatcher.",
+        "Exports retain _mine and data contains a JavaScript submit/Pointer_stringify string. These are clues to host interaction, not proof that JavaScript was moved into Wasm for concealment.",
+        "Comparison with 1d38d08e shows 53/54 identical function bodies and identical data payloads. Only function 39 differs at the body-byte level; additional non-code differences account for the larger whole-file size."
+      ],
+      "alternative_explanations": "The paired difference does not establish which version is original or a shared generation parent. Full loader behavior and maliciousness remain unverified."
+    },
+    {
+      "sha256": "1d38d08ebc07663634f91170acab573e3c3ea973862b648f6a53cf426711b346",
+      "verdict": "candidate",
+      "functions": [
+        38,
+        39
+      ],
+      "offsets": [
+        "0x00266f"
+      ],
+      "findings": [
+        "Function 38 performs the same forward _genstep1..9 case dispatch as 2eb0e7c2.",
+        "In function 39, before a call to _sha256_transf, local 3 is passed through i32.const 0; i32.sub; i32.const 0; i32.shr_u. This preserves its value and is locally redundant arithmetic.",
+        "The pair has 53/54 identical function bodies and equal data payloads. Differences are preserved in pair-comparisons/2eb0e7c2-1d38d08e.diff.txt."
+      ],
+      "alternative_explanations": "The identity sequence supports a redundant-code candidate, but neither obfuscation intent nor the exact mutation history is established."
+    },
+    {
+      "sha256": "67d2501490e367add9d485419fff68c78124d231bf3794aa933830acc87409a0",
+      "verdict": "candidate",
+      "functions": [
+        0
+      ],
+      "offsets": [
+        "0x000039",
+        "0x00003d",
+        "0x000040"
+      ],
+      "findings": [
+        "Inspected the complete single-function disassembly: constant 16, constant 0, subtraction, constant 0, unsigned right shift, end. The function deterministically leaves 16; both arithmetic operations are neutral.",
+        "The module exports memory and data, imports nothing, and contains readable HTML for a popup/banner. It is primarily a data carrier with a small accessor, not evidence of a substantial hidden mining algorithm.",
+        "A companion JavaScript consumer was not inspected. Wasm-as-container and JavaScript-to-Wasm logic migration cannot be equated. The author malware label is kept separate from observed content."
+      ],
+      "alternative_explanations": "The neutral getter can result from mutation. Readable HTML and a popup are insufficient to independently establish malicious deployment or a specific obfuscation strategy."
+    },
+    {
+      "sha256": "91f41583caa01d9384915bfe4cf4ca8a44326f92ef069b6e651baf9f37a48b8c",
+      "verdict": "candidate",
+      "functions": [
+        137
+      ],
+      "offsets": [
+        "0x00ce91",
+        "0x00cfc3"
+      ],
+      "findings": [
+        "Exports are short identifiers such as R/S/T, while readable data includes decodeVideoBuffer, audioBuffer and videoBuffer. Name stripping or minification is a candidate property in this author-benign module.",
+        "Inspected two tables and their surrounding memory loads, pointer advances and calls. Neither inspected excerpt establishes a control-flow flattening transformation.",
+        "This benign-labeled case has high data entropy (7.212), 81 branch tables and 21 inside loops. Those markers alone are not evidence of malware obfuscation."
+      ],
+      "alternative_explanations": "Media processing, parser/library logic and size-oriented symbol minification can explain the observations. Actual functionality and independent benignness were not dynamically verified."
+    },
+    {
+      "sha256": "ac118c8510650632319ae7e06f8dbfcd81a1861fe328545e19a2beca994b6a70",
+      "verdict": "unknown",
+      "functions": [
+        10,
+        11
+      ],
+      "offsets": [
+        "0x0087df",
+        "0x009240"
+      ],
+      "findings": [
+        "Exports parse/with_default_config and wasm-bindgen allocation helpers, along with readable Rust runtime and parser error strings, support a parser/library interpretation.",
+        "Functions 10 and 11 use range-checked character-derived selectors, then advance pointers and compare loaded bytes to newline (10). This is consistent with parsing rather than a demonstrated obfuscation dispatcher.",
+        "Data entropy is 7.452 despite numerous readable error messages. A high-entropy section is not equivalent to encrypted strings."
+      ],
+      "alternative_explanations": "Language runtime, lookup data and parsing logic are plausible explanations; no module-wide absence claim."
+    },
+    {
+      "sha256": "85a47a86c24b576e3687730ffe16555b34e763b56902b9ebb5b4a8c6edfedaf5",
+      "verdict": "candidate",
+      "functions": [
+        47
+      ],
+      "offsets": [
+        "0x007c44",
+        "0x007c8c",
+        "0x0085f2",
+        "0x008657"
+      ],
+      "findings": [
+        "The inspected routine dispatches on sign-extended bytes and characters minus 65; data includes printf-like r=%i, s=%i and formatting literals.",
+        "Redundant structures occur in this author-benign file: subtraction of zero before a branch table, nop at 0x7c8c, and instructions after unconditional branches that are unreachable along that path.",
+        "The large number of locals and explicit control blocks are observable properties. They do not by themselves identify an obfuscator."
+      ],
+      "alternative_explanations": "Unoptimized or transformed compiler output and library code are plausible. Redundant-code markers cannot be used as a malware-specific indicator."
+    },
+    {
+      "sha256": "7304d5cfc9ab1db5a510445b0eef45e14e264b82dc75b870a762391fcc9d8e2e",
+      "verdict": "unknown",
+      "functions": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "offsets": [
+        "0x0001b7",
+        "0x0001c3",
+        "0x0001cf",
+        "0x0001dd",
+        "0x0001e8"
+      ],
+      "findings": [
+        "Inspected checksum-comparison wrappers calling memcmp, a time wrapper dividing env.current_time by 1000000, and an authorization wrapper calling env.require_auth2.",
+        "Exports and data refer to eosio, permission_level and apply. This is evidence for a smart-contract-oriented environment, which must not automatically be grouped with browser-deployed programs.",
+        "These small wrappers have direct operations and calls; the reviewed sites provide no positive evidence of a named obfuscation technique."
+      ],
+      "alternative_explanations": "Only the listed wrapper functions were inspected. The full contract and the author benign label have not been independently validated."
+    },
+    {
+      "sha256": "5017ea14ba15261d2931fd261cb310ecda418565b8d411352225caeecab5289c",
+      "verdict": "unknown",
+      "functions": [
+        36
+      ],
+      "offsets": [
+        "0x008938",
+        "0x008da5",
+        "0x008dfd"
+      ],
+      "findings": [
+        "The module imports memory and has no data section. Lack of embedded strings is therefore not evidence that strings were encrypted.",
+        "Function 36 loads successive signed bytes, updates a pointer and uses character-dependent branch tables, including a selector minus 65. This resembles the parsing routines in other inspected modules.",
+        "The meaningful _hash_cn export remains. External memory initialization and companion JavaScript were not inspected."
+      ],
+      "alternative_explanations": "Data may be supplied by the host; the module alone cannot establish hiding or absence of strings in the application."
+    },
+    {
+      "sha256": "0443e3e3918c1abb0cd9ed8019c9ba41f5fd016885008118fc00cfcedadee761",
+      "verdict": "unknown",
+      "functions": [
+        0
+      ],
+      "offsets": [
+        "0x000031",
+        "0x000047",
+        "0x000061",
+        "0x000066",
+        "0x0000f3"
+      ],
+      "findings": [
+        "Inspected the complete function exported as sad. It loads pairs of bytes, subtracts them, derives a sign mask with arithmetic right shift 31, and computes (difference XOR sign) - sign before accumulating. Byte differences are within -255..255, so this is absolute difference without overflow ambiguity.",
+        "The first loop performs four repeated byte comparisons per iteration; a second loop handles the remainder. This is consistent with loop unrolling and sum-of-absolute-differences computation.",
+        "The absence of data/name sections and the xor/shift operations do not establish obfuscation."
+      ],
+      "alternative_explanations": "Ordinary arithmetic optimization explains the reviewed function; no independent verification of deployment or author benignness."
+    }
+  ]
+}

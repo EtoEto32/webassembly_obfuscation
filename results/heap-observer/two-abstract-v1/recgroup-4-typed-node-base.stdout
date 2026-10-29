@@ -1,0 +1,37 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export global$
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export func
+[fuzz-exec] note result: func => null
+[fuzz-exec] export func_invoker
+[fuzz-exec] export func_9_invoker
+exception thrown: RuntimeError: dereferencing a null pointer
+[fuzz-exec] export func_11_invoker
+[fuzz-exec] export func_14
+[LoggingExternalInterface logging 0]
+[fuzz-exec] note result: func_14 => object(null)
+[fuzz-exec] export func_14_invoker
+[LoggingExternalInterface logging -0.883]
+[fuzz-exec] export func_16
+[fuzz-exec] note result: func_16 => object(null)
+[fuzz-exec] export func_17
+[fuzz-exec] note result: func_17 => null
+[fuzz-exec] export func_17_invoker
+[fuzz-exec] export func_19_invoker
+[fuzz-exec] export func_22
+[LoggingExternalInterface logging NaN]
+exception thrown: RuntimeError: divide by zero
+[fuzz-exec] export func_22_invoker
+[LoggingExternalInterface logging NaN]
+exception thrown: RuntimeError: divide by zero
+[fuzz-exec] export func_25
+[fuzz-exec] note result: func_25 => -32769
+[fuzz-exec] export func_26
+[fuzz-exec] note result: func_26 => object(null)
+[fuzz-exec] export func_27
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_28
+[LoggingExternalInterface logging function]
+[fuzz-exec] note result: func_28 => object(null)
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_9_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"},{"name":"func_11_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_14","known":true,"status":"returned","unsupported":[]},{"name":"func_14_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_16","known":true,"status":"returned","unsupported":[]},{"name":"func_17","known":true,"status":"returned","unsupported":[]},{"name":"func_17_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_19_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_22","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: divide by zero"},{"name":"func_22_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: divide by zero"},{"name":"func_25","known":true,"status":"returned","unsupported":[]},{"name":"func_26","known":true,"status":"returned","unsupported":[]},{"name":"func_27","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_28","known":true,"status":"returned","unsupported":[]}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null},{"id":3,"channel":"printed","name":null,"slot":null},{"id":4,"channel":"printed","name":null,"slot":null},{"id":5,"channel":"printed","name":null,"slot":null}]}

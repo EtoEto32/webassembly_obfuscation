@@ -1,0 +1,71 @@
+[
+  {
+    "command": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\state-witness\\run.py",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\reproduction-v1\\probe"
+    ],
+    "code": 0,
+    "seconds": 3.4342968,
+    "stdout": "{\"counter\":{\"originalApiCalls\":4872,\"probeCalls\":23480,\"nonMutationChecks\":1168,\"JStateComparisons\":192,\"expectedTrapCalls\":1366},\"rows\":64}\n\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\state-witness\\cross.py",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\reproduction-v1\\probe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\reproduction-v1\\cross"
+    ],
+    "code": 0,
+    "seconds": 0.40016620000000014,
+    "stdout": "{\"calls\": 3852, \"traps\": 1488, \"seconds\": 0.1869627, \"wasmtime\": \"50.0.1\", \"scope\": \"Scalar globals, lengths, boundary traps, segment probes. Excludes memory bytes/table function identity.\", \"inputManifestSha256\": \"6765785a5ccbf3f5b88e17c4305a11ee631b2789f044a64035dcb1529f497336\"}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\state-witness\\boundary.py",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\reproduction-v1\\boundary"
+    ],
+    "code": 0,
+    "seconds": 0.7613487000000001,
+    "stdout": "{\"accepted\": 5, \"rejected\": 9}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\state-witness\\observability.py",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\reproduction-v1\\observability"
+    ],
+    "code": 0,
+    "seconds": 0.314705,
+    "stdout": "[{\"name\":\"dormant\",\"diagnosticDifference\":[\"segments\"],\"checkedSuffixes\":127,\"depthLimit\":6,\"witness\":null,\"interpretation\":\"No bounded witness; here source inspection additionally shows only drop and constant-return exports\"},{\"name\":\"reachable\",\"diagnosticDifference\":[\"segments\"],\"checkedSuffixes\":4,\"depthLimit\":6,\"witness\":{\"suffix\":[\"init\"],\"baseline\":[{\"value\":null}],\"changed\":[{\"trap\":true}]},\"interpretation\":\"Confirmed original-interface difference\"}]\n\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\state-witness\\spec-run.py",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\state-witness-spec",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\reproduction-v1\\spec"
+    ],
+    "code": 0,
+    "seconds": 3.1813499000000007,
+    "stdout": "{\"accepted\":63,\"unsupported\":6,\"toolRejected\":0,\"commands\":650,\"skippedCommands\":0,\"probes\":3552,\"instantiationRejected\":0}\n\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\AppData\\Local\\Programs\\Python\\Python39\\python.exe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\state-witness\\bench.py",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\reproduction-v1\\probe",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\state-witness\\reproduction-v1\\performance"
+    ],
+    "code": 0,
+    "seconds": 24.951023899999996,
+    "stdout": "{\"rows\": 48, \"processes\": 5}\n",
+    "stderr": ""
+  }
+]

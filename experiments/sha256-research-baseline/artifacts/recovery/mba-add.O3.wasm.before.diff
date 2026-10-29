@@ -1,0 +1,36 @@
+--- mba-add.O3.wasm.before.wat
++++ mba-add.O3.wasm.after.wat
+@@ -3231,14 +3231,8 @@
+       local.get 5
+       local.set 0
+       local.get 2
+-      local.get 9
+-      i32.xor
+-      local.get 2
+-      local.get 9
+-      i32.and
+-      i32.const 1
+-      i32.shl
+-      i32.add
++    local.get 9
++    i32.add
+       local.set 5
+       local.get 8
+       local.set 9
+@@ -3247,14 +3241,8 @@
+       local.get 4
+       local.set 1
+       local.get 2
+-      local.get 7
+-      i32.xor
+-      local.get 2
+-      local.get 7
+-      i32.and
+-      i32.const 1
+-      i32.shl
+-      i32.add
++    local.get 7
++    i32.add
+       local.set 4
+       local.get 10
+       i32.const 1

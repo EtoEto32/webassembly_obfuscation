@@ -1,0 +1,247 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 1,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 2,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 3,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 4,
+      "expression": [
+        "mul",
+        "v1",
+        "v2"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 5,
+      "expression": 1,
+      "opcode": "i32.const"
+    },
+    {
+      "id": 6,
+      "expression": [
+        "add",
+        [
+          "mul",
+          "v1",
+          "v2"
+        ],
+        1
+      ],
+      "opcode": "i32.add"
+    },
+    {
+      "id": 7,
+      "expression": [
+        "mul",
+        "v1",
+        [
+          "add",
+          [
+            "mul",
+            "v1",
+            "v2"
+          ],
+          1
+        ]
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 8,
+      "expression": [
+        "mul",
+        "v0",
+        [
+          "mul",
+          "v1",
+          [
+            "add",
+            [
+              "mul",
+              "v1",
+              "v2"
+            ],
+            1
+          ]
+        ]
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 9,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 10,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 11,
+      "expression": [
+        "mul",
+        "v1",
+        "v2"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 12,
+      "expression": 1,
+      "opcode": "i32.const"
+    },
+    {
+      "id": 13,
+      "expression": [
+        "add",
+        [
+          "mul",
+          "v1",
+          "v2"
+        ],
+        1
+      ],
+      "opcode": "i32.add"
+    },
+    {
+      "id": 14,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 15,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 16,
+      "expression": [
+        "mul",
+        "v0",
+        "v2"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 17,
+      "expression": [
+        "mul",
+        [
+          "add",
+          [
+            "mul",
+            "v1",
+            "v2"
+          ],
+          1
+        ],
+        [
+          "mul",
+          "v0",
+          "v2"
+        ]
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 18,
+      "expression": [
+        "add",
+        [
+          "mul",
+          "v0",
+          [
+            "mul",
+            "v1",
+            [
+              "add",
+              [
+                "mul",
+                "v1",
+                "v2"
+              ],
+              1
+            ]
+          ]
+        ],
+        [
+          "mul",
+          [
+            "add",
+            [
+              "mul",
+              "v1",
+              "v2"
+            ],
+            1
+          ],
+          [
+            "mul",
+            "v0",
+            "v2"
+          ]
+        ]
+      ],
+      "opcode": "i32.add"
+    }
+  ],
+  "output_expression": [
+    "add",
+    [
+      "mul",
+      "v0",
+      [
+        "mul",
+        "v1",
+        [
+          "add",
+          [
+            "mul",
+            "v1",
+            "v2"
+          ],
+          1
+        ]
+      ]
+    ],
+    [
+      "mul",
+      [
+        "add",
+        [
+          "mul",
+          "v1",
+          "v2"
+        ],
+        1
+      ],
+      [
+        "mul",
+        "v0",
+        "v2"
+      ]
+    ]
+  ],
+  "inputSHA256": "82b2061ba8a51670e6f8a15788a7ab87ca5af1fe3ef71d1771e269ae3b8d2423",
+  "probeSHA256": "a8b464e2a6662b62ba1db1f8761a2baedc9ace001178f14d277027960f0f897b",
+  "model": "all scalar i32 values of exported straight-line run, after Binaryen; not native JIT traces"
+}

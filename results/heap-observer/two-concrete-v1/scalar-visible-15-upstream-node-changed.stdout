@@ -1,0 +1,18 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => 42
+[fuzz-exec] export func
+[fuzz-exec] note result: func => -61
+[fuzz-exec] export func_12
+[fuzz-exec] note result: func_12 => object(object(object(null)))
+[fuzz-exec] export func_12_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_14_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_17_invoker
+exception thrown: RangeError: WebAssembly.Table.get(): invalid address 4294947093 in funcref table of size 7
+[fuzz-exec] export func_19
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_20
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_21
+[fuzz-exec] note result: func_21 => -18

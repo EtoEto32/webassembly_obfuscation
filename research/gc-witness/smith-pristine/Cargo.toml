@@ -1,0 +1,13 @@
+[package]
+name = "gc-witness-smith-pristine"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+zero = []
+
+[dependencies]
+wasm-smith = { path = "../../../.tools/gc-witness-smith-upstream/wasm-smith-0.262.0", features = ["wasmparser"] }
+wasmparser = "=0.262.0"
+arbitrary = "=1.4.2"
+serde_json = "=1.0.142"

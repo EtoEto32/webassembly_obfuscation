@@ -1,0 +1,27 @@
+{
+  "previous_goal_turn": {
+    "classification": "progress",
+    "evidence_inspected": "../temporal-lanes-audit-v1/summary.json",
+    "passed": true,
+    "next_action_reason": "Temporal placement preserved an easily recovered predecessor chain; investigate additive redundant representation instead."
+  },
+  "primary": {
+    "correctness": "carry-weave-v2",
+    "controls": "carry-weave-controls-v2",
+    "performance": "carry-weave-performance-v2",
+    "interpreter": "carry-weave-verify-v2",
+    "model": "carry-weave-model-v1",
+    "replay": "carry-weave-replay-v1"
+  },
+  "implementation_issues": [
+    {"run": "carry-weave-probe-v1", "status": "aborted", "cause": "Passed a standalone expression to a module-only parser; fixed recovery emission."},
+    {"run": "carry-weave-probe-v2", "status": "completed_with_scoring_mismatches", "cause": "O3 constant subtraction and commutative operand order were not canonicalized consistently; result values matched."},
+    {"run": "carry-weave-controls-v1", "status": "four_term_recovery_failures", "cause": "Zero padding reduced three-input CSA to half-adder form; added zero normalization and two-input conservation identity. All recovered outputs were already behaviorally correct, but four did not meet the term recovery task."}
+  ],
+  "superseded": ["carry-weave-v1", "carry-weave-performance-v1", "carry-weave-verify-v1", "carry-weave-report-v1"],
+  "issues_counted_as_resilience": false,
+  "duplicate_runs_added_to_primary_counts": false,
+  "finite_tests_are_not_a_full_implementation_proof": true,
+  "novelty_established": false,
+  "goal_complete": false
+}

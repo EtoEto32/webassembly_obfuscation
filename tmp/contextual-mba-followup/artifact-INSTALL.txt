@@ -1,0 +1,87 @@
+# Installation Instructions
+
+## 1. Get the image
+
+### Option A: Pull the prebuilt image from ghcr.io
+
+```bash
+docker pull ghcr.io/astean1001/promba-rcr:latest
+docker tag ghcr.io/astean1001/promba-rcr:latest promba-rcr
+```
+
+### Option B: Build the image locally
+
+From the artifact root:
+
+```bash
+docker build -t promba-rcr .
+```
+
+This builds the instrumented ProMBA and all external tools (SimbaS, Duet, EUSolver, Omelet, MBA-Solver, GAMBA, Syntia). It takes roughly 15–30 minutes on a fast machine and needs network access to fetch the sources. Tool URLs can be overridden, e.g. `--build-arg PROMBA_DEPS_GAMBA=https://github.com/astean1001/GAMBA.git`.
+
+
+## 2. Verify the installation
+
+Run the simple example:
+
+```bash
+docker run --rm promba-rcr python3 rcr.py custom --from-backup /experiment/ProMBA/rcr/sample-custom.txt
+```
+
+It finishes within a minute and prints a summary table. The install is working if ProMBA reaches the ground-truth size on all ten tasks.
+
+```
+Custom benchmark summary.
+==================================================
+label    n  n_output  success_rate  size_avg  time_avg
+------  --  --------  ------------  --------  --------
+ProMBA  10        10        100.00      ...       ...
+```
+
+To also exercise the baselines in the same run:
+
+```bash
+docker run --rm promba-rcr python3 rcr.py custom --from-backup sample-custom.txt \
+    --with-baselines --tools promba,mbasolver,gamba,syntia --timeout 60
+```
+
+This adds `MBASolver`, `Gamba`, and `Syntia` rows to the table.
+
+
+## 3. Installing without Docker (not recommended)
+ 
+You can also set everything up natively, without Docker. This means building the whole toolchain by hand, which takes some care across several languages (OCaml, Rust, Python 3 and 2), so we don't generally recommend it for a first run. If you'd prefer this route, the summary below lists what you need.
+ 
+### Dependencies
+ 
+- System packages (Ubuntu 20.04): python3, python3-pip, python2.7, git, curl, build-essential, patch, cmake, libgmp-dev, libopenblas-dev, gfortran, pkg-config, bc.
+- OCaml (4.05.0) : dune, z3, batteries, cil, yojson, lacaml, integers, and bitvec
+- Rust (rustup / cargo)
+- Python 3 : rich, matplotlib, z3-solver, plotext
+ 
+### Tools
+ 
+Clone the other tools from the locations below
+
+- ProMBA — https://github.com/astean1001/ProMBA.git 
+- Duet — https://github.com/astean1001/duet.git
+- SimbaS — https://github.com/astean1001/simba_synth.git
+- EUSolver — https://github.com/astean1001/eusolver.git
+- Omelet — https://github.com/pslhy/Omelet.git
+- SiMBA — https://github.com/astean1001/SiMBA.git
+- MBA-Solver — https://github.com/astean1001/MBA-Solver.git
+- GAMBA — https://github.com/astean1001/GAMBA.git
+- Syntia — https://github.com/RUB-SysSec/syntia.git
+ 
+ProMBA has SiMBA and MBA-Solver as submodules. 
+EUSolver and Syntia each need their own Python — EUSolver an isolated Python 3.6 and Syntia a Python 2.7.
+ 
+### Paths / environment
+ProMBA's wrapper scripts (`simbad`, `duet.sh`, `eusolver.sh`, `simbas.sh`, `synth.sh`,`omelet_runner`) hard-code `/experiment/` paths, so install the tools under `/experiment` (or edit the scripts). The harness reads these environment variables:
+ 
+- `PROMBA_DIR` — ProMBA's directory (its working dir; benchmark paths are relative to it)
+- `PROMBA_EXE` — path to `promba.exe`
+- `GAMBA_DIR` / `SYNTIA_DIR` / `MBASOLVER_DIR` — the baseline tool directories
+- `LD_LIBRARY_PATH` — must include the opam switch's z3 library (`~/.opam/promba/lib/z3`)
+ 
+Once these are in place, verify the setup with the smoke test in section 2. 

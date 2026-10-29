@@ -1,0 +1,808 @@
+{
+  "models": {
+    "pair2": {
+      "n": 2,
+      "tree": [
+        "lt",
+        0,
+        1
+      ]
+    },
+    "range4": {
+      "n": 4,
+      "tree": [
+        "and",
+        [
+          "lt",
+          0,
+          1
+        ],
+        [
+          "lt",
+          2,
+          3
+        ]
+      ]
+    },
+    "fanout8": {
+      "n": 8,
+      "tree": [
+        "xor",
+        [
+          "xor",
+          [
+            "xor",
+            [
+              "xor",
+              [
+                "xor",
+                [
+                  "xor",
+                  [
+                    "lt",
+                    0,
+                    7
+                  ],
+                  [
+                    "lt",
+                    1,
+                    7
+                  ]
+                ],
+                [
+                  "lt",
+                  2,
+                  7
+                ]
+              ],
+              [
+                "lt",
+                3,
+                7
+              ]
+            ],
+            [
+              "lt",
+              4,
+              7
+            ]
+          ],
+          [
+            "lt",
+            5,
+            7
+          ]
+        ],
+        [
+          "lt",
+          6,
+          7
+        ]
+      ]
+    },
+    "mixed8": {
+      "n": 8,
+      "tree": [
+        "or",
+        [
+          "and",
+          [
+            "lt",
+            0,
+            1
+          ],
+          [
+            "lt",
+            2,
+            3
+          ]
+        ],
+        [
+          "and",
+          [
+            "xor",
+            [
+              "lt",
+              4,
+              5
+            ],
+            [
+              "lt",
+              6,
+              5
+            ]
+          ],
+          [
+            "lt",
+            2,
+            7
+          ]
+        ]
+      ]
+    }
+  },
+  "files": [
+    {
+      "path": "pair2.plain.raw.wasm",
+      "model": "pair2",
+      "mode": "plain",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "pair2.plain.raw.recovered.wasm",
+      "model": "pair2",
+      "mode": "plain",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "pair2.plain.O2.wasm",
+      "model": "pair2",
+      "mode": "plain",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "pair2.plain.O2.recovered.wasm",
+      "model": "pair2",
+      "mode": "plain",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "pair2.plain.O3.wasm",
+      "model": "pair2",
+      "mode": "plain",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "pair2.plain.O3.recovered.wasm",
+      "model": "pair2",
+      "mode": "plain",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "pair2.table.raw.wasm",
+      "model": "pair2",
+      "mode": "table",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "pair2.table.raw.recovered.wasm",
+      "model": "pair2",
+      "mode": "table",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "pair2.table.O2.wasm",
+      "model": "pair2",
+      "mode": "table",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "pair2.table.O2.recovered.wasm",
+      "model": "pair2",
+      "mode": "table",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "pair2.table.O3.wasm",
+      "model": "pair2",
+      "mode": "table",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "pair2.table.O3.recovered.wasm",
+      "model": "pair2",
+      "mode": "table",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "pair2.individual.raw.wasm",
+      "model": "pair2",
+      "mode": "individual",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "pair2.individual.raw.recovered.wasm",
+      "model": "pair2",
+      "mode": "individual",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "pair2.individual.O2.wasm",
+      "model": "pair2",
+      "mode": "individual",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "pair2.individual.O2.recovered.wasm",
+      "model": "pair2",
+      "mode": "individual",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "pair2.individual.O3.wasm",
+      "model": "pair2",
+      "mode": "individual",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "pair2.individual.O3.recovered.wasm",
+      "model": "pair2",
+      "mode": "individual",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "pair2.shared.raw.wasm",
+      "model": "pair2",
+      "mode": "shared",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "pair2.shared.raw.recovered.wasm",
+      "model": "pair2",
+      "mode": "shared",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "pair2.shared.O2.wasm",
+      "model": "pair2",
+      "mode": "shared",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "pair2.shared.O2.recovered.wasm",
+      "model": "pair2",
+      "mode": "shared",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "pair2.shared.O3.wasm",
+      "model": "pair2",
+      "mode": "shared",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "pair2.shared.O3.recovered.wasm",
+      "model": "pair2",
+      "mode": "shared",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "range4.plain.raw.wasm",
+      "model": "range4",
+      "mode": "plain",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "range4.plain.raw.recovered.wasm",
+      "model": "range4",
+      "mode": "plain",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "range4.plain.O2.wasm",
+      "model": "range4",
+      "mode": "plain",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "range4.plain.O2.recovered.wasm",
+      "model": "range4",
+      "mode": "plain",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "range4.plain.O3.wasm",
+      "model": "range4",
+      "mode": "plain",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "range4.plain.O3.recovered.wasm",
+      "model": "range4",
+      "mode": "plain",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "range4.table.raw.wasm",
+      "model": "range4",
+      "mode": "table",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "range4.table.raw.recovered.wasm",
+      "model": "range4",
+      "mode": "table",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "range4.table.O2.wasm",
+      "model": "range4",
+      "mode": "table",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "range4.table.O2.recovered.wasm",
+      "model": "range4",
+      "mode": "table",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "range4.table.O3.wasm",
+      "model": "range4",
+      "mode": "table",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "range4.table.O3.recovered.wasm",
+      "model": "range4",
+      "mode": "table",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "range4.individual.raw.wasm",
+      "model": "range4",
+      "mode": "individual",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "range4.individual.raw.recovered.wasm",
+      "model": "range4",
+      "mode": "individual",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "range4.individual.O2.wasm",
+      "model": "range4",
+      "mode": "individual",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "range4.individual.O2.recovered.wasm",
+      "model": "range4",
+      "mode": "individual",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "range4.individual.O3.wasm",
+      "model": "range4",
+      "mode": "individual",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "range4.individual.O3.recovered.wasm",
+      "model": "range4",
+      "mode": "individual",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "range4.shared.raw.wasm",
+      "model": "range4",
+      "mode": "shared",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "range4.shared.raw.recovered.wasm",
+      "model": "range4",
+      "mode": "shared",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "range4.shared.O2.wasm",
+      "model": "range4",
+      "mode": "shared",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "range4.shared.O2.recovered.wasm",
+      "model": "range4",
+      "mode": "shared",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "range4.shared.O3.wasm",
+      "model": "range4",
+      "mode": "shared",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "range4.shared.O3.recovered.wasm",
+      "model": "range4",
+      "mode": "shared",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.plain.raw.wasm",
+      "model": "fanout8",
+      "mode": "plain",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.plain.raw.recovered.wasm",
+      "model": "fanout8",
+      "mode": "plain",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.plain.O2.wasm",
+      "model": "fanout8",
+      "mode": "plain",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.plain.O2.recovered.wasm",
+      "model": "fanout8",
+      "mode": "plain",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.plain.O3.wasm",
+      "model": "fanout8",
+      "mode": "plain",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.plain.O3.recovered.wasm",
+      "model": "fanout8",
+      "mode": "plain",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.table.raw.wasm",
+      "model": "fanout8",
+      "mode": "table",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.table.raw.recovered.wasm",
+      "model": "fanout8",
+      "mode": "table",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.table.O2.wasm",
+      "model": "fanout8",
+      "mode": "table",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.table.O2.recovered.wasm",
+      "model": "fanout8",
+      "mode": "table",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.table.O3.wasm",
+      "model": "fanout8",
+      "mode": "table",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.table.O3.recovered.wasm",
+      "model": "fanout8",
+      "mode": "table",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.individual.raw.wasm",
+      "model": "fanout8",
+      "mode": "individual",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.individual.raw.recovered.wasm",
+      "model": "fanout8",
+      "mode": "individual",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.individual.O2.wasm",
+      "model": "fanout8",
+      "mode": "individual",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.individual.O2.recovered.wasm",
+      "model": "fanout8",
+      "mode": "individual",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.individual.O3.wasm",
+      "model": "fanout8",
+      "mode": "individual",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.individual.O3.recovered.wasm",
+      "model": "fanout8",
+      "mode": "individual",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.shared.raw.wasm",
+      "model": "fanout8",
+      "mode": "shared",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.shared.raw.recovered.wasm",
+      "model": "fanout8",
+      "mode": "shared",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.shared.O2.wasm",
+      "model": "fanout8",
+      "mode": "shared",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.shared.O2.recovered.wasm",
+      "model": "fanout8",
+      "mode": "shared",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "fanout8.shared.O3.wasm",
+      "model": "fanout8",
+      "mode": "shared",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "fanout8.shared.O3.recovered.wasm",
+      "model": "fanout8",
+      "mode": "shared",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.plain.raw.wasm",
+      "model": "mixed8",
+      "mode": "plain",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.plain.raw.recovered.wasm",
+      "model": "mixed8",
+      "mode": "plain",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.plain.O2.wasm",
+      "model": "mixed8",
+      "mode": "plain",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.plain.O2.recovered.wasm",
+      "model": "mixed8",
+      "mode": "plain",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.plain.O3.wasm",
+      "model": "mixed8",
+      "mode": "plain",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.plain.O3.recovered.wasm",
+      "model": "mixed8",
+      "mode": "plain",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.table.raw.wasm",
+      "model": "mixed8",
+      "mode": "table",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.table.raw.recovered.wasm",
+      "model": "mixed8",
+      "mode": "table",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.table.O2.wasm",
+      "model": "mixed8",
+      "mode": "table",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.table.O2.recovered.wasm",
+      "model": "mixed8",
+      "mode": "table",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.table.O3.wasm",
+      "model": "mixed8",
+      "mode": "table",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.table.O3.recovered.wasm",
+      "model": "mixed8",
+      "mode": "table",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.individual.raw.wasm",
+      "model": "mixed8",
+      "mode": "individual",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.individual.raw.recovered.wasm",
+      "model": "mixed8",
+      "mode": "individual",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.individual.O2.wasm",
+      "model": "mixed8",
+      "mode": "individual",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.individual.O2.recovered.wasm",
+      "model": "mixed8",
+      "mode": "individual",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.individual.O3.wasm",
+      "model": "mixed8",
+      "mode": "individual",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.individual.O3.recovered.wasm",
+      "model": "mixed8",
+      "mode": "individual",
+      "opt": "O3",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.shared.raw.wasm",
+      "model": "mixed8",
+      "mode": "shared",
+      "opt": "raw",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.shared.raw.recovered.wasm",
+      "model": "mixed8",
+      "mode": "shared",
+      "opt": "raw",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.shared.O2.wasm",
+      "model": "mixed8",
+      "mode": "shared",
+      "opt": "O2",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.shared.O2.recovered.wasm",
+      "model": "mixed8",
+      "mode": "shared",
+      "opt": "O2",
+      "recovered": true
+    },
+    {
+      "path": "mixed8.shared.O3.wasm",
+      "model": "mixed8",
+      "mode": "shared",
+      "opt": "O3",
+      "recovered": false
+    },
+    {
+      "path": "mixed8.shared.O3.recovered.wasm",
+      "model": "mixed8",
+      "mode": "shared",
+      "opt": "O3",
+      "recovered": true
+    }
+  ],
+  "negative": [
+    {
+      "kind": "long_fill",
+      "path": "long_fill.wasm"
+    },
+    {
+      "kind": "missing_reset",
+      "path": "missing_reset.wasm"
+    }
+  ]
+}

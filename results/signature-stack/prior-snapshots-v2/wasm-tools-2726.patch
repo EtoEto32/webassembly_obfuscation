@@ -1,0 +1,110 @@
+From 7d7dcf7ccf7a938f6512df085ae76fe41e57a895 Mon Sep 17 00:00:00 2001
+From: Alex Crichton <alex@alexcrichton.com>
+Date: Thu, 1 Oct 2026 15:35:25 -0700
+Subject: [PATCH] Limit types in `rec` groups in components
+
+This commit fixes how wasmparser internally counts and limits core types
+found within components. Previously a `rec` group would only count as
+one type instead of the number of types that the group itself
+contained.
+---
+ crates/wasmparser/src/validator.rs           |  4 +--
+ crates/wasmparser/src/validator/component.rs | 13 ++++----
+ crates/wasmparser/tests/big-module.rs        | 32 ++++++++++++++++++++
+ 3 files changed, 40 insertions(+), 9 deletions(-)
+
+diff --git a/crates/wasmparser/src/validator.rs b/crates/wasmparser/src/validator.rs
+index d40311d31b..67aa906dfb 100644
+--- a/crates/wasmparser/src/validator.rs
++++ b/crates/wasmparser/src/validator.rs
+@@ -1128,9 +1128,7 @@ impl Validator {
+                 Ok(())
+             },
+             |components, types, _features, ty, offset| {
+-                ComponentState::add_core_type(
+-                    components, ty, types, offset, false, /* checked above */
+-                )
++                ComponentState::add_core_type(components, ty, types, offset)
+             },
+         )
+     }
+diff --git a/crates/wasmparser/src/validator/component.rs b/crates/wasmparser/src/validator/component.rs
+index 8ebdfe5d7c..5c813ec64a 100644
+--- a/crates/wasmparser/src/validator/component.rs
++++ b/crates/wasmparser/src/validator/component.rs
+@@ -513,12 +513,13 @@ impl ComponentState {
+         ty: crate::CoreType,
+         types: &mut TypeAlloc,
+         offset: u64,
+-        check_limit: bool,
+     ) -> Result<()> {
+         let current = components.last_mut().unwrap();
+-        if check_limit {
+-            check_max(current.type_count(), 1, MAX_WASM_TYPES, "types", offset)?;
+-        }
++        let count = match &ty {
++            crate::CoreType::Rec(rec) => rec.types().len() as u32,
++            crate::CoreType::Module(_) => 1,
++        };
++        check_max(current.type_count(), count, MAX_WASM_TYPES, "types", offset)?;
+         match ty {
+             crate::CoreType::Rec(rec) => {
+                 current.canonicalize_and_intern_rec_group(types, rec, offset)?;
+@@ -3035,7 +3036,7 @@ impl ComponentState {
+         for decl in decls {
+             match decl {
+                 crate::ComponentTypeDeclaration::CoreType(ty) => {
+-                    Self::add_core_type(components, ty, types, offset, true)?;
++                    Self::add_core_type(components, ty, types, offset)?;
+                 }
+                 crate::ComponentTypeDeclaration::Type(ty) => {
+                     Self::add_type(components, ty, types, offset, true)?;
+@@ -3072,7 +3073,7 @@ impl ComponentState {
+         for decl in decls {
+             match decl {
+                 crate::InstanceTypeDeclaration::CoreType(ty) => {
+-                    Self::add_core_type(components, ty, types, offset, true)?;
++                    Self::add_core_type(components, ty, types, offset)?;
+                 }
+                 crate::InstanceTypeDeclaration::Type(ty) => {
+                     Self::add_type(components, ty, types, offset, true)?;
+diff --git a/crates/wasmparser/tests/big-module.rs b/crates/wasmparser/tests/big-module.rs
+index 09756a8966..ab1a0b685f 100644
+--- a/crates/wasmparser/tests/big-module.rs
++++ b/crates/wasmparser/tests/big-module.rs
+@@ -220,3 +220,35 @@ fn too_many_modules_and_components() {
+     assert!(validate(&deeply_nested_components(100)).is_ok());
+     assert!(validate(&deeply_nested_components(1000)).is_err());
+ }
++
++#[test]
++fn too_many_core_types_in_component_rec_group() {
++    use wasmparser::{Validator, WasmFeatures};
++
++    // A single core type followed by a rec group of `MAX_WASM_TYPES` types,
++    // meaning the component's core type index space exceeds the limit.
++    let mut component = Component::new();
++    let mut types = CoreTypeSection::new();
++    types.ty().core().struct_([]);
++    component.section(&types);
++    let mut types = CoreTypeSection::new();
++    types.ty().core().rec((0..1_000_000).map(|_| SubType {
++        is_final: true,
++        supertype_idxs: Vec::new(),
++        composite_type: CompositeType {
++            inner: CompositeInnerType::Struct(StructType {
++                fields: Box::new([]),
++            }),
++            shared: false,
++            descriptor: None,
++            describes: None,
++        },
++    }));
++    component.section(&types);
++
++    let err = Validator::new_with_features(WasmFeatures::all())
++        .validate_all(&component.finish())
++        .map(|_| ())
++        .unwrap_err();
++    assert!(err.message().contains("types count exceeds limit"), "{err}");
++}

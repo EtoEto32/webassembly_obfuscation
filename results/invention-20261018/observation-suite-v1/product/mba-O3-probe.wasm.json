@@ -1,0 +1,428 @@
+{
+  "events": [
+    {
+      "id": 0,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 1,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 2,
+      "expression": [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 3,
+      "expression": [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      "opcode": "local.tee"
+    },
+    {
+      "id": 4,
+      "expression": "v0",
+      "opcode": "local.get"
+    },
+    {
+      "id": 5,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 6,
+      "expression": [
+        "mul",
+        "v0",
+        "v2"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 7,
+      "expression": [
+        "mul",
+        "v0",
+        "v2"
+      ],
+      "opcode": "local.tee"
+    },
+    {
+      "id": 8,
+      "expression": [
+        "xor",
+        [
+          "mul",
+          "v0",
+          "v1"
+        ],
+        [
+          "mul",
+          "v0",
+          "v2"
+        ]
+      ],
+      "opcode": "i32.xor"
+    },
+    {
+      "id": 9,
+      "expression": [
+        "mul",
+        "v0",
+        "v2"
+      ],
+      "opcode": "local.get"
+    },
+    {
+      "id": 10,
+      "expression": [
+        "mul",
+        "v0",
+        "v1"
+      ],
+      "opcode": "local.get"
+    },
+    {
+      "id": 11,
+      "expression": [
+        "and",
+        [
+          "mul",
+          "v0",
+          "v2"
+        ],
+        [
+          "mul",
+          "v0",
+          "v1"
+        ]
+      ],
+      "opcode": "i32.and"
+    },
+    {
+      "id": 12,
+      "expression": 1,
+      "opcode": "i32.const"
+    },
+    {
+      "id": 13,
+      "expression": [
+        "shl",
+        [
+          "and",
+          [
+            "mul",
+            "v0",
+            "v2"
+          ],
+          [
+            "mul",
+            "v0",
+            "v1"
+          ]
+        ],
+        1
+      ],
+      "opcode": "i32.shl"
+    },
+    {
+      "id": 14,
+      "expression": [
+        "add",
+        [
+          "xor",
+          [
+            "mul",
+            "v0",
+            "v1"
+          ],
+          [
+            "mul",
+            "v0",
+            "v2"
+          ]
+        ],
+        [
+          "shl",
+          [
+            "and",
+            [
+              "mul",
+              "v0",
+              "v2"
+            ],
+            [
+              "mul",
+              "v0",
+              "v1"
+            ]
+          ],
+          1
+        ]
+      ],
+      "opcode": "i32.add"
+    },
+    {
+      "id": 15,
+      "expression": "v1",
+      "opcode": "local.get"
+    },
+    {
+      "id": 16,
+      "expression": "v2",
+      "opcode": "local.get"
+    },
+    {
+      "id": 17,
+      "expression": [
+        "mul",
+        "v1",
+        "v2"
+      ],
+      "opcode": "i32.mul"
+    },
+    {
+      "id": 18,
+      "expression": [
+        "mul",
+        "v1",
+        "v2"
+      ],
+      "opcode": "local.tee"
+    },
+    {
+      "id": 19,
+      "expression": 1,
+      "opcode": "i32.const"
+    },
+    {
+      "id": 20,
+      "expression": [
+        "xor",
+        [
+          "mul",
+          "v1",
+          "v2"
+        ],
+        1
+      ],
+      "opcode": "i32.xor"
+    },
+    {
+      "id": 21,
+      "expression": [
+        "mul",
+        "v1",
+        "v2"
+      ],
+      "opcode": "local.get"
+    },
+    {
+      "id": 22,
+      "expression": 1,
+      "opcode": "i32.const"
+    },
+    {
+      "id": 23,
+      "expression": [
+        "and",
+        [
+          "mul",
+          "v1",
+          "v2"
+        ],
+        1
+      ],
+      "opcode": "i32.and"
+    },
+    {
+      "id": 24,
+      "expression": 1,
+      "opcode": "i32.const"
+    },
+    {
+      "id": 25,
+      "expression": [
+        "shl",
+        [
+          "and",
+          [
+            "mul",
+            "v1",
+            "v2"
+          ],
+          1
+        ],
+        1
+      ],
+      "opcode": "i32.shl"
+    },
+    {
+      "id": 26,
+      "expression": [
+        "add",
+        [
+          "xor",
+          [
+            "mul",
+            "v1",
+            "v2"
+          ],
+          1
+        ],
+        [
+          "shl",
+          [
+            "and",
+            [
+              "mul",
+              "v1",
+              "v2"
+            ],
+            1
+          ],
+          1
+        ]
+      ],
+      "opcode": "i32.add"
+    },
+    {
+      "id": 27,
+      "expression": [
+        "mul",
+        [
+          "add",
+          [
+            "xor",
+            [
+              "mul",
+              "v0",
+              "v1"
+            ],
+            [
+              "mul",
+              "v0",
+              "v2"
+            ]
+          ],
+          [
+            "shl",
+            [
+              "and",
+              [
+                "mul",
+                "v0",
+                "v2"
+              ],
+              [
+                "mul",
+                "v0",
+                "v1"
+              ]
+            ],
+            1
+          ]
+        ],
+        [
+          "add",
+          [
+            "xor",
+            [
+              "mul",
+              "v1",
+              "v2"
+            ],
+            1
+          ],
+          [
+            "shl",
+            [
+              "and",
+              [
+                "mul",
+                "v1",
+                "v2"
+              ],
+              1
+            ],
+            1
+          ]
+        ]
+      ],
+      "opcode": "i32.mul"
+    }
+  ],
+  "output_expression": [
+    "mul",
+    [
+      "add",
+      [
+        "xor",
+        [
+          "mul",
+          "v0",
+          "v1"
+        ],
+        [
+          "mul",
+          "v0",
+          "v2"
+        ]
+      ],
+      [
+        "shl",
+        [
+          "and",
+          [
+            "mul",
+            "v0",
+            "v2"
+          ],
+          [
+            "mul",
+            "v0",
+            "v1"
+          ]
+        ],
+        1
+      ]
+    ],
+    [
+      "add",
+      [
+        "xor",
+        [
+          "mul",
+          "v1",
+          "v2"
+        ],
+        1
+      ],
+      [
+        "shl",
+        [
+          "and",
+          [
+            "mul",
+            "v1",
+            "v2"
+          ],
+          1
+        ],
+        1
+      ]
+    ]
+  ],
+  "inputSHA256": "1f09ce40c9424c582c2654788e86aff5aa31f1982147005556ef11c3305d9d8d",
+  "probeSHA256": "bac44e956776918f7789732e3796e8d1d5f339c2187d7e5e43aa45bff4a8fe6b",
+  "model": "all scalar i32 values of exported straight-line run, after Binaryen; not native JIT traces"
+}

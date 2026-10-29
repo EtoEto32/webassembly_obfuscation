@@ -1,0 +1,159 @@
+{
+  "rows": [
+    {
+      "name": "retained",
+      "kind": "plain",
+      "source": "retained.wasm",
+      "output": "retained-plain-migrate.wasm",
+      "code": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest": null,
+      "status": "valid"
+    },
+    {
+      "name": "retained",
+      "kind": "observed",
+      "source": "retained-observed.wasm",
+      "output": "retained-observed-migrate.wasm",
+      "code": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 2,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"_start\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"value\"",
+            [
+              "func",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "9f4471c864063edd4716bc0753c2804f42259debffcbf21784abda2d6143df1e",
+        "outputSha256": "13bc20fcf9300dc543077a9d9288caf9f9338f30d0848c08010693743304aaa8",
+        "sourceBytes": 122,
+        "outputBytes": 267,
+        "transformSeconds": 0.04107529999999998
+      },
+      "status": "valid"
+    },
+    {
+      "name": "dropped",
+      "kind": "plain",
+      "source": "dropped.wasm",
+      "output": "dropped-plain-migrate.wasm",
+      "code": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest": null,
+      "status": "valid"
+    },
+    {
+      "name": "dropped",
+      "kind": "observed",
+      "source": "dropped-observed.wasm",
+      "output": "dropped-observed-migrate.wasm",
+      "code": 0,
+      "stdout": "",
+      "stderr": "",
+      "manifest": {
+        "profile": "numeric",
+        "memory": true,
+        "table": false,
+        "tableCount": 0,
+        "functions": 2,
+        "globals": [
+          {
+            "index": 0,
+            "type": "i32",
+            "result": "i32"
+          }
+        ],
+        "segments": [
+          {
+            "kind": "data",
+            "index": 0,
+            "mode": "passive",
+            "bytesOrEntries": 1,
+            "probe": "__sw_data_0",
+            "initialLive": true,
+            "observable": true
+          }
+        ],
+        "originalExports": [
+          [
+            "export",
+            "\"memory\"",
+            [
+              "memory",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"_start\"",
+            [
+              "func",
+              "0"
+            ]
+          ],
+          [
+            "export",
+            "\"value\"",
+            [
+              "func",
+              "1"
+            ]
+          ]
+        ],
+        "sourceSha256": "a9d1163da539632dd659469d8c54cee7861f9caa6b07dd16873314e69b572be1",
+        "outputSha256": "ecadc8bafe2c4a951c517d800d679b27fb8608abfd8094c521033e84b64a9018",
+        "sourceBytes": 124,
+        "outputBytes": 269,
+        "transformSeconds": 0.038708099999999995
+      },
+      "status": "valid"
+    }
+  ],
+  "executableSha256": "d9d1f498733180f0cb5cfb3166bdf05ba703ce7e3e2921bee974a76cb8a4b5a1"
+}

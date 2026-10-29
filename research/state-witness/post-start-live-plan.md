@@ -1,0 +1,11 @@
+# 実ffmpeg binaryでの寿命差の対照
+
+2026-10-24。静的検査と人工escape対照の後に固定する。対象は取得済み`@ffmpeg/core-mt`0.12.10の固定hashである。
+
+元binaryのstart関数内の7,320 data.dropだけをnopへ置換した制御変種を作る。元関数index・data bytes・memory.initを変えない。これは実復元器のbugではなく、segmentを保持した復元状態を模した制御変種である。元binaryと変種に、0長initの寿命observerを末尾追加する。新observerは検査専用で、元APIの到達性判定に混ぜない。
+
+各engineで別processを用い、共有memoryを持つがworkerや並行アクセスを起動せず、同じ初期条件でinstance化する。importsは呼ばれたら失敗するstubとし、起動がhost callを要求しないことを確認する。元binaryが要求するmemoryは1 GiBであり、空き物理memoryを確認してから一instanceずつ実行する。実アプリ全体のJS glueや動画変換を再現する試験ではない。
+
+起動後のmemory hash、table数/size、pureな定数返却export、全segment observerを比べる。差がobserverだけにあり、probe前後でmemoryが変わらないことを成功条件とする。table参照の任意同値や全API実行をこの有限試験で証明しない。元APIからの不可観測性は先の到達十分条件に依拠し、時間・OOM・engine-private状態を除く。
+
+まず小さいshared-memory controlでbinding/engineを確認する。未対応・harness error・不一致を別々に保存する。Node/Wasmtimeで可能な範囲を実行し、片方の未実行を成功へ含めない。バイナリ変種はresearch出力directory内だけに保存し、配布元や既存入力を変更しない。

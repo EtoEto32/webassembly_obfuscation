@@ -1,0 +1,251 @@
+{
+  "search_cutoff": "2026-10-06",
+  "status": "fixed_2026-10-06_candidate_availability_acquisition_reference_and_license_declaration_audit_complete",
+  "scope": "Public WebAssembly corpora used in malware/obfuscation research, with general-purpose Wasm corpora as context. Dataset evidence is distinct from in-the-wild malware prevalence.",
+  "datasets": [
+    {
+      "id": "wasmmal",
+      "name": "WasmMal-15K",
+      "github": "Yuxia-Sun/WasmMal",
+      "role": "malware_labeled_corpus",
+      "paper": "https://doi.org/10.1145/3696410.3714696",
+      "provenance_status": "complete_root_label_analysis_15020ok4failed;reference_similarity_is_not_verified_parentage;instrumentation_body_reuse_124_positive",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "swamped",
+      "name": "SWAMPED",
+      "github": "SKKU-SecLab/SWAMPED",
+      "role": "malware_seeds_and_generated_perturbations",
+      "paper": "https://yonghwi-kwon.github.io/data/wasm_perturbation_ase25.pdf",
+      "provenance_status": "separate_seeds_from_variants",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wasm-obf",
+      "name": "wasm-obf / Cryptic Bytes",
+      "github": "HakonHarnes/wasm-obf",
+      "role": "controlled_obfuscation_corpus",
+      "paper": "https://arxiv.org/abs/2403.15197",
+      "provenance_status": "two_full_release_variants_ingested;45016_occurrences34808_unique;22_author_source_programs_verified_by_pinned_paths",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wasmbench",
+      "name": "WasmBench",
+      "github": "sola-st/WasmBench",
+      "role": "general_wasm_reference_corpus",
+      "paper": "https://software-lab.org/publications/www2021.pdf",
+      "provenance_status": "not_a_binary_obfuscation_ground_truth",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wasim",
+      "name": "WASim",
+      "github": "WASimilarity/WASim",
+      "role": "purpose_classification_corpus_candidate",
+      "paper": "https://weihang-wang.github.io/papers/ASE2020Demo-Wasim.pdf",
+      "provenance_status": "13_packaged_example_occurrences12_unique_not_full_paper_evaluation_corpus",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "industry2025",
+      "name": "The Promise and Pitfalls of WebAssembly",
+      "github": null,
+      "role": "deployed_wasm_reference_corpus_candidate",
+      "paper": "https://arxiv.org/abs/2503.21240",
+      "provenance_status": "author_public_archive_downloaded_4606_candidates_one_local_read_failure; no_per_binary_dates_or_malware_labels_in_archive",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "minerray",
+      "name": "MinerRay",
+      "github": "miner-ray/miner-ray.github.io",
+      "role": "cryptomining_corpus_candidate",
+      "project": "https://miner-ray.github.io/",
+      "provenance_status": "project_page_reports_sample_wasm_and_site_results",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "diversification2022",
+      "name": "WebAssembly Diversification for Malware Evasion",
+      "github": "ASSERT-KTH/wasm_evasion",
+      "role": "cryptomining_seeds_and_variants_candidate",
+      "paper": "https://arxiv.org/abs/2212.08427",
+      "provenance_status": "repository_and_both_release_archives_ingested;111_occurrences111_unique;member_origin_still_under_audit",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "androwasm",
+      "name": "AndroWasm",
+      "github": null,
+      "role": "android_wasm_obfuscation_poc_candidate",
+      "paper": "https://arxiv.org/abs/2602.18082",
+      "provenance_status": "recursive_APK_ZIP_ingestion_complete;24_occurrences3_unique;2_author_PoCs_and_fibonacci_example",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wobfuscator",
+      "name": "Wobfuscator",
+      "github": "js2wasm-obfuscator/translator",
+      "role": "javascript_to_wasm_obfuscation_candidate",
+      "paper": "https://software-lab.org/publications/sp2022.pdf",
+      "provenance_status": "six_public_library_projects_ingested;1118_static_js_literal_occurrences_121_unique_plus_standalone_union122;not_full_malicious_evaluation_set",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wasmixer",
+      "name": "WASMixer",
+      "github": "security-pride/WASMixer",
+      "role": "controlled_obfuscation_benchmark_candidate",
+      "paper": "https://arxiv.org/abs/2308.03123",
+      "provenance_status": "published_benchmarks_need_original_generated_split",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "jabberwock",
+      "name": "JABBERWOCK",
+      "github": "c-chocolate/Jabberwock",
+      "role": "javascript_to_wasm_dataset_generator_candidate",
+      "paper": "https://arxiv.org/abs/2306.05698",
+      "provenance_status": "generator_repository_only_no_preexisting_wasm_or_release_artifact_confirmed",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "proof-of-theft",
+      "name": "Proof-of-Theft",
+      "github": null,
+      "role": "cryptomining_and_obfuscated_corpus_candidate",
+      "paper": "https://doi.org/10.4230/LIPIcs.ECOOP.2026.25",
+      "provenance_status": "author_artifact_downloaded_392_occurrences_222_unique; original_and_instrumented_copies_mixed",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json",
+      "artifact_description": "https://doi.org/10.4230/DARTS.12.1.19"
+    },
+    {
+      "id": "minos",
+      "name": "MINOS",
+      "github": null,
+      "role": "cryptojacking_dataset_candidate",
+      "paper": "https://www.ndss-symposium.org/wp-content/uploads/2021-444-paper.pdf",
+      "provenance_status": "no_original_public_dataset_download_located_in_checked_NDSS_paper_and_targeted_search;reimplementations_are_not_original_dataset",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wbd",
+      "name": "Wasm Binary Database",
+      "github": "h31nr1ch/wasm-binary-database",
+      "role": "wasi_anomaly_corpus_candidate",
+      "paper": "https://link.springer.com/article/10.1007/s42979-025-04599-6",
+      "provenance_status": "five_archives_ingested;5501_wasm_unique;vulnerability_tests_and_benchmarks_not_field_malware",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "seismic",
+      "name": "SEISMIC",
+      "github": "wenhao1006/SEISMIC",
+      "role": "cryptomining_corpus_candidate",
+      "discovered_via": "diversification2022 pinned .gitmodules and WASMixer paper references",
+      "provenance_status": "repository_and_eleven_archives_ingested;73_occurrences67_unique;contains_instruction_counter_instrumentation",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "deepminer",
+      "name": "deepMiner",
+      "github": "deepwn/deepMiner",
+      "role": "mining_software_reference_candidate",
+      "discovered_via": "diversification2022 pinned .gitmodules",
+      "provenance_status": "mining_program_source_not_sufficient_evidence_of_malicious_deployment",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "jwbinder",
+      "name": "JWBinder",
+      "github": "JWBinderRepository/JWBinder",
+      "role": "javascript_to_wasm_malware_detection_candidate",
+      "paper": "https://arxiv.org/abs/2310.17304",
+      "provenance_status": "excluded_no_public_binaries_in_pinned_repository_or_releases",
+      "availability_evidence": "results/catalog/jwbinder-layout.json",
+      "scope_note": "Pinned tree contains only four metadata/readme files; code/README.md and data/README.md empty. README claims dataset, but no binaries distributed in this tree.",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wasmizer",
+      "name": "Wasmizer MSR 2023 snapshot",
+      "github": "arash-mazidi/WASMIZER",
+      "role": "general_wasm_reference_corpus",
+      "paper": "https://qstievenart.gitlab.io/pdfs/msr2023.pdf",
+      "provenance_status": "fixed_Figshare_v2_ingested_8915_unique_all_metadata_present;127overlap_with_other_corpora;112WasmBench_matches_independently_reverified",
+      "artifact": "https://doi.org/10.6084/m9.figshare.22264000.v2",
+      "license": "CC-BY-4.0 record metadata; third-party binary licensing not independently established",
+      "acquisition_status": "complete_fixed_figshare_v2_8915_unique",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "first-look",
+      "name": "A First Look at Code Obfuscation for WebAssembly",
+      "github": null,
+      "role": "controlled_obfuscation_study_candidate",
+      "paper": "https://par.nsf.gov/servlets/purl/10334207",
+      "provenance_status": "no_public_binary_artifact_located_in_checked_paper_and_author_page",
+      "availability_evidence": "results/catalog/literature-followup-receipts.json",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wild2019",
+      "name": "New Kid on the Web",
+      "github": null,
+      "role": "deployed_wasm_reference_candidate",
+      "paper": "https://www.intellisec.org/pubs/2019a-dimva.pdf",
+      "provenance_status": "no_public_download_located_in_checked_primary_paper_and_author_publication_listing",
+      "availability_evidence": "results/catalog/literature-followup-receipts.json",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "llm-deobfuscation2026",
+      "name": "A Systematic LLM-Based Procedure for the Deobfuscation of WebAssembly",
+      "github": null,
+      "role": "deobfuscation_benchmark_candidate",
+      "paper": "https://doi.org/10.1109/ACCESS.2026.3724950",
+      "provenance_status": "primary_bibliographic_record_confirmed_full_text_and_artifact_not_verified",
+      "availability_evidence": "data/catalog/llm-deobfuscation2026/crossref-search.json",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "minesweeper",
+      "name": "MineSweeper",
+      "github": "vusec/minesweeper",
+      "role": "author_miner_and_benign_samples_and_crawled_websites",
+      "project": "https://github.com/vusec/minesweeper",
+      "discovered_via": "MINOS source TableI and Proof-of-Theft detector reference; primary author README",
+      "provenance_status": "38repository_samples_all_match_WasmMal;34malware4benign_author_labels;complete_54914109440byte_crawled_archive_ingested;4429_core_magic_occurrences36unique_all_invalid_under_WABT1.0.42;March2018_corpus_interval",
+      "paper": "https://download.vusec.net/papers/minesweeper_ccs18.pdf",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "wasm-r3",
+      "name": "Wasm-R3-Bench OOPSLA2024",
+      "github": "sola-st/wasm-r3",
+      "ref": "OOPSLA_2024",
+      "wasm_include_prefixes": [
+        "benchmarks/"
+      ],
+      "role": "generated_record_replay_comparator",
+      "paper": "https://doi.org/10.1145/3689787",
+      "discovered_via": "Proof-of-Theft section6.1 and reference4; author exact-version branch",
+      "provenance_status": "all27_OOPSLA2024_author_benchmarks_acquired_and_analyzed;82tool_fixture_paths_excluded_from_explicit_benchmark_scope",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    },
+    {
+      "id": "outguard",
+      "name": "Outguard",
+      "github": "teamnsrg/outguard",
+      "role": "browser_trace_and_site_label_dataset_candidate",
+      "provenance_status": "excluded_from_binary_analysis;all_regular_pinned_Git_members_magic_scanned;0Wasm0archives0releases;README_trace_feature_dataset",
+      "paper": "https://faculty.cc.gatech.edu/~mbailey/publications/www19_cryptojacking.pdf",
+      "availability_evidence": "data/catalog/outguard/acquisition-summary.json",
+      "license_declaration_audit": "results/catalog/license-metadata-audit.json"
+    }
+  ],
+  "pending_reference_scope_decisions": []
+}
+

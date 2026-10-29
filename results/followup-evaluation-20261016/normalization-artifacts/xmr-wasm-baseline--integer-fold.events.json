@@ -1,0 +1,38 @@
+[
+  {
+    "rule": "integer-fold",
+    "operation": "add",
+    "function": "$emscripten_stack_init",
+    "input_lines": [
+      144280,
+      144281,
+      144282
+    ],
+    "before": [
+      "    i32.const 0",
+      "    i32.const 15",
+      "    i32.add"
+    ],
+    "after": [
+      "    i32.const 15"
+    ]
+  },
+  {
+    "rule": "integer-fold",
+    "operation": "and",
+    "function": "$emscripten_stack_init",
+    "input_lines": [
+      144282,
+      144283,
+      144284
+    ],
+    "before": [
+      "    i32.const 15",
+      "    i32.const -16",
+      "    i32.and"
+    ],
+    "after": [
+      "    i32.const 0"
+    ]
+  }
+]

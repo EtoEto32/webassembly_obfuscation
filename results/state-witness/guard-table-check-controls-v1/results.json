@@ -1,0 +1,659 @@
+{
+  "z3": "4.13.3",
+  "rows": [
+    {
+      "sourceRow": 0,
+      "source": "masked.wasm",
+      "name": "masked",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 258
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 258
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sourceRow": 1,
+      "source": "copy.wasm",
+      "name": "copy",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "copy",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "copy",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 258,
+                "4294967297": 256
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 257,
+                "4294967297": 256
+              },
+              "failed": {
+                "outcome": false,
+                "store": false,
+                "postcondition": true
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sourceRow": 2,
+      "source": "overlap.wasm",
+      "name": "overlap",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "copy",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "copy",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 256,
+                "4294967297": 259,
+                "4294967298": 258,
+                "4294967299": 256
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 257,
+                "4294967297": 257,
+                "4294967298": 257,
+                "4294967299": 256
+              },
+              "failed": {
+                "outcome": false,
+                "store": false,
+                "postcondition": true
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sourceRow": 3,
+      "source": "cross-table.wasm",
+      "name": "cross-table",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "copy",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "copy",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 258,
+                "8589934593": 256
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 0,
+              "api": "copy",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 257,
+                "8589934593": 256
+              },
+              "failed": {
+                "outcome": false,
+                "store": false,
+                "postcondition": true
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "copy",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sourceRow": 4,
+      "source": "null-fill.wasm",
+      "name": "null-fill",
+      "status": "impossible",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "fill",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "fill",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "sourceRow": 5,
+      "source": "same-fill.wasm",
+      "name": "same-fill",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "fill",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "fill",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 258
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "fill",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "fill",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "4294967296": 258
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 0,
+              "api": "fill",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            },
+            {
+              "state": 1,
+              "api": "fill",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sourceRow": 6,
+      "source": "other-fill.wasm",
+      "name": "other-fill",
+      "status": "impossible",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 0,
+          "api": "fill",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "fill",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "sourceRow": 7,
+      "source": "drop-first.wasm",
+      "name": "drop-first",
+      "status": "unconditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "sourceRow": 8,
+      "source": "zero-end.wasm",
+      "name": "zero-end",
+      "status": "unconditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "sourceRow": 9,
+      "source": "zero-source-one.wasm",
+      "name": "zero-source-one",
+      "status": "impossible",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "sourceRow": 10,
+      "source": "unsigned-oob.wasm",
+      "name": "unsigned-oob",
+      "status": "unconditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": []
+    },
+    {
+      "sourceRow": 11,
+      "source": "mixed-memory.wasm",
+      "name": "mixed-memory",
+      "status": "conditional",
+      "checks": [
+        {
+          "state": 0,
+          "api": "test",
+          "answer": "unsat"
+        },
+        {
+          "state": 1,
+          "api": "test",
+          "answer": "unsat"
+        }
+      ],
+      "weakenedControls": [
+        {
+          "mode": "remove-all",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "1": 0,
+                "2": 246,
+                "4294967296": 258
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            }
+          ]
+        },
+        {
+          "mode": "remove-last",
+          "checks": [
+            {
+              "state": 0,
+              "api": "test",
+              "answer": "sat",
+              "counterexampleCells": {
+                "1": 0,
+                "2": 246,
+                "4294967296": 256
+              },
+              "failed": {
+                "outcome": false,
+                "store": true,
+                "postcondition": false
+              }
+            },
+            {
+              "state": 1,
+              "api": "test",
+              "answer": "unsat"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "checkedCertificates": 12,
+  "unsatObligations": 33,
+  "rejectedWeakenings": 12,
+  "sourceManifestSha256": "fd5c3773d93571d1cc2cccfff01b6f417a945110769bfc5ca89b524eeb809d0f",
+  "scope": "Shared parser; independent typed-domain array effects; sufficient inductive certificates, not weakestness or reachable-state proof."
+}

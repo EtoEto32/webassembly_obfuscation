@@ -1,0 +1,50 @@
+{
+  "name": "pathfinding",
+  "wasmtime": "50.0.1",
+  "rows": [
+    {
+      "kind": "original",
+      "status": "fuel-exhausted",
+      "outcome": {
+        "fuelExhausted": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:   0xa556 - <unknown>!memcpy\n    1:   0x44bf - <unknown>!__rust_realloc\n    2:   0x42a3 - <unknown>!<alloc_raw_vec_RawVec<T,_A>>_reserve_internal_hcf8ce9691628742e\n    3:   0x4ccd - <unknown>!write_str_hc5df348e0e265927\n    4:   0x35da - <unknown>!core_fmt_Formatter_pad_h2f1cf2c8d4750c22\n    5:   0x5a1e - <unknown>!<bool_as_core_fmt_Display>_fmt_hb388ff23e76d3dbe\n    6:   0x4bc4 - <unknown>!core_fmt_write_h5906b2212f8ebaed\n    7:   0x8970 - <unknown>!init_6\n    8:    0x2fe - <unknown>!r3_main\n\nCaused by:\n    wasm trap: all fuel consumed by WebAssembly\n",
+      "memoryBytes": 14155776,
+      "memorySha256": "802b44aa286edab426508021eb014da6168f2723acbd153e3801795466804f9d",
+      "inputSha256": "e09265195263f516736441c14e9298d7d337a9f473a9669113414b7eb943a1df",
+      "fuelUsed": 500000000,
+      "executionSeconds": 0.04430439999999991,
+      "totalSeconds": 1.0339241000000001
+    },
+    {
+      "kind": "normalized",
+      "status": "fuel-exhausted",
+      "outcome": {
+        "fuelExhausted": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:   0xa556 - <unknown>!<wasm function 121>\n    1:   0x44bf - <unknown>!<wasm function 50>\n    2:   0x42a3 - <unknown>!<wasm function 49>\n    3:   0x4ccd - <unknown>!<wasm function 57>\n    4:   0x35da - <unknown>!<wasm function 36>\n    5:   0x5a1e - <unknown>!<wasm function 70>\n    6:   0x4bc4 - <unknown>!<wasm function 56>\n    7:   0x8970 - <unknown>!<wasm function 106>\n    8:    0x2fe - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: all fuel consumed by WebAssembly\n",
+      "memoryBytes": 14155776,
+      "memorySha256": "802b44aa286edab426508021eb014da6168f2723acbd153e3801795466804f9d",
+      "inputSha256": "8e79da93beebc306e88bf014f8540360225df9bba4f4bcd493745d9930323856",
+      "fuelUsed": 500000000,
+      "executionSeconds": 0.051057099999999966,
+      "totalSeconds": 1.0438812
+    },
+    {
+      "kind": "observed",
+      "status": "fuel-exhausted",
+      "outcome": {
+        "fuelExhausted": true
+      },
+      "detail": "error while executing at wasm backtrace:\n    0:   0xb0cd - <unknown>!<wasm function 121>\n    1:   0x5036 - <unknown>!<wasm function 50>\n    2:   0x4e1a - <unknown>!<wasm function 49>\n    3:   0x5844 - <unknown>!<wasm function 57>\n    4:   0x4151 - <unknown>!<wasm function 36>\n    5:   0x6595 - <unknown>!<wasm function 70>\n    6:   0x573b - <unknown>!<wasm function 56>\n    7:   0x94e7 - <unknown>!<wasm function 106>\n    8:    0xe75 - <unknown>!<wasm function 0>\n\nCaused by:\n    wasm trap: all fuel consumed by WebAssembly\n",
+      "memoryBytes": 14155776,
+      "memorySha256": "802b44aa286edab426508021eb014da6168f2723acbd153e3801795466804f9d",
+      "inputSha256": "c1e8c874de4ebfc767377e7ff3c321f330ccb2416b42dd25d0130a7847f17394",
+      "fuelUsed": 500000000,
+      "executionSeconds": 0.04279160000000015,
+      "totalSeconds": 1.0473954
+    }
+  ],
+  "status": "compared",
+  "scope": "API outcomes and exported memory only, within-engine byte comparison; fuel exhaustion not a completed execution."
+}

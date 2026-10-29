@@ -1,0 +1,26 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => 42
+[fuzz-exec] export global$
+[LoggingExternalInterface logging function]
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging function]
+[fuzz-exec] export func
+[LoggingExternalInterface logging 0]
+[fuzz-exec] note result: func => 0
+[fuzz-exec] export func_invoker
+[LoggingExternalInterface logging 0]
+[fuzz-exec] export func_10
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_11_invoker
+[fuzz-exec] export func_13_invoker
+[fuzz-exec] export func_15
+[fuzz-exec] note result: func_15 => NaN
+[fuzz-exec] export func_15_invoker
+[fuzz-exec] export func_18_invoker
+[fuzz-exec] export func_20
+[fuzz-exec] note result: func_20 => 1048576
+[fuzz-exec] export func_20_invoker
+[fuzz-exec] export func_22
+[fuzz-exec] note result: func_22 => -29
+[fuzz-exec] export func_24_invoker
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_10","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_11_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_13_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_15","known":true,"status":"returned","unsupported":[]},{"name":"func_15_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_18_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_20","known":true,"status":"returned","unsupported":[]},{"name":"func_20_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_22","known":true,"status":"returned","unsupported":[]},{"name":"func_24_invoker","known":true,"status":"returned","unsupported":[]}],"trace":[]}

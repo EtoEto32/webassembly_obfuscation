@@ -1,0 +1,331 @@
+{
+  "date": "2026-10-08",
+  "objective_sha256": "cdb2ad021f38a81a3142ed4a1e890fc5b354c697f62c1494e58163464ccbc3c0",
+  "status": "not complete",
+  "requirements": [
+    {
+      "id": "prior-work",
+      "requirement": "出典付き先行評価比較と追加評価の位置付け",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/prior-work/evaluation-comparison.csv",
+          "sha256": "7b51f81de91a50da8071c304c4d3df20da0bdd0df7c576407ddf73a95d140cb2"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/prior-work/evaluation-coverage.json",
+          "sha256": "dbc0e5ec27765c4d876ab88ab5d34c6103cdfc5080d53d854ea5ef01d9476658"
+        }
+      ],
+      "finding": "主要7研究の比較を保存．未報告という判断は確認資料の範囲に限定．WASMixer出版本文など未確認が残る．",
+      "next_action": "入手できた版と未入手の版を区別し，出版版の評価を推測しない．"
+    },
+    {
+      "id": "rq1-controls",
+      "requirement": "旧PDFの通常処理・計測対照を新RQへ統合",
+      "status": "supported_within_reviewed_scope",
+      "evidence": [
+        {
+          "path": "results/rq-validation/refreshed-rq1-controls-audit.json",
+          "sha256": "2fe182f1daae763bf8d6159fee09bcfde9c0637640cbd42605036ac3591d4e5b"
+        },
+        {
+          "path": "results/rq-validation/review-ledger.json",
+          "sha256": "598e9a715a9111e0f1bc53667801145f1b5fc8e85a1a238a7bb53000da7dabac"
+        },
+        {
+          "path": "paper/main.tex",
+          "sha256": "e74b48f4212d9cbd33fbd3d00468e1c6f68a6047711a858fd8df926011aae509"
+        }
+      ],
+      "finding": "保存済み命令列復元と通常分岐の対照を再利用．人間の独立レビュー未完了．",
+      "next_action": "独立した解釈レビューを受ける．"
+    },
+    {
+      "id": "rq1-runtime-link",
+      "requirement": "実測対象ごとの出典・対応・機構・計測コードの照合",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/rq1-rq2-runtime-evidence.json",
+          "sha256": "abd40f5376bb437ab91a9dd3631f78271fb826522fb4d80ec6b76ecd21c11f49"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/runtime-mechanism-audit.json",
+          "sha256": "9df5f58cea1b53373f977ab28f1b2ce19747d3e9cb855813457da7dee294c5b2"
+        }
+      ],
+      "finding": "13標本をSHAで実測と結合．WMPの設定不一致，分割・偽制御フローの未確認を残す．",
+      "next_action": "未確認設定を機構確認済みとしない．追加対象にも同じ照合を適用する．"
+    },
+    {
+      "id": "correctness",
+      "requirement": "公開ベクトルなどに基づくハッシュ出力の照合",
+      "status": "supported_for_existing_finite_inputs",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/rq1-rq2-runtime-evidence.json",
+          "sha256": "abd40f5376bb437ab91a9dd3631f78271fb826522fb4d80ec6b76ecd21c11f49"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/selected-hash-evaluation-status.json",
+          "sha256": "143d7f6c68f50f5924ce62542e953c69c4d45192c48db4f18f3503d56221f706"
+        }
+      ],
+      "finding": "実測13標本の有限入力の根拠あり．WMPのcn/0とcn/picoを区別．出力なしを誤答と扱わない．",
+      "next_action": "新候補は実行許可後に通常版からベクトル照合する．"
+    },
+    {
+      "id": "repeated-rates",
+      "requirement": "反復hashes/sとばらつきの測定",
+      "status": "supported_for_existing_conditions",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/xmr-repeated-throughput-20261008.json",
+          "sha256": "b026306708e5f46ee38ff40852c176fbc1655db217409b009c94629ca88d479c"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/swamped/controlled-pair-repeated-throughput.json",
+          "sha256": "5695329bf8aa391bcd0a91a64dc7fa60593639bb6125c3623c4bb6e32473bb92"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/repetition-order-review.json",
+          "sha256": "f8bed131047644f792962e8e0f63f19fc504a01fae7b745fa37d3e407670cba6"
+        }
+      ],
+      "finding": "XMR15ブロックとSWAMP9ブロックは最終出力一致，30秒以上，count/elapsed一致を再確認．少数反復・時間変動が残る．",
+      "next_action": "必要な追加反復は許可後に順序を統制して実施．"
+    },
+    {
+      "id": "controlled-pairs",
+      "requirement": "難読化前後の条件をそろえた比較",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/swamped/controlled-pair-manifest.json",
+          "sha256": "9adda2df3d005752390ce73060f0430cc86fcb33b634d17885e299742dbba7a2"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/swamped/controlled-pair-mechanism-audit.json",
+          "sha256": "6a5a98da2ef0eeb64b98f60400305a1d9615ad1d4ced54c2e5eafed85432585d"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/xmr-repeated-summary.json",
+          "sha256": "727b9c418d50f0a0a9bde0a0018b036adb4da68e4558df04e94fa8c0d4bbdfb8"
+        }
+      ],
+      "finding": "SWAMPの自生成nop/定数分割は同一組立条件．XMR配布物の歴史的ビルド条件は統制できず，偽制御フロー版は-O2が交絡．",
+      "next_action": "配布物比較を因果的オーバーヘッドと断定しない．元変換の再ビルド条件を確認する．"
+    },
+    {
+      "id": "independence",
+      "requirement": "別実装への拡張と同一標本の再利用の確認",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/measured-corpus-overlap.json",
+          "sha256": "dfa2f5622195da3dfb84fed31597cb5ec88e61cc410f48b6f56a150a0a44e32e"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/source-reuse-review.json",
+          "sha256": "d11060542da8a723541010fca05d6f313bfb497076fd826a58aa20aa3d8dfd2c"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/cryptonight-source-reuse-review.json",
+          "sha256": "e0c287fbb1eb8d4ae0a7b67d584dd2641355a6443967eb0a9e85f72d76d9770a"
+        }
+      ],
+      "finding": "同一SHAの再収録と暗号部品の共有を確認．完全に独立した実装での再現は未確定．",
+      "next_action": "別の実装系統を断定せず，共有部品と異なる採掘本体を区別して評価を広げる．"
+    },
+    {
+      "id": "mechanism-performance",
+      "requirement": "機構・測定経路・構造・速度を結び付けた考察",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/xmr-v0-core-scope-review.json",
+          "sha256": "f34d82631103633e338ee66f64a7c2dc9b2df36444b539ba145919de73eb2c29"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/hash-structure-comparison.json",
+          "sha256": "490ca7e49ae3c38a9b387f8c3e293d60cb5395b712bce771a44078d66adb1845"
+        },
+        {
+          "path": "paper/main.tex",
+          "sha256": "e74b48f4212d9cbd33fbd3d00468e1c6f68a6047711a858fd8df926011aae509"
+        }
+      ],
+      "finding": "v0入力で通らない変換箇所を区別．静的増加と速度の順位は一致しない．動的経路被覆と因果要因の分離は未完了．",
+      "next_action": "未実行経路の変換を速度差の原因にしない．必要な経路検証を許可後に追加する．"
+    },
+    {
+      "id": "new-candidate",
+      "requirement": "追加候補cryptonight-hashの実測",
+      "status": "not_executed",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/cryptonight-core-flattening-review.json",
+          "sha256": "6d1958c1b94ef5064e8240ff0ea3690b6f89444788bac673ebf53762c2b2c641"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/cryptonight-runner-preparation.json",
+          "sha256": "96a0492d46a21bd67a422850f603be4c3a20ed9da9dc8130714e851d2b8576bf"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/cryptonight-repetition-log-review.json",
+          "sha256": "e5414093feb3ac84a6b62435adcfd1c81c091888a04dc08d5702c6ed53b30a00"
+        }
+      ],
+      "finding": "静的な部分ABI・平坦化・export追加・実行コードを準備．実測ログ0件，速度集計なし．",
+      "next_action": "大学許可と隔離環境の確認後，ベクトル照合，成功対象の順序を変えた3反復へ進む．"
+    },
+    {
+      "id": "figures-manuscript",
+      "requirement": "既存main.texへの結果・図表・考察・限界の反映",
+      "status": "draft_supported",
+      "evidence": [
+        {
+          "path": "paper/main.tex",
+          "sha256": "e74b48f4212d9cbd33fbd3d00468e1c6f68a6047711a858fd8df926011aae509"
+        },
+        {
+          "path": "paper/references.bib",
+          "sha256": "06a1fe45f96dfb48e672fd8c42b86d993b104eb622955818d9540f43afbe5562"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/hash-structure-comparison.pdf",
+          "sha256": "ce8647adc6f12925c8a4a0b44feb1a94eb518af75adf1d2d3f3e8bf5b21467ac"
+        },
+        {
+          "path": "results/mining-methods/paper-audit.json",
+          "sha256": "e2bd39275f49c746f510343dd36317165e9f9f3000ebfb0b0c3f2400372a553b"
+        }
+      ],
+      "finding": "原稿と図表あり．引用・参照・静的指標のチェックは通過．完成PDFとは異なる．",
+      "next_action": "追加結果を得た場合は同じ原稿を更新し，コンパイル・表示を確認する．"
+    },
+    {
+      "id": "reproduction",
+      "requirement": "対象SHA・生ログ・集計コード・再現手順の保存",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "results\\runtime-mining\\cross-dataset\\runtime-number-audit.json",
+          "sha256": "33b4ee38cfc56e277c0026dad97b88abf6f28231017c8129620b386e9bdca96a"
+        },
+        {
+          "path": "experiments/runtime-reference/reanalysis-guide.txt",
+          "sha256": "c4e9e7c2e892ea1f0ad831158ec457dca83af933b1dd4fc2f42f72b07572a8be"
+        },
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/cryptonight-repetition-plan.json",
+          "sha256": "2c3ee54d3f3a9ec30b29de6f785a5fd1466710a0ee274f37d544fa966e1dcd67"
+        }
+      ],
+      "finding": "既存実測の7依存ファイルSHA一致．追加候補の再現手順は準備済みだが未実行．",
+      "next_action": "実行でホスト互換性・正しさ・時間制限を確かめ，失敗も保存する．"
+    },
+    {
+      "id": "pdf-pages",
+      "requirement": "現在の原稿のコンパイルと6～8ページの表示確認",
+      "status": "unverified",
+      "evidence": [
+        {
+          "path": "results/mining-methods/paper-audit.json",
+          "sha256": "e2bd39275f49c746f510343dd36317165e9f9f3000ebfb0b0c3f2400372a553b"
+        },
+        {
+          "path": "paper/main.tex",
+          "sha256": "e74b48f4212d9cbd33fbd3d00468e1c6f68a6047711a858fd8df926011aae509"
+        }
+      ],
+      "finding": "現在の内蔵コンパイルは標準ディレクトリ検出エラー．過去ログのページ数は現原稿に適用しない．",
+      "next_action": "内蔵コンパイラが利用可能になったら現原稿をコンパイルし，図表・引用・ページ数を確認する．"
+    },
+    {
+      "id": "csec-draft",
+      "requirement": "CSECの和英タイトル・概要案の保存",
+      "status": "saved_not_submitted",
+      "evidence": [
+        {
+          "path": "experiments/runtime-reference/csec-submission-draft.txt",
+          "sha256": "a4530907b5a659228ffdadf057a4adb717fa3ab2cf464635c2ad8b96015a7b1b"
+        }
+      ],
+      "finding": "申込案を保存．送信・申込完了の証拠はない．",
+      "next_action": "申込・投稿操作は本人が行う．締切は通知・投稿画面と照合する．"
+    },
+    {
+      "id": "permission",
+      "requirement": "大学PCの追加実行許可と報酬なしの隔離実験",
+      "status": "pending",
+      "evidence": [
+        {
+          "path": "results/runtime-mining/cross-dataset/proof-of-theft/cryptonight-runner-preparation.json",
+          "sha256": "96a0492d46a21bd67a422850f603be4c3a20ed9da9dc8130714e851d2b8576bf"
+        },
+        {
+          "path": "paper/main.tex",
+          "sha256": "e74b48f4212d9cbd33fbd3d00468e1c6f68a6047711a858fd8df926011aae509"
+        }
+      ],
+      "finding": "教員許可の確認は未着．準備コードのゲートを通した実験は実施していない．",
+      "next_action": "許可が確認できるまで新しいハッシュ実行・プール接続を行わない．"
+    }
+  ],
+  "current_compile_diagnostic": "Unable to find standard directories for platform",
+  "process_observation": "Win32_Process query denied by sandbox; no live experiment handle established in this audit. No experiment launched or restarted.",
+  "audit_scope": "Requirement-by-requirement review of current selected artifacts. Supported means the stated bounded scope only, never whole-corpus completion or independent peer validation.",
+  "recorded_runtime_dependency_checks": [
+    {
+      "report": "proof-of-theft/xmr-repeated-throughput-20261008.json",
+      "file": "experiments/runtime-reference/proof-xmr-benchmark.cjs",
+      "expected_sha256": "7820ed4579ea78946f006b0a1d71c9bf4f9e709d953267ba3dc0facbdc2be2af",
+      "actual_sha256": "7820ed4579ea78946f006b0a1d71c9bf4f9e709d953267ba3dc0facbdc2be2af",
+      "matches": true
+    },
+    {
+      "report": "proof-of-theft/xmr-repeated-throughput-20261008.json",
+      "file": "experiments/runtime-reference/proof-glue-controls.cjs",
+      "expected_sha256": "069c9c9eb5b0b9117c981e62c7f9a4c53887dffee682067f3bf27639718cfab8",
+      "actual_sha256": "069c9c9eb5b0b9117c981e62c7f9a4c53887dffee682067f3bf27639718cfab8",
+      "matches": true
+    },
+    {
+      "report": "proof-of-theft/xmr-repeated-throughput-20261008.json",
+      "file": "results/runtime-mining/cross-dataset/proof-of-theft/glue-control-input.json",
+      "expected_sha256": "4bec52a8f60db6735fee30611c6d5e96a78e7e51a3cadbd51d2f6fa57a177504",
+      "actual_sha256": "4bec52a8f60db6735fee30611c6d5e96a78e7e51a3cadbd51d2f6fa57a177504",
+      "matches": true
+    },
+    {
+      "report": "swamped/controlled-pair-repeated-throughput.json",
+      "file": "experiments/runtime-reference/swamped-pair-benchmark.cjs",
+      "expected_sha256": "6f5364e375b5eb5416f38e67d72571c22291868a6325afc683d980b9a98d1c0d",
+      "actual_sha256": "6f5364e375b5eb5416f38e67d72571c22291868a6325afc683d980b9a98d1c0d",
+      "matches": true
+    },
+    {
+      "report": "swamped/controlled-pair-repeated-throughput.json",
+      "file": "experiments/runtime-reference/swamped-host.cjs",
+      "expected_sha256": "bc5ed8ba142ab2ff30832005c2b0c1a837b5ea5085f79dce43bbb05ecf5685b8",
+      "actual_sha256": "bc5ed8ba142ab2ff30832005c2b0c1a837b5ea5085f79dce43bbb05ecf5685b8",
+      "matches": true
+    },
+    {
+      "report": "swamped/controlled-pair-repeated-throughput.json",
+      "file": "results/runtime-mining/cross-dataset/swamped/controlled-pair-manifest.json",
+      "expected_sha256": "9adda2df3d005752390ce73060f0430cc86fcb33b634d17885e299742dbba7a2",
+      "actual_sha256": "9adda2df3d005752390ce73060f0430cc86fcb33b634d17885e299742dbba7a2",
+      "matches": true
+    },
+    {
+      "report": "swamped/controlled-pair-repeated-throughput.json",
+      "file": "results/runtime-mining/cross-dataset/proof-of-theft/glue-control-input.json",
+      "expected_sha256": "4bec52a8f60db6735fee30611c6d5e96a78e7e51a3cadbd51d2f6fa57a177504",
+      "actual_sha256": "4bec52a8f60db6735fee30611c6d5e96a78e7e51a3cadbd51d2f6fa57a177504",
+      "matches": true
+    }
+  ]
+}

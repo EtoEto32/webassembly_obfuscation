@@ -1,0 +1,9 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func_10_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_12_invoker
+[LoggingExternalInterface logging 1]
+[LoggingExternalInterface logging 1024 0]
+exception thrown: RuntimeError: unreachable
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func_10_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_12_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null}]}

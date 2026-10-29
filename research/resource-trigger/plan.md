@@ -1,0 +1,13 @@
+# resourceの破棄を計算の実行点にする実験：事前計画
+
+2026-10-19。前回のcarry-save案では和の保存則から安い回復手順を構成できた。今回は算術表現から離れ、Component Modelの所有resourceと明示的破棄の意味を利用する。新規性は未確認。暗号化、解除不能性、Wasm単体でのComponent Model実行は主張しない。
+
+検討した方向は、canonical post-returnで次回状態を更新する案、own/borrowの破棄差を分岐にする案、生成順と破棄順を分けて実計算をdestructorへ移す案。前二者はそれぞれ同一呼出しの返り値への効果制限、所有者の最終破棄での重複効果という問題があり、第三案を実装する。これらを新発明3件とは数えない。既存の多数の候補比較に加えるスクリーニングである。
+
+入力は実core .wasmの純粋な run(i32,i32)->i32。第一引数xを状態とし、第二引数yのみから求めたpayloadを使うadd/xor/mul/rotlの直列計算を抽出する。各payloadをresource.newへ渡し、resource.dropが対応destructorを呼んだ時に状態を更新する。生成順はseed付きで並べ替え、破棄順は元の計算順を保つ。各所有handleをちょうど一回破棄する。memory、外部import、一般CFG、trapする算術、再入は対象外。resource資源不足は意味保存前提から除外し、無制限メモリとは主張しない。
+
+比較対象は元core、元coreをliftしたcomponent、直接helper呼出し、生成直後破棄、全生成後に順序を指定して破棄。保護課題は公開componentだけから状態更新の式・順序を回復し、等価なcore Wasmを得ること。原本、seed、manifestを解析器へ与えない。名前に依存せずcanonとdestructorの結線を辿る適応解析を試す。単なる未対応、クラッシュは耐性に数えない。
+
+実行はJco 1.27.0でcomponentをJS+core WasmへtranspileしNodeで行う。これはcomponentの実行経路の一つであり、別のnative component runtimeの測定ではない。最適化はJco optによる内部core最適化を試す。正当性は境界値、seed固定random、独立整数oracle、破棄順を誤らせた負例、連続呼出し・複数instanceを検査する。有限テストは全入力証明ではない。
+
+実行時間、componentと配布JS/coreのサイズ、RSS/heap、handle生存数、変換時間を保存する。実行と解析はwarmup後の反復、readerと解析本体を分けて測る。成功基準は既知のcallback移動との具体的差と、同程度実行費用での意味ある解析費用の増加。すべて回復できたことだけでは棄却しない。constructor/destructor型難読化、ABI変換、componentの公開結線からの正規化を主な反証候補とする。

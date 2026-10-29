@@ -1,0 +1,94 @@
+{
+  "pinned_files": 605,
+  "directories": {
+    "conditional-causality-v1": 123,
+    "conditional-causality-performance-v1": 145,
+    "conditional-causality-performance-v2": 145,
+    "conditional-causality-audit-v1": 189,
+    "conditional-causality-report-v1": 3
+  },
+  "syntax": [
+    "audit.py",
+    "performance.py",
+    "prototype.py",
+    "report.py",
+    "run.py",
+    "bench.cjs",
+    "check.cjs"
+  ],
+  "source_matches": [
+    [
+      "v1",
+      "prototype.py"
+    ],
+    [
+      "v1",
+      "run.py"
+    ],
+    [
+      "v1",
+      "plan.md"
+    ],
+    [
+      "performance-v2",
+      "prototype.py"
+    ],
+    [
+      "performance-v2",
+      "performance.py"
+    ],
+    [
+      "performance-v2",
+      "bench.cjs"
+    ],
+    [
+      "performance-v2",
+      "check.cjs"
+    ],
+    [
+      "audit-v1",
+      "prototype.py"
+    ],
+    [
+      "audit-v1",
+      "audit.py"
+    ]
+  ],
+  "performance_binaries_equal": 30,
+  "scs_checks": [
+    {
+      "fixture": "reverse4",
+      "lcs": 1,
+      "scs": 7
+    },
+    {
+      "fixture": "permuted8",
+      "lcs": 5,
+      "scs": 11
+    },
+    {
+      "fixture": "permuted12",
+      "lcs": 5,
+      "scs": 19
+    }
+  ],
+  "links_checked": 17,
+  "terminal_performance_sessions": {
+    "75354": 0,
+    "18968": 0
+  },
+  "verification_repair": "First link scan matched array[index](argument) inside pseudocode. Markdown fenced code is now excluded; no experimental results were changed.",
+  "main_check_script_change": "Current check.cjs adds a bench-export check after main v1; exact original check.cjs is pinned in main/sources. Main binaries have no bench export.",
+  "main_targets": 30,
+  "byte_distinct_main": 21,
+  "main_calls": 126000,
+  "probe_calls": 12288,
+  "recoveries": 12,
+  "helper_smt": 96,
+  "composition_cases": 24,
+  "wabt_calls": 120,
+  "perf_processes": 45,
+  "perf_batches": 315,
+  "perf_short_batches": 0,
+  "readme_diff_check": true
+}

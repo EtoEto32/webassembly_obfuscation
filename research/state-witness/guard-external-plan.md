@@ -1,0 +1,11 @@
+# 公開観測と実復元器の適用境界
+
+2026-10-24。実行前に固定する計画。
+
+到達可能state対の8例（private table長1/4/16/32、公開前上書き有/無）について、元`retire`の最初のelem.dropの直後に恒偽loopを挿入し、既存のwasm-migrate/Weave変換器でcheckpointを作る。両者が要求する1page memoryを入力に追加する。追加memoryは元programの公開観測に数えない。元binary、memory追加版、loop追加版、変換後の連続実行を対照とする。元の計算と公開tableの結果を照合する。
+
+全poll位置を試し、checkpoint到達、未到達、変換未対応、連続実行差、復元後の差を分離する。private state observerは追加しない。復元完了後のmask/copy/publishは、ホストAPIの許す呼出し方でのみ実行する。
+
+Weaveの固定版JavaScript実装はdrive内のtrapをfailedへ遷移させ、driveはready/completed又はpausedからしか受理しない。従ってtrap後の再入はこのホストAPIでは未対応である。これをraw export直呼びで回避して製品不具合とは数えない。trap後一回のdriveを試して状態エラーを確認し、その経路は打ち切る。
+
+wasm-migrateについては従来の公開compute APIから選択entryを変換した実験用host adapterを使う。変換済みの他exportの再入が作者によって保証されると確認していないので、仮に差が出ても「実験adapter上の差」と区別する。成果は復元器の一般的優劣や脆弱性件数ではなく、選んだ観測/利用契約が診断の適用範囲を変えるかで判定する。

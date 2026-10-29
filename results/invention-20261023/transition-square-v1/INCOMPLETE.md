@@ -1,0 +1,3 @@
+# 初回は最適化オプション不足で停止
+
+最初のbase rawの回復profile検査で、Binaryen133にbulk-memoryを有効化するflagを渡していなかったためvalidation errorとなった。生成WasmはWABT validationを通過しているが、このrunの差分実行は未実施。解析耐性や方式の意味誤りの件数には加えない。修正前sourceを保存し、次のrunへ明示した--enable-bulk-memoryを適用する。

@@ -1,0 +1,22 @@
+[fuzz-exec] export global$
+[LoggingExternalInterface logging -2147483648 -1]
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging -2147483648]
+[fuzz-exec] export global$_2
+[LoggingExternalInterface logging 32768]
+[fuzz-exec] export func
+[fuzz-exec] note result: func => object(object(object(null)))
+[fuzz-exec] export func_11_invoker
+[fuzz-exec] export func_16
+[fuzz-exec] note result: func_16 => object(object(object(null)))
+[fuzz-exec] export func_17_invoker
+[fuzz-exec] export func_19
+[fuzz-exec] export func_19_invoker
+[fuzz-exec] export func_21
+[fuzz-exec] note result: func_21 => object(object(object(null)))
+[fuzz-exec] export func_21_invoker
+[fuzz-exec] export func_23
+[fuzz-exec] export func_23_invoker
+[fuzz-exec] export func_25
+exception thrown: RuntimeError: float unrepresentable in integer range
+[heap-study] {"calls":[{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_11_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_16","known":true,"status":"returned","unsupported":[]},{"name":"func_17_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_19","known":true,"status":"returned","unsupported":[]},{"name":"func_19_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_21","known":true,"status":"returned","unsupported":[]},{"name":"func_21_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_23","known":true,"status":"returned","unsupported":[]},{"name":"func_23_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_25","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: float unrepresentable in integer range"}],"trace":[{"id":0,"channel":"multi","name":"func_16","slot":1}],"snapshots":[{"channel":"multi","slot":1,"snapshot":{"roots":[{"ref":0}],"objects":[{"id":0,"type":8,"kind":"array","fields":[null,null,null,null,null,null,null,null],"length":72,"truncated":64}],"truncations":1}}],"observation_errors":[],"events":1,"limit":128}

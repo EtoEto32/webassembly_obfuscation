@@ -1,0 +1,183 @@
+{
+  "replays": [
+    "muladd-pipeline.wasm",
+    "muladd-feedback.wasm",
+    "square-pipeline.wasm",
+    "square-feedback.wasm",
+    "mixcarry-pipeline.wasm",
+    "mixcarry-feedback.wasm"
+  ],
+  "z3_version": "4.13.3",
+  "proofs": [
+    {
+      "name": "muladd",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "muladd",
+      "optimization": "-O3",
+      "status": "unsat"
+    },
+    {
+      "name": "square",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "square",
+      "optimization": "-O3",
+      "status": "unsat"
+    },
+    {
+      "name": "mixcarry",
+      "optimization": "raw",
+      "status": "unsat"
+    },
+    {
+      "name": "mixcarry",
+      "optimization": "-O3",
+      "status": "unsat"
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "internal_rotation",
+      "reason": "Internal noncongruent operation"
+    },
+    {
+      "case": "insufficient_rounds",
+      "reason": "Insufficient word lift rounds"
+    }
+  ],
+  "exact_certificate_mutation_rejected": true,
+  "noncongruent_2bit": {
+    "states": [
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        2
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        1
+      ],
+      [
+        0,
+        3,
+        3
+      ],
+      [
+        3,
+        3,
+        3
+      ]
+    ],
+    "after_8": [
+      0,
+      0,
+      2
+    ],
+    "expected": [
+      0,
+      0,
+      0
+    ]
+  },
+  "wabt": [
+    {
+      "file": "muladd-plain.wasm",
+      "calls": 4
+    },
+    {
+      "file": "muladd-pipeline-0.wasm",
+      "calls": 4
+    },
+    {
+      "file": "muladd-feedback-0.wasm",
+      "calls": 4
+    },
+    {
+      "file": "muladd-plain-O3.wasm",
+      "calls": 4
+    },
+    {
+      "file": "muladd-pipeline-0-O3.wasm",
+      "calls": 4
+    },
+    {
+      "file": "muladd-feedback-0-O3.wasm",
+      "calls": 4
+    },
+    {
+      "file": "square-plain.wasm",
+      "calls": 4
+    },
+    {
+      "file": "square-pipeline-0.wasm",
+      "calls": 4
+    },
+    {
+      "file": "square-feedback-0.wasm",
+      "calls": 4
+    },
+    {
+      "file": "square-plain-O3.wasm",
+      "calls": 4
+    },
+    {
+      "file": "square-pipeline-0-O3.wasm",
+      "calls": 4
+    },
+    {
+      "file": "square-feedback-0-O3.wasm",
+      "calls": 4
+    },
+    {
+      "file": "mixcarry-plain.wasm",
+      "calls": 4
+    },
+    {
+      "file": "mixcarry-pipeline-0.wasm",
+      "calls": 4
+    },
+    {
+      "file": "mixcarry-feedback-0.wasm",
+      "calls": 4
+    },
+    {
+      "file": "mixcarry-plain-O3.wasm",
+      "calls": 4
+    },
+    {
+      "file": "mixcarry-pipeline-0-O3.wasm",
+      "calls": 4
+    },
+    {
+      "file": "mixcarry-feedback-0-O3.wasm",
+      "calls": 4
+    }
+  ],
+  "wabt_calls": 72
+}

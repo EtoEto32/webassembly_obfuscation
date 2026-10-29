@@ -1,0 +1,26 @@
+oaes_free( OAES_CTX ** ctx )
+{
+	oaes_ctx ** _ctx = (oaes_ctx **) ctx;
+
+	if( NULL == _ctx )
+		return OAES_RET_ARG1;
+	
+	if( NULL == *_ctx )
+		return OAES_RET_SUCCESS;
+	
+	if( (*_ctx)->key )
+		oaes_key_destroy( &((*_ctx)->key) );
+
+#ifdef OAES_HAVE_ISAAC
+	if( (*_ctx)->rctx )
+	{
+		free( (*_ctx)->rctx );
+		(*_ctx)->rctx = NULL;
+	}
+#endif // OAES_HAVE_ISAAC
+	
+	free( *_ctx );
+	*_ctx = NULL;
+
+	return OAES_RET_SUCCESS;
+}

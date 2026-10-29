@@ -1,0 +1,9 @@
+# 共有memoryを使う公開アプリの追加標本
+
+2026-10-24。最初の242本には明示dropがなかった。一方、公式Linking conventionには共有memoryのstart初期化でのinit/dropが記載される。このため、共有memoryを使うと公表されているffmpeg.wasmのcore-mtと対応するsingle-thread coreを、同じversion0.12.10で目的抽出する。元のcorpusの使用率へ混ぜない。
+
+公式repositoryのpackage.jsonと利用手順はcore-mt0.12.10を参照している。npmの固定version metadataとtarballを取得し、registryのSHA512 integrityを照合する。各tarball64MiB以下、選択するwasm file40MiB以下とし、全archiveを展開せず選んだfileだけ保存する。install scriptやpackage codeは実行しない。workspace外へのinstall、外部公開はしない。
+
+まずnative scannerで命令・start・passive segmentを数える。見つかっても、動的に起きる復元不具合や現行Kの受理成功には数えない。後続検討は「起動後の元APIからそのsegmentを読み得るか」である。start専用・非exportの初期化だけなら寿命差が観測できない可能性がある。shared stateや動的APIを現行Kが扱えないという制限は維持する。
+
+入力選定はdropを見つけやすい標本への目的抽出であり、無作為なprevalence評価ではない。追加標本でdropがあったとしても、最初の0件という測定を置き換えない。

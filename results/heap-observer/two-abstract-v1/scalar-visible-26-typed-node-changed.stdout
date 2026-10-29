@@ -1,0 +1,31 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => 42
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging -6]
+[fuzz-exec] export global$_10
+[LoggingExternalInterface logging -127]
+[fuzz-exec] export global$_11
+[LoggingExternalInterface logging -2147483647.16]
+[fuzz-exec] export global$_12
+[LoggingExternalInterface logging -0.231]
+[fuzz-exec] export global$_13
+[LoggingExternalInterface logging -33554431]
+[fuzz-exec] export global$_18
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_20
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_21
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_22
+[LoggingExternalInterface logging 91 0]
+[fuzz-exec] export ref_func_target_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func
+exception thrown: RuntimeError: illegal cast
+[fuzz-exec] export func_invoker
+exception thrown: RangeError: WebAssembly.Table.get(): invalid address 4294941968 in funcref table of size 3
+[fuzz-exec] export func_15
+exception thrown: RuntimeError: dereferencing a null pointer
+[fuzz-exec] export func_15_invoker
+exception thrown: RuntimeError: dereferencing a null pointer
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"ref_func_target_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: illegal cast"},{"name":"func_invoker","known":true,"status":"range-error","unsupported":[],"error":"RangeError: WebAssembly.Table.get(): invalid address 4294941968 in funcref table of size 3"},{"name":"func_15","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"},{"name":"func_15_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null}]}

@@ -1,0 +1,1866 @@
+{
+  "conditions": 45,
+  "correctness_calls": 404388,
+  "correctness_mismatches": 0,
+  "recovered": 45,
+  "bad_width_mismatches": 4599,
+  "transforms": [
+    {
+      "kernel": "mul2",
+      "mode": "per_op",
+      "regions": 1,
+      "widths": [
+        13
+      ],
+      "bounds": [
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        }
+      ],
+      "seconds": 0.06109680000000001,
+      "input_sha256": "18796080142522a48d620c96d6962597f069d32775e1c402c8108f2f8a56de4e",
+      "output_sha256": "508d21c711882e1b49aeb839225758c0a74b3566b2158226edd5918be6b17ed8",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "mul2",
+      "mode": "fused",
+      "regions": 1,
+      "widths": [
+        13
+      ],
+      "bounds": [
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        }
+      ],
+      "seconds": 0.056413600000000036,
+      "input_sha256": "18796080142522a48d620c96d6962597f069d32775e1c402c8108f2f8a56de4e",
+      "output_sha256": "508d21c711882e1b49aeb839225758c0a74b3566b2158226edd5918be6b17ed8",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "dot8",
+      "mode": "per_op",
+      "regions": 15,
+      "widths": [
+        13,
+        13,
+        1,
+        13,
+        13,
+        1,
+        1,
+        13,
+        13,
+        1,
+        13,
+        13,
+        1,
+        1,
+        1
+      ],
+      "bounds": [
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        }
+      ],
+      "seconds": 0.0630697,
+      "input_sha256": "968a83ed57d6a67e8395d744cf6e70103f321a80d270147fa62cb0a66d23439f",
+      "output_sha256": "096288e5f76c6082605a08289075b380827b15d15a30cbb420b58a2567e896b3",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "dot8",
+      "mode": "fused",
+      "regions": 1,
+      "widths": [
+        18
+      ],
+      "bounds": [
+        {
+          "maximum": 147573952520956936200,
+          "error_bound": 65536
+        }
+      ],
+      "seconds": 0.05979869999999998,
+      "input_sha256": "968a83ed57d6a67e8395d744cf6e70103f321a80d270147fa62cb0a66d23439f",
+      "output_sha256": "e1d6033f6cf8a0630ffce41ebd583d4996a36b472b52c1eaf3810c4ee444e1cc",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "affine4",
+      "mode": "per_op",
+      "regions": 7,
+      "widths": [
+        13,
+        1,
+        1,
+        1,
+        13,
+        13,
+        1
+      ],
+      "bounds": [
+        {
+          "maximum": 18446744047939747845,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 4294967312,
+          "error_bound": 0
+        },
+        {
+          "maximum": 281479271612415,
+          "error_bound": 0
+        },
+        {
+          "maximum": 4294967298,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        }
+      ],
+      "seconds": 0.06101050000000008,
+      "input_sha256": "58f862b437a1d96055d1d3c9d79092f0dd0364693f81a1b1e5bc9eee6535c3a6",
+      "output_sha256": "b6659cf0eb43e2a0d730bf0fef53a9a35e56864c2910b40f7f363d059b2c1b8c",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "affine4",
+      "mode": "fused",
+      "regions": 3,
+      "widths": [
+        14,
+        1,
+        15
+      ],
+      "bounds": [
+        {
+          "maximum": 18446744047939747862,
+          "error_bound": 4096
+        },
+        {
+          "maximum": 281479271612418,
+          "error_bound": 0
+        },
+        {
+          "maximum": 36893488130239234050,
+          "error_bound": 8192
+        }
+      ],
+      "seconds": 0.057930899999999674,
+      "input_sha256": "58f862b437a1d96055d1d3c9d79092f0dd0364693f81a1b1e5bc9eee6535c3a6",
+      "output_sha256": "1dbe3543fb542905d4e1428cc2a2bfc1b4edf7ebdd7d5949e7323c8de6e33f33",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "chain6",
+      "mode": "per_op",
+      "regions": 18,
+      "widths": [
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1
+      ],
+      "bounds": [
+        {
+          "maximum": 4294967296,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 6949403056,
+          "error_bound": 0
+        },
+        {
+          "maximum": 4294967298,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 6949328491,
+          "error_bound": 0
+        },
+        {
+          "maximum": 4294967300,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 6949253926,
+          "error_bound": 0
+        },
+        {
+          "maximum": 4294967302,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 6949179361,
+          "error_bound": 0
+        },
+        {
+          "maximum": 4294967304,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 6949104796,
+          "error_bound": 0
+        },
+        {
+          "maximum": 4294967306,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 6949030231,
+          "error_bound": 0
+        }
+      ],
+      "seconds": 0.06256180000000011,
+      "input_sha256": "99a24c5b9f53972276769d9865ae833cc21c72b7bd8cadeed99c5be6edb30565",
+      "output_sha256": "824a8b9279a7cd904c277cf6cacc3cc4e6a2ddff8571e31ab16e0a137050d85d",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "chain6",
+      "mode": "fused",
+      "regions": 6,
+      "widths": [
+        14,
+        15,
+        15,
+        15,
+        15,
+        15
+      ],
+      "bounds": [
+        {
+          "maximum": 18446744072069020081,
+          "error_bound": 4096
+        },
+        {
+          "maximum": 18446744080658880106,
+          "error_bound": 8192
+        },
+        {
+          "maximum": 18446744089248740131,
+          "error_bound": 8192
+        },
+        {
+          "maximum": 18446744097838600156,
+          "error_bound": 8192
+        },
+        {
+          "maximum": 18446744106428460181,
+          "error_bound": 8192
+        },
+        {
+          "maximum": 18446744115018320206,
+          "error_bound": 8192
+        }
+      ],
+      "seconds": 0.06060799999999977,
+      "input_sha256": "99a24c5b9f53972276769d9865ae833cc21c72b7bd8cadeed99c5be6edb30565",
+      "output_sha256": "23233801f1aa806d1b84301d207807041accf012c3cabafdd904995ac4aaa3cd",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "per_op",
+      "regions": 47,
+      "widths": [
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        1,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        13,
+        1,
+        1,
+        1,
+        1
+      ],
+      "bounds": [
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 18446744065119617025,
+          "error_bound": 2048
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        },
+        {
+          "maximum": 8589934590,
+          "error_bound": 0
+        }
+      ],
+      "seconds": 0.06214150000000007,
+      "input_sha256": "feb5987781659b8bcc5cde41cc83b76c643064bffba5ff7f3c27c2c6e0a84854",
+      "output_sha256": "032fbfe0659c0d8dc33e6846fb5fb73f01c18f17a9becaea09a34ec3f0d361e2",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "fused",
+      "regions": 1,
+      "widths": [
+        21
+      ],
+      "bounds": [
+        {
+          "maximum": 885443715125741617200,
+          "error_bound": 557056
+        }
+      ],
+      "seconds": 0.059272199999999664,
+      "input_sha256": "feb5987781659b8bcc5cde41cc83b76c643064bffba5ff7f3c27c2c6e0a84854",
+      "output_sha256": "8b3fe3c4317df8b005fbe89f0224bc23e62206ce7e0010e688333095c2d11084",
+      "bad_width_control": false,
+      "linear_memory_bytes": 0
+    }
+  ],
+  "rows": [
+    {
+      "kernel": "mul2",
+      "mode": "plain",
+      "opt": "raw",
+      "file": "mul2-plain-raw.wasm",
+      "n": 2,
+      "bytes": 41,
+      "sha256": "18796080142522a48d620c96d6962597f069d32775e1c402c8108f2f8a56de4e",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 39.27999999999976,
+      "process_medians_ns": [
+        42.460000000000164,
+        21.399999999999864,
+        39.27999999999976
+      ],
+      "process_range_ns": [
+        21.399999999999864,
+        42.460000000000164
+      ],
+      "max_rss_kib": [
+        40420,
+        37636,
+        39956
+      ],
+      "analysis_ms": 0.004800000000027005
+    },
+    {
+      "kernel": "mul2",
+      "mode": "plain",
+      "opt": "O2",
+      "file": "mul2-plain-O2.wasm",
+      "n": 2,
+      "bytes": 41,
+      "sha256": "18796080142522a48d620c96d6962597f069d32775e1c402c8108f2f8a56de4e",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 39.46000000000005,
+      "process_medians_ns": [
+        42.409999999999926,
+        20.54000000000009,
+        39.46000000000005
+      ],
+      "process_range_ns": [
+        20.54000000000009,
+        42.409999999999926
+      ],
+      "max_rss_kib": [
+        40024,
+        39040,
+        40168
+      ],
+      "analysis_ms": 0.004600000000021254
+    },
+    {
+      "kernel": "mul2",
+      "mode": "plain",
+      "opt": "O3",
+      "file": "mul2-plain-O3.wasm",
+      "n": 2,
+      "bytes": 41,
+      "sha256": "18796080142522a48d620c96d6962597f069d32775e1c402c8108f2f8a56de4e",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 40.479999999999805,
+      "process_medians_ns": [
+        39.979999999999905,
+        42.180000000000106,
+        40.479999999999805
+      ],
+      "process_range_ns": [
+        39.979999999999905,
+        42.180000000000106
+      ],
+      "max_rss_kib": [
+        40380,
+        40488,
+        40524
+      ],
+      "analysis_ms": 0.004800000000027005
+    },
+    {
+      "kernel": "mul2",
+      "mode": "per_op",
+      "opt": "raw",
+      "file": "mul2-per_op-raw.wasm",
+      "n": 2,
+      "bytes": 104,
+      "sha256": "508d21c711882e1b49aeb839225758c0a74b3566b2158226edd5918be6b17ed8",
+      "f64_mul_count": 3,
+      "linear_memory_bytes": 0,
+      "median_ns": 41.210000000000235,
+      "process_medians_ns": [
+        41.210000000000235,
+        24.709999999999965,
+        44.71000000000025
+      ],
+      "process_range_ns": [
+        24.709999999999965,
+        44.71000000000025
+      ],
+      "max_rss_kib": [
+        40944,
+        39664,
+        40216
+      ],
+      "analysis_ms": 0.029700000000021376
+    },
+    {
+      "kernel": "mul2",
+      "mode": "per_op",
+      "opt": "O2",
+      "file": "mul2-per_op-O2.wasm",
+      "n": 2,
+      "bytes": 94,
+      "sha256": "85f89d9f2ef4c989ea383f0ee8d4c14b75a1255a8b1ed91c4421e51a6bb606d7",
+      "f64_mul_count": 3,
+      "linear_memory_bytes": 0,
+      "median_ns": 41.51000000000025,
+      "process_medians_ns": [
+        41.51000000000025,
+        41.380000000000194,
+        41.55000000000015
+      ],
+      "process_range_ns": [
+        41.380000000000194,
+        41.55000000000015
+      ],
+      "max_rss_kib": [
+        40896,
+        41028,
+        41036
+      ],
+      "analysis_ms": 0.028099999999975367
+    },
+    {
+      "kernel": "mul2",
+      "mode": "per_op",
+      "opt": "O3",
+      "file": "mul2-per_op-O3.wasm",
+      "n": 2,
+      "bytes": 94,
+      "sha256": "85f89d9f2ef4c989ea383f0ee8d4c14b75a1255a8b1ed91c4421e51a6bb606d7",
+      "f64_mul_count": 3,
+      "linear_memory_bytes": 0,
+      "median_ns": 45.740000000000336,
+      "process_medians_ns": [
+        70.91999999999992,
+        45.740000000000336,
+        43.840000000000146
+      ],
+      "process_range_ns": [
+        43.840000000000146,
+        70.91999999999992
+      ],
+      "max_rss_kib": [
+        40680,
+        41012,
+        41112
+      ],
+      "analysis_ms": 0.028299999999981118
+    },
+    {
+      "kernel": "mul2",
+      "mode": "fused",
+      "opt": "raw",
+      "file": "mul2-fused-raw.wasm",
+      "n": 2,
+      "bytes": 104,
+      "sha256": "508d21c711882e1b49aeb839225758c0a74b3566b2158226edd5918be6b17ed8",
+      "f64_mul_count": 3,
+      "linear_memory_bytes": 0,
+      "median_ns": 42.079999999999984,
+      "process_medians_ns": [
+        46.149999999999736,
+        41.769999999999996,
+        42.079999999999984
+      ],
+      "process_range_ns": [
+        41.769999999999996,
+        46.149999999999736
+      ],
+      "max_rss_kib": [
+        40104,
+        41088,
+        40980
+      ],
+      "analysis_ms": 0.0276000000000165
+    },
+    {
+      "kernel": "mul2",
+      "mode": "fused",
+      "opt": "O2",
+      "file": "mul2-fused-O2.wasm",
+      "n": 2,
+      "bytes": 94,
+      "sha256": "85f89d9f2ef4c989ea383f0ee8d4c14b75a1255a8b1ed91c4421e51a6bb606d7",
+      "f64_mul_count": 3,
+      "linear_memory_bytes": 0,
+      "median_ns": 43.980000000000175,
+      "process_medians_ns": [
+        43.980000000000175,
+        44.620000000000104,
+        24.409999999999954
+      ],
+      "process_range_ns": [
+        24.409999999999954,
+        44.620000000000104
+      ],
+      "max_rss_kib": [
+        40484,
+        40920,
+        39756
+      ],
+      "analysis_ms": 0.024999999999941735
+    },
+    {
+      "kernel": "mul2",
+      "mode": "fused",
+      "opt": "O3",
+      "file": "mul2-fused-O3.wasm",
+      "n": 2,
+      "bytes": 94,
+      "sha256": "85f89d9f2ef4c989ea383f0ee8d4c14b75a1255a8b1ed91c4421e51a6bb606d7",
+      "f64_mul_count": 3,
+      "linear_memory_bytes": 0,
+      "median_ns": 41.64999999999992,
+      "process_medians_ns": [
+        41.64999999999992,
+        27.11000000000006,
+        43.480000000000274
+      ],
+      "process_range_ns": [
+        27.11000000000006,
+        43.480000000000274
+      ],
+      "max_rss_kib": [
+        40888,
+        39468,
+        40896
+      ],
+      "analysis_ms": 0.024599999999930233
+    },
+    {
+      "kernel": "dot8",
+      "mode": "plain",
+      "opt": "raw",
+      "file": "dot8-plain-raw.wasm",
+      "n": 16,
+      "bytes": 97,
+      "sha256": "968a83ed57d6a67e8395d744cf6e70103f321a80d270147fa62cb0a66d23439f",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 56.63000000000017,
+      "process_medians_ns": [
+        54.84999999999971,
+        56.63000000000017,
+        59.779999999999944
+      ],
+      "process_range_ns": [
+        54.84999999999971,
+        59.779999999999944
+      ],
+      "max_rss_kib": [
+        41028,
+        40928,
+        40948
+      ],
+      "analysis_ms": 0.01929999999994436
+    },
+    {
+      "kernel": "dot8",
+      "mode": "plain",
+      "opt": "O2",
+      "file": "dot8-plain-O2.wasm",
+      "n": 16,
+      "bytes": 97,
+      "sha256": "968a83ed57d6a67e8395d744cf6e70103f321a80d270147fa62cb0a66d23439f",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 59.45999999999998,
+      "process_medians_ns": [
+        92.06000000000003,
+        59.45999999999998,
+        55.349999999999966
+      ],
+      "process_range_ns": [
+        55.349999999999966,
+        92.06000000000003
+      ],
+      "max_rss_kib": [
+        40664,
+        40920,
+        40980
+      ],
+      "analysis_ms": 0.020600000000037255
+    },
+    {
+      "kernel": "dot8",
+      "mode": "plain",
+      "opt": "O3",
+      "file": "dot8-plain-O3.wasm",
+      "n": 16,
+      "bytes": 97,
+      "sha256": "968a83ed57d6a67e8395d744cf6e70103f321a80d270147fa62cb0a66d23439f",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 59.39000000000014,
+      "process_medians_ns": [
+        60.44000000000019,
+        55.239999999999874,
+        59.39000000000014
+      ],
+      "process_range_ns": [
+        55.239999999999874,
+        60.44000000000019
+      ],
+      "max_rss_kib": [
+        40896,
+        40952,
+        40932
+      ],
+      "analysis_ms": 0.027699999999963865
+    },
+    {
+      "kernel": "dot8",
+      "mode": "per_op",
+      "opt": "raw",
+      "file": "dot8-per_op-raw.wasm",
+      "n": 16,
+      "bytes": 1037,
+      "sha256": "096288e5f76c6082605a08289075b380827b15d15a30cbb420b58a2567e896b3",
+      "f64_mul_count": 38,
+      "linear_memory_bytes": 0,
+      "median_ns": 159.05000000000024,
+      "process_medians_ns": [
+        161.5399999999994,
+        156.38999999999967,
+        159.05000000000024
+      ],
+      "process_range_ns": [
+        156.38999999999967,
+        161.5399999999994
+      ],
+      "max_rss_kib": [
+        41180,
+        41284,
+        41176
+      ],
+      "analysis_ms": 0.46239999999997394
+    },
+    {
+      "kernel": "dot8",
+      "mode": "per_op",
+      "opt": "O2",
+      "file": "dot8-per_op-O2.wasm",
+      "n": 16,
+      "bytes": 903,
+      "sha256": "18ee3f70bfd6181290ed555641d701058408b30fa6b2b5ecb82dd9a19df6b3e3",
+      "f64_mul_count": 38,
+      "linear_memory_bytes": 0,
+      "median_ns": 146.42999999999978,
+      "process_medians_ns": [
+        146.19,
+        160.37,
+        146.42999999999978
+      ],
+      "process_range_ns": [
+        146.19,
+        160.37
+      ],
+      "max_rss_kib": [
+        41252,
+        41232,
+        41240
+      ],
+      "analysis_ms": 0.3762000000000487
+    },
+    {
+      "kernel": "dot8",
+      "mode": "per_op",
+      "opt": "O3",
+      "file": "dot8-per_op-O3.wasm",
+      "n": 16,
+      "bytes": 903,
+      "sha256": "18ee3f70bfd6181290ed555641d701058408b30fa6b2b5ecb82dd9a19df6b3e3",
+      "f64_mul_count": 38,
+      "linear_memory_bytes": 0,
+      "median_ns": 159.02999999999992,
+      "process_medians_ns": [
+        151.7300000000006,
+        159.02999999999992,
+        187.65999999999963
+      ],
+      "process_range_ns": [
+        151.7300000000006,
+        187.65999999999963
+      ],
+      "max_rss_kib": [
+        41188,
+        41236,
+        41260
+      ],
+      "analysis_ms": 0.3710999999999576
+    },
+    {
+      "kernel": "dot8",
+      "mode": "fused",
+      "opt": "raw",
+      "file": "dot8-fused-raw.wasm",
+      "n": 16,
+      "bytes": 219,
+      "sha256": "e1d6033f6cf8a0630ffce41ebd583d4996a36b472b52c1eaf3810c4ee444e1cc",
+      "f64_mul_count": 10,
+      "linear_memory_bytes": 0,
+      "median_ns": 59.140000000000015,
+      "process_medians_ns": [
+        61.66000000000019,
+        38.80999999999979,
+        59.140000000000015
+      ],
+      "process_range_ns": [
+        38.80999999999979,
+        61.66000000000019
+      ],
+      "max_rss_kib": [
+        41272,
+        38768,
+        41084
+      ],
+      "analysis_ms": 0.10430000000005712
+    },
+    {
+      "kernel": "dot8",
+      "mode": "fused",
+      "opt": "O2",
+      "file": "dot8-fused-O2.wasm",
+      "n": 16,
+      "bytes": 209,
+      "sha256": "15764f459c8cfb90c2769db7af5216ee625093b47ff336c2186570e878aeafeb",
+      "f64_mul_count": 10,
+      "linear_memory_bytes": 0,
+      "median_ns": 60.630000000000095,
+      "process_medians_ns": [
+        59.71000000000011,
+        62.14000000000013,
+        60.630000000000095
+      ],
+      "process_range_ns": [
+        59.71000000000011,
+        62.14000000000013
+      ],
+      "max_rss_kib": [
+        41184,
+        41172,
+        41276
+      ],
+      "analysis_ms": 0.11260000000001824
+    },
+    {
+      "kernel": "dot8",
+      "mode": "fused",
+      "opt": "O3",
+      "file": "dot8-fused-O3.wasm",
+      "n": 16,
+      "bytes": 209,
+      "sha256": "15764f459c8cfb90c2769db7af5216ee625093b47ff336c2186570e878aeafeb",
+      "f64_mul_count": 10,
+      "linear_memory_bytes": 0,
+      "median_ns": 60.78000000000011,
+      "process_medians_ns": [
+        60.909999999999805,
+        60.78000000000011,
+        41.029999999999944
+      ],
+      "process_range_ns": [
+        41.029999999999944,
+        60.909999999999805
+      ],
+      "max_rss_kib": [
+        41228,
+        41164,
+        40552
+      ],
+      "analysis_ms": 0.10229999999999961
+    },
+    {
+      "kernel": "affine4",
+      "mode": "plain",
+      "opt": "raw",
+      "file": "affine4-plain-raw.wasm",
+      "n": 4,
+      "bytes": 63,
+      "sha256": "58f862b437a1d96055d1d3c9d79092f0dd0364693f81a1b1e5bc9eee6535c3a6",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 41.87000000000012,
+      "process_medians_ns": [
+        41.83999999999983,
+        42.290000000000205,
+        41.87000000000012
+      ],
+      "process_range_ns": [
+        41.83999999999983,
+        42.290000000000205
+      ],
+      "max_rss_kib": [
+        39988,
+        40564,
+        40500
+      ],
+      "analysis_ms": 0.011199999999877974
+    },
+    {
+      "kernel": "affine4",
+      "mode": "plain",
+      "opt": "O2",
+      "file": "affine4-plain-O2.wasm",
+      "n": 4,
+      "bytes": 63,
+      "sha256": "58f862b437a1d96055d1d3c9d79092f0dd0364693f81a1b1e5bc9eee6535c3a6",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 43.76999999999995,
+      "process_medians_ns": [
+        41.43000000000008,
+        43.76999999999995,
+        44.60000000000015
+      ],
+      "process_range_ns": [
+        41.43000000000008,
+        44.60000000000015
+      ],
+      "max_rss_kib": [
+        40524,
+        40124,
+        40536
+      ],
+      "analysis_ms": 0.012299999999854094
+    },
+    {
+      "kernel": "affine4",
+      "mode": "plain",
+      "opt": "O3",
+      "file": "affine4-plain-O3.wasm",
+      "n": 4,
+      "bytes": 63,
+      "sha256": "58f862b437a1d96055d1d3c9d79092f0dd0364693f81a1b1e5bc9eee6535c3a6",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 44.209999999999994,
+      "process_medians_ns": [
+        21.62000000000006,
+        44.209999999999994,
+        45.92999999999989
+      ],
+      "process_range_ns": [
+        21.62000000000006,
+        45.92999999999989
+      ],
+      "max_rss_kib": [
+        39244,
+        40064,
+        40228
+      ],
+      "analysis_ms": 0.012200000000017752
+    },
+    {
+      "kernel": "affine4",
+      "mode": "per_op",
+      "opt": "raw",
+      "file": "affine4-per_op-raw.wasm",
+      "n": 4,
+      "bytes": 522,
+      "sha256": "b6659cf0eb43e2a0d730bf0fef53a9a35e56864c2910b40f7f363d059b2c1b8c",
+      "f64_mul_count": 18,
+      "linear_memory_bytes": 0,
+      "median_ns": 87.80000000000001,
+      "process_medians_ns": [
+        96.46000000000043,
+        87.80000000000001,
+        86.98999999999977
+      ],
+      "process_range_ns": [
+        86.98999999999977,
+        96.46000000000043
+      ],
+      "max_rss_kib": [
+        40488,
+        40536,
+        40552
+      ],
+      "analysis_ms": 0.1967000000000496
+    },
+    {
+      "kernel": "affine4",
+      "mode": "per_op",
+      "opt": "O2",
+      "file": "affine4-per_op-O2.wasm",
+      "n": 4,
+      "bytes": 462,
+      "sha256": "cffbb0b776aa93d686cc8ab4d8378d3fd3be9fc0ce757f47589dcb5e4e6406c1",
+      "f64_mul_count": 18,
+      "linear_memory_bytes": 0,
+      "median_ns": 87.1500000000001,
+      "process_medians_ns": [
+        87.1500000000001,
+        85.13999999999982,
+        95.52000000000014
+      ],
+      "process_range_ns": [
+        85.13999999999982,
+        95.52000000000014
+      ],
+      "max_rss_kib": [
+        40488,
+        40608,
+        40948
+      ],
+      "analysis_ms": 0.19410000000030792
+    },
+    {
+      "kernel": "affine4",
+      "mode": "per_op",
+      "opt": "O3",
+      "file": "affine4-per_op-O3.wasm",
+      "n": 4,
+      "bytes": 462,
+      "sha256": "cffbb0b776aa93d686cc8ab4d8378d3fd3be9fc0ce757f47589dcb5e4e6406c1",
+      "f64_mul_count": 18,
+      "linear_memory_bytes": 0,
+      "median_ns": 90.33999999999978,
+      "process_medians_ns": [
+        90.33999999999978,
+        94.93000000000009,
+        89.56000000000017
+      ],
+      "process_range_ns": [
+        89.56000000000017,
+        94.93000000000009
+      ],
+      "max_rss_kib": [
+        40552,
+        40608,
+        40552
+      ],
+      "analysis_ms": 0.19239999999998147
+    },
+    {
+      "kernel": "affine4",
+      "mode": "fused",
+      "opt": "raw",
+      "file": "affine4-fused-raw.wasm",
+      "n": 4,
+      "bytes": 292,
+      "sha256": "1dbe3543fb542905d4e1428cc2a2bfc1b4edf7ebdd7d5949e7323c8de6e33f33",
+      "f64_mul_count": 10,
+      "linear_memory_bytes": 0,
+      "median_ns": 53.79000000000005,
+      "process_medians_ns": [
+        49.75000000000023,
+        53.79000000000005,
+        60.08999999999993
+      ],
+      "process_range_ns": [
+        49.75000000000023,
+        60.08999999999993
+      ],
+      "max_rss_kib": [
+        40328,
+        40296,
+        40920
+      ],
+      "analysis_ms": 0.12039999999968742
+    },
+    {
+      "kernel": "affine4",
+      "mode": "fused",
+      "opt": "O2",
+      "file": "affine4-fused-O2.wasm",
+      "n": 4,
+      "bytes": 266,
+      "sha256": "56ccafe6c8db0179136c8c84dd12d4cb602bbc9536bb31fd194719386d108d76",
+      "f64_mul_count": 10,
+      "linear_memory_bytes": 0,
+      "median_ns": 63.25000000000002,
+      "process_medians_ns": [
+        66.01999999999997,
+        61.31999999999991,
+        63.25000000000002
+      ],
+      "process_range_ns": [
+        61.31999999999991,
+        66.01999999999997
+      ],
+      "max_rss_kib": [
+        40892,
+        40968,
+        40844
+      ],
+      "analysis_ms": 0.10019999999988372
+    },
+    {
+      "kernel": "affine4",
+      "mode": "fused",
+      "opt": "O3",
+      "file": "affine4-fused-O3.wasm",
+      "n": 4,
+      "bytes": 266,
+      "sha256": "56ccafe6c8db0179136c8c84dd12d4cb602bbc9536bb31fd194719386d108d76",
+      "f64_mul_count": 10,
+      "linear_memory_bytes": 0,
+      "median_ns": 60.06,
+      "process_medians_ns": [
+        60.06,
+        57.80999999999992,
+        61.239999999999746
+      ],
+      "process_range_ns": [
+        57.80999999999992,
+        61.239999999999746
+      ],
+      "max_rss_kib": [
+        40912,
+        40796,
+        40896
+      ],
+      "analysis_ms": 0.10010000000004737
+    },
+    {
+      "kernel": "chain6",
+      "mode": "plain",
+      "opt": "raw",
+      "file": "chain6-plain-raw.wasm",
+      "n": 4,
+      "bytes": 118,
+      "sha256": "99a24c5b9f53972276769d9865ae833cc21c72b7bd8cadeed99c5be6edb30565",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 45.15000000000029,
+      "process_medians_ns": [
+        49.96000000000009,
+        42.379999999999995,
+        45.15000000000029
+      ],
+      "process_range_ns": [
+        42.379999999999995,
+        49.96000000000009
+      ],
+      "max_rss_kib": [
+        40456,
+        40464,
+        40644
+      ],
+      "analysis_ms": 0.02469999999998862
+    },
+    {
+      "kernel": "chain6",
+      "mode": "plain",
+      "opt": "O2",
+      "file": "chain6-plain-O2.wasm",
+      "n": 4,
+      "bytes": 118,
+      "sha256": "c025ddd0a251c50e61cd83a49c19bc811cfeccd7e2a1dc2eee38b723fcb0f49f",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 44.480000000000075,
+      "process_medians_ns": [
+        42.900000000000205,
+        47.250000000000014,
+        44.480000000000075
+      ],
+      "process_range_ns": [
+        42.900000000000205,
+        47.250000000000014
+      ],
+      "max_rss_kib": [
+        40704,
+        40616,
+        40588
+      ],
+      "analysis_ms": 0.023200000000223042
+    },
+    {
+      "kernel": "chain6",
+      "mode": "plain",
+      "opt": "O3",
+      "file": "chain6-plain-O3.wasm",
+      "n": 4,
+      "bytes": 118,
+      "sha256": "c025ddd0a251c50e61cd83a49c19bc811cfeccd7e2a1dc2eee38b723fcb0f49f",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 45.209999999999795,
+      "process_medians_ns": [
+        42.58999999999986,
+        45.649999999999835,
+        45.209999999999795
+      ],
+      "process_range_ns": [
+        42.58999999999986,
+        45.649999999999835
+      ],
+      "max_rss_kib": [
+        40728,
+        40700,
+        40632
+      ],
+      "analysis_ms": 0.02419999999991873
+    },
+    {
+      "kernel": "chain6",
+      "mode": "per_op",
+      "opt": "raw",
+      "file": "chain6-per_op-raw.wasm",
+      "n": 4,
+      "bytes": 1281,
+      "sha256": "824a8b9279a7cd904c277cf6cacc3cc4e6a2ddff8571e31ab16e0a137050d85d",
+      "f64_mul_count": 42,
+      "linear_memory_bytes": 0,
+      "median_ns": 144.31999999999974,
+      "process_medians_ns": [
+        144.04000000000002,
+        144.31999999999974,
+        156.11999999999958
+      ],
+      "process_range_ns": [
+        144.04000000000002,
+        156.11999999999958
+      ],
+      "max_rss_kib": [
+        40988,
+        40980,
+        40892
+      ],
+      "analysis_ms": 1.2078999999998175
+    },
+    {
+      "kernel": "chain6",
+      "mode": "per_op",
+      "opt": "O2",
+      "file": "chain6-per_op-O2.wasm",
+      "n": 4,
+      "bytes": 1127,
+      "sha256": "f0dad6d669c5b1b32c1f5ab763fa31bc34a3c49fbf2667429a2c9f17a417cf97",
+      "f64_mul_count": 42,
+      "linear_memory_bytes": 0,
+      "median_ns": 155.04999999999995,
+      "process_medians_ns": [
+        145.10000000000005,
+        162.8,
+        155.04999999999995
+      ],
+      "process_range_ns": [
+        145.10000000000005,
+        162.8
+      ],
+      "max_rss_kib": [
+        40912,
+        40924,
+        40888
+      ],
+      "analysis_ms": 1.1637000000002118
+    },
+    {
+      "kernel": "chain6",
+      "mode": "per_op",
+      "opt": "O3",
+      "file": "chain6-per_op-O3.wasm",
+      "n": 4,
+      "bytes": 1118,
+      "sha256": "5a387c90156d934badb10636dd0a566b53f14e9660719c355d64c9e63fcc2d51",
+      "f64_mul_count": 42,
+      "linear_memory_bytes": 0,
+      "median_ns": 144.59000000000017,
+      "process_medians_ns": [
+        144.59000000000017,
+        143.06999999999982,
+        144.63000000000008
+      ],
+      "process_range_ns": [
+        143.06999999999982,
+        144.63000000000008
+      ],
+      "max_rss_kib": [
+        40892,
+        40972,
+        40988
+      ],
+      "analysis_ms": 1.1486999999998915
+    },
+    {
+      "kernel": "chain6",
+      "mode": "fused",
+      "opt": "raw",
+      "file": "chain6-fused-raw.wasm",
+      "n": 4,
+      "bytes": 626,
+      "sha256": "23233801f1aa806d1b84301d207807041accf012c3cabafdd904995ac4aaa3cd",
+      "f64_mul_count": 18,
+      "linear_memory_bytes": 0,
+      "median_ns": 89.47000000000003,
+      "process_medians_ns": [
+        89.47000000000003,
+        98.04999999999993,
+        86.59999999999997
+      ],
+      "process_range_ns": [
+        86.59999999999997,
+        98.04999999999993
+      ],
+      "max_rss_kib": [
+        40492,
+        40480,
+        40856
+      ],
+      "analysis_ms": 0.7814000000001542
+    },
+    {
+      "kernel": "chain6",
+      "mode": "fused",
+      "opt": "O2",
+      "file": "chain6-fused-O2.wasm",
+      "n": 4,
+      "bytes": 578,
+      "sha256": "7b6cbd9d9855ff05f55709039064be3a80144b5422418b6245cd4dabe2b137a0",
+      "f64_mul_count": 18,
+      "linear_memory_bytes": 0,
+      "median_ns": 99.08000000000037,
+      "process_medians_ns": [
+        108.99,
+        93.26000000000008,
+        99.08000000000037
+      ],
+      "process_range_ns": [
+        93.26000000000008,
+        108.99
+      ],
+      "max_rss_kib": [
+        40844,
+        40468,
+        40744
+      ],
+      "analysis_ms": 0.7175000000003706
+    },
+    {
+      "kernel": "chain6",
+      "mode": "fused",
+      "opt": "O3",
+      "file": "chain6-fused-O3.wasm",
+      "n": 4,
+      "bytes": 581,
+      "sha256": "17754cb8cd5ce9c649c74534121759af3b8b5feed8fe9178555b614ee3230124",
+      "f64_mul_count": 18,
+      "linear_memory_bytes": 0,
+      "median_ns": 87.78000000000006,
+      "process_medians_ns": [
+        90.61999999999983,
+        87.78000000000006,
+        85.7999999999997
+      ],
+      "process_range_ns": [
+        85.7999999999997,
+        90.61999999999983
+      ],
+      "max_rss_kib": [
+        40544,
+        40696,
+        40496
+      ],
+      "analysis_ms": 0.7203999999996213
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "plain",
+      "opt": "raw",
+      "file": "quadratic12-plain-raw.wasm",
+      "n": 12,
+      "bytes": 191,
+      "sha256": "feb5987781659b8bcc5cde41cc83b76c643064bffba5ff7f3c27c2c6e0a84854",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 52.24000000000011,
+      "process_medians_ns": [
+        51.52999999999999,
+        52.24000000000011,
+        53.18000000000005
+      ],
+      "process_range_ns": [
+        51.52999999999999,
+        53.18000000000005
+      ],
+      "max_rss_kib": [
+        40880,
+        40816,
+        40876
+      ],
+      "analysis_ms": 0.052400000000396574
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "plain",
+      "opt": "O2",
+      "file": "quadratic12-plain-O2.wasm",
+      "n": 12,
+      "bytes": 191,
+      "sha256": "a555bcda01d32d2c757f4b339ae59ed91a0149e1e956116ad4fe88bdce9aa2a7",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 51.74000000000021,
+      "process_medians_ns": [
+        53.76000000000012,
+        51.74000000000021,
+        51.47999999999975
+      ],
+      "process_range_ns": [
+        51.47999999999975,
+        53.76000000000012
+      ],
+      "max_rss_kib": [
+        40832,
+        40936,
+        40852
+      ],
+      "analysis_ms": 0.05330000000025592
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "plain",
+      "opt": "O3",
+      "file": "quadratic12-plain-O3.wasm",
+      "n": 12,
+      "bytes": 191,
+      "sha256": "a555bcda01d32d2c757f4b339ae59ed91a0149e1e956116ad4fe88bdce9aa2a7",
+      "f64_mul_count": 0,
+      "linear_memory_bytes": 0,
+      "median_ns": 53.359999999999985,
+      "process_medians_ns": [
+        53.359999999999985,
+        54.629999999999875,
+        49.540000000000006
+      ],
+      "process_range_ns": [
+        49.540000000000006,
+        54.629999999999875
+      ],
+      "max_rss_kib": [
+        40848,
+        40860,
+        40876
+      ],
+      "analysis_ms": 0.05930000000020641
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "per_op",
+      "opt": "raw",
+      "file": "quadratic12-per_op-raw.wasm",
+      "n": 12,
+      "bytes": 3191,
+      "sha256": "032fbfe0659c0d8dc33e6846fb5fb73f01c18f17a9becaea09a34ec3f0d361e2",
+      "f64_mul_count": 106,
+      "linear_memory_bytes": 0,
+      "median_ns": 328.22999999999996,
+      "process_medians_ns": [
+        335.29000000000053,
+        323.90000000000043,
+        328.22999999999996
+      ],
+      "process_range_ns": [
+        323.90000000000043,
+        335.29000000000053
+      ],
+      "max_rss_kib": [
+        41084,
+        41120,
+        41148
+      ],
+      "analysis_ms": 1.7765000000000697
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "per_op",
+      "opt": "O2",
+      "file": "quadratic12-per_op-O2.wasm",
+      "n": 12,
+      "bytes": 2695,
+      "sha256": "8225fa36562b3d1643ee738d1eeb149c74ff047ef2497de9482a4efb82010b1a",
+      "f64_mul_count": 106,
+      "linear_memory_bytes": 0,
+      "median_ns": 334.6800000000002,
+      "process_medians_ns": [
+        319.7900000000004,
+        341.8499999999998,
+        334.6800000000002
+      ],
+      "process_range_ns": [
+        319.7900000000004,
+        341.8499999999998
+      ],
+      "max_rss_kib": [
+        41164,
+        41184,
+        41240
+      ],
+      "analysis_ms": 1.7341000000001827
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "per_op",
+      "opt": "O3",
+      "file": "quadratic12-per_op-O3.wasm",
+      "n": 12,
+      "bytes": 2683,
+      "sha256": "d8b8093116c7f286107437c8ca7626727ef66c083b1ddcd2e910e5a45846a853",
+      "f64_mul_count": 106,
+      "linear_memory_bytes": 0,
+      "median_ns": 318.75,
+      "process_medians_ns": [
+        318.75,
+        341.8599999999998,
+        315.35999999999973
+      ],
+      "process_range_ns": [
+        315.35999999999973,
+        341.8599999999998
+      ],
+      "max_rss_kib": [
+        41044,
+        41124,
+        41216
+      ],
+      "analysis_ms": 1.5890000000000626
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "fused",
+      "opt": "raw",
+      "file": "quadratic12-fused-raw.wasm",
+      "n": 12,
+      "bytes": 584,
+      "sha256": "8b3fe3c4317df8b005fbe89f0224bc23e62206ce7e0010e688333095c2d11084",
+      "f64_mul_count": 14,
+      "linear_memory_bytes": 0,
+      "median_ns": 45.01999999999988,
+      "process_medians_ns": [
+        66.28000000000007,
+        41.95000000000029,
+        45.01999999999988
+      ],
+      "process_range_ns": [
+        41.95000000000029,
+        66.28000000000007
+      ],
+      "max_rss_kib": [
+        41044,
+        40464,
+        38712
+      ],
+      "analysis_ms": 0.4262999999999906
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "fused",
+      "opt": "O2",
+      "file": "quadratic12-fused-O2.wasm",
+      "n": 12,
+      "bytes": 574,
+      "sha256": "9034c39cbd81970f33b810ef52dcb946c40e3be47762a89204492a1f400c75e2",
+      "f64_mul_count": 14,
+      "linear_memory_bytes": 0,
+      "median_ns": 67.96000000000006,
+      "process_medians_ns": [
+        141.31999999999996,
+        67.96000000000006,
+        49.210000000000065
+      ],
+      "process_range_ns": [
+        49.210000000000065,
+        141.31999999999996
+      ],
+      "max_rss_kib": [
+        41628,
+        41092,
+        40752
+      ],
+      "analysis_ms": 0.44749999999993406
+    },
+    {
+      "kernel": "quadratic12",
+      "mode": "fused",
+      "opt": "O3",
+      "file": "quadratic12-fused-O3.wasm",
+      "n": 12,
+      "bytes": 562,
+      "sha256": "060d73814ca19990f982105cc185645f86663ee636c768d901a64188e0582d0d",
+      "f64_mul_count": 14,
+      "linear_memory_bytes": 0,
+      "median_ns": 52.779999999999916,
+      "process_medians_ns": [
+        52.779999999999916,
+        49.10999999999994,
+        77.34000000000023
+      ],
+      "process_range_ns": [
+        49.10999999999994,
+        77.34000000000023
+      ],
+      "max_rss_kib": [
+        40672,
+        40764,
+        41096
+      ],
+      "analysis_ms": 0.3951999999998179
+    }
+  ]
+}

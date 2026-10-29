@@ -1,0 +1,51 @@
+{
+  "function": "$f83",
+  "mechanism": "State-dispatched context initialization and null-result handling after allocation.",
+  "reference_excerpt_sha256": "f3868fbd1461eecad3c23a9630dd2c4e4527d95935ca6c5b9f465981f3863432",
+  "flattened_excerpt_sha256": "9ba890fa4ef6fd3aacdbca3e017f1b823aa65c2c6631ef218daf1f5144d2e20d",
+  "state_offset": 16,
+  "state_pointer_offset": 12,
+  "result_offset": 28,
+  "allocation_before_dispatcher": true,
+  "manually_reviewed_transitions": [
+    {
+      "state": -759120739,
+      "operation": "Check allocated context == 0",
+      "next_if_true": 450301759,
+      "next_if_false": -1660447243
+    },
+    {
+      "state": 450301759,
+      "operation": "Set result to null",
+      "next": 422192835
+    },
+    {
+      "state": -1660447243,
+      "operation": "Call f84 then f178; clear first context field; call f85(context,2,0); set context result",
+      "next": 422192835
+    },
+    {
+      "state": 422192835,
+      "operation": "Restore entry stack pointer and return result"
+    }
+  ],
+  "source_correspondence": {
+    "path": "supp-materials/artifact/samples/xmr-wasm/src/crypto/oaes_lib.c",
+    "line": 894,
+    "excerpt": "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\runtime-mining\\cross-dataset\\proof-of-theft\\xmr-oaes-alloc-source-reviewed.txt",
+    "excerpt_sha256": "c32e26eaa578c2ec12696b37ae1744fef96db88a3c20f5ee5cb3918dd0d2d05a",
+    "interpretation": "Allocation/null guard, seed setup, key clearing, options and context return correspond to the non-ISAAC path of distributed oaes_alloc. No debug-symbol or historical build identity proof."
+  },
+  "reference_call_contexts": [
+    {
+      "line": 176,
+      "enclosing_constructs": []
+    }
+  ],
+  "interpretation": "The sole lexical f111 call is before its structured loops, not a demonstrated per-iteration hot-loop call. Each hash invocation may still execute initialization; no dynamic count measured.",
+  "limitations": [
+    "Manual static graph, not machine-checked equivalence or dynamic coverage.",
+    "Callees, conditional compilation and historical source-to-binary identity are not fully mapped.",
+    "No hash execution or causal allocation of measured runtime overhead."
+  ]
+}

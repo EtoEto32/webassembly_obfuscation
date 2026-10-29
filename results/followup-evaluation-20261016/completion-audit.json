@@ -1,0 +1,445 @@
+{
+  "status": "all-requirements-proved-with-stated-scope",
+  "requirements": [
+    {
+      "id": "inheritance",
+      "requirement": "Preserve existing research, paper, normalizer and evidence.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/inherited-evidence-index.json",
+        "paper/main.tex",
+        "scripts/normalize_wat_local.py"
+      ],
+      "observations": {
+        "original_records": 10,
+        "referenced_static_artifacts": 144,
+        "normalizer_unchanged": true,
+        "paper_git_diff_empty": true
+      },
+      "limits": [
+        "Old results were hash-verified, not all rerun or reclassified as new."
+      ]
+    },
+    {
+      "id": "input-contract",
+      "requirement": "Explain the observed short-input history and preserve the scope of correctness claims.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/input-audit.json",
+        "results/followup-evaluation-20261016/static-input-contract.json",
+        "results/followup-evaluation-20261016/runs/input-diagnostic-17d5dd4803304d40b16c07fb221a2747/outputs/input-diagnostic.json"
+      ],
+      "observations": {
+        "fixed_bytes": 76,
+        "length_checks": 27,
+        "history_checks": 81,
+        "public_checks": 15,
+        "effective_reference_inputs": 14
+      },
+      "limits": [
+        "Three selected SWAMPED binaries; finite inputs and shared reference lineage, not arbitrary-length validation."
+      ]
+    },
+    {
+      "id": "performance",
+      "requirement": "Measure, audit and analyze before/after performance, variability and Wasm compiler conditions.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/confirmatory-summary.json",
+        "results/followup-evaluation-20261016/confirmatory-structure.json",
+        "results/followup-evaluation-20261016/runs/runtime-bd69ee8d729c4792823d9f3860c5c0c6/pilot-audit.json",
+        "results/followup-evaluation-20261016/compiler-probe-audit.json"
+      ],
+      "observations": {
+        "timed_blocks": 272,
+        "contrasts": 108,
+        "compilers": {
+          "Liftoff": 136,
+          "TurboFan": 136
+        },
+        "timed_wasm_compilation_events": 0,
+        "all_planned_repetitions_retained": true
+      },
+      "limits": [
+        "JavaScript JIT is not traced. Consecutive sessions, one host, pointwise exploratory intervals and remaining baseline variation limit inference."
+      ]
+    },
+    {
+      "id": "execution-paths",
+      "requirement": "Separate unexecuted and frequent helpers and measure call-site coverage and ablation effects.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/callsite-summary.json",
+        "results/followup-evaluation-20261016/post-performance-recovery.json",
+        "results/followup-evaluation-20261016/runs/input-diagnostic-bcebbc1a56fe4253b48b3b95e2911d9e/paths-audit.json"
+      ],
+      "observations": {
+        "counted_vector_conditions": 9,
+        "xor8_calls": 0,
+        "xor16_calls": 1179648,
+        "original_main_loop_calls": 1048576
+      },
+      "limits": [
+        "Function entries/call sites are not dynamic instruction counts or time shares; restoration is manual, not automatic normalization."
+      ]
+    },
+    {
+      "id": "multiple-implementations",
+      "requirement": "Compare controlled transformations of multiple archived implementations.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/controlled-generation-v2.json",
+        "results/followup-evaluation-20261016/runs/input-diagnostic-7d69953eb3d44538929da22fe95b4b63/controlled-audit.json"
+      ],
+      "observations": {
+        "inputs": 9,
+        "implementations": 3,
+        "correctness_checks": 333
+      },
+      "limits": [
+        "Same Wasm transformation/tool pipeline, not equalized original C/C++ builds. Shared CryptoNight ancestry."
+      ]
+    },
+    {
+      "id": "normalization-correctness",
+      "requirement": "Compare unchanged rules with established optimizers and audit normalized results.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/normalization-plan.json",
+        "results/followup-evaluation-20261016/normalization-static.json",
+        "results/followup-evaluation-20261016/normalization-output-audit.json",
+        "results/followup-evaluation-20261016/normalization-check-plans-v2.json",
+        "results/followup-evaluation-20261016/runs/input-diagnostic-9e7f9b4e659c4188a5b701dc53c23096/completion.json"
+      ],
+      "observations": {
+        "labels": 77,
+        "unique_sha256": 42,
+        "output_checks": 2793,
+        "normalizer_unchanged": true,
+        "oom_preserved": true
+      },
+      "limits": [
+        "Finite input checks and type/limit audits do not prove all-input or whole-module equivalence."
+      ]
+    },
+    {
+      "id": "analysis-task",
+      "requirement": "Evaluate a concrete function/module matching task, including ambiguity and lost provenance.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/normalization-function-features.json",
+        "results/followup-evaluation-20261016/normalization-matching-results.json",
+        "results/followup-evaluation-20261016/normalization-helper-truth/checks.json"
+      ],
+      "observations": {
+        "function_queries": 4508,
+        "module_queries": 56,
+        "fixed_function_denominator": 644,
+        "correct_unique_both": 536,
+        "ambiguous_both": 104,
+        "complex_unmatched": 4,
+        "auxiliary_core_matches": 77
+      },
+      "limits": [
+        "Known-lineage exact syntax task; not semantic equivalence, human analysis time or detector performance. Retained-only rates are conditional."
+      ]
+    },
+    {
+      "id": "reproducibility",
+      "requirement": "Provide executable plans and validate a separate full replay while retaining failed attempts.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/normalization-replays/172adcc0cd9b49aca166e490aaf62dfd/status.json",
+        "results/followup-evaluation-20261016/normalization-replays/172adcc0cd9b49aca166e490aaf62dfd/manifest.json",
+        "results/followup-evaluation-20261016/normalization-replays/f3439623753041b0bb5538490a013b60/status.json",
+        "results/followup-evaluation-20261016/normalization-replays/f3439623753041b0bb5538490a013b60/replayer-source-v1.py",
+        "docs/followup-reproduction-20261016.md"
+      ],
+      "observations": {
+        "replay_labels": 77,
+        "replay_output_checks": 2793,
+        "replay_batches": 11,
+        "not_added_as_independent_samples": true
+      },
+      "limits": [
+        "Exact cross-host runtime requires retaining the fixed image; Dockerfile apt packages are not all version-pinned."
+      ]
+    },
+    {
+      "id": "prior-research",
+      "requirement": "Respect primary sources, established methods and the limits of historical reproduction.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/prior-method-audit.json",
+        "docs/followup-research-report-20261016.md"
+      ],
+      "observations": {
+        "saved_primary_blobs": 3,
+        "binaryen_O3_included": true,
+        "historical_commit_distinguished": true
+      },
+      "limits": [
+        "Thesis chapter not fully inspected; no novelty claim or claim to reproduce the historical compiler commit."
+      ]
+    },
+    {
+      "id": "deliverables",
+      "requirement": "Deliver reports, reviewed figures, reproducible records and a concrete paper reflection proposal.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "docs/followup-research-report-20261016.md",
+        "docs/followup-performance-results-20261016.md",
+        "docs/followup-normalization-results-20261016.md",
+        "docs/followup-reproduction-20261016.md",
+        "docs/paper-followup-reflection-20261016.md",
+        "docs/followup-evaluation-progress-20261016.md",
+        "results/followup-evaluation-20261016/figures/confirmatory-visual-review.json",
+        "results/followup-evaluation-20261016/figures/normalization-visual-review.json"
+      ],
+      "observations": {
+        "reports": 6,
+        "reviewed_figures": 5,
+        "paper_body_preserved": true,
+        "abstract_and_conclusion_proposals": true
+      },
+      "limits": [
+        "Proposal is delivered separately; publishing/rewriting the current paper was not required."
+      ]
+    },
+    {
+      "id": "failure-history",
+      "requirement": "Retain failed starts, adapter/summary mistakes, OOM and path-length failures.",
+      "status": "proved-with-stated-scope",
+      "evidence": [
+        "results/followup-evaluation-20261016/runs/input-diagnostic-2f43d8c5eaf649ac9011e28a1260ff97/failure.json",
+        "results/followup-evaluation-20261016/controlled-adapter-first-failure.json",
+        "results/followup-evaluation-20261016/post-performance/7f78f8286b4c4c67b3ab5fb42e371e51/summarize-callsites-stderr.txt",
+        "results/followup-evaluation-20261016/runs/input-diagnostic-9e7f9b4e659c4188a5b701dc53c23096/failure.json",
+        "results/followup-evaluation-20261016/normalization-replays/f3439623753041b0bb5538490a013b60/webminerpoolhashcn-constsplit-stderr.txt"
+      ],
+      "observations": {
+        "preserved_failure_records": 5,
+        "pilot_compiler_deviation_preserved": true
+      },
+      "limits": []
+    }
+  ],
+  "evidence_hashes": [
+    {
+      "path": "docs/followup-evaluation-progress-20261016.md",
+      "sha256": "f07733a3b11f81421ae32a0782e5cd940aac8c180771ef5cb07106aa72f3c137"
+    },
+    {
+      "path": "docs/followup-normalization-results-20261016.md",
+      "sha256": "cc7ec40035f8668248333c0dde33c3549d05b9edd3e8e998d3292861504fcb03"
+    },
+    {
+      "path": "docs/followup-performance-results-20261016.md",
+      "sha256": "a22e25f2b2b0f73f0f60be572f82ba15a46a83a73f1baa587955bed01642efba"
+    },
+    {
+      "path": "docs/followup-reproduction-20261016.md",
+      "sha256": "c235f794c5f1d31335a7f1c3e48b3a3db9d9d99fd6507c12cde698cb682aabe8"
+    },
+    {
+      "path": "docs/followup-research-report-20261016.md",
+      "sha256": "83934465d8cda0c27ac399441e1b7cf10cb290da47f30261bb9f200e8a9c118b"
+    },
+    {
+      "path": "docs/paper-followup-reflection-20261016.md",
+      "sha256": "dedba086d37c86c2e44eb411c195db2ddc83afeb78a75460cf6b2b4d071a555a"
+    },
+    {
+      "path": "paper/main.tex",
+      "sha256": "61b4e0b9cc336a647a5c94626df2686f32776126b4c0442a3bdf00629c679223"
+    },
+    {
+      "path": "results/countermeasures/detector-feasibility/scale-sensitivity.json",
+      "sha256": "5148033a36e58d0883aaf84ebd4efdfa59aaf4a9932af042b8509af4c6821936"
+    },
+    {
+      "path": "results/countermeasures/expression-analysis/extracted-output-checks.json",
+      "sha256": "715ef8da14b0b6297011de56597c5316310fafff70d6bd1fb5caa13f8b478e27"
+    },
+    {
+      "path": "results/countermeasures/flattening-xor/checks.json",
+      "sha256": "dcb6dbf2c9a6bd15b6c40583325fa49747cb94f430b66c94779c704fef5c4951"
+    },
+    {
+      "path": "results/countermeasures/flattening-xor/state-model-checks.json",
+      "sha256": "e422d8b5f77217b3b1bc809f7f91ff8bb9a73ab32ee51a83cb6e13dfc4974b6c"
+    },
+    {
+      "path": "results/countermeasures/interface-resource-audit.json",
+      "sha256": "e4832a4560188a737546f3f5a82cf2dd318eeff8fad7e3acf1f2fc6289bae010"
+    },
+    {
+      "path": "results/countermeasures/interface-signature-audit.json",
+      "sha256": "cf6a448c764ac0f736f8840a6e18bcdc9d928408c3511025578601ad29d82302"
+    },
+    {
+      "path": "results/countermeasures/local-normalization/static-comparison.json",
+      "sha256": "32f1a114b601325f5344a60b94e306566ea1ea1ebc6cae690eb6ab5be7cd673c"
+    },
+    {
+      "path": "results/countermeasures/local-normalization/synthetic-tests/result.json",
+      "sha256": "61d3d6d19875f15d3d41160f60cdbbaf640b3313ae3a443dc9b73c5b5d347595"
+    },
+    {
+      "path": "results/countermeasures/seeded-normalization/comparison.json",
+      "sha256": "2761d37e2d169c48d951854309f0447377dbe8527b65bc9d383c46216dcee817"
+    },
+    {
+      "path": "results/countermeasures/transfer/comparison.json",
+      "sha256": "0640d11d374ba3607689313b39984c9b28f75fd98ffcb1b1b0e0c8c550d71a02"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/callsite-summary.json",
+      "sha256": "8c143af8ebeb23a9b88c16f0c49621a6866912df4e627cccb124ce49c081506e"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/compiler-probe-audit.json",
+      "sha256": "0f3b564e36520c9390547c27f154521340bd7e73438983b192175ca210919cb4"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/confirmatory-structure.json",
+      "sha256": "10e80a2f6974b950086ea1c8c60f69c70f7c59dee2b124c7dba00b1c18e1a4c3"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/confirmatory-summary.json",
+      "sha256": "7cbfc79528d839e1e718cfddb971a3a97e93ed965abb924e7dd21a1ea980d978"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/controlled-adapter-first-failure.json",
+      "sha256": "c2a6d0e165838d7f959383778ff6274a40e3b855eb81abe5ac2a4bcdfed87d5c"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/controlled-generation-v2.json",
+      "sha256": "8d470d03407f8a662b4e560948d38783ecfb89ae99a9bed42ab951429fe0f736"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/figures/confirmatory-generation.json",
+      "sha256": "d87f43254ff3656509be48c6d0035b776fe09040e4a9214456fd5d286c865851"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/figures/confirmatory-visual-review.json",
+      "sha256": "6fae3e19bfa7d3a5bc4c2e4afa5b80b4408d307c3af4be0cd4e63a2ed775e7ea"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/figures/normalization-generation.json",
+      "sha256": "6a99cc74252e6074fe6e1debf12f89204824c0a1f748d2437b06c53bcd9cabac"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/figures/normalization-visual-review.json",
+      "sha256": "ec1abc2d68eba63af490792e48afe135f7ebda726eac164d12759586134b48c5"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/inherited-evidence-index.json",
+      "sha256": "819de59dde18a8cf9b6cb1806bdc036fa85c2f506c46ea7d871bad0df3e4266a"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/input-audit.json",
+      "sha256": "fe957d9b5545390f917f0765d12489260d2bddaf20f408cfdf8eff853b26d922"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-check-plans-v2.json",
+      "sha256": "cff6cb406cb1b3c8d3829987bc2008f1b64db54669f106bd778493672391e977"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-function-features.json",
+      "sha256": "6d1228035ee1d991cc84ef390a78632a9452167ff61bcf580c0371c4206095ef"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-helper-truth/checks.json",
+      "sha256": "2775dd883d2c6afcd5bec4bf1668e587f606de0adf1a2e3e3189ac5668aba6ce"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-matching-results.json",
+      "sha256": "749651e1cc744f816ff683ea639700ca495274a208043e38b919d836a57a6005"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-output-audit.json",
+      "sha256": "28e66849c1fab7fa80e0f556ed88a581ea8f1310775390df44a8d794a85bd9cf"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-plan.json",
+      "sha256": "9f5d90bb3ac2f23866cf32d9f3b4fcb38d5d6864946e85f755569f1342653d14"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-replays/172adcc0cd9b49aca166e490aaf62dfd/manifest.json",
+      "sha256": "7389c76b43d86bce289433c9238cdacbc39359c8942ebe68ad4035f6c78301cf"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-replays/172adcc0cd9b49aca166e490aaf62dfd/status.json",
+      "sha256": "487a07c995acba6fa91dc27e3fc6203f780831fd3bc153c5ddc698adf2332f20"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-replays/f3439623753041b0bb5538490a013b60/replayer-source-v1.py",
+      "sha256": "d792ea8fe354aa7d382c957fba63304a69d516290ebaba0bc7961d7612925205"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-replays/f3439623753041b0bb5538490a013b60/status.json",
+      "sha256": "c643ad395117fc491faf5cae22c5c6d3b1a43881fb21265ada53c1bebfdbe5cd"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-replays/f3439623753041b0bb5538490a013b60/webminerpoolhashcn-constsplit-stderr.txt",
+      "sha256": "6c4a588f817f43ff4727a896044d7e15579635ea3d8cd86009c059577f218622"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/normalization-static.json",
+      "sha256": "029e6d1e43b8db8600c924fbc51c6cd6fe31019e57bd836be368f0a217ec1b38"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/post-performance/7f78f8286b4c4c67b3ab5fb42e371e51/summarize-callsites-stderr.txt",
+      "sha256": "3d15bece4b9199aac57b9e9d00ae33f87018e755305db22600f5822019926104"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/post-performance-recovery.json",
+      "sha256": "e8d8829c2630be914002f3b3496e57cbc73291c4e77b434e0dce81954d1bee05"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/prior-method-audit.json",
+      "sha256": "688ceb07edd04893f045a5a724d438e3f8bba615de2f163a093b9cfaa97643ab"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/runs/input-diagnostic-17d5dd4803304d40b16c07fb221a2747/outputs/input-diagnostic.json",
+      "sha256": "663717cfdac3ed81db8bb683e6596505bca373a9a703f6c8003ad3b890c1bf04"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/runs/input-diagnostic-2f43d8c5eaf649ac9011e28a1260ff97/failure.json",
+      "sha256": "a4bc917e2bd490d93f963140782fc5f81ec5ec8fa7e0a28dbb1148b80a6ef218"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/runs/input-diagnostic-7d69953eb3d44538929da22fe95b4b63/controlled-audit.json",
+      "sha256": "d0b5c228e647b1e44db82d17e8f7d8c8a94e0ba99d8de5c61bb38a8a41e43855"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/runs/input-diagnostic-9e7f9b4e659c4188a5b701dc53c23096/completion.json",
+      "sha256": "adf3b53a0d2ed31215887641787b28930e6ada1d28948769a4ac26de4c2dd627"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/runs/input-diagnostic-9e7f9b4e659c4188a5b701dc53c23096/failure.json",
+      "sha256": "0dc19e36f5840d7eb89a902c2419c174a61b0b957ced4ac24ef753c32386136f"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/runs/input-diagnostic-bcebbc1a56fe4253b48b3b95e2911d9e/paths-audit.json",
+      "sha256": "25c9d7ca57ada8625c57970a50b13b0899f5b489fb9e6575b10660525ae8c409"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/runs/runtime-bd69ee8d729c4792823d9f3860c5c0c6/pilot-audit.json",
+      "sha256": "62daade20d217fc2a47fead2a4f4ae9901103d86399bea2e5387d88ea79daf09"
+    },
+    {
+      "path": "results/followup-evaluation-20261016/static-input-contract.json",
+      "sha256": "d3d9e20c0d87bbd68cb1d54d94121a37c8a7089418e97276045c9d51c823e968"
+    },
+    {
+      "path": "scripts/normalize_wat_local.py",
+      "sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9"
+    }
+  ],
+  "audit_script_sha256": "7826e7a0c355e3094cd5af8033d6fc5d4123d5fc74b5b5e3335f3e4027870cfc",
+  "wasm_executed_by_this_audit": false,
+  "app_goal_completion": "Pending explicit update_goal call after reviewing this audit.",
+  "no_remaining_required_research_work": true
+}

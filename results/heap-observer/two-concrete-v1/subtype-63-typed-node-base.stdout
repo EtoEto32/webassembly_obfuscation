@@ -1,0 +1,13 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_11
+[fuzz-exec] note result: func_11 => object(object(object(null)))
+[fuzz-exec] export func_13_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_15_invoker
+[LoggingExternalInterface logging externref(105)]
+[LoggingExternalInterface logging function]
+exception thrown: RuntimeError: unreachable
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_11","known":true,"status":"returned","unsupported":[]},{"name":"func_13_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_15_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"multi","name":"func_11","slot":1},{"id":2,"channel":"multi","name":"func_11","slot":2}]}

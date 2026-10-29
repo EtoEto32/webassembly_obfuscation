@@ -1,0 +1,1381 @@
+{
+  "models": {
+    "ordered-guards": {
+      "inputs": 4,
+      "gates": [
+        [
+          "xor",
+          [
+            "input",
+            0
+          ],
+          [
+            "input",
+            1
+          ]
+        ],
+        [
+          "and",
+          [
+            "input",
+            2
+          ],
+          [
+            "input",
+            3
+          ]
+        ],
+        [
+          "or",
+          [
+            "input",
+            2
+          ],
+          [
+            "input",
+            3
+          ]
+        ],
+        [
+          "and",
+          [
+            "gate",
+            0
+          ],
+          [
+            "gate",
+            1
+          ]
+        ],
+        [
+          "or",
+          [
+            "gate",
+            0
+          ],
+          [
+            "gate",
+            2
+          ]
+        ],
+        [
+          "xor",
+          [
+            "gate",
+            3
+          ],
+          [
+            "gate",
+            4
+          ]
+        ]
+      ]
+    }
+  },
+  "targets": [
+    {
+      "name": "ordered-guards",
+      "mode": "plain",
+      "stage": "raw",
+      "file": "ordered-guards-plain.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "plain",
+      "stage": "O3",
+      "file": "ordered-guards-plain-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "ordered-guards-dag.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag-recovered",
+      "stage": "raw",
+      "file": "ordered-guards-dag-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "ordered-guards-dag-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag-recovered",
+      "stage": "O3",
+      "file": "ordered-guards-dag-O3-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "stage": "raw",
+      "file": "ordered-guards-synth.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth-recovered",
+      "stage": "raw",
+      "file": "ordered-guards-synth-recovered.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "stage": "O3",
+      "file": "ordered-guards-synth-O3.wasm",
+      "negative": false
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth-recovered",
+      "stage": "O3",
+      "file": "ordered-guards-synth-O3-recovered.wasm",
+      "negative": false
+    }
+  ],
+  "transforms": [
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "milliseconds": 40.163000000000004,
+      "weights": [
+        5,
+        3,
+        3,
+        2,
+        2,
+        1
+      ],
+      "synthesis": {
+        "status": "dominance-certified"
+      },
+      "record": {
+        "inputs": 4,
+        "n": 6,
+        "output": 5,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            5
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            -10
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            16,
+            5
+          ],
+          [
+            20,
+            -6
+          ],
+          [
+            24,
+            -6
+          ],
+          [
+            28,
+            6
+          ],
+          [
+            32,
+            7
+          ],
+          [
+            33,
+            -10
+          ],
+          [
+            34,
+            -10
+          ],
+          [
+            35,
+            20
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            64,
+            3
+          ],
+          [
+            80,
+            -4
+          ],
+          [
+            96,
+            -4
+          ],
+          [
+            112,
+            4
+          ],
+          [
+            128,
+            3
+          ],
+          [
+            140,
+            -6
+          ],
+          [
+            160,
+            2
+          ],
+          [
+            256,
+            3
+          ],
+          [
+            320,
+            -2
+          ],
+          [
+            416,
+            -4
+          ],
+          [
+            512,
+            1
+          ],
+          [
+            576,
+            -2
+          ],
+          [
+            768,
+            -2
+          ],
+          [
+            832,
+            4
+          ]
+        ]
+      },
+      "deviation": {
+        "strict": {
+          "status": "unsat"
+        },
+        "tie": {
+          "status": "unsat"
+        }
+      }
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "milliseconds": 129.0714,
+      "weights": [
+        3,
+        3,
+        3,
+        2,
+        2,
+        1
+      ],
+      "synthesis": {
+        "status": "verified",
+        "weights": [
+          3,
+          3,
+          3,
+          2,
+          2,
+          1
+        ],
+        "trace": [
+          {
+            "weights": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ],
+            "status": "sat",
+            "milliseconds": 8.590299999999996,
+            "counterexample": {
+              "x": 1,
+              "state": 1,
+              "errors": [
+                0,
+                0,
+                0,
+                0,
+                1,
+                0
+              ]
+            }
+          },
+          {
+            "weights": [
+              1,
+              1,
+              1,
+              1,
+              2,
+              1
+            ],
+            "status": "sat",
+            "milliseconds": 8.709000000000023,
+            "counterexample": {
+              "x": 1,
+              "state": 25,
+              "errors": [
+                0,
+                0,
+                0,
+                1,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "weights": [
+              1,
+              1,
+              1,
+              2,
+              2,
+              1
+            ],
+            "status": "sat",
+            "milliseconds": 8.171600000000002,
+            "counterexample": {
+              "x": 8,
+              "state": 31,
+              "errors": [
+                1,
+                1,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "weights": [
+              1,
+              3,
+              1,
+              2,
+              2,
+              1
+            ],
+            "status": "sat",
+            "milliseconds": 8.074599999999988,
+            "counterexample": {
+              "x": 12,
+              "state": 31,
+              "errors": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "weights": [
+              3,
+              1,
+              1,
+              2,
+              2,
+              1
+            ],
+            "status": "sat",
+            "milliseconds": 7.936899999999969,
+            "counterexample": {
+              "x": 1,
+              "state": 27,
+              "errors": [
+                0,
+                1,
+                0,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "weights": [
+              3,
+              3,
+              1,
+              2,
+              2,
+              1
+            ],
+            "status": "sat",
+            "milliseconds": 8.6079,
+            "counterexample": {
+              "x": 4,
+              "state": 0,
+              "errors": [
+                0,
+                0,
+                1,
+                0,
+                0,
+                0
+              ]
+            }
+          },
+          {
+            "weights": [
+              3,
+              3,
+              3,
+              2,
+              2,
+              1
+            ],
+            "status": "unsat",
+            "milliseconds": 8.865900000000037
+          }
+        ],
+        "milliseconds": 89.95930000000001
+      },
+      "record": {
+        "inputs": 4,
+        "n": 6,
+        "output": 5,
+        "flip": 0,
+        "terms": [
+          [
+            1,
+            3
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            -6
+          ],
+          [
+            4,
+            3
+          ],
+          [
+            8,
+            3
+          ],
+          [
+            16,
+            5
+          ],
+          [
+            20,
+            -6
+          ],
+          [
+            24,
+            -6
+          ],
+          [
+            28,
+            6
+          ],
+          [
+            32,
+            5
+          ],
+          [
+            33,
+            -6
+          ],
+          [
+            34,
+            -6
+          ],
+          [
+            35,
+            12
+          ],
+          [
+            48,
+            -2
+          ],
+          [
+            64,
+            3
+          ],
+          [
+            80,
+            -4
+          ],
+          [
+            96,
+            -4
+          ],
+          [
+            112,
+            4
+          ],
+          [
+            128,
+            3
+          ],
+          [
+            140,
+            -6
+          ],
+          [
+            160,
+            2
+          ],
+          [
+            256,
+            3
+          ],
+          [
+            320,
+            -2
+          ],
+          [
+            416,
+            -4
+          ],
+          [
+            512,
+            1
+          ],
+          [
+            576,
+            -2
+          ],
+          [
+            768,
+            -2
+          ],
+          [
+            832,
+            4
+          ]
+        ]
+      },
+      "deviation": {
+        "strict": {
+          "status": "sat",
+          "x": 1,
+          "state": 3,
+          "errors": [
+            0,
+            1,
+            0,
+            1,
+            1,
+            0
+          ],
+          "energy": 7,
+          "neighbor_energies": [
+            6,
+            2,
+            10,
+            6,
+            6,
+            8
+          ]
+        },
+        "tie": {
+          "status": "unsat"
+        }
+      }
+    }
+  ],
+  "attacks": [
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "stage": "raw",
+      "file": "ordered-guards-dag.wasm",
+      "milliseconds": 70.69779999999997,
+      "model": {
+        "inputs": 4,
+        "n": 6,
+        "output": 9,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 7,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 8,
+            "before_support": 2
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              0,
+              1,
+              7
+            ],
+            "truth": 96,
+            "before_support": 3
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 6,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              6,
+              8
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 356,
+        "trace": [
+          {
+            "coordinate": 9,
+            "terms_before": 28,
+            "terms_after": 23,
+            "args": [
+              6,
+              8
+            ],
+            "ties": 0,
+            "candidates": 6
+          },
+          {
+            "coordinate": 6,
+            "terms_before": 23,
+            "terms_after": 18,
+            "args": [
+              4,
+              5
+            ],
+            "ties": 0,
+            "candidates": 5
+          },
+          {
+            "coordinate": 4,
+            "terms_before": 18,
+            "terms_after": 13,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 10,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 8,
+            "terms_before": 10,
+            "terms_after": 3,
+            "args": [
+              0,
+              1,
+              7
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 7,
+            "terms_before": 3,
+            "terms_after": 0,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 1.1236000000000024
+      },
+      "family_checked": true
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "stage": "O3",
+      "file": "ordered-guards-dag-O3.wasm",
+      "milliseconds": 78.52880000000006,
+      "model": {
+        "inputs": 4,
+        "n": 6,
+        "output": 9,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 7,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 8,
+            "before_support": 2
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              0,
+              1,
+              7
+            ],
+            "truth": 96,
+            "before_support": 3
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 6,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              6,
+              8
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 356,
+        "trace": [
+          {
+            "coordinate": 9,
+            "terms_before": 28,
+            "terms_after": 23,
+            "args": [
+              6,
+              8
+            ],
+            "ties": 0,
+            "candidates": 6
+          },
+          {
+            "coordinate": 6,
+            "terms_before": 23,
+            "terms_after": 18,
+            "args": [
+              4,
+              5
+            ],
+            "ties": 0,
+            "candidates": 5
+          },
+          {
+            "coordinate": 4,
+            "terms_before": 18,
+            "terms_after": 13,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 10,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 8,
+            "terms_before": 10,
+            "terms_after": 3,
+            "args": [
+              0,
+              1,
+              7
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 7,
+            "terms_before": 3,
+            "terms_after": 0,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 1.1624000000000079
+      },
+      "family_checked": true
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "stage": "raw",
+      "file": "ordered-guards-synth.wasm",
+      "milliseconds": 64.94899999999993,
+      "model": {
+        "inputs": 4,
+        "n": 6,
+        "output": 9,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 7,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 8,
+            "before_support": 2
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              0,
+              1,
+              7
+            ],
+            "truth": 96,
+            "before_support": 3
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 6,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              6,
+              8
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 228,
+        "trace": [
+          {
+            "coordinate": 9,
+            "terms_before": 28,
+            "terms_after": 23,
+            "args": [
+              6,
+              8
+            ],
+            "ties": 0,
+            "candidates": 5
+          },
+          {
+            "coordinate": 6,
+            "terms_before": 23,
+            "terms_after": 18,
+            "args": [
+              4,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 4,
+            "terms_before": 18,
+            "terms_after": 13,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 10,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 8,
+            "terms_before": 10,
+            "terms_after": 3,
+            "args": [
+              0,
+              1,
+              7
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 7,
+            "terms_before": 3,
+            "terms_after": 0,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 1.0916999999999177
+      },
+      "family_checked": true
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "stage": "O3",
+      "file": "ordered-guards-synth-O3.wasm",
+      "milliseconds": 77.44220000000001,
+      "model": {
+        "inputs": 4,
+        "n": 6,
+        "output": 9,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 7,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 8,
+            "before_support": 2
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              0,
+              1,
+              7
+            ],
+            "truth": 96,
+            "before_support": 3
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 4
+          },
+          {
+            "coordinate": 4,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 6,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 2
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              6,
+              8
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_candidate_rows": 228,
+        "trace": [
+          {
+            "coordinate": 9,
+            "terms_before": 28,
+            "terms_after": 23,
+            "args": [
+              6,
+              8
+            ],
+            "ties": 0,
+            "candidates": 5
+          },
+          {
+            "coordinate": 6,
+            "terms_before": 23,
+            "terms_after": 18,
+            "args": [
+              4,
+              5
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 4,
+            "terms_before": 18,
+            "terms_after": 13,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 4
+          },
+          {
+            "coordinate": 5,
+            "terms_before": 13,
+            "terms_after": 10,
+            "args": [
+              0,
+              1
+            ],
+            "ties": 0,
+            "candidates": 3
+          },
+          {
+            "coordinate": 8,
+            "terms_before": 10,
+            "terms_after": 3,
+            "args": [
+              0,
+              1,
+              7
+            ],
+            "ties": 0,
+            "candidates": 2
+          },
+          {
+            "coordinate": 7,
+            "terms_before": 3,
+            "terms_after": 0,
+            "args": [
+              2,
+              3
+            ],
+            "ties": 0,
+            "candidates": 1
+          }
+        ],
+        "milliseconds": 1.1285000000000878
+      },
+      "family_checked": true
+    }
+  ],
+  "probes": [
+    {
+      "name": "ordered-guards",
+      "mode": "dag",
+      "file": "ordered-guards-dag-probe.wasm",
+      "n": 6
+    },
+    {
+      "name": "ordered-guards",
+      "mode": "synth",
+      "file": "ordered-guards-synth-probe.wasm",
+      "n": 6
+    }
+  ],
+  "old_attack": [
+    {
+      "file": "ordered-guards-dag.wasm",
+      "status": "recovered",
+      "model": {
+        "inputs": 4,
+        "n": 6,
+        "output": 9,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 4,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 6
+          },
+          {
+            "coordinate": 7,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 6,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              5,
+              7
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              6,
+              8
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 132,
+        "max_support": 6,
+        "milliseconds": 0.31729999999996483
+      },
+      "milliseconds": 0.32370000000003785
+    },
+    {
+      "file": "ordered-guards-dag-O3.wasm",
+      "status": "recovered",
+      "model": {
+        "inputs": 4,
+        "n": 6,
+        "output": 9,
+        "flip": 0,
+        "rules": [
+          {
+            "coordinate": 4,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 5,
+            "args": [
+              0,
+              1
+            ],
+            "truth": 6,
+            "before_support": 6
+          },
+          {
+            "coordinate": 7,
+            "args": [
+              2,
+              3
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 6,
+            "args": [
+              4,
+              5
+            ],
+            "truth": 14,
+            "before_support": 4
+          },
+          {
+            "coordinate": 8,
+            "args": [
+              5,
+              7
+            ],
+            "truth": 8,
+            "before_support": 4
+          },
+          {
+            "coordinate": 9,
+            "args": [
+              6,
+              8
+            ],
+            "truth": 6,
+            "before_support": 2
+          }
+        ],
+        "enumerated_rows": 132,
+        "max_support": 6,
+        "milliseconds": 0.3116999999999148
+      },
+      "milliseconds": 0.3178000000000347
+    },
+    {
+      "file": "ordered-guards-synth.wasm",
+      "status": "unsupported",
+      "reason": "Recovered rule exceeds 5-input WAT lookup profile",
+      "milliseconds": 0.17610000000001236
+    },
+    {
+      "file": "ordered-guards-synth-O3.wasm",
+      "status": "unsupported",
+      "reason": "Recovered rule exceeds 5-input WAT lookup profile",
+      "milliseconds": 0.17359999999999598
+    }
+  ],
+  "flat_controls": [
+    {
+      "name": "ordered-guards",
+      "status": "sat",
+      "milliseconds": 9.085299999999963,
+      "counterexample": {
+        "x": 0,
+        "state": 27,
+        "errors": [
+          1,
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "z3": "4.13.3"
+}

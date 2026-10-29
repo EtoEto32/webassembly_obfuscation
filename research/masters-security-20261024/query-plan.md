@@ -1,0 +1,11 @@
+# B：再入後に読取り位置が渡されるview契約
+
+2026-10-24、実行前に記録。checksumを事前計算できるconsumer-v2の反証を受け、保護対象のAPIを切り分ける。
+
+この追試の契約は、準備時に固定したR全体について、callback後にcallerが渡す16個の位置の**それぞれの旧byte値**を返すこと。単一checksumを返す契約ではない。位置列はcallback後に生成器から取得し、準備側へ渡さない。再現用PRNGは秘密性を提供するものではなく、callerの後続要求を模型化するだけである。決まった16位置が事前に分かる用途では、その16byteだけの全コピーを優先すべきであり、この試験を適用しない。
+
+対照は全コピー・部分退避後materialize・部分退避後の位置lookup・fixture固有の手書き範囲lookup。比較対象の全コピーも位置lookupだけを行い、不要な全buffer checksumを課さない。4byte checksumは異なるbufferを区別できず、任意位置の旧値viewを提供できないことを具体的な衝突例で確認する。
+
+compiler-v2のRust最適化2の8例を使用。5反復×4方式、各100 warmup、300呼出し×9 batch、process順shuffle。測定外で各位置のbyteを元の全コピーと比較し、測定中は返却byte列のchecksumを方式間照合。これはAPI適合性を確かめる自作microbenchmarkであり、実アプリケーション採用の証拠ではない。
+
+同期待ちのhost consumer終了まで他のwriterを許可しない。任意の長さでviewを保持する、並行するguestを許可する、プラグインの全計算を安く事前予測する、といった条件は扱わない。原理の新規性の証明とは分けて報告する。

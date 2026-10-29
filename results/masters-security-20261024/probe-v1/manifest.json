@@ -1,0 +1,510 @@
+[
+  {
+    "name": "authority",
+    "file": "authority-raw.wasm",
+    "sha256": "b19b94287a75af82b19c92d9a0df8599cf1b8c4565a1c9539e2e437db20ef0ad",
+    "bytes": 67
+  },
+  {
+    "name": "authority",
+    "file": "authority-O3.wasm",
+    "sha256": "b19b94287a75af82b19c92d9a0df8599cf1b8c4565a1c9539e2e437db20ef0ad",
+    "bytes": 67
+  },
+  {
+    "name": "budget",
+    "file": "budget-raw.wasm",
+    "sha256": "4a4946eaa1818187a8173af739f2722868e818c9330e4b658d44c8ccfcb365eb",
+    "bytes": 60
+  },
+  {
+    "name": "budget",
+    "file": "budget-O3.wasm",
+    "sha256": "4a4946eaa1818187a8173af739f2722868e818c9330e4b658d44c8ccfcb365eb",
+    "bytes": 60
+  },
+  {
+    "name": "snapshot-byte",
+    "file": "snapshot-byte-raw.wasm",
+    "sha256": "86cf2b2303f09b87bc7dbbf8f581dbb019e6406fa71299ed9cbc5c381abb752d",
+    "bytes": 63,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            1
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.22379999999999622
+  },
+  {
+    "name": "snapshot-byte",
+    "file": "snapshot-byte-O3.wasm",
+    "sha256": "86cf2b2303f09b87bc7dbbf8f581dbb019e6406fa71299ed9cbc5c381abb752d",
+    "bytes": 63,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            1
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.07309999999999262
+  },
+  {
+    "name": "snapshot-word-offset",
+    "file": "snapshot-word-offset-raw.wasm",
+    "sha256": "3d08b399d064157fc2ca5aad8fb73adc9742517f7c8b18aafc1496f49d76e126",
+    "bytes": 63,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 7,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.07810000000002537
+  },
+  {
+    "name": "snapshot-word-offset",
+    "file": "snapshot-word-offset-O3.wasm",
+    "sha256": "3d08b399d064157fc2ca5aad8fb73adc9742517f7c8b18aafc1496f49d76e126",
+    "bytes": 63,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 7,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.06899999999998574
+  },
+  {
+    "name": "snapshot-wrapped-address",
+    "file": "snapshot-wrapped-address-raw.wasm",
+    "sha256": "733f1f8d1dfbfd7eabc33136cad45aeccff0b26414329a96f5c8a7bb09430794",
+    "bytes": 66,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "add",
+            [
+              "arg",
+              0
+            ],
+            [
+              "const",
+              7
+            ]
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            2
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.07170000000000787
+  },
+  {
+    "name": "snapshot-wrapped-address",
+    "file": "snapshot-wrapped-address-O3.wasm",
+    "sha256": "733f1f8d1dfbfd7eabc33136cad45aeccff0b26414329a96f5c8a7bb09430794",
+    "bytes": 66,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "add",
+            [
+              "arg",
+              0
+            ],
+            [
+              "const",
+              7
+            ]
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            2
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.07909999999999862
+  },
+  {
+    "name": "snapshot-two-writes",
+    "file": "snapshot-two-writes-raw.wasm",
+    "sha256": "2b09d27bb81d4ac355cc94e4221eae585450401000837c5654ef805a3e6c0e70",
+    "bytes": 73,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        },
+        {
+          "addr": [
+            "add",
+            [
+              "arg",
+              0
+            ],
+            [
+              "const",
+              12
+            ]
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.09209999999998386
+  },
+  {
+    "name": "snapshot-two-writes",
+    "file": "snapshot-two-writes-O3.wasm",
+    "sha256": "2b09d27bb81d4ac355cc94e4221eae585450401000837c5654ef805a3e6c0e70",
+    "bytes": 73,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        },
+        {
+          "addr": [
+            "add",
+            [
+              "arg",
+              0
+            ],
+            [
+              "const",
+              12
+            ]
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.08819999999998274
+  },
+  {
+    "name": "snapshot-fill",
+    "file": "snapshot-fill-raw.wasm",
+    "sha256": "4a7f70939254be2b26171fec357ddffa703356df81e98fe1b2350125611244f7",
+    "bytes": 65,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "arg",
+            2
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.07069999999997911
+  },
+  {
+    "name": "snapshot-fill",
+    "file": "snapshot-fill-O3.wasm",
+    "sha256": "4a7f70939254be2b26171fec357ddffa703356df81e98fe1b2350125611244f7",
+    "bytes": 65,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "arg",
+            2
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.07049999999997336
+  },
+  {
+    "name": "snapshot-copy",
+    "file": "snapshot-copy-raw.wasm",
+    "sha256": "ee32cde18f185709048e73ec53d84b3098ea7a00a937c970a3720477c0327485",
+    "bytes": 67,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "arg",
+            2
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.06889999999992735
+  },
+  {
+    "name": "snapshot-copy",
+    "file": "snapshot-copy-O3.wasm",
+    "sha256": "ee32cde18f185709048e73ec53d84b3098ea7a00a937c970a3720477c0327485",
+    "bytes": 67,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "arg",
+            2
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.07550000000000612
+  },
+  {
+    "name": "snapshot-branch",
+    "file": "snapshot-branch-raw.wasm",
+    "sha256": "7ca0b8d428fe1adc82ee5493b10abc24a6aeabf8dafa04dcdb8c17934617bb5f",
+    "bytes": 77,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        },
+        {
+          "addr": [
+            "const",
+            4094
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.0908000000000575
+  },
+  {
+    "name": "snapshot-branch",
+    "file": "snapshot-branch-O3.wasm",
+    "sha256": "7ca0b8d428fe1adc82ee5493b10abc24a6aeabf8dafa04dcdb8c17934617bb5f",
+    "bytes": 77,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "arg",
+            0
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        },
+        {
+          "addr": [
+            "const",
+            4094
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.1082999999999501
+  },
+  {
+    "name": "snapshot-partial-trap",
+    "file": "snapshot-partial-trap-raw.wasm",
+    "sha256": "eaa7e28bc05f55636ac275f29a37e23f4d0028fb7beaadcef45486d4c0a3df16",
+    "bytes": 72,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "const",
+            4
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            1
+          ]
+        },
+        {
+          "addr": [
+            "const",
+            131071
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.07809999999996986
+  },
+  {
+    "name": "snapshot-partial-trap",
+    "file": "snapshot-partial-trap-O3.wasm",
+    "sha256": "eaa7e28bc05f55636ac275f29a37e23f4d0028fb7beaadcef45486d4c0a3df16",
+    "bytes": 72,
+    "summary": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "const",
+            4
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            1
+          ]
+        },
+        {
+          "addr": [
+            "const",
+            131071
+          ],
+          "offset": 0,
+          "length": [
+            "const",
+            4
+          ]
+        }
+      ]
+    },
+    "summary_ms": 0.08490000000005438
+  },
+  {
+    "name": "snapshot-unknown-load",
+    "file": "snapshot-unknown-load-raw.wasm",
+    "sha256": "e70284ad97b764a5de01ae9f1252a3f852037c8927cf06278c3f08b2d0e24641",
+    "bytes": 66,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported address/value expression"
+    },
+    "summary_ms": 0.07049999999997336
+  },
+  {
+    "name": "snapshot-unknown-load",
+    "file": "snapshot-unknown-load-O3.wasm",
+    "sha256": "e70284ad97b764a5de01ae9f1252a3f852037c8927cf06278c3f08b2d0e24641",
+    "bytes": 66,
+    "summary": {
+      "kind": "full",
+      "reason": "unsupported address/value expression"
+    },
+    "summary_ms": 0.09219999999998674
+  }
+]

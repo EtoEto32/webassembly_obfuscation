@@ -1,0 +1,205 @@
+{
+  "targets": [
+    {
+      "fixture": "and",
+      "mode": "plain",
+      "form": "raw",
+      "file": "and-plain.wasm",
+      "bytes": 56,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "and",
+      "mode": "plain",
+      "form": "O3",
+      "file": "and-plain-O3.wasm",
+      "bytes": 56,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "and",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "and-borrowed.wasm",
+      "bytes": 100,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "and",
+      "mode": "recovered",
+      "form": "raw",
+      "file": "and-borrowed-recovered.wasm",
+      "bytes": 56,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "and",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "and-borrowed-O3.wasm",
+      "bytes": 96,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "and",
+      "mode": "recovered",
+      "form": "O3",
+      "file": "and-borrowed-O3-recovered.wasm",
+      "bytes": 56,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "mul",
+      "mode": "plain",
+      "form": "raw",
+      "file": "mul-plain.wasm",
+      "bytes": 56,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "mul",
+      "mode": "plain",
+      "form": "O3",
+      "file": "mul-plain-O3.wasm",
+      "bytes": 56,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "mul",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "mul-borrowed.wasm",
+      "bytes": 100,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "mul",
+      "mode": "recovered",
+      "form": "raw",
+      "file": "mul-borrowed-recovered.wasm",
+      "bytes": 56,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "mul",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "mul-borrowed-O3.wasm",
+      "bytes": 96,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "mul",
+      "mode": "recovered",
+      "form": "O3",
+      "file": "mul-borrowed-O3-recovered.wasm",
+      "bytes": 56,
+      "n": 2,
+      "calls": 4145,
+      "traps": 0
+    },
+    {
+      "fixture": "div",
+      "mode": "plain",
+      "form": "raw",
+      "file": "div-plain.wasm",
+      "bytes": 60,
+      "n": 3,
+      "calls": 4439,
+      "traps": 561
+    },
+    {
+      "fixture": "div",
+      "mode": "plain",
+      "form": "O3",
+      "file": "div-plain-O3.wasm",
+      "bytes": 60,
+      "n": 3,
+      "calls": 4439,
+      "traps": 561
+    },
+    {
+      "fixture": "div",
+      "mode": "borrowed",
+      "form": "raw",
+      "file": "div-borrowed.wasm",
+      "bytes": 104,
+      "n": 3,
+      "calls": 4439,
+      "traps": 561
+    },
+    {
+      "fixture": "div",
+      "mode": "recovered",
+      "form": "raw",
+      "file": "div-borrowed-recovered.wasm",
+      "bytes": 60,
+      "n": 3,
+      "calls": 4439,
+      "traps": 561
+    },
+    {
+      "fixture": "div",
+      "mode": "borrowed",
+      "form": "O3",
+      "file": "div-borrowed-O3.wasm",
+      "bytes": 100,
+      "n": 3,
+      "calls": 4439,
+      "traps": 561
+    },
+    {
+      "fixture": "div",
+      "mode": "recovered",
+      "form": "O3",
+      "file": "div-borrowed-O3-recovered.wasm",
+      "bytes": 60,
+      "n": 3,
+      "calls": 4439,
+      "traps": 561
+    }
+  ],
+  "calls": 76374,
+  "expected_traps": 3366,
+  "mismatches": 0,
+  "negative": [
+    {
+      "file": "div-broken.wasm",
+      "trapped": true,
+      "before": 305419896,
+      "after": 305419903,
+      "corruption_detected": true
+    },
+    {
+      "file": "div-broken-O3.wasm",
+      "trapped": true,
+      "before": 305419896,
+      "after": 305419903,
+      "corruption_detected": true
+    }
+  ],
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48"
+}

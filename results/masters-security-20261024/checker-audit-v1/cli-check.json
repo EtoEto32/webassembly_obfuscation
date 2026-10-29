@@ -1,0 +1,39 @@
+{
+  "wasm_sha256": "d8097b941ce3299350102f8774d423c1975d8a7843edddc64e6227bf679716d0",
+  "certificate_sha256": "8bba96256aff06918ee0c104cfb8075f57365eeb52df671161b2ea13695e3929",
+  "checker_source_sha256": "f2bc1536975294b483b36555bf01a1dc2a37a7ef3c441f5cd24a4e413b91153b",
+  "standardBinaryValidation": "passed",
+  "verdict": {
+    "accepted": true,
+    "mode": "range-checked",
+    "missing": [],
+    "derived": {
+      "kind": "ranges",
+      "writes": [
+        {
+          "addr": [
+            "const",
+            0
+          ],
+          "offset": 1052672,
+          "length": [
+            "const",
+            1
+          ]
+        }
+      ],
+      "visitedFunctions": [
+        2
+      ],
+      "checker": "stack-bytes-v1"
+    }
+  },
+  "required_embedding": [
+    "nonshared memory32",
+    "exclusive writer interval through view consumption",
+    "trusted host",
+    "frozen read set and arguments",
+    "instantiate the exact certified bytes"
+  ],
+  "validation_and_check_ms": 17.825400000000005
+}

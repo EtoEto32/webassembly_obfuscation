@@ -1,0 +1,400 @@
+[
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=0",
+      "--cfg",
+      "case=\"swap\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-0.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.06430260000000002,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-0.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-0.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.03277559999999999,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=2",
+      "--cfg",
+      "case=\"swap\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-2.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.06820740000000003,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-2.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-2.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.03305820000000004,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=s",
+      "--cfg",
+      "case=\"swap\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-s.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.06830550000000002,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-s.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\swap-s.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.03239990000000004,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=0",
+      "--cfg",
+      "case=\"stages\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-0.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.06217129999999993,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-0.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-0.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.030695199999999923,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=2",
+      "--cfg",
+      "case=\"stages\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-2.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.0651851000000001,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-2.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-2.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.031132600000000066,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=s",
+      "--cfg",
+      "case=\"stages\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-s.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.06508610000000004,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-s.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\stages-s.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.03186230000000001,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=0",
+      "--cfg",
+      "case=\"classify\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-0.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.06224530000000006,
+    "stdout": "",
+    "stderr": "warning: function `mix` is never used\n --> C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs:8:4\n  |\n8 | fn mix(x:u32)->u32 { (x^13).wrapping_mul(1664525).wrapping_add(1013904223) }\n  |    ^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: function `mix4` is never used\n  --> C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs:10:4\n   |\n10 | fn mix4(x:u32)->u32 { mix(mix(mix(mix(x)))) }\n   |    ^^^^\n\nwarning: 2 warnings emitted\n\n"
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-0.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-0.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.029830199999999918,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=2",
+      "--cfg",
+      "case=\"classify\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-2.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.06626399999999988,
+    "stdout": "",
+    "stderr": "warning: function `mix` is never used\n --> C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs:8:4\n  |\n8 | fn mix(x:u32)->u32 { (x^13).wrapping_mul(1664525).wrapping_add(1013904223) }\n  |    ^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: function `mix4` is never used\n  --> C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs:10:4\n   |\n10 | fn mix4(x:u32)->u32 { mix(mix(mix(mix(x)))) }\n   |    ^^^^\n\nwarning: 2 warnings emitted\n\n"
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-2.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-2.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.032928099999999905,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "rustc",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs",
+      "--edition=2021",
+      "--crate-type=lib",
+      "--crate-name=frontier_probe",
+      "--emit=obj",
+      "--target=wasm32-unknown-unknown",
+      "--sysroot",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\masters-security-rust\\sysroot",
+      "-C",
+      "panic=abort",
+      "-C",
+      "opt-level=s",
+      "--cfg",
+      "case=\"classify\"",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-s.o"
+    ],
+    "returncode": 0,
+    "seconds": 0.06509739999999997,
+    "stdout": "",
+    "stderr": "warning: function `mix` is never used\n --> C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs:8:4\n  |\n8 | fn mix(x:u32)->u32 { (x^13).wrapping_mul(1664525).wrapping_add(1013904223) }\n  |    ^^^\n  |\n  = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default\n\nwarning: function `mix4` is never used\n  --> C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.rs:10:4\n   |\n10 | fn mix4(x:u32)->u32 { mix(mix(mix(mix(x)))) }\n   |    ^^^^\n\nwarning: 2 warnings emitted\n\n"
+  },
+  {
+    "command": [
+      "C:\\Users\\ettotto\\.rustup\\toolchains\\nightly-x86_64-pc-windows-msvc\\lib\\rustlib\\x86_64-pc-windows-msvc\\bin\\rust-lld.exe",
+      "-flavor",
+      "wasm",
+      "--no-entry",
+      "--export=run",
+      "--allow-undefined",
+      "--strip-all",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-s.o",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2\\classify-s.wasm"
+    ],
+    "returncode": 0,
+    "seconds": 0.0305032999999999,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\fuel-frontier\\compiler.cjs",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\fuel-frontier\\compiler-v2"
+    ],
+    "returncode": 0,
+    "seconds": 0.06692099999999979,
+    "stdout": "{\"checks\":7560,\"transformedChecks\":5040,\"secretPairs\":328,\"accepted\":12,\"total\":18}\n",
+    "stderr": ""
+  }
+]

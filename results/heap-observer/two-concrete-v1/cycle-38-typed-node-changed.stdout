@@ -1,0 +1,31 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export global$
+[LoggingExternalInterface logging 216 0]
+[fuzz-exec] export global$_4
+[LoggingExternalInterface logging 1]
+[fuzz-exec] export global$_9
+[LoggingExternalInterface logging 2047]
+[fuzz-exec] export global$_11
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_12
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_13
+[LoggingExternalInterface logging -257 -1]
+[fuzz-exec] export global$_14
+[LoggingExternalInterface logging null]
+[fuzz-exec] export global$_15
+[LoggingExternalInterface logging 21116]
+[fuzz-exec] export func
+[fuzz-exec] note result: func => object(object(object(null)))
+[fuzz-exec] export func_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_15_invoker
+[LoggingExternalInterface logging function]
+[fuzz-exec] export func_17_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_19
+exception thrown: RuntimeError: dereferencing a null pointer
+[fuzz-exec] export func_19_invoker
+exception thrown: RuntimeError: unreachable
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_15_invoker","known":true,"status":"returned","unsupported":[]},{"name":"func_17_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_19","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"},{"name":"func_19_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null},{"id":3,"channel":"multi","name":"func","slot":0}]}

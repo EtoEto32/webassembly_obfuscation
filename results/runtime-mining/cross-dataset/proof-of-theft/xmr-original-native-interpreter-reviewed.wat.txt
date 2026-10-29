@@ -1,0 +1,80 @@
+            local.get $l8
+            i32.load offset=2100088
+            local.set $l653
+            local.get $l8
+            i32.load offset=2100084
+            local.set $l654
+            local.get $l654
+            i32.load8_u offset=2
+            local.set $l655
+            i32.const 2
+            local.set $l656
+            local.get $l655
+            local.get $l656
+            i32.shl
+            local.set $l657
+            local.get $l653
+            local.get $l657
+            i32.add
+            local.set $l658
+            local.get $l658
+            i32.load
+            local.set $l659
+            local.get $l8
+            local.get $l659
+            i32.store offset=2100080
+            local.get $l8
+            i32.load offset=2100088
+            local.set $l660
+            local.get $l8
+            i32.load offset=2100084
+            local.set $l661
+            local.get $l661
+            i32.load8_u offset=1
+            local.set $l662
+            local.get $l662
+            local.get $l656
+            i32.shl
+            local.set $l663
+            local.get $l660
+            local.get $l663
+            i32.add
+            local.set $l664
+            local.get $l8
+            local.get $l664
+            i32.store offset=2100076
+            local.get $l8
+            i32.load offset=2100084
+            local.set $l665
+            local.get $l665
+            i32.load8_u
+            local.set $l666
+            block $B29
+              block $B30
+                block $B31
+                  block $B32
+                    block $B33
+                      block $B34
+                        block $B35
+                          block $B36
+                            block $B37
+                              local.get $l666
+                              br_table $B37 $B36 $B35 $B34 $B33 $B32 $B31 $B37
+                            end
+                            local.get $l8
+                            i32.load offset=2100080
+                            local.set $l667
+                            local.get $l8
+                            i32.load offset=2100076
+                            local.set $l668
+                            local.get $l668
+                            i32.load
+                            local.set $l669
+                            local.get $l669
+                            local.get $l667
+                            i32.mul
+                            local.set $l670
+                            local.get $l668
+                            local.get $l670
+                            i32.store
+                            br $B30

@@ -1,0 +1,10 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export func_14
+[LoggingExternalInterface logging 1 -4194304]
+[fuzz-exec] note result: func_14 => object(null)
+[fuzz-exec] export func_15_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_17_invoker
+exception thrown: RuntimeError: unreachable
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":"func_14","known":true,"status":"returned","unsupported":[]},{"name":"func_15_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_17_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null}]}

@@ -1,0 +1,85 @@
+[
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "parse",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2\\component.wat",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2\\raw.wasm"
+    ],
+    "code": 0,
+    "ms": 205.84459999999999,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "opt",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2\\raw.wasm",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2\\optimized.wasm"
+    ],
+    "code": 0,
+    "ms": 536.8314,
+    "stdout": "\nOptimized WebAssembly Component Internal Core Modules:\n\n - Core Module 1:  0.04 KiB -> 0.02 KiB (64%)\n - Core Module 2:  0.44 KiB -> 0.33 KiB (75%)\n                                             \n = Total:          0.48 KiB => 0.36 KiB (74%)\n\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "transpile",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2\\raw.wasm",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2\\raw",
+      "--name",
+      "unit",
+      "--instantiation",
+      "async",
+      "--base64-cutoff",
+      "0",
+      "--no-wasi-shim",
+      "--quiet"
+    ],
+    "code": 0,
+    "ms": 226.34160000000003,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\.tools\\component-resource\\node_modules\\@bytecodealliance\\jco\\dist\\jco.js",
+      "transpile",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2\\optimized.wasm",
+      "-o",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2\\optimized",
+      "--name",
+      "unit",
+      "--instantiation",
+      "async",
+      "--base64-cutoff",
+      "0",
+      "--no-wasi-shim",
+      "--quiet"
+    ],
+    "code": 0,
+    "ms": 234.28899999999996,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\research\\masters-security-20261024\\fence-teardown.cjs",
+      "C:\\Users\\ettotto\\Documents\\webassembly_obfuscation\\results\\masters-security-20261024\\fence-teardown-v2"
+    ],
+    "code": 0,
+    "ms": 220.5918,
+    "stdout": "{\"scenarios\":60,\"mismatches\":0,\"observedExceptions\":36,\"closedFDChecks\":180,\"isolatedInstancePairs\":2,\"boundaryChecks\":6}\n",
+    "stderr": ""
+  }
+]

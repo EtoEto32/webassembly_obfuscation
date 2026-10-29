@@ -1,0 +1,63 @@
+{
+  "node": "v24.15.0",
+  "v8": "13.6.233.17-node.48",
+  "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+  "platform": "win32",
+  "arch": "x64",
+  "flags": [
+    "--no-liftoff",
+    "--no-wasm-lazy-compilation"
+  ],
+  "warmup": 32768,
+  "batches": [
+    {
+      "count": 1048576,
+      "ns": 28102900,
+      "ns_per_run": 26.801013946533203
+    },
+    {
+      "count": 1048576,
+      "ns": 29294900,
+      "ns_per_run": 27.937793731689453
+    },
+    {
+      "count": 1048576,
+      "ns": 32382600,
+      "ns_per_run": 30.88245391845703
+    },
+    {
+      "count": 1048576,
+      "ns": 27870400,
+      "ns_per_run": 26.57928466796875
+    },
+    {
+      "count": 1048576,
+      "ns": 28333800,
+      "ns_per_run": 27.021217346191406
+    },
+    {
+      "count": 1048576,
+      "ns": 29581000,
+      "ns_per_run": 28.21063995361328
+    },
+    {
+      "count": 1048576,
+      "ns": 27470000,
+      "ns_per_run": 26.197433471679688
+    }
+  ],
+  "memory_bytes": 65536,
+  "max_rss_kib": 36164,
+  "sink": -2058135203,
+  "verification": {
+    "count": 7,
+    "observed": 2236832093,
+    "expected": 2236832093
+  },
+  "harness": "separate-module-import-varying-safe-fail",
+  "file": "overlap24.221001.basis.O3.wasm",
+  "name": "overlap24",
+  "mode": "basis",
+  "repeat": 2,
+  "bytes": 3271
+}

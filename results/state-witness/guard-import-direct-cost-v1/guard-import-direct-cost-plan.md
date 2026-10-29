@@ -1,0 +1,7 @@
+# 直接構成とSMTによる反例生成の費用
+
+2026-10-24。直接構成で旧/mayの248否定caseと2-importの32否定caseを両engineで再生した後に固定した計画。同じ初期storeに対して実行可能な反例を一つ返す課題を比較する。反例の値・長さを同一にする課題ではなく、最短性の優劣も主張しない。
+
+計280否定caseを一つのbatchとする。条件合成・parseは両方式に共通の前処理として計時し、反例生成の測定からは分離する。各方式3独立process、2 warmup＋5測定反復。processは逐次起動し、case順はprocessごとの固定seedでshuffleする。batch時間の中央値とprocess間の範囲を保存する。各batchの出力数・API数・mask種類を記録し、最終反復で失敗がないことを確認する。
+
+対照は自作SMT反例生成器であり、既存著者toolの性能再現ではない。二つのworkerとも比較harnessのためZ3をloadする。process memoryは累積PeakWorkingSetと現在値を記録するが、直接構成CLIの単独memoryと解釈しない。深い人工chainや自然なアプリへの速度一般化はしない。

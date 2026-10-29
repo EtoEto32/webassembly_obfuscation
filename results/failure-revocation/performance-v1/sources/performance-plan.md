@@ -1,0 +1,13 @@
+# 初期費用比較を固定する
+
+2026-10-25、性能測定前。初期試験はNodeとWasmtimeの両方で通過したが、全入口guardだけでは弱い比較なので、**参照可能な元関数の入口だけをguardするaddress方式**を追加した。参照可能性はfunction export、element、ref.func等の静的出現から保守的に取る。直接callとstartだけの関数は含めない。この既知の単純化も同じ失効契約を満たすべき強い対照である。
+
+refs方式のwrapperも参照可能な定義関数に限定する。これはdead-code削減であり、新たな原理として数えない。
+
+比較: original / 全入口entry / 参照可能入口address / 分離wrapper refs。direct-only、address-taken関数へのdirect call、indirect、mixedの4形状。全形状に同じ更新計算を使い、checksumを一致させる。ループ内処理を測り、host境界呼出し回数は同じにする。人工的な対照であり実アプリケーションの速度と呼ばない。
+
+NodeとWasmtimeで、各binaryをfresh processで3回、12 warmup、11測定を行う。各測定はguest内200,000反復。プロセス順は固定seedで混ぜる。中央値と四分位範囲、binary bytes、transform秒、process peak memoryを記録する。memoryはengine・Python/Node・compilerを含むprocess値で、guestの追加metadataだけの量ではない。成功後のgate=1のみの定常費用。失敗時trapのlatencyはこの比較に混ぜない。
+
+refsがentryだけに勝ちaddressに勝たなければ、単純な参照可能関数選別で説明できる。address-taken direct形状だけの改善なら、既知のentry splitting / wrapper迂回に依存する条件付き効果として扱う。速度差だけで新規性を成立させない。
+
+参考: 安全性試験v1はWABTに存在しないenableフラグの指定ミス。v2はPython bindingのcallback funcref値を保存するときctypes viewをcopyしていなかったため停止。callback引数の値をcopyするadapterを試験側に追加しv3は両engineで一致した。エンジンの脆弱性や方式の安全性の失敗に加算しない。v4以降はaddress対照を含む。

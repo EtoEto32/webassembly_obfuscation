@@ -1,0 +1,331 @@
+{
+  "domain": "all 16 assignments of two 2-bit inputs",
+  "grammar": "add/sub/xor/mul, constants 0/1, <=3 expression-tree operations",
+  "stats": {
+    "all_profiles": {
+      "attempts": 9892,
+      "levels": [
+        4,
+        19,
+        243,
+        3388
+      ],
+      "profiles": 3654
+    },
+    "output_only": {
+      "attempts": 4644,
+      "levels": [
+        4,
+        19,
+        79,
+        286
+      ],
+      "profiles": 388
+    },
+    "span_frontier": {
+      "attempts": 4644,
+      "levels": [
+        4,
+        19,
+        79,
+        290
+      ],
+      "profiles": 392
+    }
+  },
+  "comparisons": {
+    "all_profiles": {
+      "1": {
+        "equal": 3008,
+        "strict_superset": 526,
+        "strict_subset": 114,
+        "strict_subset_same_cost": 98,
+        "strict_subset_extra_cost": 16,
+        "incomparable": 6
+      },
+      "2": {
+        "equal": 3010,
+        "strict_superset": 529,
+        "strict_subset": 114,
+        "strict_subset_same_cost": 98,
+        "strict_subset_extra_cost": 16,
+        "incomparable": 1
+      },
+      "3": {
+        "equal": 3084,
+        "strict_superset": 494,
+        "strict_subset": 76,
+        "strict_subset_same_cost": 60,
+        "strict_subset_extra_cost": 16
+      },
+      "4": {
+        "equal": 3654
+      }
+    },
+    "span_frontier": {
+      "1": {
+        "equal": 344,
+        "strict_subset": 45,
+        "strict_subset_same_cost": 45,
+        "incomparable": 3
+      },
+      "2": {
+        "equal": 346,
+        "strict_subset": 45,
+        "strict_subset_same_cost": 45,
+        "strict_superset": 1
+      },
+      "3": {
+        "equal": 375,
+        "strict_subset": 17,
+        "strict_subset_same_cost": 17
+      },
+      "4": {
+        "equal": 392
+      }
+    }
+  },
+  "second_degree_examples": [
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "add",
+        "b",
+        [
+          "add",
+          "a",
+          "a"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 2,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "xor",
+        "a",
+        [
+          "xor",
+          "b",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "add",
+        "b",
+        [
+          "sub",
+          "a",
+          [
+            "sub",
+            "zero",
+            "a"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "add",
+        "b",
+        [
+          "mul",
+          "a",
+          [
+            "add",
+            "one",
+            "one"
+          ]
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "sub",
+        "zero",
+        [
+          "sub",
+          [
+            "add",
+            "a",
+            "a"
+          ],
+          "b"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "a",
+          "a"
+        ],
+        [
+          "sub",
+          "zero",
+          "b"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "xor",
+        [
+          "xor",
+          "a",
+          "b"
+        ],
+        [
+          "sub",
+          "zero",
+          "a"
+        ]
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "add",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 3,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    },
+    {
+      "bank": "all_profiles",
+      "candidate": [
+        "sub",
+        [
+          "add",
+          "a",
+          "a"
+        ],
+        "b"
+      ],
+      "baseline": [
+        "add",
+        "a",
+        [
+          "sub",
+          "a",
+          "b"
+        ]
+      ],
+      "candidate_cost": 2,
+      "baseline_cost": 2,
+      "relation": "strict_subset",
+      "candidate_rank": 11,
+      "baseline_rank": 13,
+      "target_truth_table": 450
+    }
+  ],
+  "direct_product_checks": 3654
+}

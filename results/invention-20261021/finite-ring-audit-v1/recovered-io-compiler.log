@@ -1,0 +1,1075 @@
+--- WebAssembly code ---
+name: wasm-function[0]
+index: 0
+kind: wasm function
+compiler: TurboFan
+Body (size = 4544 = 4488 + 56 padding)
+Instructions (size = 4476)
+0000023EB4251840     0  55                   push rbp
+0000023EB4251841     1  4889e5               REX.W movq rbp,rsp
+0000023EB4251844     4  6a08                 push 0x8
+0000023EB4251846     6  56                   push rsi
+0000023EB4251847     7  4881ec28030000       REX.W subq rsp,0x328
+0000023EB425184E     e  488b5e2f             REX.W movq rbx,[rsi+0x2f]
+0000023EB4251852    12  8b33                 movl rsi,[rbx]
+0000023EB4251854    14  83c601               addl rsi,0x1
+0000023EB4251857    17  8933                 movl [rbx],rsi
+0000023EB4251859    19  8bd8                 movl rbx,rax
+0000023EB425185B    1b  c1eb17               shrl rbx, 23
+0000023EB425185E    1e  83e301               andl rbx,0x1
+0000023EB4251861    21  8bf0                 movl rsi,rax
+0000023EB4251863    23  c1ee03               shrl rsi, 3
+0000023EB4251866    26  83e601               andl rsi,0x1
+0000023EB4251869    29  8bf8                 movl rdi,rax
+0000023EB425186B    2b  c1ef0e               shrl rdi, 14
+0000023EB425186E    2e  83e701               andl rdi,0x1
+0000023EB4251871    31  448bc6               movl r8,rsi
+0000023EB4251874    34  4433c7               xorl r8,rdi
+0000023EB4251877    37  4433c3               xorl r8,rbx
+0000023EB425187A    3a  448bca               movl r9,rdx
+0000023EB425187D    3d  41d1e9               shrl r9, 1
+0000023EB4251880    40  4183e101             andl r9,0x1
+0000023EB4251884    44  448bd9               movl r11,rcx
+0000023EB4251887    47  41d1eb               shrl r11, 1
+0000023EB425188A    4a  4183e301             andl r11,0x1
+0000023EB425188E    4e  458be1               movl r12,r9
+0000023EB4251891    51  4523e3               andl r12,r11
+0000023EB4251894    54  448bf8               movl r15,rax
+0000023EB4251897    57  41d1ef               shrl r15, 1
+0000023EB425189A    5a  4183e701             andl r15,0x1
+0000023EB425189E    5e  4523cf               andl r9,r15
+0000023EB42518A1    61  4523df               andl r11,r15
+0000023EB42518A4    64  4533d9               xorl r11,r9
+0000023EB42518A7    67  4531e3               xorl r11,r12
+0000023EB42518AA    6a  458bc8               movl r9,r8
+0000023EB42518AD    6d  4533cb               xorl r9,r11
+0000023EB42518B0    70  448be0               movl r12,rax
+0000023EB42518B3    73  41c1ec18             shrl r12, 24
+0000023EB42518B7    77  4183e401             andl r12,0x1
+0000023EB42518BB    7b  448bf0               movl r14,rax
+0000023EB42518BE    7e  41c1ee04             shrl r14, 4
+0000023EB42518C2    82  4183e601             andl r14,0x1
+0000023EB42518C6    86  48894de0             REX.W movq [rbp-0x20],rcx
+0000023EB42518CA    8a  8bc8                 movl rcx,rax
+0000023EB42518CC    8c  c1e90f               shrl rcx, 15
+0000023EB42518CF    8f  83e101               andl rcx,0x1
+0000023EB42518D2    92  488955d8             REX.W movq [rbp-0x28],rdx
+0000023EB42518D6    96  418bd6               movl rdx,r14
+0000023EB42518D9    99  33d1                 xorl rdx,rcx
+0000023EB42518DB    9b  4431e2               xorl rdx,r12
+0000023EB42518DE    9e  4c898d20feffff       REX.W movq [rbp-0x1e0],r9
+0000023EB42518E5    a5  448b4dd8             movl r9,[rbp-0x28]
+0000023EB42518E9    a9  41c1e902             shrl r9, 2
+0000023EB42518ED    ad  4183e101             andl r9,0x1
+0000023EB42518F1    b1  4c898558fdffff       REX.W movq [rbp-0x2a8],r8
+0000023EB42518F8    b8  448b45e0             movl r8,[rbp-0x20]
+0000023EB42518FC    bc  41c1e802             shrl r8, 2
+0000023EB4251900    c0  4183e001             andl r8,0x1
+0000023EB4251904    c4  4c899d60fdffff       REX.W movq [rbp-0x2a0],r11
+0000023EB425190B    cb  458bd9               movl r11,r9
+0000023EB425190E    ce  4523d8               andl r11,r8
+0000023EB4251911    d1  48899548fdffff       REX.W movq [rbp-0x2b8],rdx
+0000023EB4251918    d8  8bd0                 movl rdx,rax
+0000023EB425191A    da  c1ea02               shrl rdx, 2
+0000023EB425191D    dd  83e201               andl rdx,0x1
+0000023EB4251920    e0  4423ca               andl r9,rdx
+0000023EB4251923    e3  4423c2               andl r8,rdx
+0000023EB4251926    e6  4533c1               xorl r8,r9
+0000023EB4251929    e9  4533c3               xorl r8,r11
+0000023EB425192C    ec  448b8d48fdffff       movl r9,[rbp-0x2b8]
+0000023EB4251933    f3  4533c8               xorl r9,r8
+0000023EB4251936    f6  448bd8               movl r11,rax
+0000023EB4251939    f9  41c1eb19             shrl r11, 25
+0000023EB425193D    fd  4183e301             andl r11,0x1
+0000023EB4251941   101  4c898d28feffff       REX.W movq [rbp-0x1d8],r9
+0000023EB4251948   108  448bc8               movl r9,rax
+0000023EB425194B   10b  41c1e905             shrl r9, 5
+0000023EB425194F   10f  4183e101             andl r9,0x1
+0000023EB4251953   113  4c898550fdffff       REX.W movq [rbp-0x2b0],r8
+0000023EB425195A   11a  448bc0               movl r8,rax
+0000023EB425195D   11d  41c1e810             shrl r8, 16
+0000023EB4251961   121  4183e001             andl r8,0x1
+0000023EB4251965   125  48899d48ffffff       REX.W movq [rbp-0xb8],rbx
+0000023EB425196C   12c  418bd9               movl rbx,r9
+0000023EB425196F   12f  4133d8               xorl rbx,r8
+0000023EB4251972   132  4133db               xorl rbx,r11
+0000023EB4251975   135  48899d38fdffff       REX.W movq [rbp-0x2c8],rbx
+0000023EB425197C   13c  8b5dd8               movl rbx,[rbp-0x28]
+0000023EB425197F   13f  c1eb03               shrl rbx, 3
+0000023EB4251982   142  83e301               andl rbx,0x1
+0000023EB4251985   145  4c89a558ffffff       REX.W movq [rbp-0xa8],r12
+0000023EB425198C   14c  448b65e0             movl r12,[rbp-0x20]
+0000023EB4251990   150  41c1ec03             shrl r12, 3
+0000023EB4251994   154  4183e401             andl r12,0x1
+0000023EB4251998   158  4c8985d8fdffff       REX.W movq [rbp-0x228],r8
+0000023EB425199F   15f  448bc3               movl r8,rbx
+0000023EB42519A2   162  4521e0               andl r8,r12
+0000023EB42519A5   165  23de                 andl rbx,rsi
+0000023EB42519A7   167  4423e6               andl r12,rsi
+0000023EB42519AA   16a  4433e3               xorl r12,rbx
+0000023EB42519AD   16d  4533e0               xorl r12,r8
+0000023EB42519B0   170  8b9d38fdffff         movl rbx,[rbp-0x2c8]
+0000023EB42519B6   176  4431e3               xorl rbx,r12
+0000023EB42519B9   179  448bc0               movl r8,rax
+0000023EB42519BC   17c  41c1e81a             shrl r8, 26
+0000023EB42519C0   180  4183e001             andl r8,0x1
+0000023EB42519C4   184  48899d30feffff       REX.W movq [rbp-0x1d0],rbx
+0000023EB42519CB   18b  8bd8                 movl rbx,rax
+0000023EB42519CD   18d  c1eb06               shrl rbx, 6
+0000023EB42519D0   190  83e301               andl rbx,0x1
+0000023EB42519D3   193  4c89a540fdffff       REX.W movq [rbp-0x2c0],r12
+0000023EB42519DA   19a  448be0               movl r12,rax
+0000023EB42519DD   19d  41c1ec11             shrl r12, 17
+0000023EB42519E1   1a1  4183e401             andl r12,0x1
+0000023EB42519E5   1a5  48898d68ffffff       REX.W movq [rbp-0x98],rcx
+0000023EB42519EC   1ac  8bcb                 movl rcx,rbx
+0000023EB42519EE   1ae  4431e1               xorl rcx,r12
+0000023EB42519F1   1b1  4133c8               xorl rcx,r8
+0000023EB42519F4   1b4  48898d28fdffff       REX.W movq [rbp-0x2d8],rcx
+0000023EB42519FB   1bb  8b4dd8               movl rcx,[rbp-0x28]
+0000023EB42519FE   1be  c1e904               shrl rcx, 4
+0000023EB4251A01   1c1  83e101               andl rcx,0x1
+0000023EB4251A04   1c4  4c89a550ffffff       REX.W movq [rbp-0xb0],r12
+0000023EB4251A0B   1cb  448b65e0             movl r12,[rbp-0x20]
+0000023EB4251A0F   1cf  41c1ec04             shrl r12, 4
+0000023EB4251A13   1d3  4183e401             andl r12,0x1
+0000023EB4251A17   1d7  4889bd78ffffff       REX.W movq [rbp-0x88],rdi
+0000023EB4251A1E   1de  8bf9                 movl rdi,rcx
+0000023EB4251A20   1e0  4421e7               andl rdi,r12
+0000023EB4251A23   1e3  4123ce               andl rcx,r14
+0000023EB4251A26   1e6  4523e6               andl r12,r14
+0000023EB4251A29   1e9  4433e1               xorl r12,rcx
+0000023EB4251A2C   1ec  4433e7               xorl r12,rdi
+0000023EB4251A2F   1ef  8b8d28fdffff         movl rcx,[rbp-0x2d8]
+0000023EB4251A35   1f5  4431e1               xorl rcx,r12
+0000023EB4251A38   1f8  8bf8                 movl rdi,rax
+0000023EB4251A3A   1fa  c1ef1b               shrl rdi, 27
+0000023EB4251A3D   1fd  83e701               andl rdi,0x1
+0000023EB4251A40   200  48898d38feffff       REX.W movq [rbp-0x1c8],rcx
+0000023EB4251A47   207  8bc8                 movl rcx,rax
+0000023EB4251A49   209  c1e907               shrl rcx, 7
+0000023EB4251A4C   20c  83e101               andl rcx,0x1
+0000023EB4251A4F   20f  4c89a530fdffff       REX.W movq [rbp-0x2d0],r12
+0000023EB4251A56   216  448be0               movl r12,rax
+0000023EB4251A59   219  41c1ec12             shrl r12, 18
+0000023EB4251A5D   21d  4183e401             andl r12,0x1
+0000023EB4251A61   221  4c897588             REX.W movq [rbp-0x78],r14
+0000023EB4251A65   225  448bf1               movl r14,rcx
+0000023EB4251A68   228  4531e6               xorl r14,r12
+0000023EB4251A6B   22b  4433f7               xorl r14,rdi
+0000023EB4251A6E   22e  4c89b518fdffff       REX.W movq [rbp-0x2e8],r14
+0000023EB4251A75   235  448b75d8             movl r14,[rbp-0x28]
+0000023EB4251A79   239  41c1ee05             shrl r14, 5
+0000023EB4251A7D   23d  4183e601             andl r14,0x1
+0000023EB4251A81   241  4c89a540ffffff       REX.W movq [rbp-0xc0],r12
+0000023EB4251A88   248  448b65e0             movl r12,[rbp-0x20]
+0000023EB4251A8C   24c  41c1ec05             shrl r12, 5
+0000023EB4251A90   250  4183e401             andl r12,0x1
+0000023EB4251A94   254  4889bd08feffff       REX.W movq [rbp-0x1f8],rdi
+0000023EB4251A9B   25b  418bfe               movl rdi,r14
+0000023EB4251A9E   25e  4421e7               andl rdi,r12
+0000023EB4251AA1   261  4523f1               andl r14,r9
+0000023EB4251AA4   264  4523e1               andl r12,r9
+0000023EB4251AA7   267  4533e6               xorl r12,r14
+0000023EB4251AAA   26a  4433e7               xorl r12,rdi
+0000023EB4251AAD   26d  448bb518fdffff       movl r14,[rbp-0x2e8]
+0000023EB4251AB4   274  4531e6               xorl r14,r12
+0000023EB4251AB7   277  8bf8                 movl rdi,rax
+0000023EB4251AB9   279  c1ef1c               shrl rdi, 28
+0000023EB4251ABC   27c  83e701               andl rdi,0x1
+0000023EB4251ABF   27f  4c89b540feffff       REX.W movq [rbp-0x1c0],r14
+0000023EB4251AC6   286  448bf0               movl r14,rax
+0000023EB4251AC9   289  41c1ee08             shrl r14, 8
+0000023EB4251ACD   28d  4183e601             andl r14,0x1
+0000023EB4251AD1   291  4c89a520fdffff       REX.W movq [rbp-0x2e0],r12
+0000023EB4251AD8   298  448be0               movl r12,rax
+0000023EB4251ADB   29b  41c1ec13             shrl r12, 19
+0000023EB4251ADF   29f  4183e401             andl r12,0x1
+0000023EB4251AE3   2a3  4c894d80             REX.W movq [rbp-0x80],r9
+0000023EB4251AE7   2a7  458bce               movl r9,r14
+0000023EB4251AEA   2aa  4531e1               xorl r9,r12
+0000023EB4251AED   2ad  4433cf               xorl r9,rdi
+0000023EB4251AF0   2b0  4c898d08fdffff       REX.W movq [rbp-0x2f8],r9
+0000023EB4251AF7   2b7  448b4dd8             movl r9,[rbp-0x28]
+0000023EB4251AFB   2bb  41c1e906             shrl r9, 6
+0000023EB4251AFF   2bf  4183e101             andl r9,0x1
+0000023EB4251B03   2c3  4889bd00feffff       REX.W movq [rbp-0x200],rdi
+0000023EB4251B0A   2ca  8b7de0               movl rdi,[rbp-0x20]
+0000023EB4251B0D   2cd  c1ef06               shrl rdi, 6
+0000023EB4251B10   2d0  83e701               andl rdi,0x1
+0000023EB4251B13   2d3  4c896590             REX.W movq [rbp-0x70],r12
+0000023EB4251B17   2d7  458be1               movl r12,r9
+0000023EB4251B1A   2da  4423e7               andl r12,rdi
+0000023EB4251B1D   2dd  4423cb               andl r9,rbx
+0000023EB4251B20   2e0  23fb                 andl rdi,rbx
+0000023EB4251B22   2e2  4133f9               xorl rdi,r9
+0000023EB4251B25   2e5  4431e7               xorl rdi,r12
+0000023EB4251B28   2e8  448b8d08fdffff       movl r9,[rbp-0x2f8]
+0000023EB4251B2F   2ef  4433cf               xorl r9,rdi
+0000023EB4251B32   2f2  448be0               movl r12,rax
+0000023EB4251B35   2f5  41c1ec1d             shrl r12, 29
+0000023EB4251B39   2f9  4183e401             andl r12,0x1
+0000023EB4251B3D   2fd  4c898d48feffff       REX.W movq [rbp-0x1b8],r9
+0000023EB4251B44   304  448bc8               movl r9,rax
+0000023EB4251B47   307  41c1e909             shrl r9, 9
+0000023EB4251B4B   30b  4183e101             andl r9,0x1
+0000023EB4251B4F   30f  4889bd10fdffff       REX.W movq [rbp-0x2f0],rdi
+0000023EB4251B56   316  8bf8                 movl rdi,rax
+0000023EB4251B58   318  c1ef14               shrl rdi, 20
+0000023EB4251B5B   31b  83e701               andl rdi,0x1
+0000023EB4251B5E   31e  48899d70ffffff       REX.W movq [rbp-0x90],rbx
+0000023EB4251B65   325  418bd9               movl rbx,r9
+0000023EB4251B68   328  33df                 xorl rbx,rdi
+0000023EB4251B6A   32a  4431e3               xorl rbx,r12
+0000023EB4251B6D   32d  48899df8fcffff       REX.W movq [rbp-0x308],rbx
+0000023EB4251B74   334  8b5dd8               movl rbx,[rbp-0x28]
+0000023EB4251B77   337  c1eb07               shrl rbx, 7
+0000023EB4251B7A   33a  83e301               andl rbx,0x1
+0000023EB4251B7D   33d  48897db0             REX.W movq [rbp-0x50],rdi
+0000023EB4251B81   341  8b7de0               movl rdi,[rbp-0x20]
+0000023EB4251B84   344  c1ef07               shrl rdi, 7
+0000023EB4251B87   347  83e701               andl rdi,0x1
+0000023EB4251B8A   34a  4c896598             REX.W movq [rbp-0x68],r12
+0000023EB4251B8E   34e  448be3               movl r12,rbx
+0000023EB4251B91   351  4423e7               andl r12,rdi
+0000023EB4251B94   354  23d9                 andl rbx,rcx
+0000023EB4251B96   356  23f9                 andl rdi,rcx
+0000023EB4251B98   358  33fb                 xorl rdi,rbx
+0000023EB4251B9A   35a  4431e7               xorl rdi,r12
+0000023EB4251B9D   35d  8b9df8fcffff         movl rbx,[rbp-0x308]
+0000023EB4251BA3   363  33df                 xorl rbx,rdi
+0000023EB4251BA5   365  448be0               movl r12,rax
+0000023EB4251BA8   368  41c1ec1e             shrl r12, 30
+0000023EB4251BAC   36c  4183e401             andl r12,0x1
+0000023EB4251BB0   370  48899d50feffff       REX.W movq [rbp-0x1b0],rbx
+0000023EB4251BB7   377  8bd8                 movl rbx,rax
+0000023EB4251BB9   379  c1eb0a               shrl rbx, 10
+0000023EB4251BBC   37c  83e301               andl rbx,0x1
+0000023EB4251BBF   37f  4889bd00fdffff       REX.W movq [rbp-0x300],rdi
+0000023EB4251BC6   386  8bf8                 movl rdi,rax
+0000023EB4251BC8   388  c1ef15               shrl rdi, 21
+0000023EB4251BCB   38b  83e701               andl rdi,0x1
+0000023EB4251BCE   38e  48898d10feffff       REX.W movq [rbp-0x1f0],rcx
+0000023EB4251BD5   395  8bcb                 movl rcx,rbx
+0000023EB4251BD7   397  33cf                 xorl rcx,rdi
+0000023EB4251BD9   399  4431e1               xorl rcx,r12
+0000023EB4251BDC   39c  48898de8fcffff       REX.W movq [rbp-0x318],rcx
+0000023EB4251BE3   3a3  8b4dd8               movl rcx,[rbp-0x28]
+0000023EB4251BE6   3a6  c1e908               shrl rcx, 8
+0000023EB4251BE9   3a9  83e101               andl rcx,0x1
+0000023EB4251BEC   3ac  48897dd0             REX.W movq [rbp-0x30],rdi
+0000023EB4251BF0   3b0  8b7de0               movl rdi,[rbp-0x20]
+0000023EB4251BF3   3b3  c1ef08               shrl rdi, 8
+0000023EB4251BF6   3b6  83e701               andl rdi,0x1
+0000023EB4251BF9   3b9  4c8965b8             REX.W movq [rbp-0x48],r12
+0000023EB4251BFD   3bd  448be1               movl r12,rcx
+0000023EB4251C00   3c0  4423e7               andl r12,rdi
+0000023EB4251C03   3c3  4123ce               andl rcx,r14
+0000023EB4251C06   3c6  4123fe               andl rdi,r14
+0000023EB4251C09   3c9  33f9                 xorl rdi,rcx
+0000023EB4251C0B   3cb  4431e7               xorl rdi,r12
+0000023EB4251C0E   3ce  8b8de8fcffff         movl rcx,[rbp-0x318]
+0000023EB4251C14   3d4  33cf                 xorl rcx,rdi
+0000023EB4251C16   3d6  448be0               movl r12,rax
+0000023EB4251C19   3d9  41c1ec1f             shrl r12, 31
+0000023EB4251C1D   3dd  48898d58feffff       REX.W movq [rbp-0x1a8],rcx
+0000023EB4251C24   3e4  8bc8                 movl rcx,rax
+0000023EB4251C26   3e6  c1e90b               shrl rcx, 11
+0000023EB4251C29   3e9  83e101               andl rcx,0x1
+0000023EB4251C2C   3ec  4889bdf0fcffff       REX.W movq [rbp-0x310],rdi
+0000023EB4251C33   3f3  8bf8                 movl rdi,rax
+0000023EB4251C35   3f5  c1ef16               shrl rdi, 22
+0000023EB4251C38   3f8  83e701               andl rdi,0x1
+0000023EB4251C3B   3fb  4c89b560ffffff       REX.W movq [rbp-0xa0],r14
+0000023EB4251C42   402  448bf1               movl r14,rcx
+0000023EB4251C45   405  4433f7               xorl r14,rdi
+0000023EB4251C48   408  4531e6               xorl r14,r12
+0000023EB4251C4B   40b  4c89b5d8fcffff       REX.W movq [rbp-0x328],r14
+0000023EB4251C52   412  448b75d8             movl r14,[rbp-0x28]
+0000023EB4251C56   416  41c1ee09             shrl r14, 9
+0000023EB4251C5A   41a  4183e601             andl r14,0x1
+0000023EB4251C5E   41e  4889bd78fdffff       REX.W movq [rbp-0x288],rdi
+0000023EB4251C65   425  8b7de0               movl rdi,[rbp-0x20]
+0000023EB4251C68   428  c1ef09               shrl rdi, 9
+0000023EB4251C6B   42b  83e701               andl rdi,0x1
+0000023EB4251C6E   42e  4c8965e8             REX.W movq [rbp-0x18],r12
+0000023EB4251C72   432  458be6               movl r12,r14
+0000023EB4251C75   435  4423e7               andl r12,rdi
+0000023EB4251C78   438  4523f1               andl r14,r9
+0000023EB4251C7B   43b  4123f9               andl rdi,r9
+0000023EB4251C7E   43e  4133fe               xorl rdi,r14
+0000023EB4251C81   441  4431e7               xorl rdi,r12
+0000023EB4251C84   444  448bb5d8fcffff       movl r14,[rbp-0x328]
+0000023EB4251C8B   44b  4433f7               xorl r14,rdi
+0000023EB4251C8E   44e  448be0               movl r12,rax
+0000023EB4251C91   451  4183e401             andl r12,0x1
+0000023EB4251C95   455  4c89b560feffff       REX.W movq [rbp-0x1a0],r14
+0000023EB4251C9C   45c  448bf0               movl r14,rax
+0000023EB4251C9F   45f  41c1ee0c             shrl r14, 12
+0000023EB4251CA3   463  4183e601             andl r14,0x1
+0000023EB4251CA7   467  4889bde0fcffff       REX.W movq [rbp-0x320],rdi
+0000023EB4251CAE   46e  8bbd48ffffff         movl rdi,[rbp-0xb8]
+0000023EB4251CB4   474  4133fe               xorl rdi,r14
+0000023EB4251CB7   477  4431e7               xorl rdi,r12
+0000023EB4251CBA   47a  4889bdd0fcffff       REX.W movq [rbp-0x330],rdi
+0000023EB4251CC1   481  8b7dd8               movl rdi,[rbp-0x28]
+0000023EB4251CC4   484  c1ef0a               shrl rdi, 10
+0000023EB4251CC7   487  83e701               andl rdi,0x1
+0000023EB4251CCA   48a  4c898d30ffffff       REX.W movq [rbp-0xd0],r9
+0000023EB4251CD1   491  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251CD5   495  41c1e90a             shrl r9, 10
+0000023EB4251CD9   499  4183e101             andl r9,0x1
+0000023EB4251CDD   49d  4c8965a8             REX.W movq [rbp-0x58],r12
+0000023EB4251CE1   4a1  448be7               movl r12,rdi
+0000023EB4251CE4   4a4  4523e1               andl r12,r9
+0000023EB4251CE7   4a7  23fb                 andl rdi,rbx
+0000023EB4251CE9   4a9  4423cb               andl r9,rbx
+0000023EB4251CEC   4ac  4433cf               xorl r9,rdi
+0000023EB4251CEF   4af  4531e1               xorl r9,r12
+0000023EB4251CF2   4b2  8bbdd0fcffff         movl rdi,[rbp-0x330]
+0000023EB4251CF8   4b8  4133f9               xorl rdi,r9
+0000023EB4251CFB   4bb  c1e80d               shrl rax, 13
+0000023EB4251CFE   4be  83e001               andl rax,0x1
+0000023EB4251D01   4c1  448ba558ffffff       movl r12,[rbp-0xa8]
+0000023EB4251D08   4c8  4433e0               xorl r12,rax
+0000023EB4251D0B   4cb  4533e7               xorl r12,r15
+0000023EB4251D0E   4ce  4889bd70feffff       REX.W movq [rbp-0x190],rdi
+0000023EB4251D15   4d5  8b7dd8               movl rdi,[rbp-0x28]
+0000023EB4251D18   4d8  c1ef0b               shrl rdi, 11
+0000023EB4251D1B   4db  83e701               andl rdi,0x1
+0000023EB4251D1E   4de  4c898dc8fcffff       REX.W movq [rbp-0x338],r9
+0000023EB4251D25   4e5  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251D29   4e9  41c1e90b             shrl r9, 11
+0000023EB4251D2D   4ed  4183e101             andl r9,0x1
+0000023EB4251D31   4f1  4c89a5e8fdffff       REX.W movq [rbp-0x218],r12
+0000023EB4251D38   4f8  448be7               movl r12,rdi
+0000023EB4251D3B   4fb  4523e1               andl r12,r9
+0000023EB4251D3E   4fe  23f9                 andl rdi,rcx
+0000023EB4251D40   500  4423c9               andl r9,rcx
+0000023EB4251D43   503  4433cf               xorl r9,rdi
+0000023EB4251D46   506  4531e1               xorl r9,r12
+0000023EB4251D49   509  448ba5e8fdffff       movl r12,[rbp-0x218]
+0000023EB4251D50   510  4533e1               xorl r12,r9
+0000023EB4251D53   513  8bbd78ffffff         movl rdi,[rbp-0x88]
+0000023EB4251D59   519  4133fb               xorl rdi,r11
+0000023EB4251D5C   51c  33fa                 xorl rdi,rdx
+0000023EB4251D5E   51e  4c89a580feffff       REX.W movq [rbp-0x180],r12
+0000023EB4251D65   525  448b65d8             movl r12,[rbp-0x28]
+0000023EB4251D69   529  41c1ec0c             shrl r12, 12
+0000023EB4251D6D   52d  4183e401             andl r12,0x1
+0000023EB4251D71   531  4c898de0fdffff       REX.W movq [rbp-0x220],r9
+0000023EB4251D78   538  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251D7C   53c  41c1e90c             shrl r9, 12
+0000023EB4251D80   540  4183e101             andl r9,0x1
+0000023EB4251D84   544  4889bdf8fdffff       REX.W movq [rbp-0x208],rdi
+0000023EB4251D8B   54b  4489e7               movl rdi,r12
+0000023EB4251D8E   54e  4123f9               andl rdi,r9
+0000023EB4251D91   551  4523e6               andl r12,r14
+0000023EB4251D94   554  4523ce               andl r9,r14
+0000023EB4251D97   557  4531e1               xorl r9,r12
+0000023EB4251D9A   55a  4433cf               xorl r9,rdi
+0000023EB4251D9D   55d  8bbdf8fdffff         movl rdi,[rbp-0x208]
+0000023EB4251DA3   563  4133f9               xorl rdi,r9
+0000023EB4251DA6   566  448ba568ffffff       movl r12,[rbp-0x98]
+0000023EB4251DAD   56d  4533e0               xorl r12,r8
+0000023EB4251DB0   570  4433e6               xorl r12,rsi
+0000023EB4251DB3   573  4889bd90feffff       REX.W movq [rbp-0x170],rdi
+0000023EB4251DBA   57a  8b7dd8               movl rdi,[rbp-0x28]
+0000023EB4251DBD   57d  c1ef0d               shrl rdi, 13
+0000023EB4251DC0   580  83e701               andl rdi,0x1
+0000023EB4251DC3   583  4c898df0fdffff       REX.W movq [rbp-0x210],r9
+0000023EB4251DCA   58a  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251DCE   58e  41c1e90d             shrl r9, 13
+0000023EB4251DD2   592  4183e101             andl r9,0x1
+0000023EB4251DD6   596  4c89a568feffff       REX.W movq [rbp-0x198],r12
+0000023EB4251DDD   59d  448be7               movl r12,rdi
+0000023EB4251DE0   5a0  4523e1               andl r12,r9
+0000023EB4251DE3   5a3  23f8                 andl rdi,rax
+0000023EB4251DE5   5a5  4423c8               andl r9,rax
+0000023EB4251DE8   5a8  4433cf               xorl r9,rdi
+0000023EB4251DEB   5ab  4531e1               xorl r9,r12
+0000023EB4251DEE   5ae  448ba568feffff       movl r12,[rbp-0x198]
+0000023EB4251DF5   5b5  4533e1               xorl r12,r9
+0000023EB4251DF8   5b8  8bbdd8fdffff         movl rdi,[rbp-0x228]
+0000023EB4251DFE   5be  33bd08feffff         xorl rdi,[rbp-0x1f8]
+0000023EB4251E04   5c4  337d88               xorl rdi,[rbp-0x78]
+0000023EB4251E07   5c7  4c89a5a0feffff       REX.W movq [rbp-0x160],r12
+0000023EB4251E0E   5ce  448b65d8             movl r12,[rbp-0x28]
+0000023EB4251E12   5d2  41c1ec0e             shrl r12, 14
+0000023EB4251E16   5d6  4183e401             andl r12,0x1
+0000023EB4251E1A   5da  4c898d18feffff       REX.W movq [rbp-0x1e8],r9
+0000023EB4251E21   5e1  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251E25   5e5  41c1e90e             shrl r9, 14
+0000023EB4251E29   5e9  4183e101             andl r9,0x1
+0000023EB4251E2D   5ed  4889bd78feffff       REX.W movq [rbp-0x188],rdi
+0000023EB4251E34   5f4  4489e7               movl rdi,r12
+0000023EB4251E37   5f7  4123f9               andl rdi,r9
+0000023EB4251E3A   5fa  4423a578ffffff       andl r12,[rbp-0x88]
+0000023EB4251E41   601  44238d78ffffff       andl r9,[rbp-0x88]
+0000023EB4251E48   608  4531e1               xorl r9,r12
+0000023EB4251E4B   60b  4433cf               xorl r9,rdi
+0000023EB4251E4E   60e  8bbd78feffff         movl rdi,[rbp-0x188]
+0000023EB4251E54   614  4133f9               xorl rdi,r9
+0000023EB4251E57   617  448ba500feffff       movl r12,[rbp-0x200]
+0000023EB4251E5E   61e  4433a550ffffff       xorl r12,[rbp-0xb0]
+0000023EB4251E65   625  44336580             xorl r12,[rbp-0x80]
+0000023EB4251E69   629  4889bdb0feffff       REX.W movq [rbp-0x150],rdi
+0000023EB4251E70   630  8b7dd8               movl rdi,[rbp-0x28]
+0000023EB4251E73   633  c1ef0f               shrl rdi, 15
+0000023EB4251E76   636  83e701               andl rdi,0x1
+0000023EB4251E79   639  4c898d80fdffff       REX.W movq [rbp-0x280],r9
+0000023EB4251E80   640  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251E84   644  41c1e90f             shrl r9, 15
+0000023EB4251E88   648  4183e101             andl r9,0x1
+0000023EB4251E8C   64c  4c89a588feffff       REX.W movq [rbp-0x178],r12
+0000023EB4251E93   653  448be7               movl r12,rdi
+0000023EB4251E96   656  4523e1               andl r12,r9
+0000023EB4251E99   659  23bd68ffffff         andl rdi,[rbp-0x98]
+0000023EB4251E9F   65f  44238d68ffffff       andl r9,[rbp-0x98]
+0000023EB4251EA6   666  4433cf               xorl r9,rdi
+0000023EB4251EA9   669  4531e1               xorl r9,r12
+0000023EB4251EAC   66c  448ba588feffff       movl r12,[rbp-0x178]
+0000023EB4251EB3   673  4533e1               xorl r12,r9
+0000023EB4251EB6   676  8bbd40ffffff         movl rdi,[rbp-0xc0]
+0000023EB4251EBC   67c  337d98               xorl rdi,[rbp-0x68]
+0000023EB4251EBF   67f  33bd70ffffff         xorl rdi,[rbp-0x90]
+0000023EB4251EC5   685  4c89a5c0feffff       REX.W movq [rbp-0x140],r12
+0000023EB4251ECC   68c  448b65d8             movl r12,[rbp-0x28]
+0000023EB4251ED0   690  41c1ec10             shrl r12, 16
+0000023EB4251ED4   694  4183e401             andl r12,0x1
+0000023EB4251ED8   698  4c898d88fdffff       REX.W movq [rbp-0x278],r9
+0000023EB4251EDF   69f  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251EE3   6a3  41c1e910             shrl r9, 16
+0000023EB4251EE7   6a7  4183e101             andl r9,0x1
+0000023EB4251EEB   6ab  4889bd98feffff       REX.W movq [rbp-0x168],rdi
+0000023EB4251EF2   6b2  4489e7               movl rdi,r12
+0000023EB4251EF5   6b5  4123f9               andl rdi,r9
+0000023EB4251EF8   6b8  4423a5d8fdffff       andl r12,[rbp-0x228]
+0000023EB4251EFF   6bf  44238dd8fdffff       andl r9,[rbp-0x228]
+0000023EB4251F06   6c6  4531e1               xorl r9,r12
+0000023EB4251F09   6c9  4433cf               xorl r9,rdi
+0000023EB4251F0C   6cc  8bbd98feffff         movl rdi,[rbp-0x168]
+0000023EB4251F12   6d2  4133f9               xorl rdi,r9
+0000023EB4251F15   6d5  448b6590             movl r12,[rbp-0x70]
+0000023EB4251F19   6d9  443365b8             xorl r12,[rbp-0x48]
+0000023EB4251F1D   6dd  4433a510feffff       xorl r12,[rbp-0x1f0]
+0000023EB4251F24   6e4  4889bdc8feffff       REX.W movq [rbp-0x138],rdi
+0000023EB4251F2B   6eb  8b7dd8               movl rdi,[rbp-0x28]
+0000023EB4251F2E   6ee  c1ef11               shrl rdi, 17
+0000023EB4251F31   6f1  83e701               andl rdi,0x1
+0000023EB4251F34   6f4  4c898d90fdffff       REX.W movq [rbp-0x270],r9
+0000023EB4251F3B   6fb  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251F3F   6ff  41c1e911             shrl r9, 17
+0000023EB4251F43   703  4183e101             andl r9,0x1
+0000023EB4251F47   707  4c89a5a8feffff       REX.W movq [rbp-0x158],r12
+0000023EB4251F4E   70e  448be7               movl r12,rdi
+0000023EB4251F51   711  4523e1               andl r12,r9
+0000023EB4251F54   714  23bd50ffffff         andl rdi,[rbp-0xb0]
+0000023EB4251F5A   71a  44238d50ffffff       andl r9,[rbp-0xb0]
+0000023EB4251F61   721  4433cf               xorl r9,rdi
+0000023EB4251F64   724  4531e1               xorl r9,r12
+0000023EB4251F67   727  448ba5a8feffff       movl r12,[rbp-0x158]
+0000023EB4251F6E   72e  4533e1               xorl r12,r9
+0000023EB4251F71   731  8b7db0               movl rdi,[rbp-0x50]
+0000023EB4251F74   734  337de8               xorl rdi,[rbp-0x18]
+0000023EB4251F77   737  33bd60ffffff         xorl rdi,[rbp-0xa0]
+0000023EB4251F7D   73d  4c89a5e0feffff       REX.W movq [rbp-0x120],r12
+0000023EB4251F84   744  448b65d8             movl r12,[rbp-0x28]
+0000023EB4251F88   748  41c1ec12             shrl r12, 18
+0000023EB4251F8C   74c  4183e401             andl r12,0x1
+0000023EB4251F90   750  4c898d98fdffff       REX.W movq [rbp-0x268],r9
+0000023EB4251F97   757  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251F9B   75b  41c1e912             shrl r9, 18
+0000023EB4251F9F   75f  4183e101             andl r9,0x1
+0000023EB4251FA3   763  4889bdb8feffff       REX.W movq [rbp-0x148],rdi
+0000023EB4251FAA   76a  4489e7               movl rdi,r12
+0000023EB4251FAD   76d  4123f9               andl rdi,r9
+0000023EB4251FB0   770  4423a540ffffff       andl r12,[rbp-0xc0]
+0000023EB4251FB7   777  44238d40ffffff       andl r9,[rbp-0xc0]
+0000023EB4251FBE   77e  4531e1               xorl r9,r12
+0000023EB4251FC1   781  4433cf               xorl r9,rdi
+0000023EB4251FC4   784  8bbdb8feffff         movl rdi,[rbp-0x148]
+0000023EB4251FCA   78a  4133f9               xorl rdi,r9
+0000023EB4251FCD   78d  448b65d0             movl r12,[rbp-0x30]
+0000023EB4251FD1   791  443365a8             xorl r12,[rbp-0x58]
+0000023EB4251FD5   795  4433a530ffffff       xorl r12,[rbp-0xd0]
+0000023EB4251FDC   79c  4889bde8feffff       REX.W movq [rbp-0x118],rdi
+0000023EB4251FE3   7a3  8b7dd8               movl rdi,[rbp-0x28]
+0000023EB4251FE6   7a6  c1ef13               shrl rdi, 19
+0000023EB4251FE9   7a9  83e701               andl rdi,0x1
+0000023EB4251FEC   7ac  4c898da0fdffff       REX.W movq [rbp-0x260],r9
+0000023EB4251FF3   7b3  448b4de0             movl r9,[rbp-0x20]
+0000023EB4251FF7   7b7  41c1e913             shrl r9, 19
+0000023EB4251FFB   7bb  4183e101             andl r9,0x1
+0000023EB4251FFF   7bf  4c89a5d0feffff       REX.W movq [rbp-0x130],r12
+0000023EB4252006   7c6  448be7               movl r12,rdi
+0000023EB4252009   7c9  4523e1               andl r12,r9
+0000023EB425200C   7cc  237d90               andl rdi,[rbp-0x70]
+0000023EB425200F   7cf  44234d90             andl r9,[rbp-0x70]
+0000023EB4252013   7d3  4433cf               xorl r9,rdi
+0000023EB4252016   7d6  4531e1               xorl r9,r12
+0000023EB4252019   7d9  448ba5d0feffff       movl r12,[rbp-0x130]
+0000023EB4252020   7e0  4533e1               xorl r12,r9
+0000023EB4252023   7e3  8bbd78fdffff         movl rdi,[rbp-0x288]
+0000023EB4252029   7e9  4133ff               xorl rdi,r15
+0000023EB425202C   7ec  33fb                 xorl rdi,rbx
+0000023EB425202E   7ee  4c897dc8             REX.W movq [rbp-0x38],r15
+0000023EB4252032   7f2  448b7dd8             movl r15,[rbp-0x28]
+0000023EB4252036   7f6  41c1ef14             shrl r15, 20
+0000023EB425203A   7fa  4183e701             andl r15,0x1
+0000023EB425203E   7fe  4c89a5f8feffff       REX.W movq [rbp-0x108],r12
+0000023EB4252045   805  448b65e0             movl r12,[rbp-0x20]
+0000023EB4252049   809  41c1ec14             shrl r12, 20
+0000023EB425204D   80d  4183e401             andl r12,0x1
+0000023EB4252051   811  4c898da8fdffff       REX.W movq [rbp-0x258],r9
+0000023EB4252058   818  458bcf               movl r9,r15
+0000023EB425205B   81b  4521e1               andl r9,r12
+0000023EB425205E   81e  44237db0             andl r15,[rbp-0x50]
+0000023EB4252062   822  442365b0             andl r12,[rbp-0x50]
+0000023EB4252066   826  4533e7               xorl r12,r15
+0000023EB4252069   829  4533e1               xorl r12,r9
+0000023EB425206C   82c  448bcf               movl r9,rdi
+0000023EB425206F   82f  4531e1               xorl r9,r12
+0000023EB4252072   832  448bbd48ffffff       movl r15,[rbp-0xb8]
+0000023EB4252079   839  4433fa               xorl r15,rdx
+0000023EB425207C   83c  4433f9               xorl r15,rcx
+0000023EB425207F   83f  48894da0             REX.W movq [rbp-0x60],rcx
+0000023EB4252083   843  8b4dd8               movl rcx,[rbp-0x28]
+0000023EB4252086   846  c1e915               shrl rcx, 21
+0000023EB4252089   849  83e101               andl rcx,0x1
+0000023EB425208C   84c  4c898d08ffffff       REX.W movq [rbp-0xf8],r9
+0000023EB4252093   853  448b4de0             movl r9,[rbp-0x20]
+0000023EB4252097   857  41c1e915             shrl r9, 21
+0000023EB425209B   85b  4183e101             andl r9,0x1
+0000023EB425209F   85f  48899570fdffff       REX.W movq [rbp-0x290],rdx
+0000023EB42520A6   866  8bd1                 movl rdx,rcx
+0000023EB42520A8   868  4123d1               andl rdx,r9
+0000023EB42520AB   86b  234dd0               andl rcx,[rbp-0x30]
+0000023EB42520AE   86e  44234dd0             andl r9,[rbp-0x30]
+0000023EB42520B2   872  4433c9               xorl r9,rcx
+0000023EB42520B5   875  4433ca               xorl r9,rdx
+0000023EB42520B8   878  418bd7               movl rdx,r15
+0000023EB42520BB   87b  4133d1               xorl rdx,r9
+0000023EB42520BE   87e  33b558ffffff         xorl rsi,[rbp-0xa8]
+0000023EB42520C4   884  4133f6               xorl rsi,r14
+0000023EB42520C7   887  8b4dd8               movl rcx,[rbp-0x28]
+0000023EB42520CA   88a  c1e916               shrl rcx, 22
+0000023EB42520CD   88d  83e101               andl rcx,0x1
+0000023EB42520D0   890  4c8975c0             REX.W movq [rbp-0x40],r14
+0000023EB42520D4   894  448b75e0             movl r14,[rbp-0x20]
+0000023EB42520D8   898  41c1ee16             shrl r14, 22
+0000023EB42520DC   89c  4183e601             andl r14,0x1
+0000023EB42520E0   8a0  48899518ffffff       REX.W movq [rbp-0xe8],rdx
+0000023EB42520E7   8a7  8bd1                 movl rdx,rcx
+0000023EB42520E9   8a9  4123d6               andl rdx,r14
+0000023EB42520EC   8ac  238d78fdffff         andl rcx,[rbp-0x288]
+0000023EB42520F2   8b2  4423b578fdffff       andl r14,[rbp-0x288]
+0000023EB42520F9   8b9  4433f1               xorl r14,rcx
+0000023EB42520FC   8bc  4433f2               xorl r14,rdx
+0000023EB42520FF   8bf  8bd6                 movl rdx,rsi
+0000023EB4252101   8c1  4133d6               xorl rdx,r14
+0000023EB4252104   8c4  8b4d88               movl rcx,[rbp-0x78]
+0000023EB4252107   8c7  4133cb               xorl rcx,r11
+0000023EB425210A   8ca  33c8                 xorl rcx,rax
+0000023EB425210C   8cc  48899528ffffff       REX.W movq [rbp-0xd8],rdx
+0000023EB4252113   8d3  8b55d8               movl rdx,[rbp-0x28]
+0000023EB4252116   8d6  c1ea17               shrl rdx, 23
+0000023EB4252119   8d9  83e201               andl rdx,0x1
+0000023EB425211C   8dc  48898568fdffff       REX.W movq [rbp-0x298],rax
+0000023EB4252123   8e3  8b45e0               movl rax,[rbp-0x20]
+0000023EB4252126   8e6  c1e817               shrl rax, 23
+0000023EB4252129   8e9  83e001               andl rax,0x1
+0000023EB425212C   8ec  4889bdd8feffff       REX.W movq [rbp-0x128],rdi
+0000023EB4252133   8f3  8bfa                 movl rdi,rdx
+0000023EB4252135   8f5  23f8                 andl rdi,rax
+0000023EB4252137   8f7  239548ffffff         andl rdx,[rbp-0xb8]
+0000023EB425213D   8fd  238548ffffff         andl rax,[rbp-0xb8]
+0000023EB4252143   903  33c2                 xorl rax,rdx
+0000023EB4252145   905  33c7                 xorl rax,rdi
+0000023EB4252147   907  8bd1                 movl rdx,rcx
+0000023EB4252149   909  33d0                 xorl rdx,rax
+0000023EB425214B   90b  8b7d80               movl rdi,[rbp-0x80]
+0000023EB425214E   90e  4133f8               xorl rdi,r8
+0000023EB4252151   911  33bd78ffffff         xorl rdi,[rbp-0x88]
+0000023EB4252157   917  48899538ffffff       REX.W movq [rbp-0xc8],rdx
+0000023EB425215E   91e  8b55d8               movl rdx,[rbp-0x28]
+0000023EB4252161   921  c1ea18               shrl rdx, 24
+0000023EB4252164   924  83e201               andl rdx,0x1
+0000023EB4252167   927  4c89a5b0fdffff       REX.W movq [rbp-0x250],r12
+0000023EB425216E   92e  448b65e0             movl r12,[rbp-0x20]
+0000023EB4252172   932  41c1ec18             shrl r12, 24
+0000023EB4252176   936  4183e401             andl r12,0x1
+0000023EB425217A   93a  4c898df0feffff       REX.W movq [rbp-0x110],r9
+0000023EB4252181   941  448bca               movl r9,rdx
+0000023EB4252184   944  4521e1               andl r9,r12
+0000023EB4252187   947  239558ffffff         andl rdx,[rbp-0xa8]
+0000023EB425218D   94d  4c89bdb8fdffff       REX.W movq [rbp-0x248],r15
+0000023EB4252194   954  448bbd58ffffff       movl r15,[rbp-0xa8]
+0000023EB425219B   95b  4521e7               andl r15,r12
+0000023EB425219E   95e  4433fa               xorl r15,rdx
+0000023EB42521A1   961  4533f9               xorl r15,r9
+0000023EB42521A4   964  8bd7                 movl rdx,rdi
+0000023EB42521A6   966  4133d7               xorl rdx,r15
+0000023EB42521A9   969  448b8d70ffffff       movl r9,[rbp-0x90]
+0000023EB42521B0   970  44338d08feffff       xorl r9,[rbp-0x1f8]
+0000023EB42521B7   977  44338d68ffffff       xorl r9,[rbp-0x98]
+0000023EB42521BE   97e  448b65d8             movl r12,[rbp-0x28]
+0000023EB42521C2   982  41c1ec19             shrl r12, 25
+0000023EB42521C6   986  4183e401             andl r12,0x1
+0000023EB42521CA   98a  48899548ffffff       REX.W movq [rbp-0xb8],rdx
+0000023EB42521D1   991  8b55e0               movl rdx,[rbp-0x20]
+0000023EB42521D4   994  c1ea19               shrl rdx, 25
+0000023EB42521D7   997  83e201               andl rdx,0x1
+0000023EB42521DA   99a  4889b5c0fdffff       REX.W movq [rbp-0x240],rsi
+0000023EB42521E1   9a1  4489e6               movl rsi,r12
+0000023EB42521E4   9a4  23f2                 andl rsi,rdx
+0000023EB42521E6   9a6  4523e3               andl r12,r11
+0000023EB42521E9   9a9  4423da               andl r11,rdx
+0000023EB42521EC   9ac  4531e3               xorl r11,r12
+0000023EB42521EF   9af  4433de               xorl r11,rsi
+0000023EB42521F2   9b2  418bd1               movl rdx,r9
+0000023EB42521F5   9b5  4133d3               xorl rdx,r11
+0000023EB42521F8   9b8  8bb510feffff         movl rsi,[rbp-0x1f0]
+0000023EB42521FE   9be  33b500feffff         xorl rsi,[rbp-0x200]
+0000023EB4252204   9c4  33b5d8fdffff         xorl rsi,[rbp-0x228]
+0000023EB425220A   9ca  448b65d8             movl r12,[rbp-0x28]
+0000023EB425220E   9ce  41c1ec1a             shrl r12, 26
+0000023EB4252212   9d2  4183e401             andl r12,0x1
+0000023EB4252216   9d6  48899558ffffff       REX.W movq [rbp-0xa8],rdx
+0000023EB425221D   9dd  8b55e0               movl rdx,[rbp-0x20]
+0000023EB4252220   9e0  c1ea1a               shrl rdx, 26
+0000023EB4252223   9e3  83e201               andl rdx,0x1
+0000023EB4252226   9e6  4c89b500ffffff       REX.W movq [rbp-0x100],r14
+0000023EB425222D   9ed  4589e6               movl r14,r12
+0000023EB4252230   9f0  4423f2               andl r14,rdx
+0000023EB4252233   9f3  4523e0               andl r12,r8
+0000023EB4252236   9f6  4423c2               andl r8,rdx
+0000023EB4252239   9f9  4531e0               xorl r8,r12
+0000023EB425223C   9fc  4533c6               xorl r8,r14
+0000023EB425223F   9ff  8bd6                 movl rdx,rsi
+0000023EB4252241   a01  4133d0               xorl rdx,r8
+0000023EB4252244   a04  448bb560ffffff       movl r14,[rbp-0xa0]
+0000023EB425224B   a0b  44337598             xorl r14,[rbp-0x68]
+0000023EB425224F   a0f  4433b550ffffff       xorl r14,[rbp-0xb0]
+0000023EB4252256   a16  448b65d8             movl r12,[rbp-0x28]
+0000023EB425225A   a1a  41c1ec1b             shrl r12, 27
+0000023EB425225E   a1e  4183e401             andl r12,0x1
+0000023EB4252262   a22  48899568ffffff       REX.W movq [rbp-0x98],rdx
+0000023EB4252269   a29  8b55e0               movl rdx,[rbp-0x20]
+0000023EB425226C   a2c  c1ea1b               shrl rdx, 27
+0000023EB425226F   a2f  83e201               andl rdx,0x1
+0000023EB4252272   a32  48898dc8fdffff       REX.W movq [rbp-0x238],rcx
+0000023EB4252279   a39  4489e1               movl rcx,r12
+0000023EB425227C   a3c  23ca                 andl rcx,rdx
+0000023EB425227E   a3e  4423a508feffff       andl r12,[rbp-0x1f8]
+0000023EB4252285   a45  48898510ffffff       REX.W movq [rbp-0xf0],rax
+0000023EB425228C   a4c  8b8508feffff         movl rax,[rbp-0x1f8]
+0000023EB4252292   a52  23c2                 andl rax,rdx
+0000023EB4252294   a54  4431e0               xorl rax,r12
+0000023EB4252297   a57  33c1                 xorl rax,rcx
+0000023EB4252299   a59  418bd6               movl rdx,r14
+0000023EB425229C   a5c  33d0                 xorl rdx,rax
+0000023EB425229E   a5e  8b8d30ffffff         movl rcx,[rbp-0xd0]
+0000023EB42522A4   a64  334db8               xorl rcx,[rbp-0x48]
+0000023EB42522A7   a67  338d40ffffff         xorl rcx,[rbp-0xc0]
+0000023EB42522AD   a6d  448b65d8             movl r12,[rbp-0x28]
+0000023EB42522B1   a71  41c1ec1c             shrl r12, 28
+0000023EB42522B5   a75  4183e401             andl r12,0x1
+0000023EB42522B9   a79  48899578ffffff       REX.W movq [rbp-0x88],rdx
+0000023EB42522C0   a80  8b55e0               movl rdx,[rbp-0x20]
+0000023EB42522C3   a83  c1ea1c               shrl rdx, 28
+0000023EB42522C6   a86  83e201               andl rdx,0x1
+0000023EB42522C9   a89  4889bd20ffffff       REX.W movq [rbp-0xe0],rdi
+0000023EB42522D0   a90  4489e7               movl rdi,r12
+0000023EB42522D3   a93  23fa                 andl rdi,rdx
+0000023EB42522D5   a95  4423a500feffff       andl r12,[rbp-0x200]
+0000023EB42522DC   a9c  4c89bdd0fdffff       REX.W movq [rbp-0x230],r15
+0000023EB42522E3   aa3  448bbd00feffff       movl r15,[rbp-0x200]
+0000023EB42522EA   aaa  4423fa               andl r15,rdx
+0000023EB42522ED   aad  4531e7               xorl r15,r12
+0000023EB42522F0   ab0  4433ff               xorl r15,rdi
+0000023EB42522F3   ab3  8bd1                 movl rdx,rcx
+0000023EB42522F5   ab5  4133d7               xorl rdx,r15
+0000023EB42522F8   ab8  335de8               xorl rbx,[rbp-0x18]
+0000023EB42522FB   abb  335d90               xorl rbx,[rbp-0x70]
+0000023EB42522FE   abe  8b7dd8               movl rdi,[rbp-0x28]
+0000023EB4252301   ac1  c1ef1d               shrl rdi, 29
+0000023EB4252304   ac4  83e701               andl rdi,0x1
+0000023EB4252307   ac7  448b65e0             movl r12,[rbp-0x20]
+0000023EB425230B   acb  41c1ec1d             shrl r12, 29
+0000023EB425230F   acf  4183e401             andl r12,0x1
+0000023EB4252313   ad3  48895588             REX.W movq [rbp-0x78],rdx
+0000023EB4252317   ad7  8bd7                 movl rdx,rdi
+0000023EB4252319   ad9  4421e2               andl rdx,r12
+0000023EB425231C   adc  237d98               andl rdi,[rbp-0x68]
+0000023EB425231F   adf  4c898d70ffffff       REX.W movq [rbp-0x90],r9
+0000023EB4252326   ae6  448b4d98             movl r9,[rbp-0x68]
+0000023EB425232A   aea  4521e1               andl r9,r12
+0000023EB425232D   aed  4433cf               xorl r9,rdi
+0000023EB4252330   af0  4433ca               xorl r9,rdx
+0000023EB4252333   af3  8bd3                 movl rdx,rbx
+0000023EB4252335   af5  4133d1               xorl rdx,r9
+0000023EB4252338   af8  4423cb               andl r9,rbx
+0000023EB425233B   afb  4423f9               andl r15,rcx
+0000023EB425233E   afe  4123c6               andl rax,r14
+0000023EB4252341   b01  4423c6               andl r8,rsi
+0000023EB4252344   b04  44239d70ffffff       andl r11,[rbp-0x90]
+0000023EB425234B   b0b  8b9dd0fdffff         movl rbx,[rbp-0x230]
+0000023EB4252351   b11  239d20ffffff         andl rbx,[rbp-0xe0]
+0000023EB4252357   b17  8b8dc8fdffff         movl rcx,[rbp-0x238]
+0000023EB425235D   b1d  238d10ffffff         andl rcx,[rbp-0xf0]
+0000023EB4252363   b23  8bb5c0fdffff         movl rsi,[rbp-0x240]
+0000023EB4252369   b29  23b500ffffff         andl rsi,[rbp-0x100]
+0000023EB425236F   b2f  8bbdb8fdffff         movl rdi,[rbp-0x248]
+0000023EB4252375   b35  23bdf0feffff         andl rdi,[rbp-0x110]
+0000023EB425237B   b3b  448ba5b0fdffff       movl r12,[rbp-0x250]
+0000023EB4252382   b42  4423a5d8feffff       andl r12,[rbp-0x128]
+0000023EB4252389   b49  448bb5a8fdffff       movl r14,[rbp-0x258]
+0000023EB4252390   b50  4423b5d0feffff       andl r14,[rbp-0x130]
+0000023EB4252397   b57  48895598             REX.W movq [rbp-0x68],rdx
+0000023EB425239B   b5b  8b95a0fdffff         movl rdx,[rbp-0x260]
+0000023EB42523A1   b61  2395b8feffff         andl rdx,[rbp-0x148]
+0000023EB42523A7   b67  4c898d10feffff       REX.W movq [rbp-0x1f0],r9
+0000023EB42523AE   b6e  448b8d98fdffff       movl r9,[rbp-0x268]
+0000023EB42523B5   b75  44238da8feffff       andl r9,[rbp-0x158]
+0000023EB42523BC   b7c  4c89bd08feffff       REX.W movq [rbp-0x1f8],r15
+0000023EB42523C3   b83  448bbd90fdffff       movl r15,[rbp-0x270]
+0000023EB42523CA   b8a  4423bd98feffff       andl r15,[rbp-0x168]
+0000023EB42523D1   b91  48898500feffff       REX.W movq [rbp-0x200],rax
+0000023EB42523D8   b98  8b8588fdffff         movl rax,[rbp-0x278]
+0000023EB42523DE   b9e  238588feffff         andl rax,[rbp-0x178]
+0000023EB42523E4   ba4  4c894590             REX.W movq [rbp-0x70],r8
+0000023EB42523E8   ba8  448b8580fdffff       movl r8,[rbp-0x280]
+0000023EB42523EF   baf  44238578feffff       andl r8,[rbp-0x188]
+0000023EB42523F6   bb6  4c895d80             REX.W movq [rbp-0x80],r11
+0000023EB42523FA   bba  448b9d18feffff       movl r11,[rbp-0x1e8]
+0000023EB4252401   bc1  44239d68feffff       andl r11,[rbp-0x198]
+0000023EB4252408   bc8  48899d70ffffff       REX.W movq [rbp-0x90],rbx
+0000023EB425240F   bcf  8b9df0fdffff         movl rbx,[rbp-0x210]
+0000023EB4252415   bd5  239df8fdffff         andl rbx,[rbp-0x208]
+0000023EB425241B   bdb  48898d60ffffff       REX.W movq [rbp-0xa0],rcx
+0000023EB4252422   be2  8b8de0fdffff         movl rcx,[rbp-0x220]
+0000023EB4252428   be8  238de8fdffff         andl rcx,[rbp-0x218]
+0000023EB425242E   bee  4889b550ffffff       REX.W movq [rbp-0xb0],rsi
+0000023EB4252435   bf5  8bb5d0fcffff         movl rsi,[rbp-0x330]
+0000023EB425243B   bfb  23b5c8fcffff         andl rsi,[rbp-0x338]
+0000023EB4252441   c01  4889bd40ffffff       REX.W movq [rbp-0xc0],rdi
+0000023EB4252448   c08  8bbde0fcffff         movl rdi,[rbp-0x320]
+0000023EB425244E   c0e  23bdd8fcffff         andl rdi,[rbp-0x328]
+0000023EB4252454   c14  4c89a530ffffff       REX.W movq [rbp-0xd0],r12
+0000023EB425245B   c1b  448ba5f0fcffff       movl r12,[rbp-0x310]
+0000023EB4252462   c22  4423a5e8fcffff       andl r12,[rbp-0x318]
+0000023EB4252469   c29  4c89b520ffffff       REX.W movq [rbp-0xe0],r14
+0000023EB4252470   c30  448bb500fdffff       movl r14,[rbp-0x300]
+0000023EB4252477   c37  4423b5f8fcffff       andl r14,[rbp-0x308]
+0000023EB425247E   c3e  48899510ffffff       REX.W movq [rbp-0xf0],rdx
+0000023EB4252485   c45  8b9510fdffff         movl rdx,[rbp-0x2f0]
+0000023EB425248B   c4b  239508fdffff         andl rdx,[rbp-0x2f8]
+0000023EB4252491   c51  4c898d00ffffff       REX.W movq [rbp-0x100],r9
+0000023EB4252498   c58  448b8d20fdffff       movl r9,[rbp-0x2e0]
+0000023EB425249F   c5f  44238d18fdffff       andl r9,[rbp-0x2e8]
+0000023EB42524A6   c66  4c89bdf0feffff       REX.W movq [rbp-0x110],r15
+0000023EB42524AD   c6d  448bbd30fdffff       movl r15,[rbp-0x2d0]
+0000023EB42524B4   c74  4423bd28fdffff       andl r15,[rbp-0x2d8]
+0000023EB42524BB   c7b  488985d8feffff       REX.W movq [rbp-0x128],rax
+0000023EB42524C2   c82  8b8540fdffff         movl rax,[rbp-0x2c0]
+0000023EB42524C8   c88  238538fdffff         andl rax,[rbp-0x2c8]
+0000023EB42524CE   c8e  4c8985d0feffff       REX.W movq [rbp-0x130],r8
+0000023EB42524D5   c95  448b8550fdffff       movl r8,[rbp-0x2b0]
+0000023EB42524DC   c9c  44238548fdffff       andl r8,[rbp-0x2b8]
+0000023EB42524E3   ca3  4c899db8feffff       REX.W movq [rbp-0x148],r11
+0000023EB42524EA   caa  448b9d60fdffff       movl r11,[rbp-0x2a0]
+0000023EB42524F1   cb1  44239d58fdffff       andl r11,[rbp-0x2a8]
+0000023EB42524F8   cb8  48899da8feffff       REX.W movq [rbp-0x158],rbx
+0000023EB42524FF   cbf  8b9d70fdffff         movl rbx,[rbp-0x290]
+0000023EB4252505   cc5  339d68fdffff         xorl rbx,[rbp-0x298]
+0000023EB425250B   ccb  339d78fdffff         xorl rbx,[rbp-0x288]
+0000023EB4252511   cd1  48899d18feffff       REX.W movq [rbp-0x1e8],rbx
+0000023EB4252518   cd8  8b5dd8               movl rbx,[rbp-0x28]
+0000023EB425251B   cdb  83e301               andl rbx,0x1
+0000023EB425251E   cde  48898d98feffff       REX.W movq [rbp-0x168],rcx
+0000023EB4252525   ce5  8b4de0               movl rcx,[rbp-0x20]
+0000023EB4252528   ce8  83e101               andl rcx,0x1
+0000023EB425252B   ceb  4889b588feffff       REX.W movq [rbp-0x178],rsi
+0000023EB4252532   cf2  8bf3                 movl rsi,rbx
+0000023EB4252534   cf4  23f1                 andl rsi,rcx
+0000023EB4252536   cf6  235da8               andl rbx,[rbp-0x58]
+0000023EB4252539   cf9  234da8               andl rcx,[rbp-0x58]
+0000023EB425253C   cfc  33cb                 xorl rcx,rbx
+0000023EB425253E   cfe  33ce                 xorl rcx,rsi
+0000023EB4252540   d00  8b9d18feffff         movl rbx,[rbp-0x1e8]
+0000023EB4252546   d06  23d9                 andl rbx,rcx
+0000023EB4252548   d08  8bb520feffff         movl rsi,[rbp-0x1e0]
+0000023EB425254E   d0e  23f3                 andl rsi,rbx
+0000023EB4252550   d10  410bf3               orl rsi,r11
+0000023EB4252553   d13  448b9d28feffff       movl r11,[rbp-0x1d8]
+0000023EB425255A   d1a  4423de               andl r11,rsi
+0000023EB425255D   d1d  450bd8               orl r11,r8
+0000023EB4252560   d20  448b8530feffff       movl r8,[rbp-0x1d0]
+0000023EB4252567   d27  4523c3               andl r8,r11
+0000023EB425256A   d2a  440bc0               orl r8,rax
+0000023EB425256D   d2d  8b8538feffff         movl rax,[rbp-0x1c8]
+0000023EB4252573   d33  4123c0               andl rax,r8
+0000023EB4252576   d36  410bc7               orl rax,r15
+0000023EB4252579   d39  448bbd40feffff       movl r15,[rbp-0x1c0]
+0000023EB4252580   d40  4423f8               andl r15,rax
+0000023EB4252583   d43  450bf9               orl r15,r9
+0000023EB4252586   d46  448b8d48feffff       movl r9,[rbp-0x1b8]
+0000023EB425258D   d4d  4523cf               andl r9,r15
+0000023EB4252590   d50  440bca               orl r9,rdx
+0000023EB4252593   d53  8b9550feffff         movl rdx,[rbp-0x1b0]
+0000023EB4252599   d59  4123d1               andl rdx,r9
+0000023EB425259C   d5c  410bd6               orl rdx,r14
+0000023EB425259F   d5f  448bb558feffff       movl r14,[rbp-0x1a8]
+0000023EB42525A6   d66  4423f2               andl r14,rdx
+0000023EB42525A9   d69  4509e6               orl r14,r12
+0000023EB42525AC   d6c  448ba560feffff       movl r12,[rbp-0x1a0]
+0000023EB42525B3   d73  4523e6               andl r12,r14
+0000023EB42525B6   d76  440be7               orl r12,rdi
+0000023EB42525B9   d79  8bbd70feffff         movl rdi,[rbp-0x190]
+0000023EB42525BF   d7f  4421e7               andl rdi,r12
+0000023EB42525C2   d82  0bbd88feffff         orl rdi,[rbp-0x178]
+0000023EB42525C8   d88  4c89a568feffff       REX.W movq [rbp-0x198],r12
+0000023EB42525CF   d8f  448ba580feffff       movl r12,[rbp-0x180]
+0000023EB42525D6   d96  4423e7               andl r12,rdi
+0000023EB42525D9   d99  440ba598feffff       orl r12,[rbp-0x168]
+0000023EB42525E0   da0  4889bd78feffff       REX.W movq [rbp-0x188],rdi
+0000023EB42525E7   da7  8bbd90feffff         movl rdi,[rbp-0x170]
+0000023EB42525ED   dad  4421e7               andl rdi,r12
+0000023EB42525F0   db0  0bbda8feffff         orl rdi,[rbp-0x158]
+0000023EB42525F6   db6  4c89a588feffff       REX.W movq [rbp-0x178],r12
+0000023EB42525FD   dbd  448ba5a0feffff       movl r12,[rbp-0x160]
+0000023EB4252604   dc4  4423e7               andl r12,rdi
+0000023EB4252607   dc7  440ba5b8feffff       orl r12,[rbp-0x148]
+0000023EB425260E   dce  4889bd98feffff       REX.W movq [rbp-0x168],rdi
+0000023EB4252615   dd5  8bbdb0feffff         movl rdi,[rbp-0x150]
+0000023EB425261B   ddb  4421e7               andl rdi,r12
+0000023EB425261E   dde  0bbdd0feffff         orl rdi,[rbp-0x130]
+0000023EB4252624   de4  4c89a5a8feffff       REX.W movq [rbp-0x158],r12
+0000023EB425262B   deb  448ba5c0feffff       movl r12,[rbp-0x140]
+0000023EB4252632   df2  4423e7               andl r12,rdi
+0000023EB4252635   df5  440ba5d8feffff       orl r12,[rbp-0x128]
+0000023EB425263C   dfc  4889bdb8feffff       REX.W movq [rbp-0x148],rdi
+0000023EB4252643   e03  8bbdc8feffff         movl rdi,[rbp-0x138]
+0000023EB4252649   e09  4421e7               andl rdi,r12
+0000023EB425264C   e0c  0bbdf0feffff         orl rdi,[rbp-0x110]
+0000023EB4252652   e12  4c89a5d0feffff       REX.W movq [rbp-0x130],r12
+0000023EB4252659   e19  448ba5e0feffff       movl r12,[rbp-0x120]
+0000023EB4252660   e20  4423e7               andl r12,rdi
+0000023EB4252663   e23  440ba500ffffff       orl r12,[rbp-0x100]
+0000023EB425266A   e2a  4889bdd8feffff       REX.W movq [rbp-0x128],rdi
+0000023EB4252671   e31  8bbde8feffff         movl rdi,[rbp-0x118]
+0000023EB4252677   e37  4421e7               andl rdi,r12
+0000023EB425267A   e3a  0bbd10ffffff         orl rdi,[rbp-0xf0]
+0000023EB4252680   e40  4c89a5f0feffff       REX.W movq [rbp-0x110],r12
+0000023EB4252687   e47  448ba5f8feffff       movl r12,[rbp-0x108]
+0000023EB425268E   e4e  4423e7               andl r12,rdi
+0000023EB4252691   e51  440ba520ffffff       orl r12,[rbp-0xe0]
+0000023EB4252698   e58  4889bd00ffffff       REX.W movq [rbp-0x100],rdi
+0000023EB425269F   e5f  8bbd08ffffff         movl rdi,[rbp-0xf8]
+0000023EB42526A5   e65  4421e7               andl rdi,r12
+0000023EB42526A8   e68  0bbd30ffffff         orl rdi,[rbp-0xd0]
+0000023EB42526AE   e6e  4c89a510ffffff       REX.W movq [rbp-0xf0],r12
+0000023EB42526B5   e75  448ba518ffffff       movl r12,[rbp-0xe8]
+0000023EB42526BC   e7c  4423e7               andl r12,rdi
+0000023EB42526BF   e7f  440ba540ffffff       orl r12,[rbp-0xc0]
+0000023EB42526C6   e86  4889bd20ffffff       REX.W movq [rbp-0xe0],rdi
+0000023EB42526CD   e8d  8bbd28ffffff         movl rdi,[rbp-0xd8]
+0000023EB42526D3   e93  4421e7               andl rdi,r12
+0000023EB42526D6   e96  0bbd50ffffff         orl rdi,[rbp-0xb0]
+0000023EB42526DC   e9c  4c89a530ffffff       REX.W movq [rbp-0xd0],r12
+0000023EB42526E3   ea3  448ba538ffffff       movl r12,[rbp-0xc8]
+0000023EB42526EA   eaa  4423e7               andl r12,rdi
+0000023EB42526ED   ead  440ba560ffffff       orl r12,[rbp-0xa0]
+0000023EB42526F4   eb4  4889bd40ffffff       REX.W movq [rbp-0xc0],rdi
+0000023EB42526FB   ebb  8bbd48ffffff         movl rdi,[rbp-0xb8]
+0000023EB4252701   ec1  4421e7               andl rdi,r12
+0000023EB4252704   ec4  0bbd70ffffff         orl rdi,[rbp-0x90]
+0000023EB425270A   eca  4c89a550ffffff       REX.W movq [rbp-0xb0],r12
+0000023EB4252711   ed1  448ba558ffffff       movl r12,[rbp-0xa8]
+0000023EB4252718   ed8  4423e7               andl r12,rdi
+0000023EB425271B   edb  440b6580             orl r12,[rbp-0x80]
+0000023EB425271F   edf  4889bd60ffffff       REX.W movq [rbp-0xa0],rdi
+0000023EB4252726   ee6  8bbd68ffffff         movl rdi,[rbp-0x98]
+0000023EB425272C   eec  4421e7               andl rdi,r12
+0000023EB425272F   eef  0b7d90               orl rdi,[rbp-0x70]
+0000023EB4252732   ef2  4c89a570ffffff       REX.W movq [rbp-0x90],r12
+0000023EB4252739   ef9  448ba578ffffff       movl r12,[rbp-0x88]
+0000023EB4252740   f00  4423e7               andl r12,rdi
+0000023EB4252743   f03  440ba500feffff       orl r12,[rbp-0x200]
+0000023EB425274A   f0a  48897d80             REX.W movq [rbp-0x80],rdi
+0000023EB425274E   f0e  8b7d88               movl rdi,[rbp-0x78]
+0000023EB4252751   f11  4421e7               andl rdi,r12
+0000023EB4252754   f14  0bbd08feffff         orl rdi,[rbp-0x1f8]
+0000023EB425275A   f1a  4c896590             REX.W movq [rbp-0x70],r12
+0000023EB425275E   f1e  448b6598             movl r12,[rbp-0x68]
+0000023EB4252762   f22  4423e7               andl r12,rdi
+0000023EB4252765   f25  440ba510feffff       orl r12,[rbp-0x1f0]
+0000023EB425276C   f2c  338d18feffff         xorl rcx,[rbp-0x1e8]
+0000023EB4252772   f32  339d20feffff         xorl rbx,[rbp-0x1e0]
+0000023EB4252778   f38  d1e3                 shll rbx, 1
+0000023EB425277A   f3a  0bd9                 orl rbx,rcx
+0000023EB425277C   f3c  33b528feffff         xorl rsi,[rbp-0x1d8]
+0000023EB4252782   f42  8d0cb500000000       leal rcx,[rsi*4+0x0]
+0000023EB4252789   f49  0bcb                 orl rcx,rbx
+0000023EB425278B   f4b  44339d30feffff       xorl r11,[rbp-0x1d0]
+0000023EB4252792   f52  428d1cdd00000000     leal rbx,[r11*8+0x0]
+0000023EB425279A   f5a  0bd9                 orl rbx,rcx
+0000023EB425279C   f5c  8b8d38feffff         movl rcx,[rbp-0x1c8]
+0000023EB42527A2   f62  4133c8               xorl rcx,r8
+0000023EB42527A5   f65  c1e104               shll rcx, 4
+0000023EB42527A8   f68  0bcb                 orl rcx,rbx
+0000023EB42527AA   f6a  8b9d40feffff         movl rbx,[rbp-0x1c0]
+0000023EB42527B0   f70  33d8                 xorl rbx,rax
+0000023EB42527B2   f72  c1e305               shll rbx, 5
+0000023EB42527B5   f75  0bd9                 orl rbx,rcx
+0000023EB42527B7   f77  8b8d48feffff         movl rcx,[rbp-0x1b8]
+0000023EB42527BD   f7d  4133cf               xorl rcx,r15
+0000023EB42527C0   f80  c1e106               shll rcx, 6
+0000023EB42527C3   f83  0bcb                 orl rcx,rbx
+0000023EB42527C5   f85  8b9d50feffff         movl rbx,[rbp-0x1b0]
+0000023EB42527CB   f8b  4133d9               xorl rbx,r9
+0000023EB42527CE   f8e  c1e307               shll rbx, 7
+0000023EB42527D1   f91  0bd9                 orl rbx,rcx
+0000023EB42527D3   f93  8b8d58feffff         movl rcx,[rbp-0x1a8]
+0000023EB42527D9   f99  33ca                 xorl rcx,rdx
+0000023EB42527DB   f9b  c1e108               shll rcx, 8
+0000023EB42527DE   f9e  0bcb                 orl rcx,rbx
+0000023EB42527E0   fa0  8b9d60feffff         movl rbx,[rbp-0x1a0]
+0000023EB42527E6   fa6  4133de               xorl rbx,r14
+0000023EB42527E9   fa9  c1e309               shll rbx, 9
+0000023EB42527EC   fac  0bd9                 orl rbx,rcx
+0000023EB42527EE   fae  8b9570feffff         movl rdx,[rbp-0x190]
+0000023EB42527F4   fb4  339568feffff         xorl rdx,[rbp-0x198]
+0000023EB42527FA   fba  c1e20a               shll rdx, 10
+0000023EB42527FD   fbd  0bd3                 orl rdx,rbx
+0000023EB42527FF   fbf  8b9d80feffff         movl rbx,[rbp-0x180]
+0000023EB4252805   fc5  339d78feffff         xorl rbx,[rbp-0x188]
+0000023EB425280B   fcb  c1e30b               shll rbx, 11
+0000023EB425280E   fce  0bda                 orl rbx,rdx
+0000023EB4252810   fd0  8b9590feffff         movl rdx,[rbp-0x170]
+0000023EB4252816   fd6  339588feffff         xorl rdx,[rbp-0x178]
+0000023EB425281C   fdc  c1e20c               shll rdx, 12
+0000023EB425281F   fdf  0bd3                 orl rdx,rbx
+0000023EB4252821   fe1  8b9da0feffff         movl rbx,[rbp-0x160]
+0000023EB4252827   fe7  339d98feffff         xorl rbx,[rbp-0x168]
+0000023EB425282D   fed  c1e30d               shll rbx, 13
+0000023EB4252830   ff0  0bda                 orl rbx,rdx
+0000023EB4252832   ff2  8b95b0feffff         movl rdx,[rbp-0x150]
+0000023EB4252838   ff8  3395a8feffff         xorl rdx,[rbp-0x158]
+0000023EB425283E   ffe  c1e20e               shll rdx, 14
+0000023EB4252841  1001  0bd3                 orl rdx,rbx
+0000023EB4252843  1003  8b9dc0feffff         movl rbx,[rbp-0x140]
+0000023EB4252849  1009  339db8feffff         xorl rbx,[rbp-0x148]
+0000023EB425284F  100f  c1e30f               shll rbx, 15
+0000023EB4252852  1012  0bda                 orl rbx,rdx
+0000023EB4252854  1014  8b95d0feffff         movl rdx,[rbp-0x130]
+0000023EB425285A  101a  3395c8feffff         xorl rdx,[rbp-0x138]
+0000023EB4252860  1020  c1e210               shll rdx, 16
+0000023EB4252863  1023  0bd3                 orl rdx,rbx
+0000023EB4252865  1025  8b9de0feffff         movl rbx,[rbp-0x120]
+0000023EB425286B  102b  339dd8feffff         xorl rbx,[rbp-0x128]
+0000023EB4252871  1031  c1e311               shll rbx, 17
+0000023EB4252874  1034  0bda                 orl rbx,rdx
+0000023EB4252876  1036  8b95f0feffff         movl rdx,[rbp-0x110]
+0000023EB425287C  103c  3395e8feffff         xorl rdx,[rbp-0x118]
+0000023EB4252882  1042  c1e212               shll rdx, 18
+0000023EB4252885  1045  0bd3                 orl rdx,rbx
+0000023EB4252887  1047  8b9d00ffffff         movl rbx,[rbp-0x100]
+0000023EB425288D  104d  339df8feffff         xorl rbx,[rbp-0x108]
+0000023EB4252893  1053  c1e313               shll rbx, 19
+0000023EB4252896  1056  0bda                 orl rbx,rdx
+0000023EB4252898  1058  8b9510ffffff         movl rdx,[rbp-0xf0]
+0000023EB425289E  105e  339508ffffff         xorl rdx,[rbp-0xf8]
+0000023EB42528A4  1064  c1e214               shll rdx, 20
+0000023EB42528A7  1067  0bd3                 orl rdx,rbx
+0000023EB42528A9  1069  8b9d20ffffff         movl rbx,[rbp-0xe0]
+0000023EB42528AF  106f  339d18ffffff         xorl rbx,[rbp-0xe8]
+0000023EB42528B5  1075  c1e315               shll rbx, 21
+0000023EB42528B8  1078  0bda                 orl rbx,rdx
+0000023EB42528BA  107a  8b9530ffffff         movl rdx,[rbp-0xd0]
+0000023EB42528C0  1080  339528ffffff         xorl rdx,[rbp-0xd8]
+0000023EB42528C6  1086  c1e216               shll rdx, 22
+0000023EB42528C9  1089  0bd3                 orl rdx,rbx
+0000023EB42528CB  108b  8b9d40ffffff         movl rbx,[rbp-0xc0]
+0000023EB42528D1  1091  339d38ffffff         xorl rbx,[rbp-0xc8]
+0000023EB42528D7  1097  c1e317               shll rbx, 23
+0000023EB42528DA  109a  0bda                 orl rbx,rdx
+0000023EB42528DC  109c  8b9550ffffff         movl rdx,[rbp-0xb0]
+0000023EB42528E2  10a2  339548ffffff         xorl rdx,[rbp-0xb8]
+0000023EB42528E8  10a8  c1e218               shll rdx, 24
+0000023EB42528EB  10ab  0bd3                 orl rdx,rbx
+0000023EB42528ED  10ad  8b9d60ffffff         movl rbx,[rbp-0xa0]
+0000023EB42528F3  10b3  339d58ffffff         xorl rbx,[rbp-0xa8]
+0000023EB42528F9  10b9  c1e319               shll rbx, 25
+0000023EB42528FC  10bc  0bda                 orl rbx,rdx
+0000023EB42528FE  10be  8b9570ffffff         movl rdx,[rbp-0x90]
+0000023EB4252904  10c4  339568ffffff         xorl rdx,[rbp-0x98]
+0000023EB425290A  10ca  c1e21a               shll rdx, 26
+0000023EB425290D  10cd  0bd3                 orl rdx,rbx
+0000023EB425290F  10cf  8b5d80               movl rbx,[rbp-0x80]
+0000023EB4252912  10d2  339d78ffffff         xorl rbx,[rbp-0x88]
+0000023EB4252918  10d8  c1e31b               shll rbx, 27
+0000023EB425291B  10db  0bda                 orl rbx,rdx
+0000023EB425291D  10dd  8b5590               movl rdx,[rbp-0x70]
+0000023EB4252920  10e0  335588               xorl rdx,[rbp-0x78]
+0000023EB4252923  10e3  c1e21c               shll rdx, 28
+0000023EB4252926  10e6  0bd3                 orl rdx,rbx
+0000023EB4252928  10e8  337d98               xorl rdi,[rbp-0x68]
+0000023EB425292B  10eb  c1e71d               shll rdi, 29
+0000023EB425292E  10ee  0bfa                 orl rdi,rdx
+0000023EB4252930  10f0  8b5da8               movl rbx,[rbp-0x58]
+0000023EB4252933  10f3  335da0               xorl rbx,[rbp-0x60]
+0000023EB4252936  10f6  335db0               xorl rbx,[rbp-0x50]
+0000023EB4252939  10f9  8b55d8               movl rdx,[rbp-0x28]
+0000023EB425293C  10fc  c1ea1e               shrl rdx, 30
+0000023EB425293F  10ff  83e201               andl rdx,0x1
+0000023EB4252942  1102  8b4de0               movl rcx,[rbp-0x20]
+0000023EB4252945  1105  c1e91e               shrl rcx, 30
+0000023EB4252948  1108  83e101               andl rcx,0x1
+0000023EB425294B  110b  8bf2                 movl rsi,rdx
+0000023EB425294D  110d  23f1                 andl rsi,rcx
+0000023EB425294F  110f  2355b8               andl rdx,[rbp-0x48]
+0000023EB4252952  1112  448b45b8             movl r8,[rbp-0x48]
+0000023EB4252956  1116  4423c1               andl r8,rcx
+0000023EB4252959  1119  4433c2               xorl r8,rdx
+0000023EB425295C  111c  4433c6               xorl r8,rsi
+0000023EB425295F  111f  8bd3                 movl rdx,rbx
+0000023EB4252961  1121  4133d0               xorl rdx,r8
+0000023EB4252964  1124  8bca                 movl rcx,rdx
+0000023EB4252966  1126  4431e1               xorl rcx,r12
+0000023EB4252969  1129  c1e11e               shll rcx, 30
+0000023EB425296C  112c  0bcf                 orl rcx,rdi
+0000023EB425296E  112e  4423c3               andl r8,rbx
+0000023EB4252971  1131  4421e2               andl rdx,r12
+0000023EB4252974  1134  410bd0               orl rdx,r8
+0000023EB4252977  1137  448b7dc8             movl r15,[rbp-0x38]
+0000023EB425297B  113b  44337dc0             xorl r15,[rbp-0x40]
+0000023EB425297F  113f  44337dd0             xorl r15,[rbp-0x30]
+0000023EB4252983  1143  8b5dd8               movl rbx,[rbp-0x28]
+0000023EB4252986  1146  c1eb1f               shrl rbx, 31
+0000023EB4252989  1149  8b75e0               movl rsi,[rbp-0x20]
+0000023EB425298C  114c  c1ee1f               shrl rsi, 31
+0000023EB425298F  114f  8bfb                 movl rdi,rbx
+0000023EB4252991  1151  23fe                 andl rdi,rsi
+0000023EB4252993  1153  235de8               andl rbx,[rbp-0x18]
+0000023EB4252996  1156  448b65e8             movl r12,[rbp-0x18]
+0000023EB425299A  115a  4423e6               andl r12,rsi
+0000023EB425299D  115d  4433e3               xorl r12,rbx
+0000023EB42529A0  1160  4433e7               xorl r12,rdi
+0000023EB42529A3  1163  4533e7               xorl r12,r15
+0000023EB42529A6  1166  4433e2               xorl r12,rdx
+0000023EB42529A9  1169  41c1e41f             shll r12, 31
+0000023EB42529AD  116d  440be1               orl r12,rcx
+0000023EB42529B0  1170  4489e0               movl rax,r12
+0000023EB42529B3  1173  488be5               REX.W movq rsp,rbp
+0000023EB42529B6  1176  5d                   pop rbp
+0000023EB42529B7  1177  c3                   retl
+0000023EB42529B8  1178  90                   nop
+0000023EB42529B9  1179  0f1f00               nop
+
+Safepoints (stack slots = 105, entries = 0, byte size = 12)
+
+RelocInfo (size = 0)
+
+--- End code ---

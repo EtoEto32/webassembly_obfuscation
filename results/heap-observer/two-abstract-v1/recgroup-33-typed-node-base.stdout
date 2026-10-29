@@ -1,0 +1,36 @@
+[fuzz-exec] export get
+[fuzz-exec] note result: get => object(null)
+[fuzz-exec] export global$_1
+[LoggingExternalInterface logging null]
+[fuzz-exec] export global$_5
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export global$_9
+[LoggingExternalInterface logging object(null)]
+[fuzz-exec] export func
+[fuzz-exec] note result: func => object(object(object(null)))
+[fuzz-exec] export func_17_invoker
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[LoggingExternalInterface logging externref(47)]
+[LoggingExternalInterface logging 128]
+[fuzz-exec] export func_20_invoker
+exception thrown: RuntimeError: unreachable
+[fuzz-exec] export func_22
+exception thrown: RuntimeError: dereferencing a null pointer
+[caller-study] {"calls":[{"name":"get","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"returned","unsupported":[]},{"name":"func","known":true,"status":"returned","unsupported":[]},{"name":"func_17_invoker","known":true,"status":"returned","unsupported":[]},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":null,"known":false,"status":"type-error","unsupported":[],"error":"TypeError: func.apply is not a function"},{"name":"func_20_invoker","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: unreachable"},{"name":"func_22","known":true,"status":"trap","unsupported":[],"error":"RuntimeError: dereferencing a null pointer"}],"trace":[{"id":0,"channel":"printed","name":null,"slot":null},{"id":1,"channel":"printed","name":null,"slot":null},{"id":2,"channel":"printed","name":null,"slot":null}]}

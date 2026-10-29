@@ -1,0 +1,223 @@
+{
+  "created_utc": "2026-10-16T10:52:37.414214+00:00",
+  "frozen_before_execution": true,
+  "inputs": [
+    {
+      "id": "swamped-baseline",
+      "family": "swamped",
+      "transformation": "baseline",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/swamped-baseline.wasm",
+      "sha256": "046dc081076d9cea6831967619b862cc80fa8c2381346406ec639c899cda640f",
+      "truth": "reference"
+    },
+    {
+      "id": "swamped-nop",
+      "family": "swamped",
+      "transformation": "nop",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/swamped-nop.wasm",
+      "sha256": "1eb24651f8841c0f1efd51f52b47a13dce136390feec3331fbd042dd35067ba0",
+      "truth": "index-preserving-generated-control"
+    },
+    {
+      "id": "swamped-constsplit",
+      "family": "swamped",
+      "transformation": "constsplit",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/swamped-constsplit.wasm",
+      "sha256": "b13550b63392378382017f5cb3771ee50412a695facbfe5ffcfa55b07bf57593",
+      "truth": "index-preserving-generated-control"
+    },
+    {
+      "id": "xmr-wasm-baseline",
+      "family": "xmr-wasm",
+      "transformation": "baseline",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/xmr-wasm-baseline.wasm",
+      "sha256": "045eb0afdeb1e89e1d09108b69117d16ab46094c3c16d989e471d4d2bd5b7554",
+      "truth": "reference"
+    },
+    {
+      "id": "xmr-wasm-nop",
+      "family": "xmr-wasm",
+      "transformation": "nop",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/xmr-wasm-nop.wasm",
+      "sha256": "312063902125bf6f9b6832a930df87d65e4a1612135df278e15b0aa32d1c4ede",
+      "truth": "index-preserving-generated-control"
+    },
+    {
+      "id": "xmr-wasm-constsplit",
+      "family": "xmr-wasm",
+      "transformation": "constsplit",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/xmr-wasm-constsplit.wasm",
+      "sha256": "a8f38d3c33f6c46a4d4c847199c902eaa3be86270a8a60e1e2015b2d9a2299de",
+      "truth": "index-preserving-generated-control"
+    },
+    {
+      "id": "webminerpoolhashcn-baseline",
+      "family": "webminerpoolhashcn",
+      "transformation": "baseline",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/webminerpoolhashcn-baseline.wasm",
+      "sha256": "8bb74f8f7d0b71cab6684d122ab3f600f09cea9ae867607f145ab4a7a63387f3",
+      "truth": "reference"
+    },
+    {
+      "id": "webminerpoolhashcn-nop",
+      "family": "webminerpoolhashcn",
+      "transformation": "nop",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/webminerpoolhashcn-nop.wasm",
+      "sha256": "f55f5f4b76067f2a33e0119ff3fb69950d03f5d12a8187652255add048cb35f9",
+      "truth": "index-preserving-generated-control"
+    },
+    {
+      "id": "webminerpoolhashcn-constsplit",
+      "family": "webminerpoolhashcn",
+      "transformation": "constsplit",
+      "path": "results/followup-evaluation-20261016/controlled-artifacts-v2/webminerpoolhashcn-constsplit.wasm",
+      "sha256": "471aacde6882b880d91f9029c99a5b2731b0af54264d6f7a2b377a839901a4ca",
+      "truth": "index-preserving-generated-control"
+    },
+    {
+      "id": "published-flat",
+      "family": "xmr-wasm",
+      "transformation": "xmr-wasm-emccobf-flattening",
+      "path": "data/objects/5335175e6c9a0e9c0374391e372063b20877d70db921fc3ea802b3926df788e1.bin",
+      "sha256": "5335175e6c9a0e9c0374391e372063b20877d70db921fc3ea802b3926df788e1",
+      "truth": "reviewed-helper-pairs-only",
+      "reviewed_function_indices": [
+        112,
+        118
+      ]
+    },
+    {
+      "id": "published-sub",
+      "family": "xmr-wasm",
+      "transformation": "xmr-wasm-emccobf-substitution",
+      "path": "data/objects/eb15e17a985fe1d192296d5084b0fdac220a9e8f16a406eb54167d54190b6b90.bin",
+      "sha256": "eb15e17a985fe1d192296d5084b0fdac220a9e8f16a406eb54167d54190b6b90",
+      "truth": "reviewed-helper-pairs-only",
+      "reviewed_function_indices": [
+        112,
+        118
+      ]
+    }
+  ],
+  "methods": [
+    {
+      "id": "unmodified",
+      "kind": "copy"
+    },
+    {
+      "id": "nop",
+      "kind": "local",
+      "rules": [
+        "nop"
+      ]
+    },
+    {
+      "id": "integer-fold",
+      "kind": "local",
+      "rules": [
+        "integer-fold"
+      ]
+    },
+    {
+      "id": "both",
+      "kind": "local",
+      "rules": [
+        "nop",
+        "integer-fold"
+      ]
+    },
+    {
+      "id": "binaryen-local",
+      "kind": "binaryen",
+      "flags": [
+        "--vacuum",
+        "--precompute",
+        "--enable-reference-types",
+        "--enable-multivalue",
+        "--enable-simd"
+      ]
+    },
+    {
+      "id": "binaryen-O2",
+      "kind": "binaryen",
+      "flags": [
+        "-O2",
+        "--enable-reference-types",
+        "--enable-multivalue",
+        "--enable-simd"
+      ]
+    },
+    {
+      "id": "binaryen-O3",
+      "kind": "binaryen",
+      "flags": [
+        "-O3",
+        "--enable-reference-types",
+        "--enable-multivalue",
+        "--enable-simd"
+      ]
+    }
+  ],
+  "labels": 77,
+  "batches": {
+    "swamped": 21,
+    "xmr-wasm": 35,
+    "webminerpoolhashcn": 21
+  },
+  "required_sources": [
+    {
+      "path": "scripts/normalize_wat_local.py",
+      "sha256": "01af604b04e54026c9b53c5b70e6cb89ee9e8e2424890c28305b5bd62cad58d9"
+    },
+    {
+      "path": "scripts/prepare_followup_controlled.py",
+      "sha256": "91d4b5720c466a9ca65bac5383a83318a7fc8d6e8616ea65424904a13fa39889"
+    },
+    {
+      "path": "scripts/analyze_corpus.py",
+      "sha256": "f52cd3990213bc0209aa2f49997837e4951ad059bbfd1d670069367988df4aa5"
+    },
+    {
+      "path": "scripts/audit_normalization_signatures.py",
+      "sha256": "bef7c9ff721b633f2b7270edcfa0bf43743d29e55681d130374438b8874e346c"
+    },
+    {
+      "path": "scripts/audit_normalization_resources.py",
+      "sha256": "07fda9d05a52730a6560ced5ea466c4595ad7858b4c84b8a55019d9012f716ce"
+    },
+    {
+      "path": "docs/followup-normalization-protocol-20261016.md",
+      "sha256": "831a3d12b2ba44454fb4e48ff3968a3b411f78930d20f99a52eddff660ca0508"
+    },
+    {
+      "path": ".tools/wabt-1.0.42/bin/wasm2wat.exe",
+      "sha256": "9ccce93d1000e4d3ba7e5c365bd1e3b5d909dea2f72c7511d584f8a8e9108873"
+    },
+    {
+      "path": ".tools/wabt-1.0.42/bin/wat2wasm.exe",
+      "sha256": "d5d742cb997c15ecc050fa64296bb72f53d005235e8fac66b14f3549d8567e6d"
+    },
+    {
+      "path": ".tools/wabt-1.0.42/bin/wasm-validate.exe",
+      "sha256": "4939f4bcc66b8b0370685f656c1a33df068f5d1b245b75c94b10c74ffdd946a3"
+    },
+    {
+      "path": ".tools/binaryen-version_133/bin/wasm-opt.exe",
+      "sha256": "4217d75f81cf33c4032d82b5d531120069af1a4b43eb7737977bdb2c99a8f4ba"
+    }
+  ],
+  "performance_summary_sha256": "7cbfc79528d839e1e718cfddb971a3a97e93ed965abb924e7dd21a1ea980d978",
+  "callsite_summary_sha256": "8c143af8ebeb23a9b88c16f0c49621a6866912df4e627cccb124ce49c081506e",
+  "references": [
+    "swamped-baseline",
+    "xmr-wasm-baseline",
+    "webminerpoolhashcn-baseline"
+  ],
+  "function_task": "All defined functions of six generated controls, plus reviewed f112/f118 in two published complex modules. Track provenance with names in auxiliary copies, require identical noncustom output, remove names and function indices from features. Count removed/untrackable origins separately.",
+  "module_task": "Eight queries per method against three equally processed references; exact canonical-WAT SHA lookup. Family and provenance are grading data only.",
+  "output_scope": "Finite published and reference-derived 76-byte vectors in fresh/forward/reverse states; not whole-module equivalence.",
+  "timing_scope": "Record common input presentation, processing/validation/canonicalization and lookup time separately. Descriptive only; no new throughput claims.",
+  "prior_method_scope": "Binaryen133 O3 follows the published option but is not historical-commit reproduction.",
+  "runtime_executed": false,
+  "normalizer_rules_changed": false
+}

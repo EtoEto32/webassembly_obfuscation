@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-07",
+  "goal_achieved": false,
+  "audit": "After the latest resume, the absence of a user-owned identifier and verified current pool conditions persisted across at least three consecutive goal turns. Additional runner and Docker preparation is saved, but actual pool-dependent verification remains impossible without the identifier and external operator evidence. Preparation and software checks do not establish mining functionality or performance.",
+  "current_evidence": {
+    "pool_configuration": "pool-config.example.json and verified-pool.example.json contain no user address; operator_verified and user_owned_identifier are false in the latter",
+    "completed_real_runs": "No hash-samples.csv, collection.json or run-metadata.json found under results/runtime-mining",
+    "live_experiment_containers": "Rechecked docker ps --filter ancestor=wasm-hash-reference:local: no containers",
+    "selected_candidate": "FastPool XKR fastpool.xyz:10092; current project generator lists the endpoint; TCP connection succeeded without login, job request or share submission. Current operator conditions and protocol operation remain unverified.",
+    "runner": "run_mining.py and run-mining-docker.ps1 implemented; network-none validation refused the unverified example before external components started. No complete mining run exists.",
+    "runtime_failure": "Latest baseline-readiness-20261007-202404/summary.json: 8 initialization successes and 12 module-read failures. Same cn-0 succeeded once and later failed. readiness-diagnostic-20261007-202535.log captures errno 12 with no cgroup max/oom events. input-read-strategies.log later shows both full and 4096-byte reads succeed and match the input SHA-256; root cause remains unverified.",
+    "native_compile": "paper-native-compile.json: platform directory error; successful compilation unverified"
+  },
+  "resume_requirements": [
+    "Stable execution of the unchanged target Wasm; initialization is partially verified but hash computation is not",
+    "Operator-confirmed current endpoint, algorithm compatibility and permitted ordinary mining use",
+    "The user's public payout address or pool account; never private keys, seeds, author addresses or donation addresses"
+  ],
+  "preserved_work": "experiments/runtime-reference/implementation-status.md contains implementation status and preparation commands; goal-completion-audit.json lists unachieved deliverables",
+  "prohibited_substitutions": "No algorithm substitution, stored-job replay, fabricated measurement or claimed pool validation without accepted shares",
+  "security_settings_changed_by_agent": false
+}

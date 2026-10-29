@@ -1,0 +1,849 @@
+[
+  {
+    "binary": "mba-add.O2.wasm",
+    "sha256": "0c815b9da9c135414ffffd2d4d014af7d5a327eecde056f3274bba2d1d07b760",
+    "eligible_occurrences": 40,
+    "eligible_unique": 31,
+    "selected": [
+      {
+        "expression": "((v0^v1)+((v0&v1)<<1))",
+        "cost": 4,
+        "locals": {
+          "0": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          7,
+          4
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.xor",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "i32.shl",
+            [
+              "i32.and",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.const",
+              "1"
+            ]
+          ]
+        ]
+      },
+      {
+        "expression": "((v0&v1)<<1)",
+        "cost": 2,
+        "locals": {
+          "0": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          7,
+          4,
+          2
+        ],
+        "tree": [
+          "i32.shl",
+          [
+            "i32.and",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "i32.const",
+            "1"
+          ]
+        ]
+      },
+      {
+        "expression": "((v0+1024)+v1)",
+        "cost": 2,
+        "locals": {
+          "2": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          9,
+          18,
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.add",
+            [
+              "local.get",
+              "2"
+            ],
+            [
+              "i32.const",
+              "1024"
+            ]
+          ],
+          [
+            "local.get",
+            "1"
+          ]
+        ]
+      },
+      {
+        "expression": "((v0<<2)+768)",
+        "cost": 2,
+        "locals": {
+          "8": "v0"
+        },
+        "tree_path": [
+          8,
+          76,
+          1,
+          2,
+          2,
+          3,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.shl",
+            [
+              "local.get",
+              "8"
+            ],
+            [
+              "i32.const",
+              "2"
+            ]
+          ],
+          [
+            "i32.const",
+            "768"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "binary": "mba-add.O3.wasm",
+    "sha256": "ef952444e9be1adf2edadd262a2721135e172af31b109a12f047807ad6b17994",
+    "eligible_occurrences": 450,
+    "eligible_unique": 30,
+    "selected": [
+      {
+        "expression": "((v0^v1)+((v0&v1)<<1))",
+        "cost": 4,
+        "locals": {
+          "2": "v0",
+          "9": "v1"
+        },
+        "tree_path": [
+          3,
+          76,
+          6,
+          2
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.xor",
+            [
+              "local.get",
+              "2"
+            ],
+            [
+              "local.get",
+              "9"
+            ]
+          ],
+          [
+            "i32.shl",
+            [
+              "i32.and",
+              [
+                "local.get",
+                "2"
+              ],
+              [
+                "local.get",
+                "9"
+              ]
+            ],
+            [
+              "i32.const",
+              "1"
+            ]
+          ]
+        ]
+      },
+      {
+        "expression": "((v0&v1)<<1)",
+        "cost": 2,
+        "locals": {
+          "0": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          3,
+          20,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          2
+        ],
+        "tree": [
+          "i32.shl",
+          [
+            "i32.and",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "i32.const",
+            "1"
+          ]
+        ]
+      },
+      {
+        "expression": "((v0+1024)+v1)",
+        "cost": 2,
+        "locals": {
+          "2": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          4,
+          18,
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.add",
+            [
+              "local.get",
+              "2"
+            ],
+            [
+              "i32.const",
+              "1024"
+            ]
+          ],
+          [
+            "local.get",
+            "1"
+          ]
+        ]
+      },
+      {
+        "expression": "(v0&v1)",
+        "cost": 1,
+        "locals": {
+          "0": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          3,
+          20,
+          2,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.and",
+          [
+            "local.get",
+            "0"
+          ],
+          [
+            "local.get",
+            "1"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "binary": "mba-add.raw.wasm",
+    "sha256": "edb844dd77706aedb5ae634c9b1e65b1b5e9604068f2575052631da17f2ef30e",
+    "eligible_occurrences": 43,
+    "eligible_unique": 33,
+    "selected": [
+      {
+        "expression": "((v0^v1)+((v0&v1)<<1))",
+        "cost": 4,
+        "locals": {
+          "0": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          9,
+          4
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.xor",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "i32.shl",
+            [
+              "i32.and",
+              [
+                "local.get",
+                "0"
+              ],
+              [
+                "local.get",
+                "1"
+              ]
+            ],
+            [
+              "i32.const",
+              "1"
+            ]
+          ]
+        ]
+      },
+      {
+        "expression": "((1024+v0)+v1)",
+        "cost": 2,
+        "locals": {
+          "1": "v0",
+          "3": "v1"
+        },
+        "tree_path": [
+          11,
+          18,
+          1,
+          2,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.add",
+            [
+              "i32.const",
+              "1024"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "local.get",
+            "3"
+          ]
+        ]
+      },
+      {
+        "expression": "((v0&v1)<<1)",
+        "cost": 2,
+        "locals": {
+          "0": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          9,
+          4,
+          2
+        ],
+        "tree": [
+          "i32.shl",
+          [
+            "i32.and",
+            [
+              "local.get",
+              "0"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "i32.const",
+            "1"
+          ]
+        ]
+      },
+      {
+        "expression": "(0+(v0<<2))",
+        "cost": 2,
+        "locals": {
+          "9": "v0"
+        },
+        "tree_path": [
+          10,
+          76,
+          1,
+          2,
+          3,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.const",
+            "0"
+          ],
+          [
+            "i32.shl",
+            [
+              "local.get",
+              "9"
+            ],
+            [
+              "i32.const",
+              "2"
+            ]
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "binary": "plain.O2.wasm",
+    "sha256": "bec2c076ba294eec746c2778fb256e17ead45f0f1fb58fbbc3bd74ecd31cb11e",
+    "eligible_occurrences": 38,
+    "eligible_unique": 30,
+    "selected": [
+      {
+        "expression": "((v0+1024)+v1)",
+        "cost": 2,
+        "locals": {
+          "2": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          7,
+          18,
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.add",
+            [
+              "local.get",
+              "2"
+            ],
+            [
+              "i32.const",
+              "1024"
+            ]
+          ],
+          [
+            "local.get",
+            "1"
+          ]
+        ]
+      },
+      {
+        "expression": "((v0<<2)+768)",
+        "cost": 2,
+        "locals": {
+          "8": "v0"
+        },
+        "tree_path": [
+          6,
+          76,
+          1,
+          2,
+          2,
+          1,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.shl",
+            [
+              "local.get",
+              "8"
+            ],
+            [
+              "i32.const",
+              "2"
+            ]
+          ],
+          [
+            "i32.const",
+            "768"
+          ]
+        ]
+      },
+      {
+        "expression": "(v0&v1)",
+        "cost": 1,
+        "locals": {
+          "1": "v0",
+          "3": "v1"
+        },
+        "tree_path": [
+          6,
+          76,
+          2,
+          2,
+          1,
+          1
+        ],
+        "tree": [
+          "i32.and",
+          [
+            "local.get",
+            "1"
+          ],
+          [
+            "local.get",
+            "3"
+          ]
+        ]
+      },
+      {
+        "expression": "(v0+1)",
+        "cost": 1,
+        "locals": {
+          "8": "v0"
+        },
+        "tree_path": [
+          6,
+          76,
+          11,
+          2,
+          1,
+          2
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "local.get",
+            "8"
+          ],
+          [
+            "i32.const",
+            "1"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "binary": "plain.O3.wasm",
+    "sha256": "1307d082c5b91539787183eb5db8606463fe262f883afc3be2a49c86cee6a6e9",
+    "eligible_occurrences": 130,
+    "eligible_unique": 29,
+    "selected": [
+      {
+        "expression": "((v0+1024)+v1)",
+        "cost": 2,
+        "locals": {
+          "2": "v0",
+          "1": "v1"
+        },
+        "tree_path": [
+          4,
+          18,
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.add",
+            [
+              "local.get",
+              "2"
+            ],
+            [
+              "i32.const",
+              "1024"
+            ]
+          ],
+          [
+            "local.get",
+            "1"
+          ]
+        ]
+      },
+      {
+        "expression": "(v0&v1)",
+        "cost": 1,
+        "locals": {
+          "1": "v0",
+          "2": "v1"
+        },
+        "tree_path": [
+          3,
+          76,
+          2,
+          2,
+          1,
+          1
+        ],
+        "tree": [
+          "i32.and",
+          [
+            "local.get",
+            "1"
+          ],
+          [
+            "local.get",
+            "2"
+          ]
+        ]
+      },
+      {
+        "expression": "(v0+1)",
+        "cost": 1,
+        "locals": {
+          "9": "v0"
+        },
+        "tree_path": [
+          3,
+          76,
+          11,
+          2,
+          1,
+          2
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "local.get",
+            "9"
+          ],
+          [
+            "i32.const",
+            "1"
+          ]
+        ]
+      },
+      {
+        "expression": "(v0+1024)",
+        "cost": 1,
+        "locals": {
+          "2": "v0"
+        },
+        "tree_path": [
+          4,
+          14,
+          1,
+          2,
+          1,
+          2
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "local.get",
+            "2"
+          ],
+          [
+            "i32.const",
+            "1024"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "binary": "plain.raw.wasm",
+    "sha256": "a35c061ae6ae3e531ae7d77aedd6ad2c874660bb00db505475bf0afc6fff8e1f",
+    "eligible_occurrences": 41,
+    "eligible_unique": 32,
+    "selected": [
+      {
+        "expression": "((1024+v0)+v1)",
+        "cost": 2,
+        "locals": {
+          "1": "v0",
+          "3": "v1"
+        },
+        "tree_path": [
+          9,
+          18,
+          1,
+          2,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.add",
+            [
+              "i32.const",
+              "1024"
+            ],
+            [
+              "local.get",
+              "1"
+            ]
+          ],
+          [
+            "local.get",
+            "3"
+          ]
+        ]
+      },
+      {
+        "expression": "(0+(v0<<2))",
+        "cost": 2,
+        "locals": {
+          "9": "v0"
+        },
+        "tree_path": [
+          8,
+          76,
+          1,
+          2,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.const",
+            "0"
+          ],
+          [
+            "i32.shl",
+            [
+              "local.get",
+              "9"
+            ],
+            [
+              "i32.const",
+              "2"
+            ]
+          ]
+        ]
+      },
+      {
+        "expression": "(768+(v0<<2))",
+        "cost": 2,
+        "locals": {
+          "9": "v0"
+        },
+        "tree_path": [
+          8,
+          76,
+          1,
+          2,
+          1,
+          2,
+          1
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.const",
+            "768"
+          ],
+          [
+            "i32.shl",
+            [
+              "local.get",
+              "9"
+            ],
+            [
+              "i32.const",
+              "2"
+            ]
+          ]
+        ]
+      },
+      {
+        "expression": "(1024+v0)",
+        "cost": 1,
+        "locals": {
+          "1": "v0"
+        },
+        "tree_path": [
+          9,
+          14,
+          1,
+          2,
+          2
+        ],
+        "tree": [
+          "i32.add",
+          [
+            "i32.const",
+            "1024"
+          ],
+          [
+            "local.get",
+            "1"
+          ]
+        ]
+      }
+    ]
+  }
+]

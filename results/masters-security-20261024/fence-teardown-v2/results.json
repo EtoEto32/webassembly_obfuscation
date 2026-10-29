@@ -1,0 +1,1849 @@
+{
+  "summary": {
+    "scenarios": 60,
+    "mismatches": 0,
+    "observedExceptions": 36,
+    "closedFDChecks": 180,
+    "isolatedInstancePairs": 2,
+    "boundaryChecks": 6
+  },
+  "rows": [
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "normal",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 1,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "cancel",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "bad-tag",
+      "error": "TypeError: invalid variant discriminant for Request",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "oversize",
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "open-fails",
+      "error": "Error: unknown backend",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 1,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 1,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 1,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 2,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 3,
+      "count": 8,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 8,
+        "liveTickets": 1,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 8,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 4,
+      "count": 1,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 5,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 1,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "pending",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "drop-pending",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "double-drop",
+      "error": "TypeError: Invalid handle",
+      "before": {
+        "prepares": 0,
+        "drops": 2,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 2,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "multiple-pending",
+      "error": null,
+      "before": {
+        "prepares": 3,
+        "drops": 0,
+        "resolves": 3,
+        "liveTickets": 3,
+        "logicalPins": 5,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 3
+      },
+      "after": {
+        "prepares": 3,
+        "drops": 0,
+        "resolves": 3,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": false,
+      "kind": "shutdown-after-admission",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 1,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "normal",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 1,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "cancel",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "bad-tag",
+      "error": "TypeError: invalid variant discriminant for Request",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "oversize",
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "open-fails",
+      "error": "Error: unknown backend",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 1,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 1,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 1,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 2,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 3,
+      "count": 8,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 8,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 8,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 4,
+      "count": 1,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 5,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 1,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "pending",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "drop-pending",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 1,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "double-drop",
+      "error": "TypeError: Invalid handle",
+      "before": {
+        "prepares": 0,
+        "drops": 2,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 2,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "multiple-pending",
+      "error": null,
+      "before": {
+        "prepares": 3,
+        "drops": 0,
+        "resolves": 3,
+        "liveTickets": 3,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 3
+      },
+      "after": {
+        "prepares": 3,
+        "drops": 0,
+        "resolves": 3,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "raw",
+      "alias": true,
+      "kind": "shutdown-after-admission",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 1,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "normal",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 1,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "cancel",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "bad-tag",
+      "error": "TypeError: invalid variant discriminant for Request",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "oversize",
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "open-fails",
+      "error": "Error: unknown backend",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 1,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 1,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 1,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 2,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 3,
+      "count": 8,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 8,
+        "liveTickets": 1,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 8,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 4,
+      "count": 1,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "prepare-trap",
+      "mode": 5,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 1,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "pending",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "drop-pending",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "double-drop",
+      "error": "TypeError: Invalid handle",
+      "before": {
+        "prepares": 0,
+        "drops": 2,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 2,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "multiple-pending",
+      "error": null,
+      "before": {
+        "prepares": 3,
+        "drops": 0,
+        "resolves": 3,
+        "liveTickets": 3,
+        "logicalPins": 5,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 3
+      },
+      "after": {
+        "prepares": 3,
+        "drops": 0,
+        "resolves": 3,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": false,
+      "kind": "shutdown-after-admission",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 1,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "normal",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 1,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "cancel",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "bad-tag",
+      "error": "TypeError: invalid variant discriminant for Request",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "oversize",
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "open-fails",
+      "error": "Error: unknown backend",
+      "before": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 1,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 1,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 1,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 2,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 3,
+      "count": 8,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 8,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 8,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 4,
+      "count": 1,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "prepare-trap",
+      "mode": 5,
+      "count": 0,
+      "error": "RuntimeError: unreachable",
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 1,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "pending",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 3,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "drop-pending",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 1,
+        "logicalPins": 1,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 1
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 2,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "double-drop",
+      "error": "TypeError: Invalid handle",
+      "before": {
+        "prepares": 0,
+        "drops": 2,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 0,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 0,
+        "drops": 2,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "multiple-pending",
+      "error": null,
+      "before": {
+        "prepares": 3,
+        "drops": 0,
+        "resolves": 3,
+        "liveTickets": 3,
+        "logicalPins": 4,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 3
+      },
+      "after": {
+        "prepares": 3,
+        "drops": 0,
+        "resolves": 3,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 0,
+      "closedFDs": 3
+    },
+    {
+      "optimization": "optimized",
+      "alias": true,
+      "kind": "shutdown-after-admission",
+      "error": null,
+      "before": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 2,
+        "closed": false
+      },
+      "shutdown": {
+        "closedResources": 2,
+        "cancelledTickets": 0
+      },
+      "after": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "effects": 1,
+      "closedFDs": 3
+    }
+  ],
+  "isolation": [
+    {
+      "optimization": "raw",
+      "otherInstanceAdmitted": true,
+      "a": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "b": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      }
+    },
+    {
+      "optimization": "optimized",
+      "otherInstanceAdmitted": true,
+      "a": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      },
+      "b": {
+        "prepares": 1,
+        "drops": 2,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      }
+    }
+  ],
+  "bounds": [
+    {
+      "kind": "slot-reuse",
+      "error": null,
+      "stats": {
+        "prepares": 0,
+        "drops": 1,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      }
+    },
+    {
+      "kind": "slot-invalidate",
+      "error": null,
+      "stats": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      }
+    },
+    {
+      "kind": "permission",
+      "error": null,
+      "stats": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      }
+    },
+    {
+      "kind": "object-epoch",
+      "error": null,
+      "stats": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      }
+    },
+    {
+      "kind": "reentrant-shutdown",
+      "error": "Error: reentrant admission/revocation forbidden",
+      "stats": {
+        "prepares": 1,
+        "drops": 0,
+        "resolves": 1,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      }
+    },
+    {
+      "kind": "late-drop",
+      "error": null,
+      "stats": {
+        "prepares": 0,
+        "drops": 0,
+        "resolves": 0,
+        "liveTickets": 0,
+        "logicalPins": 0,
+        "closed": true
+      }
+    }
+  ],
+  "scope": "one host ledger per component instance; fresh instance-owned local FDs; synchronous effects; no multi-threaded or shared-backend reclamation claim"
+}

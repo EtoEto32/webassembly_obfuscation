@@ -1,0 +1,18 @@
+{
+  "primary_correctness": "temporal-lanes-v4",
+  "replay": "temporal-lanes-replay-v1",
+  "performance": "temporal-lanes-performance-v1",
+  "verification": "temporal-lanes-verify-v1",
+  "model": "temporal-lanes-model-v1",
+  "phase_free_recovery": "temporal-lanes-graph-v1",
+  "prior_runs": [
+    {"name": "temporal-lanes-probe-v1", "status": "completed_subset", "independent_replication": false},
+    {"name": "temporal-lanes-v1", "status": "aborted_analysis_implementation_error", "completed_manifest_rows": 61, "failure": "O3 folded output used a pending stack value followed by operand-free local.set; reader did not model the stack"},
+    {"name": "temporal-lanes-v2", "status": "completed_superseded", "reason": "Extractor subsequently gained phase-stop and predecessor checks; all 36 extractions also rechecked"},
+    {"name": "temporal-lanes-v3", "status": "aborted_analysis_implementation_error", "completed_manifest_rows": 4, "failure": "Repeated identical shuffle subtrees in raw rotate expansion were counted as different predecessor shuffles"}
+  ],
+  "failures_counted_as_resilience": false,
+  "duplicate_runs_added_to_primary_counts": false,
+  "novel_patent_candidate_established": false,
+  "goal_complete": false
+}

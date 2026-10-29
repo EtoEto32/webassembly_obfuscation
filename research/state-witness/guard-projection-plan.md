@@ -1,0 +1,9 @@
+# segment依存関係の射影（修正前）
+
+2026-10-24。状態数限界の対照で、観測に無関係なsegmentのdropも列挙される問題が分かった。既知のcone-of-influence削減を適用し、同じK方式の実装改善として扱う。新しい一般原理とは数えない。
+
+受理済みbulk API内でinitが参照するsegmentだけを残す。非参照segmentへのdropは効果modelから除外し、残すsegmentの番号を詰め替える。元Wasmは変更しない。現在のprofileではsegment内容/寿命を読む命令はinitだけなので、非参照segmentが初期memory/table、trap位置、結果、後続の関連segment状態へ影響しないことを命令列について帰納的に説明できる。元program入口からの到達可能性は引き続き判定しない。
+
+評価は(1)既存134moduleで条件と反例の不変性、(2)公式67対の受理結果、(3)条件付きのmasked-initに無関係なdropを0/2/4/6/8/10/11個加える対照とする。(3)ではdropする順序・初期寿命を乱数で変えた実Wasm実行も行う。修正後に条件が真になっただけを成功とせず、否定例の反例が残ることを確認する。
+
+解析の削減は元のsegment完全一致契約には使わない。元APIの結果・全memory/tableを観測する契約だけに適用する。Kの追加segment probeまで元API集合へ含めるなら、そのprobeのinitも依存対象となる。

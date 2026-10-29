@@ -1,0 +1,22 @@
+# 終端・返値契約における一回判定の命題
+
+2026-10-24。実装・実験前の仮説と非機械検証の論証。一般的Wasmの新定理と主張しない。
+
+対象は現在のparserが受理する閉じた固定容量moduleである。APIは定数operandのbulk init/copy/fill/drop/nop列、単一定数返却、又は単一load8_u(local.get 0)。globals/分岐/loop/host/間接callはない。初期memory/tableは左右で同じで、segment寿命だけ異なる。各APIの返値/trapのみを観測し、trapで呼出し列を終了する。
+
+**命題候補:** この契約では、各APIを初期状態から一回ずつ呼んだreturn/trapが左右で一致することが、任意の許された呼出し列の観測一致に必要十分である。memoryの任意初期割当てに依存する条件は不要である。byte読取りAPIは同じ引数で呼ぶ。
+
+1. 正常に完了するbulk呼出しでは、左右は同じ命令を最後まで実行する。初期段階で寿命が違うsegmentのinitが両側成功するのはsource offset/lengthが共に0のときだけなので、その命令はstoreを変えない。他の書込みは共通storeへ同じ写像を施す。したがって正常終了後もstoreが共通になる。
+2. 正常終了後の寿命は、両側ともbody内の同じdrop集合を初期寿命から除いたものである。複数の正常呼出しも、一つの共通drop集合Dを加えた状態になる。
+3. 一つのAPIについて、初期に両側trapなら、共通dropを増やしてもtrapは消えない。初期に両側正常なら、追加dropで新しく失敗する最初のinitは元々両側liveのsegmentを使うものであり、同じ位置で両側が失敗する。初期寿命が異なるsegmentに対する0長offset0 initはdrop後も正常である。したがってreturn/trap一致は共通drop集合の追加で保存される。
+4. 単一定数返却は同じ値を返す。単一byte読取りは共通store/容量から同じ値又は同じtrapを返し、store/寿命を変えない。これらも帰納不変条件を保つ。
+
+以上から、正常prefixについて共通storeと共通drop集合を不変条件にできる。trapの時は一回の観測を比較して終わるため、trap前のprivate store差を将来へ伝える必要がない。一回で結果が異なれば長さ1の反例であり、必要性も従う。
+
+## 反証条件と検査計画
+
+既存134moduleと遅延観測13moduleで全ての許される寿命対を列挙し、汎用固定点版と比較する。SMTでは同じparserを用いつつ別array/Boolean実行式で、任意寿命・共通drop集合について(1)両側正常時のstore一致、(2)drop集合による寿命更新、(3)return/trap一致の保存を検査する。有限実例のSMT成功は全Wasmに対する証明ではない。
+
+適用外として、global phaseで分岐するAPIを用意する。初期phaseでtestは両側trap、arm後のtestは寿命差を読み片側だけtrapとすれば、初期の一回比較では見落とす。parserがこの入力を拒否することと、実engineで長さ2の反例が出ることを確認する。trap後再入を許す場合は既存のprivate-byte-readerが反例になる。
+
+これは固定点版が不要な範囲を明確にする簡約であり、一般的なAPI検証・interface automataを新規と主張しない。既知の単調性から導かれる限定命題という位置付けで、先行性の断定は避ける。

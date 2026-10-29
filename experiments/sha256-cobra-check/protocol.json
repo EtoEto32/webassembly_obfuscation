@@ -1,0 +1,12 @@
+{
+ "date":"2026-10-12",
+ "purpose":"External simplifier calibration on expressions extracted from six existing SHA binaries; not a new obfuscator",
+ "selection":"For each binary: pure i32 local/constant expression trees, 1..8 operators, at most two locals; normalize local names by first occurrence; deduplicate; select first four by descending operator count then lexical expression",
+ "operators":["add","sub","mul","xor","and","or","shl with literal count","shr_u with literal count"],
+ "metric":"Equivalent returned expression with fewer AST operators, plus errors/unsupported/timeout separately",
+ "validation":"49 boundary points plus 256 seeded random points per returned expression; finite testing only",
+ "seed":935172,
+ "limits":{"cycle_minutes":25,"docker_seconds":25,"host_seconds":40,"memory_mib":512,"cpus":1,"maximum_expressions_per_binary":4},
+ "image":"wasm-research-cobra:af44b8a",
+ "image_id":"sha256:70549175561ea1e090cefaefc24e671122b56492f1ea6951d3563e8c88befbe4"
+}

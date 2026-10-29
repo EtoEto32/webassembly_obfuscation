@@ -1,0 +1,280 @@
+{
+  "mode": "manual",
+  "node": "v24.15.0",
+  "platform": "win32",
+  "cpu": "11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz",
+  "warmup": 100,
+  "callsPerBatch": 300,
+  "batches": 9,
+  "queryCount": 16,
+  "scalarChecksumCounterexample": {
+    "a": [
+      1,
+      2
+    ],
+    "b": [
+      2,
+      1
+    ],
+    "query": 0
+  },
+  "memoryUsage": {
+    "rss": 48459776,
+    "heapTotal": 9109504,
+    "heapUsed": 6223248,
+    "external": 10926763,
+    "arrayBuffers": 29153
+  },
+  "resourceUsage": {
+    "userCPUTime": 109000,
+    "systemCPUTime": 46000,
+    "maxRSS": 48156,
+    "sharedMemorySize": 0,
+    "unsharedDataSize": 0,
+    "unsharedStackSize": 0,
+    "minorPageFault": 0,
+    "majorPageFault": 19080,
+    "swappedOut": 0,
+    "fsRead": 11,
+    "fsWrite": 0,
+    "ipcSent": 0,
+    "ipcReceived": 0,
+    "signalsCount": 0,
+    "voluntaryContextSwitches": 0,
+    "involuntaryContextSwitches": 0
+  },
+  "entries": [
+    {
+      "fixture": "fixed",
+      "file": "fixed-rust2.wasm",
+      "samples_us": [
+        2.9846666666666666,
+        3.1016666666666666,
+        3.4136666666666664,
+        2.1653333333333333,
+        2.2806666666666664,
+        1.4113333333333333,
+        1.5046666666666668,
+        1.3726666666666667,
+        1.3876666666666668
+      ],
+      "checksums": [
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015,
+        3812760015
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 0
+    },
+    {
+      "fixture": "indexed",
+      "file": "indexed-rust2.wasm",
+      "samples_us": [
+        2.0863333333333336,
+        2.055,
+        1.9043333333333332,
+        1.5253333333333332,
+        1.171,
+        1.2926666666666669,
+        1.2813333333333332,
+        1.2443333333333333,
+        1.4296666666666666
+      ],
+      "checksums": [
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936,
+        2835532936
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 0
+    },
+    {
+      "fixture": "branch",
+      "file": "branch-rust2.wasm",
+      "samples_us": [
+        2.11,
+        1.8196666666666668,
+        1.454,
+        1.071,
+        1.0456666666666667,
+        1.0926666666666667,
+        0.9843333333333334,
+        0.9586666666666667,
+        0.817
+      ],
+      "checksums": [
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873,
+        3657624873
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 0
+    },
+    {
+      "fixture": "metadata",
+      "file": "metadata-rust2.wasm",
+      "samples_us": [
+        2.5546666666666664,
+        1.7306666666666668,
+        1.319,
+        1.1943333333333332,
+        1.509,
+        1.275,
+        1.3766666666666667,
+        2.6183333333333336,
+        1.315
+      ],
+      "checksums": [
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373,
+        2314951373
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 0
+    },
+    {
+      "fixture": "loop",
+      "file": "loop-rust2.wasm",
+      "samples_us": [
+        3.0693333333333337,
+        2.822,
+        2.2906666666666666,
+        3.174,
+        2.391,
+        1.738,
+        2.0233333333333334,
+        1.6526666666666667,
+        1.3486666666666667
+      ],
+      "checksums": [
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539,
+        3672276539
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 18423,
+      "postCallbackPayloadBytes": 0
+    },
+    {
+      "fixture": "copy",
+      "file": "copy-rust2.wasm",
+      "samples_us": [
+        1.785,
+        1.245,
+        1.624,
+        1.448,
+        1.3686666666666667,
+        1.2126666666666668,
+        1.5803333333333334,
+        1.5596666666666668,
+        1.4733333333333332
+      ],
+      "checksums": [
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037,
+        3240672037
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 18423,
+      "postCallbackPayloadBytes": 0
+    },
+    {
+      "fixture": "fill",
+      "file": "fill-rust2.wasm",
+      "samples_us": [
+        1.611,
+        1.6743333333333332,
+        1.266,
+        1.4563333333333333,
+        1.433,
+        1.421,
+        1.3843333333333332,
+        1.2426666666666668,
+        1.426
+      ],
+      "checksums": [
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480,
+        1706125480
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 18423,
+      "postCallbackPayloadBytes": 0
+    },
+    {
+      "fixture": "helper",
+      "file": "helper-rust2.wasm",
+      "samples_us": [
+        1.531,
+        1.4173333333333333,
+        1.3246666666666667,
+        1.0626666666666666,
+        0.992,
+        1.107,
+        1.969,
+        0.9683333333333334,
+        0.6386666666666666
+      ],
+      "checksums": [
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126,
+        2368765126
+      ],
+      "inputCount": 136,
+      "retainedPayloadBytes": 136,
+      "postCallbackPayloadBytes": 0
+    }
+  ]
+}

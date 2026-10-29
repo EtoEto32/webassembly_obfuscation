@@ -1,0 +1,370 @@
+{
+  "hashed_files": 1597,
+  "rebuilt_binaries": 1004,
+  "classified_runs": 882,
+  "static": {
+    "default": {
+      "modules": 251,
+      "access_sites": 41,
+      "modules_with_access": 35,
+      "kinds": {
+        "ArrayLen": 76,
+        "RefCastNonNull": 120,
+        "ArrayGet": 17,
+        "RefCastNullable": 110,
+        "ArrayNewFixed": 71,
+        "ArrayNew": 14,
+        "ArrayNewDefault": 102,
+        "ArraySet": 2,
+        "ArrayNewData": 2,
+        "StructGet": 22,
+        "StructNew": 2
+      }
+    },
+    "no-traps": {
+      "modules": 251,
+      "access_sites": 0,
+      "modules_with_access": 0,
+      "kinds": {
+        "ArrayLen": 50,
+        "ArrayNewFixed": 38,
+        "ArrayNewDefault": 47,
+        "ArrayNew": 3,
+        "StructNew": 1
+      }
+    }
+  },
+  "instrumentation_status_differences": [
+    {
+      "name": "nullable-array",
+      "seed": 17,
+      "profile": "no-traps",
+      "variant": "null",
+      "plain_cause": "wasm trap: call stack exhausted",
+      "counted_cause": "wasm trap: all fuel consumed by WebAssembly"
+    },
+    {
+      "name": "nullable-array",
+      "seed": 17,
+      "profile": "no-traps",
+      "variant": "depth1",
+      "plain_cause": "wasm trap: call stack exhausted",
+      "counted_cause": "wasm trap: all fuel consumed by WebAssembly"
+    },
+    {
+      "name": "nullable-array",
+      "seed": 26,
+      "profile": "default",
+      "variant": "null",
+      "plain_cause": "wasm trap: call stack exhausted",
+      "counted_cause": "wasm trap: all fuel consumed by WebAssembly"
+    },
+    {
+      "name": "nullable-array",
+      "seed": 26,
+      "profile": "default",
+      "variant": "depth1",
+      "plain_cause": "wasm trap: call stack exhausted",
+      "counted_cause": "wasm trap: all fuel consumed by WebAssembly"
+    },
+    {
+      "name": "scalar-array",
+      "seed": 53,
+      "profile": "no-traps",
+      "variant": "null",
+      "plain_cause": "wasm trap: call stack exhausted",
+      "counted_cause": "wasm trap: all fuel consumed by WebAssembly"
+    },
+    {
+      "name": "scalar-array",
+      "seed": 53,
+      "profile": "no-traps",
+      "variant": "depth1",
+      "plain_cause": "wasm trap: call stack exhausted",
+      "counted_cause": "wasm trap: all fuel consumed by WebAssembly"
+    }
+  ],
+  "new_access_vs_null": [
+    {
+      "name": "nullable-array",
+      "seed": 50,
+      "profile": "default"
+    }
+  ],
+  "terminal_causes": [
+    {
+      "profile": "default",
+      "variant": "null",
+      "status": "returned",
+      "cause": "",
+      "count": 78
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "status": "returned",
+      "cause": "",
+      "count": 59
+    },
+    {
+      "profile": "no-traps",
+      "variant": "null",
+      "status": "returned",
+      "cause": "",
+      "count": 119
+    },
+    {
+      "profile": "no-traps",
+      "variant": "depth1",
+      "status": "returned",
+      "cause": "",
+      "count": 97
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "status": "fuel",
+      "cause": "wasm trap: all fuel consumed by WebAssembly",
+      "count": 90
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "status": "fuel",
+      "cause": "wasm trap: all fuel consumed by WebAssembly",
+      "count": 67
+    },
+    {
+      "profile": "no-traps",
+      "variant": "null",
+      "status": "fuel",
+      "cause": "wasm trap: all fuel consumed by WebAssembly",
+      "count": 97
+    },
+    {
+      "profile": "no-traps",
+      "variant": "depth1",
+      "status": "fuel",
+      "cause": "wasm trap: all fuel consumed by WebAssembly",
+      "count": 71
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "status": "trap",
+      "cause": "wasm trap: null reference",
+      "count": 27
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "status": "trap",
+      "cause": "wasm trap: null reference",
+      "count": 18
+    },
+    {
+      "profile": "no-traps",
+      "variant": "null",
+      "status": "trap",
+      "cause": "wasm trap: null reference",
+      "count": 32
+    },
+    {
+      "profile": "no-traps",
+      "variant": "depth1",
+      "status": "trap",
+      "cause": "wasm trap: null reference",
+      "count": 19
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "status": "trap",
+      "cause": "wasm trap: invalid conversion to integer",
+      "count": 21
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "status": "trap",
+      "cause": "wasm trap: invalid conversion to integer",
+      "count": 15
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "status": "trap",
+      "cause": "wasm trap: integer overflow",
+      "count": 18
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "status": "trap",
+      "cause": "wasm trap: integer overflow",
+      "count": 15
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "status": "trap",
+      "cause": "wasm trap: cast failure",
+      "count": 9
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "status": "trap",
+      "cause": "wasm trap: cast failure",
+      "count": 9
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "status": "trap",
+      "cause": "wasm trap: call stack exhausted",
+      "count": 6
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "status": "trap",
+      "cause": "wasm trap: call stack exhausted",
+      "count": 5
+    },
+    {
+      "profile": "no-traps",
+      "variant": "null",
+      "status": "trap",
+      "cause": "wasm trap: call stack exhausted",
+      "count": 3
+    },
+    {
+      "profile": "no-traps",
+      "variant": "depth1",
+      "status": "trap",
+      "cause": "wasm trap: call stack exhausted",
+      "count": 3
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "status": "trap",
+      "cause": "wasm trap: wasm `unreachable` instruction executed",
+      "count": 2
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "status": "trap",
+      "cause": "wasm trap: wasm `unreachable` instruction executed",
+      "count": 2
+    }
+  ],
+  "attempted_but_failed": [
+    {
+      "profile": "default",
+      "variant": "null",
+      "kind": "ArrayLen",
+      "cause": "wasm trap: null reference",
+      "count": 5
+    },
+    {
+      "profile": "no-traps",
+      "variant": "null",
+      "kind": "ArrayLen",
+      "cause": "wasm trap: null reference",
+      "count": 9
+    },
+    {
+      "profile": "no-traps",
+      "variant": "depth1",
+      "kind": "ArrayLen",
+      "cause": "wasm trap: null reference",
+      "count": 4
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "kind": "RefCastNonNull",
+      "cause": "wasm trap: cast failure",
+      "count": 9
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "kind": "RefCastNonNull",
+      "cause": "wasm trap: cast failure",
+      "count": 6
+    },
+    {
+      "profile": "no-traps",
+      "variant": "null",
+      "kind": "ArrayNewDefault",
+      "cause": "wasm trap: all fuel consumed by WebAssembly",
+      "count": 3
+    },
+    {
+      "profile": "no-traps",
+      "variant": "depth1",
+      "kind": "ArrayNewDefault",
+      "cause": "wasm trap: all fuel consumed by WebAssembly",
+      "count": 4
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "kind": "ArrayNewDefault",
+      "cause": "wasm trap: all fuel consumed by WebAssembly",
+      "count": 2
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "kind": "ArrayNewDefault",
+      "cause": "wasm trap: all fuel consumed by WebAssembly",
+      "count": 2
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "kind": "RefCastNullable",
+      "cause": "wasm trap: cast failure",
+      "count": 3
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "kind": "ArrayGet",
+      "cause": "wasm trap: null reference",
+      "count": 1
+    },
+    {
+      "profile": "default",
+      "variant": "depth1",
+      "kind": "ArrayLen",
+      "cause": "wasm trap: null reference",
+      "count": 2
+    },
+    {
+      "profile": "default",
+      "variant": "null",
+      "kind": "StructGet",
+      "cause": "wasm trap: null reference",
+      "count": 2
+    }
+  ],
+  "calibration": [
+    {
+      "engine": "node",
+      "calls": 20,
+      "errors": []
+    },
+    {
+      "engine": "spidermonkey",
+      "calls": 20,
+      "errors": []
+    }
+  ],
+  "errors": []
+}

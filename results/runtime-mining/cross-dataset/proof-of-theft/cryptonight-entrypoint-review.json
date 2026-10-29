@@ -1,0 +1,787 @@
+{
+  "date": "2026-10-08",
+  "scope": "Seven selected uninstrumented published cryptonight-hash modules; static disassembly and archived sources only.",
+  "modules": [
+    {
+      "method": "cryptonight-hash",
+      "path": "supp-materials/artifact/samples/cryptonight-hash/cryptonight.og.wasm",
+      "sha256": "410426ab2346b3454c28a30a093115d37d9204970923daa8c1c662e6960fd44a",
+      "sources": {
+        "build.sh": {
+          "archive_path": "supp-materials/artifact/samples/cryptonight-hash/build.sh",
+          "sha256": "2235a42d81aff05c1fa878a8a9dfa9de6811f10340beb7b56161935e1f2fb455",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\2235a42d81aff05c1fa878a8a9dfa9de6811f10340beb7b56161935e1f2fb455",
+          "command": "#!/bin/bash\n\nemcc cryptonightnative.c crypto/*.c -O0 \\\n    -s DISABLE_EXCEPTION_CATCHING=1 \\\n    -s BINARYEN_ASYNC_COMPILATION=1 \\\n    -s ALIASING_FUNCTION_POINTERS=0 \\\n    -s ALLOW_MEMORY_GROWTH=1 \\\n    -s VERBOSE=1 \\\n    -s WASM=1 \\\n    -s BINARYEN=1 \\\n    -s NO_EXIT_RUNTIME=1 \\\n    -s ASSERTIONS=1 \\\n    -s SAFE_HEAP=0 \\\n    -s STACK_OVERFLOW_CHECK=0 \\\n    -s BINARYEN_METHOD=\"'native-wasm'\" \\\n    -s TOTAL_STACK=512mb \\\n    -o ./cryptonight.html\n"
+        },
+        "cryptonightnative.c": {
+          "archive_path": "supp-materials/artifact/samples/cryptonight-hash/cryptonightnative.c",
+          "sha256": "dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "main_source": "int main() {\n    for (int i = 0; i < 0xFFFFFFFF; i++){\n        int x = rand() & 0xff;\n        x |= (rand() & 0xff) << 8;\n        x |= (rand() & 0xff) << 16;\n        x |= (rand() & 0xff) << 24;\n\n        unsigned char input[84] = {10};\n        unsigned char output[32];\n\n        int nonce = x;\n        input[39] = (nonce & 4278190080) >> 24;\n        input[40] = (nonce & 16711680) >> 16;\n        input[41] = (nonce & 65280) >> 8;\n        input[42] = (nonce & 255) >> 0;\n\n        cryptonight_hash(input, output, 84);\n    }\n}"
+        },
+        "cryptonight.c": {
+          "archive_path": "supp-materials/artifact/samples/cryptonight-hash/cryptonight.c",
+          "sha256": "48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "main_source": "int main(int argc, char ** argv) { }"
+        },
+        "Makefile": {
+          "archive_path": "supp-materials/artifact/samples/cryptonight-hash/Makefile",
+          "sha256": "c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672"
+        }
+      },
+      "exports": [
+        "memory",
+        "__wasm_call_ctors",
+        "__indirect_function_table",
+        "main",
+        "fflush",
+        "_emscripten_tempret_set",
+        "_emscripten_stack_restore",
+        "_emscripten_stack_alloc",
+        "emscripten_stack_get_current"
+      ],
+      "glue_sha256": "965bd514b9276c4f46600b838197a3712cd4d736b424c9babc4cdbe3ece6f27f",
+      "glue_literal_hash_name_occurrences": 0,
+      "inspected_functions": [
+        {
+          "function": "$main",
+          "declaration": "(func $main (type $t2) (param $p0 i32) (param $p1 i32) (result i32)",
+          "text_lines": 6,
+          "direct_calls": [
+            "$f9"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-410426ab2346-main.wat.txt",
+          "excerpt_sha256": "360ceacdaa8fee327b7dc3e3d1261e985a7f53e23114dca0dba59867fa2585a5"
+        },
+        {
+          "function": "$f9",
+          "declaration": "(func $f9 (type $t4) (result i32)",
+          "text_lines": 282,
+          "direct_calls": [
+            "$f92",
+            "$f92",
+            "$f92",
+            "$f92",
+            "$f77",
+            "$f10"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-410426ab2346-f9.wat.txt",
+          "excerpt_sha256": "f0f15a62116f32fde03ab0204bd3b5a768c51e256f4ec9a8de61c4ce7d0f5380"
+        },
+        {
+          "function": "$f10",
+          "declaration": "(func $f10 (type $t0) (param $p0 i32) (param $p1 i32) (param $p2 i32)",
+          "text_lines": 1127,
+          "direct_calls": [
+            "$f66",
+            "$f76",
+            "$f72",
+            "$f71",
+            "$f25",
+            "$f76",
+            "$f11",
+            "$f24",
+            "$f12",
+            "$f11",
+            "$f13",
+            "$f14",
+            "$f76",
+            "$f71",
+            "$f15",
+            "$f25",
+            "$f76",
+            "$f65",
+            "$f75"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-410426ab2346-f10.wat.txt",
+          "excerpt_sha256": "607bbb53437f2aba870eeeb7ee32dcffe1ef641f2a1d092896fe4bf6aef5f1b6"
+        }
+      ],
+      "conclusion": "No exported per-input hash interface or literal cryptonight_hash wrapper was found. main is a distinct workload, not a substitute for public-vector validation.",
+      "next_step": "After execution permission, establish the internal hash function correspondence and ABI, then evaluate a separately identified export-only derivative or controlled rebuild. Do not relabel the derivative as the unchanged published binary.",
+      "internal_hash_candidate": {
+        "function": "$f10",
+        "basis": "main calls a no-argument wrapper, which calls f10; f10 has three i32 parameters, consistent with the distributed pointer/pointer/length hash declaration.",
+        "status": "candidate only: full source-to-binary correspondence, input/output ABI, and independent hash output validation remain unproven"
+      }
+    },
+    {
+      "method": "cryptonight-hash-emccobf-substitution",
+      "path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-substitution/cryptonight.og.wasm",
+      "sha256": "aa166b1ff003179ed15cd40678932bc3ee9125359a1d884646277862f74d0314",
+      "sources": {
+        "build.sh": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-substitution/build.sh",
+          "sha256": "996e9128e64c88c0fb1fecb281b2f4bf166bb9f4035e9091c6154a953cb12654",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\996e9128e64c88c0fb1fecb281b2f4bf166bb9f4035e9091c6154a953cb12654",
+          "command": "#!/bin/bash\n\nemcc cryptonightnative.c crypto/*.c -O0 \\\n    -mllvm -enable-subobf \\\n    -mllvm -sub_prob=70 \\\n    -s DISABLE_EXCEPTION_CATCHING=1 \\\n    -s BINARYEN_ASYNC_COMPILATION=1 \\\n    -s ALIASING_FUNCTION_POINTERS=0 \\\n    -s ALLOW_MEMORY_GROWTH=1 \\\n    -s VERBOSE=1 \\\n    -s WASM=1 \\\n    -s BINARYEN=1 \\\n    -s NO_EXIT_RUNTIME=1 \\\n    -s ASSERTIONS=1 \\\n    -s SAFE_HEAP=0 \\\n    -s STACK_OVERFLOW_CHECK=0 \\\n    -s BINARYEN_METHOD=\"'native-wasm'\" \\\n    -s TOTAL_STACK=512mb \\\n    -s INITIAL_MEMORY=1024mb \\\n    -o ./cryptonight.html\n"
+        },
+        "cryptonightnative.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-substitution/cryptonightnative.c",
+          "sha256": "dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "main_source": "int main() {\n    for (int i = 0; i < 0xFFFFFFFF; i++){\n        int x = rand() & 0xff;\n        x |= (rand() & 0xff) << 8;\n        x |= (rand() & 0xff) << 16;\n        x |= (rand() & 0xff) << 24;\n\n        unsigned char input[84] = {10};\n        unsigned char output[32];\n\n        int nonce = x;\n        input[39] = (nonce & 4278190080) >> 24;\n        input[40] = (nonce & 16711680) >> 16;\n        input[41] = (nonce & 65280) >> 8;\n        input[42] = (nonce & 255) >> 0;\n\n        cryptonight_hash(input, output, 84);\n    }\n}"
+        },
+        "cryptonight.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-substitution/cryptonight.c",
+          "sha256": "48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "main_source": "int main(int argc, char ** argv) { }"
+        },
+        "Makefile": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-substitution/Makefile",
+          "sha256": "c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672"
+        }
+      },
+      "exports": [
+        "memory",
+        "__wasm_call_ctors",
+        "main",
+        "__indirect_function_table",
+        "__errno_location",
+        "fflush",
+        "malloc",
+        "stackSave",
+        "stackRestore",
+        "stackAlloc"
+      ],
+      "glue_sha256": "2a9c8e7b1b2695f9ccf52006831a0a3ed0edec8745838b044cfb0f72e779cb42",
+      "glue_literal_hash_name_occurrences": 0,
+      "inspected_functions": [
+        {
+          "function": "$main",
+          "declaration": "(func $main (type $t2) (param $p0 i32) (param $p1 i32) (result i32)",
+          "text_lines": 6,
+          "direct_calls": [
+            "$f9"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-aa166b1ff003-main.wat.txt",
+          "excerpt_sha256": "360ceacdaa8fee327b7dc3e3d1261e985a7f53e23114dca0dba59867fa2585a5"
+        },
+        {
+          "function": "$f9",
+          "declaration": "(func $f9 (type $t4) (result i32)",
+          "text_lines": 556,
+          "direct_calls": [
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f77",
+            "$f10"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-aa166b1ff003-f9.wat.txt",
+          "excerpt_sha256": "825d40bcb2edffd5cabd34326064bc35e8ef9f6feb58072004d44f04e5aa9ef7"
+        },
+        {
+          "function": "$f10",
+          "declaration": "(func $f10 (type $t0) (param $p0 i32) (param $p1 i32) (param $p2 i32)",
+          "text_lines": 1643,
+          "direct_calls": [
+            "$f66",
+            "$f76",
+            "$f72",
+            "$f71",
+            "$f25",
+            "$f76",
+            "$f11",
+            "$f24",
+            "$f12",
+            "$f11",
+            "$f13",
+            "$f14",
+            "$f76",
+            "$f71",
+            "$f15",
+            "$f25",
+            "$f76",
+            "$f65",
+            "$f75"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-aa166b1ff003-f10.wat.txt",
+          "excerpt_sha256": "464a1b34f88d746c5fef07e570c193e61e4776fd61dfcca810fd3ee950a74c1a"
+        }
+      ],
+      "conclusion": "No exported per-input hash interface or literal cryptonight_hash wrapper was found. main is a distinct workload, not a substitute for public-vector validation.",
+      "next_step": "After execution permission, establish the internal hash function correspondence and ABI, then evaluate a separately identified export-only derivative or controlled rebuild. Do not relabel the derivative as the unchanged published binary.",
+      "internal_hash_candidate": {
+        "function": "$f10",
+        "basis": "main calls a no-argument wrapper, which calls f10; f10 has three i32 parameters, consistent with the distributed pointer/pointer/length hash declaration.",
+        "status": "candidate only: full source-to-binary correspondence, input/output ABI, and independent hash output validation remain unproven"
+      }
+    },
+    {
+      "method": "cryptonight-hash-emccobf-boguscf",
+      "path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-boguscf/cryptonight.og.wasm",
+      "sha256": "97dbc6505c494d523512bcf57eee97379bfd46b6c9ce0fcd7410e3557ddae880",
+      "sources": {
+        "build.sh": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-boguscf/build.sh",
+          "sha256": "a898dc07e2d5a904243a99cb54fc2c290cc9d37e3df46912af6329053a84ba64",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\a898dc07e2d5a904243a99cb54fc2c290cc9d37e3df46912af6329053a84ba64",
+          "command": "#!/bin/bash\n\nemcc cryptonightnative.c crypto/*.c -O0 \\\n    -mllvm -enable-bcfobf \\\n    -s DISABLE_EXCEPTION_CATCHING=1 \\\n    -s BINARYEN_ASYNC_COMPILATION=1 \\\n    -s ALIASING_FUNCTION_POINTERS=0 \\\n    -s ALLOW_MEMORY_GROWTH=1 \\\n    -s VERBOSE=1 \\\n    -s WASM=1 \\\n    -s BINARYEN=1 \\\n    -s NO_EXIT_RUNTIME=1 \\\n    -s ASSERTIONS=1 \\\n    -s SAFE_HEAP=0 \\\n    -s STACK_OVERFLOW_CHECK=0 \\\n    -s BINARYEN_METHOD=\"'native-wasm'\" \\\n    -s TOTAL_STACK=512mb \\\n    -s INITIAL_MEMORY=1024mb \\\n    -o ./cryptonight.html\n"
+        },
+        "cryptonightnative.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-boguscf/cryptonightnative.c",
+          "sha256": "dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "main_source": "int main() {\n    for (int i = 0; i < 0xFFFFFFFF; i++){\n        int x = rand() & 0xff;\n        x |= (rand() & 0xff) << 8;\n        x |= (rand() & 0xff) << 16;\n        x |= (rand() & 0xff) << 24;\n\n        unsigned char input[84] = {10};\n        unsigned char output[32];\n\n        int nonce = x;\n        input[39] = (nonce & 4278190080) >> 24;\n        input[40] = (nonce & 16711680) >> 16;\n        input[41] = (nonce & 65280) >> 8;\n        input[42] = (nonce & 255) >> 0;\n\n        cryptonight_hash(input, output, 84);\n    }\n}"
+        },
+        "cryptonight.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-boguscf/cryptonight.c",
+          "sha256": "48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "main_source": "int main(int argc, char ** argv) { }"
+        },
+        "Makefile": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-boguscf/Makefile",
+          "sha256": "c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672"
+        }
+      },
+      "exports": [
+        "memory",
+        "__wasm_call_ctors",
+        "main",
+        "__indirect_function_table",
+        "__errno_location",
+        "fflush",
+        "malloc",
+        "stackSave",
+        "stackRestore",
+        "stackAlloc"
+      ],
+      "glue_sha256": "2a9c8e7b1b2695f9ccf52006831a0a3ed0edec8745838b044cfb0f72e779cb42",
+      "glue_literal_hash_name_occurrences": 0,
+      "inspected_functions": [
+        {
+          "function": "$main",
+          "declaration": "(func $main (type $t2) (param $p0 i32) (param $p1 i32) (result i32)",
+          "text_lines": 6,
+          "direct_calls": [
+            "$f9"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-97dbc6505c49-main.wat.txt",
+          "excerpt_sha256": "360ceacdaa8fee327b7dc3e3d1261e985a7f53e23114dca0dba59867fa2585a5"
+        },
+        {
+          "function": "$f9",
+          "declaration": "(func $f9 (type $t4) (result i32)",
+          "text_lines": 884,
+          "direct_calls": [
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f77",
+            "$f10",
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f77",
+            "$f10"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-97dbc6505c49-f9.wat.txt",
+          "excerpt_sha256": "7d574ef760b57533d3ceee1cd2833f3a3df7edaa7adf44b5db25ef3dff47ad98"
+        },
+        {
+          "function": "$f10",
+          "declaration": "(func $f10 (type $t0) (param $p0 i32) (param $p1 i32) (param $p2 i32)",
+          "text_lines": 4659,
+          "direct_calls": [
+            "$f66",
+            "$f76",
+            "$f72",
+            "$f71",
+            "$f25",
+            "$f76",
+            "$f76",
+            "$f25",
+            "$f11",
+            "$f24",
+            "$f12",
+            "$f11",
+            "$f13",
+            "$f14",
+            "$f11",
+            "$f24",
+            "$f12",
+            "$f11",
+            "$f13",
+            "$f14",
+            "$f76",
+            "$f71",
+            "$f76",
+            "$f65",
+            "$f75",
+            "$f15",
+            "$f25",
+            "$f15",
+            "$f25",
+            "$f76",
+            "$f65",
+            "$f75",
+            "$f76",
+            "$f71",
+            "$f66",
+            "$f76",
+            "$f72",
+            "$f71"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-97dbc6505c49-f10.wat.txt",
+          "excerpt_sha256": "4703aaecf6ee89ad302c1b29a6c2ae3640e6fe60b81756da7f9a95df27e45eab"
+        }
+      ],
+      "conclusion": "No exported per-input hash interface or literal cryptonight_hash wrapper was found. main is a distinct workload, not a substitute for public-vector validation.",
+      "next_step": "After execution permission, establish the internal hash function correspondence and ABI, then evaluate a separately identified export-only derivative or controlled rebuild. Do not relabel the derivative as the unchanged published binary.",
+      "internal_hash_candidate": {
+        "function": "$f10",
+        "basis": "main calls a no-argument wrapper, which calls f10; f10 has three i32 parameters, consistent with the distributed pointer/pointer/length hash declaration.",
+        "status": "candidate only: full source-to-binary correspondence, input/output ABI, and independent hash output validation remain unproven"
+      }
+    },
+    {
+      "method": "cryptonight-hash-emccobf-split",
+      "path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-split/cryptonight.og.wasm",
+      "sha256": "693f294f207cc55390e66a3b22a97ed93927083a6d021e79a832172cfc5e6259",
+      "sources": {
+        "build.sh": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-split/build.sh",
+          "sha256": "34f0aebeb5a009aa7f02bbb4e1c937ab4d8d549f4864efde88dde181cdd2d99c",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\34f0aebeb5a009aa7f02bbb4e1c937ab4d8d549f4864efde88dde181cdd2d99c",
+          "command": "#!/bin/bash\n\nemcc cryptonightnative.c crypto/*.c -O0 \\\n    -mllvm -enable-splitobf \\\n    -mllvm -split_num=4 \\\n    -s DISABLE_EXCEPTION_CATCHING=1 \\\n    -s BINARYEN_ASYNC_COMPILATION=1 \\\n    -s ALIASING_FUNCTION_POINTERS=0 \\\n    -s ALLOW_MEMORY_GROWTH=1 \\\n    -s VERBOSE=1 \\\n    -s WASM=1 \\\n    -s BINARYEN=1 \\\n    -s NO_EXIT_RUNTIME=1 \\\n    -s ASSERTIONS=1 \\\n    -s SAFE_HEAP=0 \\\n    -s STACK_OVERFLOW_CHECK=0 \\\n    -s BINARYEN_METHOD=\"'native-wasm'\" \\\n    -s TOTAL_STACK=512mb \\\n    -s INITIAL_MEMORY=1024mb \\\n    -o ./cryptonight.html\n"
+        },
+        "cryptonightnative.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-split/cryptonightnative.c",
+          "sha256": "dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "main_source": "int main() {\n    for (int i = 0; i < 0xFFFFFFFF; i++){\n        int x = rand() & 0xff;\n        x |= (rand() & 0xff) << 8;\n        x |= (rand() & 0xff) << 16;\n        x |= (rand() & 0xff) << 24;\n\n        unsigned char input[84] = {10};\n        unsigned char output[32];\n\n        int nonce = x;\n        input[39] = (nonce & 4278190080) >> 24;\n        input[40] = (nonce & 16711680) >> 16;\n        input[41] = (nonce & 65280) >> 8;\n        input[42] = (nonce & 255) >> 0;\n\n        cryptonight_hash(input, output, 84);\n    }\n}"
+        },
+        "cryptonight.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-split/cryptonight.c",
+          "sha256": "48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "main_source": "int main(int argc, char ** argv) { }"
+        },
+        "Makefile": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-split/Makefile",
+          "sha256": "c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672"
+        }
+      },
+      "exports": [
+        "memory",
+        "__wasm_call_ctors",
+        "main",
+        "__indirect_function_table",
+        "__errno_location",
+        "fflush",
+        "malloc",
+        "stackSave",
+        "stackRestore",
+        "stackAlloc"
+      ],
+      "glue_sha256": "2a9c8e7b1b2695f9ccf52006831a0a3ed0edec8745838b044cfb0f72e779cb42",
+      "glue_literal_hash_name_occurrences": 0,
+      "inspected_functions": [
+        {
+          "function": "$main",
+          "declaration": "(func $main (type $t2) (param $p0 i32) (param $p1 i32) (result i32)",
+          "text_lines": 6,
+          "direct_calls": [
+            "$f9"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-693f294f207c-main.wat.txt",
+          "excerpt_sha256": "360ceacdaa8fee327b7dc3e3d1261e985a7f53e23114dca0dba59867fa2585a5"
+        },
+        {
+          "function": "$f9",
+          "declaration": "(func $f9 (type $t4) (result i32)",
+          "text_lines": 323,
+          "direct_calls": [
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f77",
+            "$f10"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-693f294f207c-f9.wat.txt",
+          "excerpt_sha256": "a5e7fc6d7989edda75f65e733c8612a52c0c9fb200459ea18b53c479c6b5ad80"
+        },
+        {
+          "function": "$f10",
+          "declaration": "(func $f10 (type $t0) (param $p0 i32) (param $p1 i32) (param $p2 i32)",
+          "text_lines": 1169,
+          "direct_calls": [
+            "$f66",
+            "$f76",
+            "$f72",
+            "$f71",
+            "$f25",
+            "$f76",
+            "$f11",
+            "$f24",
+            "$f12",
+            "$f11",
+            "$f13",
+            "$f14",
+            "$f76",
+            "$f71",
+            "$f15",
+            "$f25",
+            "$f76",
+            "$f65",
+            "$f75"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-693f294f207c-f10.wat.txt",
+          "excerpt_sha256": "67e86aa44ca474c8f9e6982c0b0a0888abd09a74685371801e8bcbb50b0dd6a9"
+        }
+      ],
+      "conclusion": "No exported per-input hash interface or literal cryptonight_hash wrapper was found. main is a distinct workload, not a substitute for public-vector validation.",
+      "next_step": "After execution permission, establish the internal hash function correspondence and ABI, then evaluate a separately identified export-only derivative or controlled rebuild. Do not relabel the derivative as the unchanged published binary.",
+      "internal_hash_candidate": {
+        "function": "$f10",
+        "basis": "main calls a no-argument wrapper, which calls f10; f10 has three i32 parameters, consistent with the distributed pointer/pointer/length hash declaration.",
+        "status": "candidate only: full source-to-binary correspondence, input/output ABI, and independent hash output validation remain unproven"
+      }
+    },
+    {
+      "method": "cryptonight-hash-emccobf-flattening",
+      "path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-flattening/cryptonight.og.wasm",
+      "sha256": "b11438f0460115e07f9ab80f8cc3c8b119815ad2521534b6ece73bb87532ed61",
+      "sources": {
+        "build.sh": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-flattening/build.sh",
+          "sha256": "a16396e2c960fd3edc312363efebbab6542001dcf0e2f0bc443eb9e4cb94d030",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\a16396e2c960fd3edc312363efebbab6542001dcf0e2f0bc443eb9e4cb94d030",
+          "command": "#!/bin/bash\n\nemcc cryptonightnative.c crypto/*.c -O0 \\\n    -mllvm -enable-cffobf \\\n    -s DISABLE_EXCEPTION_CATCHING=1 \\\n    -s BINARYEN_ASYNC_COMPILATION=1 \\\n    -s ALIASING_FUNCTION_POINTERS=0 \\\n    -s ALLOW_MEMORY_GROWTH=1 \\\n    -s VERBOSE=1 \\\n    -s WASM=1 \\\n    -s BINARYEN=1 \\\n    -s NO_EXIT_RUNTIME=1 \\\n    -s ASSERTIONS=1 \\\n    -s SAFE_HEAP=0 \\\n    -s STACK_OVERFLOW_CHECK=0 \\\n    -s BINARYEN_METHOD=\"'native-wasm'\" \\\n    -s TOTAL_STACK=512mb \\\n    -s INITIAL_MEMORY=1024mb \\\n    -o ./cryptonight.html\n"
+        },
+        "cryptonightnative.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-flattening/cryptonightnative.c",
+          "sha256": "dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "main_source": "int main() {\n    for (int i = 0; i < 0xFFFFFFFF; i++){\n        int x = rand() & 0xff;\n        x |= (rand() & 0xff) << 8;\n        x |= (rand() & 0xff) << 16;\n        x |= (rand() & 0xff) << 24;\n\n        unsigned char input[84] = {10};\n        unsigned char output[32];\n\n        int nonce = x;\n        input[39] = (nonce & 4278190080) >> 24;\n        input[40] = (nonce & 16711680) >> 16;\n        input[41] = (nonce & 65280) >> 8;\n        input[42] = (nonce & 255) >> 0;\n\n        cryptonight_hash(input, output, 84);\n    }\n}"
+        },
+        "cryptonight.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-flattening/cryptonight.c",
+          "sha256": "48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "main_source": "int main(int argc, char ** argv) { }"
+        },
+        "Makefile": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash-emccobf-flattening/Makefile",
+          "sha256": "c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672"
+        }
+      },
+      "exports": [
+        "memory",
+        "__wasm_call_ctors",
+        "main",
+        "__indirect_function_table",
+        "__errno_location",
+        "fflush",
+        "malloc",
+        "stackSave",
+        "stackRestore",
+        "stackAlloc"
+      ],
+      "glue_sha256": "2a9c8e7b1b2695f9ccf52006831a0a3ed0edec8745838b044cfb0f72e779cb42",
+      "glue_literal_hash_name_occurrences": 0,
+      "inspected_functions": [
+        {
+          "function": "$main",
+          "declaration": "(func $main (type $t2) (param $p0 i32) (param $p1 i32) (result i32)",
+          "text_lines": 6,
+          "direct_calls": [
+            "$f9"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-b11438f04601-main.wat.txt",
+          "excerpt_sha256": "360ceacdaa8fee327b7dc3e3d1261e985a7f53e23114dca0dba59867fa2585a5"
+        },
+        {
+          "function": "$f9",
+          "declaration": "(func $f9 (type $t4) (result i32)",
+          "text_lines": 376,
+          "direct_calls": [
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f86",
+            "$f77",
+            "$f10"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-b11438f04601-f9.wat.txt",
+          "excerpt_sha256": "28797b4e2e92bb7f3c75d8641d2c24fedc7ac679dd78690326d7ac84a21cf6e5"
+        },
+        {
+          "function": "$f10",
+          "declaration": "(func $f10 (type $t0) (param $p0 i32) (param $p1 i32) (param $p2 i32)",
+          "text_lines": 1618,
+          "direct_calls": [
+            "$f66",
+            "$f76",
+            "$f72",
+            "$f71",
+            "$f25",
+            "$f76",
+            "$f11",
+            "$f24",
+            "$f12",
+            "$f11",
+            "$f13",
+            "$f14",
+            "$f76",
+            "$f71",
+            "$f15",
+            "$f25",
+            "$f76",
+            "$f65",
+            "$f75"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-b11438f04601-f10.wat.txt",
+          "excerpt_sha256": "3be913ed81b0cb091ec4ebf9563150bf8a21ecc30f443183e9e3d4cd6a133d45"
+        }
+      ],
+      "conclusion": "No exported per-input hash interface or literal cryptonight_hash wrapper was found. main is a distinct workload, not a substitute for public-vector validation.",
+      "next_step": "After execution permission, establish the internal hash function correspondence and ABI, then evaluate a separately identified export-only derivative or controlled rebuild. Do not relabel the derivative as the unchanged published binary.",
+      "internal_hash_candidate": {
+        "function": "$f10",
+        "basis": "main calls a no-argument wrapper, which calls f10; f10 has three i32 parameters, consistent with the distributed pointer/pointer/length hash declaration.",
+        "status": "candidate only: full source-to-binary correspondence, input/output ABI, and independent hash output validation remain unproven"
+      }
+    },
+    {
+      "method": "cryptonight-hash_encodearith",
+      "path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_encodearith/cryptonight.og.wasm",
+      "sha256": "30bfc8c174fa2b7fc1dee9cff0f41466d4c5db24dea354215bcf3ee7b39e5ac4",
+      "sources": {
+        "build.sh": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_encodearith/build.sh",
+          "sha256": "79d3313f2401af69010c6e9d53b69de5d3212086a7d9fe1b61e0ef40ab826bdc",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\79d3313f2401af69010c6e9d53b69de5d3212086a7d9fe1b61e0ef40ab826bdc",
+          "command": "#!/bin/bash\n\nemcc cryptonightnative.c crypto/*-obf.c -O2 \\\n    -s LEGACY_VM_SUPPORT \\\n    -s DISABLE_EXCEPTION_CATCHING=1 \\\n    -s BINARYEN_ASYNC_COMPILATION=1 \\\n    -s ALIASING_FUNCTION_POINTERS=0 \\\n    -s ALLOW_MEMORY_GROWTH=1 \\\n    -s VERBOSE=1 \\\n    -s WASM=1 \\\n    -s BINARYEN=1 \\\n    -s NO_EXIT_RUNTIME=1 \\\n    -s ASSERTIONS=1 \\\n    -s SAFE_HEAP=0 \\\n    -s STACK_OVERFLOW_CHECK=0 \\\n    -s BINARYEN_METHOD=\"'native-wasm'\" \\\n    -s TOTAL_STACK=512mb \\\n    -Wl,-allow-multiple-definition \\\n    -o ./cryptonight.html\n"
+        },
+        "cryptonightnative.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_encodearith/cryptonightnative.c",
+          "sha256": "a713f1b3958f6d6b1b2d06ff828931a5e9eed895aa287875c1d69b14515efaec",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\a713f1b3958f6d6b1b2d06ff828931a5e9eed895aa287875c1d69b14515efaec",
+          "main_source": "int main() {\n    printf(\"hello\\n\");\n    for (int i = 0; i < 0xFFFFFFFF; i++){\n        int x = rand() & 0xff;\n        x |= (rand() & 0xff) << 8;\n        x |= (rand() & 0xff) << 16;\n        x |= (rand() & 0xff) << 24;\n\n        unsigned char input[84] = {10};\n        unsigned char output[32];\n\n        int nonce = x;\n        input[39] = (nonce & 4278190080) >> 24;\n        input[40] = (nonce & 16711680) >> 16;\n        input[41] = (nonce & 65280) >> 8;\n        input[42] = (nonce & 255) >> 0;\n\n        cryptonight_hash(input, output, 84);\n    }\n}"
+        },
+        "cryptonight.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_encodearith/cryptonight.c",
+          "sha256": "48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "main_source": "int main(int argc, char ** argv) { }"
+        },
+        "Makefile": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_encodearith/Makefile",
+          "sha256": "724725291c6bdba5a3df706b90068d56602161ee5d56e039a5e6a898afb6c4b6",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\724725291c6bdba5a3df706b90068d56602161ee5d56e039a5e6a898afb6c4b6"
+        }
+      },
+      "exports": [
+        "memory",
+        "__wasm_call_ctors",
+        "__indirect_function_table",
+        "main",
+        "fflush",
+        "strerror",
+        "_emscripten_tempret_set",
+        "_emscripten_stack_restore",
+        "_emscripten_stack_alloc",
+        "emscripten_stack_get_current",
+        "dynCall_jiji"
+      ],
+      "glue_sha256": "c5af1ee0c84ed21ebdb6d1c918c378046a6e046bca9dc61425c4c492a65ef8fb",
+      "glue_literal_hash_name_occurrences": 0,
+      "inspected_functions": [
+        {
+          "function": "$main",
+          "declaration": "(func $main (type $t11) (param $p0 i32) (param $p1 i32) (result i32)",
+          "text_lines": 1309,
+          "direct_calls": [
+            "$f31",
+            "$f31",
+            "$f30",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f50",
+            "$f50",
+            "$f49",
+            "$f50",
+            "$f21",
+            "$f49",
+            "$f49",
+            "$f40",
+            "$wasi_snapshot_preview1.clock_time_get",
+            "$f35",
+            "$env._tzset_js",
+            "$env._gmtime_js",
+            "$f40",
+            "$f39",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f32",
+            "$f28",
+            "$f15",
+            "$f15",
+            "$f15",
+            "$f15",
+            "$f15",
+            "$f15",
+            "$f15",
+            "$f15",
+            "$f49",
+            "$f49",
+            "$f28",
+            "$f15",
+            "$f49",
+            "$f21",
+            "$f39",
+            "$f39",
+            "$f39",
+            "$f39",
+            "$env.__assert_fail"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-30bfc8c174fa-main.wat.txt",
+          "excerpt_sha256": "5c170416c75dcb0ad57da99fd3fc7072e4920865bd6865b0e894cc489848deb8"
+        }
+      ],
+      "conclusion": "No exported per-input hash interface or literal cryptonight_hash wrapper was found. main is a distinct workload, not a substitute for public-vector validation.",
+      "next_step": "After execution permission, establish the internal hash function correspondence and ABI, then evaluate a separately identified export-only derivative or controlled rebuild. Do not relabel the derivative as the unchanged published binary."
+    },
+    {
+      "method": "cryptonight-hash_fsplitflatten",
+      "path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_fsplitflatten/cryptonight.og.wasm",
+      "sha256": "d1158708a532fa20928caa384429a2da0918253d8fe39cb32385dba44520dd1a",
+      "sources": {
+        "build.sh": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_fsplitflatten/build.sh",
+          "sha256": "f3a343c84c9964b19da1e5cc2c7e4d6ad6c274cc635629a4db2646c3fca64d27",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\f3a343c84c9964b19da1e5cc2c7e4d6ad6c274cc635629a4db2646c3fca64d27",
+          "command": "#!/bin/bash\n\nemcc cryptonightnative.c crypto/*-obf.c -O0 \\\n    -s DISABLE_EXCEPTION_CATCHING=1 \\\n    -s BINARYEN_ASYNC_COMPILATION=1 \\\n    -s ALIASING_FUNCTION_POINTERS=0 \\\n    -s ALLOW_MEMORY_GROWTH=1 \\\n    -s VERBOSE=1 \\\n    -s WASM=1 \\\n    -s BINARYEN=1 \\\n    -s NO_EXIT_RUNTIME=1 \\\n    -s ASSERTIONS=1 \\\n    -s SAFE_HEAP=0 \\\n    -s STACK_OVERFLOW_CHECK=0 \\\n    -s BINARYEN_METHOD=\"'native-wasm'\" \\\n    -s TOTAL_STACK=512mb \\\n    -o ./cryptonight.html\n"
+        },
+        "cryptonightnative.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_fsplitflatten/cryptonightnative.c",
+          "sha256": "dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\dd74b07efba37db1c4a3bf96abc2e1024844931fdb9dc157521348794e1361de",
+          "main_source": "int main() {\n    for (int i = 0; i < 0xFFFFFFFF; i++){\n        int x = rand() & 0xff;\n        x |= (rand() & 0xff) << 8;\n        x |= (rand() & 0xff) << 16;\n        x |= (rand() & 0xff) << 24;\n\n        unsigned char input[84] = {10};\n        unsigned char output[32];\n\n        int nonce = x;\n        input[39] = (nonce & 4278190080) >> 24;\n        input[40] = (nonce & 16711680) >> 16;\n        input[41] = (nonce & 65280) >> 8;\n        input[42] = (nonce & 255) >> 0;\n\n        cryptonight_hash(input, output, 84);\n    }\n}"
+        },
+        "cryptonight.c": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_fsplitflatten/cryptonight.c",
+          "sha256": "48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\48dd8ab35764c9f4f3fe3aaa11c42aa6049b8cfc49d168a6710d0143b5d66823",
+          "main_source": "int main(int argc, char ** argv) { }"
+        },
+        "Makefile": {
+          "archive_path": "supp-materials/artifact/samples/___obfuscated_miners/cryptonight-hash_fsplitflatten/Makefile",
+          "sha256": "c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672",
+          "saved": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-entrypoint-sources\\c4c9f1d6d1f155c94a261837609d330b8b4886f0ff4454d467077261e48fa672"
+        }
+      },
+      "exports": [
+        "memory",
+        "__wasm_call_ctors",
+        "__indirect_function_table",
+        "main",
+        "fflush",
+        "_emscripten_tempret_set",
+        "_emscripten_stack_restore",
+        "_emscripten_stack_alloc",
+        "emscripten_stack_get_current"
+      ],
+      "glue_sha256": "965bd514b9276c4f46600b838197a3712cd4d736b424c9babc4cdbe3ece6f27f",
+      "glue_literal_hash_name_occurrences": 0,
+      "inspected_functions": [
+        {
+          "function": "$main",
+          "declaration": "(func $main (type $t6) (param $p0 i32) (param $p1 i32) (result i32)",
+          "text_lines": 6,
+          "direct_calls": [
+            "$f9"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-d1158708a532-main.wat.txt",
+          "excerpt_sha256": "9f966f654f3915ace1de5e0d3268c6da2c764d88a7d3be0406401e435640ce00"
+        },
+        {
+          "function": "$f9",
+          "declaration": "(func $f9 (type $t7) (result i32)",
+          "text_lines": 282,
+          "direct_calls": [
+            "$f530",
+            "$f530",
+            "$f530",
+            "$f530",
+            "$f515",
+            "$f10"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-d1158708a532-f9.wat.txt",
+          "excerpt_sha256": "44c080ee9c503980674f1131b10918fa615bb814f4b9bcdb374101bbfce07884"
+        },
+        {
+          "function": "$f10",
+          "declaration": "(func $f10 (type $t1) (param $p0 i32) (param $p1 i32) (param $p2 i32)",
+          "text_lines": 1127,
+          "direct_calls": [
+            "$f482",
+            "$f514",
+            "$f505",
+            "$f510",
+            "$f34",
+            "$f514",
+            "$f11",
+            "$f27",
+            "$f12",
+            "$f11",
+            "$f13",
+            "$f14",
+            "$f514",
+            "$f510",
+            "$f15",
+            "$f34",
+            "$f514",
+            "$f485",
+            "$f507"
+          ],
+          "excerpt": "results\\runtime-mining\\cross-dataset\\proof-of-theft\\cryptonight-d1158708a532-f10.wat.txt",
+          "excerpt_sha256": "821d35bb3ec42390e5868fcd90c9b44014274aa46c9c8da27f1526da79e6fe0d"
+        }
+      ],
+      "conclusion": "No exported per-input hash interface or literal cryptonight_hash wrapper was found. main is a distinct workload, not a substitute for public-vector validation.",
+      "next_step": "After execution permission, establish the internal hash function correspondence and ABI, then evaluate a separately identified export-only derivative or controlled rebuild. Do not relabel the derivative as the unchanged published binary.",
+      "internal_hash_candidate": {
+        "function": "$f10",
+        "basis": "main calls a no-argument wrapper, which calls f10; f10 has three i32 parameters, consistent with the distributed pointer/pointer/length hash declaration.",
+        "status": "candidate only: full source-to-binary correspondence, input/output ABI, and independent hash output validation remain unproven"
+      }
+    }
+  ],
+  "limitations": [
+    "No Wasm main, hash function, generated JavaScript, build script, or HTML was executed.",
+    "Distributed build scripts specify cryptonightnative.c with an internal randomized 84-byte input loop; the separate cryptonight.c has an empty main and is not the listed build input.",
+    "Distributed source/build commands do not alone prove the historical binary build or complete function equivalence.",
+    "Missing a per-input export is an evaluation-interface limitation, not a wrong hash result or proof that internal hash code is absent.",
+    "The encodearith main is structurally different and needs separate function/ABI recovery; no common function index is assumed."
+  ]
+}

@@ -1,0 +1,9 @@
+package research:audit;
+interface storage {
+ resource file;
+ record pair { source-file: borrow<file>, target-file: borrow<file>, }
+ record group { initial: borrow<file>, copies: list<pair>, backup: option<borrow<file>>, }
+ variant request { chain(group), matrix(list<list<pair>>), optional(option<pair>), }
+ prepare: func(value: request) -> u32;
+}
+world plugin { import storage; }

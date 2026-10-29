@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-12",
+  "question": "Does allowing different input and output partitions make independent compressed operands sufficient for arbitrary output observations of modular addition?",
+  "scope": "Separate deterministic operand encodings, all operand pairs; no joint correlated state or additional side information",
+  "small": "Every output partition of widths 1,2,3, using the prior partition enumerator. Compute complete row signatures q(x+y) over all y, construct and verify the induced operation table, and provide distinguishing y for each pair of distinct input classes.",
+  "sha": "For low k output bits of each SHA-256 sigma after addition, k=1..32, compute exact GF2 input support and highest required bit. The algebraic proof establishes minimum input classes; finite calculations alone do not prove this.",
+  "negative": "At k=1 for Sigma0 after addition, construct two operands indistinguishable by low 22 bits whose observed outputs differ.",
+  "budget": {"minutes":20, "command_seconds":60, "parameter_extensions":0},
+  "decision": "Do not adopt operation-specific representation switching alone as a new protective mechanism. This is a scope-extension audit, not a new obfuscator or attack comparison."
+}

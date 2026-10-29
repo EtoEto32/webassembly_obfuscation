@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-08",
+  "runner": "experiments\\runtime-reference\\proof-cryptonight-export-check.cjs",
+  "runner_sha256": "1fb0634cb20065fe45a04e70fe8f90794ec40629ec7cef268b5e11e996b2abc1",
+  "syntax_check": "node --check passed after optional throughput mode addition",
+  "permission_gate_check": "Calling requireExecutionConditions with approval variable absent refused before Wasm loading. Only this gate function was called.",
+  "execution_status": "prepared, no generated glue or Wasm was instantiated or executed",
+  "executed_hashes": 0,
+  "remaining": [
+    "Professor execution permission not confirmed.",
+    "Need bounded isolated single-module public-vector check before timing.",
+    "Stack/memory/host compatibility and algorithm correctness unverified at runtime.",
+    "A timeout must be imposed outside the child process because synchronous Wasm calls cannot be stopped by a JavaScript timer."
+  ],
+  "planned_check": "One reviewed export-only derivative per process; five public vectors before optional timing, then final output check; external timeout required.",
+  "prepared_throughput_mode": {
+    "flag": "--throughput-block",
+    "warmup_seconds": 3,
+    "seconds_per_block": 30,
+    "workers": 1,
+    "process_scope": "One export-only derivative and one timed block per fresh process.",
+    "correctness_gate": "All five public vectors and input/output guards must match before timing; timed final output and guards checked against its last cycled vector.",
+    "repetition_plan": "Three rounds with cyclic rotation of artifact order, sequential fresh processes. Only correctness-passing matched reference/variants enter comparisons.",
+    "timing_scope": "Includes JS input copying, Wasm call, and loop timing; excludes glue initialization, first five checks and warmup. Repeated finite vectors, not nonce diversity.",
+    "execution_status": "Prepared only; no Wasm instantiation, hash computation or throughput measurement performed."
+  },
+  "artifact_path_check": "Windows and Unix relative separators normalize; parent traversal and absolute paths rejected. String-only checks passed; no Wasm loaded.",
+  "repetition_tool": "scripts/prepare_cryptonight_repetitions.py",
+  "repetition_tool_sha256": "8c683ba35a543eacc826cf5a14fe2b44cff71eb17746b1f2c63c0ee3877a130a",
+  "log_review_check": "Current planned log directory has no result files: 15 missing/rejected, no comparison summary generated. No synthetic measurements used."
+}

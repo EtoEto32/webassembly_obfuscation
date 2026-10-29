@@ -1,0 +1,113 @@
+{
+  "verified_pins": {
+    "dyadic-difference-v1": 81,
+    "dyadic-difference-performance-v1": 77
+  },
+  "reproduced_targets": 36,
+  "unique_positive_binaries": 20,
+  "helper_checks": {
+    "node": "v24.15.0",
+    "v8": "13.6.233.17-node.48",
+    "conditions": 12,
+    "inputs_per_step": 147,
+    "calls": 56448,
+    "mismatches": 0
+  },
+  "wabt_calls": 240,
+  "additional_rejections": 3,
+  "models": {
+    "widths": [
+      1,
+      10
+    ],
+    "degrees": [
+      1,
+      12
+    ],
+    "coefficients_per_setting": 8,
+    "cases": 960,
+    "all_residue_checks": 196416
+  },
+  "attack_repetitions": 60,
+  "attack_summary": [
+    {
+      "name": "cubic",
+      "opt": "raw",
+      "naive": {
+        "total_ms": 84.84539999999984,
+        "integration_certificate_ms": 0.22620000000017626
+      },
+      "delta": {
+        "total_ms": 79.81529999999992,
+        "integration_certificate_ms": 0.22039999999989845
+      },
+      "delta_over_naive": 0.9407145231208771
+    },
+    {
+      "name": "cubic",
+      "opt": "O3",
+      "naive": {
+        "total_ms": 124.46590000000057,
+        "integration_certificate_ms": 0.2243999999986812
+      },
+      "delta": {
+        "total_ms": 118.8912000000002,
+        "integration_certificate_ms": 0.2250000000003638
+      },
+      "delta_over_naive": 0.955211025670482
+    },
+    {
+      "name": "septic",
+      "opt": "raw",
+      "naive": {
+        "total_ms": 96.02339999999998,
+        "integration_certificate_ms": 0.536000000000314
+      },
+      "delta": {
+        "total_ms": 84.86539999999998,
+        "integration_certificate_ms": 0.5507000000015694
+      },
+      "delta_over_naive": 0.8837991572887441
+    },
+    {
+      "name": "septic",
+      "opt": "O3",
+      "naive": {
+        "total_ms": 135.87649999999928,
+        "integration_certificate_ms": 0.5737999999997356
+      },
+      "delta": {
+        "total_ms": 125.67469999999936,
+        "integration_certificate_ms": 0.5477999999996541
+      },
+      "delta_over_naive": 0.9249185841554649
+    },
+    {
+      "name": "degree11",
+      "opt": "raw",
+      "naive": {
+        "total_ms": 110.64919999999923,
+        "integration_certificate_ms": 1.1996999999999147
+      },
+      "delta": {
+        "total_ms": 89.43929999999867,
+        "integration_certificate_ms": 1.2092999999993026
+      },
+      "delta_over_naive": 0.8083140230566447
+    },
+    {
+      "name": "degree11",
+      "opt": "O3",
+      "naive": {
+        "total_ms": 152.84360000000063,
+        "integration_certificate_ms": 1.180800000000204
+      },
+      "delta": {
+        "total_ms": 132.6482000000002,
+        "integration_certificate_ms": 1.1919999999996378
+      },
+      "delta_over_naive": 0.8678688541751153
+    }
+  ],
+  "limitations": "Model enumerates all inputs only at widths 1..10. Main inputs are full i32 samples. Reproduction and timing repeats are not additional independent programs."
+}

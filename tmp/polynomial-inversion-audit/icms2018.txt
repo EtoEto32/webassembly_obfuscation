@@ -1,0 +1,490 @@
+PAGE 1
+HAL Id: hal-01981320
+https://hal.science/hal-01981320
+Submitted on 14 Jan 2019
+HAL is a multi-disciplinary open access
+archive for the deposit and dissemination of sci-
+entific research documents, whether they are pub-
+lished or not. The documents may come from
+teaching and research institutions in France or
+abroad, or from public or private research centers.
+L’archive ouverte pluridisciplinaire HAL, est
+destinée au dépôt et à la diffusion de documents
+scientifiques de niveau recherche, publiés ou non,
+émanant des établissements d’enseignement et de
+recherche français ou étrangers, des laboratoires
+publics ou privés.
+Quadratic time algorithm for inversion of binary
+permutation polynomials
+Lucas Barthelemy, Delaram Kahrobaei, Guénaël Renault, Zoran Šunić
+To cite this version:
+Lucas Barthelemy, Delaram Kahrobaei, Guénaël Renault, Zoran Šunić. Quadratic time algorithm for
+inversion of binary permutation polynomials. ICMS 2018 - International Congress on Mathematical
+Software, Jul 2018, South Bend, IN, United States. pp.19-27, ￿10.1007/978-3-319-96418-8_3￿. ￿hal-
+01981320￿
+PAGE 2
+Quadratic time algorithm for inversion of binary
+permutation polynomials ⋆
+Lucas Barthelemy1, Delaram Kahrobaei 2[0000−0001−5467−7832], Gu´ ena¨ el
+Renault3[0000−0002−7050−9975], and Zoran ˇSuni´ c4[0000−0001−7861−158X]
+1 Quarkslab, Paris, FRANCE lbarthelemy@quarkslab.com
+2 Graduate Center, CUNY, New York, NY, USA dkahrobaei@gc.cuny.edu
+3 Agence Nationale de la S´ ecurit´ e des Syst` emes d’Information, 51 boulevard de La
+Tour-Maubourg, 75700 Paris 07 SP, France
+Sorbonne Universit´ e, UPMC, LIP6, 4 place Jussieu, F-75252 Paris cedex 5, France
+guenael.renault@ssi.gouv.fr
+4 Department of Mathematics, Hofstra University, Hempstead, NY 11549 USA,
+zoran.sunic@hofstra.edu
+Abstract. In this paper, we propose a new version of the Lagrangian
+interpolation applied to binary permutation polynomials and, more gen-
+erally, permutation polynomials over prime power modular rings. We
+discuss its application to obfuscation and reverse engineering.
+Keywords: Permutation polynomial · Lagrangian interpolation · Ob-
+fuscation.
+1 Motivation and Introduction
+Permutation polynomials in the context of Galois’ ﬁelds are very well studied in
+particular for their applications in cryptography. The study of binary polynomi-
+als (polynomials with coeﬃcients in an integer ring modulo a power of 2) is less
+extensive, but it has been shown recently that they are important for computer
+security. As discussed in [8] and in [1], a straightforward application of binary
+permutation polynomials is obfuscation. Here we deﬁne obfuscation as a way to
+write computer programs that prevents reverse engineering of applications while
+minimizing the overhead in memory/computation cost.
+In comparison with ﬁnite ﬁeld permutation polynomials, the binary polyno-
+mials allow fast computation of bijective functions, since they can be directly
+implemented with low level arithmetic operations on computers. Moreover their
+use adds diversity to obfuscation techniques. The last point is of primary concern
+for obfuscation. Indeed, obfuscation usually does not rely on one overwhelming
+method, but on an aggregation of several layers of diﬀerent techniques that aim
+to prevent automated attacks. For example, in [1] new classes of polynomials
+were considered and proved to be resistant to the attacks deﬁned in [2].
+⋆ The second-named author was partially supported by a PSC-CUNY grant from
+the CUNY Research Foundation and by the ONR (Oﬃce of Naval Research) grant
+N000141512164
+PAGE 3
+2 L. Barthelemy et al.
+In this application context, the study of permutation polynomials is purely
+algorithmic and a central operation is the computation of the inverse of such a
+polynomial.
+Newton’s method for inverting binary permutation polynomials is an eﬀective
+algorithm, but we present in this paper a new technique based on Lagrangian
+interpolation with two important properties:
+– In a designer point of view, it is very important to measure the strength of
+any obfuscation technique based on binary permutation polynomials. The
+interpolation algorithm analyzed in this paper is proven to have a ﬁxed
+complexity. This provides a more precise framework when measuring attack
+complexities with regard to computational overhead of using a binary per-
+mutation polynomial.
+– From the reverse engineering point of view, this algorithm enables inversion
+techniques in a black-box context (i.e. when an encoding function is given
+as an evaluation function only). This is of importance when considering the
+reliance of encodings based on binary permutation polynomials since this
+algorithm can retrieve the explicit function through interpolation.
+In addition, our version of Lagrangian interpolation allows a better under-
+standing on how to use binary permutation polynomials. This should prove useful
+for future work on the subject.
+2 Interpolation of the inverse polynomial over Z2n
+2.1 Reduction of integer polynomials
+Integer multiples of Newton polynomials may be used to reduce any integer poly-
+nomial to a polynomial of relatively small degree (no greater thann+log2n) that
+induces the same function on Z2n. The approach follows Mullen and Stevens [5]
+and has recently been used in [1] in the context of inversion of polynomials by
+using Largange interpolation and also Newton’s method.
+Fori≥ 0, let ti be the largest integer ℓ such that 2ℓ dividesℓ!, and let dn be
+the largest integer i such that n−ti > 0. Note that dn is always odd and not
+greater than n + log2n. Deﬁne
+Pi(x) = 2n−ti
+i−1∏
+j=0
+(x−j) for i = 0, 1,...,d n, and Pdn+1(x) =
+dn∏
+j=0
+(x−j).
+Each polynomial Pi(x), for i = 0, 1,...,d n + 1, is an integer multiple of the
+Newton polynomial ∏i−1
+j=0(x−j) of degree i, and only the last one, Pdn+1(x), is
+monic. The ideal I of Z[x] generated by P0(x),...,P dn+1(x) consists precisely
+of all integer polynomials that induce the zero function on Z2n. Deﬁne the set of
+reduced polynomialsRn as the set of all integer polynomialsb0+b1x+··· +bdnxdn
+of degree at most dn, such that, for i = 0,...,d n,
+0≤bi < 2n−ti.
+PAGE 4
+Inversion of binary permutation polynomials 3
+For every integer polynomial P (x) there exists a unique reduced polynomial
+PR(x) such thatP (x) andPR(x) induce the same function onZ2n. The reduction
+is performed as follows. First,P (x) is replaced by its reminder modulo the monic
+polynomial Pdn+1(x), and this yields a polynomial R(x) of degree at most dn.
+If R(x) is reduced we are done. Otherwise, let i be the largest degree such that
+thei-coeﬃcient of R(x) is not in the range from 0 to 2 n−ti− 1 and let ci be the
+value of this coeﬃcient. Then there exists a nonzero q such thatci = 2n−tiq +r,
+where 0≤r≤ 2n−ti− 1. Thus, the i-coeﬃcient of the polynomial R(x)−qPi(x)
+is equal to r, which is in the correct range. Continuing in the same fashion we
+may push all coeﬃcients, one by one, in the order from highest to lowest degree,
+into the correct range and obtain a reduced polynomial.
+2.2 Precise description of the inversion problem
+If the degree of the original integer polynomial P (x) is high and/or if its coeﬃ-
+cients are large integers, the reduction procedure may take a long time. We are
+not interested in this issue, our quadratic algorithm assumes that P (x) is given
+either in reduced form or as a black box that can calculate the sequence of values
+P (0),P (1),...,P (dn) in Z2n inO(n2) time. Note that if we are given a reduced
+polynomial P (x), then we can calculate P (0),P (1),...,P (dn) in O(n2) time.
+We formulate precisely the input and output for our problem.
+Let P (x) be an integer polynomial that induces a permutation on Z2n.
+Input: the sequence of values P (0),...,P (dn) in Z2n.
+Output: the sequence of coeﬃcients b0,b 1,...,b dn of the unique reduced
+polynomial Q(x) that induces the inverse permutation to P (x) on Z2n.
+We know with certainty that a polynomial solution exists, sinceP (x) induces
+a permutation on a ﬁnite set, which implies that some iteration of P (x), which
+is also a polynomial with integer coeﬃcients, induces the inverse permutation.
+Our quadratic “time” complexity actually refers to the number of multipli-
+cations and/or additions and/or inversions of units in Z2n necessary to calculate
+the sequence of coeﬃcients of Q(x). The numbers involved in these calculations
+haveO(n) digits, but each addition/multiplication/inversion is counted as being
+performed in unit time.
+We state our main result.
+Theorem 1. Let P (x)∈ Z[x] be a polynomial that induces a permutation on
+Z2n, given by its sequence of values P (0),...,P (dn) in Z2n. There exists an
+algorithm of time complexity O(n2) that determines the sequence of coeﬃcients
+b0,b 1,...,b dn of the unique reduced polynomial Q(x) that induces the inverse
+permutation to P (x) on Z2n.
+2.3 Binary permutation polynomials
+There is a simple characterization of binary permutation polynomials in terms
+of the coeﬃcients of the polynomial. Namely, a polynomial P (x) = a0 +··· +
+PAGE 5
+4 L. Barthelemy et al.
+amxm∈ Z[x] induces a permutation on Z2n if and only if (i) a1 is odd, (ii) the
+sum a3 +a5 +a7... is even, and (iii) the sum a2 +a4 +a6 +... is even.
+The criterion is stated and proved in this form by Rivest [7], but he points
+out that it also follows easily from the following more general criterion: P (x)
+induces a permutation on Zpn, where p is a prime and n≥ 2, if and only if (i)
+P (x) induces a permutation on Zp and (ii) P′(a)̸≡ 0 (mod p) for a∈ Z. The
+last criterion is stated in the work of Mullen and Stevens [5], who consider it a
+direct corollary of Theorem 123. in the book by Hardy and Wright [3].
+The following corollary is crucial for our purposes.
+Corollary 1. LetP (x) =a0 +··· +amxm∈ Z[x] induce a permutation on Z2n.
+For all a,b ∈ R, with a̸= b, the Newton quotient ka,b = P (a)−P (b)
+a−b is an odd
+integer.
+Proof. Indeed, ka,b = a1A1 +a2A2 +··· +amAm, where A1 = 1 and, for i =
+2, 3,...,m ,Ai =ai−1 +ai−2b +··· +abi−2 +bi−1. If both a andb are even then,
+modulo 2, ka,b≡a1, if they have diﬀerent parity then ka,b≡a1 +a2 +··· +am,
+and if they are both odd, ka,b≡a1 +a3 +a5 +... . Thus, ka,b is always odd.
+2.4 Solving the associated linear system
+Fix n, and to simplify notation, set d =dn.
+Fori = 0,...,d , set xi = P (i) and yi = Q(xi) = i. We need to solve, over
+Z2n, the linear system of equations
+V [x0,x 1,...,x d](b0,b 1,...,b d)T = (y0,y 1,...,y d)T,
+where V =V [x0,x 1,...,x d] = [vi,j](d+1)×(d+1) is the (d + 1)× (d + 1) Vander-
+monde matrix in which vi,j =xj
+i.
+We will use the following two results by Oru¸ c and Phillips.
+Theorem 2 (Oru¸ c-Phillips 2000 [6]).Letx0,x 1,...,x m be distinct. An ex-
+plicit LDU decomposition of the Vandermonde matrix V =V [x0,x 1,...,x m] is
+given by V =LDU , where D is the diagonal matrix
+Diag(1, x1−x0, (x2−x1)(x2−x0),..., (xm−xm−1)(xm−xm−2)... (xm−x0)),
+L is the lower triangular matrix L = [ℓi,j] given by
+ℓi,j =
+j−1∏
+t=0
+xi−xj−1−t
+xj−xj−1−t
+, 0≤j≤i≤m,
+and U is the upper triangular matrix U = [ui,j] given by
+ui,j =τj−i(x0,...,x i) 0 ≤i≤j≤m,
+with the understanding that empty products are equal to 1 (thus all diagonal
+entries in both L and U are equal to 1), and τr(x0,...,x i) is the complete sym-
+metric function evaluated at x0,...,x i, that is,
+τr(x0,...,x i) =
+∑
+λ0+λ1+···+λi=r
+xλ0
+0 xλ1
+1 ...x λi
+i .
+PAGE 6
+Inversion of binary permutation polynomials 5
+Example 1. Form = 4, we have
+L =
+
+
+1 0 0 0 0
+1 1 0 0 0
+1 x2−x0
+x1−x0
+1 0 0
+1 x3−x0
+x1−x0
+(x3−x1)(x3−x0)
+(x2−x1)(x2−x0) 1 0
+1 x4−x0
+x1−x0
+(x4−x1)(x4−x0)
+(x2−x1)(x2−x0)
+(x4−x2)(x4−x1)(x4−x0)
+(x3−x2)(x3−x1)(x3−x0) 1
+
+
+U =
+
+
+1x0 x2
+0 x3
+0 x4
+0
+0 1 x0 +x1 x2
+0 +x0x1 +x2
+1 x3
+0 +x2
+0x1 +x0x2
+1 +x3
+1
+0 0 1 x0 +x1 +x2 x2
+0 +x0x1 +x2
+1 +x0x2 +x1x2 +x2
+2
+0 0 0 1 x0 +x1 +x2 +x3
+0 0 0 0 1
+
+
+The entries of U can be obtained recursively, by u0,j =xj
+0, ui,i = 1, and
+ui,j =ui−1,j−1 +ui,j−1·xi, for 1≤i<j. (1)
+Theorem 3 (Oru¸ c-Phillips 2000 [6]). Let x0,x 1,...,x m be distinct. The
+matrix L from the explicit LDU decomposition of the Vandermonde matrix
+V =V [x0,x 1,...,x m] given in Theorem 2 decomposes as the product
+L =L(1)L(2)...L (m)
+of subdiagonal (m + 1)× (m + 1) matricesL(k) = [ℓ(k)
+i,j ] with 1s on the diagonal
+and the subdiagonal entries given, for j = 0,...,m − 1, by
+ℓ(k)
+j+1,j =
+
+
+
+0, 0≤j <m−k,
+j−(m−k)−1∏
+t=0
+xj+1−xj−t
+xj−xj−1−t
+, m −k≤j≤m.
+Example 2. Form = 4, the following table provides the subdiagonal entries:
+j ℓ(1)
+j+1,j ℓ(2)
+j+1,j ℓ(3)
+j+1,j ℓ(4)
+j+1,j
+0 0 0 0 1
+1 0 0 1 x2−x1
+x1−x0
+2 0 1 x3−x2
+x2−x1
+(x3−x2)(x3−x1)
+(x2−x1)(x2−x0)
+3 1 x4−x3
+x3−x2
+(x4−x3)(x4−x2)
+(x3−x2)(x3−x1)
+(x4−x3)(x4−x2)(x4−x1)
+(x3−x2)(x3−x1)(x3−x0)
+The subdiagonal entries can be calculated recursively as follows. For ﬁxed j
+and k =m−j, we have ℓ(k)
+j+1,j = 1, and for k>m −j + 1,
+ℓ(k)
+j+1,j =ℓ(k−1)
+j+1,j· xj+1−xm−k+1
+xj−xm−k
+. (2)
+PAGE 7
+6 L. Barthelemy et al.
+Going back to our situation, we see that the entries of U and D are inte-
+gers and, as such, are well deﬁned over Z2n. The entries of L and L(k) are not
+necessarily integers, but they are still well deﬁned over Z2n.
+Proposition 1. LetP (x)∈ Z[x] induce a permutation on Z2n.
+(a) Each entry of L is has odd denominator in its simplest form.
+(b) Each entry of L(k), for k = 1,...,d has odd numerator and odd denomi-
+nator in its simplest form.
+Proof. (a) By Corollary 1, we have, for 0 ≤j≤i≤d,
+ℓi,j =
+j−1∏
+t=0
+xi−xj−1−t
+xj−xj−1−t
+=
+j−1∏
+t=0
+P (yi)−P (yj−1−t)
+P (yj)−P (yj−1−t) =
+j−1∏
+t=0
+(yi−yj−1−t)ki,j−1−t
+(yj−yj−1−t)kj,j−1−t
+=
+j−1∏
+t=0
+(i−j + 1 +t)ki,j−1−t
+(1 +t)kj,j−1−t
+=
+(i
+j
+)j−1∏
+t=0
+ki,j−1−t
+kj,j−1−t
+,
+where each k∗,∗ is an odd integer.
+(b) Let d−k≤j≤d and set s =j− (d−k)− 1. By Corollary 1, we have,
+ℓ(k)
+j+1,j =
+s∏
+t=0
+xj+1−xj−t
+xj−xj−1−t
+=
+s∏
+t=0
+P (yj+1)−P (yj−t)
+P (yj)−P (yj−1−t) =
+s∏
+t=0
+(yj+1−yj−t)kj+1,j−t
+(yj−yj−1−t)kj,j−1−t
+=
+s∏
+t=0
+(1 +t)kj+1,j−t
+(1 +t)kj,j−1−t
+=
+s∏
+t=0
+kj+1,j−t
+kj,j−1−t
+,
+where each k∗,∗ is an odd integer.
+We are ready to prove the main result.
+Proof (Proof of Theorem 1). Recall that, in our situation, m = d = dn <
+n + log2n and we are solving the system LDUb = y. The recursive formulas (1)
+and (2) show that the entries of U and the subdiagonal entries in all L(k),
+k = 1,...,d , can be calculated in O(n2) steps. The diagonal entries of D can
+also be calculated recursively in O(n2) steps. The inverse of L(k) is obtained by
+simply changing the sign in all subdiagonal entries. Therefore, we can calculate
+y′ =L−1y =L(m)−1
+L(m−1)−1
+...L (1)−1
+y in O(n2) steps.
+We then solve the system DUb = y′ by backward substitution in O(n2)
+steps. Note that the i-entry ofD has the form 2tifi, where fi is odd. Because of
+our constraints on the coeﬃcients of reduced polynomials, we are seeking only for
+solutions for bi in the range 0 ≤bi < 2n−ti, and a solution exists and is unique
+in this range. More precisely, once bi+1,...,b d are substituted in, we need to
+solve forbi from an equation of the form 2tifibi =gi (mod 2n), for some odd fi
+and some gi∈ Z2n. We already know that a solution exists, so it must be that
+gi = 2tig′
+i for some g′
+i∈ Z2n. After canceling the term 2 ti we solve for bi from
+fibi =g′
+i (mod 2n−ti) by inverting fi, and thus produce the unique solution in
+the range 0≤bi < 2n−ti.
+PAGE 8
+Inversion of binary permutation polynomials 7
+2.5 Another solution
+If we are not interested in producing the coeﬃcients of the inverse polynomial
+Q(x), but rather just in calculating the values ofQ(x) at various points, a slightly
+diﬀerent algorithm exists and we outline it here.
+LetUn be the ring of units of the ring Z2n. Without loss of generality we
+may assume that P (x) separately permutes Un, the odds, and its complement,
+the evens (if it does not, we may replace P (x) by P (x) + 1).
+The ideal I′ of integer polynomials that induce the zero function on Un is
+described in [4]. It is generated by Pi(x) = 2 n−i−ti
+∏i−1
+j=0(x− (2j + 1)), for
+i = 0, 1,...,d ′
+n, and Pd′n+1(x) = ∏d′
+n
+j=0(x− (2j + 1)), where d′
+n is the largest
+integeri such thatn−i−ti > 0. Every integer polynomial that permutesUn has
+a unique representative modulo I′, which is a polynomial of degree at most d′
+n
+with the i-coeﬃcient in the range from 0 to 2 n−i−ti− 1. The maximum degree
+d′
+n is approximately half ofdn. We may calculate, by using the same approach as
+above (the Vandermonde matrix will have dimension (d′
+n + 1)× (d′
+n + 1) and the
+interpolation is preformed for xi = P (2i + 1), i = 0,...,d ′
+n) the coeﬃcients of
+the unique reduced polynomial Q(x) modulo I′ that inverts the values of P (x)
+onUn (and not necessarily on its complement).
+By a similar approach, the coeﬃcients of another polynomial,Q(x), of degree
+at most d′
+n that inverts the values of P (x) on the complement of Un may be
+calculated. The two polynomials Q(x) and Q(x) may then be used to calculate
+the values of Q(x) (use the former for odd x and the latter for even). Since the
+degrees of Q(x) and Q(x) are, in general, smaller than the degree of Q(x), this
+approach may be faster if we need to calculate many values of Q(x).
+3 Interpolation of the inverse polynomial over Zpn
+Fix a prime p and n> 1.
+We claim that the same inversion technique works equally well for permuta-
+tion polynomials over the ring Zpn.
+The ideal of integer polynomials that induce the zero function on Zpn is
+generated by the polynomials
+Pi(x) =pn−tp,i
+i−1∏
+j=0
+(x−j) for i = 0, 1,...,d p,n, and Pdp,n+1(x) =
+dp,n∏
+j=0
+(x−j).
+where, for i≥ 0, tp,i is the largest integer ℓ such that pℓ divides ℓ!, and dp,n
+is the the largest integer i such that n−tp,i > 0. Each integer polynomial is
+equivalent, as a function over Zpn, to a unique reduced polynomial, that is,
+polynomial b0 +b1x +··· +bdp,nxdp,n of degree at most dp,n, such that, for
+i = 0,...,d p,n, we have 0≤bi <p n−tp,i (see [5, Theorem 2.1]).
+We prove an analog of Corollary 1.
+PAGE 9
+8 L. Barthelemy et al.
+Proposition 2. Let P (x) = a0 +··· +amxm∈ Z[x] induce a permutation on
+Zpn. For all a,b ∈ Z, with a̸= b, the Newton quotient ka,b = P (a)−P (b)
+a−b is an
+integer that is not divisible by p.
+Proof. Since P (x) induces a permutation on Zpn, it induces a permutation on
+Zp and P′(a)̸≡ 0 (mod p), for all a.
+We work modulo p.
+Leta̸=b and, moreover,a−b̸≡ 0. If we assumeka,b≡ 0, thenP (a)−P (b)≡
+(a−b)ka,b≡ 0, a contradiction, since P (x) permutes Zp.
+Let a̸= b, but a≡ b. Then, for i≥ 2, we have Ai = ai−1 +ai−2b +··· +
+abi−2 +bi−1≡iai−1 and ka,b≡a1 + 2a2a +··· +mamam−1≡P′(a)̸≡ 0.
+The rest of the proof is exactly the same as in the binary case, except, of
+course, that the analog of Proposition 1 should state that, in their simplest
+form, all denominators of the entries in L are integers not divisible by p, and all
+numerators and denominators of the entries in L(k),k = 1,...,d p,n, are integers
+not divisible by p. Thus, L and L(k) are well deﬁned over Zpn.
+Thus we may state a more general version of our main result.
+Theorem 4. Let p be a prime and P (x)∈ Z[x] a polynomial that induces a
+permutation on Zpn, given by its sequence of valuesP (a),P (a+1),...,P (a+dp,n)
+in Zpn for some a∈ Zpn (not necessarily 0). There exists an algorithm of time
+complexityO(n2) that determines the sequence of coeﬃcients b0,b 1,...,b dp,n of
+the unique reduced polynomialQ(x) that induces the inverse permutation toP (x)
+on Zpn.
+References
+1. Barthelemy, L., Eyrolles, N., Renault, G., Roblin, R.: Binary permutation polyno-
+mial inversion and application to obfuscation techniques. In: Proceedings of the 2nd
+International Workshop on Software PROtection. ACM, Vienna, Austria (October
+2016)
+2. Biondi, F., Josse, S., Legay, A., Sirvent, T.: Eﬀectiveness of synthesis in concolic
+deobfuscation. Computers & Security 70, 500–515 (2017)
+3. Hardy, G.H., Wright, E.M.: An introduction to the theory of numbers. Oxford, at
+the Clarendon Press (1960), 4rd ed
+4. Markovski, S., ˇSuni´ c, Z., Gligoroski, D.: Polynomial functions on the units of Z2n.
+Quasigroups Related Systems 18(1), 59–82 (2010)
+5. Mullen, G., Stevens, H.: Polynomial functions (mod m). Acta Math. Hungar. 44(3-
+4), 237–241 (1984). https://doi.org/10.1007/BF01950276
+6. Oru¸ c, H., Phillips, G.M.: Explicit factorization of the Vandermonde matrix.
+Linear Algebra Appl. 315(1-3), 113–123 (2000). https://doi.org/10.1016/S0024-
+3795(00)00124-5
+7. Rivest, R.L.: Permutation polynomials modulo 2w. Finite Fields Appl. 7(2), 287–292
+(2001). https://doi.org/10.1006/ﬀta.2000.0282
+8. Zhou, Y., Main, A., Gu, Y.X., Johnson, H.: Information hiding in software with
+mixed boolean-arithmetic transforms. In: Information Security Applications, 8th
+International Workshop, WISA 2007, Jeju Island, Korea, August 27-29, 2007, Re-
+vised Selected Papers. pp. 61–75 (2007)
