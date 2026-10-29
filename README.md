@@ -1,5 +1,7 @@
 # webassembly_obfuscation
 
+**CSEC研究を別PCで再開する場合:** [取得・成果物復元・原稿編集の手順](docs/csec-another-pc.md) を参照してください。難読化前後の性能評価からコード正規化を検討する研究の入口をまとめています。
+
 **2026-10-27 引き継ぎ:** 最新の研究状態・未完了事項・clone後の実験成果物復元は [HANDOFF.md](HANDOFF.md) を参照してください。以下の進捗は履歴を含みます。
 
 2026-10-24追補19：[実配布ffmpeg-mtの制御変種](research/state-witness/post-start-live-results.md)で、起動時drop省略による7,320寿命差と同じ1 GiB memory hashをNode/Wasmtimeで確認した。元API実行は0で、動画変換の追試・自然な復元bugではない。起動後に差を読めないという判断は静的到達条件による。内部差とアプリ不具合を分ける対照を追加し、**強いアルゴリズム新規性と自然な有効例は引き続き未確立**とする。
